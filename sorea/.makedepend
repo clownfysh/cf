@@ -1,1 +1,7 @@
 
+# DO NOT DELETE
+
+./system.o: /home/matthew/cf/sorea/system.h
+./sound.o: /home/matthew/cf/sorea/sound.h
+./sight.o: /home/matthew/cf/sorea/sight.h
+./input.o: /home/matthew/cf/sorea/input.h
