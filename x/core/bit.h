@@ -3,7 +3,11 @@
 
 #include "x/core/object.h"
 
-typedef unsigned char x_core_bit_t;
+enum x_core_bit_t {
+  x_core_bit_zero = 0,
+  x_core_bit_one = 1,
+};
+typedef enum x_core_bit_t x_core_bit_t;
 
 int x_core_bit_compare(void *bit_object_a, void *bit_object_b);
 

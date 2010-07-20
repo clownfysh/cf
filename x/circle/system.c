@@ -69,7 +69,7 @@ void x_circle_system_destroy(x_circle_system_t *system)
   free(system);
 }
 
-x_bit_t x_circle_system_get_bit(x_circle_system_t *system)
+x_core_bit_t x_circle_system_get_bit(x_circle_system_t *system)
 {
   assert(system);
 

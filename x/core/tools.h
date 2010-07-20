@@ -29,12 +29,6 @@ void x_core_do_nothing();
 
 extern x_core_bool_t x_core_stop_requested;
 
-enum x_bit_t {
-  x_bit_zero = 0,
-  x_bit_one = 1,
-};
-typedef enum x_bit_t x_bit_t;
-
 unsigned long x_get_microseconds();
 
 /*
