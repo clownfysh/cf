@@ -1,0 +1,8 @@
+keys
+
+can we use only four keys for hierarchy/net navigation?
+
+two sets of arrows:?
+
+ e    i
+sdf  jkl
