@@ -1,49 +1,46 @@
 --[ about ]--------------------------------------------------------------------
 
 This is clownfysh::cf, by Matthew Temple.  These are tools I use to build
-things.  They're free; use them however you like.  For more on my work, visit:
-
-http://clownfysh.wordpress.com/
-http://twitter.com/clownfysh
-clownfysh@gmail.com
+things.  They're free; use them however you like.  For more, visit:
+  + blog                                    ( http://clownfysh.wordpress.com/ )
+  + twitter                                    ( http://twitter.com/clownfysh )
+  + email                                               ( clownfysh@gmail.com )
 
 --[ top-level systems ]--------------------------------------------------------
 
     bin :: environment, makefile, scripts
   chage :: chaos game engine
-      h :: base library :: slimmed-down lists, networking, etc
-      i :: base library :: next-generation containers, crazyminimal
 inferno :: search, classify, morph
   sorea :: os human-human, human-machine interface
  struct :: ...
+      x :: base library :: containers, networking, etc.
 
 --[ setup ]--------------------------------------------------------------------
 
 + set up your environment
-  + set $H to the directory where you checked out this project (the directory
+  + set $CF to the directory where you checked out this project (the directory
     containing this file)
-  + add $H/bin to $PATH (needed for the build)
+  + add $CF/bin to $PATH (needed for the build)
 + install
-  + OS development headers (stddef.h etc.), and set $H_C_STANDARD_INCLUDE_DIR
+  + OS development headers (stddef.h etc.), and set $CF_C_STANDARD_INCLUDE_DIR
     to the place on your OS that includes them
     (for example: /usr/lib/gcc/i486-linux-gnu/4.2.4/include)
   + an ANSI C compiler                  ( http://en.wikipedia.org/wiki/ANSI_C )
-  + Doxygen                           ( http://www.stack.nl/~dimitri/doxygen/ )
   + IJG JPEG                                            ( http://www.ijg.org/ )
   + ncurses                            ( http://en.wikipedia.org/wiki/Ncurses )
   + OpenSSL                                         ( http://www.openssl.org/ )
   + POSIX Threads                ( http://en.wikipedia.org/wiki/POSIX_Threads )
   + PostgreSQL                                   ( http://www.postgresql.org/ )
     + compile with --enable-thread-safety
-    + set $H_POSTGRESQL_INCLUDE_DIR to the directory containing libpq-fe.h
+    + set $CF_POSTGRESQL_INCLUDE_DIR to the directory containing libpq-fe.h
       (for example: /usr/include/postgresql)
   + rsync                                ( http://en.wikipedia.org/wiki/Rsync )
 + develop and compile
-  + "cd $H"
+  + "cd $CF"
   + "make help"
   + if you want to commit back to the project
     + read and follow the guide below
-    + "make release" and "make clean" before committing
+    + "make test", "make release" and "make clean" before committing
 
 --[ style ]--------------------------------------------------------------------
 
@@ -86,8 +83,8 @@ structure
 
 terms
 -----
-+ the highest level directory "h" is called a project
-+ the next level directories are called "systems"
++ the highest level directory "cf" is called a project
++ lower-level directories are called "systems"
 + a .h/.c/.test.c triplet is associated with a "module"
 
 naming
@@ -154,7 +151,6 @@ logic
 + sizeof(char) is always 1 :: don't multiply anything by sizeof(char)
 + no comments in completed code--if you need comments it's because the
   identifiers are named improperly, except:
-  + doxygen comments
 + put a default: block in every switch statement, followed by at least a break;
 + when referring to paths/urls/directories, always start with a slash, never
   end with one
@@ -169,6 +165,7 @@ logic
     calls
 + generally, code for what you want to happen, not what you don't want to
   happen
++ don't use static keyword on function definitions
 
 --[ ruler ]--------------------------------------------------------------------
 
