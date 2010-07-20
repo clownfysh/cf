@@ -32,7 +32,7 @@ library_paths = -L.
 ifeq ($(os),linux)
   library_paths += -L/usr/local/lib -L/usr/lib
 endif
-include_paths = -I$(CF) -I$(CF_C_STANDARD) -I$(CF_POSTGRESQL)
+include_paths = -I$(CF) -I$(CF)/.. -I$(CF_C_STANDARD) -I$(CF_POSTGRESQL)
 libraries = -lcrypto -ljpeg -lm -lncurses -lpq -lpthread -luuid
 link_options = -ansi $(build) $(platform) $(debugging) $(optimization) $(warnings) $(include_paths) -D_GNU_SOURCE $(library_paths) $(libraries)
 compile_options = -ansi $(build) $(platform) $(debugging) $(optimization) $(warnings) $(include_paths) -D_GNU_SOURCE
