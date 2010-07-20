@@ -1,5 +1,5 @@
 #include "inferno/mind/system.h"
-#include "h/core/tools.h"
+#include "x/core/tools.h"
 
 struct inferno_mind_system_t {
 };
@@ -12,7 +12,7 @@ inferno_mind_system_t *inferno_mind_system_create()
   if (system) {
 
   } else {
-    h_core_trace("malloc");
+    x_core_trace("malloc");
   }
 
   return system;

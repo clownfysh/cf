@@ -3,8 +3,8 @@
 #include "inferno/bios/system.h"
 #include "inferno/core/constants.h"
 #include "inferno/core/goal.h"
-#include "h/core/random.h"
-#include "h/core/tools.h"
+#include "x/core/random.h"
+#include "x/core/tools.h"
 
 #define ANARCHY_MODULUS 4
 #define DO_MOVE 1
@@ -46,10 +46,10 @@ struct meet_gene_t {
 typedef struct meet_gene_t meet_gene_t;
 
 struct inferno_bios_actor_t {
-  h_core_bitarray_t *solution;
+  x_core_bitarray_t *solution;
   inferno_bios_system_t *system;
   double score;
-  h_core_bool_t score_is_valid;
+  x_core_bool_t score_is_valid;
   void *box_cell;
 };
 
@@ -78,7 +78,7 @@ static unsigned long eight_from_twenty_four(inferno_bios_actor_t *actor,
     unsigned long ulong_18, unsigned long ulong_19, unsigned long ulong_20,
     unsigned long ulong_21, unsigned long ulong_22, unsigned long ulong_23);
 
-static h_core_bool_t fitness_is_superior(double fitness_a, double fitness_b,
+static x_core_bool_t fitness_is_superior(double fitness_a, double fitness_b,
     inferno_core_goal_t goal);
 
 static unsigned long get_position_index_for_observe_location
@@ -134,8 +134,8 @@ unsigned long eight_from_eight(inferno_bios_actor_t *actor, unsigned long ulong_
     unsigned long ulong_7)
 {
   unsigned long cells[8][EFE_LENGTH];
-  unsigned long each_x;
-  unsigned long each_y;
+  unsigned long eacx_x;
+  unsigned long eacx_y;
   unsigned long ca_in_0;
   unsigned long ca_in_1;
   unsigned long ca_in_2;
@@ -158,8 +158,8 @@ unsigned long eight_from_eight(inferno_bios_actor_t *actor, unsigned long ulong_
   cells[6][0] = ulong_6;
   cells[7][0] = ulong_7;
 
-  for (each_y = 1; each_y < EFE_LENGTH; each_y++) {
-    for (each_x = 0; each_x < 8; each_x++) {
+  for (eacx_y = 1; eacx_y < EFE_LENGTH; eacx_y++) {
+    for (eacx_x = 0; eacx_x < 8; eacx_x++) {
 
       /*  it might make a difference if these indexes, before being
           wrapped, had a constant added to them so that they weren't at
@@ -173,18 +173,18 @@ unsigned long eight_from_eight(inferno_bios_actor_t *actor, unsigned long ulong_
           beginning of the gene, so having these things farther longo the
           gene would make them more likely to be changeable.  but I'm
           not sure there even is such a preference.  */
-      ca_index_0 = h_core_wrap_index(each_x - 1, 8);
-      ca_index_1 = each_x;
-      ca_index_2 = h_core_wrap_index(each_x + 1, 8);
+      ca_index_0 = x_core_wrap_index(eacx_x - 1, 8);
+      ca_index_1 = eacx_x;
+      ca_index_2 = x_core_wrap_index(eacx_x + 1, 8);
 
-      ca_in_0 = cells[ca_index_0][each_y - 1];
-      ca_in_1 = cells[ca_index_1][each_y - 1];
-      ca_in_2 = cells[ca_index_2][each_y - 1];
+      ca_in_0 = cells[ca_index_0][eacx_y - 1];
+      ca_in_1 = cells[ca_index_1][eacx_y - 1];
+      ca_in_2 = cells[ca_index_2][eacx_y - 1];
       ca_out_address = CA_OUT_ADDRESS_SPREAD_FACTOR * (
         (4 * ca_in_0) + (2 * ca_in_1) + (1 * ca_in_2)
         );
-      ca_out = h_core_bitarray_get_bit(actor->solution, ca_out_address);
-      cells[each_x][each_y] = ca_out;
+      ca_out = x_core_bitarray_get_bit(actor->solution, ca_out_address);
+      cells[eacx_x][eacx_y] = ca_out;
     }
   }
 
@@ -204,8 +204,8 @@ unsigned long eight_from_sixteen(inferno_bios_actor_t *actor, unsigned long ulon
     unsigned long ulong_13, unsigned long ulong_14, unsigned long ulong_15)
 {
   unsigned long cells[8][EFE_LENGTH];
-  unsigned long each_x;
-  unsigned long each_y;
+  unsigned long eacx_x;
+  unsigned long eacx_y;
   unsigned long ca_in_0;
   unsigned long ca_in_1;
   unsigned long ca_in_2;
@@ -240,27 +240,27 @@ unsigned long eight_from_sixteen(inferno_bios_actor_t *actor, unsigned long ulon
   cells[6][1] = ulong_14;
   cells[7][1] = ulong_15;
 
-  for (each_y = 2; each_y < EFE_LENGTH; each_y++) {
-    for (each_x = 0; each_x < 8; each_x++) {
-      ca_index_0 = h_core_wrap_index(each_x - 1, 8);
-      ca_index_1 = each_x;
-      ca_index_2 = h_core_wrap_index(each_x + 1, 8);
+  for (eacx_y = 2; eacx_y < EFE_LENGTH; eacx_y++) {
+    for (eacx_x = 0; eacx_x < 8; eacx_x++) {
+      ca_index_0 = x_core_wrap_index(eacx_x - 1, 8);
+      ca_index_1 = eacx_x;
+      ca_index_2 = x_core_wrap_index(eacx_x + 1, 8);
 
-      ca_in_0 = cells[ca_index_0][each_y - 1];
-      ca_in_1 = cells[ca_index_1][each_y - 1];
-      ca_in_2 = cells[ca_index_2][each_y - 1];
+      ca_in_0 = cells[ca_index_0][eacx_y - 1];
+      ca_in_1 = cells[ca_index_1][eacx_y - 1];
+      ca_in_2 = cells[ca_index_2][eacx_y - 1];
 
-      ca_in_3 = cells[ca_index_0][each_y - 2];
-      ca_in_4 = cells[ca_index_1][each_y - 2];
-      ca_in_5 = cells[ca_index_2][each_y - 2];
+      ca_in_3 = cells[ca_index_0][eacx_y - 2];
+      ca_in_4 = cells[ca_index_1][eacx_y - 2];
+      ca_in_5 = cells[ca_index_2][eacx_y - 2];
 
       ca_out_address = CA_OUT_ADDRESS_SPREAD_FACTOR * (
         (32 * ca_in_5) + (16 * ca_in_4) + (8 * ca_in_3)
         + (4 * ca_in_2) + (2 * ca_in_1) + (1 * ca_in_0)
         );
 
-      ca_out = h_core_bitarray_get_bit(actor->solution, ca_out_address);
-      cells[each_x][each_y] = ca_out;
+      ca_out = x_core_bitarray_get_bit(actor->solution, ca_out_address);
+      cells[eacx_x][eacx_y] = ca_out;
     }
   }
 
@@ -283,8 +283,8 @@ unsigned long eight_from_twenty_four(inferno_bios_actor_t *actor,
     unsigned long ulong_21, unsigned long ulong_22, unsigned long ulong_23)
 {
   unsigned long cells[8][EFE_LENGTH];
-  unsigned long each_x;
-  unsigned long each_y;
+  unsigned long eacx_x;
+  unsigned long eacx_y;
   unsigned long ca_in_0;
   unsigned long ca_in_1;
   unsigned long ca_in_2;
@@ -331,23 +331,23 @@ unsigned long eight_from_twenty_four(inferno_bios_actor_t *actor,
   cells[6][2] = ulong_22;
   cells[7][2] = ulong_23;
 
-  for (each_y = 3; each_y < EFE_LENGTH; each_y++) {
-    for (each_x = 0; each_x < 8; each_x++) {
-      ca_index_0 = h_core_wrap_index(each_x - 1, 8);
-      ca_index_1 = each_x;
-      ca_index_2 = h_core_wrap_index(each_x + 1, 8);
+  for (eacx_y = 3; eacx_y < EFE_LENGTH; eacx_y++) {
+    for (eacx_x = 0; eacx_x < 8; eacx_x++) {
+      ca_index_0 = x_core_wrap_index(eacx_x - 1, 8);
+      ca_index_1 = eacx_x;
+      ca_index_2 = x_core_wrap_index(eacx_x + 1, 8);
 
-      ca_in_0 = cells[ca_index_0][each_y - 1];
-      ca_in_1 = cells[ca_index_1][each_y - 1];
-      ca_in_2 = cells[ca_index_2][each_y - 1];
+      ca_in_0 = cells[ca_index_0][eacx_y - 1];
+      ca_in_1 = cells[ca_index_1][eacx_y - 1];
+      ca_in_2 = cells[ca_index_2][eacx_y - 1];
 
-      ca_in_3 = cells[ca_index_0][each_y - 2];
-      ca_in_4 = cells[ca_index_1][each_y - 2];
-      ca_in_5 = cells[ca_index_2][each_y - 2];
+      ca_in_3 = cells[ca_index_0][eacx_y - 2];
+      ca_in_4 = cells[ca_index_1][eacx_y - 2];
+      ca_in_5 = cells[ca_index_2][eacx_y - 2];
 
-      ca_in_6 = cells[ca_index_0][each_y - 3];
-      ca_in_7 = cells[ca_index_1][each_y - 3];
-      ca_in_8 = cells[ca_index_2][each_y - 3];
+      ca_in_6 = cells[ca_index_0][eacx_y - 3];
+      ca_in_7 = cells[ca_index_1][eacx_y - 3];
+      ca_in_8 = cells[ca_index_2][eacx_y - 3];
 
       ca_out_address = CA_OUT_ADDRESS_SPREAD_FACTOR * (
         (256 * ca_in_8) + (128 * ca_in_7) + (64 * ca_in_6)
@@ -355,8 +355,8 @@ unsigned long eight_from_twenty_four(inferno_bios_actor_t *actor,
         + (4 * ca_in_2) + (2 * ca_in_1) + (1 * ca_in_0)
         );
 
-      ca_out = h_core_bitarray_get_bit(actor->solution, ca_out_address);
-      cells[each_x][each_y] = ca_out;
+      ca_out = x_core_bitarray_get_bit(actor->solution, ca_out_address);
+      cells[eacx_x][eacx_y] = ca_out;
     }
   }
 
@@ -368,10 +368,10 @@ unsigned long eight_from_twenty_four(inferno_bios_actor_t *actor,
   return result;
 }
 
-h_core_bool_t fitness_is_superior(double fitness_a, double fitness_b,
+x_core_bool_t fitness_is_superior(double fitness_a, double fitness_b,
     inferno_core_goal_t goal)
 {
-  h_core_bool_t superior;
+  x_core_bool_t superior;
 
   /*
     TODO: in general, what is the number optimal for society? :: is there a
@@ -381,19 +381,19 @@ h_core_bool_t fitness_is_superior(double fitness_a, double fitness_b,
     :: is there some governing relationship to be found there?
   */
   if (0 == (random() % ANARCHY_MODULUS)) {
-    superior = h_core_bool_true;
+    superior = x_core_bool_true;
   } else {
     if (INFERNO_CORE_GOAL_MAXIMIZE_SCORE == goal) {
       if (fitness_a > fitness_b) {
-        superior = h_core_bool_true;
+        superior = x_core_bool_true;
       } else {
-        superior = h_core_bool_false;
+        superior = x_core_bool_false;
       }
     } else {
       if (fitness_a < fitness_b) {
-        superior = h_core_bool_true;
+        superior = x_core_bool_true;
       } else {
-        superior = h_core_bool_false;
+        superior = x_core_bool_false;
       }
     }
   }
@@ -446,74 +446,74 @@ unsigned long get_position_index_for_observe_location(inferno_bios_actor_t *acto
 
   box = inferno_bios_system_get_box(actor->system);
 
-  inferno_box_coordinate_init_with_xyz(&relation, 0, 0, 1);
+  inferno_box_coordinate_init_witx_xyz(&relation, 0, 0, 1);
   actor_0 = inferno_box_system_find_relative(box, actor, &relation);
 
-  inferno_box_coordinate_init_with_xyz(&relation, 1, 0, 1);
+  inferno_box_coordinate_init_witx_xyz(&relation, 1, 0, 1);
   actor_1 = inferno_box_system_find_relative(box, actor, &relation);
 
-  inferno_box_coordinate_init_with_xyz(&relation, 2, 0, 1);
+  inferno_box_coordinate_init_witx_xyz(&relation, 2, 0, 1);
   actor_2 = inferno_box_system_find_relative(box, actor, &relation);
 
-  inferno_box_coordinate_init_with_xyz(&relation, 2, 1, 1);
+  inferno_box_coordinate_init_witx_xyz(&relation, 2, 1, 1);
   actor_3 = inferno_box_system_find_relative(box, actor, &relation);
 
-  inferno_box_coordinate_init_with_xyz(&relation, 2, 2, 1);
+  inferno_box_coordinate_init_witx_xyz(&relation, 2, 2, 1);
   actor_4 = inferno_box_system_find_relative(box, actor, &relation);
 
-  inferno_box_coordinate_init_with_xyz(&relation, 1, 2, 1);
+  inferno_box_coordinate_init_witx_xyz(&relation, 1, 2, 1);
   actor_5 = inferno_box_system_find_relative(box, actor, &relation);
 
-  inferno_box_coordinate_init_with_xyz(&relation, 0, 2, 1);
+  inferno_box_coordinate_init_witx_xyz(&relation, 0, 2, 1);
   actor_6 = inferno_box_system_find_relative(box, actor, &relation);
 
-  inferno_box_coordinate_init_with_xyz(&relation, 0, 1, 1);
+  inferno_box_coordinate_init_witx_xyz(&relation, 0, 1, 1);
   actor_7 = inferno_box_system_find_relative(box, actor, &relation);
 
-  observed_0 = h_core_bitarray_get_bit(actor_0->solution, observe_location);
-  observed_1 = h_core_bitarray_get_bit(actor_1->solution, observe_location);
-  observed_2 = h_core_bitarray_get_bit(actor_2->solution, observe_location);
-  observed_3 = h_core_bitarray_get_bit(actor_3->solution, observe_location);
-  observed_4 = h_core_bitarray_get_bit(actor_4->solution, observe_location);
-  observed_5 = h_core_bitarray_get_bit(actor_5->solution, observe_location);
-  observed_6 = h_core_bitarray_get_bit(actor_6->solution, observe_location);
-  observed_7 = h_core_bitarray_get_bit(actor_7->solution, observe_location);
+  observed_0 = x_core_bitarray_get_bit(actor_0->solution, observe_location);
+  observed_1 = x_core_bitarray_get_bit(actor_1->solution, observe_location);
+  observed_2 = x_core_bitarray_get_bit(actor_2->solution, observe_location);
+  observed_3 = x_core_bitarray_get_bit(actor_3->solution, observe_location);
+  observed_4 = x_core_bitarray_get_bit(actor_4->solution, observe_location);
+  observed_5 = x_core_bitarray_get_bit(actor_5->solution, observe_location);
+  observed_6 = x_core_bitarray_get_bit(actor_6->solution, observe_location);
+  observed_7 = x_core_bitarray_get_bit(actor_7->solution, observe_location);
 
-  observed_8 = h_core_bitarray_get_bit(actor_0->solution,
+  observed_8 = x_core_bitarray_get_bit(actor_0->solution,
       observe_location + OBSERVE_LOCATION_SPREAD_DISTANCE);
-  observed_9 = h_core_bitarray_get_bit(actor_1->solution,
+  observed_9 = x_core_bitarray_get_bit(actor_1->solution,
       observe_location + OBSERVE_LOCATION_SPREAD_DISTANCE);
-  observed_10 = h_core_bitarray_get_bit(actor_2->solution,
+  observed_10 = x_core_bitarray_get_bit(actor_2->solution,
       observe_location + OBSERVE_LOCATION_SPREAD_DISTANCE);
-  observed_11 = h_core_bitarray_get_bit(actor_3->solution,
+  observed_11 = x_core_bitarray_get_bit(actor_3->solution,
       observe_location + OBSERVE_LOCATION_SPREAD_DISTANCE);
-  observed_12 = h_core_bitarray_get_bit(actor_4->solution,
+  observed_12 = x_core_bitarray_get_bit(actor_4->solution,
       observe_location + OBSERVE_LOCATION_SPREAD_DISTANCE);
-  observed_13 = h_core_bitarray_get_bit(actor_5->solution,
+  observed_13 = x_core_bitarray_get_bit(actor_5->solution,
       observe_location + OBSERVE_LOCATION_SPREAD_DISTANCE);
-  observed_14 = h_core_bitarray_get_bit(actor_6->solution,
+  observed_14 = x_core_bitarray_get_bit(actor_6->solution,
       observe_location + OBSERVE_LOCATION_SPREAD_DISTANCE);
-  observed_15 = h_core_bitarray_get_bit(actor_7->solution,
+  observed_15 = x_core_bitarray_get_bit(actor_7->solution,
       observe_location + OBSERVE_LOCATION_SPREAD_DISTANCE);
 
-  observed_16 = h_core_bitarray_get_bit(actor_0->solution,
+  observed_16 = x_core_bitarray_get_bit(actor_0->solution,
       observe_location + (2 * OBSERVE_LOCATION_SPREAD_DISTANCE));
-  observed_17 = h_core_bitarray_get_bit(actor_1->solution,
+  observed_17 = x_core_bitarray_get_bit(actor_1->solution,
       observe_location + (2 * OBSERVE_LOCATION_SPREAD_DISTANCE));
-  observed_18 = h_core_bitarray_get_bit(actor_2->solution,
+  observed_18 = x_core_bitarray_get_bit(actor_2->solution,
       observe_location + (2 * OBSERVE_LOCATION_SPREAD_DISTANCE));
-  observed_19 = h_core_bitarray_get_bit(actor_3->solution,
+  observed_19 = x_core_bitarray_get_bit(actor_3->solution,
       observe_location + (2 * OBSERVE_LOCATION_SPREAD_DISTANCE));
-  observed_20 = h_core_bitarray_get_bit(actor_4->solution,
+  observed_20 = x_core_bitarray_get_bit(actor_4->solution,
       observe_location + (2 * OBSERVE_LOCATION_SPREAD_DISTANCE));
-  observed_21 = h_core_bitarray_get_bit(actor_5->solution,
+  observed_21 = x_core_bitarray_get_bit(actor_5->solution,
       observe_location + (2 * OBSERVE_LOCATION_SPREAD_DISTANCE));
-  observed_22 = h_core_bitarray_get_bit(actor_6->solution,
+  observed_22 = x_core_bitarray_get_bit(actor_6->solution,
       observe_location + (2 * OBSERVE_LOCATION_SPREAD_DISTANCE));
-  observed_23 = h_core_bitarray_get_bit(actor_7->solution,
+  observed_23 = x_core_bitarray_get_bit(actor_7->solution,
       observe_location + (2 * OBSERVE_LOCATION_SPREAD_DISTANCE));
 
-  if (h_core_bool_false) {
+  if (x_core_bool_false) {
     new_position_index = eight_from_eight(actor, observed_0, observed_1,
         observed_2, observed_3, observed_4, observed_5, observed_6,
         observed_7);
@@ -584,16 +584,16 @@ double get_score(inferno_bios_actor_t *actor)
   assert(actor);
   inferno_core_score_solution_f score_solution;
   void *context;
-  h_audit_log_t *log;
+  x_audit_log_t *log;
 
   if (!actor->score_is_valid) {
     context = inferno_bios_system_get_context(actor->system);
     score_solution = inferno_bios_system_get_score_solution(actor->system);
     if (score_solution(context, actor->solution, &actor->score)) {
-      actor->score_is_valid = h_core_bool_true;
+      actor->score_is_valid = x_core_bool_true;
     } else {
       log = inferno_bios_system_get_log(actor->system);
-      h_audit_log_trace(log, "bios", "score_solution");
+      x_audit_log_trace(log, "bios", "score_solution");
     }
   }
 
@@ -612,11 +612,11 @@ void inferno_bios_actor_act(inferno_bios_actor_t *actor)
 
 void *inferno_bios_actor_copy(void *actor_void)
 {
-  h_core_trace_exit("TODO: implement");
+  x_core_trace_exit("TODO: implement");
   return NULL;
 }
 
-void *inferno_bios_actor_create(void *system_void, h_core_bitarray_t *solution)
+void *inferno_bios_actor_create(void *system_void, x_core_bitarray_t *solution)
 {
   assert(system_void);
   assert(solution);
@@ -628,15 +628,15 @@ void *inferno_bios_actor_create(void *system_void, h_core_bitarray_t *solution)
   actor = malloc(sizeof *actor);
   if (actor) {
     actor->system = system;
-    actor->score_is_valid = h_core_bool_false;
-    actor->solution = h_core_bitarray_copy(solution);
+    actor->score_is_valid = x_core_bool_false;
+    actor->solution = x_core_bitarray_copy(solution);
     if (!actor->solution) {
-      h_core_trace("inferno_core_birarray_copy");
+      x_core_trace("inferno_core_birarray_copy");
       free(actor);
       actor = NULL;
     }
   } else {
-    h_core_trace_exit("malloc");
+    x_core_trace_exit("malloc");
   }
 
   return actor;
@@ -645,25 +645,25 @@ void *inferno_bios_actor_create(void *system_void, h_core_bitarray_t *solution)
 void *inferno_bios_actor_create_random(void *system_void)
 {
   assert(system_void);
-  h_core_bitarray_t *bitarray;
+  x_core_bitarray_t *bitarray;
   inferno_bios_actor_t *actor;
-  h_audit_log_t *log;
+  x_audit_log_t *log;
   inferno_bios_system_t *system;
 
   system = system_void;
 
-  bitarray = h_core_bitarray_create_random(INFERNO_CORE_SOLUTION_BIT_COUNT);
+  bitarray = x_core_bitarray_create_random(INFERNO_CORE_SOLUTION_BIT_COUNT);
   if (bitarray) {
     actor = inferno_bios_actor_create(system, bitarray);
     if (!actor) {
       log = inferno_bios_system_get_log(system);
-      h_audit_log_trace(log, "bios", "inferno_bios_actor_create");
+      x_audit_log_trace(log, "bios", "inferno_bios_actor_create");
     }
-    h_core_bitarray_destroy(bitarray);
+    x_core_bitarray_destroy(bitarray);
   } else {
     actor = NULL;
     log = inferno_bios_system_get_log(system);
-    h_audit_log_trace(log, "bios", "h_core_bitarray_create_random");
+    x_audit_log_trace(log, "bios", "x_core_bitarray_create_random");
   }
 
   return actor;
@@ -727,7 +727,7 @@ void inferno_bios_actor_destroy(void *actor_void)
   inferno_bios_actor_t *actor;
 
   actor = actor_void;
-  h_core_bitarray_destroy(actor->solution);
+  x_core_bitarray_destroy(actor->solution);
 
   free(actor);
 }
@@ -742,7 +742,7 @@ void *inferno_bios_actor_get_box_cell(void *actor_void)
   return actor->box_cell;
 }
 
-h_core_bitarray_t *inferno_bios_actor_get_solution(void *actor_void)
+x_core_bitarray_t *inferno_bios_actor_get_solution(void *actor_void)
 {
   assert(actor_void);
   inferno_bios_actor_t *actor;
@@ -816,25 +816,25 @@ void meet_actor_details(inferno_bios_actor_t *actor_a, inferno_bios_actor_t *act
   assert(actor_b);
   meet_gene_t meet_gene;
   unsigned long meet_gene_start_address;
-  unsigned long each_gene;
+  unsigned long eacx_gene;
   inferno_box_system_t *box;
-  h_core_bit_t bit;
+  x_core_bit_t bit;
 
   meet_gene_start_address
     = inferno_core_get_gene_start_address(actor_a->solution, GENE_INDEX_MEET);
   parse_meet_gene(actor_a, meet_gene_start_address, &meet_gene);
 
-  actor_b->score_is_valid = h_core_bool_false;
+  actor_b->score_is_valid = x_core_bool_false;
 
-  for (each_gene = meet_gene.address;
-       each_gene < (meet_gene.address + meet_gene.length);
-       each_gene++) {
-    bit = h_core_bitarray_get_bit(actor_a->solution, each_gene);
-    h_core_bitarray_set_bit(actor_b->solution, each_gene, bit);
+  for (eacx_gene = meet_gene.address;
+       eacx_gene < (meet_gene.address + meet_gene.length);
+       eacx_gene++) {
+    bit = x_core_bitarray_get_bit(actor_a->solution, eacx_gene);
+    x_core_bitarray_set_bit(actor_b->solution, eacx_gene, bit);
     if (MUTATION) {
-      if (0 == h_core_random_unsigned_long(MUTATION_INCIDENCE_PER)) {
-        h_core_bitarray_set_bit(actor_b->solution, each_gene,
-            h_core_random_unsigned_long(2));
+      if (0 == x_core_random_unsigned_long(MUTATION_INCIDENCE_PER)) {
+        x_core_bitarray_set_bit(actor_b->solution, eacx_gene,
+            x_core_random_unsigned_long(2));
       }
     }
   }
@@ -868,11 +868,11 @@ void move_actor(inferno_bios_actor_t *actor)
 void parse_display_gene(inferno_bios_actor_t *actor,
     unsigned long gene_start_address, display_gene_t *display_gene)
 {
-  display_gene->red = h_core_bitarray_get_unsigned_char(actor->solution,
+  display_gene->red = x_core_bitarray_get_unsigned_char(actor->solution,
       gene_start_address + 0);
-  display_gene->green = h_core_bitarray_get_unsigned_char(actor->solution,
+  display_gene->green = x_core_bitarray_get_unsigned_char(actor->solution,
       gene_start_address + 8);
-  display_gene->blue = h_core_bitarray_get_unsigned_char(actor->solution,
+  display_gene->blue = x_core_bitarray_get_unsigned_char(actor->solution,
       gene_start_address + 16);
 }
 
@@ -882,8 +882,8 @@ void parse_display_gene(inferno_bios_actor_t *actor,
 void parse_meet_gene(inferno_bios_actor_t *actor, unsigned long gene_start_address,
     meet_gene_t *meet_gene)
 {
-  meet_gene->address = h_core_bitarray_get_unsigned_char(actor->solution,
+  meet_gene->address = x_core_bitarray_get_unsigned_char(actor->solution,
       gene_start_address + 0);
-  meet_gene->length = h_core_bitarray_get_unsigned_char(actor->solution,
+  meet_gene->length = x_core_bitarray_get_unsigned_char(actor->solution,
       gene_start_address + 8);
 }

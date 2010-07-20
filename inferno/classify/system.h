@@ -1,11 +1,11 @@
 #ifndef inferno_classify_system_h
 #define inferno_classify_system_h
 
-#include "h/audit/log.h"
-#include "h/container/array.h"
-#include "h/core/bit.h"
-#include "h/core/bitarray.h"
-#include "h/core/tools.h"
+#include "x/audit/log.h"
+#include "x/container/array.h"
+#include "x/core/bit.h"
+#include "x/core/bitarray.h"
+#include "x/core/tools.h"
 #include "inferno/core/goal.h"
 #include "inferno/classify/algorithm.h"
 
@@ -18,7 +18,7 @@ typedef struct inferno_classify_system_t inferno_classify_system_t;
  * classification system, call inferno_classify_system_destroy() to release
  * resources the classify is using.
  *
- * \param classified_objects an array of h_core_bitarray_t *s, each one
+ * \param classified_objects an array of x_core_bitarray_t *s, each one
  *        representing an object that has already been classified.  the objects
  *        should all be of the same size in bits, and they need to contain at
  *        least two bits.  the last bit in each object is the a-priori
@@ -37,8 +37,8 @@ typedef struct inferno_classify_system_t inferno_classify_system_t;
  * \return context variable for the classify, or NULL if not successful
  */
 inferno_classify_system_t *inferno_classify_system_create
-(h_container_array_t *classified_objects, inferno_classify_algorithm_t algorithm,
-    h_audit_log_t *log);
+(x_container_array_t *classified_objects, inferno_classify_algorithm_t algorithm,
+    x_audit_log_t *log);
 
 /*!
  * destroy a classify system.  free up resources the classify is using.
@@ -58,22 +58,22 @@ void inferno_classify_system_destroy(inferno_classify_system_t *system);
  *
  * \return the classification of the object
  */
-h_core_bit_t inferno_classify_system_classify_object(inferno_classify_system_t *system,
-    h_core_bitarray_t *object);
+x_core_bit_t inferno_classify_system_classify_object(inferno_classify_system_t *system,
+    x_core_bitarray_t *object);
 
 /*!
  * classify an array of unknown objects.
  *
  * \param system the classify system to use
- * \param objects an array of h_core_bitarray_t *s, each representing an
+ * \param objects an array of x_core_bitarray_t *s, each representing an
  *        unclassified object
  *
- * \return an array of h_core_bit_t values.  each is the classification of the
+ * \return an array of x_core_bit_t values.  each is the classification of the
  *         corresponding input object.  if you pass in 100 objects, this will
  *         return an array of 100 classifications.
  */
-h_container_array_t *inferno_classify_system_classify_objects
-(inferno_classify_system_t *system, h_container_array_t *objects);
+x_container_array_t *inferno_classify_system_classify_objects
+(inferno_classify_system_t *system, x_container_array_t *objects);
 
 /*!
  * spend some time learning about observed objects.  call this when you want to
@@ -90,7 +90,7 @@ h_container_array_t *inferno_classify_system_classify_objects
  *
  * \return the success of the call.
  */
-h_core_bool_t inferno_classify_system_learn(inferno_classify_system_t *system,
+x_core_bool_t inferno_classify_system_learn(inferno_classify_system_t *system,
     unsigned long max_wall_time_microseconds);
 
 /*!
@@ -111,8 +111,8 @@ h_core_bool_t inferno_classify_system_learn(inferno_classify_system_t *system,
  *
  * \return the success of the call
  */
-h_core_bool_t inferno_classify_system_observe_object(inferno_classify_system_t *system,
-    h_core_bitarray_t *classified_object);
+x_core_bool_t inferno_classify_system_observe_object(inferno_classify_system_t *system,
+    x_core_bitarray_t *classified_object);
 
 /*!
  * observe additional objects.  like observe_object() except for observing many
@@ -120,11 +120,11 @@ h_core_bool_t inferno_classify_system_observe_object(inferno_classify_system_t *
  *
  * \param system the classify system to use
  * \param classified_objects an array of objects for inhesion::classify to
- *        observe.  each object in the array is an h_core_bitarray_t *.
+ *        observe.  each object in the array is an x_core_bitarray_t *.
  *
  * \return the success of the call
  */
-h_core_bool_t inferno_classify_system_observe_objects(inferno_classify_system_t *system,
-    h_container_array_t *classified_objects);
+x_core_bool_t inferno_classify_system_observe_objects(inferno_classify_system_t *system,
+    x_container_array_t *classified_objects);
 
 #endif

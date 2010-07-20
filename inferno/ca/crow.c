@@ -1,6 +1,6 @@
 #include "inferno/ca/crow.h"
 #include "inferno/ca/systemey.h"
-#include "h/core/tools.h"
+#include "x/core/tools.h"
 
 inferno_ca_t inferno_ca_crow_calculate_new_cell_state(inferno_ca_system_t *system,
     unsigned long cell_index)
@@ -50,7 +50,7 @@ inferno_ca_t inferno_ca_crow_calculate_new_cell_state(inferno_ca_system_t *syste
   neighborhood = (neighbor_0_value * 8) + (neighbor_1_value * 4)
     + (neighbor_2_value * 2) + neighbor_3_value;
 
-  new_cell_value = h_core_get_bit(*name, neighborhood);
+  new_cell_value = x_core_get_bit(*name, neighborhood);
 
   new_cell_state.value = new_cell_value;
   inferno_ca_init(&new_cell_state, new_cell_value, INFERNO_CA_NO_RULE);
@@ -82,7 +82,7 @@ unsigned long inferno_ca_crow_get_relative_cell_index(inferno_ca_system_t *syste
         relative_cell_index = cell_index + 1;
         break;
       default:
-        h_core_trace("invalid cell relationship index");
+        x_core_trace("invalid cell relationship index");
         relative_cell_index = cell_index;
         break;
     }
@@ -102,7 +102,7 @@ unsigned long inferno_ca_crow_get_relative_cell_index(inferno_ca_system_t *syste
         relative_cell_index = 0;
         break;
       default:
-        h_core_trace("invalid cell relationship index");
+        x_core_trace("invalid cell relationship index");
         relative_cell_index = cell_index;
         break;
     }
@@ -122,7 +122,7 @@ unsigned long inferno_ca_crow_get_relative_cell_index(inferno_ca_system_t *syste
         relative_cell_index = cell_index + 1;
         break;
       default:
-        h_core_trace("invalid cell relationship index");
+        x_core_trace("invalid cell relationship index");
         relative_cell_index = cell_index;
         break;
     }

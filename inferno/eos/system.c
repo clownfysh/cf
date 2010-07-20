@@ -8,12 +8,12 @@ struct inferno_eos_system_t {
   inferno_core_goal_t goal;
   inferno_core_actorey_t actorey;
   void *context;
-  h_audit_log_t *log;
+  x_audit_log_t *log;
 };
 
 void *inferno_eos_system_create(inferno_core_score_solution_f score_solution,
-    inferno_core_goal_t goal, void *context, h_container_array_t *initial_solutions,
-    h_audit_log_t *log)
+    inferno_core_goal_t goal, void *context, x_container_array_t *initial_solutions,
+    x_audit_log_t *log)
 {
   assert(score_solution);
   assert(log);
@@ -26,20 +26,20 @@ void *inferno_eos_system_create(inferno_core_score_solution_f score_solution,
     system->goal = goal;
     system->context = context;
     system->log = log;
-    h_core_seed_random_with_time();
-    inferno_box_coordinate_init_with_xyz(&dimension_coordinate,
+    x_core_seed_random_witx_time();
+    inferno_box_coordinate_init_witx_xyz(&dimension_coordinate,
         INFERNO_EOS_BOX_DIMENSION, INFERNO_EOS_BOX_DIMENSION, 1);
     inferno_eos_actor_init_actorey(&system->actorey);
     system->box = inferno_core_create_actor_box(system, &dimension_coordinate,
         initial_solutions, &system->actorey, log);
     if (!system->box) {
-      h_audit_log_trace(log, "bios", "inferno_core_create_actor_box");
+      x_audit_log_trace(log, "bios", "inferno_core_create_actor_box");
       free(system);
       system = NULL;
     }
 
   } else {
-    h_audit_log_trace(log, "eos", "malloc");
+    x_audit_log_trace(log, "eos", "malloc");
   }
 
   return system;
@@ -71,7 +71,7 @@ inferno_core_goal_t inferno_eos_system_get_goal(inferno_eos_system_t *system)
   return system->goal;
 }
 
-h_audit_log_t *inferno_eos_system_get_log(inferno_eos_system_t *system)
+x_audit_log_t *inferno_eos_system_get_log(inferno_eos_system_t *system)
 {
   return system->log;
 }
@@ -82,12 +82,12 @@ inferno_core_score_solution_f inferno_eos_system_get_score_solution
   return system->score_solution;
 }
 
-h_container_array_t *inferno_eos_system_get_solutions_copy(void *system_object,
+x_container_array_t *inferno_eos_system_get_solutions_copy(void *system_object,
     unsigned short max_solution_count)
 {
   assert(system_object);
   inferno_eos_system_t *system;
-  h_container_array_t *solutions;
+  x_container_array_t *solutions;
 
   system = system_object;
 
@@ -97,15 +97,15 @@ h_container_array_t *inferno_eos_system_get_solutions_copy(void *system_object,
       inferno_eos_actor_compare_minimize, inferno_eos_actor_copy, system->context,
       system->log);
   if (!solutions) {
-    h_audit_log_trace(system->log, "eos", "create_solutions_from_box");
+    x_audit_log_trace(system->log, "eos", "create_solutions_from_box");
   }
 
   return solutions;
 }
 
-void inferno_eos_system_init_searchey(inferno_search_searchey_t *searchey)
+void inferno_eos_system_init_searchey(inferno_searcx_searchey_t *searchey)
 {
-  inferno_search_searchey_init(searchey, inferno_eos_system_create,
+  inferno_searcx_searchey_init(searchey, inferno_eos_system_create,
       inferno_eos_system_destroy, inferno_eos_system_get_solutions_copy,
       inferno_eos_system_search);
 }

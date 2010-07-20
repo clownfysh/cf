@@ -1,4 +1,4 @@
-#include "h/core/standard.h"
+#include "x/core/standard.h"
 #include "inferno/computer/output.h"
 
 void inferno_computer_output_free(inferno_computer_output_t *output) {}

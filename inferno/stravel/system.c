@@ -1,5 +1,5 @@
 #include "inferno/stravel/system.h"
-#include "h/core/tools.h"
+#include "x/core/tools.h"
 
 struct inferno_stravel_system_t {
 };
@@ -12,7 +12,7 @@ inferno_stravel_system_t *inferno_stravel_system_create()
   if (system) {
 
   } else {
-    h_core_trace("malloc");
+    x_core_trace("malloc");
   }
 
   return system;

@@ -1,5 +1,5 @@
 #include "inferno/ca/malice.h"
-#include "h/core/tools.h"
+#include "x/core/tools.h"
 
 inferno_ca_t inferno_ca_malice_calculate_new_cell_state(inferno_ca_system_t *system,
     unsigned long cell_index)
@@ -88,10 +88,10 @@ unsigned long inferno_ca_malice_get_relative_cell_index(inferno_ca_system_t *sys
   cell_count = inferno_ca_system_get_cell_count(system);
 
   if (0 != (relationship % 2)) {
-    relative_cell_index = h_core_wrap_index
+    relative_cell_index = x_core_wrap_index
       (cell_index + ((relationship * 1) - (1)), cell_count);
   } else {
-    relative_cell_index = h_core_wrap_index
+    relative_cell_index = x_core_wrap_index
       (cell_index + ((relationship * 4) - (10)), cell_count);
   }
 

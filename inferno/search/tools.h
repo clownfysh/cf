@@ -1,17 +1,17 @@
-#ifndef inferno_search_tools_h
-#define inferno_search_tools_h
+#ifndef inferno_searcx_tools_h
+#define inferno_searcx_tools_h
 
-#include "h/container/array.h"
+#include "x/container/array.h"
 #include "inferno/box/system.h"
 #include "inferno/core/actorey.h"
 #include "inferno/core/goal.h"
 
-typedef void *(*inferno_core_create_actor_f)(void *search_system,
-    h_core_bitarray_t *solution);
+typedef void *(*inferno_core_create_actor_f)(void *searcx_system,
+    x_core_bitarray_t *solution);
 
-typedef void *(*inferno_core_create_actor_random_f)(void *search_system);
+typedef void *(*inferno_core_create_actor_random_f)(void *searcx_system);
 
-typedef h_core_bitarray_t *(*inferno_core_get_solution_f)(void *object);
+typedef x_core_bitarray_t *(*inferno_core_get_solution_f)(void *object);
 
 /*!
  * prototype for a score-solution function.  various inhesion systems search
@@ -31,21 +31,21 @@ typedef h_core_bitarray_t *(*inferno_core_get_solution_f)(void *object);
  *
  * \return success of the call
  */
-typedef h_core_bool_t (*inferno_core_score_solution_f)(void *context,
-    h_core_bitarray_t *solution, double *score);
+typedef x_core_bool_t (*inferno_core_score_solution_f)(void *context,
+    x_core_bitarray_t *solution, double *score);
 
-inferno_box_system_t *inferno_core_create_actor_box(void *search_system,
+inferno_box_system_t *inferno_core_create_actor_box(void *searcx_system,
     inferno_box_coordinate_t *dimension_coordinate,
-    h_container_array_t *initial_solutions, inferno_core_actorey_t *actorey,
-    h_audit_log_t *log);
+    x_container_array_t *initial_solutions, inferno_core_actorey_t *actorey,
+    x_audit_log_t *log);
 
-h_container_array_t *inferno_core_create_solutions_from_box(inferno_box_system_t *box,
+x_container_array_t *inferno_core_create_solutions_from_box(inferno_box_system_t *box,
     unsigned long max_solution_count, inferno_core_get_solution_f get_solution,
     inferno_core_score_solution_f score_solution, inferno_core_goal_t goal,
-    h_core_compare_f compare_maximize, h_core_compare_f compare_minimize,
-    h_core_copy_f copy_object, void *context, h_audit_log_t *log);
+    x_core_compare_f compare_maximize, x_core_compare_f compare_minimize,
+    x_core_copy_f copy_object, void *context, x_audit_log_t *log);
 
-unsigned long inferno_core_get_gene_start_address(h_core_bitarray_t *solution,
+unsigned long inferno_core_get_gene_start_address(x_core_bitarray_t *solution,
     unsigned long gene_index);
 
 #endif

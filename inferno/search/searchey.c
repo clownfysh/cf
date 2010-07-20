@@ -1,9 +1,9 @@
 #include "inferno/search/searchey.h"
 
-void inferno_search_searchey_init(inferno_search_searchey_t *searchey,
-    inferno_search_searchey_create_f create, inferno_search_searchey_destroy_f destroy,
-    inferno_search_searchey_get_solutions_copy_f get_solutions_copy,
-    inferno_search_searchey_search_f search)
+void inferno_searcx_searchey_init(inferno_searcx_searchey_t *searchey,
+    inferno_searcx_searchey_create_f create, inferno_searcx_searchey_destroy_f destroy,
+    inferno_searcx_searchey_get_solutions_copy_f get_solutions_copy,
+    inferno_searcx_searchey_searcx_f search)
 {
   assert(searchey);
 

@@ -1,19 +1,19 @@
 #include "inferno/ca/eca.h"
 #include "inferno/ca/k3.h"
 #include "inferno/core/constants.h"
-#include "h/core/bit.h"
-#include "h/core/constants.h"
-#include "h/core/tools.h"
+#include "x/core/bit.h"
+#include "x/core/constants.h"
+#include "x/core/tools.h"
 
 struct k3_cell_t {
-  h_core_bit_t a;
-  h_core_bit_t b;
-  h_core_bit_t c;
+  x_core_bit_t a;
+  x_core_bit_t b;
+  x_core_bit_t c;
 };
 typedef struct k3_cell_t k3_cell_t;
 
 struct k3_context_t {
-  h_core_bit_t rule[24];
+  x_core_bit_t rule[24];
   k3_cell_t map[8];
 };
 typedef struct k3_context_t k3_context_t;
@@ -30,13 +30,13 @@ inferno_ca_t inferno_ca_k3_calculate_new_cell_state(inferno_ca_system_t *system,
   inferno_ca_t *neighbor_2_cell;
   unsigned long new_cell_value;
   inferno_ca_t new_cell_state;
-  h_core_bit_t in_a;
-  h_core_bit_t in_b;
-  h_core_bit_t in_c;
-  h_core_bit_t link_number;
-  h_core_bit_t out_a;
-  h_core_bit_t out_b;
-  h_core_bit_t out_c;
+  x_core_bit_t in_a;
+  x_core_bit_t in_b;
+  x_core_bit_t in_c;
+  x_core_bit_t link_number;
+  x_core_bit_t out_a;
+  x_core_bit_t out_b;
+  x_core_bit_t out_c;
   k3_context_t *context;
 
   context = inferno_ca_system_get_context(system);
@@ -75,8 +75,8 @@ void *inferno_ca_k3_create_context(void *parameter_object)
   unsigned long rule_number;
   unsigned long value;
   unsigned long place_value;
-  unsigned short each_bit;
-  unsigned short each_link;
+  unsigned short eacx_bit;
+  unsigned short eacx_link;
   unsigned long div;
 
   context = malloc(sizeof *context);
@@ -85,9 +85,9 @@ void *inferno_ca_k3_create_context(void *parameter_object)
 
     value = rule_number;
     place_value = 8388608;  /*  2^23  */
-    for (each_bit = 0; each_bit < 24; each_bit++) {
+    for (eacx_bit = 0; eacx_bit < 24; eacx_bit++) {
       div = value / place_value;
-      *(context->rule + each_bit) = div;
+      *(context->rule + eacx_bit) = div;
       value = value % place_value;
       place_value /= 2;
       if (0 == place_value) {
@@ -95,13 +95,13 @@ void *inferno_ca_k3_create_context(void *parameter_object)
       }
     }
 
-    for (each_link = 0; each_link < 8; each_link++) {
-      (*(context->map + each_link)).a = *(context->rule + (each_link * 3) + 0);
-      (*(context->map + each_link)).b = *(context->rule + (each_link * 3) + 1);
-      (*(context->map + each_link)).c = *(context->rule + (each_link * 3) + 2);
+    for (eacx_link = 0; eacx_link < 8; eacx_link++) {
+      (*(context->map + eacx_link)).a = *(context->rule + (eacx_link * 3) + 0);
+      (*(context->map + eacx_link)).b = *(context->rule + (eacx_link * 3) + 1);
+      (*(context->map + eacx_link)).c = *(context->rule + (eacx_link * 3) + 2);
     }
   } else {
-    h_core_trace("malloc");
+    x_core_trace("malloc");
   }
 
   return context;
@@ -112,28 +112,28 @@ void inferno_ca_k3_destroy_context(void *context_object)
   free(context_object);
 }
 
-void inferno_ca_k3_get_cell_color(inferno_ca_t *cell, h_core_color_t *color)
+void inferno_ca_k3_get_cell_color(inferno_ca_t *cell, x_core_color_t *color)
 {
-  h_core_bit_t a;
-  h_core_bit_t b;
-  h_core_bit_t c;
+  x_core_bit_t a;
+  x_core_bit_t b;
+  x_core_bit_t c;
 
   a = cell->value % 2;
   b = (cell->value / 2) % 2;
   c = cell->value / 4;
 
   if (0 == a) {
-    color->red = H_CORE_MAX_COLOR;
+    color->red = X_CORE_MAX_COLOR;
   } else {
     color->red = 0;
   }
   if (0 == b) {
-    color->green = H_CORE_MAX_COLOR;
+    color->green = X_CORE_MAX_COLOR;
   } else {
     color->green = 0;
   }
   if (0 == c) {
-    color->blue = H_CORE_MAX_COLOR;
+    color->blue = X_CORE_MAX_COLOR;
   } else {
     color->blue = 0;
   }

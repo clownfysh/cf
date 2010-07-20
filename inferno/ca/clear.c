@@ -1,5 +1,5 @@
 #include "inferno/ca/clear.h"
-#include "h/core/tools.h"
+#include "x/core/tools.h"
 
 struct clear_context_t {
   unsigned long total;
@@ -51,8 +51,8 @@ inferno_ca_t inferno_ca_clear_calculate_new_cell_state(inferno_ca_system_t *syst
   clear_context->total += neighbor_1_value;
 
   new_cell_value
-    = h_core_get_bit(clear_context->total, (neighborhood * *name) % 256)
-    ^ h_core_get_bit(*name, neighborhood);
+    = x_core_get_bit(clear_context->total, (neighborhood * *name) % 256)
+    ^ x_core_get_bit(*name, neighborhood);
 
   /*
   clear_context->total += new_cell_value;
@@ -73,7 +73,7 @@ void *inferno_ca_clear_create_context(void *name_object)
   if (clear_context) {
     clear_context->total = 0;
   } else {
-    h_core_trace("malloc");
+    x_core_trace("malloc");
   }
 
   return clear_context;
@@ -88,7 +88,7 @@ unsigned long inferno_ca_clear_get_relative_cell_index(inferno_ca_system_t *syst
 
   cell_count = inferno_ca_system_get_cell_count(system);
   relative_cell_index
-    = h_core_wrap_index(cell_index + (relationship - 1), cell_count);
+    = x_core_wrap_index(cell_index + (relationship - 1), cell_count);
 
   return relative_cell_index;
 }

@@ -16,12 +16,12 @@ chage_system_t *chage_system_create()
     if (system->universe) {
       system->focus = system->universe;
     } else {
-      i_trace("chage_atom_create");
+      x_trace("chage_atom_create");
       free(system);
       system = NULL;
     }
   } else {
-    i_trace("malloc");
+    x_trace("malloc");
   }
 
   return system;
@@ -39,7 +39,7 @@ void chage_system_spark(chage_system_t *system)
   assert(system);
   chage_interval_t start_interval;
   chage_interval_t interval;
-  i_bool_t interval_expired = i_bool_false;
+  x_core_bool_t interval_expired = x_core_bool_false;
   unsigned long target_distance = 0;
   unsigned long actual_distance = 0;
 
@@ -48,12 +48,12 @@ void chage_system_spark(chage_system_t *system)
     if (!chage_atom_spark_distance
         (system->focus, target_distance, actual_distance, start_interval,
             &interval_expired)) {
-      i_trace("chage_atom_spark_distance");
+      x_trace("chage_atom_spark_distance");
     }
     target_distance++;
     interval = chage_determine_interval();
     if (interval != start_interval) {
-      interval_expired = i_bool_true;
+      interval_expired = x_core_bool_true;
     }
   } while (!interval_expired);
 }

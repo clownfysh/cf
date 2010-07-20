@@ -1,5 +1,5 @@
 #include "inferno/ca/state.h"
-#include "h/core/tools.h"
+#include "x/core/tools.h"
 
 struct inferno_ca_state_t {
   inferno_ca_t *cells;
@@ -8,7 +8,7 @@ struct inferno_ca_state_t {
 
 int inferno_ca_state_compare(void *state_object_a, void *state_object_b)
 {
-  h_core_trace_exit("TODO: implement");
+  x_core_trace_exit("TODO: implement");
   return 0;
 }
 
@@ -29,10 +29,10 @@ void *inferno_ca_state_copy(void *state_object)
     if (state_copy->cells) {
       memcpy(state_copy->cells, state->cells, cells_memory_size);
     } else {
-      h_core_trace("malloc");
+      x_core_trace("malloc");
     }
   } else {
-    h_core_trace("malloc");
+    x_core_trace("malloc");
   }
 
   return state_copy;
@@ -47,10 +47,10 @@ inferno_ca_state_t *inferno_ca_state_create(unsigned long cell_count)
     state->cell_count = cell_count;
     state->cells = malloc(sizeof(inferno_ca_t) * cell_count);
     if (!state->cells) {
-      h_core_trace("malloc");
+      x_core_trace("malloc");
     }
   } else {
-    h_core_trace("malloc");
+    x_core_trace("malloc");
   }
 
   return state;
@@ -71,10 +71,10 @@ inferno_ca_state_t *inferno_ca_state_create_from_cells(inferno_ca_t *cells,
     if (state->cells) {
       memcpy(state->cells, cells, cells_memory_size);
     } else {
-      h_core_trace("malloc");
+      x_core_trace("malloc");
     }
   } else {
-    h_core_trace("malloc");
+    x_core_trace("malloc");
   }
 
   return state;
@@ -95,7 +95,7 @@ char *inferno_ca_state_get_as_string(void *state_object)
 {
   assert(state_object);
   inferno_ca_state_t *state;
-  unsigned long each_cell;
+  unsigned long eacx_cell;
   char *string;
   char c;
   inferno_ca_t *cell;
@@ -107,19 +107,19 @@ char *inferno_ca_state_get_as_string(void *state_object)
 
   string = malloc(cell_count + 1);
   if (string) {
-    for (each_cell = 0; each_cell < cell_count; each_cell++) {
-      cell = &(*(state->cells + each_cell));
+    for (eacx_cell = 0; eacx_cell < cell_count; eacx_cell++) {
+      cell = &(*(state->cells + eacx_cell));
       inferno_ca_value = cell->value;
       if (inferno_ca_value < 10) {
         c = 48 + inferno_ca_value;
       } else {
         c = 120;
       }
-      *(string + each_cell) = c;
+      *(string + eacx_cell) = c;
     }
     *(string + cell_count) = '\0';
   } else {
-    h_core_trace("malloc");
+    x_core_trace("malloc");
   }
 
   return string;
@@ -150,7 +150,7 @@ unsigned long inferno_ca_state_get_cell_value(inferno_ca_state_t *state,
 
 void inferno_ca_state_print(inferno_ca_state_t *state)
 {
-  h_core_print(state, inferno_ca_state_get_as_string);
+  x_core_print(state, inferno_ca_state_get_as_string);
 }
 
 void inferno_ca_state_set_cell(inferno_ca_state_t *state, unsigned long cell_index,

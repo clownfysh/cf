@@ -8,10 +8,10 @@
 struct inferno_cor3_actor_t {
   void *box_cell;
   unsigned char elements[4][4][4];
-  h_core_bitarray_t *solution;
+  x_core_bitarray_t *solution;
   inferno_cor3_system_t *system;
   double score;
-  h_core_bool_t score_is_valid;
+  x_core_bool_t score_is_valid;
 };
 
 static void dance(inferno_cor3_actor_t *destination, inferno_cor3_actor_t *source_a,
@@ -29,7 +29,7 @@ static double get_score(inferno_cor3_actor_t *actor);
 static unsigned short get_solution_index_from_element_coordinates
 (unsigned short x, unsigned short y, unsigned short z);
 
-static h_core_bool_t in_range(unsigned short index, unsigned short cut,
+static x_core_bool_t in_range(unsigned short index, unsigned short cut,
     unsigned short direction);
 
 static void set_element(inferno_cor3_actor_t *actor, unsigned short x,
@@ -207,16 +207,16 @@ double get_score(inferno_cor3_actor_t *actor)
   assert(actor);
   void *context;
   inferno_core_score_solution_f score_solution;
-  h_audit_log_t *log;
+  x_audit_log_t *log;
 
   if (!actor->score_is_valid) {
     context = inferno_cor3_system_get_context(actor->system);
     score_solution = inferno_cor3_system_get_score_solution(actor->system);
     if (score_solution(context, actor->solution, &actor->score)) {
-      actor->score_is_valid = h_core_bool_true;
+      actor->score_is_valid = x_core_bool_true;
     } else {
       log = inferno_cor3_system_get_log(actor->system);
-      h_audit_log_trace(log, "cor3", "score_solution");
+      x_audit_log_trace(log, "cor3", "score_solution");
     }
   }
 
@@ -304,11 +304,11 @@ int inferno_cor3_actor_compare_minimize(void *actor_a_void, void *actor_b_void)
 
 void *inferno_cor3_actor_copy(void *actor_void)
 {
-  h_core_trace_exit("TODO: implement");
+  x_core_trace_exit("TODO: implement");
   return NULL;
 }
 
-void *inferno_cor3_actor_create(void *system_void, h_core_bitarray_t *solution)
+void *inferno_cor3_actor_create(void *system_void, x_core_bitarray_t *solution)
 {
   assert(system_void);
   assert(solution);
@@ -317,7 +317,7 @@ void *inferno_cor3_actor_create(void *system_void, h_core_bitarray_t *solution)
   unsigned short y;
   unsigned short z;
   unsigned short i;
-  h_audit_log_t *log;
+  x_audit_log_t *log;
   inferno_cor3_system_t *system;
 
   system = system_void;
@@ -327,24 +327,24 @@ void *inferno_cor3_actor_create(void *system_void, h_core_bitarray_t *solution)
   actor = malloc(sizeof *actor);
   if (actor) {
     actor->system = system;
-    actor->score_is_valid = h_core_bool_false;
+    actor->score_is_valid = x_core_bool_false;
     actor->box_cell = NULL;
     for (x = 0; x < 4; x++) {
       for (y = 0; y < 4; y++) {
         for (z = 0; z < 4; z++) {
           i = get_solution_index_from_element_coordinates(x, y, z);
-          actor->elements[x][y][z] = h_core_bitarray_get_bit(solution, i);
+          actor->elements[x][y][z] = x_core_bitarray_get_bit(solution, i);
         }
       }
     }
-    actor->solution = h_core_bitarray_copy(solution);
+    actor->solution = x_core_bitarray_copy(solution);
     if (!actor->solution) {
-      h_audit_log_trace(log, "cor3", "h_core_bitarray_copy");
+      x_audit_log_trace(log, "cor3", "x_core_bitarray_copy");
       free(actor);
       actor = NULL;
     }
   } else {
-    h_audit_log_trace(log, "cor3", "malloc");
+    x_audit_log_trace(log, "cor3", "malloc");
   }
 
   return actor;
@@ -353,25 +353,25 @@ void *inferno_cor3_actor_create(void *system_void, h_core_bitarray_t *solution)
 void *inferno_cor3_actor_create_random(void *system_void)
 {
   assert(system_void);
-  h_core_bitarray_t *bitarray;
+  x_core_bitarray_t *bitarray;
   inferno_cor3_actor_t *actor;
-  h_audit_log_t *log;
+  x_audit_log_t *log;
   inferno_cor3_system_t *system;
 
   system = system_void;
 
-  bitarray = h_core_bitarray_create_random(INFERNO_CORE_SOLUTION_BIT_COUNT);
+  bitarray = x_core_bitarray_create_random(INFERNO_CORE_SOLUTION_BIT_COUNT);
   if (bitarray) {
     actor = inferno_cor3_actor_create(system, bitarray);
     if (!actor) {
       log = inferno_cor3_system_get_log(system);
-      h_audit_log_trace(log, "cor3", "inferno_cor3_actor_create");
+      x_audit_log_trace(log, "cor3", "inferno_cor3_actor_create");
     }
-    h_core_bitarray_destroy(bitarray);
+    x_core_bitarray_destroy(bitarray);
   } else {
     actor = NULL;
     log = inferno_cor3_system_get_log(system);
-    h_audit_log_trace(log, "cor3", "h_core_bitarray_create_random");
+    x_audit_log_trace(log, "cor3", "x_core_bitarray_create_random");
   }
 
   return actor;
@@ -384,7 +384,7 @@ void inferno_cor3_actor_destroy(void *actor_void)
 
   actor = actor_void;
 
-  h_core_bitarray_destroy(actor->solution);
+  x_core_bitarray_destroy(actor->solution);
   free(actor);
 }
 
@@ -398,7 +398,7 @@ void *inferno_cor3_actor_get_box_cell(void *actor_void)
   return actor->box_cell;
 }
 
-h_core_bitarray_t *inferno_cor3_actor_get_solution(void *actor_void)
+x_core_bitarray_t *inferno_cor3_actor_get_solution(void *actor_void)
 {
   assert(actor_void);
   inferno_cor3_actor_t *actor;
@@ -426,22 +426,22 @@ void inferno_cor3_actor_set_box_cell(void *actor_void, void *box_cell)
   actor->box_cell = box_cell;
 }
 
-h_core_bool_t in_range(unsigned short index, unsigned short cut,
+x_core_bool_t in_range(unsigned short index, unsigned short cut,
     unsigned short direction)
 {
-  h_core_bool_t in;
+  x_core_bool_t in;
 
   if (direction) {
     if (index >= cut) {
-      in = h_core_bool_true;
+      in = x_core_bool_true;
     } else {
-      in = h_core_bool_false;
+      in = x_core_bool_false;
     }
   } else {
     if (index < cut) {
-      in = h_core_bool_true;
+      in = x_core_bool_true;
     } else {
-      in = h_core_bool_false;
+      in = x_core_bool_false;
     }
   }
 
@@ -460,7 +460,7 @@ void set_element(inferno_cor3_actor_t *actor, unsigned short x, unsigned short y
   actor->elements[x][y][z] = value;
 
   i = get_solution_index_from_element_coordinates(x, y, z);
-  h_core_bitarray_set_bit(actor->solution, i, value);
+  x_core_bitarray_set_bit(actor->solution, i, value);
 
-  actor->score_is_valid = h_core_bool_false;
+  actor->score_is_valid = x_core_bool_false;
 }

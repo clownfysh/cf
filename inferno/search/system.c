@@ -4,51 +4,51 @@
 #include "inferno/genetic/system.h"
 #include "inferno/search/searchey.h"
 #include "inferno/search/system.h"
-#include "h/core/tools.h"
+#include "x/core/tools.h"
 
-struct inferno_search_system_t {
-  inferno_search_searchey_t searchey;
-  void *search_object;
+struct inferno_searcx_system_t {
+  inferno_searcx_searchey_t searchey;
+  void *searcx_object;
 };
 
-static void init_searchey(inferno_search_searchey_t *searchey,
-    inferno_search_algorithm_t algorithm);
+static void init_searchey(inferno_searcx_searchey_t *searchey,
+    inferno_searcx_algorithm_t algorithm);
 
-inferno_search_system_t *inferno_search_system_create
+inferno_searcx_system_t *inferno_searcx_system_create
 (inferno_core_score_solution_f score_solution, inferno_core_goal_t goal, void *context,
-    h_container_array_t *initial_solutions, inferno_search_algorithm_t algorithm,
-    h_audit_log_t *log)
+    x_container_array_t *initial_solutions, inferno_searcx_algorithm_t algorithm,
+    x_audit_log_t *log)
 {
   assert(score_solution);
   assert(log);
-  inferno_search_system_t *search;
+  inferno_searcx_system_t *search;
 
   search = malloc(sizeof *search);
   if (search) {
     init_searchey(&search->searchey, algorithm);
-    search->search_object = search->searchey.create(score_solution, goal,
+    search->searcx_object = search->searchey.create(score_solution, goal,
         context, initial_solutions, log);
-    if (!search->search_object) {
-      h_core_trace("create");
+    if (!search->searcx_object) {
+      x_core_trace("create");
       free(search);
       search = NULL;
     }
   } else {
-    h_core_trace("malloc");
+    x_core_trace("malloc");
   }
 
   return search;
 }
 
-void inferno_search_system_destroy(inferno_search_system_t *system)
+void inferno_searcx_system_destroy(inferno_searcx_system_t *system)
 {
   assert(system);
-  system->searchey.destroy(system->search_object);
+  system->searchey.destroy(system->searcx_object);
   free(system);
 }
 
-h_container_array_t *inferno_search_system_get_solutions_copy
-(inferno_search_system_t *system, unsigned short max_solution_count)
+x_container_array_t *inferno_searcx_system_get_solutions_copy
+(inferno_searcx_system_t *system, unsigned short max_solution_count)
 {
   assert(system);
 
@@ -57,11 +57,11 @@ h_container_array_t *inferno_search_system_get_solutions_copy
       INFERNO_CORE_DEMO_SOLUTION_COUNT);
 #endif
 
-  return system->searchey.get_solutions_copy(system->search_object,
+  return system->searchey.get_solutions_copy(system->searcx_object,
       max_solution_count);
 }
 
-void inferno_search_system_search(inferno_search_system_t *system,
+void inferno_searcx_system_search(inferno_searcx_system_t *system,
     unsigned long max_wall_time_microseconds)
 {
   assert(system);
@@ -70,28 +70,28 @@ void inferno_search_system_search(inferno_search_system_t *system,
   gettimeofday(&start_time, NULL);
 
   do {
-    system->searchey.search(system->search_object);
-  } while (h_core_time_is_remaining_microseconds
+    system->searchey.search(system->searcx_object);
+  } while (x_core_time_is_remaining_microseconds
       (&start_time, max_wall_time_microseconds));
 }
 
-void init_searchey(inferno_search_searchey_t *searchey,
-    inferno_search_algorithm_t algorithm)
+void init_searchey(inferno_searcx_searchey_t *searchey,
+    inferno_searcx_algorithm_t algorithm)
 {
   assert(searchey);
 
   switch (algorithm) {
     default:
-    case INFERNO_SEARCH_ALGORITHM_BIOS:
+    case INFERNO_SEARCX_ALGORITHM_BIOS:
       inferno_bios_system_init_searchey(searchey);
       break;
-    case INFERNO_SEARCH_ALGORITHM_COR3:
+    case INFERNO_SEARCX_ALGORITHM_COR3:
       inferno_cor3_system_init_searchey(searchey);
       break;
-    case INFERNO_SEARCH_ALGORITHM_EOS:
+    case INFERNO_SEARCX_ALGORITHM_EOS:
       inferno_eos_system_init_searchey(searchey);
       break;
-    case INFERNO_SEARCH_ALGORITHM_GENETIC:
+    case INFERNO_SEARCX_ALGORITHM_GENETIC:
       inferno_genetic_system_init_searchey(searchey);
       break;
   }

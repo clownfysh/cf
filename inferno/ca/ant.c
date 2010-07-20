@@ -1,5 +1,5 @@
 #include "inferno/ca/ant.h"
-#include "h/core/tools.h"
+#include "x/core/tools.h"
 
 inferno_ca_t inferno_ca_ant_calculate_new_cell_state(inferno_ca_system_t *system,
     unsigned long cell_index)
@@ -106,7 +106,7 @@ unsigned long inferno_ca_ant_get_relative_cell_index(inferno_ca_system_t *system
         relative_cell_index = cell_index + 1;
         break;
       default:
-        h_core_trace("invalid cell relationship index");
+        x_core_trace("invalid cell relationship index");
         relative_cell_index = cell_index;
         break;
     }
@@ -126,7 +126,7 @@ unsigned long inferno_ca_ant_get_relative_cell_index(inferno_ca_system_t *system
         relative_cell_index = 0;
         break;
       default:
-        h_core_trace("invalid cell relationship index");
+        x_core_trace("invalid cell relationship index");
         relative_cell_index = cell_index;
         break;
     }
@@ -146,7 +146,7 @@ unsigned long inferno_ca_ant_get_relative_cell_index(inferno_ca_system_t *system
         relative_cell_index = cell_index + 1;
         break;
       default:
-        h_core_trace("invalid cell relationship index");
+        x_core_trace("invalid cell relationship index");
         relative_cell_index = cell_index;
         break;
     }

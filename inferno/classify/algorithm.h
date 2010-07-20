@@ -1,7 +1,7 @@
 #ifndef inferno_classify_algorithm_h
 #define inferno_classify_algorithm_h
 
-#include "h/core/bool.h"
+#include "x/core/bool.h"
 
 /*!
  * identifier for a particular classify algorithm.  used by the
@@ -18,12 +18,12 @@ typedef enum inferno_classify_algorithm_t inferno_classify_algorithm_t;
  * \param string the string representing the classify algorithm, to decode.
  *        one of {"archetype"}.
  * \param algorithm pointer to an inferno_classify_algorithm_t to set.  if this
- *        function returns h_core_bool_true, the algorithm pointed to by this
+ *        function returns x_core_bool_true, the algorithm pointed to by this
  *        parameter will be set to a valid algorithm.
  *
  * \return success or failure.
  */
-h_core_bool_t inferno_classify_algorithm_get_from_string(char *string,
+x_core_bool_t inferno_classify_algorithm_get_from_string(char *string,
     inferno_classify_algorithm_t *algorithm);
 
 /*!

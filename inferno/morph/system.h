@@ -4,7 +4,7 @@
 #include "inferno/core/goal.h"
 #include "inferno/search/algorithm.h"
 #include "inferno/search/tools.h"
-#include "h/core/tools.h"
+#include "x/core/tools.h"
 
 struct inferno_morpinferno_system_t;
 typedef struct inferno_morpinferno_system_t inferno_morpinferno_system_t;
@@ -25,13 +25,13 @@ typedef struct inferno_morpinferno_system_t inferno_morpinferno_system_t;
  *        inferno_core_score_solution_f needs to interact with your larger
  *        application context to do its work, pass in a pointer to that context
  *        here, or pass NULL otherwise.
- * \param initial_solutions array of solutions, each as an h_core_bitarray_t *.
+ * \param initial_solutions array of solutions, each as an x_core_bitarray_t *.
  *        the morph will be initialized with some of these solutions.
  *        inhesion morphs may or may not use all of the solutions you provide.
  *        put solutions you favor earlier in the array.  inhesion's use of
  *        these solutions is stochastic...don't count on multiple identical
  *        morph function calls producing identical results.
- * \param log pointer to an h_audit_log_t where trace and log statements will
+ * \param log pointer to an x_audit_log_t where trace and log statements will
  *        be sent.
  *
  * \return pointer to an inferno_morpinferno_system_t, or NULL if the call was
@@ -39,7 +39,7 @@ typedef struct inferno_morpinferno_system_t inferno_morpinferno_system_t;
  */
 inferno_morpinferno_system_t *inferno_morpinferno_system_create
 (inferno_core_score_solution_f score_solution, inferno_core_goal_t goal, void *context,
-    h_container_array_t *initial_solutions, h_audit_log_t *log);
+    x_container_array_t *initial_solutions, x_audit_log_t *log);
 
 /*!
  * destroy an inhesion::morph system.  release resources the morph is using.
@@ -64,7 +64,7 @@ void inferno_morpinferno_system_destroy(inferno_morpinferno_system_t *system);
  * \return an array of pointers to inferno_core_solution_t variables, which the
  *         caller of this function is responsible for freeing.
  */
-h_container_array_t *inferno_morpinferno_system_get_solutions_copy
+x_container_array_t *inferno_morpinferno_system_get_solutions_copy
 (inferno_morpinferno_system_t *system, unsigned short max_solution_count);
 
 /*!

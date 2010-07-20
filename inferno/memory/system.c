@@ -1,13 +1,13 @@
 #include "inferno/memory/system.h"
-#include "h/core/tools.h"
+#include "x/core/tools.h"
 
 struct inferno_memory_system_t {
 };
 
-h_core_bool_t inferno_memory_system_add(inferno_memory_system_t *system,
+x_core_bool_t inferno_memory_system_add(inferno_memory_system_t *system,
     unsigned long base, unsigned long link, unsigned long corollary)
 {
-  return h_core_bool_false;
+  return x_core_bool_false;
 }
 
 inferno_memory_system_t *inferno_memory_system_create(unsigned long node_count,
@@ -19,7 +19,7 @@ inferno_memory_system_t *inferno_memory_system_create(unsigned long node_count,
   if (system) {
 
   } else {
-    h_core_trace("malloc");
+    x_core_trace("malloc");
   }
 
   return system;
@@ -31,20 +31,20 @@ void inferno_memory_system_destroy(inferno_memory_system_t *system)
   free(system);
 }
 
-h_core_bool_t inferno_memory_system_find(inferno_memory_system_t *system,
+x_core_bool_t inferno_memory_system_find(inferno_memory_system_t *system,
     unsigned long base, unsigned long link, unsigned long corollary)
 {
-  return h_core_bool_false;
+  return x_core_bool_false;
 }
 
-h_container_array_t *inferno_memory_system_find_cloud(inferno_memory_system_t *system,
+x_container_array_t *inferno_memory_system_find_cloud(inferno_memory_system_t *system,
     unsigned long base, unsigned long cloud_size_max)
 {
   return NULL;
 }
 
-h_core_bool_t inferno_memory_system_remove(inferno_memory_system_t *system,
+x_core_bool_t inferno_memory_system_remove(inferno_memory_system_t *system,
     unsigned long base, unsigned long link, unsigned long corollary)
 {
-  return h_core_bool_false;
+  return x_core_bool_false;
 }

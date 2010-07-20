@@ -23,7 +23,7 @@ char *inferno_computer_system_get_as_string(void *system_object);
 
 void inferno_computer_system_print(inferno_computer_system_t *system);
 
-h_core_bool_t inferno_computer_system_save_as_file(inferno_computer_system_t *system,
+x_core_bool_t inferno_computer_system_save_as_file(inferno_computer_system_t *system,
     char *filename);
 
 #endif

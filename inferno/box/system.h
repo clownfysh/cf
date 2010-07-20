@@ -2,7 +2,7 @@
 #define inferno_box_system_h
 
 #include "inferno/box/coordinate.h"
-#include "h/audit/log.h"
+#include "x/audit/log.h"
 
 typedef void * (*inferno_box_object_get_cell_f)(void *object);
 
@@ -20,8 +20,8 @@ inferno_box_system_t *inferno_box_system_create
 (inferno_box_coordinate_t *dimension_coordinate,
     inferno_box_object_get_cell_f get_cell,
     inferno_box_object_set_cell_f set_cell,
-    h_core_compare_f compare_objects, h_core_copy_f copy_object,
-    h_core_destroy_f destroy_object, h_audit_log_t *log);
+    x_core_compare_f compare_objects, x_core_copy_f copy_object,
+    x_core_destroy_f destroy_object, x_audit_log_t *log);
 
 void inferno_box_system_destroy(inferno_box_system_t *system);
 

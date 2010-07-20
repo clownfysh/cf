@@ -3,7 +3,7 @@
 
 #include "inferno/ca/cell.h"
 #include "inferno/ca/declarations.h"
-#include "h/core/color.h"
+#include "x/core/color.h"
 
 #define INFERNO_CA_NO_CREATE_CONTEXT_FUNCTION NULL
 #define INFERNO_CA_NO_DESTROY_CONTEXT_FUNCTION NULL
@@ -21,7 +21,7 @@ typedef void (*inferno_ca_system_destroy_context_f)(void *context_object);
 typedef void (*inferno_ca_system_end_time_step_f)(inferno_ca_system_t *system);
 
 typedef void (*inferno_ca_system_get_cell_color_f)(inferno_ca_t *cell,
-    h_core_color_t *color);
+    x_core_color_t *color);
 
 typedef unsigned long (*inferno_ca_system_get_relative_cell_index_f)
 (inferno_ca_system_t *system, unsigned long cell_index,

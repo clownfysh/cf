@@ -1,5 +1,5 @@
 #include "inferno/ca/fly.h"
-#include "h/core/tools.h"
+#include "x/core/tools.h"
 
 inferno_ca_t inferno_ca_fly_calculate_new_cell_state(inferno_ca_system_t *system,
     unsigned long cell_index)
@@ -108,7 +108,7 @@ unsigned long inferno_ca_fly_get_relative_cell_index(inferno_ca_system_t *system
     relationship -= 3;
   }
   relative_cell_index
-    = h_core_wrap_index(cell_index + (relationship - 1), cell_count);
+    = x_core_wrap_index(cell_index + (relationship - 1), cell_count);
 
   return relative_cell_index;
 }
