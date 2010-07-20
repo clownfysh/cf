@@ -1,8 +1,7 @@
 --[ about ]--------------------------------------------------------------------
 
-This is clownfysh, projects by Matthew Temple.  These are open-source, basic
-tools that I use to build the kinds of things that I build.  They are free.
-Use them however you like.  For more about me and what I'm doing, visit:
+This is clownfysh::cf, by Matthew Temple.  These are tools I use to build
+things.  They're free; use them however you like.  For more on my work, visit:
 
 http://clownfysh.wordpress.com/
 http://twitter.com/clownfysh
