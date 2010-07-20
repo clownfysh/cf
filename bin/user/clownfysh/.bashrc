@@ -6,6 +6,7 @@ setterm -blength 0 2 >/dev/null 2>&1
 
 export PS1="(\u@\h \w) "
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11R6/bin:$PATH"
+export PATH=$PATH:/usr/lib/git-core
 export LD_LIBRARY_PATH=/usr/lib:/usr/lib64:/usr/local/lib:$LD_LIBRARY_PATH
 export EDITOR=vi
 
@@ -22,7 +23,7 @@ alias cs="stats"
 alias df="df -h"
 alias e="emacs -nw"
 alias gc="git commit -a"
-alias gp="git push; git pull"
+alias gp="git push origin master; git pull origin master"
 alias gs="git status"
 alias ls="ls -Fh"
 alias la="ls -Fha"
