@@ -15,8 +15,7 @@ clownfysh@gmail.com
       i :: base library :: next-generation containers, crazyminimal
 inferno :: search, classify, morph
   sorea :: os human-human, human-machine interface
-    syn :: ...
-    trf :: ^~%
+ struct :: ...
 
 --[ setup ]--------------------------------------------------------------------
 

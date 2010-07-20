@@ -15,7 +15,7 @@ export CF_C_STANDARD=/usr/lib/gcc/i486-linux-gnu/4.4/include
 export CF_POSTGRESQL=/usr/include/postgresql
 export CF_QUIET=yes
 export PATH=$PATH:$CF/bin
-export PATH=$PATH:$CF/bin/user/matthew
+export PATH=$PATH:$CF/bin/user/clownfysh
 
 alias c="clear"
 alias cmx="c; mx"
