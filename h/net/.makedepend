@@ -1,0 +1,1698 @@
+
+# DO NOT DELETE
+
+./types.o: /home/matthew/inhesion/h/net/types.h
+./types.o: /home/matthew/inhesion/h/core/object.h
+./types.o: /home/matthew/inhesion/h/core/bool.h
+./types.o: /home/matthew/inhesion/h/core/declarations.h
+./pong.o: /home/matthew/inhesion/h/core/string.h
+./pong.o: /home/matthew/inhesion/h/core/object.h
+./pong.o: /home/matthew/inhesion/h/core/bool.h
+./pong.o: /home/matthew/inhesion/h/core/declarations.h
+./pong.o: /home/matthew/inhesion/h/core/objectey.h
+./pong.o: /home/matthew/inhesion/h/core/types.h
+./pong.o: /home/matthew/inhesion/h/core/tools.h
+./pong.o: /home/matthew/inhesion/h/standard.h /usr/include/arpa/inet.h
+./pong.o: /usr/include/features.h /usr/include/bits/predefs.h
+./pong.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+./pong.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
+./pong.o: /usr/include/netinet/in.h /usr/include/stdint.h
+./pong.o: /usr/include/bits/wchar.h /usr/include/sys/socket.h
+./pong.o: /usr/include/sys/uio.h /usr/include/sys/types.h
+./pong.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+./pong.o: /usr/include/time.h
+./pong.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
+./pong.o: /usr/include/endian.h /usr/include/bits/endian.h
+./pong.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
+./pong.o: /usr/include/bits/select.h /usr/include/bits/sigset.h
+./pong.o: /usr/include/bits/time.h /usr/include/sys/sysmacros.h
+./pong.o: /usr/include/bits/pthreadtypes.h /usr/include/bits/uio.h
+./pong.o: /usr/include/bits/socket.h /usr/include/bits/sockaddr.h
+./pong.o: /usr/include/asm/socket.h /usr/include/asm-generic/socket.h
+./pong.o: /usr/include/asm/sockios.h /usr/include/asm-generic/sockios.h
+./pong.o: /usr/include/bits/in.h /usr/include/assert.h /usr/include/ctype.h
+./pong.o: /usr/include/xlocale.h /usr/include/dirent.h
+./pong.o: /usr/include/bits/dirent.h /usr/include/bits/posix1_lim.h
+./pong.o: /usr/include/bits/local_lim.h /usr/include/linux/limits.h
+./pong.o: /usr/include/fcntl.h /usr/include/bits/fcntl.h
+./pong.o: /usr/include/postgresql/libpq-fe.h /usr/include/stdio.h
+./pong.o: /usr/include/libio.h /usr/include/_G_config.h /usr/include/wchar.h
+./pong.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdarg.h
+./pong.o: /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h
+./pong.o: /usr/include/postgresql/postgres_ext.h /usr/include/math.h
+./pong.o: /usr/include/bits/huge_val.h /usr/include/bits/huge_valf.h
+./pong.o: /usr/include/bits/huge_vall.h /usr/include/bits/inf.h
+./pong.o: /usr/include/bits/nan.h /usr/include/bits/mathdef.h
+./pong.o: /usr/include/bits/mathcalls.h /usr/include/ncurses.h
+./pong.o: /usr/include/ncurses_dll.h
+./pong.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdbool.h
+./pong.o: /usr/include/unctrl.h /usr/include/curses.h
+./pong.o: /usr/include/openssl/rand.h /usr/include/stdlib.h
+./pong.o: /usr/include/alloca.h /usr/include/openssl/ossl_typ.h
+./pong.o: /usr/include/openssl/e_os2.h /usr/include/openssl/opensslconf.h
+./pong.o: /usr/include/pthread.h /usr/include/sched.h
+./pong.o: /usr/include/bits/sched.h /usr/include/signal.h
+./pong.o: /usr/include/bits/setjmp.h /usr/include/string.h
+./pong.o: /usr/include/sys/errno.h /usr/include/errno.h
+./pong.o: /usr/include/bits/errno.h /usr/include/linux/errno.h
+./pong.o: /usr/include/asm/errno.h /usr/include/asm-generic/errno.h
+./pong.o: /usr/include/asm-generic/errno-base.h /usr/include/sys/stat.h
+./pong.o: /usr/include/bits/stat.h /usr/include/termios.h
+./pong.o: /usr/include/bits/termios.h /usr/include/sys/ttydefaults.h
+./pong.o: /usr/include/unistd.h /usr/include/bits/posix_opt.h
+./pong.o: /usr/include/bits/confname.h /usr/include/getopt.h
+./pong.o: /usr/include/jpeglib.h /usr/include/jconfig.h
+./pong.o: /usr/include/jmorecfg.h /home/matthew/inhesion/h/core/bit.h
+./pong.o: /home/matthew/inhesion/h/net/pong.h
+./pong.o: /home/matthew/inhesion/h/core/message.h
+./pong.o: /home/matthew/inhesion/h/core/engine.h
+./serversocket.o: /home/matthew/inhesion/h/net/serversocket.h
+./serversocket.o: /home/matthew/inhesion/h/standard.h
+./serversocket.o: /usr/include/arpa/inet.h /usr/include/features.h
+./serversocket.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
+./serversocket.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
+./serversocket.o: /usr/include/gnu/stubs-32.h /usr/include/netinet/in.h
+./serversocket.o: /usr/include/stdint.h /usr/include/bits/wchar.h
+./serversocket.o: /usr/include/sys/socket.h /usr/include/sys/uio.h
+./serversocket.o: /usr/include/sys/types.h /usr/include/bits/types.h
+./serversocket.o: /usr/include/bits/typesizes.h /usr/include/time.h
+./serversocket.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
+./serversocket.o: /usr/include/endian.h /usr/include/bits/endian.h
+./serversocket.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
+./serversocket.o: /usr/include/bits/select.h /usr/include/bits/sigset.h
+./serversocket.o: /usr/include/bits/time.h /usr/include/sys/sysmacros.h
+./serversocket.o: /usr/include/bits/pthreadtypes.h /usr/include/bits/uio.h
+./serversocket.o: /usr/include/bits/socket.h /usr/include/bits/sockaddr.h
+./serversocket.o: /usr/include/asm/socket.h /usr/include/asm-generic/socket.h
+./serversocket.o: /usr/include/asm/sockios.h
+./serversocket.o: /usr/include/asm-generic/sockios.h /usr/include/bits/in.h
+./serversocket.o: /usr/include/assert.h /usr/include/ctype.h
+./serversocket.o: /usr/include/xlocale.h /usr/include/dirent.h
+./serversocket.o: /usr/include/bits/dirent.h /usr/include/bits/posix1_lim.h
+./serversocket.o: /usr/include/bits/local_lim.h /usr/include/linux/limits.h
+./serversocket.o: /usr/include/fcntl.h /usr/include/bits/fcntl.h
+./serversocket.o: /usr/include/postgresql/libpq-fe.h /usr/include/stdio.h
+./serversocket.o: /usr/include/libio.h /usr/include/_G_config.h
+./serversocket.o: /usr/include/wchar.h
+./serversocket.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdarg.h
+./serversocket.o: /usr/include/bits/stdio_lim.h
+./serversocket.o: /usr/include/bits/sys_errlist.h
+./serversocket.o: /usr/include/postgresql/postgres_ext.h /usr/include/math.h
+./serversocket.o: /usr/include/bits/huge_val.h /usr/include/bits/huge_valf.h
+./serversocket.o: /usr/include/bits/huge_vall.h /usr/include/bits/inf.h
+./serversocket.o: /usr/include/bits/nan.h /usr/include/bits/mathdef.h
+./serversocket.o: /usr/include/bits/mathcalls.h /usr/include/ncurses.h
+./serversocket.o: /usr/include/ncurses_dll.h
+./serversocket.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdbool.h
+./serversocket.o: /usr/include/unctrl.h /usr/include/curses.h
+./serversocket.o: /usr/include/openssl/rand.h /usr/include/stdlib.h
+./serversocket.o: /usr/include/alloca.h /usr/include/openssl/ossl_typ.h
+./serversocket.o: /usr/include/openssl/e_os2.h
+./serversocket.o: /usr/include/openssl/opensslconf.h /usr/include/pthread.h
+./serversocket.o: /usr/include/sched.h /usr/include/bits/sched.h
+./serversocket.o: /usr/include/signal.h /usr/include/bits/setjmp.h
+./serversocket.o: /usr/include/string.h /usr/include/sys/errno.h
+./serversocket.o: /usr/include/errno.h /usr/include/bits/errno.h
+./serversocket.o: /usr/include/linux/errno.h /usr/include/asm/errno.h
+./serversocket.o: /usr/include/asm-generic/errno.h
+./serversocket.o: /usr/include/asm-generic/errno-base.h
+./serversocket.o: /usr/include/sys/stat.h /usr/include/bits/stat.h
+./serversocket.o: /usr/include/termios.h /usr/include/bits/termios.h
+./serversocket.o: /usr/include/sys/ttydefaults.h /usr/include/unistd.h
+./serversocket.o: /usr/include/bits/posix_opt.h /usr/include/bits/confname.h
+./serversocket.o: /usr/include/getopt.h /usr/include/jpeglib.h
+./serversocket.o: /usr/include/jconfig.h /usr/include/jmorecfg.h
+./webrequest.o: /home/matthew/inhesion/h/standard.h /usr/include/arpa/inet.h
+./webrequest.o: /usr/include/features.h /usr/include/bits/predefs.h
+./webrequest.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+./webrequest.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
+./webrequest.o: /usr/include/netinet/in.h /usr/include/stdint.h
+./webrequest.o: /usr/include/bits/wchar.h /usr/include/sys/socket.h
+./webrequest.o: /usr/include/sys/uio.h /usr/include/sys/types.h
+./webrequest.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+./webrequest.o: /usr/include/time.h
+./webrequest.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
+./webrequest.o: /usr/include/endian.h /usr/include/bits/endian.h
+./webrequest.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
+./webrequest.o: /usr/include/bits/select.h /usr/include/bits/sigset.h
+./webrequest.o: /usr/include/bits/time.h /usr/include/sys/sysmacros.h
+./webrequest.o: /usr/include/bits/pthreadtypes.h /usr/include/bits/uio.h
+./webrequest.o: /usr/include/bits/socket.h /usr/include/bits/sockaddr.h
+./webrequest.o: /usr/include/asm/socket.h /usr/include/asm-generic/socket.h
+./webrequest.o: /usr/include/asm/sockios.h /usr/include/asm-generic/sockios.h
+./webrequest.o: /usr/include/bits/in.h /usr/include/assert.h
+./webrequest.o: /usr/include/ctype.h /usr/include/xlocale.h
+./webrequest.o: /usr/include/dirent.h /usr/include/bits/dirent.h
+./webrequest.o: /usr/include/bits/posix1_lim.h /usr/include/bits/local_lim.h
+./webrequest.o: /usr/include/linux/limits.h /usr/include/fcntl.h
+./webrequest.o: /usr/include/bits/fcntl.h /usr/include/postgresql/libpq-fe.h
+./webrequest.o: /usr/include/stdio.h /usr/include/libio.h
+./webrequest.o: /usr/include/_G_config.h /usr/include/wchar.h
+./webrequest.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdarg.h
+./webrequest.o: /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h
+./webrequest.o: /usr/include/postgresql/postgres_ext.h /usr/include/math.h
+./webrequest.o: /usr/include/bits/huge_val.h /usr/include/bits/huge_valf.h
+./webrequest.o: /usr/include/bits/huge_vall.h /usr/include/bits/inf.h
+./webrequest.o: /usr/include/bits/nan.h /usr/include/bits/mathdef.h
+./webrequest.o: /usr/include/bits/mathcalls.h /usr/include/ncurses.h
+./webrequest.o: /usr/include/ncurses_dll.h
+./webrequest.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdbool.h
+./webrequest.o: /usr/include/unctrl.h /usr/include/curses.h
+./webrequest.o: /usr/include/openssl/rand.h /usr/include/stdlib.h
+./webrequest.o: /usr/include/alloca.h /usr/include/openssl/ossl_typ.h
+./webrequest.o: /usr/include/openssl/e_os2.h
+./webrequest.o: /usr/include/openssl/opensslconf.h /usr/include/pthread.h
+./webrequest.o: /usr/include/sched.h /usr/include/bits/sched.h
+./webrequest.o: /usr/include/signal.h /usr/include/bits/setjmp.h
+./webrequest.o: /usr/include/string.h /usr/include/sys/errno.h
+./webrequest.o: /usr/include/errno.h /usr/include/bits/errno.h
+./webrequest.o: /usr/include/linux/errno.h /usr/include/asm/errno.h
+./webrequest.o: /usr/include/asm-generic/errno.h
+./webrequest.o: /usr/include/asm-generic/errno-base.h /usr/include/sys/stat.h
+./webrequest.o: /usr/include/bits/stat.h /usr/include/termios.h
+./webrequest.o: /usr/include/bits/termios.h /usr/include/sys/ttydefaults.h
+./webrequest.o: /usr/include/unistd.h /usr/include/bits/posix_opt.h
+./webrequest.o: /usr/include/bits/confname.h /usr/include/getopt.h
+./webrequest.o: /usr/include/jpeglib.h /usr/include/jconfig.h
+./webrequest.o: /usr/include/jmorecfg.h
+./webrequest.o: /home/matthew/inhesion/h/net/webrequest.h
+./hypermessage.o: /home/matthew/inhesion/h/container/list.h
+./hypermessage.o: /home/matthew/inhesion/h/container/declarations.h
+./hypermessage.o: /home/matthew/inhesion/h/core/message.h
+./hypermessage.o: /home/matthew/inhesion/h/core/engine.h
+./hypermessage.o: /home/matthew/inhesion/h/core/object.h
+./hypermessage.o: /home/matthew/inhesion/h/core/bool.h
+./hypermessage.o: /home/matthew/inhesion/h/core/declarations.h
+./hypermessage.o: /home/matthew/inhesion/h/core/types.h
+./hypermessage.o: /home/matthew/inhesion/h/core/objectey.h
+./hypermessage.o: /home/matthew/inhesion/h/container/set.h
+./hypermessage.o: /home/matthew/inhesion/h/core/content.h
+./hypermessage.o: /home/matthew/inhesion/h/core/messagey.h
+./hypermessage.o: /home/matthew/inhesion/h/core/nameobject.h
+./hypermessage.o: /home/matthew/inhesion/h/core/string.h
+./hypermessage.o: /home/matthew/inhesion/h/core/tools.h
+./hypermessage.o: /home/matthew/inhesion/h/standard.h
+./hypermessage.o: /usr/include/arpa/inet.h /usr/include/features.h
+./hypermessage.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
+./hypermessage.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
+./hypermessage.o: /usr/include/gnu/stubs-32.h /usr/include/netinet/in.h
+./hypermessage.o: /usr/include/stdint.h /usr/include/bits/wchar.h
+./hypermessage.o: /usr/include/sys/socket.h /usr/include/sys/uio.h
+./hypermessage.o: /usr/include/sys/types.h /usr/include/bits/types.h
+./hypermessage.o: /usr/include/bits/typesizes.h /usr/include/time.h
+./hypermessage.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
+./hypermessage.o: /usr/include/endian.h /usr/include/bits/endian.h
+./hypermessage.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
+./hypermessage.o: /usr/include/bits/select.h /usr/include/bits/sigset.h
+./hypermessage.o: /usr/include/bits/time.h /usr/include/sys/sysmacros.h
+./hypermessage.o: /usr/include/bits/pthreadtypes.h /usr/include/bits/uio.h
+./hypermessage.o: /usr/include/bits/socket.h /usr/include/bits/sockaddr.h
+./hypermessage.o: /usr/include/asm/socket.h /usr/include/asm-generic/socket.h
+./hypermessage.o: /usr/include/asm/sockios.h
+./hypermessage.o: /usr/include/asm-generic/sockios.h /usr/include/bits/in.h
+./hypermessage.o: /usr/include/assert.h /usr/include/ctype.h
+./hypermessage.o: /usr/include/xlocale.h /usr/include/dirent.h
+./hypermessage.o: /usr/include/bits/dirent.h /usr/include/bits/posix1_lim.h
+./hypermessage.o: /usr/include/bits/local_lim.h /usr/include/linux/limits.h
+./hypermessage.o: /usr/include/fcntl.h /usr/include/bits/fcntl.h
+./hypermessage.o: /usr/include/postgresql/libpq-fe.h /usr/include/stdio.h
+./hypermessage.o: /usr/include/libio.h /usr/include/_G_config.h
+./hypermessage.o: /usr/include/wchar.h
+./hypermessage.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdarg.h
+./hypermessage.o: /usr/include/bits/stdio_lim.h
+./hypermessage.o: /usr/include/bits/sys_errlist.h
+./hypermessage.o: /usr/include/postgresql/postgres_ext.h /usr/include/math.h
+./hypermessage.o: /usr/include/bits/huge_val.h /usr/include/bits/huge_valf.h
+./hypermessage.o: /usr/include/bits/huge_vall.h /usr/include/bits/inf.h
+./hypermessage.o: /usr/include/bits/nan.h /usr/include/bits/mathdef.h
+./hypermessage.o: /usr/include/bits/mathcalls.h /usr/include/ncurses.h
+./hypermessage.o: /usr/include/ncurses_dll.h
+./hypermessage.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdbool.h
+./hypermessage.o: /usr/include/unctrl.h /usr/include/curses.h
+./hypermessage.o: /usr/include/openssl/rand.h /usr/include/stdlib.h
+./hypermessage.o: /usr/include/alloca.h /usr/include/openssl/ossl_typ.h
+./hypermessage.o: /usr/include/openssl/e_os2.h
+./hypermessage.o: /usr/include/openssl/opensslconf.h /usr/include/pthread.h
+./hypermessage.o: /usr/include/sched.h /usr/include/bits/sched.h
+./hypermessage.o: /usr/include/signal.h /usr/include/bits/setjmp.h
+./hypermessage.o: /usr/include/string.h /usr/include/sys/errno.h
+./hypermessage.o: /usr/include/errno.h /usr/include/bits/errno.h
+./hypermessage.o: /usr/include/linux/errno.h /usr/include/asm/errno.h
+./hypermessage.o: /usr/include/asm-generic/errno.h
+./hypermessage.o: /usr/include/asm-generic/errno-base.h
+./hypermessage.o: /usr/include/sys/stat.h /usr/include/bits/stat.h
+./hypermessage.o: /usr/include/termios.h /usr/include/bits/termios.h
+./hypermessage.o: /usr/include/sys/ttydefaults.h /usr/include/unistd.h
+./hypermessage.o: /usr/include/bits/posix_opt.h /usr/include/bits/confname.h
+./hypermessage.o: /usr/include/getopt.h /usr/include/jpeglib.h
+./hypermessage.o: /usr/include/jconfig.h /usr/include/jmorecfg.h
+./hypermessage.o: /home/matthew/inhesion/h/core/bit.h
+./hypermessage.o: /home/matthew/inhesion/h/net/hypermessage.h
+./hypermessage.o: /home/matthew/inhesion/h/core/uuid.h
+./hypermessage.o: /home/matthew/inhesion/h/net/hyperversion.h
+./node.o: /home/matthew/inhesion/h/core/constants.h
+./node.o: /home/matthew/inhesion/h/core/message.h
+./node.o: /home/matthew/inhesion/h/core/engine.h
+./node.o: /home/matthew/inhesion/h/core/object.h
+./node.o: /home/matthew/inhesion/h/core/bool.h
+./node.o: /home/matthew/inhesion/h/core/declarations.h
+./node.o: /home/matthew/inhesion/h/core/types.h
+./node.o: /home/matthew/inhesion/h/core/messagey.h
+./node.o: /home/matthew/inhesion/h/core/tools.h
+./node.o: /home/matthew/inhesion/h/standard.h /usr/include/arpa/inet.h
+./node.o: /usr/include/features.h /usr/include/bits/predefs.h
+./node.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+./node.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
+./node.o: /usr/include/netinet/in.h /usr/include/stdint.h
+./node.o: /usr/include/bits/wchar.h /usr/include/sys/socket.h
+./node.o: /usr/include/sys/uio.h /usr/include/sys/types.h
+./node.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+./node.o: /usr/include/time.h
+./node.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
+./node.o: /usr/include/endian.h /usr/include/bits/endian.h
+./node.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
+./node.o: /usr/include/bits/select.h /usr/include/bits/sigset.h
+./node.o: /usr/include/bits/time.h /usr/include/sys/sysmacros.h
+./node.o: /usr/include/bits/pthreadtypes.h /usr/include/bits/uio.h
+./node.o: /usr/include/bits/socket.h /usr/include/bits/sockaddr.h
+./node.o: /usr/include/asm/socket.h /usr/include/asm-generic/socket.h
+./node.o: /usr/include/asm/sockios.h /usr/include/asm-generic/sockios.h
+./node.o: /usr/include/bits/in.h /usr/include/assert.h /usr/include/ctype.h
+./node.o: /usr/include/xlocale.h /usr/include/dirent.h
+./node.o: /usr/include/bits/dirent.h /usr/include/bits/posix1_lim.h
+./node.o: /usr/include/bits/local_lim.h /usr/include/linux/limits.h
+./node.o: /usr/include/fcntl.h /usr/include/bits/fcntl.h
+./node.o: /usr/include/postgresql/libpq-fe.h /usr/include/stdio.h
+./node.o: /usr/include/libio.h /usr/include/_G_config.h /usr/include/wchar.h
+./node.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdarg.h
+./node.o: /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h
+./node.o: /usr/include/postgresql/postgres_ext.h /usr/include/math.h
+./node.o: /usr/include/bits/huge_val.h /usr/include/bits/huge_valf.h
+./node.o: /usr/include/bits/huge_vall.h /usr/include/bits/inf.h
+./node.o: /usr/include/bits/nan.h /usr/include/bits/mathdef.h
+./node.o: /usr/include/bits/mathcalls.h /usr/include/ncurses.h
+./node.o: /usr/include/ncurses_dll.h
+./node.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdbool.h
+./node.o: /usr/include/unctrl.h /usr/include/curses.h
+./node.o: /usr/include/openssl/rand.h /usr/include/stdlib.h
+./node.o: /usr/include/alloca.h /usr/include/openssl/ossl_typ.h
+./node.o: /usr/include/openssl/e_os2.h /usr/include/openssl/opensslconf.h
+./node.o: /usr/include/pthread.h /usr/include/sched.h
+./node.o: /usr/include/bits/sched.h /usr/include/signal.h
+./node.o: /usr/include/bits/setjmp.h /usr/include/string.h
+./node.o: /usr/include/sys/errno.h /usr/include/errno.h
+./node.o: /usr/include/bits/errno.h /usr/include/linux/errno.h
+./node.o: /usr/include/asm/errno.h /usr/include/asm-generic/errno.h
+./node.o: /usr/include/asm-generic/errno-base.h /usr/include/sys/stat.h
+./node.o: /usr/include/bits/stat.h /usr/include/termios.h
+./node.o: /usr/include/bits/termios.h /usr/include/sys/ttydefaults.h
+./node.o: /usr/include/unistd.h /usr/include/bits/posix_opt.h
+./node.o: /usr/include/bits/confname.h /usr/include/getopt.h
+./node.o: /usr/include/jpeglib.h /usr/include/jconfig.h
+./node.o: /usr/include/jmorecfg.h /home/matthew/inhesion/h/core/bit.h
+./node.o: /home/matthew/inhesion/h/net/client.h
+./node.o: /home/matthew/inhesion/h/audit/log.h
+./node.o: /home/matthew/inhesion/h/container/list.h
+./node.o: /home/matthew/inhesion/h/container/declarations.h
+./node.o: /home/matthew/inhesion/h/core/objectey.h
+./node.o: /home/matthew/inhesion/h/net/postey.h
+./node.o: /home/matthew/inhesion/h/net/post_stats.h
+./node.o: /home/matthew/inhesion/h/net/node.h
+./node.o: /home/matthew/inhesion/h/net/server.h
+./node.o: /home/matthew/inhesion/h/config/system.h
+./node.o: /home/matthew/inhesion/h/core/objects.h
+./node.o: /home/matthew/inhesion/h/net/enginey.h
+./node.o: /home/matthew/inhesion/h/net/types.h
+./node.o: /home/matthew/inhesion/h/net/ip_address.h
+./node.o: /home/matthew/inhesion/h/net/server_stats.h
+./node.o: /home/matthew/inhesion/h/net/starclient.h
+./node.o: /home/matthew/inhesion/h/net/starclient_stats.h
+./node.o: /home/matthew/inhesion/h/net/post.h
+./ip_address.o: /home/matthew/inhesion/h/net/ip_address.h
+./socket.o: /home/matthew/inhesion/h/core/tools.h
+./socket.o: /home/matthew/inhesion/h/standard.h /usr/include/arpa/inet.h
+./socket.o: /usr/include/features.h /usr/include/bits/predefs.h
+./socket.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+./socket.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
+./socket.o: /usr/include/netinet/in.h /usr/include/stdint.h
+./socket.o: /usr/include/bits/wchar.h /usr/include/sys/socket.h
+./socket.o: /usr/include/sys/uio.h /usr/include/sys/types.h
+./socket.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+./socket.o: /usr/include/time.h
+./socket.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
+./socket.o: /usr/include/endian.h /usr/include/bits/endian.h
+./socket.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
+./socket.o: /usr/include/bits/select.h /usr/include/bits/sigset.h
+./socket.o: /usr/include/bits/time.h /usr/include/sys/sysmacros.h
+./socket.o: /usr/include/bits/pthreadtypes.h /usr/include/bits/uio.h
+./socket.o: /usr/include/bits/socket.h /usr/include/bits/sockaddr.h
+./socket.o: /usr/include/asm/socket.h /usr/include/asm-generic/socket.h
+./socket.o: /usr/include/asm/sockios.h /usr/include/asm-generic/sockios.h
+./socket.o: /usr/include/bits/in.h /usr/include/assert.h /usr/include/ctype.h
+./socket.o: /usr/include/xlocale.h /usr/include/dirent.h
+./socket.o: /usr/include/bits/dirent.h /usr/include/bits/posix1_lim.h
+./socket.o: /usr/include/bits/local_lim.h /usr/include/linux/limits.h
+./socket.o: /usr/include/fcntl.h /usr/include/bits/fcntl.h
+./socket.o: /usr/include/postgresql/libpq-fe.h /usr/include/stdio.h
+./socket.o: /usr/include/libio.h /usr/include/_G_config.h
+./socket.o: /usr/include/wchar.h
+./socket.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdarg.h
+./socket.o: /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h
+./socket.o: /usr/include/postgresql/postgres_ext.h /usr/include/math.h
+./socket.o: /usr/include/bits/huge_val.h /usr/include/bits/huge_valf.h
+./socket.o: /usr/include/bits/huge_vall.h /usr/include/bits/inf.h
+./socket.o: /usr/include/bits/nan.h /usr/include/bits/mathdef.h
+./socket.o: /usr/include/bits/mathcalls.h /usr/include/ncurses.h
+./socket.o: /usr/include/ncurses_dll.h
+./socket.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdbool.h
+./socket.o: /usr/include/unctrl.h /usr/include/curses.h
+./socket.o: /usr/include/openssl/rand.h /usr/include/stdlib.h
+./socket.o: /usr/include/alloca.h /usr/include/openssl/ossl_typ.h
+./socket.o: /usr/include/openssl/e_os2.h /usr/include/openssl/opensslconf.h
+./socket.o: /usr/include/pthread.h /usr/include/sched.h
+./socket.o: /usr/include/bits/sched.h /usr/include/signal.h
+./socket.o: /usr/include/bits/setjmp.h /usr/include/string.h
+./socket.o: /usr/include/sys/errno.h /usr/include/errno.h
+./socket.o: /usr/include/bits/errno.h /usr/include/linux/errno.h
+./socket.o: /usr/include/asm/errno.h /usr/include/asm-generic/errno.h
+./socket.o: /usr/include/asm-generic/errno-base.h /usr/include/sys/stat.h
+./socket.o: /usr/include/bits/stat.h /usr/include/termios.h
+./socket.o: /usr/include/bits/termios.h /usr/include/sys/ttydefaults.h
+./socket.o: /usr/include/unistd.h /usr/include/bits/posix_opt.h
+./socket.o: /usr/include/bits/confname.h /usr/include/getopt.h
+./socket.o: /usr/include/jpeglib.h /usr/include/jconfig.h
+./socket.o: /usr/include/jmorecfg.h /home/matthew/inhesion/h/core/bit.h
+./socket.o: /home/matthew/inhesion/h/core/object.h
+./socket.o: /home/matthew/inhesion/h/core/bool.h
+./socket.o: /home/matthew/inhesion/h/core/declarations.h
+./socket.o: /home/matthew/inhesion/h/core/types.h
+./socket.o: /home/matthew/inhesion/h/net/socket.h
+./starclient.o: /home/matthew/inhesion/h/container/set.h
+./starclient.o: /home/matthew/inhesion/h/container/list.h
+./starclient.o: /home/matthew/inhesion/h/container/declarations.h
+./starclient.o: /home/matthew/inhesion/h/core/message.h
+./starclient.o: /home/matthew/inhesion/h/core/engine.h
+./starclient.o: /home/matthew/inhesion/h/core/object.h
+./starclient.o: /home/matthew/inhesion/h/core/bool.h
+./starclient.o: /home/matthew/inhesion/h/core/declarations.h
+./starclient.o: /home/matthew/inhesion/h/core/types.h
+./starclient.o: /home/matthew/inhesion/h/core/objectey.h
+./starclient.o: /home/matthew/inhesion/h/core/nameobject.h
+./starclient.o: /home/matthew/inhesion/h/core/period.h
+./starclient.o: /home/matthew/inhesion/h/core/tools.h
+./starclient.o: /home/matthew/inhesion/h/standard.h /usr/include/arpa/inet.h
+./starclient.o: /usr/include/features.h /usr/include/bits/predefs.h
+./starclient.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+./starclient.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
+./starclient.o: /usr/include/netinet/in.h /usr/include/stdint.h
+./starclient.o: /usr/include/bits/wchar.h /usr/include/sys/socket.h
+./starclient.o: /usr/include/sys/uio.h /usr/include/sys/types.h
+./starclient.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+./starclient.o: /usr/include/time.h
+./starclient.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
+./starclient.o: /usr/include/endian.h /usr/include/bits/endian.h
+./starclient.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
+./starclient.o: /usr/include/bits/select.h /usr/include/bits/sigset.h
+./starclient.o: /usr/include/bits/time.h /usr/include/sys/sysmacros.h
+./starclient.o: /usr/include/bits/pthreadtypes.h /usr/include/bits/uio.h
+./starclient.o: /usr/include/bits/socket.h /usr/include/bits/sockaddr.h
+./starclient.o: /usr/include/asm/socket.h /usr/include/asm-generic/socket.h
+./starclient.o: /usr/include/asm/sockios.h /usr/include/asm-generic/sockios.h
+./starclient.o: /usr/include/bits/in.h /usr/include/assert.h
+./starclient.o: /usr/include/ctype.h /usr/include/xlocale.h
+./starclient.o: /usr/include/dirent.h /usr/include/bits/dirent.h
+./starclient.o: /usr/include/bits/posix1_lim.h /usr/include/bits/local_lim.h
+./starclient.o: /usr/include/linux/limits.h /usr/include/fcntl.h
+./starclient.o: /usr/include/bits/fcntl.h /usr/include/postgresql/libpq-fe.h
+./starclient.o: /usr/include/stdio.h /usr/include/libio.h
+./starclient.o: /usr/include/_G_config.h /usr/include/wchar.h
+./starclient.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdarg.h
+./starclient.o: /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h
+./starclient.o: /usr/include/postgresql/postgres_ext.h /usr/include/math.h
+./starclient.o: /usr/include/bits/huge_val.h /usr/include/bits/huge_valf.h
+./starclient.o: /usr/include/bits/huge_vall.h /usr/include/bits/inf.h
+./starclient.o: /usr/include/bits/nan.h /usr/include/bits/mathdef.h
+./starclient.o: /usr/include/bits/mathcalls.h /usr/include/ncurses.h
+./starclient.o: /usr/include/ncurses_dll.h
+./starclient.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdbool.h
+./starclient.o: /usr/include/unctrl.h /usr/include/curses.h
+./starclient.o: /usr/include/openssl/rand.h /usr/include/stdlib.h
+./starclient.o: /usr/include/alloca.h /usr/include/openssl/ossl_typ.h
+./starclient.o: /usr/include/openssl/e_os2.h
+./starclient.o: /usr/include/openssl/opensslconf.h /usr/include/pthread.h
+./starclient.o: /usr/include/sched.h /usr/include/bits/sched.h
+./starclient.o: /usr/include/signal.h /usr/include/bits/setjmp.h
+./starclient.o: /usr/include/string.h /usr/include/sys/errno.h
+./starclient.o: /usr/include/errno.h /usr/include/bits/errno.h
+./starclient.o: /usr/include/linux/errno.h /usr/include/asm/errno.h
+./starclient.o: /usr/include/asm-generic/errno.h
+./starclient.o: /usr/include/asm-generic/errno-base.h /usr/include/sys/stat.h
+./starclient.o: /usr/include/bits/stat.h /usr/include/termios.h
+./starclient.o: /usr/include/bits/termios.h /usr/include/sys/ttydefaults.h
+./starclient.o: /usr/include/unistd.h /usr/include/bits/posix_opt.h
+./starclient.o: /usr/include/bits/confname.h /usr/include/getopt.h
+./starclient.o: /usr/include/jpeglib.h /usr/include/jconfig.h
+./starclient.o: /usr/include/jmorecfg.h /home/matthew/inhesion/h/core/bit.h
+./starclient.o: /home/matthew/inhesion/h/net/client.h
+./starclient.o: /home/matthew/inhesion/h/audit/log.h
+./starclient.o: /home/matthew/inhesion/h/core/messagey.h
+./starclient.o: /home/matthew/inhesion/h/net/postey.h
+./starclient.o: /home/matthew/inhesion/h/net/post_stats.h
+./starclient.o: /home/matthew/inhesion/h/net/starclient.h
+./starclient.o: /home/matthew/inhesion/h/net/starclient_stats.h
+./starclient.o: /home/matthew/inhesion/h/net/types.h
+./postey.o: /home/matthew/inhesion/h/net/postey.h
+./postey.o: /home/matthew/inhesion/h/standard.h /usr/include/arpa/inet.h
+./postey.o: /usr/include/features.h /usr/include/bits/predefs.h
+./postey.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+./postey.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
+./postey.o: /usr/include/netinet/in.h /usr/include/stdint.h
+./postey.o: /usr/include/bits/wchar.h /usr/include/sys/socket.h
+./postey.o: /usr/include/sys/uio.h /usr/include/sys/types.h
+./postey.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+./postey.o: /usr/include/time.h
+./postey.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
+./postey.o: /usr/include/endian.h /usr/include/bits/endian.h
+./postey.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
+./postey.o: /usr/include/bits/select.h /usr/include/bits/sigset.h
+./postey.o: /usr/include/bits/time.h /usr/include/sys/sysmacros.h
+./postey.o: /usr/include/bits/pthreadtypes.h /usr/include/bits/uio.h
+./postey.o: /usr/include/bits/socket.h /usr/include/bits/sockaddr.h
+./postey.o: /usr/include/asm/socket.h /usr/include/asm-generic/socket.h
+./postey.o: /usr/include/asm/sockios.h /usr/include/asm-generic/sockios.h
+./postey.o: /usr/include/bits/in.h /usr/include/assert.h /usr/include/ctype.h
+./postey.o: /usr/include/xlocale.h /usr/include/dirent.h
+./postey.o: /usr/include/bits/dirent.h /usr/include/bits/posix1_lim.h
+./postey.o: /usr/include/bits/local_lim.h /usr/include/linux/limits.h
+./postey.o: /usr/include/fcntl.h /usr/include/bits/fcntl.h
+./postey.o: /usr/include/postgresql/libpq-fe.h /usr/include/stdio.h
+./postey.o: /usr/include/libio.h /usr/include/_G_config.h
+./postey.o: /usr/include/wchar.h
+./postey.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdarg.h
+./postey.o: /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h
+./postey.o: /usr/include/postgresql/postgres_ext.h /usr/include/math.h
+./postey.o: /usr/include/bits/huge_val.h /usr/include/bits/huge_valf.h
+./postey.o: /usr/include/bits/huge_vall.h /usr/include/bits/inf.h
+./postey.o: /usr/include/bits/nan.h /usr/include/bits/mathdef.h
+./postey.o: /usr/include/bits/mathcalls.h /usr/include/ncurses.h
+./postey.o: /usr/include/ncurses_dll.h
+./postey.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdbool.h
+./postey.o: /usr/include/unctrl.h /usr/include/curses.h
+./postey.o: /usr/include/openssl/rand.h /usr/include/stdlib.h
+./postey.o: /usr/include/alloca.h /usr/include/openssl/ossl_typ.h
+./postey.o: /usr/include/openssl/e_os2.h /usr/include/openssl/opensslconf.h
+./postey.o: /usr/include/pthread.h /usr/include/sched.h
+./postey.o: /usr/include/bits/sched.h /usr/include/signal.h
+./postey.o: /usr/include/bits/setjmp.h /usr/include/string.h
+./postey.o: /usr/include/sys/errno.h /usr/include/errno.h
+./postey.o: /usr/include/bits/errno.h /usr/include/linux/errno.h
+./postey.o: /usr/include/asm/errno.h /usr/include/asm-generic/errno.h
+./postey.o: /usr/include/asm-generic/errno-base.h /usr/include/sys/stat.h
+./postey.o: /usr/include/bits/stat.h /usr/include/termios.h
+./postey.o: /usr/include/bits/termios.h /usr/include/sys/ttydefaults.h
+./postey.o: /usr/include/unistd.h /usr/include/bits/posix_opt.h
+./postey.o: /usr/include/bits/confname.h /usr/include/getopt.h
+./postey.o: /usr/include/jpeglib.h /usr/include/jconfig.h
+./postey.o: /usr/include/jmorecfg.h /home/matthew/inhesion/h/core/object.h
+./postey.o: /home/matthew/inhesion/h/core/bool.h
+./postey.o: /home/matthew/inhesion/h/core/declarations.h
+./postey.o: /home/matthew/inhesion/h/core/types.h
+./postey.o: /home/matthew/inhesion/h/net/post_stats.h
+./starclient_conf.o: /home/matthew/inhesion/h/core/tools.h
+./starclient_conf.o: /home/matthew/inhesion/h/standard.h
+./starclient_conf.o: /usr/include/arpa/inet.h /usr/include/features.h
+./starclient_conf.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
+./starclient_conf.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
+./starclient_conf.o: /usr/include/gnu/stubs-32.h /usr/include/netinet/in.h
+./starclient_conf.o: /usr/include/stdint.h /usr/include/bits/wchar.h
+./starclient_conf.o: /usr/include/sys/socket.h /usr/include/sys/uio.h
+./starclient_conf.o: /usr/include/sys/types.h /usr/include/bits/types.h
+./starclient_conf.o: /usr/include/bits/typesizes.h /usr/include/time.h
+./starclient_conf.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
+./starclient_conf.o: /usr/include/endian.h /usr/include/bits/endian.h
+./starclient_conf.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
+./starclient_conf.o: /usr/include/bits/select.h /usr/include/bits/sigset.h
+./starclient_conf.o: /usr/include/bits/time.h /usr/include/sys/sysmacros.h
+./starclient_conf.o: /usr/include/bits/pthreadtypes.h /usr/include/bits/uio.h
+./starclient_conf.o: /usr/include/bits/socket.h /usr/include/bits/sockaddr.h
+./starclient_conf.o: /usr/include/asm/socket.h
+./starclient_conf.o: /usr/include/asm-generic/socket.h
+./starclient_conf.o: /usr/include/asm/sockios.h
+./starclient_conf.o: /usr/include/asm-generic/sockios.h
+./starclient_conf.o: /usr/include/bits/in.h /usr/include/assert.h
+./starclient_conf.o: /usr/include/ctype.h /usr/include/xlocale.h
+./starclient_conf.o: /usr/include/dirent.h /usr/include/bits/dirent.h
+./starclient_conf.o: /usr/include/bits/posix1_lim.h
+./starclient_conf.o: /usr/include/bits/local_lim.h
+./starclient_conf.o: /usr/include/linux/limits.h /usr/include/fcntl.h
+./starclient_conf.o: /usr/include/bits/fcntl.h
+./starclient_conf.o: /usr/include/postgresql/libpq-fe.h /usr/include/stdio.h
+./starclient_conf.o: /usr/include/libio.h /usr/include/_G_config.h
+./starclient_conf.o: /usr/include/wchar.h
+./starclient_conf.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdarg.h
+./starclient_conf.o: /usr/include/bits/stdio_lim.h
+./starclient_conf.o: /usr/include/bits/sys_errlist.h
+./starclient_conf.o: /usr/include/postgresql/postgres_ext.h
+./starclient_conf.o: /usr/include/math.h /usr/include/bits/huge_val.h
+./starclient_conf.o: /usr/include/bits/huge_valf.h
+./starclient_conf.o: /usr/include/bits/huge_vall.h /usr/include/bits/inf.h
+./starclient_conf.o: /usr/include/bits/nan.h /usr/include/bits/mathdef.h
+./starclient_conf.o: /usr/include/bits/mathcalls.h /usr/include/ncurses.h
+./starclient_conf.o: /usr/include/ncurses_dll.h
+./starclient_conf.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdbool.h
+./starclient_conf.o: /usr/include/unctrl.h /usr/include/curses.h
+./starclient_conf.o: /usr/include/openssl/rand.h /usr/include/stdlib.h
+./starclient_conf.o: /usr/include/alloca.h /usr/include/openssl/ossl_typ.h
+./starclient_conf.o: /usr/include/openssl/e_os2.h
+./starclient_conf.o: /usr/include/openssl/opensslconf.h
+./starclient_conf.o: /usr/include/pthread.h /usr/include/sched.h
+./starclient_conf.o: /usr/include/bits/sched.h /usr/include/signal.h
+./starclient_conf.o: /usr/include/bits/setjmp.h /usr/include/string.h
+./starclient_conf.o: /usr/include/sys/errno.h /usr/include/errno.h
+./starclient_conf.o: /usr/include/bits/errno.h /usr/include/linux/errno.h
+./starclient_conf.o: /usr/include/asm/errno.h
+./starclient_conf.o: /usr/include/asm-generic/errno.h
+./starclient_conf.o: /usr/include/asm-generic/errno-base.h
+./starclient_conf.o: /usr/include/sys/stat.h /usr/include/bits/stat.h
+./starclient_conf.o: /usr/include/termios.h /usr/include/bits/termios.h
+./starclient_conf.o: /usr/include/sys/ttydefaults.h /usr/include/unistd.h
+./starclient_conf.o: /usr/include/bits/posix_opt.h
+./starclient_conf.o: /usr/include/bits/confname.h /usr/include/getopt.h
+./starclient_conf.o: /usr/include/jpeglib.h /usr/include/jconfig.h
+./starclient_conf.o: /usr/include/jmorecfg.h
+./starclient_conf.o: /home/matthew/inhesion/h/core/bit.h
+./starclient_conf.o: /home/matthew/inhesion/h/core/object.h
+./starclient_conf.o: /home/matthew/inhesion/h/core/bool.h
+./starclient_conf.o: /home/matthew/inhesion/h/core/declarations.h
+./starclient_conf.o: /home/matthew/inhesion/h/core/types.h
+./starclient_conf.o: /home/matthew/inhesion/h/net/starclient_conf.h
+./starclient_conf.o: /home/matthew/inhesion/h/config/file.h
+./starclient_conf.o: /home/matthew/inhesion/h/container/list.h
+./starclient_conf.o: /home/matthew/inhesion/h/container/declarations.h
+./starclient_conf.o: /home/matthew/inhesion/h/core/message.h
+./starclient_conf.o: /home/matthew/inhesion/h/core/engine.h
+./starclient_conf.o: /home/matthew/inhesion/h/core/objectey.h
+./ping.o: /home/matthew/inhesion/h/core/string.h
+./ping.o: /home/matthew/inhesion/h/core/object.h
+./ping.o: /home/matthew/inhesion/h/core/bool.h
+./ping.o: /home/matthew/inhesion/h/core/declarations.h
+./ping.o: /home/matthew/inhesion/h/core/objectey.h
+./ping.o: /home/matthew/inhesion/h/core/types.h
+./ping.o: /home/matthew/inhesion/h/core/tools.h
+./ping.o: /home/matthew/inhesion/h/standard.h /usr/include/arpa/inet.h
+./ping.o: /usr/include/features.h /usr/include/bits/predefs.h
+./ping.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+./ping.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
+./ping.o: /usr/include/netinet/in.h /usr/include/stdint.h
+./ping.o: /usr/include/bits/wchar.h /usr/include/sys/socket.h
+./ping.o: /usr/include/sys/uio.h /usr/include/sys/types.h
+./ping.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+./ping.o: /usr/include/time.h
+./ping.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
+./ping.o: /usr/include/endian.h /usr/include/bits/endian.h
+./ping.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
+./ping.o: /usr/include/bits/select.h /usr/include/bits/sigset.h
+./ping.o: /usr/include/bits/time.h /usr/include/sys/sysmacros.h
+./ping.o: /usr/include/bits/pthreadtypes.h /usr/include/bits/uio.h
+./ping.o: /usr/include/bits/socket.h /usr/include/bits/sockaddr.h
+./ping.o: /usr/include/asm/socket.h /usr/include/asm-generic/socket.h
+./ping.o: /usr/include/asm/sockios.h /usr/include/asm-generic/sockios.h
+./ping.o: /usr/include/bits/in.h /usr/include/assert.h /usr/include/ctype.h
+./ping.o: /usr/include/xlocale.h /usr/include/dirent.h
+./ping.o: /usr/include/bits/dirent.h /usr/include/bits/posix1_lim.h
+./ping.o: /usr/include/bits/local_lim.h /usr/include/linux/limits.h
+./ping.o: /usr/include/fcntl.h /usr/include/bits/fcntl.h
+./ping.o: /usr/include/postgresql/libpq-fe.h /usr/include/stdio.h
+./ping.o: /usr/include/libio.h /usr/include/_G_config.h /usr/include/wchar.h
+./ping.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdarg.h
+./ping.o: /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h
+./ping.o: /usr/include/postgresql/postgres_ext.h /usr/include/math.h
+./ping.o: /usr/include/bits/huge_val.h /usr/include/bits/huge_valf.h
+./ping.o: /usr/include/bits/huge_vall.h /usr/include/bits/inf.h
+./ping.o: /usr/include/bits/nan.h /usr/include/bits/mathdef.h
+./ping.o: /usr/include/bits/mathcalls.h /usr/include/ncurses.h
+./ping.o: /usr/include/ncurses_dll.h
+./ping.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdbool.h
+./ping.o: /usr/include/unctrl.h /usr/include/curses.h
+./ping.o: /usr/include/openssl/rand.h /usr/include/stdlib.h
+./ping.o: /usr/include/alloca.h /usr/include/openssl/ossl_typ.h
+./ping.o: /usr/include/openssl/e_os2.h /usr/include/openssl/opensslconf.h
+./ping.o: /usr/include/pthread.h /usr/include/sched.h
+./ping.o: /usr/include/bits/sched.h /usr/include/signal.h
+./ping.o: /usr/include/bits/setjmp.h /usr/include/string.h
+./ping.o: /usr/include/sys/errno.h /usr/include/errno.h
+./ping.o: /usr/include/bits/errno.h /usr/include/linux/errno.h
+./ping.o: /usr/include/asm/errno.h /usr/include/asm-generic/errno.h
+./ping.o: /usr/include/asm-generic/errno-base.h /usr/include/sys/stat.h
+./ping.o: /usr/include/bits/stat.h /usr/include/termios.h
+./ping.o: /usr/include/bits/termios.h /usr/include/sys/ttydefaults.h
+./ping.o: /usr/include/unistd.h /usr/include/bits/posix_opt.h
+./ping.o: /usr/include/bits/confname.h /usr/include/getopt.h
+./ping.o: /usr/include/jpeglib.h /usr/include/jconfig.h
+./ping.o: /usr/include/jmorecfg.h /home/matthew/inhesion/h/core/bit.h
+./ping.o: /home/matthew/inhesion/h/net/ping.h
+./ping.o: /home/matthew/inhesion/h/core/message.h
+./ping.o: /home/matthew/inhesion/h/core/engine.h
+./engine_thread.o: /home/matthew/inhesion/h/standard.h
+./engine_thread.o: /usr/include/arpa/inet.h /usr/include/features.h
+./engine_thread.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
+./engine_thread.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
+./engine_thread.o: /usr/include/gnu/stubs-32.h /usr/include/netinet/in.h
+./engine_thread.o: /usr/include/stdint.h /usr/include/bits/wchar.h
+./engine_thread.o: /usr/include/sys/socket.h /usr/include/sys/uio.h
+./engine_thread.o: /usr/include/sys/types.h /usr/include/bits/types.h
+./engine_thread.o: /usr/include/bits/typesizes.h /usr/include/time.h
+./engine_thread.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
+./engine_thread.o: /usr/include/endian.h /usr/include/bits/endian.h
+./engine_thread.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
+./engine_thread.o: /usr/include/bits/select.h /usr/include/bits/sigset.h
+./engine_thread.o: /usr/include/bits/time.h /usr/include/sys/sysmacros.h
+./engine_thread.o: /usr/include/bits/pthreadtypes.h /usr/include/bits/uio.h
+./engine_thread.o: /usr/include/bits/socket.h /usr/include/bits/sockaddr.h
+./engine_thread.o: /usr/include/asm/socket.h
+./engine_thread.o: /usr/include/asm-generic/socket.h
+./engine_thread.o: /usr/include/asm/sockios.h
+./engine_thread.o: /usr/include/asm-generic/sockios.h /usr/include/bits/in.h
+./engine_thread.o: /usr/include/assert.h /usr/include/ctype.h
+./engine_thread.o: /usr/include/xlocale.h /usr/include/dirent.h
+./engine_thread.o: /usr/include/bits/dirent.h /usr/include/bits/posix1_lim.h
+./engine_thread.o: /usr/include/bits/local_lim.h /usr/include/linux/limits.h
+./engine_thread.o: /usr/include/fcntl.h /usr/include/bits/fcntl.h
+./engine_thread.o: /usr/include/postgresql/libpq-fe.h /usr/include/stdio.h
+./engine_thread.o: /usr/include/libio.h /usr/include/_G_config.h
+./engine_thread.o: /usr/include/wchar.h
+./engine_thread.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdarg.h
+./engine_thread.o: /usr/include/bits/stdio_lim.h
+./engine_thread.o: /usr/include/bits/sys_errlist.h
+./engine_thread.o: /usr/include/postgresql/postgres_ext.h /usr/include/math.h
+./engine_thread.o: /usr/include/bits/huge_val.h /usr/include/bits/huge_valf.h
+./engine_thread.o: /usr/include/bits/huge_vall.h /usr/include/bits/inf.h
+./engine_thread.o: /usr/include/bits/nan.h /usr/include/bits/mathdef.h
+./engine_thread.o: /usr/include/bits/mathcalls.h /usr/include/ncurses.h
+./engine_thread.o: /usr/include/ncurses_dll.h
+./engine_thread.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdbool.h
+./engine_thread.o: /usr/include/unctrl.h /usr/include/curses.h
+./engine_thread.o: /usr/include/openssl/rand.h /usr/include/stdlib.h
+./engine_thread.o: /usr/include/alloca.h /usr/include/openssl/ossl_typ.h
+./engine_thread.o: /usr/include/openssl/e_os2.h
+./engine_thread.o: /usr/include/openssl/opensslconf.h /usr/include/pthread.h
+./engine_thread.o: /usr/include/sched.h /usr/include/bits/sched.h
+./engine_thread.o: /usr/include/signal.h /usr/include/bits/setjmp.h
+./engine_thread.o: /usr/include/string.h /usr/include/sys/errno.h
+./engine_thread.o: /usr/include/errno.h /usr/include/bits/errno.h
+./engine_thread.o: /usr/include/linux/errno.h /usr/include/asm/errno.h
+./engine_thread.o: /usr/include/asm-generic/errno.h
+./engine_thread.o: /usr/include/asm-generic/errno-base.h
+./engine_thread.o: /usr/include/sys/stat.h /usr/include/bits/stat.h
+./engine_thread.o: /usr/include/termios.h /usr/include/bits/termios.h
+./engine_thread.o: /usr/include/sys/ttydefaults.h /usr/include/unistd.h
+./engine_thread.o: /usr/include/bits/posix_opt.h /usr/include/bits/confname.h
+./engine_thread.o: /usr/include/getopt.h /usr/include/jpeglib.h
+./engine_thread.o: /usr/include/jconfig.h /usr/include/jmorecfg.h
+./engine_thread.o: /home/matthew/inhesion/h/core/types.h
+./engine_thread.o: /home/matthew/inhesion/h/core/object.h
+./engine_thread.o: /home/matthew/inhesion/h/core/bool.h
+./engine_thread.o: /home/matthew/inhesion/h/core/declarations.h
+./engine_thread.o: /home/matthew/inhesion/h/net/engine_thread.h
+./post.o: /home/matthew/inhesion/h/container/list.h
+./post.o: /home/matthew/inhesion/h/container/declarations.h
+./post.o: /home/matthew/inhesion/h/core/message.h
+./post.o: /home/matthew/inhesion/h/core/engine.h
+./post.o: /home/matthew/inhesion/h/core/object.h
+./post.o: /home/matthew/inhesion/h/core/bool.h
+./post.o: /home/matthew/inhesion/h/core/declarations.h
+./post.o: /home/matthew/inhesion/h/core/types.h
+./post.o: /home/matthew/inhesion/h/core/objectey.h
+./post.o: /home/matthew/inhesion/h/core/tools.h
+./post.o: /home/matthew/inhesion/h/standard.h /usr/include/arpa/inet.h
+./post.o: /usr/include/features.h /usr/include/bits/predefs.h
+./post.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+./post.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
+./post.o: /usr/include/netinet/in.h /usr/include/stdint.h
+./post.o: /usr/include/bits/wchar.h /usr/include/sys/socket.h
+./post.o: /usr/include/sys/uio.h /usr/include/sys/types.h
+./post.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+./post.o: /usr/include/time.h
+./post.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
+./post.o: /usr/include/endian.h /usr/include/bits/endian.h
+./post.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
+./post.o: /usr/include/bits/select.h /usr/include/bits/sigset.h
+./post.o: /usr/include/bits/time.h /usr/include/sys/sysmacros.h
+./post.o: /usr/include/bits/pthreadtypes.h /usr/include/bits/uio.h
+./post.o: /usr/include/bits/socket.h /usr/include/bits/sockaddr.h
+./post.o: /usr/include/asm/socket.h /usr/include/asm-generic/socket.h
+./post.o: /usr/include/asm/sockios.h /usr/include/asm-generic/sockios.h
+./post.o: /usr/include/bits/in.h /usr/include/assert.h /usr/include/ctype.h
+./post.o: /usr/include/xlocale.h /usr/include/dirent.h
+./post.o: /usr/include/bits/dirent.h /usr/include/bits/posix1_lim.h
+./post.o: /usr/include/bits/local_lim.h /usr/include/linux/limits.h
+./post.o: /usr/include/fcntl.h /usr/include/bits/fcntl.h
+./post.o: /usr/include/postgresql/libpq-fe.h /usr/include/stdio.h
+./post.o: /usr/include/libio.h /usr/include/_G_config.h /usr/include/wchar.h
+./post.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdarg.h
+./post.o: /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h
+./post.o: /usr/include/postgresql/postgres_ext.h /usr/include/math.h
+./post.o: /usr/include/bits/huge_val.h /usr/include/bits/huge_valf.h
+./post.o: /usr/include/bits/huge_vall.h /usr/include/bits/inf.h
+./post.o: /usr/include/bits/nan.h /usr/include/bits/mathdef.h
+./post.o: /usr/include/bits/mathcalls.h /usr/include/ncurses.h
+./post.o: /usr/include/ncurses_dll.h
+./post.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdbool.h
+./post.o: /usr/include/unctrl.h /usr/include/curses.h
+./post.o: /usr/include/openssl/rand.h /usr/include/stdlib.h
+./post.o: /usr/include/alloca.h /usr/include/openssl/ossl_typ.h
+./post.o: /usr/include/openssl/e_os2.h /usr/include/openssl/opensslconf.h
+./post.o: /usr/include/pthread.h /usr/include/sched.h
+./post.o: /usr/include/bits/sched.h /usr/include/signal.h
+./post.o: /usr/include/bits/setjmp.h /usr/include/string.h
+./post.o: /usr/include/sys/errno.h /usr/include/errno.h
+./post.o: /usr/include/bits/errno.h /usr/include/linux/errno.h
+./post.o: /usr/include/asm/errno.h /usr/include/asm-generic/errno.h
+./post.o: /usr/include/asm-generic/errno-base.h /usr/include/sys/stat.h
+./post.o: /usr/include/bits/stat.h /usr/include/termios.h
+./post.o: /usr/include/bits/termios.h /usr/include/sys/ttydefaults.h
+./post.o: /usr/include/unistd.h /usr/include/bits/posix_opt.h
+./post.o: /usr/include/bits/confname.h /usr/include/getopt.h
+./post.o: /usr/include/jpeglib.h /usr/include/jconfig.h
+./post.o: /usr/include/jmorecfg.h /home/matthew/inhesion/h/core/bit.h
+./post.o: /home/matthew/inhesion/h/net/post.h
+./post.o: /home/matthew/inhesion/h/net/post_stats.h
+./post.o: /home/matthew/inhesion/h/net/socket.h
+./testhyperengine.o: /home/matthew/inhesion/h/core/content.h
+./testhyperengine.o: /home/matthew/inhesion/h/core/types.h
+./testhyperengine.o: /home/matthew/inhesion/h/core/object.h
+./testhyperengine.o: /home/matthew/inhesion/h/core/bool.h
+./testhyperengine.o: /home/matthew/inhesion/h/core/declarations.h
+./testhyperengine.o: /home/matthew/inhesion/h/core/tools.h
+./testhyperengine.o: /home/matthew/inhesion/h/standard.h
+./testhyperengine.o: /usr/include/arpa/inet.h /usr/include/features.h
+./testhyperengine.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
+./testhyperengine.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
+./testhyperengine.o: /usr/include/gnu/stubs-32.h /usr/include/netinet/in.h
+./testhyperengine.o: /usr/include/stdint.h /usr/include/bits/wchar.h
+./testhyperengine.o: /usr/include/sys/socket.h /usr/include/sys/uio.h
+./testhyperengine.o: /usr/include/sys/types.h /usr/include/bits/types.h
+./testhyperengine.o: /usr/include/bits/typesizes.h /usr/include/time.h
+./testhyperengine.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
+./testhyperengine.o: /usr/include/endian.h /usr/include/bits/endian.h
+./testhyperengine.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
+./testhyperengine.o: /usr/include/bits/select.h /usr/include/bits/sigset.h
+./testhyperengine.o: /usr/include/bits/time.h /usr/include/sys/sysmacros.h
+./testhyperengine.o: /usr/include/bits/pthreadtypes.h /usr/include/bits/uio.h
+./testhyperengine.o: /usr/include/bits/socket.h /usr/include/bits/sockaddr.h
+./testhyperengine.o: /usr/include/asm/socket.h
+./testhyperengine.o: /usr/include/asm-generic/socket.h
+./testhyperengine.o: /usr/include/asm/sockios.h
+./testhyperengine.o: /usr/include/asm-generic/sockios.h
+./testhyperengine.o: /usr/include/bits/in.h /usr/include/assert.h
+./testhyperengine.o: /usr/include/ctype.h /usr/include/xlocale.h
+./testhyperengine.o: /usr/include/dirent.h /usr/include/bits/dirent.h
+./testhyperengine.o: /usr/include/bits/posix1_lim.h
+./testhyperengine.o: /usr/include/bits/local_lim.h
+./testhyperengine.o: /usr/include/linux/limits.h /usr/include/fcntl.h
+./testhyperengine.o: /usr/include/bits/fcntl.h
+./testhyperengine.o: /usr/include/postgresql/libpq-fe.h /usr/include/stdio.h
+./testhyperengine.o: /usr/include/libio.h /usr/include/_G_config.h
+./testhyperengine.o: /usr/include/wchar.h
+./testhyperengine.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdarg.h
+./testhyperengine.o: /usr/include/bits/stdio_lim.h
+./testhyperengine.o: /usr/include/bits/sys_errlist.h
+./testhyperengine.o: /usr/include/postgresql/postgres_ext.h
+./testhyperengine.o: /usr/include/math.h /usr/include/bits/huge_val.h
+./testhyperengine.o: /usr/include/bits/huge_valf.h
+./testhyperengine.o: /usr/include/bits/huge_vall.h /usr/include/bits/inf.h
+./testhyperengine.o: /usr/include/bits/nan.h /usr/include/bits/mathdef.h
+./testhyperengine.o: /usr/include/bits/mathcalls.h /usr/include/ncurses.h
+./testhyperengine.o: /usr/include/ncurses_dll.h
+./testhyperengine.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdbool.h
+./testhyperengine.o: /usr/include/unctrl.h /usr/include/curses.h
+./testhyperengine.o: /usr/include/openssl/rand.h /usr/include/stdlib.h
+./testhyperengine.o: /usr/include/alloca.h /usr/include/openssl/ossl_typ.h
+./testhyperengine.o: /usr/include/openssl/e_os2.h
+./testhyperengine.o: /usr/include/openssl/opensslconf.h
+./testhyperengine.o: /usr/include/pthread.h /usr/include/sched.h
+./testhyperengine.o: /usr/include/bits/sched.h /usr/include/signal.h
+./testhyperengine.o: /usr/include/bits/setjmp.h /usr/include/string.h
+./testhyperengine.o: /usr/include/sys/errno.h /usr/include/errno.h
+./testhyperengine.o: /usr/include/bits/errno.h /usr/include/linux/errno.h
+./testhyperengine.o: /usr/include/asm/errno.h
+./testhyperengine.o: /usr/include/asm-generic/errno.h
+./testhyperengine.o: /usr/include/asm-generic/errno-base.h
+./testhyperengine.o: /usr/include/sys/stat.h /usr/include/bits/stat.h
+./testhyperengine.o: /usr/include/termios.h /usr/include/bits/termios.h
+./testhyperengine.o: /usr/include/sys/ttydefaults.h /usr/include/unistd.h
+./testhyperengine.o: /usr/include/bits/posix_opt.h
+./testhyperengine.o: /usr/include/bits/confname.h /usr/include/getopt.h
+./testhyperengine.o: /usr/include/jpeglib.h /usr/include/jconfig.h
+./testhyperengine.o: /usr/include/jmorecfg.h
+./testhyperengine.o: /home/matthew/inhesion/h/core/bit.h
+./testhyperengine.o: /home/matthew/inhesion/h/net/engine_thread.h
+./testhyperengine.o: /home/matthew/inhesion/h/net/hypermessage.h
+./testhyperengine.o: /home/matthew/inhesion/h/container/set.h
+./testhyperengine.o: /home/matthew/inhesion/h/container/list.h
+./testhyperengine.o: /home/matthew/inhesion/h/container/declarations.h
+./testhyperengine.o: /home/matthew/inhesion/h/core/message.h
+./testhyperengine.o: /home/matthew/inhesion/h/core/engine.h
+./testhyperengine.o: /home/matthew/inhesion/h/core/objectey.h
+./testhyperengine.o: /home/matthew/inhesion/h/core/nameobject.h
+./testhyperengine.o: /home/matthew/inhesion/h/core/uuid.h
+./testhyperengine.o: /home/matthew/inhesion/h/net/hyperversion.h
+./testhyperengine.o: /home/matthew/inhesion/h/net/server.h
+./testhyperengine.o: /home/matthew/inhesion/h/audit/log.h
+./testhyperengine.o: /home/matthew/inhesion/h/config/system.h
+./testhyperengine.o: /home/matthew/inhesion/h/core/objects.h
+./testhyperengine.o: /home/matthew/inhesion/h/core/messagey.h
+./testhyperengine.o: /home/matthew/inhesion/h/net/enginey.h
+./testhyperengine.o: /home/matthew/inhesion/h/net/types.h
+./testhyperengine.o: /home/matthew/inhesion/h/net/ip_address.h
+./testhyperengine.o: /home/matthew/inhesion/h/net/postey.h
+./testhyperengine.o: /home/matthew/inhesion/h/net/post_stats.h
+./testhyperengine.o: /home/matthew/inhesion/h/net/server_stats.h
+./testhyperengine.o: /home/matthew/inhesion/h/net/testhyperengine.h
+./testhyperengine.o: /home/matthew/inhesion/h/net/testmessage.h
+./testhyperengine.o: /home/matthew/inhesion/h/net/ping.h
+./clientsocket.o: /home/matthew/inhesion/h/standard.h
+./clientsocket.o: /usr/include/arpa/inet.h /usr/include/features.h
+./clientsocket.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
+./clientsocket.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
+./clientsocket.o: /usr/include/gnu/stubs-32.h /usr/include/netinet/in.h
+./clientsocket.o: /usr/include/stdint.h /usr/include/bits/wchar.h
+./clientsocket.o: /usr/include/sys/socket.h /usr/include/sys/uio.h
+./clientsocket.o: /usr/include/sys/types.h /usr/include/bits/types.h
+./clientsocket.o: /usr/include/bits/typesizes.h /usr/include/time.h
+./clientsocket.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
+./clientsocket.o: /usr/include/endian.h /usr/include/bits/endian.h
+./clientsocket.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
+./clientsocket.o: /usr/include/bits/select.h /usr/include/bits/sigset.h
+./clientsocket.o: /usr/include/bits/time.h /usr/include/sys/sysmacros.h
+./clientsocket.o: /usr/include/bits/pthreadtypes.h /usr/include/bits/uio.h
+./clientsocket.o: /usr/include/bits/socket.h /usr/include/bits/sockaddr.h
+./clientsocket.o: /usr/include/asm/socket.h /usr/include/asm-generic/socket.h
+./clientsocket.o: /usr/include/asm/sockios.h
+./clientsocket.o: /usr/include/asm-generic/sockios.h /usr/include/bits/in.h
+./clientsocket.o: /usr/include/assert.h /usr/include/ctype.h
+./clientsocket.o: /usr/include/xlocale.h /usr/include/dirent.h
+./clientsocket.o: /usr/include/bits/dirent.h /usr/include/bits/posix1_lim.h
+./clientsocket.o: /usr/include/bits/local_lim.h /usr/include/linux/limits.h
+./clientsocket.o: /usr/include/fcntl.h /usr/include/bits/fcntl.h
+./clientsocket.o: /usr/include/postgresql/libpq-fe.h /usr/include/stdio.h
+./clientsocket.o: /usr/include/libio.h /usr/include/_G_config.h
+./clientsocket.o: /usr/include/wchar.h
+./clientsocket.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdarg.h
+./clientsocket.o: /usr/include/bits/stdio_lim.h
+./clientsocket.o: /usr/include/bits/sys_errlist.h
+./clientsocket.o: /usr/include/postgresql/postgres_ext.h /usr/include/math.h
+./clientsocket.o: /usr/include/bits/huge_val.h /usr/include/bits/huge_valf.h
+./clientsocket.o: /usr/include/bits/huge_vall.h /usr/include/bits/inf.h
+./clientsocket.o: /usr/include/bits/nan.h /usr/include/bits/mathdef.h
+./clientsocket.o: /usr/include/bits/mathcalls.h /usr/include/ncurses.h
+./clientsocket.o: /usr/include/ncurses_dll.h
+./clientsocket.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdbool.h
+./clientsocket.o: /usr/include/unctrl.h /usr/include/curses.h
+./clientsocket.o: /usr/include/openssl/rand.h /usr/include/stdlib.h
+./clientsocket.o: /usr/include/alloca.h /usr/include/openssl/ossl_typ.h
+./clientsocket.o: /usr/include/openssl/e_os2.h
+./clientsocket.o: /usr/include/openssl/opensslconf.h /usr/include/pthread.h
+./clientsocket.o: /usr/include/sched.h /usr/include/bits/sched.h
+./clientsocket.o: /usr/include/signal.h /usr/include/bits/setjmp.h
+./clientsocket.o: /usr/include/string.h /usr/include/sys/errno.h
+./clientsocket.o: /usr/include/errno.h /usr/include/bits/errno.h
+./clientsocket.o: /usr/include/linux/errno.h /usr/include/asm/errno.h
+./clientsocket.o: /usr/include/asm-generic/errno.h
+./clientsocket.o: /usr/include/asm-generic/errno-base.h
+./clientsocket.o: /usr/include/sys/stat.h /usr/include/bits/stat.h
+./clientsocket.o: /usr/include/termios.h /usr/include/bits/termios.h
+./clientsocket.o: /usr/include/sys/ttydefaults.h /usr/include/unistd.h
+./clientsocket.o: /usr/include/bits/posix_opt.h /usr/include/bits/confname.h
+./clientsocket.o: /usr/include/getopt.h /usr/include/jpeglib.h
+./clientsocket.o: /usr/include/jconfig.h /usr/include/jmorecfg.h
+./clientsocket.o: /home/matthew/inhesion/h/net/clientsocket.h
+./testengine.o: /home/matthew/inhesion/h/core/tools.h
+./testengine.o: /home/matthew/inhesion/h/standard.h /usr/include/arpa/inet.h
+./testengine.o: /usr/include/features.h /usr/include/bits/predefs.h
+./testengine.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+./testengine.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
+./testengine.o: /usr/include/netinet/in.h /usr/include/stdint.h
+./testengine.o: /usr/include/bits/wchar.h /usr/include/sys/socket.h
+./testengine.o: /usr/include/sys/uio.h /usr/include/sys/types.h
+./testengine.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+./testengine.o: /usr/include/time.h
+./testengine.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
+./testengine.o: /usr/include/endian.h /usr/include/bits/endian.h
+./testengine.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
+./testengine.o: /usr/include/bits/select.h /usr/include/bits/sigset.h
+./testengine.o: /usr/include/bits/time.h /usr/include/sys/sysmacros.h
+./testengine.o: /usr/include/bits/pthreadtypes.h /usr/include/bits/uio.h
+./testengine.o: /usr/include/bits/socket.h /usr/include/bits/sockaddr.h
+./testengine.o: /usr/include/asm/socket.h /usr/include/asm-generic/socket.h
+./testengine.o: /usr/include/asm/sockios.h /usr/include/asm-generic/sockios.h
+./testengine.o: /usr/include/bits/in.h /usr/include/assert.h
+./testengine.o: /usr/include/ctype.h /usr/include/xlocale.h
+./testengine.o: /usr/include/dirent.h /usr/include/bits/dirent.h
+./testengine.o: /usr/include/bits/posix1_lim.h /usr/include/bits/local_lim.h
+./testengine.o: /usr/include/linux/limits.h /usr/include/fcntl.h
+./testengine.o: /usr/include/bits/fcntl.h /usr/include/postgresql/libpq-fe.h
+./testengine.o: /usr/include/stdio.h /usr/include/libio.h
+./testengine.o: /usr/include/_G_config.h /usr/include/wchar.h
+./testengine.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdarg.h
+./testengine.o: /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h
+./testengine.o: /usr/include/postgresql/postgres_ext.h /usr/include/math.h
+./testengine.o: /usr/include/bits/huge_val.h /usr/include/bits/huge_valf.h
+./testengine.o: /usr/include/bits/huge_vall.h /usr/include/bits/inf.h
+./testengine.o: /usr/include/bits/nan.h /usr/include/bits/mathdef.h
+./testengine.o: /usr/include/bits/mathcalls.h /usr/include/ncurses.h
+./testengine.o: /usr/include/ncurses_dll.h
+./testengine.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdbool.h
+./testengine.o: /usr/include/unctrl.h /usr/include/curses.h
+./testengine.o: /usr/include/openssl/rand.h /usr/include/stdlib.h
+./testengine.o: /usr/include/alloca.h /usr/include/openssl/ossl_typ.h
+./testengine.o: /usr/include/openssl/e_os2.h
+./testengine.o: /usr/include/openssl/opensslconf.h /usr/include/pthread.h
+./testengine.o: /usr/include/sched.h /usr/include/bits/sched.h
+./testengine.o: /usr/include/signal.h /usr/include/bits/setjmp.h
+./testengine.o: /usr/include/string.h /usr/include/sys/errno.h
+./testengine.o: /usr/include/errno.h /usr/include/bits/errno.h
+./testengine.o: /usr/include/linux/errno.h /usr/include/asm/errno.h
+./testengine.o: /usr/include/asm-generic/errno.h
+./testengine.o: /usr/include/asm-generic/errno-base.h /usr/include/sys/stat.h
+./testengine.o: /usr/include/bits/stat.h /usr/include/termios.h
+./testengine.o: /usr/include/bits/termios.h /usr/include/sys/ttydefaults.h
+./testengine.o: /usr/include/unistd.h /usr/include/bits/posix_opt.h
+./testengine.o: /usr/include/bits/confname.h /usr/include/getopt.h
+./testengine.o: /usr/include/jpeglib.h /usr/include/jconfig.h
+./testengine.o: /usr/include/jmorecfg.h /home/matthew/inhesion/h/core/bit.h
+./testengine.o: /home/matthew/inhesion/h/core/object.h
+./testengine.o: /home/matthew/inhesion/h/core/bool.h
+./testengine.o: /home/matthew/inhesion/h/core/declarations.h
+./testengine.o: /home/matthew/inhesion/h/core/types.h
+./testengine.o: /home/matthew/inhesion/h/net/engine_thread.h
+./testengine.o: /home/matthew/inhesion/h/net/pong.h
+./testengine.o: /home/matthew/inhesion/h/core/message.h
+./testengine.o: /home/matthew/inhesion/h/core/engine.h
+./testengine.o: /home/matthew/inhesion/h/net/server.h
+./testengine.o: /home/matthew/inhesion/h/audit/log.h
+./testengine.o: /home/matthew/inhesion/h/config/system.h
+./testengine.o: /home/matthew/inhesion/h/core/objects.h
+./testengine.o: /home/matthew/inhesion/h/core/objectey.h
+./testengine.o: /home/matthew/inhesion/h/container/list.h
+./testengine.o: /home/matthew/inhesion/h/container/declarations.h
+./testengine.o: /home/matthew/inhesion/h/core/messagey.h
+./testengine.o: /home/matthew/inhesion/h/net/enginey.h
+./testengine.o: /home/matthew/inhesion/h/net/types.h
+./testengine.o: /home/matthew/inhesion/h/net/ip_address.h
+./testengine.o: /home/matthew/inhesion/h/net/postey.h
+./testengine.o: /home/matthew/inhesion/h/net/post_stats.h
+./testengine.o: /home/matthew/inhesion/h/net/server_stats.h
+./testengine.o: /home/matthew/inhesion/h/net/testengine.h
+./testengine.o: /home/matthew/inhesion/h/net/testmessage.h
+./testengine.o: /home/matthew/inhesion/h/net/ping.h
+./node_conf.o: /home/matthew/inhesion/h/core/tools.h
+./node_conf.o: /home/matthew/inhesion/h/standard.h /usr/include/arpa/inet.h
+./node_conf.o: /usr/include/features.h /usr/include/bits/predefs.h
+./node_conf.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+./node_conf.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
+./node_conf.o: /usr/include/netinet/in.h /usr/include/stdint.h
+./node_conf.o: /usr/include/bits/wchar.h /usr/include/sys/socket.h
+./node_conf.o: /usr/include/sys/uio.h /usr/include/sys/types.h
+./node_conf.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+./node_conf.o: /usr/include/time.h
+./node_conf.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
+./node_conf.o: /usr/include/endian.h /usr/include/bits/endian.h
+./node_conf.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
+./node_conf.o: /usr/include/bits/select.h /usr/include/bits/sigset.h
+./node_conf.o: /usr/include/bits/time.h /usr/include/sys/sysmacros.h
+./node_conf.o: /usr/include/bits/pthreadtypes.h /usr/include/bits/uio.h
+./node_conf.o: /usr/include/bits/socket.h /usr/include/bits/sockaddr.h
+./node_conf.o: /usr/include/asm/socket.h /usr/include/asm-generic/socket.h
+./node_conf.o: /usr/include/asm/sockios.h /usr/include/asm-generic/sockios.h
+./node_conf.o: /usr/include/bits/in.h /usr/include/assert.h
+./node_conf.o: /usr/include/ctype.h /usr/include/xlocale.h
+./node_conf.o: /usr/include/dirent.h /usr/include/bits/dirent.h
+./node_conf.o: /usr/include/bits/posix1_lim.h /usr/include/bits/local_lim.h
+./node_conf.o: /usr/include/linux/limits.h /usr/include/fcntl.h
+./node_conf.o: /usr/include/bits/fcntl.h /usr/include/postgresql/libpq-fe.h
+./node_conf.o: /usr/include/stdio.h /usr/include/libio.h
+./node_conf.o: /usr/include/_G_config.h /usr/include/wchar.h
+./node_conf.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdarg.h
+./node_conf.o: /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h
+./node_conf.o: /usr/include/postgresql/postgres_ext.h /usr/include/math.h
+./node_conf.o: /usr/include/bits/huge_val.h /usr/include/bits/huge_valf.h
+./node_conf.o: /usr/include/bits/huge_vall.h /usr/include/bits/inf.h
+./node_conf.o: /usr/include/bits/nan.h /usr/include/bits/mathdef.h
+./node_conf.o: /usr/include/bits/mathcalls.h /usr/include/ncurses.h
+./node_conf.o: /usr/include/ncurses_dll.h
+./node_conf.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdbool.h
+./node_conf.o: /usr/include/unctrl.h /usr/include/curses.h
+./node_conf.o: /usr/include/openssl/rand.h /usr/include/stdlib.h
+./node_conf.o: /usr/include/alloca.h /usr/include/openssl/ossl_typ.h
+./node_conf.o: /usr/include/openssl/e_os2.h
+./node_conf.o: /usr/include/openssl/opensslconf.h /usr/include/pthread.h
+./node_conf.o: /usr/include/sched.h /usr/include/bits/sched.h
+./node_conf.o: /usr/include/signal.h /usr/include/bits/setjmp.h
+./node_conf.o: /usr/include/string.h /usr/include/sys/errno.h
+./node_conf.o: /usr/include/errno.h /usr/include/bits/errno.h
+./node_conf.o: /usr/include/linux/errno.h /usr/include/asm/errno.h
+./node_conf.o: /usr/include/asm-generic/errno.h
+./node_conf.o: /usr/include/asm-generic/errno-base.h /usr/include/sys/stat.h
+./node_conf.o: /usr/include/bits/stat.h /usr/include/termios.h
+./node_conf.o: /usr/include/bits/termios.h /usr/include/sys/ttydefaults.h
+./node_conf.o: /usr/include/unistd.h /usr/include/bits/posix_opt.h
+./node_conf.o: /usr/include/bits/confname.h /usr/include/getopt.h
+./node_conf.o: /usr/include/jpeglib.h /usr/include/jconfig.h
+./node_conf.o: /usr/include/jmorecfg.h /home/matthew/inhesion/h/core/bit.h
+./node_conf.o: /home/matthew/inhesion/h/core/object.h
+./node_conf.o: /home/matthew/inhesion/h/core/bool.h
+./node_conf.o: /home/matthew/inhesion/h/core/declarations.h
+./node_conf.o: /home/matthew/inhesion/h/core/types.h
+./node_conf.o: /home/matthew/inhesion/h/net/node_conf.h
+./node_conf.o: /home/matthew/inhesion/h/config/file.h
+./node_conf.o: /home/matthew/inhesion/h/container/list.h
+./node_conf.o: /home/matthew/inhesion/h/container/declarations.h
+./node_conf.o: /home/matthew/inhesion/h/core/message.h
+./node_conf.o: /home/matthew/inhesion/h/core/engine.h
+./node_conf.o: /home/matthew/inhesion/h/core/objectey.h
+./enginey.o: /home/matthew/inhesion/h/standard.h /usr/include/arpa/inet.h
+./enginey.o: /usr/include/features.h /usr/include/bits/predefs.h
+./enginey.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+./enginey.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
+./enginey.o: /usr/include/netinet/in.h /usr/include/stdint.h
+./enginey.o: /usr/include/bits/wchar.h /usr/include/sys/socket.h
+./enginey.o: /usr/include/sys/uio.h /usr/include/sys/types.h
+./enginey.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+./enginey.o: /usr/include/time.h
+./enginey.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
+./enginey.o: /usr/include/endian.h /usr/include/bits/endian.h
+./enginey.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
+./enginey.o: /usr/include/bits/select.h /usr/include/bits/sigset.h
+./enginey.o: /usr/include/bits/time.h /usr/include/sys/sysmacros.h
+./enginey.o: /usr/include/bits/pthreadtypes.h /usr/include/bits/uio.h
+./enginey.o: /usr/include/bits/socket.h /usr/include/bits/sockaddr.h
+./enginey.o: /usr/include/asm/socket.h /usr/include/asm-generic/socket.h
+./enginey.o: /usr/include/asm/sockios.h /usr/include/asm-generic/sockios.h
+./enginey.o: /usr/include/bits/in.h /usr/include/assert.h
+./enginey.o: /usr/include/ctype.h /usr/include/xlocale.h
+./enginey.o: /usr/include/dirent.h /usr/include/bits/dirent.h
+./enginey.o: /usr/include/bits/posix1_lim.h /usr/include/bits/local_lim.h
+./enginey.o: /usr/include/linux/limits.h /usr/include/fcntl.h
+./enginey.o: /usr/include/bits/fcntl.h /usr/include/postgresql/libpq-fe.h
+./enginey.o: /usr/include/stdio.h /usr/include/libio.h
+./enginey.o: /usr/include/_G_config.h /usr/include/wchar.h
+./enginey.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdarg.h
+./enginey.o: /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h
+./enginey.o: /usr/include/postgresql/postgres_ext.h /usr/include/math.h
+./enginey.o: /usr/include/bits/huge_val.h /usr/include/bits/huge_valf.h
+./enginey.o: /usr/include/bits/huge_vall.h /usr/include/bits/inf.h
+./enginey.o: /usr/include/bits/nan.h /usr/include/bits/mathdef.h
+./enginey.o: /usr/include/bits/mathcalls.h /usr/include/ncurses.h
+./enginey.o: /usr/include/ncurses_dll.h
+./enginey.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdbool.h
+./enginey.o: /usr/include/unctrl.h /usr/include/curses.h
+./enginey.o: /usr/include/openssl/rand.h /usr/include/stdlib.h
+./enginey.o: /usr/include/alloca.h /usr/include/openssl/ossl_typ.h
+./enginey.o: /usr/include/openssl/e_os2.h /usr/include/openssl/opensslconf.h
+./enginey.o: /usr/include/pthread.h /usr/include/sched.h
+./enginey.o: /usr/include/bits/sched.h /usr/include/signal.h
+./enginey.o: /usr/include/bits/setjmp.h /usr/include/string.h
+./enginey.o: /usr/include/sys/errno.h /usr/include/errno.h
+./enginey.o: /usr/include/bits/errno.h /usr/include/linux/errno.h
+./enginey.o: /usr/include/asm/errno.h /usr/include/asm-generic/errno.h
+./enginey.o: /usr/include/asm-generic/errno-base.h /usr/include/sys/stat.h
+./enginey.o: /usr/include/bits/stat.h /usr/include/termios.h
+./enginey.o: /usr/include/bits/termios.h /usr/include/sys/ttydefaults.h
+./enginey.o: /usr/include/unistd.h /usr/include/bits/posix_opt.h
+./enginey.o: /usr/include/bits/confname.h /usr/include/getopt.h
+./enginey.o: /usr/include/jpeglib.h /usr/include/jconfig.h
+./enginey.o: /usr/include/jmorecfg.h /home/matthew/inhesion/h/core/types.h
+./enginey.o: /home/matthew/inhesion/h/core/object.h
+./enginey.o: /home/matthew/inhesion/h/core/bool.h
+./enginey.o: /home/matthew/inhesion/h/core/declarations.h
+./enginey.o: /home/matthew/inhesion/h/net/enginey.h
+./enginey.o: /home/matthew/inhesion/h/net/types.h
+./server_stats.o: /home/matthew/inhesion/h/core/long.h
+./server_stats.o: /home/matthew/inhesion/h/core/object.h
+./server_stats.o: /home/matthew/inhesion/h/core/bool.h
+./server_stats.o: /home/matthew/inhesion/h/core/declarations.h
+./server_stats.o: /home/matthew/inhesion/h/core/objectey.h
+./server_stats.o: /home/matthew/inhesion/h/core/types.h
+./server_stats.o: /home/matthew/inhesion/h/core/message.h
+./server_stats.o: /home/matthew/inhesion/h/core/engine.h
+./server_stats.o: /home/matthew/inhesion/h/core/short.h
+./server_stats.o: /home/matthew/inhesion/h/core/tools.h
+./server_stats.o: /home/matthew/inhesion/h/standard.h
+./server_stats.o: /usr/include/arpa/inet.h /usr/include/features.h
+./server_stats.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
+./server_stats.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
+./server_stats.o: /usr/include/gnu/stubs-32.h /usr/include/netinet/in.h
+./server_stats.o: /usr/include/stdint.h /usr/include/bits/wchar.h
+./server_stats.o: /usr/include/sys/socket.h /usr/include/sys/uio.h
+./server_stats.o: /usr/include/sys/types.h /usr/include/bits/types.h
+./server_stats.o: /usr/include/bits/typesizes.h /usr/include/time.h
+./server_stats.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
+./server_stats.o: /usr/include/endian.h /usr/include/bits/endian.h
+./server_stats.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
+./server_stats.o: /usr/include/bits/select.h /usr/include/bits/sigset.h
+./server_stats.o: /usr/include/bits/time.h /usr/include/sys/sysmacros.h
+./server_stats.o: /usr/include/bits/pthreadtypes.h /usr/include/bits/uio.h
+./server_stats.o: /usr/include/bits/socket.h /usr/include/bits/sockaddr.h
+./server_stats.o: /usr/include/asm/socket.h /usr/include/asm-generic/socket.h
+./server_stats.o: /usr/include/asm/sockios.h
+./server_stats.o: /usr/include/asm-generic/sockios.h /usr/include/bits/in.h
+./server_stats.o: /usr/include/assert.h /usr/include/ctype.h
+./server_stats.o: /usr/include/xlocale.h /usr/include/dirent.h
+./server_stats.o: /usr/include/bits/dirent.h /usr/include/bits/posix1_lim.h
+./server_stats.o: /usr/include/bits/local_lim.h /usr/include/linux/limits.h
+./server_stats.o: /usr/include/fcntl.h /usr/include/bits/fcntl.h
+./server_stats.o: /usr/include/postgresql/libpq-fe.h /usr/include/stdio.h
+./server_stats.o: /usr/include/libio.h /usr/include/_G_config.h
+./server_stats.o: /usr/include/wchar.h
+./server_stats.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdarg.h
+./server_stats.o: /usr/include/bits/stdio_lim.h
+./server_stats.o: /usr/include/bits/sys_errlist.h
+./server_stats.o: /usr/include/postgresql/postgres_ext.h /usr/include/math.h
+./server_stats.o: /usr/include/bits/huge_val.h /usr/include/bits/huge_valf.h
+./server_stats.o: /usr/include/bits/huge_vall.h /usr/include/bits/inf.h
+./server_stats.o: /usr/include/bits/nan.h /usr/include/bits/mathdef.h
+./server_stats.o: /usr/include/bits/mathcalls.h /usr/include/ncurses.h
+./server_stats.o: /usr/include/ncurses_dll.h
+./server_stats.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdbool.h
+./server_stats.o: /usr/include/unctrl.h /usr/include/curses.h
+./server_stats.o: /usr/include/openssl/rand.h /usr/include/stdlib.h
+./server_stats.o: /usr/include/alloca.h /usr/include/openssl/ossl_typ.h
+./server_stats.o: /usr/include/openssl/e_os2.h
+./server_stats.o: /usr/include/openssl/opensslconf.h /usr/include/pthread.h
+./server_stats.o: /usr/include/sched.h /usr/include/bits/sched.h
+./server_stats.o: /usr/include/signal.h /usr/include/bits/setjmp.h
+./server_stats.o: /usr/include/string.h /usr/include/sys/errno.h
+./server_stats.o: /usr/include/errno.h /usr/include/bits/errno.h
+./server_stats.o: /usr/include/linux/errno.h /usr/include/asm/errno.h
+./server_stats.o: /usr/include/asm-generic/errno.h
+./server_stats.o: /usr/include/asm-generic/errno-base.h
+./server_stats.o: /usr/include/sys/stat.h /usr/include/bits/stat.h
+./server_stats.o: /usr/include/termios.h /usr/include/bits/termios.h
+./server_stats.o: /usr/include/sys/ttydefaults.h /usr/include/unistd.h
+./server_stats.o: /usr/include/bits/posix_opt.h /usr/include/bits/confname.h
+./server_stats.o: /usr/include/getopt.h /usr/include/jpeglib.h
+./server_stats.o: /usr/include/jconfig.h /usr/include/jmorecfg.h
+./server_stats.o: /home/matthew/inhesion/h/core/bit.h
+./server_stats.o: /home/matthew/inhesion/h/net/server_stats.h
+./hyperversion.o: /home/matthew/inhesion/h/net/hyperversion.h
+./testmessage.o: /home/matthew/inhesion/h/core/engine.h
+./testmessage.o: /home/matthew/inhesion/h/core/message.h
+./testmessage.o: /home/matthew/inhesion/h/core/object.h
+./testmessage.o: /home/matthew/inhesion/h/core/bool.h
+./testmessage.o: /home/matthew/inhesion/h/core/declarations.h
+./testmessage.o: /home/matthew/inhesion/h/core/types.h
+./testmessage.o: /home/matthew/inhesion/h/core/messagey.h
+./testmessage.o: /home/matthew/inhesion/h/core/tools.h
+./testmessage.o: /home/matthew/inhesion/h/standard.h /usr/include/arpa/inet.h
+./testmessage.o: /usr/include/features.h /usr/include/bits/predefs.h
+./testmessage.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+./testmessage.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
+./testmessage.o: /usr/include/netinet/in.h /usr/include/stdint.h
+./testmessage.o: /usr/include/bits/wchar.h /usr/include/sys/socket.h
+./testmessage.o: /usr/include/sys/uio.h /usr/include/sys/types.h
+./testmessage.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+./testmessage.o: /usr/include/time.h
+./testmessage.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
+./testmessage.o: /usr/include/endian.h /usr/include/bits/endian.h
+./testmessage.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
+./testmessage.o: /usr/include/bits/select.h /usr/include/bits/sigset.h
+./testmessage.o: /usr/include/bits/time.h /usr/include/sys/sysmacros.h
+./testmessage.o: /usr/include/bits/pthreadtypes.h /usr/include/bits/uio.h
+./testmessage.o: /usr/include/bits/socket.h /usr/include/bits/sockaddr.h
+./testmessage.o: /usr/include/asm/socket.h /usr/include/asm-generic/socket.h
+./testmessage.o: /usr/include/asm/sockios.h
+./testmessage.o: /usr/include/asm-generic/sockios.h /usr/include/bits/in.h
+./testmessage.o: /usr/include/assert.h /usr/include/ctype.h
+./testmessage.o: /usr/include/xlocale.h /usr/include/dirent.h
+./testmessage.o: /usr/include/bits/dirent.h /usr/include/bits/posix1_lim.h
+./testmessage.o: /usr/include/bits/local_lim.h /usr/include/linux/limits.h
+./testmessage.o: /usr/include/fcntl.h /usr/include/bits/fcntl.h
+./testmessage.o: /usr/include/postgresql/libpq-fe.h /usr/include/stdio.h
+./testmessage.o: /usr/include/libio.h /usr/include/_G_config.h
+./testmessage.o: /usr/include/wchar.h
+./testmessage.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdarg.h
+./testmessage.o: /usr/include/bits/stdio_lim.h
+./testmessage.o: /usr/include/bits/sys_errlist.h
+./testmessage.o: /usr/include/postgresql/postgres_ext.h /usr/include/math.h
+./testmessage.o: /usr/include/bits/huge_val.h /usr/include/bits/huge_valf.h
+./testmessage.o: /usr/include/bits/huge_vall.h /usr/include/bits/inf.h
+./testmessage.o: /usr/include/bits/nan.h /usr/include/bits/mathdef.h
+./testmessage.o: /usr/include/bits/mathcalls.h /usr/include/ncurses.h
+./testmessage.o: /usr/include/ncurses_dll.h
+./testmessage.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdbool.h
+./testmessage.o: /usr/include/unctrl.h /usr/include/curses.h
+./testmessage.o: /usr/include/openssl/rand.h /usr/include/stdlib.h
+./testmessage.o: /usr/include/alloca.h /usr/include/openssl/ossl_typ.h
+./testmessage.o: /usr/include/openssl/e_os2.h
+./testmessage.o: /usr/include/openssl/opensslconf.h /usr/include/pthread.h
+./testmessage.o: /usr/include/sched.h /usr/include/bits/sched.h
+./testmessage.o: /usr/include/signal.h /usr/include/bits/setjmp.h
+./testmessage.o: /usr/include/string.h /usr/include/sys/errno.h
+./testmessage.o: /usr/include/errno.h /usr/include/bits/errno.h
+./testmessage.o: /usr/include/linux/errno.h /usr/include/asm/errno.h
+./testmessage.o: /usr/include/asm-generic/errno.h
+./testmessage.o: /usr/include/asm-generic/errno-base.h
+./testmessage.o: /usr/include/sys/stat.h /usr/include/bits/stat.h
+./testmessage.o: /usr/include/termios.h /usr/include/bits/termios.h
+./testmessage.o: /usr/include/sys/ttydefaults.h /usr/include/unistd.h
+./testmessage.o: /usr/include/bits/posix_opt.h /usr/include/bits/confname.h
+./testmessage.o: /usr/include/getopt.h /usr/include/jpeglib.h
+./testmessage.o: /usr/include/jconfig.h /usr/include/jmorecfg.h
+./testmessage.o: /home/matthew/inhesion/h/core/bit.h
+./testmessage.o: /home/matthew/inhesion/h/net/testengine.h
+./testmessage.o: /home/matthew/inhesion/h/net/server.h
+./testmessage.o: /home/matthew/inhesion/h/audit/log.h
+./testmessage.o: /home/matthew/inhesion/h/config/system.h
+./testmessage.o: /home/matthew/inhesion/h/core/objects.h
+./testmessage.o: /home/matthew/inhesion/h/core/objectey.h
+./testmessage.o: /home/matthew/inhesion/h/container/list.h
+./testmessage.o: /home/matthew/inhesion/h/container/declarations.h
+./testmessage.o: /home/matthew/inhesion/h/net/enginey.h
+./testmessage.o: /home/matthew/inhesion/h/net/types.h
+./testmessage.o: /home/matthew/inhesion/h/net/ip_address.h
+./testmessage.o: /home/matthew/inhesion/h/net/postey.h
+./testmessage.o: /home/matthew/inhesion/h/net/post_stats.h
+./testmessage.o: /home/matthew/inhesion/h/net/server_stats.h
+./testmessage.o: /home/matthew/inhesion/h/net/testmessage.h
+./testmessage.o: /home/matthew/inhesion/h/net/ping.h
+./starclient_stats.o: /home/matthew/inhesion/h/core/tools.h
+./starclient_stats.o: /home/matthew/inhesion/h/standard.h
+./starclient_stats.o: /usr/include/arpa/inet.h /usr/include/features.h
+./starclient_stats.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
+./starclient_stats.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
+./starclient_stats.o: /usr/include/gnu/stubs-32.h /usr/include/netinet/in.h
+./starclient_stats.o: /usr/include/stdint.h /usr/include/bits/wchar.h
+./starclient_stats.o: /usr/include/sys/socket.h /usr/include/sys/uio.h
+./starclient_stats.o: /usr/include/sys/types.h /usr/include/bits/types.h
+./starclient_stats.o: /usr/include/bits/typesizes.h /usr/include/time.h
+./starclient_stats.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
+./starclient_stats.o: /usr/include/endian.h /usr/include/bits/endian.h
+./starclient_stats.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
+./starclient_stats.o: /usr/include/bits/select.h /usr/include/bits/sigset.h
+./starclient_stats.o: /usr/include/bits/time.h /usr/include/sys/sysmacros.h
+./starclient_stats.o: /usr/include/bits/pthreadtypes.h
+./starclient_stats.o: /usr/include/bits/uio.h /usr/include/bits/socket.h
+./starclient_stats.o: /usr/include/bits/sockaddr.h /usr/include/asm/socket.h
+./starclient_stats.o: /usr/include/asm-generic/socket.h
+./starclient_stats.o: /usr/include/asm/sockios.h
+./starclient_stats.o: /usr/include/asm-generic/sockios.h
+./starclient_stats.o: /usr/include/bits/in.h /usr/include/assert.h
+./starclient_stats.o: /usr/include/ctype.h /usr/include/xlocale.h
+./starclient_stats.o: /usr/include/dirent.h /usr/include/bits/dirent.h
+./starclient_stats.o: /usr/include/bits/posix1_lim.h
+./starclient_stats.o: /usr/include/bits/local_lim.h
+./starclient_stats.o: /usr/include/linux/limits.h /usr/include/fcntl.h
+./starclient_stats.o: /usr/include/bits/fcntl.h
+./starclient_stats.o: /usr/include/postgresql/libpq-fe.h /usr/include/stdio.h
+./starclient_stats.o: /usr/include/libio.h /usr/include/_G_config.h
+./starclient_stats.o: /usr/include/wchar.h
+./starclient_stats.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdarg.h
+./starclient_stats.o: /usr/include/bits/stdio_lim.h
+./starclient_stats.o: /usr/include/bits/sys_errlist.h
+./starclient_stats.o: /usr/include/postgresql/postgres_ext.h
+./starclient_stats.o: /usr/include/math.h /usr/include/bits/huge_val.h
+./starclient_stats.o: /usr/include/bits/huge_valf.h
+./starclient_stats.o: /usr/include/bits/huge_vall.h /usr/include/bits/inf.h
+./starclient_stats.o: /usr/include/bits/nan.h /usr/include/bits/mathdef.h
+./starclient_stats.o: /usr/include/bits/mathcalls.h /usr/include/ncurses.h
+./starclient_stats.o: /usr/include/ncurses_dll.h
+./starclient_stats.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdbool.h
+./starclient_stats.o: /usr/include/unctrl.h /usr/include/curses.h
+./starclient_stats.o: /usr/include/openssl/rand.h /usr/include/stdlib.h
+./starclient_stats.o: /usr/include/alloca.h /usr/include/openssl/ossl_typ.h
+./starclient_stats.o: /usr/include/openssl/e_os2.h
+./starclient_stats.o: /usr/include/openssl/opensslconf.h
+./starclient_stats.o: /usr/include/pthread.h /usr/include/sched.h
+./starclient_stats.o: /usr/include/bits/sched.h /usr/include/signal.h
+./starclient_stats.o: /usr/include/bits/setjmp.h /usr/include/string.h
+./starclient_stats.o: /usr/include/sys/errno.h /usr/include/errno.h
+./starclient_stats.o: /usr/include/bits/errno.h /usr/include/linux/errno.h
+./starclient_stats.o: /usr/include/asm/errno.h
+./starclient_stats.o: /usr/include/asm-generic/errno.h
+./starclient_stats.o: /usr/include/asm-generic/errno-base.h
+./starclient_stats.o: /usr/include/sys/stat.h /usr/include/bits/stat.h
+./starclient_stats.o: /usr/include/termios.h /usr/include/bits/termios.h
+./starclient_stats.o: /usr/include/sys/ttydefaults.h /usr/include/unistd.h
+./starclient_stats.o: /usr/include/bits/posix_opt.h
+./starclient_stats.o: /usr/include/bits/confname.h /usr/include/getopt.h
+./starclient_stats.o: /usr/include/jpeglib.h /usr/include/jconfig.h
+./starclient_stats.o: /usr/include/jmorecfg.h
+./starclient_stats.o: /home/matthew/inhesion/h/core/bit.h
+./starclient_stats.o: /home/matthew/inhesion/h/core/object.h
+./starclient_stats.o: /home/matthew/inhesion/h/core/bool.h
+./starclient_stats.o: /home/matthew/inhesion/h/core/declarations.h
+./starclient_stats.o: /home/matthew/inhesion/h/core/types.h
+./starclient_stats.o: /home/matthew/inhesion/h/net/starclient_stats.h
+./starclient_stats.o: /home/matthew/inhesion/h/core/message.h
+./starclient_stats.o: /home/matthew/inhesion/h/core/engine.h
+./exchange.o: /home/matthew/inhesion/h/container/set.h
+./exchange.o: /home/matthew/inhesion/h/container/list.h
+./exchange.o: /home/matthew/inhesion/h/container/declarations.h
+./exchange.o: /home/matthew/inhesion/h/core/message.h
+./exchange.o: /home/matthew/inhesion/h/core/engine.h
+./exchange.o: /home/matthew/inhesion/h/core/object.h
+./exchange.o: /home/matthew/inhesion/h/core/bool.h
+./exchange.o: /home/matthew/inhesion/h/core/declarations.h
+./exchange.o: /home/matthew/inhesion/h/core/types.h
+./exchange.o: /home/matthew/inhesion/h/core/objectey.h
+./exchange.o: /home/matthew/inhesion/h/core/tools.h
+./exchange.o: /home/matthew/inhesion/h/standard.h /usr/include/arpa/inet.h
+./exchange.o: /usr/include/features.h /usr/include/bits/predefs.h
+./exchange.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+./exchange.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
+./exchange.o: /usr/include/netinet/in.h /usr/include/stdint.h
+./exchange.o: /usr/include/bits/wchar.h /usr/include/sys/socket.h
+./exchange.o: /usr/include/sys/uio.h /usr/include/sys/types.h
+./exchange.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+./exchange.o: /usr/include/time.h
+./exchange.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
+./exchange.o: /usr/include/endian.h /usr/include/bits/endian.h
+./exchange.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
+./exchange.o: /usr/include/bits/select.h /usr/include/bits/sigset.h
+./exchange.o: /usr/include/bits/time.h /usr/include/sys/sysmacros.h
+./exchange.o: /usr/include/bits/pthreadtypes.h /usr/include/bits/uio.h
+./exchange.o: /usr/include/bits/socket.h /usr/include/bits/sockaddr.h
+./exchange.o: /usr/include/asm/socket.h /usr/include/asm-generic/socket.h
+./exchange.o: /usr/include/asm/sockios.h /usr/include/asm-generic/sockios.h
+./exchange.o: /usr/include/bits/in.h /usr/include/assert.h
+./exchange.o: /usr/include/ctype.h /usr/include/xlocale.h
+./exchange.o: /usr/include/dirent.h /usr/include/bits/dirent.h
+./exchange.o: /usr/include/bits/posix1_lim.h /usr/include/bits/local_lim.h
+./exchange.o: /usr/include/linux/limits.h /usr/include/fcntl.h
+./exchange.o: /usr/include/bits/fcntl.h /usr/include/postgresql/libpq-fe.h
+./exchange.o: /usr/include/stdio.h /usr/include/libio.h
+./exchange.o: /usr/include/_G_config.h /usr/include/wchar.h
+./exchange.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdarg.h
+./exchange.o: /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h
+./exchange.o: /usr/include/postgresql/postgres_ext.h /usr/include/math.h
+./exchange.o: /usr/include/bits/huge_val.h /usr/include/bits/huge_valf.h
+./exchange.o: /usr/include/bits/huge_vall.h /usr/include/bits/inf.h
+./exchange.o: /usr/include/bits/nan.h /usr/include/bits/mathdef.h
+./exchange.o: /usr/include/bits/mathcalls.h /usr/include/ncurses.h
+./exchange.o: /usr/include/ncurses_dll.h
+./exchange.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdbool.h
+./exchange.o: /usr/include/unctrl.h /usr/include/curses.h
+./exchange.o: /usr/include/openssl/rand.h /usr/include/stdlib.h
+./exchange.o: /usr/include/alloca.h /usr/include/openssl/ossl_typ.h
+./exchange.o: /usr/include/openssl/e_os2.h /usr/include/openssl/opensslconf.h
+./exchange.o: /usr/include/pthread.h /usr/include/sched.h
+./exchange.o: /usr/include/bits/sched.h /usr/include/signal.h
+./exchange.o: /usr/include/bits/setjmp.h /usr/include/string.h
+./exchange.o: /usr/include/sys/errno.h /usr/include/errno.h
+./exchange.o: /usr/include/bits/errno.h /usr/include/linux/errno.h
+./exchange.o: /usr/include/asm/errno.h /usr/include/asm-generic/errno.h
+./exchange.o: /usr/include/asm-generic/errno-base.h /usr/include/sys/stat.h
+./exchange.o: /usr/include/bits/stat.h /usr/include/termios.h
+./exchange.o: /usr/include/bits/termios.h /usr/include/sys/ttydefaults.h
+./exchange.o: /usr/include/unistd.h /usr/include/bits/posix_opt.h
+./exchange.o: /usr/include/bits/confname.h /usr/include/getopt.h
+./exchange.o: /usr/include/jpeglib.h /usr/include/jconfig.h
+./exchange.o: /usr/include/jmorecfg.h /home/matthew/inhesion/h/core/bit.h
+./exchange.o: /home/matthew/inhesion/h/net/exchange.h
+./exchange.o: /home/matthew/inhesion/h/net/postey.h
+./exchange.o: /home/matthew/inhesion/h/net/post_stats.h
+./post_stats.o: /home/matthew/inhesion/h/standard.h /usr/include/arpa/inet.h
+./post_stats.o: /usr/include/features.h /usr/include/bits/predefs.h
+./post_stats.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+./post_stats.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
+./post_stats.o: /usr/include/netinet/in.h /usr/include/stdint.h
+./post_stats.o: /usr/include/bits/wchar.h /usr/include/sys/socket.h
+./post_stats.o: /usr/include/sys/uio.h /usr/include/sys/types.h
+./post_stats.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+./post_stats.o: /usr/include/time.h
+./post_stats.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
+./post_stats.o: /usr/include/endian.h /usr/include/bits/endian.h
+./post_stats.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
+./post_stats.o: /usr/include/bits/select.h /usr/include/bits/sigset.h
+./post_stats.o: /usr/include/bits/time.h /usr/include/sys/sysmacros.h
+./post_stats.o: /usr/include/bits/pthreadtypes.h /usr/include/bits/uio.h
+./post_stats.o: /usr/include/bits/socket.h /usr/include/bits/sockaddr.h
+./post_stats.o: /usr/include/asm/socket.h /usr/include/asm-generic/socket.h
+./post_stats.o: /usr/include/asm/sockios.h /usr/include/asm-generic/sockios.h
+./post_stats.o: /usr/include/bits/in.h /usr/include/assert.h
+./post_stats.o: /usr/include/ctype.h /usr/include/xlocale.h
+./post_stats.o: /usr/include/dirent.h /usr/include/bits/dirent.h
+./post_stats.o: /usr/include/bits/posix1_lim.h /usr/include/bits/local_lim.h
+./post_stats.o: /usr/include/linux/limits.h /usr/include/fcntl.h
+./post_stats.o: /usr/include/bits/fcntl.h /usr/include/postgresql/libpq-fe.h
+./post_stats.o: /usr/include/stdio.h /usr/include/libio.h
+./post_stats.o: /usr/include/_G_config.h /usr/include/wchar.h
+./post_stats.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdarg.h
+./post_stats.o: /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h
+./post_stats.o: /usr/include/postgresql/postgres_ext.h /usr/include/math.h
+./post_stats.o: /usr/include/bits/huge_val.h /usr/include/bits/huge_valf.h
+./post_stats.o: /usr/include/bits/huge_vall.h /usr/include/bits/inf.h
+./post_stats.o: /usr/include/bits/nan.h /usr/include/bits/mathdef.h
+./post_stats.o: /usr/include/bits/mathcalls.h /usr/include/ncurses.h
+./post_stats.o: /usr/include/ncurses_dll.h
+./post_stats.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdbool.h
+./post_stats.o: /usr/include/unctrl.h /usr/include/curses.h
+./post_stats.o: /usr/include/openssl/rand.h /usr/include/stdlib.h
+./post_stats.o: /usr/include/alloca.h /usr/include/openssl/ossl_typ.h
+./post_stats.o: /usr/include/openssl/e_os2.h
+./post_stats.o: /usr/include/openssl/opensslconf.h /usr/include/pthread.h
+./post_stats.o: /usr/include/sched.h /usr/include/bits/sched.h
+./post_stats.o: /usr/include/signal.h /usr/include/bits/setjmp.h
+./post_stats.o: /usr/include/string.h /usr/include/sys/errno.h
+./post_stats.o: /usr/include/errno.h /usr/include/bits/errno.h
+./post_stats.o: /usr/include/linux/errno.h /usr/include/asm/errno.h
+./post_stats.o: /usr/include/asm-generic/errno.h
+./post_stats.o: /usr/include/asm-generic/errno-base.h /usr/include/sys/stat.h
+./post_stats.o: /usr/include/bits/stat.h /usr/include/termios.h
+./post_stats.o: /usr/include/bits/termios.h /usr/include/sys/ttydefaults.h
+./post_stats.o: /usr/include/unistd.h /usr/include/bits/posix_opt.h
+./post_stats.o: /usr/include/bits/confname.h /usr/include/getopt.h
+./post_stats.o: /usr/include/jpeglib.h /usr/include/jconfig.h
+./post_stats.o: /usr/include/jmorecfg.h /home/matthew/inhesion/h/core/types.h
+./post_stats.o: /home/matthew/inhesion/h/core/object.h
+./post_stats.o: /home/matthew/inhesion/h/core/bool.h
+./post_stats.o: /home/matthew/inhesion/h/core/declarations.h
+./post_stats.o: /home/matthew/inhesion/h/net/post_stats.h
+./hyperpost.o: /home/matthew/inhesion/h/container/list.h
+./hyperpost.o: /home/matthew/inhesion/h/container/declarations.h
+./hyperpost.o: /home/matthew/inhesion/h/core/message.h
+./hyperpost.o: /home/matthew/inhesion/h/core/engine.h
+./hyperpost.o: /home/matthew/inhesion/h/core/object.h
+./hyperpost.o: /home/matthew/inhesion/h/core/bool.h
+./hyperpost.o: /home/matthew/inhesion/h/core/declarations.h
+./hyperpost.o: /home/matthew/inhesion/h/core/types.h
+./hyperpost.o: /home/matthew/inhesion/h/core/objectey.h
+./hyperpost.o: /home/matthew/inhesion/h/core/nameobject.h
+./hyperpost.o: /home/matthew/inhesion/h/core/string.h
+./hyperpost.o: /home/matthew/inhesion/h/core/tools.h
+./hyperpost.o: /home/matthew/inhesion/h/standard.h /usr/include/arpa/inet.h
+./hyperpost.o: /usr/include/features.h /usr/include/bits/predefs.h
+./hyperpost.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+./hyperpost.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
+./hyperpost.o: /usr/include/netinet/in.h /usr/include/stdint.h
+./hyperpost.o: /usr/include/bits/wchar.h /usr/include/sys/socket.h
+./hyperpost.o: /usr/include/sys/uio.h /usr/include/sys/types.h
+./hyperpost.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+./hyperpost.o: /usr/include/time.h
+./hyperpost.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
+./hyperpost.o: /usr/include/endian.h /usr/include/bits/endian.h
+./hyperpost.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
+./hyperpost.o: /usr/include/bits/select.h /usr/include/bits/sigset.h
+./hyperpost.o: /usr/include/bits/time.h /usr/include/sys/sysmacros.h
+./hyperpost.o: /usr/include/bits/pthreadtypes.h /usr/include/bits/uio.h
+./hyperpost.o: /usr/include/bits/socket.h /usr/include/bits/sockaddr.h
+./hyperpost.o: /usr/include/asm/socket.h /usr/include/asm-generic/socket.h
+./hyperpost.o: /usr/include/asm/sockios.h /usr/include/asm-generic/sockios.h
+./hyperpost.o: /usr/include/bits/in.h /usr/include/assert.h
+./hyperpost.o: /usr/include/ctype.h /usr/include/xlocale.h
+./hyperpost.o: /usr/include/dirent.h /usr/include/bits/dirent.h
+./hyperpost.o: /usr/include/bits/posix1_lim.h /usr/include/bits/local_lim.h
+./hyperpost.o: /usr/include/linux/limits.h /usr/include/fcntl.h
+./hyperpost.o: /usr/include/bits/fcntl.h /usr/include/postgresql/libpq-fe.h
+./hyperpost.o: /usr/include/stdio.h /usr/include/libio.h
+./hyperpost.o: /usr/include/_G_config.h /usr/include/wchar.h
+./hyperpost.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdarg.h
+./hyperpost.o: /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h
+./hyperpost.o: /usr/include/postgresql/postgres_ext.h /usr/include/math.h
+./hyperpost.o: /usr/include/bits/huge_val.h /usr/include/bits/huge_valf.h
+./hyperpost.o: /usr/include/bits/huge_vall.h /usr/include/bits/inf.h
+./hyperpost.o: /usr/include/bits/nan.h /usr/include/bits/mathdef.h
+./hyperpost.o: /usr/include/bits/mathcalls.h /usr/include/ncurses.h
+./hyperpost.o: /usr/include/ncurses_dll.h
+./hyperpost.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdbool.h
+./hyperpost.o: /usr/include/unctrl.h /usr/include/curses.h
+./hyperpost.o: /usr/include/openssl/rand.h /usr/include/stdlib.h
+./hyperpost.o: /usr/include/alloca.h /usr/include/openssl/ossl_typ.h
+./hyperpost.o: /usr/include/openssl/e_os2.h
+./hyperpost.o: /usr/include/openssl/opensslconf.h /usr/include/pthread.h
+./hyperpost.o: /usr/include/sched.h /usr/include/bits/sched.h
+./hyperpost.o: /usr/include/signal.h /usr/include/bits/setjmp.h
+./hyperpost.o: /usr/include/string.h /usr/include/sys/errno.h
+./hyperpost.o: /usr/include/errno.h /usr/include/bits/errno.h
+./hyperpost.o: /usr/include/linux/errno.h /usr/include/asm/errno.h
+./hyperpost.o: /usr/include/asm-generic/errno.h
+./hyperpost.o: /usr/include/asm-generic/errno-base.h /usr/include/sys/stat.h
+./hyperpost.o: /usr/include/bits/stat.h /usr/include/termios.h
+./hyperpost.o: /usr/include/bits/termios.h /usr/include/sys/ttydefaults.h
+./hyperpost.o: /usr/include/unistd.h /usr/include/bits/posix_opt.h
+./hyperpost.o: /usr/include/bits/confname.h /usr/include/getopt.h
+./hyperpost.o: /usr/include/jpeglib.h /usr/include/jconfig.h
+./hyperpost.o: /usr/include/jmorecfg.h /home/matthew/inhesion/h/core/bit.h
+./hyperpost.o: /home/matthew/inhesion/h/net/hypermessage.h
+./hyperpost.o: /home/matthew/inhesion/h/container/set.h
+./hyperpost.o: /home/matthew/inhesion/h/core/content.h
+./hyperpost.o: /home/matthew/inhesion/h/core/uuid.h
+./hyperpost.o: /home/matthew/inhesion/h/net/hyperversion.h
+./hyperpost.o: /home/matthew/inhesion/h/net/hyperpost.h
+./hyperpost.o: /home/matthew/inhesion/h/net/post_stats.h
+./hyperpost.o: /home/matthew/inhesion/h/net/socket.h
+./server.o: /home/matthew/inhesion/h/container/list.h
+./server.o: /home/matthew/inhesion/h/container/declarations.h
+./server.o: /home/matthew/inhesion/h/core/message.h
+./server.o: /home/matthew/inhesion/h/core/engine.h
+./server.o: /home/matthew/inhesion/h/core/object.h
+./server.o: /home/matthew/inhesion/h/core/bool.h
+./server.o: /home/matthew/inhesion/h/core/declarations.h
+./server.o: /home/matthew/inhesion/h/core/types.h
+./server.o: /home/matthew/inhesion/h/core/objectey.h
+./server.o: /home/matthew/inhesion/h/container/set.h
+./server.o: /home/matthew/inhesion/h/core/constants.h
+./server.o: /home/matthew/inhesion/h/core/period.h
+./server.o: /home/matthew/inhesion/h/core/short.h
+./server.o: /home/matthew/inhesion/h/core/time.h
+./server.o: /home/matthew/inhesion/h/core/days_hours_minutes_seconds.h
+./server.o: /home/matthew/inhesion/h/core/tools.h
+./server.o: /home/matthew/inhesion/h/standard.h /usr/include/arpa/inet.h
+./server.o: /usr/include/features.h /usr/include/bits/predefs.h
+./server.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+./server.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
+./server.o: /usr/include/netinet/in.h /usr/include/stdint.h
+./server.o: /usr/include/bits/wchar.h /usr/include/sys/socket.h
+./server.o: /usr/include/sys/uio.h /usr/include/sys/types.h
+./server.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+./server.o: /usr/include/time.h
+./server.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
+./server.o: /usr/include/endian.h /usr/include/bits/endian.h
+./server.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
+./server.o: /usr/include/bits/select.h /usr/include/bits/sigset.h
+./server.o: /usr/include/bits/time.h /usr/include/sys/sysmacros.h
+./server.o: /usr/include/bits/pthreadtypes.h /usr/include/bits/uio.h
+./server.o: /usr/include/bits/socket.h /usr/include/bits/sockaddr.h
+./server.o: /usr/include/asm/socket.h /usr/include/asm-generic/socket.h
+./server.o: /usr/include/asm/sockios.h /usr/include/asm-generic/sockios.h
+./server.o: /usr/include/bits/in.h /usr/include/assert.h /usr/include/ctype.h
+./server.o: /usr/include/xlocale.h /usr/include/dirent.h
+./server.o: /usr/include/bits/dirent.h /usr/include/bits/posix1_lim.h
+./server.o: /usr/include/bits/local_lim.h /usr/include/linux/limits.h
+./server.o: /usr/include/fcntl.h /usr/include/bits/fcntl.h
+./server.o: /usr/include/postgresql/libpq-fe.h /usr/include/stdio.h
+./server.o: /usr/include/libio.h /usr/include/_G_config.h
+./server.o: /usr/include/wchar.h
+./server.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdarg.h
+./server.o: /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h
+./server.o: /usr/include/postgresql/postgres_ext.h /usr/include/math.h
+./server.o: /usr/include/bits/huge_val.h /usr/include/bits/huge_valf.h
+./server.o: /usr/include/bits/huge_vall.h /usr/include/bits/inf.h
+./server.o: /usr/include/bits/nan.h /usr/include/bits/mathdef.h
+./server.o: /usr/include/bits/mathcalls.h /usr/include/ncurses.h
+./server.o: /usr/include/ncurses_dll.h
+./server.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdbool.h
+./server.o: /usr/include/unctrl.h /usr/include/curses.h
+./server.o: /usr/include/openssl/rand.h /usr/include/stdlib.h
+./server.o: /usr/include/alloca.h /usr/include/openssl/ossl_typ.h
+./server.o: /usr/include/openssl/e_os2.h /usr/include/openssl/opensslconf.h
+./server.o: /usr/include/pthread.h /usr/include/sched.h
+./server.o: /usr/include/bits/sched.h /usr/include/signal.h
+./server.o: /usr/include/bits/setjmp.h /usr/include/string.h
+./server.o: /usr/include/sys/errno.h /usr/include/errno.h
+./server.o: /usr/include/bits/errno.h /usr/include/linux/errno.h
+./server.o: /usr/include/asm/errno.h /usr/include/asm-generic/errno.h
+./server.o: /usr/include/asm-generic/errno-base.h /usr/include/sys/stat.h
+./server.o: /usr/include/bits/stat.h /usr/include/termios.h
+./server.o: /usr/include/bits/termios.h /usr/include/sys/ttydefaults.h
+./server.o: /usr/include/unistd.h /usr/include/bits/posix_opt.h
+./server.o: /usr/include/bits/confname.h /usr/include/getopt.h
+./server.o: /usr/include/jpeglib.h /usr/include/jconfig.h
+./server.o: /usr/include/jmorecfg.h /home/matthew/inhesion/h/core/bit.h
+./server.o: /home/matthew/inhesion/h/net/clientsocket.h
+./server.o: /home/matthew/inhesion/h/net/engine_thread.h
+./server.o: /home/matthew/inhesion/h/net/enginey.h
+./server.o: /home/matthew/inhesion/h/net/types.h
+./server.o: /home/matthew/inhesion/h/net/exchange.h
+./server.o: /home/matthew/inhesion/h/net/postey.h
+./server.o: /home/matthew/inhesion/h/net/post_stats.h
+./server.o: /home/matthew/inhesion/h/net/post.h
+./server.o: /home/matthew/inhesion/h/net/server.h
+./server.o: /home/matthew/inhesion/h/audit/log.h
+./server.o: /home/matthew/inhesion/h/config/system.h
+./server.o: /home/matthew/inhesion/h/core/objects.h
+./server.o: /home/matthew/inhesion/h/core/messagey.h
+./server.o: /home/matthew/inhesion/h/net/ip_address.h
+./server.o: /home/matthew/inhesion/h/net/server_stats.h
+./server.o: /home/matthew/inhesion/h/net/serversocket.h
+./client.o: /home/matthew/inhesion/h/core/tools.h
+./client.o: /home/matthew/inhesion/h/standard.h /usr/include/arpa/inet.h
+./client.o: /usr/include/features.h /usr/include/bits/predefs.h
+./client.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+./client.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
+./client.o: /usr/include/netinet/in.h /usr/include/stdint.h
+./client.o: /usr/include/bits/wchar.h /usr/include/sys/socket.h
+./client.o: /usr/include/sys/uio.h /usr/include/sys/types.h
+./client.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+./client.o: /usr/include/time.h
+./client.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
+./client.o: /usr/include/endian.h /usr/include/bits/endian.h
+./client.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
+./client.o: /usr/include/bits/select.h /usr/include/bits/sigset.h
+./client.o: /usr/include/bits/time.h /usr/include/sys/sysmacros.h
+./client.o: /usr/include/bits/pthreadtypes.h /usr/include/bits/uio.h
+./client.o: /usr/include/bits/socket.h /usr/include/bits/sockaddr.h
+./client.o: /usr/include/asm/socket.h /usr/include/asm-generic/socket.h
+./client.o: /usr/include/asm/sockios.h /usr/include/asm-generic/sockios.h
+./client.o: /usr/include/bits/in.h /usr/include/assert.h /usr/include/ctype.h
+./client.o: /usr/include/xlocale.h /usr/include/dirent.h
+./client.o: /usr/include/bits/dirent.h /usr/include/bits/posix1_lim.h
+./client.o: /usr/include/bits/local_lim.h /usr/include/linux/limits.h
+./client.o: /usr/include/fcntl.h /usr/include/bits/fcntl.h
+./client.o: /usr/include/postgresql/libpq-fe.h /usr/include/stdio.h
+./client.o: /usr/include/libio.h /usr/include/_G_config.h
+./client.o: /usr/include/wchar.h
+./client.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdarg.h
+./client.o: /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h
+./client.o: /usr/include/postgresql/postgres_ext.h /usr/include/math.h
+./client.o: /usr/include/bits/huge_val.h /usr/include/bits/huge_valf.h
+./client.o: /usr/include/bits/huge_vall.h /usr/include/bits/inf.h
+./client.o: /usr/include/bits/nan.h /usr/include/bits/mathdef.h
+./client.o: /usr/include/bits/mathcalls.h /usr/include/ncurses.h
+./client.o: /usr/include/ncurses_dll.h
+./client.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdbool.h
+./client.o: /usr/include/unctrl.h /usr/include/curses.h
+./client.o: /usr/include/openssl/rand.h /usr/include/stdlib.h
+./client.o: /usr/include/alloca.h /usr/include/openssl/ossl_typ.h
+./client.o: /usr/include/openssl/e_os2.h /usr/include/openssl/opensslconf.h
+./client.o: /usr/include/pthread.h /usr/include/sched.h
+./client.o: /usr/include/bits/sched.h /usr/include/signal.h
+./client.o: /usr/include/bits/setjmp.h /usr/include/string.h
+./client.o: /usr/include/sys/errno.h /usr/include/errno.h
+./client.o: /usr/include/bits/errno.h /usr/include/linux/errno.h
+./client.o: /usr/include/asm/errno.h /usr/include/asm-generic/errno.h
+./client.o: /usr/include/asm-generic/errno-base.h /usr/include/sys/stat.h
+./client.o: /usr/include/bits/stat.h /usr/include/termios.h
+./client.o: /usr/include/bits/termios.h /usr/include/sys/ttydefaults.h
+./client.o: /usr/include/unistd.h /usr/include/bits/posix_opt.h
+./client.o: /usr/include/bits/confname.h /usr/include/getopt.h
+./client.o: /usr/include/jpeglib.h /usr/include/jconfig.h
+./client.o: /usr/include/jmorecfg.h /home/matthew/inhesion/h/core/bit.h
+./client.o: /home/matthew/inhesion/h/core/object.h
+./client.o: /home/matthew/inhesion/h/core/bool.h
+./client.o: /home/matthew/inhesion/h/core/declarations.h
+./client.o: /home/matthew/inhesion/h/core/types.h
+./client.o: /home/matthew/inhesion/h/net/client.h
+./client.o: /home/matthew/inhesion/h/audit/log.h
+./client.o: /home/matthew/inhesion/h/container/list.h
+./client.o: /home/matthew/inhesion/h/container/declarations.h
+./client.o: /home/matthew/inhesion/h/core/message.h
+./client.o: /home/matthew/inhesion/h/core/engine.h
+./client.o: /home/matthew/inhesion/h/core/objectey.h
+./client.o: /home/matthew/inhesion/h/core/messagey.h
+./client.o: /home/matthew/inhesion/h/net/postey.h
+./client.o: /home/matthew/inhesion/h/net/post_stats.h
+./client.o: /home/matthew/inhesion/h/net/clientsocket.h
+./client.o: /home/matthew/inhesion/h/net/exchange.h
+./client.o: /home/matthew/inhesion/h/net/post.h

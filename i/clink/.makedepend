@@ -1,0 +1,69 @@
+
+# DO NOT DELETE
+
+./system.o: /home/matthew/inhesion/i/clink/system.h
+./system.o: /home/matthew/inhesion/i/clink/concept.h
+./system.o: /home/matthew/inhesion/i/object.h
+./system.o: /home/matthew/inhesion/i/tools.h /usr/include/assert.h
+./system.o: /usr/include/features.h /usr/include/bits/predefs.h
+./system.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+./system.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
+./system.o: /usr/include/stdio.h
+./system.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
+./system.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+./system.o: /usr/include/libio.h /usr/include/_G_config.h
+./system.o: /usr/include/wchar.h
+./system.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdarg.h
+./system.o: /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h
+./system.o: /usr/include/stdlib.h /usr/include/sys/types.h
+./system.o: /usr/include/time.h /usr/include/endian.h
+./system.o: /usr/include/bits/endian.h /usr/include/bits/byteswap.h
+./system.o: /usr/include/sys/select.h /usr/include/bits/select.h
+./system.o: /usr/include/bits/sigset.h /usr/include/bits/time.h
+./system.o: /usr/include/sys/sysmacros.h /usr/include/bits/pthreadtypes.h
+./system.o: /usr/include/alloca.h /usr/include/string.h
+./system.o: /usr/include/xlocale.h
+./eoc/atom.o: /home/matthew/inhesion/i/clink/eoc/atom.h
+./eoc/atom.o: /home/matthew/inhesion/i/clink/system.h
+./eoc/atom.o: /home/matthew/inhesion/i/clink/concept.h
+./eoc/atom.o: /home/matthew/inhesion/i/object.h
+./eoc/atom.o: /home/matthew/inhesion/i/tools.h /usr/include/assert.h
+./eoc/atom.o: /usr/include/features.h /usr/include/bits/predefs.h
+./eoc/atom.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+./eoc/atom.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
+./eoc/atom.o: /usr/include/stdio.h
+./eoc/atom.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
+./eoc/atom.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+./eoc/atom.o: /usr/include/libio.h /usr/include/_G_config.h
+./eoc/atom.o: /usr/include/wchar.h
+./eoc/atom.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdarg.h
+./eoc/atom.o: /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h
+./eoc/atom.o: /usr/include/stdlib.h /usr/include/sys/types.h
+./eoc/atom.o: /usr/include/time.h /usr/include/endian.h
+./eoc/atom.o: /usr/include/bits/endian.h /usr/include/bits/byteswap.h
+./eoc/atom.o: /usr/include/sys/select.h /usr/include/bits/select.h
+./eoc/atom.o: /usr/include/bits/sigset.h /usr/include/bits/time.h
+./eoc/atom.o: /usr/include/sys/sysmacros.h /usr/include/bits/pthreadtypes.h
+./eoc/atom.o: /usr/include/alloca.h /usr/include/string.h
+./eoc/atom.o: /usr/include/xlocale.h
+./concept.o: /home/matthew/inhesion/i/clink/concept.h
+./concept.o: /home/matthew/inhesion/i/object.h
+./concept.o: /home/matthew/inhesion/i/tools.h /usr/include/assert.h
+./concept.o: /usr/include/features.h /usr/include/bits/predefs.h
+./concept.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+./concept.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
+./concept.o: /usr/include/stdio.h
+./concept.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
+./concept.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+./concept.o: /usr/include/libio.h /usr/include/_G_config.h
+./concept.o: /usr/include/wchar.h
+./concept.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdarg.h
+./concept.o: /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h
+./concept.o: /usr/include/stdlib.h /usr/include/sys/types.h
+./concept.o: /usr/include/time.h /usr/include/endian.h
+./concept.o: /usr/include/bits/endian.h /usr/include/bits/byteswap.h
+./concept.o: /usr/include/sys/select.h /usr/include/bits/select.h
+./concept.o: /usr/include/bits/sigset.h /usr/include/bits/time.h
+./concept.o: /usr/include/sys/sysmacros.h /usr/include/bits/pthreadtypes.h
+./concept.o: /usr/include/alloca.h /usr/include/string.h
+./concept.o: /usr/include/xlocale.h

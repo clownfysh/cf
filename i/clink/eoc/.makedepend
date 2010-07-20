@@ -1,0 +1,23 @@
+
+# DO NOT DELETE
+
+./atom.o: /home/matthew/inhesion/i/clink/eoc/atom.h
+./atom.o: /home/matthew/inhesion/i/clink/system.h
+./atom.o: /home/matthew/inhesion/i/clink/concept.h
+./atom.o: /home/matthew/inhesion/i/object.h /home/matthew/inhesion/i/tools.h
+./atom.o: /usr/include/assert.h /usr/include/features.h
+./atom.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
+./atom.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
+./atom.o: /usr/include/gnu/stubs-32.h /usr/include/stdio.h
+./atom.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
+./atom.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+./atom.o: /usr/include/libio.h /usr/include/_G_config.h /usr/include/wchar.h
+./atom.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdarg.h
+./atom.o: /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h
+./atom.o: /usr/include/stdlib.h /usr/include/sys/types.h /usr/include/time.h
+./atom.o: /usr/include/endian.h /usr/include/bits/endian.h
+./atom.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
+./atom.o: /usr/include/bits/select.h /usr/include/bits/sigset.h
+./atom.o: /usr/include/bits/time.h /usr/include/sys/sysmacros.h
+./atom.o: /usr/include/bits/pthreadtypes.h /usr/include/alloca.h
+./atom.o: /usr/include/string.h /usr/include/xlocale.h

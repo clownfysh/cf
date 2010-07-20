@@ -1,0 +1,89 @@
+==[ syn ]======================================================================
+
+--[ interface ]----------------------------------------------------------------
+
+whole screen contributes to a blog-style history
+
+bottom is a history window, 0 or more lines, automatically-sized
+
+top is an input window, 0 or more lines, automatically sized based on the type of document you're inputting into
+
+they are differentiated by color :: the input window is brighter than the history window, like the input window is gray and the history window is dark gray
+
+the screen updates exactly 24 times per second, not based on what/when you type or what/when is happening in the history window or based on other document updates
+
+there are no applications, there are document types and syntaxes
+
+the whole environment takes place within a 3x3 torus, 9 documents that are always open, with one visible at a time :: control-arrow moves you around the torus, switches the input pane to be one of those 9 documents :: all nine documents are always "open" :: they start out with the user's root document, which is of a certain type and syntax
+
+when syn starts, the input pane is open to the root document in one of the 9 work areas :: call them work areas? screens? :: screens, and each screen has two windows, input and output
+
+no, when syn starts, the input pane is closed, all 9 screens are at the root document (hidden), and the output pane is full-sized, the whole screen :: as you work, the output pane is sized according to how active the output pane has been...with limits...the more active the output pane is, the bigger it tends to be...such that there's a certain amount of time that items tend to stay in the output pane...when nothing has happened in that amount of time, the output pane sizes itself to zero
+
+when you press any key, if the input window isn't open, it is opened, and that key is passed to the document :: certain keys are handled by syn, anything else is passed to the specific document type handler
+
+enter closes the input window, it "finishes" the edit within the context of the document type :: it *does something* depending on the mode, then it closes the input window and adds something to the output window...a summary of what was done...this action affects the document for everyone who is (subscribed to) it
+
+  :: does that mean that no changes are saved until you press enter?
+  :: could escape cancel that potential edit?
+
+left/right moves through the document
+up goes into an object (down into a smaller scope)
+down goes out of an object (up into a larger scope)
+
+each document type has a way to display, given a sized input window, to display an element of its syntax...a paragraph, a function, a declaration, a sentence, etc.
+
+syn has an api for documents, code they can use when doing their thing...this onvolves writing to the input/output window using a defined interface, ways to store and retrieve objects, ways to receive and process input from the user
+
+or :: alt-arrow switches screens
+   :: control-left/right swaps the selected object with its predecessor/successor?
+
+...
+
+each document type can do a lot in the input window other than display the text...it can have status showing the realtime compilation/processing/spellchecking status of an object...
+
+the output history window is the history of *edits* [only?]
+does syn have things it needs to say to me, should it use a status bar, a different history window, or the regular output window? :: probably just the same output window, which is in general a history of edits, of changes to documents...but also can have debug info...or...somehow...debug info is a change to a document...yeah...the root document has access to a debug document...if you have the debug document open/active in a screen, then you'll see changes to that document in the output window
+
+the alt keys switch the input window's screen...the output window is the same on all screens, basically, its resizing and display is consistent across screens, or operates independently of input screen switching
+
+escape only cancels the edit on that screen, other in-progress edits maintain their state when you escape or enter
+
+an input window with unsaved changes is a different color than one in which this user hasn't made any changes...maybe one with no changes is the same dark gray as the history window? (or use three separate colors for history, unchanged, and changed?) :: both changed and unchanged should be colors that are easy to work in
+
+use transitions, visual character animations, to represent the change from screen to screen, the opening and closing of the input window, the addition of an item to the history window...to draw your attention to what is happening that you need to pay attention to
+
+you don't "open" and "close" documents :: you're either on them or not...you're on an object, actually...and you receive updates in the history window for changes to objects you're on, or their parents/children? ... for changes to some related objects (is it: that object or anything above or below it except not everything below it if it's the root document/root object)
+
+the whole thing is one big document, interleaving syntaxes, and you're able to navigate through it independently in 9 screens
+
+--[ keys ]---------------------------------------------------------------------
+
+x?x all control keys are the same, it doesn't matter which one you press; here we just refer to everything as control
+
+Control-v includes a link to an object.                   (refers to an object)
+Control-shift-v pastes the contents of the copied object. (makes a copy)
+Control-c copies a reference to the current object.
+  >> or, it marks the current object
+Control-x searches.
+
+up arrow, when link selected, goes into that object?
+
+Control-z deletes. It is the same as the delete or backspace key. Delete and backspace are the same as each other.
+
+Left/right arrow keys move through the syntax tree of the object. From token to token in c, from word to word in text, from word to word in talk, from item to item in log/history. It’s variable-speed: if you press it, it goes by one token; if you hold it down, it goes through one token per second for the first second, then two tokens per second for the second second, then four tokens per second for the third second, then eight tokens per second for the fourth second, etc. Control-w/a/s/d is the same as the arrow keys.
+Up arrow goes deeper into the current object. On an object in the log, it opens the object and now you are exploring the objects in that object’s syntax tree. On a function call, it opens the function object and now you are exploring the function. The up arrow, on any object link, opens the object and now you are editing that object. (An object has a way of displaying itself when folded, and when unfolded, like a function name/function definition.) It highlights the token, and the highlit token is the one you are editing. A word is highlit, you edit that word. Tokens/objects automatically form new and go away as you type…like, in a text document, entering a space or a comma starts a new token, pressing the delete or backspace key can destroy a token.
+The down arrow goes back to the object you came from when you pressed the up arrow, if there was one.
+Enter does different things based on the mode. In chat, this sends the object. In programming, ?. In text, ?.
+So, in text, up/down will switch between documents, sections, paragraphs, sentences, and words. You can press down to zoom out to sentence-level. Then the left/right keys go from sentence to sentence. Down again switches to paragraph mode. Then left and right goes from paragraph to paragraph. Select the paragraph you want, then press up, then left and right for the sentence you want, then up, then left and right to change words. !! It highlights the selected syntactical item as you navigate through, to show what you’re changing. If you start typing, it replaces the selection with what you type. You should be able to copy and paste text, as well as links to objects and copies of objects…(perhaps)…but it needs to be clear what is happening when you do these things. Like in a text document I should be able to use scope arrows (up/down) to get to paragraph level, then copy a paragraph, then paste a copy of it or paste a link to it.
+In c mode, you’re doing a similar thing with functions, statements, tokens.
+If someone includes a link to a program object in a message to me, I can, when reading the message (where? in my log program? (isn’t that a little clunky?)), use the up arrow key to navigate into the program.
+
+--[ data ]---------------------------------------------------------------------
+
+history
+object with integer versions
+
+--[ syntax ]-------------------------------------------------------------------
+
+...

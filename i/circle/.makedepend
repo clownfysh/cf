@@ -1,0 +1,23 @@
+
+# DO NOT DELETE
+
+./system.o: /home/matthew/inhesion/i/circle/system.h
+./system.o: /home/matthew/inhesion/i/tools.h /usr/include/assert.h
+./system.o: /usr/include/features.h /usr/include/bits/predefs.h
+./system.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+./system.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
+./system.o: /usr/include/stdio.h
+./system.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
+./system.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+./system.o: /usr/include/libio.h /usr/include/_G_config.h
+./system.o: /usr/include/wchar.h
+./system.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdarg.h
+./system.o: /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h
+./system.o: /usr/include/stdlib.h /usr/include/sys/types.h
+./system.o: /usr/include/time.h /usr/include/endian.h
+./system.o: /usr/include/bits/endian.h /usr/include/bits/byteswap.h
+./system.o: /usr/include/sys/select.h /usr/include/bits/select.h
+./system.o: /usr/include/bits/sigset.h /usr/include/bits/time.h
+./system.o: /usr/include/sys/sysmacros.h /usr/include/bits/pthreadtypes.h
+./system.o: /usr/include/alloca.h /usr/include/string.h
+./system.o: /usr/include/xlocale.h

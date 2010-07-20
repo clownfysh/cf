@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+$CF/bin/init-env
+
+cd ~
+
+ln -sf $CF/bin/user/clownfysh/.bashrc
+ln -sf $CF/bin/user/clownfysh/.emacs_custom
+ln -sf $CF/bin/user/clownfysh/.gitconfig
+ln -sf $CF/bin/user/clownfysh/.hgrc
+
+cd - >/dev/null
