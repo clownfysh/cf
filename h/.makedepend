@@ -700,7 +700,6 @@
 ./audit/log.o: /home/matthew/cf/h/core/objectey.h
 ./core/tools.o: /home/matthew/cf/h/core/bool.h
 ./core/tools.o: /home/matthew/cf/h/core/declarations.h
-./core/tools.o: /home/matthew/cf/h/core/tools.h
 ./core/tools.o: /home/matthew/cf/h/core/standard.h /usr/include/arpa/inet.h
 ./core/tools.o: /usr/include/features.h /usr/include/bits/predefs.h
 ./core/tools.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
@@ -753,7 +752,8 @@
 ./core/tools.o: /usr/include/unistd.h /usr/include/bits/posix_opt.h
 ./core/tools.o: /usr/include/bits/confname.h /usr/include/getopt.h
 ./core/tools.o: /usr/include/jpeglib.h /usr/include/jconfig.h
-./core/tools.o: /usr/include/jmorecfg.h /home/matthew/cf/h/core/bit.h
+./core/tools.o: /usr/include/jmorecfg.h /home/matthew/cf/h/core/tools.h
+./core/tools.o: /home/matthew/cf/h/core/bit.h
 ./core/tools.o: /home/matthew/cf/h/core/object.h
 ./core/tools.o: /home/matthew/cf/h/core/types.h
 ./core/nameobject.o: /home/matthew/cf/h/core/nameobject.h

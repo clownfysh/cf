@@ -1,23 +1,23 @@
 
 # DO NOT DELETE
 
-./genetic/system.o: /home/matthew/inhesion/inferno/core/goal.h
-./genetic/system.o: /home/matthew/inhesion/inferno/genetic/system.h
-./genetic/system.o: /home/matthew/inhesion/inferno/search/searchey.h
-./genetic/system.o: /home/matthew/inhesion/inferno/search/tools.h
-./genetic/system.o: /home/matthew/inhesion/h/container/array.h
-./genetic/system.o: /home/matthew/inhesion/h/container/declarations.h
-./genetic/system.o: /home/matthew/inhesion/h/core/bool.h
-./genetic/system.o: /home/matthew/inhesion/h/core/declarations.h
-./genetic/system.o: /home/matthew/inhesion/h/core/message.h
-./genetic/system.o: /home/matthew/inhesion/h/core/engine.h
-./genetic/system.o: /home/matthew/inhesion/h/core/object.h
-./genetic/system.o: /home/matthew/inhesion/h/core/types.h
-./genetic/system.o: /home/matthew/inhesion/inferno/box/system.h
-./genetic/system.o: /home/matthew/inhesion/inferno/box/coordinate.h
-./genetic/system.o: /home/matthew/inhesion/h/audit/log.h
-./genetic/system.o: /home/matthew/inhesion/h/core/tools.h
-./genetic/system.o: /home/matthew/inhesion/h/core/standard.h
+./genetic/system.o: /home/matthew/cf/inferno/core/goal.h
+./genetic/system.o: /home/matthew/cf/inferno/genetic/system.h
+./genetic/system.o: /home/matthew/cf/inferno/search/searchey.h
+./genetic/system.o: /home/matthew/cf/inferno/search/tools.h
+./genetic/system.o: /home/matthew/cf/h/container/array.h
+./genetic/system.o: /home/matthew/cf/h/container/declarations.h
+./genetic/system.o: /home/matthew/cf/h/core/bool.h
+./genetic/system.o: /home/matthew/cf/h/core/declarations.h
+./genetic/system.o: /home/matthew/cf/h/core/message.h
+./genetic/system.o: /home/matthew/cf/h/core/engine.h
+./genetic/system.o: /home/matthew/cf/h/core/object.h
+./genetic/system.o: /home/matthew/cf/h/core/types.h
+./genetic/system.o: /home/matthew/cf/inferno/box/system.h
+./genetic/system.o: /home/matthew/cf/inferno/box/coordinate.h
+./genetic/system.o: /home/matthew/cf/h/audit/log.h
+./genetic/system.o: /home/matthew/cf/h/core/tools.h
+./genetic/system.o: /home/matthew/cf/h/core/standard.h
 ./genetic/system.o: /usr/include/arpa/inet.h /usr/include/features.h
 ./genetic/system.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
 ./genetic/system.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
@@ -74,23 +74,22 @@
 ./genetic/system.o: /usr/include/bits/posix_opt.h
 ./genetic/system.o: /usr/include/bits/confname.h /usr/include/getopt.h
 ./genetic/system.o: /usr/include/jpeglib.h /usr/include/jconfig.h
-./genetic/system.o: /usr/include/jmorecfg.h
-./genetic/system.o: /home/matthew/inhesion/h/core/bit.h
-./genetic/system.o: /home/matthew/inhesion/inferno/core/actorey.h
-./genetic/system.o: /home/matthew/inhesion/h/core/bitarray.h
-./genetic/system.o: /home/matthew/inhesion/h/core/string.h
-./genetic/system.o: /home/matthew/inhesion/h/core/objectey.h
-./ccsv/system.o: /home/matthew/inhesion/inferno/ccsv/system.h
-./ccsv/system.o: /home/matthew/inhesion/h/core/tools.h
-./ccsv/system.o: /home/matthew/inhesion/h/core/standard.h
-./ccsv/system.o: /usr/include/arpa/inet.h /usr/include/features.h
-./ccsv/system.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
-./ccsv/system.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
-./ccsv/system.o: /usr/include/gnu/stubs-32.h /usr/include/netinet/in.h
-./ccsv/system.o: /usr/include/stdint.h /usr/include/bits/wchar.h
-./ccsv/system.o: /usr/include/sys/socket.h /usr/include/sys/uio.h
-./ccsv/system.o: /usr/include/sys/types.h /usr/include/bits/types.h
-./ccsv/system.o: /usr/include/bits/typesizes.h /usr/include/time.h
+./genetic/system.o: /usr/include/jmorecfg.h /home/matthew/cf/h/core/bit.h
+./genetic/system.o: /home/matthew/cf/inferno/core/actorey.h
+./genetic/system.o: /home/matthew/cf/h/core/bitarray.h
+./genetic/system.o: /home/matthew/cf/h/core/string.h
+./genetic/system.o: /home/matthew/cf/h/core/objectey.h
+./ccsv/system.o: /home/matthew/cf/inferno/ccsv/system.h
+./ccsv/system.o: /home/matthew/cf/h/core/tools.h
+./ccsv/system.o: /home/matthew/cf/h/core/standard.h /usr/include/arpa/inet.h
+./ccsv/system.o: /usr/include/features.h /usr/include/bits/predefs.h
+./ccsv/system.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+./ccsv/system.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
+./ccsv/system.o: /usr/include/netinet/in.h /usr/include/stdint.h
+./ccsv/system.o: /usr/include/bits/wchar.h /usr/include/sys/socket.h
+./ccsv/system.o: /usr/include/sys/uio.h /usr/include/sys/types.h
+./ccsv/system.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+./ccsv/system.o: /usr/include/time.h
 ./ccsv/system.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
 ./ccsv/system.o: /usr/include/endian.h /usr/include/bits/endian.h
 ./ccsv/system.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
@@ -137,17 +136,17 @@
 ./ccsv/system.o: /usr/include/bits/posix_opt.h /usr/include/bits/confname.h
 ./ccsv/system.o: /usr/include/getopt.h /usr/include/jpeglib.h
 ./ccsv/system.o: /usr/include/jconfig.h /usr/include/jmorecfg.h
-./ccsv/system.o: /home/matthew/inhesion/h/core/bit.h
-./ccsv/system.o: /home/matthew/inhesion/h/core/object.h
-./ccsv/system.o: /home/matthew/inhesion/h/core/bool.h
-./ccsv/system.o: /home/matthew/inhesion/h/core/declarations.h
-./ccsv/system.o: /home/matthew/inhesion/h/core/types.h
-./classify/system.o: /home/matthew/inhesion/inferno/archetype/system.h
-./classify/system.o: /home/matthew/inhesion/h/audit/log.h
-./classify/system.o: /home/matthew/inhesion/h/core/bool.h
-./classify/system.o: /home/matthew/inhesion/h/core/declarations.h
-./classify/system.o: /home/matthew/inhesion/h/core/tools.h
-./classify/system.o: /home/matthew/inhesion/h/core/standard.h
+./ccsv/system.o: /home/matthew/cf/h/core/bit.h
+./ccsv/system.o: /home/matthew/cf/h/core/object.h
+./ccsv/system.o: /home/matthew/cf/h/core/bool.h
+./ccsv/system.o: /home/matthew/cf/h/core/declarations.h
+./ccsv/system.o: /home/matthew/cf/h/core/types.h
+./classify/system.o: /home/matthew/cf/inferno/archetype/system.h
+./classify/system.o: /home/matthew/cf/h/audit/log.h
+./classify/system.o: /home/matthew/cf/h/core/bool.h
+./classify/system.o: /home/matthew/cf/h/core/declarations.h
+./classify/system.o: /home/matthew/cf/h/core/tools.h
+./classify/system.o: /home/matthew/cf/h/core/standard.h
 ./classify/system.o: /usr/include/arpa/inet.h /usr/include/features.h
 ./classify/system.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
 ./classify/system.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
@@ -207,27 +206,26 @@
 ./classify/system.o: /usr/include/bits/posix_opt.h
 ./classify/system.o: /usr/include/bits/confname.h /usr/include/getopt.h
 ./classify/system.o: /usr/include/jpeglib.h /usr/include/jconfig.h
-./classify/system.o: /usr/include/jmorecfg.h
-./classify/system.o: /home/matthew/inhesion/h/core/bit.h
-./classify/system.o: /home/matthew/inhesion/h/core/object.h
-./classify/system.o: /home/matthew/inhesion/h/core/types.h
-./classify/system.o: /home/matthew/inhesion/h/container/array.h
-./classify/system.o: /home/matthew/inhesion/h/container/declarations.h
-./classify/system.o: /home/matthew/inhesion/h/core/message.h
-./classify/system.o: /home/matthew/inhesion/h/core/engine.h
-./classify/system.o: /home/matthew/inhesion/h/core/bitarray.h
-./classify/system.o: /home/matthew/inhesion/h/core/string.h
-./classify/system.o: /home/matthew/inhesion/h/core/objectey.h
-./classify/system.o: /home/matthew/inhesion/inferno/classify/classifyey.h
-./classify/system.o: /home/matthew/inhesion/inferno/classify/system.h
-./classify/system.o: /home/matthew/inhesion/inferno/core/goal.h
-./classify/system.o: /home/matthew/inhesion/inferno/classify/algorithm.h
-./classify/classifyey.o: /home/matthew/inhesion/inferno/classify/classifyey.h
-./classify/classifyey.o: /home/matthew/inhesion/h/audit/log.h
-./classify/classifyey.o: /home/matthew/inhesion/h/core/bool.h
-./classify/classifyey.o: /home/matthew/inhesion/h/core/declarations.h
-./classify/classifyey.o: /home/matthew/inhesion/h/core/tools.h
-./classify/classifyey.o: /home/matthew/inhesion/h/core/standard.h
+./classify/system.o: /usr/include/jmorecfg.h /home/matthew/cf/h/core/bit.h
+./classify/system.o: /home/matthew/cf/h/core/object.h
+./classify/system.o: /home/matthew/cf/h/core/types.h
+./classify/system.o: /home/matthew/cf/h/container/array.h
+./classify/system.o: /home/matthew/cf/h/container/declarations.h
+./classify/system.o: /home/matthew/cf/h/core/message.h
+./classify/system.o: /home/matthew/cf/h/core/engine.h
+./classify/system.o: /home/matthew/cf/h/core/bitarray.h
+./classify/system.o: /home/matthew/cf/h/core/string.h
+./classify/system.o: /home/matthew/cf/h/core/objectey.h
+./classify/system.o: /home/matthew/cf/inferno/classify/classifyey.h
+./classify/system.o: /home/matthew/cf/inferno/classify/system.h
+./classify/system.o: /home/matthew/cf/inferno/core/goal.h
+./classify/system.o: /home/matthew/cf/inferno/classify/algorithm.h
+./classify/classifyey.o: /home/matthew/cf/inferno/classify/classifyey.h
+./classify/classifyey.o: /home/matthew/cf/h/audit/log.h
+./classify/classifyey.o: /home/matthew/cf/h/core/bool.h
+./classify/classifyey.o: /home/matthew/cf/h/core/declarations.h
+./classify/classifyey.o: /home/matthew/cf/h/core/tools.h
+./classify/classifyey.o: /home/matthew/cf/h/core/standard.h
 ./classify/classifyey.o: /usr/include/arpa/inet.h /usr/include/features.h
 ./classify/classifyey.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
 ./classify/classifyey.o: /usr/include/bits/wordsize.h
@@ -293,21 +291,21 @@
 ./classify/classifyey.o: /usr/include/bits/confname.h /usr/include/getopt.h
 ./classify/classifyey.o: /usr/include/jpeglib.h /usr/include/jconfig.h
 ./classify/classifyey.o: /usr/include/jmorecfg.h
-./classify/classifyey.o: /home/matthew/inhesion/h/core/bit.h
-./classify/classifyey.o: /home/matthew/inhesion/h/core/object.h
-./classify/classifyey.o: /home/matthew/inhesion/h/core/types.h
-./classify/classifyey.o: /home/matthew/inhesion/h/container/array.h
-./classify/classifyey.o: /home/matthew/inhesion/h/container/declarations.h
-./classify/classifyey.o: /home/matthew/inhesion/h/core/message.h
-./classify/classifyey.o: /home/matthew/inhesion/h/core/engine.h
-./classify/classifyey.o: /home/matthew/inhesion/h/core/bitarray.h
-./classify/classifyey.o: /home/matthew/inhesion/h/core/string.h
-./classify/classifyey.o: /home/matthew/inhesion/h/core/objectey.h
-./classify/algorithm.o: /home/matthew/inhesion/inferno/classify/algorithm.h
-./classify/algorithm.o: /home/matthew/inhesion/h/core/bool.h
-./classify/algorithm.o: /home/matthew/inhesion/h/core/declarations.h
-./classify/algorithm.o: /home/matthew/inhesion/h/core/tools.h
-./classify/algorithm.o: /home/matthew/inhesion/h/core/standard.h
+./classify/classifyey.o: /home/matthew/cf/h/core/bit.h
+./classify/classifyey.o: /home/matthew/cf/h/core/object.h
+./classify/classifyey.o: /home/matthew/cf/h/core/types.h
+./classify/classifyey.o: /home/matthew/cf/h/container/array.h
+./classify/classifyey.o: /home/matthew/cf/h/container/declarations.h
+./classify/classifyey.o: /home/matthew/cf/h/core/message.h
+./classify/classifyey.o: /home/matthew/cf/h/core/engine.h
+./classify/classifyey.o: /home/matthew/cf/h/core/bitarray.h
+./classify/classifyey.o: /home/matthew/cf/h/core/string.h
+./classify/classifyey.o: /home/matthew/cf/h/core/objectey.h
+./classify/algorithm.o: /home/matthew/cf/inferno/classify/algorithm.h
+./classify/algorithm.o: /home/matthew/cf/h/core/bool.h
+./classify/algorithm.o: /home/matthew/cf/h/core/declarations.h
+./classify/algorithm.o: /home/matthew/cf/h/core/tools.h
+./classify/algorithm.o: /home/matthew/cf/h/core/standard.h
 ./classify/algorithm.o: /usr/include/arpa/inet.h /usr/include/features.h
 ./classify/algorithm.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
 ./classify/algorithm.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
@@ -369,18 +367,17 @@
 ./classify/algorithm.o: /usr/include/bits/posix_opt.h
 ./classify/algorithm.o: /usr/include/bits/confname.h /usr/include/getopt.h
 ./classify/algorithm.o: /usr/include/jpeglib.h /usr/include/jconfig.h
-./classify/algorithm.o: /usr/include/jmorecfg.h
-./classify/algorithm.o: /home/matthew/inhesion/h/core/bit.h
-./classify/algorithm.o: /home/matthew/inhesion/h/core/object.h
-./classify/algorithm.o: /home/matthew/inhesion/h/core/types.h
-./computer/system.o: /home/matthew/inhesion/inferno/computer/system.h
-./computer/system.o: /home/matthew/inhesion/inferno/computer/output.h
-./computer/system.o: /home/matthew/inhesion/h/core/bit.h
-./computer/system.o: /home/matthew/inhesion/h/core/object.h
-./computer/system.o: /home/matthew/inhesion/h/core/bool.h
-./computer/system.o: /home/matthew/inhesion/h/core/declarations.h
-./computer/system.o: /home/matthew/inhesion/h/core/tools.h
-./computer/system.o: /home/matthew/inhesion/h/core/standard.h
+./classify/algorithm.o: /usr/include/jmorecfg.h /home/matthew/cf/h/core/bit.h
+./classify/algorithm.o: /home/matthew/cf/h/core/object.h
+./classify/algorithm.o: /home/matthew/cf/h/core/types.h
+./computer/system.o: /home/matthew/cf/inferno/computer/system.h
+./computer/system.o: /home/matthew/cf/inferno/computer/output.h
+./computer/system.o: /home/matthew/cf/h/core/bit.h
+./computer/system.o: /home/matthew/cf/h/core/object.h
+./computer/system.o: /home/matthew/cf/h/core/bool.h
+./computer/system.o: /home/matthew/cf/h/core/declarations.h
+./computer/system.o: /home/matthew/cf/h/core/tools.h
+./computer/system.o: /home/matthew/cf/h/core/standard.h
 ./computer/system.o: /usr/include/arpa/inet.h /usr/include/features.h
 ./computer/system.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
 ./computer/system.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
@@ -440,9 +437,8 @@
 ./computer/system.o: /usr/include/bits/posix_opt.h
 ./computer/system.o: /usr/include/bits/confname.h /usr/include/getopt.h
 ./computer/system.o: /usr/include/jpeglib.h /usr/include/jconfig.h
-./computer/system.o: /usr/include/jmorecfg.h
-./computer/system.o: /home/matthew/inhesion/h/core/types.h
-./computer/output.o: /home/matthew/inhesion/h/core/standard.h
+./computer/system.o: /usr/include/jmorecfg.h /home/matthew/cf/h/core/types.h
+./computer/output.o: /home/matthew/cf/h/core/standard.h
 ./computer/output.o: /usr/include/arpa/inet.h /usr/include/features.h
 ./computer/output.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
 ./computer/output.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
@@ -503,17 +499,17 @@
 ./computer/output.o: /usr/include/bits/confname.h /usr/include/getopt.h
 ./computer/output.o: /usr/include/jpeglib.h /usr/include/jconfig.h
 ./computer/output.o: /usr/include/jmorecfg.h
-./computer/output.o: /home/matthew/inhesion/inferno/computer/output.h
-./computer/output.o: /home/matthew/inhesion/h/core/bit.h
-./computer/output.o: /home/matthew/inhesion/h/core/object.h
-./computer/output.o: /home/matthew/inhesion/h/core/bool.h
-./computer/output.o: /home/matthew/inhesion/h/core/declarations.h
-./archetype/system.o: /home/matthew/inhesion/inferno/archetype/system.h
-./archetype/system.o: /home/matthew/inhesion/h/audit/log.h
-./archetype/system.o: /home/matthew/inhesion/h/core/bool.h
-./archetype/system.o: /home/matthew/inhesion/h/core/declarations.h
-./archetype/system.o: /home/matthew/inhesion/h/core/tools.h
-./archetype/system.o: /home/matthew/inhesion/h/core/standard.h
+./computer/output.o: /home/matthew/cf/inferno/computer/output.h
+./computer/output.o: /home/matthew/cf/h/core/bit.h
+./computer/output.o: /home/matthew/cf/h/core/object.h
+./computer/output.o: /home/matthew/cf/h/core/bool.h
+./computer/output.o: /home/matthew/cf/h/core/declarations.h
+./archetype/system.o: /home/matthew/cf/inferno/archetype/system.h
+./archetype/system.o: /home/matthew/cf/h/audit/log.h
+./archetype/system.o: /home/matthew/cf/h/core/bool.h
+./archetype/system.o: /home/matthew/cf/h/core/declarations.h
+./archetype/system.o: /home/matthew/cf/h/core/tools.h
+./archetype/system.o: /home/matthew/cf/h/core/standard.h
 ./archetype/system.o: /usr/include/arpa/inet.h /usr/include/features.h
 ./archetype/system.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
 ./archetype/system.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
@@ -573,53 +569,52 @@
 ./archetype/system.o: /usr/include/bits/posix_opt.h
 ./archetype/system.o: /usr/include/bits/confname.h /usr/include/getopt.h
 ./archetype/system.o: /usr/include/jpeglib.h /usr/include/jconfig.h
-./archetype/system.o: /usr/include/jmorecfg.h
-./archetype/system.o: /home/matthew/inhesion/h/core/bit.h
-./archetype/system.o: /home/matthew/inhesion/h/core/object.h
-./archetype/system.o: /home/matthew/inhesion/h/core/types.h
-./archetype/system.o: /home/matthew/inhesion/h/container/array.h
-./archetype/system.o: /home/matthew/inhesion/h/container/declarations.h
-./archetype/system.o: /home/matthew/inhesion/h/core/message.h
-./archetype/system.o: /home/matthew/inhesion/h/core/engine.h
-./archetype/system.o: /home/matthew/inhesion/h/core/bitarray.h
-./archetype/system.o: /home/matthew/inhesion/h/core/string.h
-./archetype/system.o: /home/matthew/inhesion/h/core/objectey.h
-./archetype/system.o: /home/matthew/inhesion/inferno/classify/classifyey.h
-./archetype/system.o: /home/matthew/inhesion/h/core/double.h
-./archetype/system.o: /home/matthew/inhesion/h/core/unsigned_short.h
-./cor3/system.o: /home/matthew/inhesion/inferno/cor3/actor.h
-./cor3/system.o: /home/matthew/inhesion/inferno/cor3/declarations.h
-./cor3/system.o: /home/matthew/inhesion/inferno/core/actorey.h
-./cor3/system.o: /home/matthew/inhesion/h/core/bitarray.h
-./cor3/system.o: /home/matthew/inhesion/h/core/bit.h
-./cor3/system.o: /home/matthew/inhesion/h/core/object.h
-./cor3/system.o: /home/matthew/inhesion/h/core/bool.h
-./cor3/system.o: /home/matthew/inhesion/h/core/declarations.h
-./cor3/system.o: /home/matthew/inhesion/h/core/message.h
-./cor3/system.o: /home/matthew/inhesion/h/core/engine.h
-./cor3/system.o: /home/matthew/inhesion/h/core/types.h
-./cor3/system.o: /home/matthew/inhesion/h/core/string.h
-./cor3/system.o: /home/matthew/inhesion/h/core/objectey.h
-./cor3/system.o: /home/matthew/inhesion/inferno/cor3/constants.h
-./cor3/system.o: /home/matthew/inhesion/inferno/cor3/system.h
-./cor3/system.o: /home/matthew/inhesion/inferno/core/goal.h
-./cor3/system.o: /home/matthew/inhesion/inferno/search/searchey.h
-./cor3/system.o: /home/matthew/inhesion/inferno/search/tools.h
-./cor3/system.o: /home/matthew/inhesion/h/container/array.h
-./cor3/system.o: /home/matthew/inhesion/h/container/declarations.h
-./cor3/system.o: /home/matthew/inhesion/inferno/box/system.h
-./cor3/system.o: /home/matthew/inhesion/inferno/box/coordinate.h
-./cor3/system.o: /home/matthew/inhesion/h/audit/log.h
-./cor3/system.o: /home/matthew/inhesion/h/core/tools.h
-./cor3/system.o: /home/matthew/inhesion/h/core/standard.h
-./cor3/system.o: /usr/include/arpa/inet.h /usr/include/features.h
-./cor3/system.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
-./cor3/system.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
-./cor3/system.o: /usr/include/gnu/stubs-32.h /usr/include/netinet/in.h
-./cor3/system.o: /usr/include/stdint.h /usr/include/bits/wchar.h
-./cor3/system.o: /usr/include/sys/socket.h /usr/include/sys/uio.h
-./cor3/system.o: /usr/include/sys/types.h /usr/include/bits/types.h
-./cor3/system.o: /usr/include/bits/typesizes.h /usr/include/time.h
+./archetype/system.o: /usr/include/jmorecfg.h /home/matthew/cf/h/core/bit.h
+./archetype/system.o: /home/matthew/cf/h/core/object.h
+./archetype/system.o: /home/matthew/cf/h/core/types.h
+./archetype/system.o: /home/matthew/cf/h/container/array.h
+./archetype/system.o: /home/matthew/cf/h/container/declarations.h
+./archetype/system.o: /home/matthew/cf/h/core/message.h
+./archetype/system.o: /home/matthew/cf/h/core/engine.h
+./archetype/system.o: /home/matthew/cf/h/core/bitarray.h
+./archetype/system.o: /home/matthew/cf/h/core/string.h
+./archetype/system.o: /home/matthew/cf/h/core/objectey.h
+./archetype/system.o: /home/matthew/cf/inferno/classify/classifyey.h
+./archetype/system.o: /home/matthew/cf/h/core/double.h
+./archetype/system.o: /home/matthew/cf/h/core/unsigned_short.h
+./cor3/system.o: /home/matthew/cf/inferno/cor3/actor.h
+./cor3/system.o: /home/matthew/cf/inferno/cor3/declarations.h
+./cor3/system.o: /home/matthew/cf/inferno/core/actorey.h
+./cor3/system.o: /home/matthew/cf/h/core/bitarray.h
+./cor3/system.o: /home/matthew/cf/h/core/bit.h
+./cor3/system.o: /home/matthew/cf/h/core/object.h
+./cor3/system.o: /home/matthew/cf/h/core/bool.h
+./cor3/system.o: /home/matthew/cf/h/core/declarations.h
+./cor3/system.o: /home/matthew/cf/h/core/message.h
+./cor3/system.o: /home/matthew/cf/h/core/engine.h
+./cor3/system.o: /home/matthew/cf/h/core/types.h
+./cor3/system.o: /home/matthew/cf/h/core/string.h
+./cor3/system.o: /home/matthew/cf/h/core/objectey.h
+./cor3/system.o: /home/matthew/cf/inferno/cor3/constants.h
+./cor3/system.o: /home/matthew/cf/inferno/cor3/system.h
+./cor3/system.o: /home/matthew/cf/inferno/core/goal.h
+./cor3/system.o: /home/matthew/cf/inferno/search/searchey.h
+./cor3/system.o: /home/matthew/cf/inferno/search/tools.h
+./cor3/system.o: /home/matthew/cf/h/container/array.h
+./cor3/system.o: /home/matthew/cf/h/container/declarations.h
+./cor3/system.o: /home/matthew/cf/inferno/box/system.h
+./cor3/system.o: /home/matthew/cf/inferno/box/coordinate.h
+./cor3/system.o: /home/matthew/cf/h/audit/log.h
+./cor3/system.o: /home/matthew/cf/h/core/tools.h
+./cor3/system.o: /home/matthew/cf/h/core/standard.h /usr/include/arpa/inet.h
+./cor3/system.o: /usr/include/features.h /usr/include/bits/predefs.h
+./cor3/system.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+./cor3/system.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
+./cor3/system.o: /usr/include/netinet/in.h /usr/include/stdint.h
+./cor3/system.o: /usr/include/bits/wchar.h /usr/include/sys/socket.h
+./cor3/system.o: /usr/include/sys/uio.h /usr/include/sys/types.h
+./cor3/system.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+./cor3/system.o: /usr/include/time.h
 ./cor3/system.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
 ./cor3/system.o: /usr/include/endian.h /usr/include/bits/endian.h
 ./cor3/system.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
@@ -666,39 +661,39 @@
 ./cor3/system.o: /usr/include/bits/posix_opt.h /usr/include/bits/confname.h
 ./cor3/system.o: /usr/include/getopt.h /usr/include/jpeglib.h
 ./cor3/system.o: /usr/include/jconfig.h /usr/include/jmorecfg.h
-./cor3/system.o: /home/matthew/inhesion/inferno/core/constants.h
-./cor3/actor.o: /home/matthew/inhesion/inferno/cor3/actor.h
-./cor3/actor.o: /home/matthew/inhesion/inferno/cor3/declarations.h
-./cor3/actor.o: /home/matthew/inhesion/inferno/core/actorey.h
-./cor3/actor.o: /home/matthew/inhesion/h/core/bitarray.h
-./cor3/actor.o: /home/matthew/inhesion/h/core/bit.h
-./cor3/actor.o: /home/matthew/inhesion/h/core/object.h
-./cor3/actor.o: /home/matthew/inhesion/h/core/bool.h
-./cor3/actor.o: /home/matthew/inhesion/h/core/declarations.h
-./cor3/actor.o: /home/matthew/inhesion/h/core/message.h
-./cor3/actor.o: /home/matthew/inhesion/h/core/engine.h
-./cor3/actor.o: /home/matthew/inhesion/h/core/types.h
-./cor3/actor.o: /home/matthew/inhesion/h/core/string.h
-./cor3/actor.o: /home/matthew/inhesion/h/core/objectey.h
-./cor3/actor.o: /home/matthew/inhesion/inferno/cor3/system.h
-./cor3/actor.o: /home/matthew/inhesion/inferno/core/goal.h
-./cor3/actor.o: /home/matthew/inhesion/inferno/search/searchey.h
-./cor3/actor.o: /home/matthew/inhesion/inferno/search/tools.h
-./cor3/actor.o: /home/matthew/inhesion/h/container/array.h
-./cor3/actor.o: /home/matthew/inhesion/h/container/declarations.h
-./cor3/actor.o: /home/matthew/inhesion/inferno/box/system.h
-./cor3/actor.o: /home/matthew/inhesion/inferno/box/coordinate.h
-./cor3/actor.o: /home/matthew/inhesion/h/audit/log.h
-./cor3/actor.o: /home/matthew/inhesion/h/core/tools.h
-./cor3/actor.o: /home/matthew/inhesion/h/core/standard.h
-./cor3/actor.o: /usr/include/arpa/inet.h /usr/include/features.h
-./cor3/actor.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
-./cor3/actor.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
-./cor3/actor.o: /usr/include/gnu/stubs-32.h /usr/include/netinet/in.h
-./cor3/actor.o: /usr/include/stdint.h /usr/include/bits/wchar.h
-./cor3/actor.o: /usr/include/sys/socket.h /usr/include/sys/uio.h
-./cor3/actor.o: /usr/include/sys/types.h /usr/include/bits/types.h
-./cor3/actor.o: /usr/include/bits/typesizes.h /usr/include/time.h
+./cor3/system.o: /home/matthew/cf/inferno/core/constants.h
+./cor3/actor.o: /home/matthew/cf/inferno/cor3/actor.h
+./cor3/actor.o: /home/matthew/cf/inferno/cor3/declarations.h
+./cor3/actor.o: /home/matthew/cf/inferno/core/actorey.h
+./cor3/actor.o: /home/matthew/cf/h/core/bitarray.h
+./cor3/actor.o: /home/matthew/cf/h/core/bit.h
+./cor3/actor.o: /home/matthew/cf/h/core/object.h
+./cor3/actor.o: /home/matthew/cf/h/core/bool.h
+./cor3/actor.o: /home/matthew/cf/h/core/declarations.h
+./cor3/actor.o: /home/matthew/cf/h/core/message.h
+./cor3/actor.o: /home/matthew/cf/h/core/engine.h
+./cor3/actor.o: /home/matthew/cf/h/core/types.h
+./cor3/actor.o: /home/matthew/cf/h/core/string.h
+./cor3/actor.o: /home/matthew/cf/h/core/objectey.h
+./cor3/actor.o: /home/matthew/cf/inferno/cor3/system.h
+./cor3/actor.o: /home/matthew/cf/inferno/core/goal.h
+./cor3/actor.o: /home/matthew/cf/inferno/search/searchey.h
+./cor3/actor.o: /home/matthew/cf/inferno/search/tools.h
+./cor3/actor.o: /home/matthew/cf/h/container/array.h
+./cor3/actor.o: /home/matthew/cf/h/container/declarations.h
+./cor3/actor.o: /home/matthew/cf/inferno/box/system.h
+./cor3/actor.o: /home/matthew/cf/inferno/box/coordinate.h
+./cor3/actor.o: /home/matthew/cf/h/audit/log.h
+./cor3/actor.o: /home/matthew/cf/h/core/tools.h
+./cor3/actor.o: /home/matthew/cf/h/core/standard.h /usr/include/arpa/inet.h
+./cor3/actor.o: /usr/include/features.h /usr/include/bits/predefs.h
+./cor3/actor.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+./cor3/actor.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
+./cor3/actor.o: /usr/include/netinet/in.h /usr/include/stdint.h
+./cor3/actor.o: /usr/include/bits/wchar.h /usr/include/sys/socket.h
+./cor3/actor.o: /usr/include/sys/uio.h /usr/include/sys/types.h
+./cor3/actor.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+./cor3/actor.o: /usr/include/time.h
 ./cor3/actor.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
 ./cor3/actor.o: /usr/include/endian.h /usr/include/bits/endian.h
 ./cor3/actor.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
@@ -743,96 +738,31 @@
 ./cor3/actor.o: /usr/include/bits/confname.h /usr/include/getopt.h
 ./cor3/actor.o: /usr/include/jpeglib.h /usr/include/jconfig.h
 ./cor3/actor.o: /usr/include/jmorecfg.h
-./cor3/actor.o: /home/matthew/inhesion/inferno/core/constants.h
-./cor3/constants.o: /home/matthew/inhesion/inferno/cor3/constants.h
-./cor3/declarations.o: /home/matthew/inhesion/inferno/cor3/declarations.h
-./mtetris/system.o: /home/matthew/inhesion/inferno/mtetris/system.h
-./mtetris/system.o: /home/matthew/inhesion/h/core/tools.h
-./mtetris/system.o: /home/matthew/inhesion/h/core/standard.h
-./mtetris/system.o: /usr/include/arpa/inet.h /usr/include/features.h
-./mtetris/system.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
-./mtetris/system.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
-./mtetris/system.o: /usr/include/gnu/stubs-32.h /usr/include/netinet/in.h
-./mtetris/system.o: /usr/include/stdint.h /usr/include/bits/wchar.h
-./mtetris/system.o: /usr/include/sys/socket.h /usr/include/sys/uio.h
-./mtetris/system.o: /usr/include/sys/types.h /usr/include/bits/types.h
-./mtetris/system.o: /usr/include/bits/typesizes.h /usr/include/time.h
-./mtetris/system.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
-./mtetris/system.o: /usr/include/endian.h /usr/include/bits/endian.h
-./mtetris/system.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
-./mtetris/system.o: /usr/include/bits/select.h /usr/include/bits/sigset.h
-./mtetris/system.o: /usr/include/bits/time.h /usr/include/sys/sysmacros.h
-./mtetris/system.o: /usr/include/bits/pthreadtypes.h /usr/include/bits/uio.h
-./mtetris/system.o: /usr/include/bits/socket.h /usr/include/bits/sockaddr.h
-./mtetris/system.o: /usr/include/asm/socket.h
-./mtetris/system.o: /usr/include/asm-generic/socket.h
-./mtetris/system.o: /usr/include/asm/sockios.h
-./mtetris/system.o: /usr/include/asm-generic/sockios.h /usr/include/bits/in.h
-./mtetris/system.o: /usr/include/assert.h /usr/include/ctype.h
-./mtetris/system.o: /usr/include/xlocale.h /usr/include/dirent.h
-./mtetris/system.o: /usr/include/bits/dirent.h /usr/include/bits/posix1_lim.h
-./mtetris/system.o: /usr/include/bits/local_lim.h /usr/include/linux/limits.h
-./mtetris/system.o: /usr/include/fcntl.h /usr/include/bits/fcntl.h
-./mtetris/system.o: /usr/include/postgresql/libpq-fe.h /usr/include/stdio.h
-./mtetris/system.o: /usr/include/libio.h /usr/include/_G_config.h
-./mtetris/system.o: /usr/include/wchar.h
-./mtetris/system.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdarg.h
-./mtetris/system.o: /usr/include/bits/stdio_lim.h
-./mtetris/system.o: /usr/include/bits/sys_errlist.h
-./mtetris/system.o: /usr/include/postgresql/postgres_ext.h
-./mtetris/system.o: /usr/include/math.h /usr/include/bits/huge_val.h
-./mtetris/system.o: /usr/include/bits/huge_valf.h
-./mtetris/system.o: /usr/include/bits/huge_vall.h /usr/include/bits/inf.h
-./mtetris/system.o: /usr/include/bits/nan.h /usr/include/bits/mathdef.h
-./mtetris/system.o: /usr/include/bits/mathcalls.h /usr/include/ncurses.h
-./mtetris/system.o: /usr/include/ncurses_dll.h
-./mtetris/system.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdbool.h
-./mtetris/system.o: /usr/include/unctrl.h /usr/include/curses.h
-./mtetris/system.o: /usr/include/openssl/rand.h /usr/include/stdlib.h
-./mtetris/system.o: /usr/include/alloca.h /usr/include/openssl/ossl_typ.h
-./mtetris/system.o: /usr/include/openssl/e_os2.h
-./mtetris/system.o: /usr/include/openssl/opensslconf.h /usr/include/pthread.h
-./mtetris/system.o: /usr/include/sched.h /usr/include/bits/sched.h
-./mtetris/system.o: /usr/include/signal.h /usr/include/bits/setjmp.h
-./mtetris/system.o: /usr/include/string.h /usr/include/sys/errno.h
-./mtetris/system.o: /usr/include/errno.h /usr/include/bits/errno.h
-./mtetris/system.o: /usr/include/linux/errno.h /usr/include/asm/errno.h
-./mtetris/system.o: /usr/include/asm-generic/errno.h
-./mtetris/system.o: /usr/include/asm-generic/errno-base.h
-./mtetris/system.o: /usr/include/sys/stat.h /usr/include/bits/stat.h
-./mtetris/system.o: /usr/include/termios.h /usr/include/bits/termios.h
-./mtetris/system.o: /usr/include/sys/ttydefaults.h /usr/include/unistd.h
-./mtetris/system.o: /usr/include/bits/posix_opt.h
-./mtetris/system.o: /usr/include/bits/confname.h /usr/include/getopt.h
-./mtetris/system.o: /usr/include/jpeglib.h /usr/include/jconfig.h
-./mtetris/system.o: /usr/include/jmorecfg.h
-./mtetris/system.o: /home/matthew/inhesion/h/core/bit.h
-./mtetris/system.o: /home/matthew/inhesion/h/core/object.h
-./mtetris/system.o: /home/matthew/inhesion/h/core/bool.h
-./mtetris/system.o: /home/matthew/inhesion/h/core/declarations.h
-./mtetris/system.o: /home/matthew/inhesion/h/core/types.h
-./core/goal.o: /home/matthew/inhesion/inferno/core/goal.h
-./core/constants.o: /home/matthew/inhesion/inferno/core/constants.h
-./core/actorey.o: /home/matthew/inhesion/inferno/core/actorey.h
-./core/actorey.o: /home/matthew/inhesion/h/core/bitarray.h
-./core/actorey.o: /home/matthew/inhesion/h/core/bit.h
-./core/actorey.o: /home/matthew/inhesion/h/core/object.h
-./core/actorey.o: /home/matthew/inhesion/h/core/bool.h
-./core/actorey.o: /home/matthew/inhesion/h/core/declarations.h
-./core/actorey.o: /home/matthew/inhesion/h/core/message.h
-./core/actorey.o: /home/matthew/inhesion/h/core/engine.h
-./core/actorey.o: /home/matthew/inhesion/h/core/types.h
-./core/actorey.o: /home/matthew/inhesion/h/core/string.h
-./core/actorey.o: /home/matthew/inhesion/h/core/objectey.h
-./core/actorey.o: /home/matthew/inhesion/h/core/standard.h
-./core/actorey.o: /usr/include/arpa/inet.h /usr/include/features.h
-./core/actorey.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
-./core/actorey.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
-./core/actorey.o: /usr/include/gnu/stubs-32.h /usr/include/netinet/in.h
-./core/actorey.o: /usr/include/stdint.h /usr/include/bits/wchar.h
-./core/actorey.o: /usr/include/sys/socket.h /usr/include/sys/uio.h
-./core/actorey.o: /usr/include/sys/types.h /usr/include/bits/types.h
-./core/actorey.o: /usr/include/bits/typesizes.h /usr/include/time.h
+./cor3/actor.o: /home/matthew/cf/inferno/core/constants.h
+./cor3/constants.o: /home/matthew/cf/inferno/cor3/constants.h
+./cor3/declarations.o: /home/matthew/cf/inferno/cor3/declarations.h
+./core/goal.o: /home/matthew/cf/inferno/core/goal.h
+./core/constants.o: /home/matthew/cf/inferno/core/constants.h
+./core/actorey.o: /home/matthew/cf/inferno/core/actorey.h
+./core/actorey.o: /home/matthew/cf/h/core/bitarray.h
+./core/actorey.o: /home/matthew/cf/h/core/bit.h
+./core/actorey.o: /home/matthew/cf/h/core/object.h
+./core/actorey.o: /home/matthew/cf/h/core/bool.h
+./core/actorey.o: /home/matthew/cf/h/core/declarations.h
+./core/actorey.o: /home/matthew/cf/h/core/message.h
+./core/actorey.o: /home/matthew/cf/h/core/engine.h
+./core/actorey.o: /home/matthew/cf/h/core/types.h
+./core/actorey.o: /home/matthew/cf/h/core/string.h
+./core/actorey.o: /home/matthew/cf/h/core/objectey.h
+./core/actorey.o: /home/matthew/cf/h/core/standard.h /usr/include/arpa/inet.h
+./core/actorey.o: /usr/include/features.h /usr/include/bits/predefs.h
+./core/actorey.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+./core/actorey.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
+./core/actorey.o: /usr/include/netinet/in.h /usr/include/stdint.h
+./core/actorey.o: /usr/include/bits/wchar.h /usr/include/sys/socket.h
+./core/actorey.o: /usr/include/sys/uio.h /usr/include/sys/types.h
+./core/actorey.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+./core/actorey.o: /usr/include/time.h
 ./core/actorey.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
 ./core/actorey.o: /usr/include/endian.h /usr/include/bits/endian.h
 ./core/actorey.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
@@ -879,17 +809,17 @@
 ./core/actorey.o: /usr/include/bits/posix_opt.h /usr/include/bits/confname.h
 ./core/actorey.o: /usr/include/getopt.h /usr/include/jpeglib.h
 ./core/actorey.o: /usr/include/jconfig.h /usr/include/jmorecfg.h
-./mind/system.o: /home/matthew/inhesion/inferno/mind/system.h
-./mind/system.o: /home/matthew/inhesion/h/core/tools.h
-./mind/system.o: /home/matthew/inhesion/h/core/standard.h
-./mind/system.o: /usr/include/arpa/inet.h /usr/include/features.h
-./mind/system.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
-./mind/system.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
-./mind/system.o: /usr/include/gnu/stubs-32.h /usr/include/netinet/in.h
-./mind/system.o: /usr/include/stdint.h /usr/include/bits/wchar.h
-./mind/system.o: /usr/include/sys/socket.h /usr/include/sys/uio.h
-./mind/system.o: /usr/include/sys/types.h /usr/include/bits/types.h
-./mind/system.o: /usr/include/bits/typesizes.h /usr/include/time.h
+./mind/system.o: /home/matthew/cf/inferno/mind/system.h
+./mind/system.o: /home/matthew/cf/h/core/tools.h
+./mind/system.o: /home/matthew/cf/h/core/standard.h /usr/include/arpa/inet.h
+./mind/system.o: /usr/include/features.h /usr/include/bits/predefs.h
+./mind/system.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+./mind/system.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
+./mind/system.o: /usr/include/netinet/in.h /usr/include/stdint.h
+./mind/system.o: /usr/include/bits/wchar.h /usr/include/sys/socket.h
+./mind/system.o: /usr/include/sys/uio.h /usr/include/sys/types.h
+./mind/system.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+./mind/system.o: /usr/include/time.h
 ./mind/system.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
 ./mind/system.o: /usr/include/endian.h /usr/include/bits/endian.h
 ./mind/system.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
@@ -936,26 +866,25 @@
 ./mind/system.o: /usr/include/bits/posix_opt.h /usr/include/bits/confname.h
 ./mind/system.o: /usr/include/getopt.h /usr/include/jpeglib.h
 ./mind/system.o: /usr/include/jconfig.h /usr/include/jmorecfg.h
-./mind/system.o: /home/matthew/inhesion/h/core/bit.h
-./mind/system.o: /home/matthew/inhesion/h/core/object.h
-./mind/system.o: /home/matthew/inhesion/h/core/bool.h
-./mind/system.o: /home/matthew/inhesion/h/core/declarations.h
-./mind/system.o: /home/matthew/inhesion/h/core/types.h
-./box/system.o: /home/matthew/inhesion/inferno/box/system.h
-./box/system.o: /home/matthew/inhesion/inferno/box/coordinate.h
-./box/system.o: /home/matthew/inhesion/h/audit/log.h
-./box/system.o: /home/matthew/inhesion/h/core/bool.h
-./box/system.o: /home/matthew/inhesion/h/core/declarations.h
-./box/system.o: /home/matthew/inhesion/h/core/tools.h
-./box/system.o: /home/matthew/inhesion/h/core/standard.h
-./box/system.o: /usr/include/arpa/inet.h /usr/include/features.h
-./box/system.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
-./box/system.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
-./box/system.o: /usr/include/gnu/stubs-32.h /usr/include/netinet/in.h
-./box/system.o: /usr/include/stdint.h /usr/include/bits/wchar.h
-./box/system.o: /usr/include/sys/socket.h /usr/include/sys/uio.h
-./box/system.o: /usr/include/sys/types.h /usr/include/bits/types.h
-./box/system.o: /usr/include/bits/typesizes.h /usr/include/time.h
+./mind/system.o: /home/matthew/cf/h/core/bit.h
+./mind/system.o: /home/matthew/cf/h/core/object.h
+./mind/system.o: /home/matthew/cf/h/core/bool.h
+./mind/system.o: /home/matthew/cf/h/core/declarations.h
+./mind/system.o: /home/matthew/cf/h/core/types.h
+./box/system.o: /home/matthew/cf/inferno/box/system.h
+./box/system.o: /home/matthew/cf/inferno/box/coordinate.h
+./box/system.o: /home/matthew/cf/h/audit/log.h /home/matthew/cf/h/core/bool.h
+./box/system.o: /home/matthew/cf/h/core/declarations.h
+./box/system.o: /home/matthew/cf/h/core/tools.h
+./box/system.o: /home/matthew/cf/h/core/standard.h /usr/include/arpa/inet.h
+./box/system.o: /usr/include/features.h /usr/include/bits/predefs.h
+./box/system.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+./box/system.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
+./box/system.o: /usr/include/netinet/in.h /usr/include/stdint.h
+./box/system.o: /usr/include/bits/wchar.h /usr/include/sys/socket.h
+./box/system.o: /usr/include/sys/uio.h /usr/include/sys/types.h
+./box/system.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+./box/system.o: /usr/include/time.h
 ./box/system.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
 ./box/system.o: /usr/include/endian.h /usr/include/bits/endian.h
 ./box/system.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
@@ -999,15 +928,15 @@
 ./box/system.o: /usr/include/unistd.h /usr/include/bits/posix_opt.h
 ./box/system.o: /usr/include/bits/confname.h /usr/include/getopt.h
 ./box/system.o: /usr/include/jpeglib.h /usr/include/jconfig.h
-./box/system.o: /usr/include/jmorecfg.h /home/matthew/inhesion/h/core/bit.h
-./box/system.o: /home/matthew/inhesion/h/core/object.h
-./box/system.o: /home/matthew/inhesion/h/core/types.h
-./box/system.o: /home/matthew/inhesion/h/container/array.h
-./box/system.o: /home/matthew/inhesion/h/container/declarations.h
-./box/system.o: /home/matthew/inhesion/h/core/message.h
-./box/system.o: /home/matthew/inhesion/h/core/engine.h
-./box/coordinate.o: /home/matthew/inhesion/inferno/box/coordinate.h
-./box/coordinate.o: /home/matthew/inhesion/h/core/standard.h
+./box/system.o: /usr/include/jmorecfg.h /home/matthew/cf/h/core/bit.h
+./box/system.o: /home/matthew/cf/h/core/object.h
+./box/system.o: /home/matthew/cf/h/core/types.h
+./box/system.o: /home/matthew/cf/h/container/array.h
+./box/system.o: /home/matthew/cf/h/container/declarations.h
+./box/system.o: /home/matthew/cf/h/core/message.h
+./box/system.o: /home/matthew/cf/h/core/engine.h
+./box/coordinate.o: /home/matthew/cf/inferno/box/coordinate.h
+./box/coordinate.o: /home/matthew/cf/h/core/standard.h
 ./box/coordinate.o: /usr/include/arpa/inet.h /usr/include/features.h
 ./box/coordinate.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
 ./box/coordinate.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
@@ -1065,39 +994,39 @@
 ./box/coordinate.o: /usr/include/bits/confname.h /usr/include/getopt.h
 ./box/coordinate.o: /usr/include/jpeglib.h /usr/include/jconfig.h
 ./box/coordinate.o: /usr/include/jmorecfg.h
-./eos/system.o: /home/matthew/inhesion/inferno/eos/actor.h
-./eos/system.o: /home/matthew/inhesion/inferno/core/actorey.h
-./eos/system.o: /home/matthew/inhesion/h/core/bitarray.h
-./eos/system.o: /home/matthew/inhesion/h/core/bit.h
-./eos/system.o: /home/matthew/inhesion/h/core/object.h
-./eos/system.o: /home/matthew/inhesion/h/core/bool.h
-./eos/system.o: /home/matthew/inhesion/h/core/declarations.h
-./eos/system.o: /home/matthew/inhesion/h/core/message.h
-./eos/system.o: /home/matthew/inhesion/h/core/engine.h
-./eos/system.o: /home/matthew/inhesion/h/core/types.h
-./eos/system.o: /home/matthew/inhesion/h/core/string.h
-./eos/system.o: /home/matthew/inhesion/h/core/objectey.h
-./eos/system.o: /home/matthew/inhesion/inferno/eos/declarations.h
-./eos/system.o: /home/matthew/inhesion/inferno/eos/constants.h
-./eos/system.o: /home/matthew/inhesion/inferno/eos/system.h
-./eos/system.o: /home/matthew/inhesion/inferno/search/searchey.h
-./eos/system.o: /home/matthew/inhesion/inferno/core/goal.h
-./eos/system.o: /home/matthew/inhesion/inferno/search/tools.h
-./eos/system.o: /home/matthew/inhesion/h/container/array.h
-./eos/system.o: /home/matthew/inhesion/h/container/declarations.h
-./eos/system.o: /home/matthew/inhesion/inferno/box/system.h
-./eos/system.o: /home/matthew/inhesion/inferno/box/coordinate.h
-./eos/system.o: /home/matthew/inhesion/h/audit/log.h
-./eos/system.o: /home/matthew/inhesion/h/core/tools.h
-./eos/system.o: /home/matthew/inhesion/h/core/standard.h
-./eos/system.o: /usr/include/arpa/inet.h /usr/include/features.h
-./eos/system.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
-./eos/system.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
-./eos/system.o: /usr/include/gnu/stubs-32.h /usr/include/netinet/in.h
-./eos/system.o: /usr/include/stdint.h /usr/include/bits/wchar.h
-./eos/system.o: /usr/include/sys/socket.h /usr/include/sys/uio.h
-./eos/system.o: /usr/include/sys/types.h /usr/include/bits/types.h
-./eos/system.o: /usr/include/bits/typesizes.h /usr/include/time.h
+./eos/system.o: /home/matthew/cf/inferno/eos/actor.h
+./eos/system.o: /home/matthew/cf/inferno/core/actorey.h
+./eos/system.o: /home/matthew/cf/h/core/bitarray.h
+./eos/system.o: /home/matthew/cf/h/core/bit.h
+./eos/system.o: /home/matthew/cf/h/core/object.h
+./eos/system.o: /home/matthew/cf/h/core/bool.h
+./eos/system.o: /home/matthew/cf/h/core/declarations.h
+./eos/system.o: /home/matthew/cf/h/core/message.h
+./eos/system.o: /home/matthew/cf/h/core/engine.h
+./eos/system.o: /home/matthew/cf/h/core/types.h
+./eos/system.o: /home/matthew/cf/h/core/string.h
+./eos/system.o: /home/matthew/cf/h/core/objectey.h
+./eos/system.o: /home/matthew/cf/inferno/eos/declarations.h
+./eos/system.o: /home/matthew/cf/inferno/eos/constants.h
+./eos/system.o: /home/matthew/cf/inferno/eos/system.h
+./eos/system.o: /home/matthew/cf/inferno/search/searchey.h
+./eos/system.o: /home/matthew/cf/inferno/core/goal.h
+./eos/system.o: /home/matthew/cf/inferno/search/tools.h
+./eos/system.o: /home/matthew/cf/h/container/array.h
+./eos/system.o: /home/matthew/cf/h/container/declarations.h
+./eos/system.o: /home/matthew/cf/inferno/box/system.h
+./eos/system.o: /home/matthew/cf/inferno/box/coordinate.h
+./eos/system.o: /home/matthew/cf/h/audit/log.h
+./eos/system.o: /home/matthew/cf/h/core/tools.h
+./eos/system.o: /home/matthew/cf/h/core/standard.h /usr/include/arpa/inet.h
+./eos/system.o: /usr/include/features.h /usr/include/bits/predefs.h
+./eos/system.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+./eos/system.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
+./eos/system.o: /usr/include/netinet/in.h /usr/include/stdint.h
+./eos/system.o: /usr/include/bits/wchar.h /usr/include/sys/socket.h
+./eos/system.o: /usr/include/sys/uio.h /usr/include/sys/types.h
+./eos/system.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+./eos/system.o: /usr/include/time.h
 ./eos/system.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
 ./eos/system.o: /usr/include/endian.h /usr/include/bits/endian.h
 ./eos/system.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
@@ -1142,39 +1071,37 @@
 ./eos/system.o: /usr/include/bits/confname.h /usr/include/getopt.h
 ./eos/system.o: /usr/include/jpeglib.h /usr/include/jconfig.h
 ./eos/system.o: /usr/include/jmorecfg.h
-./eos/actor.o: /home/matthew/inhesion/inferno/core/constants.h
-./eos/actor.o: /home/matthew/inhesion/inferno/core/goal.h
-./eos/actor.o: /home/matthew/inhesion/inferno/eos/actor.h
-./eos/actor.o: /home/matthew/inhesion/inferno/core/actorey.h
-./eos/actor.o: /home/matthew/inhesion/h/core/bitarray.h
-./eos/actor.o: /home/matthew/inhesion/h/core/bit.h
-./eos/actor.o: /home/matthew/inhesion/h/core/object.h
-./eos/actor.o: /home/matthew/inhesion/h/core/bool.h
-./eos/actor.o: /home/matthew/inhesion/h/core/declarations.h
-./eos/actor.o: /home/matthew/inhesion/h/core/message.h
-./eos/actor.o: /home/matthew/inhesion/h/core/engine.h
-./eos/actor.o: /home/matthew/inhesion/h/core/types.h
-./eos/actor.o: /home/matthew/inhesion/h/core/string.h
-./eos/actor.o: /home/matthew/inhesion/h/core/objectey.h
-./eos/actor.o: /home/matthew/inhesion/inferno/eos/declarations.h
-./eos/actor.o: /home/matthew/inhesion/inferno/eos/system.h
-./eos/actor.o: /home/matthew/inhesion/inferno/search/searchey.h
-./eos/actor.o: /home/matthew/inhesion/inferno/search/tools.h
-./eos/actor.o: /home/matthew/inhesion/h/container/array.h
-./eos/actor.o: /home/matthew/inhesion/h/container/declarations.h
-./eos/actor.o: /home/matthew/inhesion/inferno/box/system.h
-./eos/actor.o: /home/matthew/inhesion/inferno/box/coordinate.h
-./eos/actor.o: /home/matthew/inhesion/h/audit/log.h
-./eos/actor.o: /home/matthew/inhesion/h/core/tools.h
-./eos/actor.o: /home/matthew/inhesion/h/core/standard.h
-./eos/actor.o: /usr/include/arpa/inet.h /usr/include/features.h
-./eos/actor.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
-./eos/actor.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
-./eos/actor.o: /usr/include/gnu/stubs-32.h /usr/include/netinet/in.h
-./eos/actor.o: /usr/include/stdint.h /usr/include/bits/wchar.h
-./eos/actor.o: /usr/include/sys/socket.h /usr/include/sys/uio.h
-./eos/actor.o: /usr/include/sys/types.h /usr/include/bits/types.h
-./eos/actor.o: /usr/include/bits/typesizes.h /usr/include/time.h
+./eos/actor.o: /home/matthew/cf/inferno/core/constants.h
+./eos/actor.o: /home/matthew/cf/inferno/core/goal.h
+./eos/actor.o: /home/matthew/cf/inferno/eos/actor.h
+./eos/actor.o: /home/matthew/cf/inferno/core/actorey.h
+./eos/actor.o: /home/matthew/cf/h/core/bitarray.h
+./eos/actor.o: /home/matthew/cf/h/core/bit.h /home/matthew/cf/h/core/object.h
+./eos/actor.o: /home/matthew/cf/h/core/bool.h
+./eos/actor.o: /home/matthew/cf/h/core/declarations.h
+./eos/actor.o: /home/matthew/cf/h/core/message.h
+./eos/actor.o: /home/matthew/cf/h/core/engine.h
+./eos/actor.o: /home/matthew/cf/h/core/types.h
+./eos/actor.o: /home/matthew/cf/h/core/string.h
+./eos/actor.o: /home/matthew/cf/h/core/objectey.h
+./eos/actor.o: /home/matthew/cf/inferno/eos/declarations.h
+./eos/actor.o: /home/matthew/cf/inferno/eos/system.h
+./eos/actor.o: /home/matthew/cf/inferno/search/searchey.h
+./eos/actor.o: /home/matthew/cf/inferno/search/tools.h
+./eos/actor.o: /home/matthew/cf/h/container/array.h
+./eos/actor.o: /home/matthew/cf/h/container/declarations.h
+./eos/actor.o: /home/matthew/cf/inferno/box/system.h
+./eos/actor.o: /home/matthew/cf/inferno/box/coordinate.h
+./eos/actor.o: /home/matthew/cf/h/audit/log.h /home/matthew/cf/h/core/tools.h
+./eos/actor.o: /home/matthew/cf/h/core/standard.h /usr/include/arpa/inet.h
+./eos/actor.o: /usr/include/features.h /usr/include/bits/predefs.h
+./eos/actor.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+./eos/actor.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
+./eos/actor.o: /usr/include/netinet/in.h /usr/include/stdint.h
+./eos/actor.o: /usr/include/bits/wchar.h /usr/include/sys/socket.h
+./eos/actor.o: /usr/include/sys/uio.h /usr/include/sys/types.h
+./eos/actor.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+./eos/actor.o: /usr/include/time.h
 ./eos/actor.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
 ./eos/actor.o: /usr/include/endian.h /usr/include/bits/endian.h
 ./eos/actor.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
@@ -1218,165 +1145,32 @@
 ./eos/actor.o: /usr/include/unistd.h /usr/include/bits/posix_opt.h
 ./eos/actor.o: /usr/include/bits/confname.h /usr/include/getopt.h
 ./eos/actor.o: /usr/include/jpeglib.h /usr/include/jconfig.h
-./eos/actor.o: /usr/include/jmorecfg.h /home/matthew/inhesion/h/core/random.h
-./eos/constants.o: /home/matthew/inhesion/inferno/eos/constants.h
-./eos/declarations.o: /home/matthew/inhesion/inferno/eos/declarations.h
-./mcontainer/system.o: /home/matthew/inhesion/inferno/mcontainer/system.h
-./mcontainer/system.o: /home/matthew/inhesion/h/core/tools.h
-./mcontainer/system.o: /home/matthew/inhesion/h/core/standard.h
-./mcontainer/system.o: /usr/include/arpa/inet.h /usr/include/features.h
-./mcontainer/system.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
-./mcontainer/system.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
-./mcontainer/system.o: /usr/include/gnu/stubs-32.h /usr/include/netinet/in.h
-./mcontainer/system.o: /usr/include/stdint.h /usr/include/bits/wchar.h
-./mcontainer/system.o: /usr/include/sys/socket.h /usr/include/sys/uio.h
-./mcontainer/system.o: /usr/include/sys/types.h /usr/include/bits/types.h
-./mcontainer/system.o: /usr/include/bits/typesizes.h /usr/include/time.h
-./mcontainer/system.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
-./mcontainer/system.o: /usr/include/endian.h /usr/include/bits/endian.h
-./mcontainer/system.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
-./mcontainer/system.o: /usr/include/bits/select.h /usr/include/bits/sigset.h
-./mcontainer/system.o: /usr/include/bits/time.h /usr/include/sys/sysmacros.h
-./mcontainer/system.o: /usr/include/bits/pthreadtypes.h
-./mcontainer/system.o: /usr/include/bits/uio.h /usr/include/bits/socket.h
-./mcontainer/system.o: /usr/include/bits/sockaddr.h /usr/include/asm/socket.h
-./mcontainer/system.o: /usr/include/asm-generic/socket.h
-./mcontainer/system.o: /usr/include/asm/sockios.h
-./mcontainer/system.o: /usr/include/asm-generic/sockios.h
-./mcontainer/system.o: /usr/include/bits/in.h /usr/include/assert.h
-./mcontainer/system.o: /usr/include/ctype.h /usr/include/xlocale.h
-./mcontainer/system.o: /usr/include/dirent.h /usr/include/bits/dirent.h
-./mcontainer/system.o: /usr/include/bits/posix1_lim.h
-./mcontainer/system.o: /usr/include/bits/local_lim.h
-./mcontainer/system.o: /usr/include/linux/limits.h /usr/include/fcntl.h
-./mcontainer/system.o: /usr/include/bits/fcntl.h
-./mcontainer/system.o: /usr/include/postgresql/libpq-fe.h
-./mcontainer/system.o: /usr/include/stdio.h /usr/include/libio.h
-./mcontainer/system.o: /usr/include/_G_config.h /usr/include/wchar.h
-./mcontainer/system.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdarg.h
-./mcontainer/system.o: /usr/include/bits/stdio_lim.h
-./mcontainer/system.o: /usr/include/bits/sys_errlist.h
-./mcontainer/system.o: /usr/include/postgresql/postgres_ext.h
-./mcontainer/system.o: /usr/include/math.h /usr/include/bits/huge_val.h
-./mcontainer/system.o: /usr/include/bits/huge_valf.h
-./mcontainer/system.o: /usr/include/bits/huge_vall.h /usr/include/bits/inf.h
-./mcontainer/system.o: /usr/include/bits/nan.h /usr/include/bits/mathdef.h
-./mcontainer/system.o: /usr/include/bits/mathcalls.h /usr/include/ncurses.h
-./mcontainer/system.o: /usr/include/ncurses_dll.h
-./mcontainer/system.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdbool.h
-./mcontainer/system.o: /usr/include/unctrl.h /usr/include/curses.h
-./mcontainer/system.o: /usr/include/openssl/rand.h /usr/include/stdlib.h
-./mcontainer/system.o: /usr/include/alloca.h /usr/include/openssl/ossl_typ.h
-./mcontainer/system.o: /usr/include/openssl/e_os2.h
-./mcontainer/system.o: /usr/include/openssl/opensslconf.h
-./mcontainer/system.o: /usr/include/pthread.h /usr/include/sched.h
-./mcontainer/system.o: /usr/include/bits/sched.h /usr/include/signal.h
-./mcontainer/system.o: /usr/include/bits/setjmp.h /usr/include/string.h
-./mcontainer/system.o: /usr/include/sys/errno.h /usr/include/errno.h
-./mcontainer/system.o: /usr/include/bits/errno.h /usr/include/linux/errno.h
-./mcontainer/system.o: /usr/include/asm/errno.h
-./mcontainer/system.o: /usr/include/asm-generic/errno.h
-./mcontainer/system.o: /usr/include/asm-generic/errno-base.h
-./mcontainer/system.o: /usr/include/sys/stat.h /usr/include/bits/stat.h
-./mcontainer/system.o: /usr/include/termios.h /usr/include/bits/termios.h
-./mcontainer/system.o: /usr/include/sys/ttydefaults.h /usr/include/unistd.h
-./mcontainer/system.o: /usr/include/bits/posix_opt.h
-./mcontainer/system.o: /usr/include/bits/confname.h /usr/include/getopt.h
-./mcontainer/system.o: /usr/include/jpeglib.h /usr/include/jconfig.h
-./mcontainer/system.o: /usr/include/jmorecfg.h
-./mcontainer/system.o: /home/matthew/inhesion/h/core/bit.h
-./mcontainer/system.o: /home/matthew/inhesion/h/core/object.h
-./mcontainer/system.o: /home/matthew/inhesion/h/core/bool.h
-./mcontainer/system.o: /home/matthew/inhesion/h/core/declarations.h
-./mcontainer/system.o: /home/matthew/inhesion/h/core/types.h
-./mthread/system.o: /home/matthew/inhesion/inferno/mthread/system.h
-./mthread/system.o: /home/matthew/inhesion/h/core/tools.h
-./mthread/system.o: /home/matthew/inhesion/h/core/standard.h
-./mthread/system.o: /usr/include/arpa/inet.h /usr/include/features.h
-./mthread/system.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
-./mthread/system.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
-./mthread/system.o: /usr/include/gnu/stubs-32.h /usr/include/netinet/in.h
-./mthread/system.o: /usr/include/stdint.h /usr/include/bits/wchar.h
-./mthread/system.o: /usr/include/sys/socket.h /usr/include/sys/uio.h
-./mthread/system.o: /usr/include/sys/types.h /usr/include/bits/types.h
-./mthread/system.o: /usr/include/bits/typesizes.h /usr/include/time.h
-./mthread/system.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
-./mthread/system.o: /usr/include/endian.h /usr/include/bits/endian.h
-./mthread/system.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
-./mthread/system.o: /usr/include/bits/select.h /usr/include/bits/sigset.h
-./mthread/system.o: /usr/include/bits/time.h /usr/include/sys/sysmacros.h
-./mthread/system.o: /usr/include/bits/pthreadtypes.h /usr/include/bits/uio.h
-./mthread/system.o: /usr/include/bits/socket.h /usr/include/bits/sockaddr.h
-./mthread/system.o: /usr/include/asm/socket.h
-./mthread/system.o: /usr/include/asm-generic/socket.h
-./mthread/system.o: /usr/include/asm/sockios.h
-./mthread/system.o: /usr/include/asm-generic/sockios.h /usr/include/bits/in.h
-./mthread/system.o: /usr/include/assert.h /usr/include/ctype.h
-./mthread/system.o: /usr/include/xlocale.h /usr/include/dirent.h
-./mthread/system.o: /usr/include/bits/dirent.h /usr/include/bits/posix1_lim.h
-./mthread/system.o: /usr/include/bits/local_lim.h /usr/include/linux/limits.h
-./mthread/system.o: /usr/include/fcntl.h /usr/include/bits/fcntl.h
-./mthread/system.o: /usr/include/postgresql/libpq-fe.h /usr/include/stdio.h
-./mthread/system.o: /usr/include/libio.h /usr/include/_G_config.h
-./mthread/system.o: /usr/include/wchar.h
-./mthread/system.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdarg.h
-./mthread/system.o: /usr/include/bits/stdio_lim.h
-./mthread/system.o: /usr/include/bits/sys_errlist.h
-./mthread/system.o: /usr/include/postgresql/postgres_ext.h
-./mthread/system.o: /usr/include/math.h /usr/include/bits/huge_val.h
-./mthread/system.o: /usr/include/bits/huge_valf.h
-./mthread/system.o: /usr/include/bits/huge_vall.h /usr/include/bits/inf.h
-./mthread/system.o: /usr/include/bits/nan.h /usr/include/bits/mathdef.h
-./mthread/system.o: /usr/include/bits/mathcalls.h /usr/include/ncurses.h
-./mthread/system.o: /usr/include/ncurses_dll.h
-./mthread/system.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdbool.h
-./mthread/system.o: /usr/include/unctrl.h /usr/include/curses.h
-./mthread/system.o: /usr/include/openssl/rand.h /usr/include/stdlib.h
-./mthread/system.o: /usr/include/alloca.h /usr/include/openssl/ossl_typ.h
-./mthread/system.o: /usr/include/openssl/e_os2.h
-./mthread/system.o: /usr/include/openssl/opensslconf.h /usr/include/pthread.h
-./mthread/system.o: /usr/include/sched.h /usr/include/bits/sched.h
-./mthread/system.o: /usr/include/signal.h /usr/include/bits/setjmp.h
-./mthread/system.o: /usr/include/string.h /usr/include/sys/errno.h
-./mthread/system.o: /usr/include/errno.h /usr/include/bits/errno.h
-./mthread/system.o: /usr/include/linux/errno.h /usr/include/asm/errno.h
-./mthread/system.o: /usr/include/asm-generic/errno.h
-./mthread/system.o: /usr/include/asm-generic/errno-base.h
-./mthread/system.o: /usr/include/sys/stat.h /usr/include/bits/stat.h
-./mthread/system.o: /usr/include/termios.h /usr/include/bits/termios.h
-./mthread/system.o: /usr/include/sys/ttydefaults.h /usr/include/unistd.h
-./mthread/system.o: /usr/include/bits/posix_opt.h
-./mthread/system.o: /usr/include/bits/confname.h /usr/include/getopt.h
-./mthread/system.o: /usr/include/jpeglib.h /usr/include/jconfig.h
-./mthread/system.o: /usr/include/jmorecfg.h
-./mthread/system.o: /home/matthew/inhesion/h/core/bit.h
-./mthread/system.o: /home/matthew/inhesion/h/core/object.h
-./mthread/system.o: /home/matthew/inhesion/h/core/bool.h
-./mthread/system.o: /home/matthew/inhesion/h/core/declarations.h
-./mthread/system.o: /home/matthew/inhesion/h/core/types.h
-./search/tools.o: /home/matthew/inhesion/inferno/core/constants.h
-./search/tools.o: /home/matthew/inhesion/inferno/search/tools.h
-./search/tools.o: /home/matthew/inhesion/h/container/array.h
-./search/tools.o: /home/matthew/inhesion/h/container/declarations.h
-./search/tools.o: /home/matthew/inhesion/h/core/bool.h
-./search/tools.o: /home/matthew/inhesion/h/core/declarations.h
-./search/tools.o: /home/matthew/inhesion/h/core/message.h
-./search/tools.o: /home/matthew/inhesion/h/core/engine.h
-./search/tools.o: /home/matthew/inhesion/h/core/object.h
-./search/tools.o: /home/matthew/inhesion/h/core/types.h
-./search/tools.o: /home/matthew/inhesion/inferno/box/system.h
-./search/tools.o: /home/matthew/inhesion/inferno/box/coordinate.h
-./search/tools.o: /home/matthew/inhesion/h/audit/log.h
-./search/tools.o: /home/matthew/inhesion/h/core/tools.h
-./search/tools.o: /home/matthew/inhesion/h/core/standard.h
-./search/tools.o: /usr/include/arpa/inet.h /usr/include/features.h
-./search/tools.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
-./search/tools.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
-./search/tools.o: /usr/include/gnu/stubs-32.h /usr/include/netinet/in.h
-./search/tools.o: /usr/include/stdint.h /usr/include/bits/wchar.h
-./search/tools.o: /usr/include/sys/socket.h /usr/include/sys/uio.h
-./search/tools.o: /usr/include/sys/types.h /usr/include/bits/types.h
-./search/tools.o: /usr/include/bits/typesizes.h /usr/include/time.h
+./eos/actor.o: /usr/include/jmorecfg.h /home/matthew/cf/h/core/random.h
+./eos/constants.o: /home/matthew/cf/inferno/eos/constants.h
+./eos/declarations.o: /home/matthew/cf/inferno/eos/declarations.h
+./search/tools.o: /home/matthew/cf/inferno/core/constants.h
+./search/tools.o: /home/matthew/cf/inferno/search/tools.h
+./search/tools.o: /home/matthew/cf/h/container/array.h
+./search/tools.o: /home/matthew/cf/h/container/declarations.h
+./search/tools.o: /home/matthew/cf/h/core/bool.h
+./search/tools.o: /home/matthew/cf/h/core/declarations.h
+./search/tools.o: /home/matthew/cf/h/core/message.h
+./search/tools.o: /home/matthew/cf/h/core/engine.h
+./search/tools.o: /home/matthew/cf/h/core/object.h
+./search/tools.o: /home/matthew/cf/h/core/types.h
+./search/tools.o: /home/matthew/cf/inferno/box/system.h
+./search/tools.o: /home/matthew/cf/inferno/box/coordinate.h
+./search/tools.o: /home/matthew/cf/h/audit/log.h
+./search/tools.o: /home/matthew/cf/h/core/tools.h
+./search/tools.o: /home/matthew/cf/h/core/standard.h /usr/include/arpa/inet.h
+./search/tools.o: /usr/include/features.h /usr/include/bits/predefs.h
+./search/tools.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+./search/tools.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
+./search/tools.o: /usr/include/netinet/in.h /usr/include/stdint.h
+./search/tools.o: /usr/include/bits/wchar.h /usr/include/sys/socket.h
+./search/tools.o: /usr/include/sys/uio.h /usr/include/sys/types.h
+./search/tools.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+./search/tools.o: /usr/include/time.h
 ./search/tools.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
 ./search/tools.o: /usr/include/endian.h /usr/include/bits/endian.h
 ./search/tools.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
@@ -1423,30 +1217,30 @@
 ./search/tools.o: /usr/include/bits/posix_opt.h /usr/include/bits/confname.h
 ./search/tools.o: /usr/include/getopt.h /usr/include/jpeglib.h
 ./search/tools.o: /usr/include/jconfig.h /usr/include/jmorecfg.h
-./search/tools.o: /home/matthew/inhesion/h/core/bit.h
-./search/tools.o: /home/matthew/inhesion/inferno/core/actorey.h
-./search/tools.o: /home/matthew/inhesion/h/core/bitarray.h
-./search/tools.o: /home/matthew/inhesion/h/core/string.h
-./search/tools.o: /home/matthew/inhesion/h/core/objectey.h
-./search/tools.o: /home/matthew/inhesion/inferno/core/goal.h
-./search/system.o: /home/matthew/inhesion/inferno/bios/system.h
-./search/system.o: /home/matthew/inhesion/inferno/bios/declarations.h
-./search/system.o: /home/matthew/inhesion/inferno/search/searchey.h
-./search/system.o: /home/matthew/inhesion/inferno/core/goal.h
-./search/system.o: /home/matthew/inhesion/inferno/search/tools.h
-./search/system.o: /home/matthew/inhesion/h/container/array.h
-./search/system.o: /home/matthew/inhesion/h/container/declarations.h
-./search/system.o: /home/matthew/inhesion/h/core/bool.h
-./search/system.o: /home/matthew/inhesion/h/core/declarations.h
-./search/system.o: /home/matthew/inhesion/h/core/message.h
-./search/system.o: /home/matthew/inhesion/h/core/engine.h
-./search/system.o: /home/matthew/inhesion/h/core/object.h
-./search/system.o: /home/matthew/inhesion/h/core/types.h
-./search/system.o: /home/matthew/inhesion/inferno/box/system.h
-./search/system.o: /home/matthew/inhesion/inferno/box/coordinate.h
-./search/system.o: /home/matthew/inhesion/h/audit/log.h
-./search/system.o: /home/matthew/inhesion/h/core/tools.h
-./search/system.o: /home/matthew/inhesion/h/core/standard.h
+./search/tools.o: /home/matthew/cf/h/core/bit.h
+./search/tools.o: /home/matthew/cf/inferno/core/actorey.h
+./search/tools.o: /home/matthew/cf/h/core/bitarray.h
+./search/tools.o: /home/matthew/cf/h/core/string.h
+./search/tools.o: /home/matthew/cf/h/core/objectey.h
+./search/tools.o: /home/matthew/cf/inferno/core/goal.h
+./search/system.o: /home/matthew/cf/inferno/bios/system.h
+./search/system.o: /home/matthew/cf/inferno/bios/declarations.h
+./search/system.o: /home/matthew/cf/inferno/search/searchey.h
+./search/system.o: /home/matthew/cf/inferno/core/goal.h
+./search/system.o: /home/matthew/cf/inferno/search/tools.h
+./search/system.o: /home/matthew/cf/h/container/array.h
+./search/system.o: /home/matthew/cf/h/container/declarations.h
+./search/system.o: /home/matthew/cf/h/core/bool.h
+./search/system.o: /home/matthew/cf/h/core/declarations.h
+./search/system.o: /home/matthew/cf/h/core/message.h
+./search/system.o: /home/matthew/cf/h/core/engine.h
+./search/system.o: /home/matthew/cf/h/core/object.h
+./search/system.o: /home/matthew/cf/h/core/types.h
+./search/system.o: /home/matthew/cf/inferno/box/system.h
+./search/system.o: /home/matthew/cf/inferno/box/coordinate.h
+./search/system.o: /home/matthew/cf/h/audit/log.h
+./search/system.o: /home/matthew/cf/h/core/tools.h
+./search/system.o: /home/matthew/cf/h/core/standard.h
 ./search/system.o: /usr/include/arpa/inet.h /usr/include/features.h
 ./search/system.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
 ./search/system.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
@@ -1502,23 +1296,23 @@
 ./search/system.o: /usr/include/bits/posix_opt.h /usr/include/bits/confname.h
 ./search/system.o: /usr/include/getopt.h /usr/include/jpeglib.h
 ./search/system.o: /usr/include/jconfig.h /usr/include/jmorecfg.h
-./search/system.o: /home/matthew/inhesion/h/core/bit.h
-./search/system.o: /home/matthew/inhesion/inferno/core/actorey.h
-./search/system.o: /home/matthew/inhesion/h/core/bitarray.h
-./search/system.o: /home/matthew/inhesion/h/core/string.h
-./search/system.o: /home/matthew/inhesion/h/core/objectey.h
-./search/system.o: /home/matthew/inhesion/inferno/cor3/system.h
-./search/system.o: /home/matthew/inhesion/inferno/cor3/declarations.h
-./search/system.o: /home/matthew/inhesion/inferno/eos/system.h
-./search/system.o: /home/matthew/inhesion/inferno/eos/declarations.h
-./search/system.o: /home/matthew/inhesion/inferno/genetic/system.h
-./search/system.o: /home/matthew/inhesion/inferno/search/system.h
-./search/system.o: /home/matthew/inhesion/inferno/search/algorithm.h
-./search/algorithm.o: /home/matthew/inhesion/inferno/search/algorithm.h
-./search/algorithm.o: /home/matthew/inhesion/h/core/bool.h
-./search/algorithm.o: /home/matthew/inhesion/h/core/declarations.h
-./search/algorithm.o: /home/matthew/inhesion/h/core/tools.h
-./search/algorithm.o: /home/matthew/inhesion/h/core/standard.h
+./search/system.o: /home/matthew/cf/h/core/bit.h
+./search/system.o: /home/matthew/cf/inferno/core/actorey.h
+./search/system.o: /home/matthew/cf/h/core/bitarray.h
+./search/system.o: /home/matthew/cf/h/core/string.h
+./search/system.o: /home/matthew/cf/h/core/objectey.h
+./search/system.o: /home/matthew/cf/inferno/cor3/system.h
+./search/system.o: /home/matthew/cf/inferno/cor3/declarations.h
+./search/system.o: /home/matthew/cf/inferno/eos/system.h
+./search/system.o: /home/matthew/cf/inferno/eos/declarations.h
+./search/system.o: /home/matthew/cf/inferno/genetic/system.h
+./search/system.o: /home/matthew/cf/inferno/search/system.h
+./search/system.o: /home/matthew/cf/inferno/search/algorithm.h
+./search/algorithm.o: /home/matthew/cf/inferno/search/algorithm.h
+./search/algorithm.o: /home/matthew/cf/h/core/bool.h
+./search/algorithm.o: /home/matthew/cf/h/core/declarations.h
+./search/algorithm.o: /home/matthew/cf/h/core/tools.h
+./search/algorithm.o: /home/matthew/cf/h/core/standard.h
 ./search/algorithm.o: /usr/include/arpa/inet.h /usr/include/features.h
 ./search/algorithm.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
 ./search/algorithm.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
@@ -1578,26 +1372,25 @@
 ./search/algorithm.o: /usr/include/bits/posix_opt.h
 ./search/algorithm.o: /usr/include/bits/confname.h /usr/include/getopt.h
 ./search/algorithm.o: /usr/include/jpeglib.h /usr/include/jconfig.h
-./search/algorithm.o: /usr/include/jmorecfg.h
-./search/algorithm.o: /home/matthew/inhesion/h/core/bit.h
-./search/algorithm.o: /home/matthew/inhesion/h/core/object.h
-./search/algorithm.o: /home/matthew/inhesion/h/core/types.h
-./search/searchey.o: /home/matthew/inhesion/inferno/search/searchey.h
-./search/searchey.o: /home/matthew/inhesion/inferno/core/goal.h
-./search/searchey.o: /home/matthew/inhesion/inferno/search/tools.h
-./search/searchey.o: /home/matthew/inhesion/h/container/array.h
-./search/searchey.o: /home/matthew/inhesion/h/container/declarations.h
-./search/searchey.o: /home/matthew/inhesion/h/core/bool.h
-./search/searchey.o: /home/matthew/inhesion/h/core/declarations.h
-./search/searchey.o: /home/matthew/inhesion/h/core/message.h
-./search/searchey.o: /home/matthew/inhesion/h/core/engine.h
-./search/searchey.o: /home/matthew/inhesion/h/core/object.h
-./search/searchey.o: /home/matthew/inhesion/h/core/types.h
-./search/searchey.o: /home/matthew/inhesion/inferno/box/system.h
-./search/searchey.o: /home/matthew/inhesion/inferno/box/coordinate.h
-./search/searchey.o: /home/matthew/inhesion/h/audit/log.h
-./search/searchey.o: /home/matthew/inhesion/h/core/tools.h
-./search/searchey.o: /home/matthew/inhesion/h/core/standard.h
+./search/algorithm.o: /usr/include/jmorecfg.h /home/matthew/cf/h/core/bit.h
+./search/algorithm.o: /home/matthew/cf/h/core/object.h
+./search/algorithm.o: /home/matthew/cf/h/core/types.h
+./search/searchey.o: /home/matthew/cf/inferno/search/searchey.h
+./search/searchey.o: /home/matthew/cf/inferno/core/goal.h
+./search/searchey.o: /home/matthew/cf/inferno/search/tools.h
+./search/searchey.o: /home/matthew/cf/h/container/array.h
+./search/searchey.o: /home/matthew/cf/h/container/declarations.h
+./search/searchey.o: /home/matthew/cf/h/core/bool.h
+./search/searchey.o: /home/matthew/cf/h/core/declarations.h
+./search/searchey.o: /home/matthew/cf/h/core/message.h
+./search/searchey.o: /home/matthew/cf/h/core/engine.h
+./search/searchey.o: /home/matthew/cf/h/core/object.h
+./search/searchey.o: /home/matthew/cf/h/core/types.h
+./search/searchey.o: /home/matthew/cf/inferno/box/system.h
+./search/searchey.o: /home/matthew/cf/inferno/box/coordinate.h
+./search/searchey.o: /home/matthew/cf/h/audit/log.h
+./search/searchey.o: /home/matthew/cf/h/core/tools.h
+./search/searchey.o: /home/matthew/cf/h/core/standard.h
 ./search/searchey.o: /usr/include/arpa/inet.h /usr/include/features.h
 ./search/searchey.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
 ./search/searchey.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
@@ -1657,99 +1450,35 @@
 ./search/searchey.o: /usr/include/bits/posix_opt.h
 ./search/searchey.o: /usr/include/bits/confname.h /usr/include/getopt.h
 ./search/searchey.o: /usr/include/jpeglib.h /usr/include/jconfig.h
-./search/searchey.o: /usr/include/jmorecfg.h
-./search/searchey.o: /home/matthew/inhesion/h/core/bit.h
-./search/searchey.o: /home/matthew/inhesion/inferno/core/actorey.h
-./search/searchey.o: /home/matthew/inhesion/h/core/bitarray.h
-./search/searchey.o: /home/matthew/inhesion/h/core/string.h
-./search/searchey.o: /home/matthew/inhesion/h/core/objectey.h
-./cchat/system.o: /home/matthew/inhesion/inferno/cchat/system.h
-./cchat/system.o: /home/matthew/inhesion/h/core/tools.h
-./cchat/system.o: /home/matthew/inhesion/h/core/standard.h
-./cchat/system.o: /usr/include/arpa/inet.h /usr/include/features.h
-./cchat/system.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
-./cchat/system.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
-./cchat/system.o: /usr/include/gnu/stubs-32.h /usr/include/netinet/in.h
-./cchat/system.o: /usr/include/stdint.h /usr/include/bits/wchar.h
-./cchat/system.o: /usr/include/sys/socket.h /usr/include/sys/uio.h
-./cchat/system.o: /usr/include/sys/types.h /usr/include/bits/types.h
-./cchat/system.o: /usr/include/bits/typesizes.h /usr/include/time.h
-./cchat/system.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
-./cchat/system.o: /usr/include/endian.h /usr/include/bits/endian.h
-./cchat/system.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
-./cchat/system.o: /usr/include/bits/select.h /usr/include/bits/sigset.h
-./cchat/system.o: /usr/include/bits/time.h /usr/include/sys/sysmacros.h
-./cchat/system.o: /usr/include/bits/pthreadtypes.h /usr/include/bits/uio.h
-./cchat/system.o: /usr/include/bits/socket.h /usr/include/bits/sockaddr.h
-./cchat/system.o: /usr/include/asm/socket.h /usr/include/asm-generic/socket.h
-./cchat/system.o: /usr/include/asm/sockios.h
-./cchat/system.o: /usr/include/asm-generic/sockios.h /usr/include/bits/in.h
-./cchat/system.o: /usr/include/assert.h /usr/include/ctype.h
-./cchat/system.o: /usr/include/xlocale.h /usr/include/dirent.h
-./cchat/system.o: /usr/include/bits/dirent.h /usr/include/bits/posix1_lim.h
-./cchat/system.o: /usr/include/bits/local_lim.h /usr/include/linux/limits.h
-./cchat/system.o: /usr/include/fcntl.h /usr/include/bits/fcntl.h
-./cchat/system.o: /usr/include/postgresql/libpq-fe.h /usr/include/stdio.h
-./cchat/system.o: /usr/include/libio.h /usr/include/_G_config.h
-./cchat/system.o: /usr/include/wchar.h
-./cchat/system.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdarg.h
-./cchat/system.o: /usr/include/bits/stdio_lim.h
-./cchat/system.o: /usr/include/bits/sys_errlist.h
-./cchat/system.o: /usr/include/postgresql/postgres_ext.h /usr/include/math.h
-./cchat/system.o: /usr/include/bits/huge_val.h /usr/include/bits/huge_valf.h
-./cchat/system.o: /usr/include/bits/huge_vall.h /usr/include/bits/inf.h
-./cchat/system.o: /usr/include/bits/nan.h /usr/include/bits/mathdef.h
-./cchat/system.o: /usr/include/bits/mathcalls.h /usr/include/ncurses.h
-./cchat/system.o: /usr/include/ncurses_dll.h
-./cchat/system.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdbool.h
-./cchat/system.o: /usr/include/unctrl.h /usr/include/curses.h
-./cchat/system.o: /usr/include/openssl/rand.h /usr/include/stdlib.h
-./cchat/system.o: /usr/include/alloca.h /usr/include/openssl/ossl_typ.h
-./cchat/system.o: /usr/include/openssl/e_os2.h
-./cchat/system.o: /usr/include/openssl/opensslconf.h /usr/include/pthread.h
-./cchat/system.o: /usr/include/sched.h /usr/include/bits/sched.h
-./cchat/system.o: /usr/include/signal.h /usr/include/bits/setjmp.h
-./cchat/system.o: /usr/include/string.h /usr/include/sys/errno.h
-./cchat/system.o: /usr/include/errno.h /usr/include/bits/errno.h
-./cchat/system.o: /usr/include/linux/errno.h /usr/include/asm/errno.h
-./cchat/system.o: /usr/include/asm-generic/errno.h
-./cchat/system.o: /usr/include/asm-generic/errno-base.h
-./cchat/system.o: /usr/include/sys/stat.h /usr/include/bits/stat.h
-./cchat/system.o: /usr/include/termios.h /usr/include/bits/termios.h
-./cchat/system.o: /usr/include/sys/ttydefaults.h /usr/include/unistd.h
-./cchat/system.o: /usr/include/bits/posix_opt.h /usr/include/bits/confname.h
-./cchat/system.o: /usr/include/getopt.h /usr/include/jpeglib.h
-./cchat/system.o: /usr/include/jconfig.h /usr/include/jmorecfg.h
-./cchat/system.o: /home/matthew/inhesion/h/core/bit.h
-./cchat/system.o: /home/matthew/inhesion/h/core/object.h
-./cchat/system.o: /home/matthew/inhesion/h/core/bool.h
-./cchat/system.o: /home/matthew/inhesion/h/core/declarations.h
-./cchat/system.o: /home/matthew/inhesion/h/core/types.h
-./ca/tools.o: /home/matthew/inhesion/inferno/ca/state.h
-./ca/tools.o: /home/matthew/inhesion/inferno/ca/cell.h
-./ca/tools.o: /home/matthew/inhesion/inferno/ca/tools.h
-./ca/tools.o: /home/matthew/inhesion/h/container/array.h
-./ca/tools.o: /home/matthew/inhesion/h/container/declarations.h
-./ca/tools.o: /home/matthew/inhesion/h/core/bool.h
-./ca/tools.o: /home/matthew/inhesion/h/core/declarations.h
-./ca/tools.o: /home/matthew/inhesion/h/core/message.h
-./ca/tools.o: /home/matthew/inhesion/h/core/engine.h
-./ca/tools.o: /home/matthew/inhesion/h/core/object.h
-./ca/tools.o: /home/matthew/inhesion/h/core/types.h
-./ca/tools.o: /home/matthew/inhesion/h/core/bitarray.h
-./ca/tools.o: /home/matthew/inhesion/h/core/bit.h
-./ca/tools.o: /home/matthew/inhesion/h/core/string.h
-./ca/tools.o: /home/matthew/inhesion/h/core/objectey.h
-./ca/tools.o: /home/matthew/inhesion/h/core/tools.h
-./ca/tools.o: /home/matthew/inhesion/h/core/standard.h
-./ca/tools.o: /usr/include/arpa/inet.h /usr/include/features.h
-./ca/tools.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
-./ca/tools.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
-./ca/tools.o: /usr/include/gnu/stubs-32.h /usr/include/netinet/in.h
-./ca/tools.o: /usr/include/stdint.h /usr/include/bits/wchar.h
-./ca/tools.o: /usr/include/sys/socket.h /usr/include/sys/uio.h
-./ca/tools.o: /usr/include/sys/types.h /usr/include/bits/types.h
-./ca/tools.o: /usr/include/bits/typesizes.h /usr/include/time.h
+./search/searchey.o: /usr/include/jmorecfg.h /home/matthew/cf/h/core/bit.h
+./search/searchey.o: /home/matthew/cf/inferno/core/actorey.h
+./search/searchey.o: /home/matthew/cf/h/core/bitarray.h
+./search/searchey.o: /home/matthew/cf/h/core/string.h
+./search/searchey.o: /home/matthew/cf/h/core/objectey.h
+./ca/tools.o: /home/matthew/cf/inferno/ca/state.h
+./ca/tools.o: /home/matthew/cf/inferno/ca/cell.h
+./ca/tools.o: /home/matthew/cf/inferno/ca/tools.h
+./ca/tools.o: /home/matthew/cf/h/container/array.h
+./ca/tools.o: /home/matthew/cf/h/container/declarations.h
+./ca/tools.o: /home/matthew/cf/h/core/bool.h
+./ca/tools.o: /home/matthew/cf/h/core/declarations.h
+./ca/tools.o: /home/matthew/cf/h/core/message.h
+./ca/tools.o: /home/matthew/cf/h/core/engine.h
+./ca/tools.o: /home/matthew/cf/h/core/object.h
+./ca/tools.o: /home/matthew/cf/h/core/types.h
+./ca/tools.o: /home/matthew/cf/h/core/bitarray.h
+./ca/tools.o: /home/matthew/cf/h/core/bit.h /home/matthew/cf/h/core/string.h
+./ca/tools.o: /home/matthew/cf/h/core/objectey.h
+./ca/tools.o: /home/matthew/cf/h/core/tools.h
+./ca/tools.o: /home/matthew/cf/h/core/standard.h /usr/include/arpa/inet.h
+./ca/tools.o: /usr/include/features.h /usr/include/bits/predefs.h
+./ca/tools.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+./ca/tools.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
+./ca/tools.o: /usr/include/netinet/in.h /usr/include/stdint.h
+./ca/tools.o: /usr/include/bits/wchar.h /usr/include/sys/socket.h
+./ca/tools.o: /usr/include/sys/uio.h /usr/include/sys/types.h
+./ca/tools.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+./ca/tools.o: /usr/include/time.h
 ./ca/tools.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
 ./ca/tools.o: /usr/include/endian.h /usr/include/bits/endian.h
 ./ca/tools.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
@@ -1793,33 +1522,32 @@
 ./ca/tools.o: /usr/include/bits/confname.h /usr/include/getopt.h
 ./ca/tools.o: /usr/include/jpeglib.h /usr/include/jconfig.h
 ./ca/tools.o: /usr/include/jmorecfg.h
-./ca/system.o: /home/matthew/inhesion/inferno/ca/system.h
-./ca/system.o: /home/matthew/inhesion/inferno/ca/state.h
-./ca/system.o: /home/matthew/inhesion/inferno/ca/cell.h
-./ca/system.o: /home/matthew/inhesion/inferno/ca/systemey.h
-./ca/system.o: /home/matthew/inhesion/inferno/ca/declarations.h
-./ca/system.o: /home/matthew/inhesion/h/core/color.h
-./ca/system.o: /home/matthew/inhesion/h/container/array.h
-./ca/system.o: /home/matthew/inhesion/h/container/declarations.h
-./ca/system.o: /home/matthew/inhesion/h/core/bool.h
-./ca/system.o: /home/matthew/inhesion/h/core/declarations.h
-./ca/system.o: /home/matthew/inhesion/h/core/message.h
-./ca/system.o: /home/matthew/inhesion/h/core/engine.h
-./ca/system.o: /home/matthew/inhesion/h/core/object.h
-./ca/system.o: /home/matthew/inhesion/h/core/types.h
-./ca/system.o: /home/matthew/inhesion/h/core/run.h
-./ca/system.o: /home/matthew/inhesion/inferno/core/constants.h
-./ca/system.o: /home/matthew/inhesion/h/core/constants.h
-./ca/system.o: /home/matthew/inhesion/h/core/tools.h
-./ca/system.o: /home/matthew/inhesion/h/core/standard.h
-./ca/system.o: /usr/include/arpa/inet.h /usr/include/features.h
-./ca/system.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
-./ca/system.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
-./ca/system.o: /usr/include/gnu/stubs-32.h /usr/include/netinet/in.h
-./ca/system.o: /usr/include/stdint.h /usr/include/bits/wchar.h
-./ca/system.o: /usr/include/sys/socket.h /usr/include/sys/uio.h
-./ca/system.o: /usr/include/sys/types.h /usr/include/bits/types.h
-./ca/system.o: /usr/include/bits/typesizes.h /usr/include/time.h
+./ca/system.o: /home/matthew/cf/inferno/ca/system.h
+./ca/system.o: /home/matthew/cf/inferno/ca/state.h
+./ca/system.o: /home/matthew/cf/inferno/ca/cell.h
+./ca/system.o: /home/matthew/cf/inferno/ca/systemey.h
+./ca/system.o: /home/matthew/cf/inferno/ca/declarations.h
+./ca/system.o: /home/matthew/cf/h/core/color.h
+./ca/system.o: /home/matthew/cf/h/container/array.h
+./ca/system.o: /home/matthew/cf/h/container/declarations.h
+./ca/system.o: /home/matthew/cf/h/core/bool.h
+./ca/system.o: /home/matthew/cf/h/core/declarations.h
+./ca/system.o: /home/matthew/cf/h/core/message.h
+./ca/system.o: /home/matthew/cf/h/core/engine.h
+./ca/system.o: /home/matthew/cf/h/core/object.h
+./ca/system.o: /home/matthew/cf/h/core/types.h /home/matthew/cf/h/core/run.h
+./ca/system.o: /home/matthew/cf/inferno/core/constants.h
+./ca/system.o: /home/matthew/cf/h/core/constants.h
+./ca/system.o: /home/matthew/cf/h/core/tools.h
+./ca/system.o: /home/matthew/cf/h/core/standard.h /usr/include/arpa/inet.h
+./ca/system.o: /usr/include/features.h /usr/include/bits/predefs.h
+./ca/system.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+./ca/system.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
+./ca/system.o: /usr/include/netinet/in.h /usr/include/stdint.h
+./ca/system.o: /usr/include/bits/wchar.h /usr/include/sys/socket.h
+./ca/system.o: /usr/include/sys/uio.h /usr/include/sys/types.h
+./ca/system.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+./ca/system.o: /usr/include/time.h
 ./ca/system.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
 ./ca/system.o: /usr/include/endian.h /usr/include/bits/endian.h
 ./ca/system.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
@@ -1863,23 +1591,23 @@
 ./ca/system.o: /usr/include/unistd.h /usr/include/bits/posix_opt.h
 ./ca/system.o: /usr/include/bits/confname.h /usr/include/getopt.h
 ./ca/system.o: /usr/include/jpeglib.h /usr/include/jconfig.h
-./ca/system.o: /usr/include/jmorecfg.h /home/matthew/inhesion/h/core/bit.h
-./ca/system.o: /home/matthew/inhesion/h/file/basic.h
-./ca/system.o: /home/matthew/inhesion/h/container/list.h
-./ca/system.o: /home/matthew/inhesion/h/core/objectey.h
-./ca/system.o: /home/matthew/inhesion/h/file/mode.h
-./ca/state.o: /home/matthew/inhesion/inferno/ca/state.h
-./ca/state.o: /home/matthew/inhesion/inferno/ca/cell.h
-./ca/state.o: /home/matthew/inhesion/h/core/tools.h
-./ca/state.o: /home/matthew/inhesion/h/core/standard.h
-./ca/state.o: /usr/include/arpa/inet.h /usr/include/features.h
-./ca/state.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
-./ca/state.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
-./ca/state.o: /usr/include/gnu/stubs-32.h /usr/include/netinet/in.h
-./ca/state.o: /usr/include/stdint.h /usr/include/bits/wchar.h
-./ca/state.o: /usr/include/sys/socket.h /usr/include/sys/uio.h
-./ca/state.o: /usr/include/sys/types.h /usr/include/bits/types.h
-./ca/state.o: /usr/include/bits/typesizes.h /usr/include/time.h
+./ca/system.o: /usr/include/jmorecfg.h /home/matthew/cf/h/core/bit.h
+./ca/system.o: /home/matthew/cf/h/file/basic.h
+./ca/system.o: /home/matthew/cf/h/container/list.h
+./ca/system.o: /home/matthew/cf/h/core/objectey.h
+./ca/system.o: /home/matthew/cf/h/file/mode.h
+./ca/state.o: /home/matthew/cf/inferno/ca/state.h
+./ca/state.o: /home/matthew/cf/inferno/ca/cell.h
+./ca/state.o: /home/matthew/cf/h/core/tools.h
+./ca/state.o: /home/matthew/cf/h/core/standard.h /usr/include/arpa/inet.h
+./ca/state.o: /usr/include/features.h /usr/include/bits/predefs.h
+./ca/state.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+./ca/state.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
+./ca/state.o: /usr/include/netinet/in.h /usr/include/stdint.h
+./ca/state.o: /usr/include/bits/wchar.h /usr/include/sys/socket.h
+./ca/state.o: /usr/include/sys/uio.h /usr/include/sys/types.h
+./ca/state.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+./ca/state.o: /usr/include/time.h
 ./ca/state.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
 ./ca/state.o: /usr/include/endian.h /usr/include/bits/endian.h
 ./ca/state.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
@@ -1922,41 +1650,35 @@
 ./ca/state.o: /usr/include/unistd.h /usr/include/bits/posix_opt.h
 ./ca/state.o: /usr/include/bits/confname.h /usr/include/getopt.h
 ./ca/state.o: /usr/include/jpeglib.h /usr/include/jconfig.h
-./ca/state.o: /usr/include/jmorecfg.h /home/matthew/inhesion/h/core/bit.h
-./ca/state.o: /home/matthew/inhesion/h/core/object.h
-./ca/state.o: /home/matthew/inhesion/h/core/bool.h
-./ca/state.o: /home/matthew/inhesion/h/core/declarations.h
-./ca/state.o: /home/matthew/inhesion/h/core/types.h
-./ca/k3.o: /home/matthew/inhesion/inferno/ca/eca.h
-./ca/k3.o: /home/matthew/inhesion/inferno/ca/system.h
-./ca/k3.o: /home/matthew/inhesion/inferno/ca/state.h
-./ca/k3.o: /home/matthew/inhesion/inferno/ca/cell.h
-./ca/k3.o: /home/matthew/inhesion/inferno/ca/systemey.h
-./ca/k3.o: /home/matthew/inhesion/inferno/ca/declarations.h
-./ca/k3.o: /home/matthew/inhesion/h/core/color.h
-./ca/k3.o: /home/matthew/inhesion/h/container/array.h
-./ca/k3.o: /home/matthew/inhesion/h/container/declarations.h
-./ca/k3.o: /home/matthew/inhesion/h/core/bool.h
-./ca/k3.o: /home/matthew/inhesion/h/core/declarations.h
-./ca/k3.o: /home/matthew/inhesion/h/core/message.h
-./ca/k3.o: /home/matthew/inhesion/h/core/engine.h
-./ca/k3.o: /home/matthew/inhesion/h/core/object.h
-./ca/k3.o: /home/matthew/inhesion/h/core/types.h
-./ca/k3.o: /home/matthew/inhesion/h/core/run.h
-./ca/k3.o: /home/matthew/inhesion/inferno/ca/k3.h
-./ca/k3.o: /home/matthew/inhesion/inferno/core/constants.h
-./ca/k3.o: /home/matthew/inhesion/h/core/bit.h
-./ca/k3.o: /home/matthew/inhesion/h/core/constants.h
-./ca/k3.o: /home/matthew/inhesion/h/core/tools.h
-./ca/k3.o: /home/matthew/inhesion/h/core/standard.h /usr/include/arpa/inet.h
-./ca/k3.o: /usr/include/features.h /usr/include/bits/predefs.h
-./ca/k3.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
-./ca/k3.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
-./ca/k3.o: /usr/include/netinet/in.h /usr/include/stdint.h
-./ca/k3.o: /usr/include/bits/wchar.h /usr/include/sys/socket.h
-./ca/k3.o: /usr/include/sys/uio.h /usr/include/sys/types.h
-./ca/k3.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
-./ca/k3.o: /usr/include/time.h
+./ca/state.o: /usr/include/jmorecfg.h /home/matthew/cf/h/core/bit.h
+./ca/state.o: /home/matthew/cf/h/core/object.h /home/matthew/cf/h/core/bool.h
+./ca/state.o: /home/matthew/cf/h/core/declarations.h
+./ca/state.o: /home/matthew/cf/h/core/types.h
+./ca/k3.o: /home/matthew/cf/inferno/ca/eca.h
+./ca/k3.o: /home/matthew/cf/inferno/ca/system.h
+./ca/k3.o: /home/matthew/cf/inferno/ca/state.h
+./ca/k3.o: /home/matthew/cf/inferno/ca/cell.h
+./ca/k3.o: /home/matthew/cf/inferno/ca/systemey.h
+./ca/k3.o: /home/matthew/cf/inferno/ca/declarations.h
+./ca/k3.o: /home/matthew/cf/h/core/color.h
+./ca/k3.o: /home/matthew/cf/h/container/array.h
+./ca/k3.o: /home/matthew/cf/h/container/declarations.h
+./ca/k3.o: /home/matthew/cf/h/core/bool.h
+./ca/k3.o: /home/matthew/cf/h/core/declarations.h
+./ca/k3.o: /home/matthew/cf/h/core/message.h /home/matthew/cf/h/core/engine.h
+./ca/k3.o: /home/matthew/cf/h/core/object.h /home/matthew/cf/h/core/types.h
+./ca/k3.o: /home/matthew/cf/h/core/run.h /home/matthew/cf/inferno/ca/k3.h
+./ca/k3.o: /home/matthew/cf/inferno/core/constants.h
+./ca/k3.o: /home/matthew/cf/h/core/bit.h /home/matthew/cf/h/core/constants.h
+./ca/k3.o: /home/matthew/cf/h/core/tools.h /home/matthew/cf/h/core/standard.h
+./ca/k3.o: /usr/include/arpa/inet.h /usr/include/features.h
+./ca/k3.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
+./ca/k3.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
+./ca/k3.o: /usr/include/gnu/stubs-32.h /usr/include/netinet/in.h
+./ca/k3.o: /usr/include/stdint.h /usr/include/bits/wchar.h
+./ca/k3.o: /usr/include/sys/socket.h /usr/include/sys/uio.h
+./ca/k3.o: /usr/include/sys/types.h /usr/include/bits/types.h
+./ca/k3.o: /usr/include/bits/typesizes.h /usr/include/time.h
 ./ca/k3.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
 ./ca/k3.o: /usr/include/endian.h /usr/include/bits/endian.h
 ./ca/k3.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
@@ -1999,24 +1721,22 @@
 ./ca/k3.o: /usr/include/bits/confname.h /usr/include/getopt.h
 ./ca/k3.o: /usr/include/jpeglib.h /usr/include/jconfig.h
 ./ca/k3.o: /usr/include/jmorecfg.h
-./ca/ant.o: /home/matthew/inhesion/inferno/ca/ant.h
-./ca/ant.o: /home/matthew/inhesion/inferno/ca/system.h
-./ca/ant.o: /home/matthew/inhesion/inferno/ca/state.h
-./ca/ant.o: /home/matthew/inhesion/inferno/ca/cell.h
-./ca/ant.o: /home/matthew/inhesion/inferno/ca/systemey.h
-./ca/ant.o: /home/matthew/inhesion/inferno/ca/declarations.h
-./ca/ant.o: /home/matthew/inhesion/h/core/color.h
-./ca/ant.o: /home/matthew/inhesion/h/container/array.h
-./ca/ant.o: /home/matthew/inhesion/h/container/declarations.h
-./ca/ant.o: /home/matthew/inhesion/h/core/bool.h
-./ca/ant.o: /home/matthew/inhesion/h/core/declarations.h
-./ca/ant.o: /home/matthew/inhesion/h/core/message.h
-./ca/ant.o: /home/matthew/inhesion/h/core/engine.h
-./ca/ant.o: /home/matthew/inhesion/h/core/object.h
-./ca/ant.o: /home/matthew/inhesion/h/core/types.h
-./ca/ant.o: /home/matthew/inhesion/h/core/run.h
-./ca/ant.o: /home/matthew/inhesion/h/core/tools.h
-./ca/ant.o: /home/matthew/inhesion/h/core/standard.h /usr/include/arpa/inet.h
+./ca/ant.o: /home/matthew/cf/inferno/ca/ant.h
+./ca/ant.o: /home/matthew/cf/inferno/ca/system.h
+./ca/ant.o: /home/matthew/cf/inferno/ca/state.h
+./ca/ant.o: /home/matthew/cf/inferno/ca/cell.h
+./ca/ant.o: /home/matthew/cf/inferno/ca/systemey.h
+./ca/ant.o: /home/matthew/cf/inferno/ca/declarations.h
+./ca/ant.o: /home/matthew/cf/h/core/color.h
+./ca/ant.o: /home/matthew/cf/h/container/array.h
+./ca/ant.o: /home/matthew/cf/h/container/declarations.h
+./ca/ant.o: /home/matthew/cf/h/core/bool.h
+./ca/ant.o: /home/matthew/cf/h/core/declarations.h
+./ca/ant.o: /home/matthew/cf/h/core/message.h
+./ca/ant.o: /home/matthew/cf/h/core/engine.h /home/matthew/cf/h/core/object.h
+./ca/ant.o: /home/matthew/cf/h/core/types.h /home/matthew/cf/h/core/run.h
+./ca/ant.o: /home/matthew/cf/h/core/tools.h
+./ca/ant.o: /home/matthew/cf/h/core/standard.h /usr/include/arpa/inet.h
 ./ca/ant.o: /usr/include/features.h /usr/include/bits/predefs.h
 ./ca/ant.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
 ./ca/ant.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
@@ -2067,33 +1787,32 @@
 ./ca/ant.o: /usr/include/unistd.h /usr/include/bits/posix_opt.h
 ./ca/ant.o: /usr/include/bits/confname.h /usr/include/getopt.h
 ./ca/ant.o: /usr/include/jpeglib.h /usr/include/jconfig.h
-./ca/ant.o: /usr/include/jmorecfg.h /home/matthew/inhesion/h/core/bit.h
-./ca/clear.o: /home/matthew/inhesion/inferno/ca/clear.h
-./ca/clear.o: /home/matthew/inhesion/inferno/ca/system.h
-./ca/clear.o: /home/matthew/inhesion/inferno/ca/state.h
-./ca/clear.o: /home/matthew/inhesion/inferno/ca/cell.h
-./ca/clear.o: /home/matthew/inhesion/inferno/ca/systemey.h
-./ca/clear.o: /home/matthew/inhesion/inferno/ca/declarations.h
-./ca/clear.o: /home/matthew/inhesion/h/core/color.h
-./ca/clear.o: /home/matthew/inhesion/h/container/array.h
-./ca/clear.o: /home/matthew/inhesion/h/container/declarations.h
-./ca/clear.o: /home/matthew/inhesion/h/core/bool.h
-./ca/clear.o: /home/matthew/inhesion/h/core/declarations.h
-./ca/clear.o: /home/matthew/inhesion/h/core/message.h
-./ca/clear.o: /home/matthew/inhesion/h/core/engine.h
-./ca/clear.o: /home/matthew/inhesion/h/core/object.h
-./ca/clear.o: /home/matthew/inhesion/h/core/types.h
-./ca/clear.o: /home/matthew/inhesion/h/core/run.h
-./ca/clear.o: /home/matthew/inhesion/h/core/tools.h
-./ca/clear.o: /home/matthew/inhesion/h/core/standard.h
-./ca/clear.o: /usr/include/arpa/inet.h /usr/include/features.h
-./ca/clear.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
-./ca/clear.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
-./ca/clear.o: /usr/include/gnu/stubs-32.h /usr/include/netinet/in.h
-./ca/clear.o: /usr/include/stdint.h /usr/include/bits/wchar.h
-./ca/clear.o: /usr/include/sys/socket.h /usr/include/sys/uio.h
-./ca/clear.o: /usr/include/sys/types.h /usr/include/bits/types.h
-./ca/clear.o: /usr/include/bits/typesizes.h /usr/include/time.h
+./ca/ant.o: /usr/include/jmorecfg.h /home/matthew/cf/h/core/bit.h
+./ca/clear.o: /home/matthew/cf/inferno/ca/clear.h
+./ca/clear.o: /home/matthew/cf/inferno/ca/system.h
+./ca/clear.o: /home/matthew/cf/inferno/ca/state.h
+./ca/clear.o: /home/matthew/cf/inferno/ca/cell.h
+./ca/clear.o: /home/matthew/cf/inferno/ca/systemey.h
+./ca/clear.o: /home/matthew/cf/inferno/ca/declarations.h
+./ca/clear.o: /home/matthew/cf/h/core/color.h
+./ca/clear.o: /home/matthew/cf/h/container/array.h
+./ca/clear.o: /home/matthew/cf/h/container/declarations.h
+./ca/clear.o: /home/matthew/cf/h/core/bool.h
+./ca/clear.o: /home/matthew/cf/h/core/declarations.h
+./ca/clear.o: /home/matthew/cf/h/core/message.h
+./ca/clear.o: /home/matthew/cf/h/core/engine.h
+./ca/clear.o: /home/matthew/cf/h/core/object.h
+./ca/clear.o: /home/matthew/cf/h/core/types.h /home/matthew/cf/h/core/run.h
+./ca/clear.o: /home/matthew/cf/h/core/tools.h
+./ca/clear.o: /home/matthew/cf/h/core/standard.h /usr/include/arpa/inet.h
+./ca/clear.o: /usr/include/features.h /usr/include/bits/predefs.h
+./ca/clear.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+./ca/clear.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
+./ca/clear.o: /usr/include/netinet/in.h /usr/include/stdint.h
+./ca/clear.o: /usr/include/bits/wchar.h /usr/include/sys/socket.h
+./ca/clear.o: /usr/include/sys/uio.h /usr/include/sys/types.h
+./ca/clear.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+./ca/clear.o: /usr/include/time.h
 ./ca/clear.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
 ./ca/clear.o: /usr/include/endian.h /usr/include/bits/endian.h
 ./ca/clear.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
@@ -2136,33 +1855,32 @@
 ./ca/clear.o: /usr/include/unistd.h /usr/include/bits/posix_opt.h
 ./ca/clear.o: /usr/include/bits/confname.h /usr/include/getopt.h
 ./ca/clear.o: /usr/include/jpeglib.h /usr/include/jconfig.h
-./ca/clear.o: /usr/include/jmorecfg.h /home/matthew/inhesion/h/core/bit.h
-./ca/water.o: /home/matthew/inhesion/inferno/ca/water.h
-./ca/water.o: /home/matthew/inhesion/inferno/ca/system.h
-./ca/water.o: /home/matthew/inhesion/inferno/ca/state.h
-./ca/water.o: /home/matthew/inhesion/inferno/ca/cell.h
-./ca/water.o: /home/matthew/inhesion/inferno/ca/systemey.h
-./ca/water.o: /home/matthew/inhesion/inferno/ca/declarations.h
-./ca/water.o: /home/matthew/inhesion/h/core/color.h
-./ca/water.o: /home/matthew/inhesion/h/container/array.h
-./ca/water.o: /home/matthew/inhesion/h/container/declarations.h
-./ca/water.o: /home/matthew/inhesion/h/core/bool.h
-./ca/water.o: /home/matthew/inhesion/h/core/declarations.h
-./ca/water.o: /home/matthew/inhesion/h/core/message.h
-./ca/water.o: /home/matthew/inhesion/h/core/engine.h
-./ca/water.o: /home/matthew/inhesion/h/core/object.h
-./ca/water.o: /home/matthew/inhesion/h/core/types.h
-./ca/water.o: /home/matthew/inhesion/h/core/run.h
-./ca/water.o: /home/matthew/inhesion/h/core/tools.h
-./ca/water.o: /home/matthew/inhesion/h/core/standard.h
-./ca/water.o: /usr/include/arpa/inet.h /usr/include/features.h
-./ca/water.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
-./ca/water.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
-./ca/water.o: /usr/include/gnu/stubs-32.h /usr/include/netinet/in.h
-./ca/water.o: /usr/include/stdint.h /usr/include/bits/wchar.h
-./ca/water.o: /usr/include/sys/socket.h /usr/include/sys/uio.h
-./ca/water.o: /usr/include/sys/types.h /usr/include/bits/types.h
-./ca/water.o: /usr/include/bits/typesizes.h /usr/include/time.h
+./ca/clear.o: /usr/include/jmorecfg.h /home/matthew/cf/h/core/bit.h
+./ca/water.o: /home/matthew/cf/inferno/ca/water.h
+./ca/water.o: /home/matthew/cf/inferno/ca/system.h
+./ca/water.o: /home/matthew/cf/inferno/ca/state.h
+./ca/water.o: /home/matthew/cf/inferno/ca/cell.h
+./ca/water.o: /home/matthew/cf/inferno/ca/systemey.h
+./ca/water.o: /home/matthew/cf/inferno/ca/declarations.h
+./ca/water.o: /home/matthew/cf/h/core/color.h
+./ca/water.o: /home/matthew/cf/h/container/array.h
+./ca/water.o: /home/matthew/cf/h/container/declarations.h
+./ca/water.o: /home/matthew/cf/h/core/bool.h
+./ca/water.o: /home/matthew/cf/h/core/declarations.h
+./ca/water.o: /home/matthew/cf/h/core/message.h
+./ca/water.o: /home/matthew/cf/h/core/engine.h
+./ca/water.o: /home/matthew/cf/h/core/object.h
+./ca/water.o: /home/matthew/cf/h/core/types.h /home/matthew/cf/h/core/run.h
+./ca/water.o: /home/matthew/cf/h/core/tools.h
+./ca/water.o: /home/matthew/cf/h/core/standard.h /usr/include/arpa/inet.h
+./ca/water.o: /usr/include/features.h /usr/include/bits/predefs.h
+./ca/water.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+./ca/water.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
+./ca/water.o: /usr/include/netinet/in.h /usr/include/stdint.h
+./ca/water.o: /usr/include/bits/wchar.h /usr/include/sys/socket.h
+./ca/water.o: /usr/include/sys/uio.h /usr/include/sys/types.h
+./ca/water.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+./ca/water.o: /usr/include/time.h
 ./ca/water.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
 ./ca/water.o: /usr/include/endian.h /usr/include/bits/endian.h
 ./ca/water.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
@@ -2205,25 +1923,23 @@
 ./ca/water.o: /usr/include/unistd.h /usr/include/bits/posix_opt.h
 ./ca/water.o: /usr/include/bits/confname.h /usr/include/getopt.h
 ./ca/water.o: /usr/include/jpeglib.h /usr/include/jconfig.h
-./ca/water.o: /usr/include/jmorecfg.h /home/matthew/inhesion/h/core/bit.h
-./ca/eca.o: /home/matthew/inhesion/inferno/ca/eca.h
-./ca/eca.o: /home/matthew/inhesion/inferno/ca/system.h
-./ca/eca.o: /home/matthew/inhesion/inferno/ca/state.h
-./ca/eca.o: /home/matthew/inhesion/inferno/ca/cell.h
-./ca/eca.o: /home/matthew/inhesion/inferno/ca/systemey.h
-./ca/eca.o: /home/matthew/inhesion/inferno/ca/declarations.h
-./ca/eca.o: /home/matthew/inhesion/h/core/color.h
-./ca/eca.o: /home/matthew/inhesion/h/container/array.h
-./ca/eca.o: /home/matthew/inhesion/h/container/declarations.h
-./ca/eca.o: /home/matthew/inhesion/h/core/bool.h
-./ca/eca.o: /home/matthew/inhesion/h/core/declarations.h
-./ca/eca.o: /home/matthew/inhesion/h/core/message.h
-./ca/eca.o: /home/matthew/inhesion/h/core/engine.h
-./ca/eca.o: /home/matthew/inhesion/h/core/object.h
-./ca/eca.o: /home/matthew/inhesion/h/core/types.h
-./ca/eca.o: /home/matthew/inhesion/h/core/run.h
-./ca/eca.o: /home/matthew/inhesion/h/core/tools.h
-./ca/eca.o: /home/matthew/inhesion/h/core/standard.h /usr/include/arpa/inet.h
+./ca/water.o: /usr/include/jmorecfg.h /home/matthew/cf/h/core/bit.h
+./ca/eca.o: /home/matthew/cf/inferno/ca/eca.h
+./ca/eca.o: /home/matthew/cf/inferno/ca/system.h
+./ca/eca.o: /home/matthew/cf/inferno/ca/state.h
+./ca/eca.o: /home/matthew/cf/inferno/ca/cell.h
+./ca/eca.o: /home/matthew/cf/inferno/ca/systemey.h
+./ca/eca.o: /home/matthew/cf/inferno/ca/declarations.h
+./ca/eca.o: /home/matthew/cf/h/core/color.h
+./ca/eca.o: /home/matthew/cf/h/container/array.h
+./ca/eca.o: /home/matthew/cf/h/container/declarations.h
+./ca/eca.o: /home/matthew/cf/h/core/bool.h
+./ca/eca.o: /home/matthew/cf/h/core/declarations.h
+./ca/eca.o: /home/matthew/cf/h/core/message.h
+./ca/eca.o: /home/matthew/cf/h/core/engine.h /home/matthew/cf/h/core/object.h
+./ca/eca.o: /home/matthew/cf/h/core/types.h /home/matthew/cf/h/core/run.h
+./ca/eca.o: /home/matthew/cf/h/core/tools.h
+./ca/eca.o: /home/matthew/cf/h/core/standard.h /usr/include/arpa/inet.h
 ./ca/eca.o: /usr/include/features.h /usr/include/bits/predefs.h
 ./ca/eca.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
 ./ca/eca.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
@@ -2274,31 +1990,31 @@
 ./ca/eca.o: /usr/include/unistd.h /usr/include/bits/posix_opt.h
 ./ca/eca.o: /usr/include/bits/confname.h /usr/include/getopt.h
 ./ca/eca.o: /usr/include/jpeglib.h /usr/include/jconfig.h
-./ca/eca.o: /usr/include/jmorecfg.h /home/matthew/inhesion/h/core/bit.h
-./ca/systemey.o: /home/matthew/inhesion/inferno/ca/system.h
-./ca/systemey.o: /home/matthew/inhesion/inferno/ca/state.h
-./ca/systemey.o: /home/matthew/inhesion/inferno/ca/cell.h
-./ca/systemey.o: /home/matthew/inhesion/inferno/ca/systemey.h
-./ca/systemey.o: /home/matthew/inhesion/inferno/ca/declarations.h
-./ca/systemey.o: /home/matthew/inhesion/h/core/color.h
-./ca/systemey.o: /home/matthew/inhesion/h/container/array.h
-./ca/systemey.o: /home/matthew/inhesion/h/container/declarations.h
-./ca/systemey.o: /home/matthew/inhesion/h/core/bool.h
-./ca/systemey.o: /home/matthew/inhesion/h/core/declarations.h
-./ca/systemey.o: /home/matthew/inhesion/h/core/message.h
-./ca/systemey.o: /home/matthew/inhesion/h/core/engine.h
-./ca/systemey.o: /home/matthew/inhesion/h/core/object.h
-./ca/systemey.o: /home/matthew/inhesion/h/core/types.h
-./ca/systemey.o: /home/matthew/inhesion/h/core/run.h
-./ca/systemey.o: /home/matthew/inhesion/h/core/standard.h
-./ca/systemey.o: /usr/include/arpa/inet.h /usr/include/features.h
-./ca/systemey.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
-./ca/systemey.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
-./ca/systemey.o: /usr/include/gnu/stubs-32.h /usr/include/netinet/in.h
-./ca/systemey.o: /usr/include/stdint.h /usr/include/bits/wchar.h
-./ca/systemey.o: /usr/include/sys/socket.h /usr/include/sys/uio.h
-./ca/systemey.o: /usr/include/sys/types.h /usr/include/bits/types.h
-./ca/systemey.o: /usr/include/bits/typesizes.h /usr/include/time.h
+./ca/eca.o: /usr/include/jmorecfg.h /home/matthew/cf/h/core/bit.h
+./ca/systemey.o: /home/matthew/cf/inferno/ca/system.h
+./ca/systemey.o: /home/matthew/cf/inferno/ca/state.h
+./ca/systemey.o: /home/matthew/cf/inferno/ca/cell.h
+./ca/systemey.o: /home/matthew/cf/inferno/ca/systemey.h
+./ca/systemey.o: /home/matthew/cf/inferno/ca/declarations.h
+./ca/systemey.o: /home/matthew/cf/h/core/color.h
+./ca/systemey.o: /home/matthew/cf/h/container/array.h
+./ca/systemey.o: /home/matthew/cf/h/container/declarations.h
+./ca/systemey.o: /home/matthew/cf/h/core/bool.h
+./ca/systemey.o: /home/matthew/cf/h/core/declarations.h
+./ca/systemey.o: /home/matthew/cf/h/core/message.h
+./ca/systemey.o: /home/matthew/cf/h/core/engine.h
+./ca/systemey.o: /home/matthew/cf/h/core/object.h
+./ca/systemey.o: /home/matthew/cf/h/core/types.h
+./ca/systemey.o: /home/matthew/cf/h/core/run.h
+./ca/systemey.o: /home/matthew/cf/h/core/standard.h /usr/include/arpa/inet.h
+./ca/systemey.o: /usr/include/features.h /usr/include/bits/predefs.h
+./ca/systemey.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+./ca/systemey.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
+./ca/systemey.o: /usr/include/netinet/in.h /usr/include/stdint.h
+./ca/systemey.o: /usr/include/bits/wchar.h /usr/include/sys/socket.h
+./ca/systemey.o: /usr/include/sys/uio.h /usr/include/sys/types.h
+./ca/systemey.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+./ca/systemey.o: /usr/include/time.h
 ./ca/systemey.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
 ./ca/systemey.o: /usr/include/endian.h /usr/include/bits/endian.h
 ./ca/systemey.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
@@ -2345,32 +2061,31 @@
 ./ca/systemey.o: /usr/include/bits/posix_opt.h /usr/include/bits/confname.h
 ./ca/systemey.o: /usr/include/getopt.h /usr/include/jpeglib.h
 ./ca/systemey.o: /usr/include/jconfig.h /usr/include/jmorecfg.h
-./ca/malice.o: /home/matthew/inhesion/inferno/ca/malice.h
-./ca/malice.o: /home/matthew/inhesion/inferno/ca/system.h
-./ca/malice.o: /home/matthew/inhesion/inferno/ca/state.h
-./ca/malice.o: /home/matthew/inhesion/inferno/ca/cell.h
-./ca/malice.o: /home/matthew/inhesion/inferno/ca/systemey.h
-./ca/malice.o: /home/matthew/inhesion/inferno/ca/declarations.h
-./ca/malice.o: /home/matthew/inhesion/h/core/color.h
-./ca/malice.o: /home/matthew/inhesion/h/container/array.h
-./ca/malice.o: /home/matthew/inhesion/h/container/declarations.h
-./ca/malice.o: /home/matthew/inhesion/h/core/bool.h
-./ca/malice.o: /home/matthew/inhesion/h/core/declarations.h
-./ca/malice.o: /home/matthew/inhesion/h/core/message.h
-./ca/malice.o: /home/matthew/inhesion/h/core/engine.h
-./ca/malice.o: /home/matthew/inhesion/h/core/object.h
-./ca/malice.o: /home/matthew/inhesion/h/core/types.h
-./ca/malice.o: /home/matthew/inhesion/h/core/run.h
-./ca/malice.o: /home/matthew/inhesion/h/core/tools.h
-./ca/malice.o: /home/matthew/inhesion/h/core/standard.h
-./ca/malice.o: /usr/include/arpa/inet.h /usr/include/features.h
-./ca/malice.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
-./ca/malice.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
-./ca/malice.o: /usr/include/gnu/stubs-32.h /usr/include/netinet/in.h
-./ca/malice.o: /usr/include/stdint.h /usr/include/bits/wchar.h
-./ca/malice.o: /usr/include/sys/socket.h /usr/include/sys/uio.h
-./ca/malice.o: /usr/include/sys/types.h /usr/include/bits/types.h
-./ca/malice.o: /usr/include/bits/typesizes.h /usr/include/time.h
+./ca/malice.o: /home/matthew/cf/inferno/ca/malice.h
+./ca/malice.o: /home/matthew/cf/inferno/ca/system.h
+./ca/malice.o: /home/matthew/cf/inferno/ca/state.h
+./ca/malice.o: /home/matthew/cf/inferno/ca/cell.h
+./ca/malice.o: /home/matthew/cf/inferno/ca/systemey.h
+./ca/malice.o: /home/matthew/cf/inferno/ca/declarations.h
+./ca/malice.o: /home/matthew/cf/h/core/color.h
+./ca/malice.o: /home/matthew/cf/h/container/array.h
+./ca/malice.o: /home/matthew/cf/h/container/declarations.h
+./ca/malice.o: /home/matthew/cf/h/core/bool.h
+./ca/malice.o: /home/matthew/cf/h/core/declarations.h
+./ca/malice.o: /home/matthew/cf/h/core/message.h
+./ca/malice.o: /home/matthew/cf/h/core/engine.h
+./ca/malice.o: /home/matthew/cf/h/core/object.h
+./ca/malice.o: /home/matthew/cf/h/core/types.h /home/matthew/cf/h/core/run.h
+./ca/malice.o: /home/matthew/cf/h/core/tools.h
+./ca/malice.o: /home/matthew/cf/h/core/standard.h /usr/include/arpa/inet.h
+./ca/malice.o: /usr/include/features.h /usr/include/bits/predefs.h
+./ca/malice.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+./ca/malice.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
+./ca/malice.o: /usr/include/netinet/in.h /usr/include/stdint.h
+./ca/malice.o: /usr/include/bits/wchar.h /usr/include/sys/socket.h
+./ca/malice.o: /usr/include/sys/uio.h /usr/include/sys/types.h
+./ca/malice.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+./ca/malice.o: /usr/include/time.h
 ./ca/malice.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
 ./ca/malice.o: /usr/include/endian.h /usr/include/bits/endian.h
 ./ca/malice.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
@@ -2414,17 +2129,17 @@
 ./ca/malice.o: /usr/include/unistd.h /usr/include/bits/posix_opt.h
 ./ca/malice.o: /usr/include/bits/confname.h /usr/include/getopt.h
 ./ca/malice.o: /usr/include/jpeglib.h /usr/include/jconfig.h
-./ca/malice.o: /usr/include/jmorecfg.h /home/matthew/inhesion/h/core/bit.h
-./ca/cell.o: /home/matthew/inhesion/inferno/ca/cell.h
-./ca/cell.o: /home/matthew/inhesion/h/core/standard.h
-./ca/cell.o: /usr/include/arpa/inet.h /usr/include/features.h
-./ca/cell.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
-./ca/cell.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
-./ca/cell.o: /usr/include/gnu/stubs-32.h /usr/include/netinet/in.h
-./ca/cell.o: /usr/include/stdint.h /usr/include/bits/wchar.h
-./ca/cell.o: /usr/include/sys/socket.h /usr/include/sys/uio.h
-./ca/cell.o: /usr/include/sys/types.h /usr/include/bits/types.h
-./ca/cell.o: /usr/include/bits/typesizes.h /usr/include/time.h
+./ca/malice.o: /usr/include/jmorecfg.h /home/matthew/cf/h/core/bit.h
+./ca/cell.o: /home/matthew/cf/inferno/ca/cell.h
+./ca/cell.o: /home/matthew/cf/h/core/standard.h /usr/include/arpa/inet.h
+./ca/cell.o: /usr/include/features.h /usr/include/bits/predefs.h
+./ca/cell.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+./ca/cell.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
+./ca/cell.o: /usr/include/netinet/in.h /usr/include/stdint.h
+./ca/cell.o: /usr/include/bits/wchar.h /usr/include/sys/socket.h
+./ca/cell.o: /usr/include/sys/uio.h /usr/include/sys/types.h
+./ca/cell.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+./ca/cell.o: /usr/include/time.h
 ./ca/cell.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
 ./ca/cell.o: /usr/include/endian.h /usr/include/bits/endian.h
 ./ca/cell.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
@@ -2468,24 +2183,22 @@
 ./ca/cell.o: /usr/include/bits/confname.h /usr/include/getopt.h
 ./ca/cell.o: /usr/include/jpeglib.h /usr/include/jconfig.h
 ./ca/cell.o: /usr/include/jmorecfg.h
-./ca/fly.o: /home/matthew/inhesion/inferno/ca/fly.h
-./ca/fly.o: /home/matthew/inhesion/inferno/ca/system.h
-./ca/fly.o: /home/matthew/inhesion/inferno/ca/state.h
-./ca/fly.o: /home/matthew/inhesion/inferno/ca/cell.h
-./ca/fly.o: /home/matthew/inhesion/inferno/ca/systemey.h
-./ca/fly.o: /home/matthew/inhesion/inferno/ca/declarations.h
-./ca/fly.o: /home/matthew/inhesion/h/core/color.h
-./ca/fly.o: /home/matthew/inhesion/h/container/array.h
-./ca/fly.o: /home/matthew/inhesion/h/container/declarations.h
-./ca/fly.o: /home/matthew/inhesion/h/core/bool.h
-./ca/fly.o: /home/matthew/inhesion/h/core/declarations.h
-./ca/fly.o: /home/matthew/inhesion/h/core/message.h
-./ca/fly.o: /home/matthew/inhesion/h/core/engine.h
-./ca/fly.o: /home/matthew/inhesion/h/core/object.h
-./ca/fly.o: /home/matthew/inhesion/h/core/types.h
-./ca/fly.o: /home/matthew/inhesion/h/core/run.h
-./ca/fly.o: /home/matthew/inhesion/h/core/tools.h
-./ca/fly.o: /home/matthew/inhesion/h/core/standard.h /usr/include/arpa/inet.h
+./ca/fly.o: /home/matthew/cf/inferno/ca/fly.h
+./ca/fly.o: /home/matthew/cf/inferno/ca/system.h
+./ca/fly.o: /home/matthew/cf/inferno/ca/state.h
+./ca/fly.o: /home/matthew/cf/inferno/ca/cell.h
+./ca/fly.o: /home/matthew/cf/inferno/ca/systemey.h
+./ca/fly.o: /home/matthew/cf/inferno/ca/declarations.h
+./ca/fly.o: /home/matthew/cf/h/core/color.h
+./ca/fly.o: /home/matthew/cf/h/container/array.h
+./ca/fly.o: /home/matthew/cf/h/container/declarations.h
+./ca/fly.o: /home/matthew/cf/h/core/bool.h
+./ca/fly.o: /home/matthew/cf/h/core/declarations.h
+./ca/fly.o: /home/matthew/cf/h/core/message.h
+./ca/fly.o: /home/matthew/cf/h/core/engine.h /home/matthew/cf/h/core/object.h
+./ca/fly.o: /home/matthew/cf/h/core/types.h /home/matthew/cf/h/core/run.h
+./ca/fly.o: /home/matthew/cf/h/core/tools.h
+./ca/fly.o: /home/matthew/cf/h/core/standard.h /usr/include/arpa/inet.h
 ./ca/fly.o: /usr/include/features.h /usr/include/bits/predefs.h
 ./ca/fly.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
 ./ca/fly.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
@@ -2536,34 +2249,32 @@
 ./ca/fly.o: /usr/include/unistd.h /usr/include/bits/posix_opt.h
 ./ca/fly.o: /usr/include/bits/confname.h /usr/include/getopt.h
 ./ca/fly.o: /usr/include/jpeglib.h /usr/include/jconfig.h
-./ca/fly.o: /usr/include/jmorecfg.h /home/matthew/inhesion/h/core/bit.h
-./ca/declarations.o: /home/matthew/inhesion/inferno/ca/declarations.h
-./ca/crow.o: /home/matthew/inhesion/inferno/ca/crow.h
-./ca/crow.o: /home/matthew/inhesion/inferno/ca/system.h
-./ca/crow.o: /home/matthew/inhesion/inferno/ca/state.h
-./ca/crow.o: /home/matthew/inhesion/inferno/ca/cell.h
-./ca/crow.o: /home/matthew/inhesion/inferno/ca/systemey.h
-./ca/crow.o: /home/matthew/inhesion/inferno/ca/declarations.h
-./ca/crow.o: /home/matthew/inhesion/h/core/color.h
-./ca/crow.o: /home/matthew/inhesion/h/container/array.h
-./ca/crow.o: /home/matthew/inhesion/h/container/declarations.h
-./ca/crow.o: /home/matthew/inhesion/h/core/bool.h
-./ca/crow.o: /home/matthew/inhesion/h/core/declarations.h
-./ca/crow.o: /home/matthew/inhesion/h/core/message.h
-./ca/crow.o: /home/matthew/inhesion/h/core/engine.h
-./ca/crow.o: /home/matthew/inhesion/h/core/object.h
-./ca/crow.o: /home/matthew/inhesion/h/core/types.h
-./ca/crow.o: /home/matthew/inhesion/h/core/run.h
-./ca/crow.o: /home/matthew/inhesion/h/core/tools.h
-./ca/crow.o: /home/matthew/inhesion/h/core/standard.h
-./ca/crow.o: /usr/include/arpa/inet.h /usr/include/features.h
-./ca/crow.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
-./ca/crow.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
-./ca/crow.o: /usr/include/gnu/stubs-32.h /usr/include/netinet/in.h
-./ca/crow.o: /usr/include/stdint.h /usr/include/bits/wchar.h
-./ca/crow.o: /usr/include/sys/socket.h /usr/include/sys/uio.h
-./ca/crow.o: /usr/include/sys/types.h /usr/include/bits/types.h
-./ca/crow.o: /usr/include/bits/typesizes.h /usr/include/time.h
+./ca/fly.o: /usr/include/jmorecfg.h /home/matthew/cf/h/core/bit.h
+./ca/declarations.o: /home/matthew/cf/inferno/ca/declarations.h
+./ca/crow.o: /home/matthew/cf/inferno/ca/crow.h
+./ca/crow.o: /home/matthew/cf/inferno/ca/system.h
+./ca/crow.o: /home/matthew/cf/inferno/ca/state.h
+./ca/crow.o: /home/matthew/cf/inferno/ca/cell.h
+./ca/crow.o: /home/matthew/cf/inferno/ca/systemey.h
+./ca/crow.o: /home/matthew/cf/inferno/ca/declarations.h
+./ca/crow.o: /home/matthew/cf/h/core/color.h
+./ca/crow.o: /home/matthew/cf/h/container/array.h
+./ca/crow.o: /home/matthew/cf/h/container/declarations.h
+./ca/crow.o: /home/matthew/cf/h/core/bool.h
+./ca/crow.o: /home/matthew/cf/h/core/declarations.h
+./ca/crow.o: /home/matthew/cf/h/core/message.h
+./ca/crow.o: /home/matthew/cf/h/core/engine.h
+./ca/crow.o: /home/matthew/cf/h/core/object.h /home/matthew/cf/h/core/types.h
+./ca/crow.o: /home/matthew/cf/h/core/run.h /home/matthew/cf/h/core/tools.h
+./ca/crow.o: /home/matthew/cf/h/core/standard.h /usr/include/arpa/inet.h
+./ca/crow.o: /usr/include/features.h /usr/include/bits/predefs.h
+./ca/crow.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+./ca/crow.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
+./ca/crow.o: /usr/include/netinet/in.h /usr/include/stdint.h
+./ca/crow.o: /usr/include/bits/wchar.h /usr/include/sys/socket.h
+./ca/crow.o: /usr/include/sys/uio.h /usr/include/sys/types.h
+./ca/crow.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+./ca/crow.o: /usr/include/time.h
 ./ca/crow.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
 ./ca/crow.o: /usr/include/endian.h /usr/include/bits/endian.h
 ./ca/crow.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
@@ -2606,32 +2317,32 @@
 ./ca/crow.o: /usr/include/unistd.h /usr/include/bits/posix_opt.h
 ./ca/crow.o: /usr/include/bits/confname.h /usr/include/getopt.h
 ./ca/crow.o: /usr/include/jpeglib.h /usr/include/jconfig.h
-./ca/crow.o: /usr/include/jmorecfg.h /home/matthew/inhesion/h/core/bit.h
-./morph/system.o: /home/matthew/inhesion/inferno/morph/system.h
-./morph/system.o: /home/matthew/inhesion/inferno/core/goal.h
-./morph/system.o: /home/matthew/inhesion/inferno/search/algorithm.h
-./morph/system.o: /home/matthew/inhesion/h/core/bool.h
-./morph/system.o: /home/matthew/inhesion/h/core/declarations.h
-./morph/system.o: /home/matthew/inhesion/inferno/search/tools.h
-./morph/system.o: /home/matthew/inhesion/h/container/array.h
-./morph/system.o: /home/matthew/inhesion/h/container/declarations.h
-./morph/system.o: /home/matthew/inhesion/h/core/message.h
-./morph/system.o: /home/matthew/inhesion/h/core/engine.h
-./morph/system.o: /home/matthew/inhesion/h/core/object.h
-./morph/system.o: /home/matthew/inhesion/h/core/types.h
-./morph/system.o: /home/matthew/inhesion/inferno/box/system.h
-./morph/system.o: /home/matthew/inhesion/inferno/box/coordinate.h
-./morph/system.o: /home/matthew/inhesion/h/audit/log.h
-./morph/system.o: /home/matthew/inhesion/h/core/tools.h
-./morph/system.o: /home/matthew/inhesion/h/core/standard.h
-./morph/system.o: /usr/include/arpa/inet.h /usr/include/features.h
-./morph/system.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
-./morph/system.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
-./morph/system.o: /usr/include/gnu/stubs-32.h /usr/include/netinet/in.h
-./morph/system.o: /usr/include/stdint.h /usr/include/bits/wchar.h
-./morph/system.o: /usr/include/sys/socket.h /usr/include/sys/uio.h
-./morph/system.o: /usr/include/sys/types.h /usr/include/bits/types.h
-./morph/system.o: /usr/include/bits/typesizes.h /usr/include/time.h
+./ca/crow.o: /usr/include/jmorecfg.h /home/matthew/cf/h/core/bit.h
+./morph/system.o: /home/matthew/cf/inferno/morph/system.h
+./morph/system.o: /home/matthew/cf/inferno/core/goal.h
+./morph/system.o: /home/matthew/cf/inferno/search/algorithm.h
+./morph/system.o: /home/matthew/cf/h/core/bool.h
+./morph/system.o: /home/matthew/cf/h/core/declarations.h
+./morph/system.o: /home/matthew/cf/inferno/search/tools.h
+./morph/system.o: /home/matthew/cf/h/container/array.h
+./morph/system.o: /home/matthew/cf/h/container/declarations.h
+./morph/system.o: /home/matthew/cf/h/core/message.h
+./morph/system.o: /home/matthew/cf/h/core/engine.h
+./morph/system.o: /home/matthew/cf/h/core/object.h
+./morph/system.o: /home/matthew/cf/h/core/types.h
+./morph/system.o: /home/matthew/cf/inferno/box/system.h
+./morph/system.o: /home/matthew/cf/inferno/box/coordinate.h
+./morph/system.o: /home/matthew/cf/h/audit/log.h
+./morph/system.o: /home/matthew/cf/h/core/tools.h
+./morph/system.o: /home/matthew/cf/h/core/standard.h /usr/include/arpa/inet.h
+./morph/system.o: /usr/include/features.h /usr/include/bits/predefs.h
+./morph/system.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+./morph/system.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
+./morph/system.o: /usr/include/netinet/in.h /usr/include/stdint.h
+./morph/system.o: /usr/include/bits/wchar.h /usr/include/sys/socket.h
+./morph/system.o: /usr/include/sys/uio.h /usr/include/sys/types.h
+./morph/system.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+./morph/system.o: /usr/include/time.h
 ./morph/system.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
 ./morph/system.o: /usr/include/endian.h /usr/include/bits/endian.h
 ./morph/system.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
@@ -2678,23 +2389,23 @@
 ./morph/system.o: /usr/include/bits/posix_opt.h /usr/include/bits/confname.h
 ./morph/system.o: /usr/include/getopt.h /usr/include/jpeglib.h
 ./morph/system.o: /usr/include/jconfig.h /usr/include/jmorecfg.h
-./morph/system.o: /home/matthew/inhesion/h/core/bit.h
-./morph/system.o: /home/matthew/inhesion/inferno/core/actorey.h
-./morph/system.o: /home/matthew/inhesion/h/core/bitarray.h
-./morph/system.o: /home/matthew/inhesion/h/core/string.h
-./morph/system.o: /home/matthew/inhesion/h/core/objectey.h
-./morph/system.o: /home/matthew/inhesion/inferno/search/system.h
-./memory/system.o: /home/matthew/inhesion/inferno/memory/system.h
-./memory/system.o: /home/matthew/inhesion/h/container/array.h
-./memory/system.o: /home/matthew/inhesion/h/container/declarations.h
-./memory/system.o: /home/matthew/inhesion/h/core/bool.h
-./memory/system.o: /home/matthew/inhesion/h/core/declarations.h
-./memory/system.o: /home/matthew/inhesion/h/core/message.h
-./memory/system.o: /home/matthew/inhesion/h/core/engine.h
-./memory/system.o: /home/matthew/inhesion/h/core/object.h
-./memory/system.o: /home/matthew/inhesion/h/core/types.h
-./memory/system.o: /home/matthew/inhesion/h/core/tools.h
-./memory/system.o: /home/matthew/inhesion/h/core/standard.h
+./morph/system.o: /home/matthew/cf/h/core/bit.h
+./morph/system.o: /home/matthew/cf/inferno/core/actorey.h
+./morph/system.o: /home/matthew/cf/h/core/bitarray.h
+./morph/system.o: /home/matthew/cf/h/core/string.h
+./morph/system.o: /home/matthew/cf/h/core/objectey.h
+./morph/system.o: /home/matthew/cf/inferno/search/system.h
+./memory/system.o: /home/matthew/cf/inferno/memory/system.h
+./memory/system.o: /home/matthew/cf/h/container/array.h
+./memory/system.o: /home/matthew/cf/h/container/declarations.h
+./memory/system.o: /home/matthew/cf/h/core/bool.h
+./memory/system.o: /home/matthew/cf/h/core/declarations.h
+./memory/system.o: /home/matthew/cf/h/core/message.h
+./memory/system.o: /home/matthew/cf/h/core/engine.h
+./memory/system.o: /home/matthew/cf/h/core/object.h
+./memory/system.o: /home/matthew/cf/h/core/types.h
+./memory/system.o: /home/matthew/cf/h/core/tools.h
+./memory/system.o: /home/matthew/cf/h/core/standard.h
 ./memory/system.o: /usr/include/arpa/inet.h /usr/include/features.h
 ./memory/system.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
 ./memory/system.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
@@ -2750,40 +2461,40 @@
 ./memory/system.o: /usr/include/bits/posix_opt.h /usr/include/bits/confname.h
 ./memory/system.o: /usr/include/getopt.h /usr/include/jpeglib.h
 ./memory/system.o: /usr/include/jconfig.h /usr/include/jmorecfg.h
-./memory/system.o: /home/matthew/inhesion/h/core/bit.h
-./bios/system.o: /home/matthew/inhesion/inferno/bios/actor.h
-./bios/system.o: /home/matthew/inhesion/inferno/core/actorey.h
-./bios/system.o: /home/matthew/inhesion/h/core/bitarray.h
-./bios/system.o: /home/matthew/inhesion/h/core/bit.h
-./bios/system.o: /home/matthew/inhesion/h/core/object.h
-./bios/system.o: /home/matthew/inhesion/h/core/bool.h
-./bios/system.o: /home/matthew/inhesion/h/core/declarations.h
-./bios/system.o: /home/matthew/inhesion/h/core/message.h
-./bios/system.o: /home/matthew/inhesion/h/core/engine.h
-./bios/system.o: /home/matthew/inhesion/h/core/types.h
-./bios/system.o: /home/matthew/inhesion/h/core/string.h
-./bios/system.o: /home/matthew/inhesion/h/core/objectey.h
-./bios/system.o: /home/matthew/inhesion/inferno/bios/constants.h
-./bios/system.o: /home/matthew/inhesion/inferno/bios/declarations.h
-./bios/system.o: /home/matthew/inhesion/inferno/bios/system.h
-./bios/system.o: /home/matthew/inhesion/inferno/search/searchey.h
-./bios/system.o: /home/matthew/inhesion/inferno/core/goal.h
-./bios/system.o: /home/matthew/inhesion/inferno/search/tools.h
-./bios/system.o: /home/matthew/inhesion/h/container/array.h
-./bios/system.o: /home/matthew/inhesion/h/container/declarations.h
-./bios/system.o: /home/matthew/inhesion/inferno/box/system.h
-./bios/system.o: /home/matthew/inhesion/inferno/box/coordinate.h
-./bios/system.o: /home/matthew/inhesion/h/audit/log.h
-./bios/system.o: /home/matthew/inhesion/h/core/tools.h
-./bios/system.o: /home/matthew/inhesion/h/core/standard.h
-./bios/system.o: /usr/include/arpa/inet.h /usr/include/features.h
-./bios/system.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
-./bios/system.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
-./bios/system.o: /usr/include/gnu/stubs-32.h /usr/include/netinet/in.h
-./bios/system.o: /usr/include/stdint.h /usr/include/bits/wchar.h
-./bios/system.o: /usr/include/sys/socket.h /usr/include/sys/uio.h
-./bios/system.o: /usr/include/sys/types.h /usr/include/bits/types.h
-./bios/system.o: /usr/include/bits/typesizes.h /usr/include/time.h
+./memory/system.o: /home/matthew/cf/h/core/bit.h
+./bios/system.o: /home/matthew/cf/inferno/bios/actor.h
+./bios/system.o: /home/matthew/cf/inferno/core/actorey.h
+./bios/system.o: /home/matthew/cf/h/core/bitarray.h
+./bios/system.o: /home/matthew/cf/h/core/bit.h
+./bios/system.o: /home/matthew/cf/h/core/object.h
+./bios/system.o: /home/matthew/cf/h/core/bool.h
+./bios/system.o: /home/matthew/cf/h/core/declarations.h
+./bios/system.o: /home/matthew/cf/h/core/message.h
+./bios/system.o: /home/matthew/cf/h/core/engine.h
+./bios/system.o: /home/matthew/cf/h/core/types.h
+./bios/system.o: /home/matthew/cf/h/core/string.h
+./bios/system.o: /home/matthew/cf/h/core/objectey.h
+./bios/system.o: /home/matthew/cf/inferno/bios/constants.h
+./bios/system.o: /home/matthew/cf/inferno/bios/declarations.h
+./bios/system.o: /home/matthew/cf/inferno/bios/system.h
+./bios/system.o: /home/matthew/cf/inferno/search/searchey.h
+./bios/system.o: /home/matthew/cf/inferno/core/goal.h
+./bios/system.o: /home/matthew/cf/inferno/search/tools.h
+./bios/system.o: /home/matthew/cf/h/container/array.h
+./bios/system.o: /home/matthew/cf/h/container/declarations.h
+./bios/system.o: /home/matthew/cf/inferno/box/system.h
+./bios/system.o: /home/matthew/cf/inferno/box/coordinate.h
+./bios/system.o: /home/matthew/cf/h/audit/log.h
+./bios/system.o: /home/matthew/cf/h/core/tools.h
+./bios/system.o: /home/matthew/cf/h/core/standard.h /usr/include/arpa/inet.h
+./bios/system.o: /usr/include/features.h /usr/include/bits/predefs.h
+./bios/system.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+./bios/system.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
+./bios/system.o: /usr/include/netinet/in.h /usr/include/stdint.h
+./bios/system.o: /usr/include/bits/wchar.h /usr/include/sys/socket.h
+./bios/system.o: /usr/include/sys/uio.h /usr/include/sys/types.h
+./bios/system.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+./bios/system.o: /usr/include/time.h
 ./bios/system.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
 ./bios/system.o: /usr/include/endian.h /usr/include/bits/endian.h
 ./bios/system.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
@@ -2830,39 +2541,39 @@
 ./bios/system.o: /usr/include/bits/posix_opt.h /usr/include/bits/confname.h
 ./bios/system.o: /usr/include/getopt.h /usr/include/jpeglib.h
 ./bios/system.o: /usr/include/jconfig.h /usr/include/jmorecfg.h
-./bios/system.o: /home/matthew/inhesion/inferno/core/constants.h
-./bios/actor.o: /home/matthew/inhesion/inferno/bios/actor.h
-./bios/actor.o: /home/matthew/inhesion/inferno/core/actorey.h
-./bios/actor.o: /home/matthew/inhesion/h/core/bitarray.h
-./bios/actor.o: /home/matthew/inhesion/h/core/bit.h
-./bios/actor.o: /home/matthew/inhesion/h/core/object.h
-./bios/actor.o: /home/matthew/inhesion/h/core/bool.h
-./bios/actor.o: /home/matthew/inhesion/h/core/declarations.h
-./bios/actor.o: /home/matthew/inhesion/h/core/message.h
-./bios/actor.o: /home/matthew/inhesion/h/core/engine.h
-./bios/actor.o: /home/matthew/inhesion/h/core/types.h
-./bios/actor.o: /home/matthew/inhesion/h/core/string.h
-./bios/actor.o: /home/matthew/inhesion/h/core/objectey.h
-./bios/actor.o: /home/matthew/inhesion/inferno/bios/declarations.h
-./bios/actor.o: /home/matthew/inhesion/inferno/bios/system.h
-./bios/actor.o: /home/matthew/inhesion/inferno/search/searchey.h
-./bios/actor.o: /home/matthew/inhesion/inferno/core/goal.h
-./bios/actor.o: /home/matthew/inhesion/inferno/search/tools.h
-./bios/actor.o: /home/matthew/inhesion/h/container/array.h
-./bios/actor.o: /home/matthew/inhesion/h/container/declarations.h
-./bios/actor.o: /home/matthew/inhesion/inferno/box/system.h
-./bios/actor.o: /home/matthew/inhesion/inferno/box/coordinate.h
-./bios/actor.o: /home/matthew/inhesion/h/audit/log.h
-./bios/actor.o: /home/matthew/inhesion/h/core/tools.h
-./bios/actor.o: /home/matthew/inhesion/h/core/standard.h
-./bios/actor.o: /usr/include/arpa/inet.h /usr/include/features.h
-./bios/actor.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
-./bios/actor.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
-./bios/actor.o: /usr/include/gnu/stubs-32.h /usr/include/netinet/in.h
-./bios/actor.o: /usr/include/stdint.h /usr/include/bits/wchar.h
-./bios/actor.o: /usr/include/sys/socket.h /usr/include/sys/uio.h
-./bios/actor.o: /usr/include/sys/types.h /usr/include/bits/types.h
-./bios/actor.o: /usr/include/bits/typesizes.h /usr/include/time.h
+./bios/system.o: /home/matthew/cf/inferno/core/constants.h
+./bios/actor.o: /home/matthew/cf/inferno/bios/actor.h
+./bios/actor.o: /home/matthew/cf/inferno/core/actorey.h
+./bios/actor.o: /home/matthew/cf/h/core/bitarray.h
+./bios/actor.o: /home/matthew/cf/h/core/bit.h
+./bios/actor.o: /home/matthew/cf/h/core/object.h
+./bios/actor.o: /home/matthew/cf/h/core/bool.h
+./bios/actor.o: /home/matthew/cf/h/core/declarations.h
+./bios/actor.o: /home/matthew/cf/h/core/message.h
+./bios/actor.o: /home/matthew/cf/h/core/engine.h
+./bios/actor.o: /home/matthew/cf/h/core/types.h
+./bios/actor.o: /home/matthew/cf/h/core/string.h
+./bios/actor.o: /home/matthew/cf/h/core/objectey.h
+./bios/actor.o: /home/matthew/cf/inferno/bios/declarations.h
+./bios/actor.o: /home/matthew/cf/inferno/bios/system.h
+./bios/actor.o: /home/matthew/cf/inferno/search/searchey.h
+./bios/actor.o: /home/matthew/cf/inferno/core/goal.h
+./bios/actor.o: /home/matthew/cf/inferno/search/tools.h
+./bios/actor.o: /home/matthew/cf/h/container/array.h
+./bios/actor.o: /home/matthew/cf/h/container/declarations.h
+./bios/actor.o: /home/matthew/cf/inferno/box/system.h
+./bios/actor.o: /home/matthew/cf/inferno/box/coordinate.h
+./bios/actor.o: /home/matthew/cf/h/audit/log.h
+./bios/actor.o: /home/matthew/cf/h/core/tools.h
+./bios/actor.o: /home/matthew/cf/h/core/standard.h /usr/include/arpa/inet.h
+./bios/actor.o: /usr/include/features.h /usr/include/bits/predefs.h
+./bios/actor.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+./bios/actor.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
+./bios/actor.o: /usr/include/netinet/in.h /usr/include/stdint.h
+./bios/actor.o: /usr/include/bits/wchar.h /usr/include/sys/socket.h
+./bios/actor.o: /usr/include/sys/uio.h /usr/include/sys/types.h
+./bios/actor.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+./bios/actor.o: /usr/include/time.h
 ./bios/actor.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
 ./bios/actor.o: /usr/include/endian.h /usr/include/bits/endian.h
 ./bios/actor.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
@@ -2907,13 +2618,13 @@
 ./bios/actor.o: /usr/include/bits/confname.h /usr/include/getopt.h
 ./bios/actor.o: /usr/include/jpeglib.h /usr/include/jconfig.h
 ./bios/actor.o: /usr/include/jmorecfg.h
-./bios/actor.o: /home/matthew/inhesion/inferno/core/constants.h
-./bios/actor.o: /home/matthew/inhesion/h/core/random.h
-./bios/constants.o: /home/matthew/inhesion/inferno/bios/constants.h
-./bios/declarations.o: /home/matthew/inhesion/inferno/bios/declarations.h
-./stravel/system.o: /home/matthew/inhesion/inferno/stravel/system.h
-./stravel/system.o: /home/matthew/inhesion/h/core/tools.h
-./stravel/system.o: /home/matthew/inhesion/h/core/standard.h
+./bios/actor.o: /home/matthew/cf/inferno/core/constants.h
+./bios/actor.o: /home/matthew/cf/h/core/random.h
+./bios/constants.o: /home/matthew/cf/inferno/bios/constants.h
+./bios/declarations.o: /home/matthew/cf/inferno/bios/declarations.h
+./stravel/system.o: /home/matthew/cf/inferno/stravel/system.h
+./stravel/system.o: /home/matthew/cf/h/core/tools.h
+./stravel/system.o: /home/matthew/cf/h/core/standard.h
 ./stravel/system.o: /usr/include/arpa/inet.h /usr/include/features.h
 ./stravel/system.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
 ./stravel/system.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
@@ -2970,71 +2681,8 @@
 ./stravel/system.o: /usr/include/bits/posix_opt.h
 ./stravel/system.o: /usr/include/bits/confname.h /usr/include/getopt.h
 ./stravel/system.o: /usr/include/jpeglib.h /usr/include/jconfig.h
-./stravel/system.o: /usr/include/jmorecfg.h
-./stravel/system.o: /home/matthew/inhesion/h/core/bit.h
-./stravel/system.o: /home/matthew/inhesion/h/core/object.h
-./stravel/system.o: /home/matthew/inhesion/h/core/bool.h
-./stravel/system.o: /home/matthew/inhesion/h/core/declarations.h
-./stravel/system.o: /home/matthew/inhesion/h/core/types.h
-./mnet/system.o: /home/matthew/inhesion/inferno/mnet/system.h
-./mnet/system.o: /home/matthew/inhesion/h/core/tools.h
-./mnet/system.o: /home/matthew/inhesion/h/core/standard.h
-./mnet/system.o: /usr/include/arpa/inet.h /usr/include/features.h
-./mnet/system.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
-./mnet/system.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
-./mnet/system.o: /usr/include/gnu/stubs-32.h /usr/include/netinet/in.h
-./mnet/system.o: /usr/include/stdint.h /usr/include/bits/wchar.h
-./mnet/system.o: /usr/include/sys/socket.h /usr/include/sys/uio.h
-./mnet/system.o: /usr/include/sys/types.h /usr/include/bits/types.h
-./mnet/system.o: /usr/include/bits/typesizes.h /usr/include/time.h
-./mnet/system.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
-./mnet/system.o: /usr/include/endian.h /usr/include/bits/endian.h
-./mnet/system.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
-./mnet/system.o: /usr/include/bits/select.h /usr/include/bits/sigset.h
-./mnet/system.o: /usr/include/bits/time.h /usr/include/sys/sysmacros.h
-./mnet/system.o: /usr/include/bits/pthreadtypes.h /usr/include/bits/uio.h
-./mnet/system.o: /usr/include/bits/socket.h /usr/include/bits/sockaddr.h
-./mnet/system.o: /usr/include/asm/socket.h /usr/include/asm-generic/socket.h
-./mnet/system.o: /usr/include/asm/sockios.h
-./mnet/system.o: /usr/include/asm-generic/sockios.h /usr/include/bits/in.h
-./mnet/system.o: /usr/include/assert.h /usr/include/ctype.h
-./mnet/system.o: /usr/include/xlocale.h /usr/include/dirent.h
-./mnet/system.o: /usr/include/bits/dirent.h /usr/include/bits/posix1_lim.h
-./mnet/system.o: /usr/include/bits/local_lim.h /usr/include/linux/limits.h
-./mnet/system.o: /usr/include/fcntl.h /usr/include/bits/fcntl.h
-./mnet/system.o: /usr/include/postgresql/libpq-fe.h /usr/include/stdio.h
-./mnet/system.o: /usr/include/libio.h /usr/include/_G_config.h
-./mnet/system.o: /usr/include/wchar.h
-./mnet/system.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdarg.h
-./mnet/system.o: /usr/include/bits/stdio_lim.h
-./mnet/system.o: /usr/include/bits/sys_errlist.h
-./mnet/system.o: /usr/include/postgresql/postgres_ext.h /usr/include/math.h
-./mnet/system.o: /usr/include/bits/huge_val.h /usr/include/bits/huge_valf.h
-./mnet/system.o: /usr/include/bits/huge_vall.h /usr/include/bits/inf.h
-./mnet/system.o: /usr/include/bits/nan.h /usr/include/bits/mathdef.h
-./mnet/system.o: /usr/include/bits/mathcalls.h /usr/include/ncurses.h
-./mnet/system.o: /usr/include/ncurses_dll.h
-./mnet/system.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdbool.h
-./mnet/system.o: /usr/include/unctrl.h /usr/include/curses.h
-./mnet/system.o: /usr/include/openssl/rand.h /usr/include/stdlib.h
-./mnet/system.o: /usr/include/alloca.h /usr/include/openssl/ossl_typ.h
-./mnet/system.o: /usr/include/openssl/e_os2.h
-./mnet/system.o: /usr/include/openssl/opensslconf.h /usr/include/pthread.h
-./mnet/system.o: /usr/include/sched.h /usr/include/bits/sched.h
-./mnet/system.o: /usr/include/signal.h /usr/include/bits/setjmp.h
-./mnet/system.o: /usr/include/string.h /usr/include/sys/errno.h
-./mnet/system.o: /usr/include/errno.h /usr/include/bits/errno.h
-./mnet/system.o: /usr/include/linux/errno.h /usr/include/asm/errno.h
-./mnet/system.o: /usr/include/asm-generic/errno.h
-./mnet/system.o: /usr/include/asm-generic/errno-base.h
-./mnet/system.o: /usr/include/sys/stat.h /usr/include/bits/stat.h
-./mnet/system.o: /usr/include/termios.h /usr/include/bits/termios.h
-./mnet/system.o: /usr/include/sys/ttydefaults.h /usr/include/unistd.h
-./mnet/system.o: /usr/include/bits/posix_opt.h /usr/include/bits/confname.h
-./mnet/system.o: /usr/include/getopt.h /usr/include/jpeglib.h
-./mnet/system.o: /usr/include/jconfig.h /usr/include/jmorecfg.h
-./mnet/system.o: /home/matthew/inhesion/h/core/bit.h
-./mnet/system.o: /home/matthew/inhesion/h/core/object.h
-./mnet/system.o: /home/matthew/inhesion/h/core/bool.h
-./mnet/system.o: /home/matthew/inhesion/h/core/declarations.h
-./mnet/system.o: /home/matthew/inhesion/h/core/types.h
+./stravel/system.o: /usr/include/jmorecfg.h /home/matthew/cf/h/core/bit.h
+./stravel/system.o: /home/matthew/cf/h/core/object.h
+./stravel/system.o: /home/matthew/cf/h/core/bool.h
+./stravel/system.o: /home/matthew/cf/h/core/declarations.h
+./stravel/system.o: /home/matthew/cf/h/core/types.h
