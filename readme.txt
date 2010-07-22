@@ -1,3 +1,5 @@
+testing git service hooks
+
 --[ about ]--------------------------------------------------------------------
 
 This is clownfysh::cf, by Matthew Temple.  These are tools I use to build
