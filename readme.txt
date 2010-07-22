@@ -1,9 +1,5 @@
 --[ about ]--------------------------------------------------------------------
 
-testing
-
---[ about ]--------------------------------------------------------------------
-
 This is clownfysh::cf, by Matthew Temple.  These are tools I use to build
 things.  They're free; use them however you like.  For more, visit:
   + blog                                       ( http://clownfysh.tumblr.com/ )
