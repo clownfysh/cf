@@ -72,6 +72,9 @@ unsigned char x_clink_eoc_atom_get_direction(x_clink_eoc_atom_t *atom)
   unsigned char *c;
   unsigned char direction;
 
+  /*  TODO: use clink::think here as well  */
+  /*  maybe just think when necessary, and use those strings when needed  */
+
   c = x_clink_system_get_linked_object(atom->clink, 0, 0);
   if (c) {
     direction = *c % 9;
@@ -87,6 +90,8 @@ unsigned char x_clink_eoc_atom_get_face(x_clink_eoc_atom_t *atom)
   assert(atom);
   unsigned char face;
   unsigned char *primary_concept_object;
+
+  /*  TODO: change this to use clink::think to determine the face  */
 
   primary_concept_object = x_clink_system_get_linked_object(atom->clink, 0, 1);
   if (primary_concept_object) {

@@ -38,6 +38,7 @@ x_core_bool_t x_clink_system_think_train(x_clink_system_t *system,
     x_clink_system_think_f think, unsigned long max_objects);
 
 x_core_bool_t x_clink_system_think_tree(x_clink_system_t *system,
-    x_clink_system_think_f think, unsigned long max_objects);
+    x_clink_system_think_f think, unsigned long max_objects,
+    unsigned long branch_density);
 
 #endif

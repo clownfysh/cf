@@ -167,6 +167,13 @@ logic
     happen
   + don't use static keyword on function definitions
 
+--[ ideas ]--------------------------------------------------------------------
+
++ generalized teoc (eoc?) system for experimenting with cultural plans
+  + economic simulations :: take what I know experientally from busyness and
+    model various types of it, to experiment with what's really best for the
+    whole
+
 --[ ruler ]--------------------------------------------------------------------
 
 01234567890123456789012345678901234567890123456789012345678901234567890123456789

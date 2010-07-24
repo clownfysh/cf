@@ -15,7 +15,7 @@ static x_core_bool_t think_train(x_clink_system_t *system,
 
 static x_core_bool_t think_tree(x_clink_system_t *system,
     x_clink_system_think_f think, unsigned long concept_index,
-    unsigned long max_objects, unsigned long total_objects_so_far);
+    unsigned long *objects_remaining, unsigned long branch_density);
 
 x_core_bool_t think_train(x_clink_system_t *system,
     x_clink_system_think_f think, unsigned long concept_index,
@@ -58,9 +58,60 @@ x_core_bool_t think_train(x_clink_system_t *system,
 
 x_core_bool_t think_tree(x_clink_system_t *system,
     x_clink_system_think_f think, unsigned long concept_index,
-    unsigned long max_objects, unsigned long total_objects_so_far)
+    unsigned long *objects_remaining, unsigned long branch_density)
 {
-  return x_core_bool_false;
+  assert(system);
+  assert(think);
+  assert(concept_index < system->max_concepts);
+  assert(*objects_remaining > 0);
+  assert(branch_density > 0);
+  x_core_bool_t success = x_core_bool_true;
+  void *linked_object;
+  unsigned long next_concept_index;
+  unsigned long link_index;
+  unsigned long objects_remaining_in_branch;
+
+  for (link_index = 0;
+       (link_index < branch_density) && (*objects_remaining > 0);
+       link_index++) {
+    linked_object = x_clink_system_get_linked_object
+      (system, concept_index, link_index);
+    if (linked_object) {
+      if (think(system, linked_object)) {
+        (*objects_remaining)--;
+      } else {
+        success = x_core_bool_false;
+        x_trace("think");
+      }
+    } else {
+      break;
+    }
+  }
+
+  for (link_index = 0;
+       (link_index < branch_density) && (*objects_remaining > 0);
+       link_index++) {
+    linked_object = x_clink_system_get_linked_object
+      (system, concept_index, link_index);
+    if (linked_object) {
+      if (x_clink_system_get_index(system, linked_object,
+              &next_concept_index)) {
+        objects_remaining_in_branch
+          = *objects_remaining / (branch_density - link_index);
+        *objects_remaining -= objects_remaining_in_branch;
+        if (objects_remaining_in_branch > 0) {
+          success = think_tree(system, think, next_concept_index,
+              &objects_remaining_in_branch, branch_density);
+          /*  printf("%lu", objects_remaining_in_branch);  */
+          *objects_remaining += objects_remaining_in_branch;
+        }
+      }
+    } else {
+      break;
+    }
+  }
+
+  return success;
 }
 
 x_clink_system_t *x_clink_system_create(unsigned long max_concepts,
@@ -101,6 +152,7 @@ void x_clink_system_destroy(x_clink_system_t *system)
       x_clink_concept_destroy(*(system->concepts + concept));
     }
   }
+  free(system->concepts);
   free(system);
   system = NULL;
 }
@@ -122,8 +174,8 @@ x_core_bool_t x_clink_system_get_index(x_clink_system_t *system, void *object,
   x_core_bool_t found = x_core_bool_false;
 
   *index = 0;
-  while (*(system->concepts + *index)
-      && (*index < system->max_concepts)
+  while ((*index < system->max_concepts)
+      && *(system->concepts + *index)
       && !found) {
     if (0 == system->compare(object,
             x_clink_concept_get_object(*(system->concepts + *index)))) {
@@ -255,10 +307,33 @@ x_core_bool_t x_clink_system_think_train(x_clink_system_t *system,
 }
 
 x_core_bool_t x_clink_system_think_tree(x_clink_system_t *system,
-    x_clink_system_think_f think, unsigned long max_objects)
+    x_clink_system_think_f think, unsigned long max_objects,
+    unsigned long branch_density)
 {
   assert(system);
   assert(think);
   assert(max_objects > 0);
-  return think_tree(system, think, 0, max_objects, 0);
+  assert(branch_density > 0);
+  x_clink_concept_t *concept;
+  void *object;
+  x_core_bool_t success = x_core_bool_true;
+  unsigned long objects_remaining = max_objects;
+
+  concept = *(system->concepts);
+  if (concept) {
+    object = x_clink_concept_get_object(concept);
+    assert(object);
+    if (think(system, object)) {
+      objects_remaining--;
+      if (objects_remaining > 0) {
+        success
+          = think_tree(system, think, 0, &objects_remaining, branch_density);
+      }
+    } else {
+      success = x_core_bool_false;
+      x_trace("think");
+    }
+  }
+
+  return success;
 }
