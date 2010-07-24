@@ -1,0 +1,2 @@
+screen -t emacs 0 emacs -nw
+screen -t bash 1 bash

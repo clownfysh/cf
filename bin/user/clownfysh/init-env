@@ -8,5 +8,6 @@ ln -sf $CF/bin/user/clownfysh/.bashrc
 ln -sf $CF/bin/user/clownfysh/.emacs_custom
 ln -sf $CF/bin/user/clownfysh/.gitconfig
 ln -sf $CF/bin/user/clownfysh/.hgrc
+ln -sf $CF/bin/user/clownfysh/.screenrc
 
 cd - >/dev/null
