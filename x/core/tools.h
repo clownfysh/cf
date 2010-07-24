@@ -14,7 +14,7 @@ void x_core_do_nothing();
 
 #define x_core_get_bit(value, bit_index) ((value >> bit_index) & 1)
 
-#define x_core_hash(string) x_core_hasx_djb2_xor(string)
+#define x_core_hash(string) x_core_hash_djb2_xor(string)
 
 #define x_core_max(a, b) ((a > b) ? a : b)
 
@@ -40,11 +40,11 @@ x_core_bool_t x_core_get_current_time_string(x_core_time_string_t time_string);
 
 double x_core_gray_coin_toss();
 
-unsigned long x_core_hasx_djb2(char *string);
+unsigned long x_core_hash_djb2(char *string);
 
-unsigned long x_core_hasx_djb2_xor(char *string);
+unsigned long x_core_hash_djb2_xor(char *string);
 
-unsigned long x_core_hasx_sdbm(char *string);
+unsigned long x_core_hash_sdbm(char *string);
 
 x_core_bool_t x_core_key_hit();
 

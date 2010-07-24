@@ -2,12 +2,17 @@
 #define x_clink_system_h
 
 #include "x/clink/concept.h"
+#include "x/core/bool.h"
 
 struct x_clink_system_t;
 typedef struct x_clink_system_t x_clink_system_t;
 
+typedef x_core_bool_t (*x_clink_system_think_f)(x_clink_system_t *system,
+    void *object);
+
 x_clink_system_t *x_clink_system_create(unsigned long max_concepts,
-    unsigned long max_links, x_core_compare_f compare, x_core_destroy_f destroy);
+    unsigned long max_links, x_core_compare_f compare,
+    x_core_destroy_f destroy);
 
 void x_clink_system_destroy(x_clink_system_t *system);
 
@@ -25,5 +30,11 @@ void x_clink_system_link(x_clink_system_t *system, void *object_a,
 
 void x_clink_system_print(x_clink_system_t *system,
     x_core_get_as_string_f get_as_string);
+
+x_core_bool_t x_clink_system_think_train(x_clink_system_t *system,
+    x_clink_system_think_f think, unsigned long max_concepts);
+
+x_core_bool_t x_clink_system_think_tree(x_clink_system_t *system,
+    x_clink_system_think_f think, unsigned long max_concepts);
 
 #endif

@@ -176,7 +176,7 @@ unsigned long x_core_uuid_hash(x_core_uuid_t *uuid)
   unsigned long hash;
 
   x_core_uuid_get_string(uuid);
-  hash = x_core_hasx_djb2_xor(uuid->string);
+  hash = x_core_hash_djb2_xor(uuid->string);
 
   return hash;
 }

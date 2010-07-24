@@ -49,7 +49,7 @@ double x_core_gray_coin_toss()
   return ((double) random()) / (random());
 }
 
-unsigned long x_core_hasx_djb2(char *string)
+unsigned long x_core_hash_djb2(char *string)
 {
   assert(string);
   unsigned long hash;
@@ -64,7 +64,7 @@ unsigned long x_core_hasx_djb2(char *string)
   return hash;
 }
 
-unsigned long x_core_hasx_djb2_xor(char *string)
+unsigned long x_core_hash_djb2_xor(char *string)
 {
   assert(string);
   unsigned long hash;
@@ -79,7 +79,7 @@ unsigned long x_core_hasx_djb2_xor(char *string)
   return hash;
 }
 
-unsigned long x_core_hasx_sdbm(char *string)
+unsigned long x_core_hash_sdbm(char *string)
 {
   assert(string);
   unsigned long hash;

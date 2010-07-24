@@ -5,8 +5,8 @@
 #include "x/container/set.binary_tree.impl.c"
 #elif defined X_CONTAINER_SET_BTREE_IMPL
 #include "x/container/set.btree.impl.c"
-#elif defined X_CONTAINER_SET_HASX_MAP_IMPL
-#include "x/container/set.hasx_map.impl.c"
+#elif defined X_CONTAINER_SET_HASH_MAP_IMPL
+#include "x/container/set.hash_map.impl.c"
 #elif defined X_CONTAINER_SET_SKIP_LIST_IMPL
 #include "x/container/set.skip_list.impl.c"
 #else

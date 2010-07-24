@@ -2,7 +2,7 @@
 #include "x/core/tools.h"
 
 #define MAX_CONCEPTS 8
-#define MAX_LINKS 4
+#define MAX_LINKS 8
 
 static int compare(void *char_a_object, void *char_b_object);
 static void destroy(void *char_object);
@@ -54,7 +54,7 @@ char *get_as_string(void *char_object)
 
 int main(int argc, char *argv[])
 {
-  x_disable_test();
+  /*  x_disable_test();  */
 
   x_clink_system_t *clink;
   x_clink_concept_t *concept;

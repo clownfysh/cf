@@ -3,7 +3,7 @@
 #include "x/core/tools.h"
 
 struct x_container_shardset_t {
-  x_core_hasx_f hasx_object;
+  x_core_hash_f hash_object;
   unsigned short shard_count;
   x_container_set_t *shards[X_CONTAINER_SHARDSET_MAX_SHARDS];
   pthread_mutex_t shard_mutexes[X_CONTAINER_SHARDSET_MAX_SHARDS];
@@ -75,7 +75,7 @@ void x_container_shardset_clear(x_container_shardset_t *shardset)
 */
 x_container_shardset_t *x_container_shardset_create
 (x_core_compare_f compare, x_core_copy_f copy,
-    x_core_destroy_f destroy, x_core_hasx_f hasx_object,
+    x_core_destroy_f destroy, x_core_hash_f hash_object,
     unsigned short shard_count)
 {
   assert(shard_count > 0);
@@ -93,7 +93,7 @@ x_container_shardset_t *x_container_shardset_create
   shardset = malloc(sizeof *shardset);
   if (shardset) {
     shardset->shard_count = shard_count;
-    shardset->hasx_object = hasx_object;
+    shardset->hash_object = hash_object;
     for (eacx_shard = 0; eacx_shard < shard_count; eacx_shard++) {
       *(shardset->shards + eacx_shard) = NULL;
     }
@@ -407,7 +407,7 @@ unsigned short get_shard_id_for_object(x_container_shardset_t *shardset,
   unsigned long hash;
   unsigned short id;
 
-  hash = shardset->hasx_object(object);
+  hash = shardset->hash_object(object);
   id = hash % shardset->shard_count;
 
   return id;

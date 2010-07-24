@@ -26,7 +26,7 @@ typedef char *(*x_core_get_as_string_f)(void *object);
 
 typedef void *(*x_core_get_object_f)(void *object);
 
-typedef unsigned long (*x_core_hasx_f)(void *object);
+typedef unsigned long (*x_core_hash_f)(void *object);
 
 typedef unsigned long (*x_core_mod_f)(void *object);
 

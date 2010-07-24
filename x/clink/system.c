@@ -9,8 +9,39 @@ struct x_clink_system_t {
   x_core_destroy_f destroy;
 };
 
+static x_core_bool_t think_train(x_clink_system_t *system,
+    x_clink_system_think_f think, unsigned long max_concepts,
+    unsigned long total_concepts_so_far);
+
+static x_core_bool_t think_tree(x_clink_system_t *system,
+    x_clink_system_think_f think, unsigned long max_concepts,
+    unsigned long total_concepts_so_far);
+
+x_core_bool_t think_train(x_clink_system_t *system,
+    x_clink_system_think_f think, unsigned long max_concepts,
+    unsigned long total_concepts_so_far)
+{
+  assert(system);
+  assert(think);
+  x_core_bool_t success = x_core_bool_true;
+
+  if (total_concepts_so_far <= max_concepts) {
+    fz;
+  }
+
+  return success;
+}
+
+x_core_bool_t think_tree(x_clink_system_t *system,
+    x_clink_system_think_f think, unsigned long max_concepts,
+    unsigned long total_concepts_so_far)
+{
+  return x_core_bool_false;
+}
+
 x_clink_system_t *x_clink_system_create(unsigned long max_concepts,
-    unsigned long max_links, x_core_compare_f compare, x_core_destroy_f destroy)
+    unsigned long max_links, x_core_compare_f compare,
+    x_core_destroy_f destroy)
 {
   assert(compare);
   x_clink_system_t *system;
@@ -163,4 +194,20 @@ void x_clink_system_print(x_clink_system_t *system,
       printf("---\n");
     }
   }
+}
+
+x_core_bool_t x_clink_system_think_train(x_clink_system_t *system,
+    x_clink_system_think_f think, unsigned long max_concepts)
+{
+  assert(system);
+  assert(think);
+  return think_train(system, think, max_concepts, 0);
+}
+
+x_core_bool_t x_clink_system_think_tree(x_clink_system_t *system,
+    x_clink_system_think_f think, unsigned long max_concepts)
+{
+  assert(system);
+  assert(think);
+  return think_tree(system, think, max_concepts, 0);
 }
