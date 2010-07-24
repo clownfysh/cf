@@ -5,9 +5,9 @@
 #define MAX_LINKS 8
 
 static int compare(void *char_a_object, void *char_b_object);
-static void destroy(void *char_object);
 static char *get_as_string(void *char_object);
 int main(int argc, char *argv[]);
+static x_core_bool_t think(x_clink_system_t *clink, void *char_object);
 
 int compare(void *char_a_object, void *char_b_object)
 {
@@ -26,13 +26,6 @@ int compare(void *char_a_object, void *char_b_object)
   }
 
   return compare_result;
-}
-
-void destroy(void *char_object)
-{
-  assert(char_object);
-  char *c = char_object;
-  free(c);
 }
 
 char *get_as_string(void *char_object)
@@ -54,47 +47,45 @@ char *get_as_string(void *char_object)
 
 int main(int argc, char *argv[])
 {
-  /*  x_disable_test();  */
-
+  char *s = "It was the best of times, it was the worst of times.";
+  /*  char *s = "ab";  */
+  assert(strlen(s) > 1);
   x_clink_system_t *clink;
   x_clink_concept_t *concept;
-  char current_char = ' ';
-  char last_char = ' ';
-  char *current_object;
-  char *last_object;
+  char *c;
 
   concept = NULL;
 
-  clink = x_clink_system_create(MAX_CONCEPTS, MAX_LINKS, compare, destroy);
+  clink = x_clink_system_create(MAX_CONCEPTS, MAX_LINKS, compare,
+      X_CORE_NO_DESTROY_FUNCTION);
   if (clink) {
-    while ((current_char = getc(stdin))) {
-      if ('\n' == current_char) {
-        continue;
-      }
-      current_object = malloc(sizeof(*current_object));
-      if (current_object) {
-        *current_object = current_char;
-        last_object = malloc(sizeof(*last_object));
-        if (last_object) {
-          *last_object = last_char;
-          x_clink_system_link(clink, last_object, current_object);
-          printf("\n");
-          x_clink_system_print(clink, get_as_string);
-          last_char = current_char;
-        } else {
-          x_trace("malloc");
-          free(current_object);
-          break;
-        }
-      } else {
-        x_trace("malloc");
-        break;
-      }
+    c = s + 1;
+    while (*c) {
+      x_clink_system_link(clink, c - 1, c);
+      printf("\n");
+      x_clink_system_print(clink, get_as_string);
+      c++;
     }
+
+    printf("\nthink::\n");
+    x_clink_system_think_train(clink, think, 10);
+    printf("\n");
+
     x_clink_system_destroy(clink);
   } else {
     x_trace("x_clink_system_create");
   }
 
   return 0;
+}
+
+x_core_bool_t think(x_clink_system_t *clink, void *char_object)
+{
+  assert(clink);
+  assert(char_object);
+  char *c = char_object;
+
+  printf("%c", *c);
+
+  return x_core_bool_true;
 }

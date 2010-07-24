@@ -6,13 +6,14 @@
 struct x_clink_concept_t;
 typedef struct x_clink_concept_t x_clink_concept_t;
 
-x_clink_concept_t *x_clink_concept_create(void *object,
-    unsigned long max_links, x_core_compare_f compare, x_core_destroy_f destroy);
+x_clink_concept_t *x_clink_concept_create(void *concept,
+    unsigned long max_links, x_core_compare_f compare,
+    x_core_destroy_f destroy);
 
 void x_clink_concept_destroy(x_clink_concept_t *concept);
 
 void *x_clink_concept_get_linked_object(x_clink_concept_t *concept,
-    unsigned long object_index);
+    unsigned long link_index);
 
 void *x_clink_concept_get_object(x_clink_concept_t *concept);
 

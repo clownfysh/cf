@@ -10,31 +10,55 @@ struct x_clink_system_t {
 };
 
 static x_core_bool_t think_train(x_clink_system_t *system,
-    x_clink_system_think_f think, unsigned long max_concepts,
-    unsigned long total_concepts_so_far);
+    x_clink_system_think_f think, unsigned long concept_index,
+    unsigned long max_objects, unsigned long total_objects_so_far);
 
 static x_core_bool_t think_tree(x_clink_system_t *system,
-    x_clink_system_think_f think, unsigned long max_concepts,
-    unsigned long total_concepts_so_far);
+    x_clink_system_think_f think, unsigned long concept_index,
+    unsigned long max_objects, unsigned long total_objects_so_far);
 
 x_core_bool_t think_train(x_clink_system_t *system,
-    x_clink_system_think_f think, unsigned long max_concepts,
-    unsigned long total_concepts_so_far)
+    x_clink_system_think_f think, unsigned long concept_index,
+    unsigned long max_objects, unsigned long total_objects_so_far)
 {
   assert(system);
   assert(think);
+  assert(concept_index < system->max_concepts);
   x_core_bool_t success = x_core_bool_true;
+  x_clink_concept_t *concept;
+  void *object;
+  void *linked_object;
+  unsigned long next_concept_index;
 
-  if (total_concepts_so_far <= max_concepts) {
-    fz;
+  concept = *(system->concepts + concept_index);
+  if (concept) {
+    object = x_clink_concept_get_object(concept);
+    assert(object);
+    if (think(system, object)) {
+      total_objects_so_far++;
+      if (total_objects_so_far < max_objects) {
+        linked_object
+          = x_clink_system_get_linked_object(system, concept_index, 0);
+        if (linked_object) {
+          if (x_clink_system_get_index(system, linked_object,
+                  &next_concept_index)) {
+            success = think_train(system, think, next_concept_index,
+                max_objects, total_objects_so_far);
+          }
+        }
+      }
+    } else {
+      success = x_core_bool_false;
+      x_trace("think");
+    }
   }
 
   return success;
 }
 
 x_core_bool_t think_tree(x_clink_system_t *system,
-    x_clink_system_think_f think, unsigned long max_concepts,
-    unsigned long total_concepts_so_far)
+    x_clink_system_think_f think, unsigned long concept_index,
+    unsigned long max_objects, unsigned long total_objects_so_far)
 {
   return x_core_bool_false;
 }
@@ -73,7 +97,9 @@ void x_clink_system_destroy(x_clink_system_t *system)
   unsigned long concept;
 
   for (concept = 0; concept < system->max_concepts; concept++) {
-    x_clink_concept_destroy(*(system->concepts + concept));
+    if (*(system->concepts + concept)) {
+      x_clink_concept_destroy(*(system->concepts + concept));
+    }
   }
   free(system);
   system = NULL;
@@ -87,17 +113,40 @@ x_clink_concept_t *x_clink_system_get_concept(x_clink_system_t *system,
   return *(system->concepts + concept_index);
 }
 
+x_core_bool_t x_clink_system_get_index(x_clink_system_t *system, void *object,
+    unsigned long *index)
+{
+  assert(system);
+  assert(object);
+  assert(index);
+  x_core_bool_t found = x_core_bool_false;
+
+  *index = 0;
+  while (*(system->concepts + *index)
+      && (*index < system->max_concepts)
+      && !found) {
+    if (0 == system->compare(object,
+            x_clink_concept_get_object(*(system->concepts + *index)))) {
+      found = x_core_bool_true;
+    } else {
+      (*index)++;
+    }
+  }
+
+  return found;
+}
+
 void *x_clink_system_get_linked_object(x_clink_system_t *system,
-    unsigned long concept_index, unsigned long object_index)
+    unsigned long concept_index, unsigned long link_index)
 {
   assert(system);
   assert(concept_index < system->max_concepts);
-  assert(object_index < system->max_links);
+  assert(link_index < system->max_links);
   void *object;
 
   if (*(system->concepts + concept_index)) {
     object = x_clink_concept_get_linked_object
-      (*(system->concepts + concept_index), object_index);
+      (*(system->concepts + concept_index), link_index);
   } else {
     object = NULL;
   }
@@ -197,17 +246,19 @@ void x_clink_system_print(x_clink_system_t *system,
 }
 
 x_core_bool_t x_clink_system_think_train(x_clink_system_t *system,
-    x_clink_system_think_f think, unsigned long max_concepts)
+    x_clink_system_think_f think, unsigned long max_objects)
 {
   assert(system);
   assert(think);
-  return think_train(system, think, max_concepts, 0);
+  assert(max_objects > 0);
+  return think_train(system, think, 0, max_objects, 0);
 }
 
 x_core_bool_t x_clink_system_think_tree(x_clink_system_t *system,
-    x_clink_system_think_f think, unsigned long max_concepts)
+    x_clink_system_think_f think, unsigned long max_objects)
 {
   assert(system);
   assert(think);
-  return think_tree(system, think, max_concepts, 0);
+  assert(max_objects > 0);
+  return think_tree(system, think, 0, max_objects, 0);
 }
