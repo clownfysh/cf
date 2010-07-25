@@ -65,7 +65,8 @@ int main(int argc, char *argv[])
 
   concept = NULL;
 
-  clink = x_clink_system_create(MAX_CONCEPTS, MAX_LINKS, compare, destroy);
+  clink = x_clink_system_create(MAX_CONCEPTS, MAX_LINKS, compare, destroy,
+      NULL);
   if (clink) {
     while ((current_char = getc(stdin))) {
       if ('\n' == current_char) {
