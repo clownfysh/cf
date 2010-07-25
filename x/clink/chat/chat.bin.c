@@ -7,6 +7,7 @@
 #define MAX_CONCEPTS 1024
 #define MAX_LINKS 1024
 #define MAX_OBJECTS 256
+#define STRING_BUFFER_LENGTH 32768
 
 /*  static char *get_as_string(void *string_object);  */
 int main(int argc, char *argv[]);
@@ -25,7 +26,7 @@ char *get_as_string(void *string_object)
 int main(int argc, char *argv[])
 {
   x_clink_system_t *clink;
-  char read_string[80];
+  char read_string[STRING_BUFFER_LENGTH];
   char *word_a;
   char *word_b;
   char *word_a_copy;
@@ -33,13 +34,13 @@ int main(int argc, char *argv[])
   x_core_bool_t stop_requested = x_core_bool_false;
   FILE *file;
 
-  file = fopen("/home/matthew/tsid.txt", "r");
+  file = fopen("/home/matthew/gg2.txt", "r");
 
   clink = x_clink_system_create(MAX_CONCEPTS, MAX_LINKS, x_core_string_compare,
       x_core_string_destroy, NULL);
   if (clink) {
     do {
-      if (NULL == fgets(read_string, 80, file)) {
+      if (NULL == fgets(read_string, STRING_BUFFER_LENGTH, file)) {
         stop_requested = x_core_bool_true;
       }
       printf("# %s\n", read_string);
