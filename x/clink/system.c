@@ -7,6 +7,7 @@ struct x_clink_system_t {
   unsigned long max_links;
   x_core_compare_f compare;
   x_core_destroy_f destroy;
+  void *context;
 };
 
 static x_core_bool_t think_train(x_clink_system_t *system,
@@ -34,7 +35,7 @@ x_core_bool_t think_train(x_clink_system_t *system,
   if (concept) {
     object = x_clink_concept_get_object(concept);
     assert(object);
-    if (think(system, object)) {
+    if (think(system, object, system->context)) {
       total_objects_so_far++;
       if (total_objects_so_far < max_objects) {
         linked_object
@@ -77,7 +78,7 @@ x_core_bool_t think_tree(x_clink_system_t *system,
     linked_object = x_clink_system_get_linked_object
       (system, concept_index, link_index);
     if (linked_object) {
-      if (think(system, linked_object)) {
+      if (think(system, linked_object, system->context)) {
         (*objects_remaining)--;
       } else {
         success = x_core_bool_false;
@@ -116,7 +117,7 @@ x_core_bool_t think_tree(x_clink_system_t *system,
 
 x_clink_system_t *x_clink_system_create(unsigned long max_concepts,
     unsigned long max_links, x_core_compare_f compare,
-    x_core_destroy_f destroy)
+    x_core_destroy_f destroy, void *context)
 {
   assert(compare);
   x_clink_system_t *system;
@@ -127,6 +128,7 @@ x_clink_system_t *x_clink_system_create(unsigned long max_concepts,
     system->max_links = max_links;
     system->compare = compare;
     system->destroy = destroy;
+    system->context = context;
     system->concepts = malloc((sizeof *system->concepts) * max_concepts);
     if (system->concepts) {
       memset(system->concepts, 0, (sizeof *system->concepts) * max_concepts);
@@ -323,7 +325,7 @@ x_core_bool_t x_clink_system_think_tree(x_clink_system_t *system,
   if (concept) {
     object = x_clink_concept_get_object(concept);
     assert(object);
-    if (think(system, object)) {
+    if (think(system, object, system->context)) {
       objects_remaining--;
       if (objects_remaining > 0) {
         success

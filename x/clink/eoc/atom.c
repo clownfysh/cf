@@ -2,13 +2,19 @@
 #include "x/clink/system.h"
 #include "x/core/tools.h"
 
+#define THINK_STRING_LENGTH 8
+
 struct x_clink_eoc_atom_t {
   x_clink_system_t *clink;
   unsigned char last_char;
+  char think_string[THINK_STRING_LENGTH];
+  unsigned char think_string_read_position;
+  unsigned char think_string_write_position;
 };
 
+static x_core_bool_t think(x_clink_system_t *system, void *object,
+    void *context);
 static int compare(void *char_a_object, void *char_b_object);
-
 static void destroy(void *char_object);
 
 int compare(void *char_a_object, void *char_b_object)
@@ -37,16 +43,39 @@ void destroy(void *char_object)
   free(c);
 }
 
+x_core_bool_t think(x_clink_system_t *system, void *object, void *context)
+{
+  assert(system);
+  assert(object);
+  assert(context);
+  char *c = object;
+  x_clink_eoc_atom_t *atom = context;
+
+  *(atom->think_string + atom->think_string_write_position) = *c;
+  atom->think_string_write_position++;
+  if (THINK_STRING_LENGTH == atom->think_string_write_position) {
+    atom->think_string_write_position = 0;
+  }
+
+  return x_core_bool_true;
+}
+
 x_clink_eoc_atom_t *x_clink_eoc_atom_create(unsigned long max_concepts,
     unsigned long max_links)
 {
   x_clink_eoc_atom_t *atom;
+  unsigned char i;
 
   atom = malloc(sizeof *atom);
   if (atom) {
     atom->last_char = '\0';
+    for (i = 0; i < THINK_STRING_LENGTH; i++) {
+      *(atom->think_string + i) = random() % 9;
+    }
+    atom->think_string_read_position = 0;
+    atom->think_string_write_position = 0;
     atom->clink = x_clink_system_create(max_concepts, max_links, compare,
-        destroy);
+        destroy, atom);
     if (!atom->clink) {
       x_trace("x_clink_system_create");
       free(atom);
@@ -69,17 +98,12 @@ void x_clink_eoc_atom_destroy(x_clink_eoc_atom_t *atom)
 unsigned char x_clink_eoc_atom_get_direction(x_clink_eoc_atom_t *atom)
 {
   assert(atom);
-  unsigned char *c;
   unsigned char direction;
 
-  /*  TODO: use clink::think here as well  */
-  /*  maybe just think when necessary, and use those strings when needed  */
-
-  c = x_clink_system_get_linked_object(atom->clink, 0, 0);
-  if (c) {
-    direction = *c % 9;
-  } else {
-    direction = random() % 9;
+  direction = *(atom->think_string + atom->think_string_read_position);
+  atom->think_string_read_position++;
+  if (THINK_STRING_LENGTH == atom->think_string_read_position) {
+    atom->think_string_read_position = 0;
   }
 
   return direction;
@@ -89,15 +113,11 @@ unsigned char x_clink_eoc_atom_get_face(x_clink_eoc_atom_t *atom)
 {
   assert(atom);
   unsigned char face;
-  unsigned char *primary_concept_object;
 
-  /*  TODO: change this to use clink::think to determine the face  */
-
-  primary_concept_object = x_clink_system_get_linked_object(atom->clink, 0, 1);
-  if (primary_concept_object) {
-    face = *primary_concept_object;
-  } else {
-    face = random() % 9;
+  face = *(atom->think_string + atom->think_string_read_position);
+  atom->think_string_read_position++;
+  if (THINK_STRING_LENGTH == atom->think_string_read_position) {
+    atom->think_string_read_position = 0;
   }
 
   return face;
@@ -132,6 +152,12 @@ void x_clink_eoc_atom_observe(x_clink_eoc_atom_t *atom, unsigned char c)
       *last_char = atom->last_char;
       /* x_clink_system_link(atom->clink, last_char, current_char); */
       x_clink_system_link(atom->clink, current_char, last_char);
+      if (*current_char == *last_char) {
+        if (!x_clink_system_think_tree
+            (atom->clink, think, THINK_STRING_LENGTH, 3)) {
+          x_trace("x_clink_system_think_tree");
+        }
+      }
       atom->last_char = c;
     } else {
       x_trace("malloc");

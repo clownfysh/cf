@@ -8,11 +8,11 @@ struct x_clink_system_t;
 typedef struct x_clink_system_t x_clink_system_t;
 
 typedef x_core_bool_t (*x_clink_system_think_f)(x_clink_system_t *system,
-    void *object);
+    void *object, void *context);
 
 x_clink_system_t *x_clink_system_create(unsigned long max_concepts,
     unsigned long max_links, x_core_compare_f compare,
-    x_core_destroy_f destroy);
+    x_core_destroy_f destroy, void *context);
 
 void x_clink_system_destroy(x_clink_system_t *system);
 

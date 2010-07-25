@@ -7,7 +7,8 @@
 static int compare(void *char_a_object, void *char_b_object);
 static char *get_as_string(void *char_object);
 int main(int argc, char *argv[]);
-static x_core_bool_t think(x_clink_system_t *clink, void *char_object);
+static x_core_bool_t think(x_clink_system_t *clink, void *char_object,
+    void *context);
 
 int compare(void *char_a_object, void *char_b_object)
 {
@@ -81,7 +82,7 @@ int main(int argc, char *argv[])
   return 0;
 }
 
-x_core_bool_t think(x_clink_system_t *clink, void *char_object)
+x_core_bool_t think(x_clink_system_t *clink, void *char_object, void *context)
 {
   assert(clink);
   assert(char_object);
