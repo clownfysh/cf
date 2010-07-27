@@ -57,10 +57,26 @@ void x_core_long_destroy(void *long_object)
   free(long_object);
 }
 
-x_core_bool_t x_core_long_equal(void *long_object_a, void *long_object_b)
+x_core_bool_t x_core_long_equal(void *long_a_object, void *long_b_object)
 {
-  return *((unsigned long *) long_object_a)
-    == *((unsigned long *) long_object_b);
+  assert(long_a_object);
+  assert(long_b_object);
+  unsigned char *long_a = long_a_object;  /*  yeah, I know we're gettin' crazy
+                                              with the Cheeze Whiz here...just
+                                              experimenting...don't rely on
+                                              this code  */
+  unsigned char *long_b = long_b_object;
+  x_core_bool_t equal = x_core_bool_true;
+  unsigned char i;
+
+  for (i = 0; i < 32; i++) {
+    if (*(long_a + i) != *(long_b + i)) {
+      equal = x_core_bool_false;
+      break;
+    }
+  }
+
+  return equal;
 }
 
 char *x_core_long_get_as_string(void *long_object)
@@ -90,7 +106,9 @@ void x_core_long_init_objectey(x_core_objectey_t *objectey)
 
 unsigned long x_core_long_mod(void *long_object, unsigned long modulus)
 {
-  return (*((unsigned long *) long_object)) % modulus;
+  assert(long_object);
+  unsigned long *l = long_object;
+  return *l % modulus;
 }
 
 void x_core_long_print(void *long_object)

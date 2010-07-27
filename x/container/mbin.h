@@ -12,8 +12,7 @@ x_core_bool_t x_container_mbin_add(x_container_mbin_t *mbin, void *object);
 void x_container_mbin_clear(x_container_mbin_t *mbin);
 
 x_container_mbin_t *x_container_mbin_create(x_core_mod_f mod,
-    x_core_equal_f equal,
-    x_core_destroy_f destroy);
+    x_core_equal_f equal, x_core_destroy_f destroy);
 
 void x_container_mbin_destroy(x_container_mbin_t *mbin);
 

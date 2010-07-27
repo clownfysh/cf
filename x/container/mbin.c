@@ -1,8 +1,11 @@
 #include "mbin.h"
 
-#define PER_LEVEL_BIN_MULTIPLIER 32
-#define ROOT_MAX_OBJECTS 256
-#define ROOT_BIN_COUNT 2
+#define BECOME_SIMPLE x_core_bool_true
+#define BECOME_SIMPLE_DIVISOR 2
+#define MAX_OBJECTS_PER_BIN 8
+
+#define PRIMES_COUNT 11
+static unsigned long primes[PRIMES_COUNT] = {2,3,5,7,11,13,17,19,23,29,31};
 
 struct x_container_mbin_t {
   x_core_bool_t container;
@@ -12,15 +15,14 @@ struct x_container_mbin_t {
   x_core_equal_f equal;
   x_core_destroy_f destroy;
   unsigned long object_count;
-  unsigned long max_objects;
+  unsigned long level;
   unsigned long bin_count;
   unsigned long iterator;
   x_core_bool_t iterate_remove;
 };
 
 static x_container_mbin_t *create(x_core_mod_f mod, x_core_equal_f equal,
-    x_core_destroy_f destroy, unsigned long max_objects,
-    unsigned long bin_count);
+    x_core_destroy_f destroy, unsigned long level);
 
 static x_core_bool_t create_bins(x_container_mbin_t *mbin);
 
@@ -31,11 +33,11 @@ static void become_simple(x_container_mbin_t *mbin);
 static void destroy_bins(x_container_mbin_t *mbin);
 
 x_container_mbin_t *create(x_core_mod_f mod, x_core_equal_f equal,
-    x_core_destroy_f destroy, unsigned long max_objects,
-    unsigned long bin_count)
+    x_core_destroy_f destroy, unsigned long level)
 {
   assert(mod);
   assert(equal);
+  assert(level < PRIMES_COUNT);
   x_container_mbin_t *mbin;
 
   mbin = malloc(sizeof *mbin);
@@ -46,12 +48,10 @@ x_container_mbin_t *create(x_core_mod_f mod, x_core_equal_f equal,
     mbin->mod = mod;
     mbin->equal = equal;
     mbin->destroy = destroy;
-    mbin->max_objects = max_objects;
-    mbin->bin_count = bin_count;
-    mbin->objects = malloc((sizeof *mbin->objects) * max_objects);
-    if (mbin->objects) {
-      memset(mbin->objects, 0, (sizeof *mbin->objects) * max_objects);
-    } else {
+    mbin->level = level;
+    mbin->bin_count = primes[level];
+    mbin->objects = malloc((sizeof *mbin->objects) * MAX_OBJECTS_PER_BIN);
+    if (!mbin->objects) {
       x_trace("malloc");
     }
   } else {
@@ -72,8 +72,14 @@ x_core_bool_t create_bins(x_container_mbin_t *mbin)
   if (mbin->bins) {
     success = x_core_bool_true;
     for (i = 0; i < mbin->bin_count; i++) {
-      *(mbin->bins + i) = create(mbin->mod, mbin->equal, mbin->destroy,
-          mbin->max_objects, mbin->bin_count * PER_LEVEL_BIN_MULTIPLIER);
+      if (mbin->level < (PRIMES_COUNT - 1)) {
+        *(mbin->bins + i) = create(mbin->mod, mbin->equal, mbin->destroy,
+            mbin->level + 1);
+      } else {
+        *(mbin->bins + i) = create(mbin->mod, mbin->equal, mbin->destroy,
+            mbin->level);
+        x_trace("ran out of primes");
+      }
       if (!*(mbin->bins + i)) {
         x_trace("create");
         success = x_core_bool_false;
@@ -110,7 +116,6 @@ x_core_bool_t become_container(x_container_mbin_t *mbin)
       }
     }
     if (success) {
-      memset(mbin->objects, 0, (sizeof *mbin->objects) * mbin->max_objects);
       mbin->object_count = 0;
       mbin->container = x_core_bool_true;
     } else {
@@ -145,7 +150,7 @@ void become_simple(x_container_mbin_t *mbin)
       assert(object);
       *(mbin->objects + mbin->object_count) = object;
       mbin->object_count++;
-      assert(mbin->object_count <= mbin->max_objects);
+      assert(mbin->object_count <= MAX_OBJECTS_PER_BIN);
     }
   }
   destroy_bins(mbin);
@@ -169,12 +174,12 @@ x_core_bool_t x_container_mbin_add(x_container_mbin_t *mbin, void *object)
 {
   assert(mbin);
   assert(object);
-  assert(mbin->object_count <= mbin->max_objects);
+  assert(mbin->object_count <= MAX_OBJECTS_PER_BIN);
   x_core_bool_t success = x_core_bool_true;
   unsigned long remainder;
   x_container_mbin_t *bin;
 
-  if (mbin->object_count == mbin->max_objects) {
+  if (mbin->object_count == MAX_OBJECTS_PER_BIN) {
     if (!become_container(mbin)) {
       success = x_core_bool_false;
       x_trace("become_container");
@@ -190,7 +195,16 @@ x_core_bool_t x_container_mbin_add(x_container_mbin_t *mbin, void *object)
         x_trace("x_container_mbin_add");
       }
     } else {
-      assert(mbin->object_count < mbin->max_objects);
+      /*
+      if (x_container_mbin_find(mbin, object)) {
+        success = x_core_bool_false;
+      } else {
+        assert(mbin->object_count < MAX_OBJECTS_PER_BIN);
+        *(mbin->objects + mbin->object_count) = object;
+        mbin->object_count++;
+      }
+      */
+      assert(mbin->object_count < MAX_OBJECTS_PER_BIN);
       *(mbin->objects + mbin->object_count) = object;
       mbin->object_count++;
     }
@@ -212,7 +226,7 @@ void x_container_mbin_clear(x_container_mbin_t *mbin)
 x_container_mbin_t *x_container_mbin_create(x_core_mod_f mod,
     x_core_equal_f equal, x_core_destroy_f destroy)
 {
-  return create(mod, equal, destroy, ROOT_MAX_OBJECTS, ROOT_BIN_COUNT);
+  return create(mod, equal, destroy, primes[0]);
 }
 
 void x_container_mbin_destroy(x_container_mbin_t *mbin)
@@ -352,7 +366,8 @@ x_core_bool_t x_container_mbin_remove(x_container_mbin_t *mbin,
     remainder = mbin->mod(decoy_object, mbin->bin_count);
     if (x_container_mbin_remove(*(mbin->bins + remainder), decoy_object)) {
       success = x_core_bool_true;
-      if (x_container_mbin_get_size(mbin) < (mbin->max_objects / 2)) {
+      if (BECOME_SIMPLE && (x_container_mbin_get_size(mbin)
+              < (MAX_OBJECTS_PER_BIN / BECOME_SIMPLE_DIVISOR))) {
         become_simple(mbin);
       }
     }

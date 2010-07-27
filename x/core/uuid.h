@@ -25,6 +25,8 @@ x_core_uuid_t *x_core_uuid_create_null();
 
 void x_core_uuid_destroy(void *uuid_object);
 
+x_core_bool_t x_core_uuid_equal(void *uuid_a_object, void *uuid_b_object);
+
 unsigned long x_core_uuid_get_memory_size_bytes(x_core_uuid_t *uuid);
 
 char *x_core_uuid_get_string(void *uuid_object);
@@ -32,5 +34,7 @@ char *x_core_uuid_get_string(void *uuid_object);
 unsigned long x_core_uuid_hash(x_core_uuid_t *uuid);
 
 x_core_bool_t x_core_uuid_is_null(x_core_uuid_t *uuid);
+
+unsigned long x_core_uuid_mod(void *uuid_object, unsigned long modulus);
 
 #endif

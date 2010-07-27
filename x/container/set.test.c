@@ -3,7 +3,7 @@
 #include "x/core/tools.h"
 #include "x/core/uuid.h"
 
-#define ITERATIONS 10000
+#define ITERATIONS 1000000
 #define TEST_USING_LONGS x_core_bool_true
 
 static void print_uuid(x_core_uuid_t *uuid, const char *name);
@@ -73,16 +73,17 @@ int main(int argc, char *argv[])
   }
   printf("set size: %lu\n", x_container_set_get_size(set));
 
-  if (x_core_bool_true) {
+  if (x_core_bool_false) {
     printf("doing iterate_remove on the rest of the set\n");
     x_container_set_iterate_start(set);
     if (TEST_USING_LONGS) {
       while ((l = x_container_set_iterate_next(set))) {
         x_container_set_iterate_remove(set);
       }
-    }
-    while ((uuid = x_container_set_iterate_next(set))) {
-      x_container_set_iterate_remove(set);
+    } else {
+      while ((uuid = x_container_set_iterate_next(set))) {
+        x_container_set_iterate_remove(set);
+      }
     }
     printf("set size: %lu\n", x_container_set_get_size(set));
     assert(0 == x_container_set_get_size(set));

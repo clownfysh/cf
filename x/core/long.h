@@ -16,7 +16,7 @@ void *x_core_long_create_from_message(x_core_message_t *message);
 
 void x_core_long_destroy(void *long_object);
 
-x_core_bool_t x_core_long_equal(void *long_object_a, void *long_object_b);
+x_core_bool_t x_core_long_equal(void *long_a_object, void *long_b_object);
 
 char *x_core_long_get_as_string(void *long_object);
 
