@@ -57,6 +57,12 @@ void x_core_long_destroy(void *long_object)
   free(long_object);
 }
 
+x_core_bool_t x_core_long_equal(void *long_object_a, void *long_object_b)
+{
+  return *((unsigned long *) long_object_a)
+    == *((unsigned long *) long_object_b);
+}
+
 char *x_core_long_get_as_string(void *long_object)
 {
   assert(long_object);
@@ -80,6 +86,11 @@ void x_core_long_init_objectey(x_core_objectey_t *objectey)
   objectey->compare = x_core_long_compare;
   objectey->copy = x_core_long_copy;
   objectey->destroy = x_core_long_destroy;
+}
+
+unsigned long x_core_long_mod(void *long_object, unsigned long modulus)
+{
+  return (*((unsigned long *) long_object)) % modulus;
 }
 
 void x_core_long_print(void *long_object)

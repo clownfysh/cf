@@ -20,7 +20,7 @@ typedef void *(*x_core_create_f)();
 
 typedef void (*x_core_destroy_f)(void *object);
 
-typedef x_core_bool_t (*x_core_equal_f)(void *object);
+typedef x_core_bool_t (*x_core_equal_f)(void *a_object, void *b_object);
 
 typedef char *(*x_core_get_as_string_f)(void *object);
 
@@ -28,7 +28,7 @@ typedef void *(*x_core_get_object_f)(void *object);
 
 typedef unsigned long (*x_core_hash_f)(void *object);
 
-typedef unsigned long (*x_core_mod_f)(void *object);
+typedef unsigned long (*x_core_mod_f)(void *object, unsigned long modulus);
 
 void x_core_print(void *object, x_core_get_as_string_f get_as_string);
 

@@ -16,9 +16,13 @@ void *x_core_long_create_from_message(x_core_message_t *message);
 
 void x_core_long_destroy(void *long_object);
 
+x_core_bool_t x_core_long_equal(void *long_object_a, void *long_object_b);
+
 char *x_core_long_get_as_string(void *long_object);
 
 void x_core_long_init_objectey(x_core_objectey_t *objectey);
+
+unsigned long x_core_long_mod(void *long_object, unsigned long modulus);
 
 void x_core_long_print(void *long_object);
 

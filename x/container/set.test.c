@@ -4,7 +4,7 @@
 #include "x/core/uuid.h"
 
 #define ITERATIONS 10000
-#define TEST_USING_LONGS x_core_bool_false
+#define TEST_USING_LONGS x_core_bool_true
 
 static void print_uuid(x_core_uuid_t *uuid, const char *name);
 
