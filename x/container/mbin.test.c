@@ -3,7 +3,7 @@
 #include "x/core/tools.h"
 #include "x/core/uuid.h"
 
-#define ITERATIONS 1000000
+#define ITERATIONS 100000
 #define TEST_USING_LONGS x_core_bool_true
 
 static void print_uuid(x_core_uuid_t *uuid, const char *name);
@@ -29,10 +29,10 @@ int main(int argc, char *argv[])
   printf("creating mbin...\n");
   if (TEST_USING_LONGS) {
     mbin = x_container_mbin_create(x_core_long_mod, x_core_long_equal,
-        x_core_long_destroy);
+        x_core_long_destroy, X_CONTAINER_MBIN_SET_TYPE_MULTISET);
   } else {
     mbin = x_container_mbin_create(x_core_uuid_mod, x_core_uuid_equal,
-        x_core_uuid_destroy);
+        x_core_uuid_destroy, X_CONTAINER_MBIN_SET_TYPE_SET);
   }
   assert(mbin);
 
@@ -43,6 +43,7 @@ int main(int argc, char *argv[])
       l = malloc(sizeof *l);
       *l = random() % ITERATIONS;
       if (x_container_mbin_add(mbin, l)) {
+        /*  printf("added %lu\n", *l);  */
         items_added++;
       } else {
         x_core_long_destroy(l);
@@ -68,6 +69,7 @@ int main(int argc, char *argv[])
       l = malloc(sizeof *l);
       *l = random() % ITERATIONS;
       x_container_mbin_remove(mbin, l);
+      /*  printf("removed %lu\n", *l);  */
       free(l);
     }
   }

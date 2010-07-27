@@ -4,6 +4,12 @@
 #include "x/core/object.h"
 #include "x/core/tools.h"
 
+enum x_container_mbin_set_type_t {
+  X_CONTAINER_MBIN_SET_TYPE_MULTISET,
+  X_CONTAINER_MBIN_SET_TYPE_SET
+};
+typedef enum x_container_mbin_set_type_t x_container_mbin_set_type_t;
+
 struct x_container_mbin_t;
 typedef struct x_container_mbin_t x_container_mbin_t;
 
@@ -12,7 +18,8 @@ x_core_bool_t x_container_mbin_add(x_container_mbin_t *mbin, void *object);
 void x_container_mbin_clear(x_container_mbin_t *mbin);
 
 x_container_mbin_t *x_container_mbin_create(x_core_mod_f mod,
-    x_core_equal_f equal, x_core_destroy_f destroy);
+    x_core_equal_f equal, x_core_destroy_f destroy,
+    x_container_mbin_set_type_t set_type);
 
 void x_container_mbin_destroy(x_container_mbin_t *mbin);
 

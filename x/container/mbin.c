@@ -5,7 +5,8 @@
 #define MAX_OBJECTS_PER_BIN 8
 
 #define PRIMES_COUNT 11
-static unsigned long primes[PRIMES_COUNT] = {2,3,5,7,11,13,17,19,23,29,31};
+static unsigned long primes[PRIMES_COUNT] = {2, 3, 5, 7, 11, 13, 17, 19, 23,
+                                             29, 31};
 
 struct x_container_mbin_t {
   x_core_bool_t container;
@@ -19,10 +20,12 @@ struct x_container_mbin_t {
   unsigned long bin_count;
   unsigned long iterator;
   x_core_bool_t iterate_remove;
+  x_container_mbin_set_type_t set_type;
 };
 
 static x_container_mbin_t *create(x_core_mod_f mod, x_core_equal_f equal,
-    x_core_destroy_f destroy, unsigned long level);
+    x_core_destroy_f destroy, unsigned long level,
+    x_container_mbin_set_type_t set_type);
 
 static x_core_bool_t create_bins(x_container_mbin_t *mbin);
 
@@ -33,7 +36,8 @@ static void become_simple(x_container_mbin_t *mbin);
 static void destroy_bins(x_container_mbin_t *mbin);
 
 x_container_mbin_t *create(x_core_mod_f mod, x_core_equal_f equal,
-    x_core_destroy_f destroy, unsigned long level)
+    x_core_destroy_f destroy, unsigned long level,
+    x_container_mbin_set_type_t set_type)
 {
   assert(mod);
   assert(equal);
@@ -50,6 +54,7 @@ x_container_mbin_t *create(x_core_mod_f mod, x_core_equal_f equal,
     mbin->destroy = destroy;
     mbin->level = level;
     mbin->bin_count = primes[level];
+    mbin->set_type = set_type;
     mbin->objects = malloc((sizeof *mbin->objects) * MAX_OBJECTS_PER_BIN);
     if (!mbin->objects) {
       x_trace("malloc");
@@ -74,10 +79,10 @@ x_core_bool_t create_bins(x_container_mbin_t *mbin)
     for (i = 0; i < mbin->bin_count; i++) {
       if (mbin->level < (PRIMES_COUNT - 1)) {
         *(mbin->bins + i) = create(mbin->mod, mbin->equal, mbin->destroy,
-            mbin->level + 1);
+            mbin->level + 1, mbin->set_type);
       } else {
         *(mbin->bins + i) = create(mbin->mod, mbin->equal, mbin->destroy,
-            mbin->level);
+            mbin->level, mbin->set_type);
         x_trace("ran out of primes");
       }
       if (!*(mbin->bins + i)) {
@@ -191,22 +196,25 @@ x_core_bool_t x_container_mbin_add(x_container_mbin_t *mbin, void *object)
       remainder = mbin->mod(object, mbin->bin_count);
       bin = *(mbin->bins + remainder);
       if (!x_container_mbin_add(bin, object)) {
-        success = x_core_bool_false;
-        x_trace("x_container_mbin_add");
+        if (X_CONTAINER_MBIN_SET_TYPE_MULTISET == mbin->set_type) {
+          success = x_core_bool_false;
+          x_trace("x_container_mbin_add");
+        }
       }
     } else {
-      /*
-      if (x_container_mbin_find(mbin, object)) {
-        success = x_core_bool_false;
-      } else {
+      if (X_CONTAINER_MBIN_SET_TYPE_MULTISET == mbin->set_type) {
         assert(mbin->object_count < MAX_OBJECTS_PER_BIN);
         *(mbin->objects + mbin->object_count) = object;
         mbin->object_count++;
+      } else if (X_CONTAINER_MBIN_SET_TYPE_SET == mbin->set_type) {
+        if (x_container_mbin_find(mbin, object)) {
+          success = x_core_bool_false;
+        } else {
+          assert(mbin->object_count < MAX_OBJECTS_PER_BIN);
+          *(mbin->objects + mbin->object_count) = object;
+          mbin->object_count++;
+        }
       }
-      */
-      assert(mbin->object_count < MAX_OBJECTS_PER_BIN);
-      *(mbin->objects + mbin->object_count) = object;
-      mbin->object_count++;
     }
   }
 
@@ -224,9 +232,10 @@ void x_container_mbin_clear(x_container_mbin_t *mbin)
 }
 
 x_container_mbin_t *x_container_mbin_create(x_core_mod_f mod,
-    x_core_equal_f equal, x_core_destroy_f destroy)
+    x_core_equal_f equal, x_core_destroy_f destroy,
+    x_container_mbin_set_type_t set_type)
 {
-  return create(mod, equal, destroy, primes[0]);
+  return create(mod, equal, destroy, 0, set_type);
 }
 
 void x_container_mbin_destroy(x_container_mbin_t *mbin)

@@ -69,7 +69,7 @@ x_core_bool_t x_core_long_equal(void *long_a_object, void *long_b_object)
   x_core_bool_t equal = x_core_bool_true;
   unsigned char i;
 
-  for (i = 0; i < 32; i++) {
+  for (i = 0; i < 4; i++) {
     if (*(long_a + i) != *(long_b + i)) {
       equal = x_core_bool_false;
       break;
