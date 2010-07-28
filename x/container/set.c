@@ -312,7 +312,7 @@ x_container_set_t *x_container_set_difference(x_container_set_t *set_a,
   return difference;
 }
 
-void x_container_set_dont_destroys(x_container_set_t *set)
+void x_container_set_dont_destroy_objects(x_container_set_t *set)
 {
   set->destroy = NULL;
 }

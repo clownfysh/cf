@@ -23,6 +23,8 @@ x_container_mbin_t *x_container_mbin_create(x_core_mod_f mod,
 
 void x_container_mbin_destroy(x_container_mbin_t *mbin);
 
+void x_container_mbin_dont_destroy_objects(x_container_mbin_t *mbin);
+
 void *x_container_mbin_find(x_container_mbin_t *mbin, void *decoy_object);
 
 unsigned long x_container_mbin_get_size(x_container_mbin_t *mbin);

@@ -486,7 +486,7 @@ x_container_array_t *create_index_to_name_array(x_file_csv_t *csv,
             x_container_array_add(index_to_name, field_index, field_name);
             field_index++;
           }
-          x_container_list_dont_destroys(field_names);
+          x_container_list_dont_destroy_objects(field_names);
           x_container_list_destroy(field_names);
         } else {
           x_core_trace("x_container_list_create_strings_from_string");

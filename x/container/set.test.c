@@ -1,6 +1,6 @@
 #include "x/container/set.h"
-#include "x/core/long.h"
 #include "x/core/tools.h"
+#include "x/core/unsigned_long.h"
 #include "x/core/uuid.h"
 
 #define ITERATIONS 100000
@@ -28,8 +28,8 @@ int main(int argc, char *argv[])
 
   printf("creating set...\n");
   if (TEST_USING_LONGS) {
-    set = x_container_set_create(x_core_long_compare, x_core_long_copy,
-        x_core_long_destroy);
+    set = x_container_set_create(x_core_unsigned_long_compare,
+        x_core_unsigned_long_copy, x_core_unsigned_long_destroy);
   } else {
     set = x_container_set_create(x_core_uuid_compare, x_core_uuid_copy,
         x_core_uuid_destroy);
@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
       if (x_container_set_add(set, l)) {
         items_added++;
       } else {
-        x_core_long_destroy(l);
+        x_core_unsigned_long_destroy(l);
       }
     } else {
       uuid = x_core_uuid_create();

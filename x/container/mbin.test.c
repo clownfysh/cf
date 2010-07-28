@@ -1,6 +1,6 @@
 #include "x/container/mbin.h"
-#include "x/core/long.h"
 #include "x/core/tools.h"
+#include "x/core/unsigned_long.h"
 #include "x/core/uuid.h"
 
 #define ITERATIONS 100000
@@ -28,8 +28,9 @@ int main(int argc, char *argv[])
 
   printf("creating mbin...\n");
   if (TEST_USING_LONGS) {
-    mbin = x_container_mbin_create(x_core_long_mod, x_core_long_equal,
-        x_core_long_destroy, X_CONTAINER_MBIN_SET_TYPE_MULTISET);
+    mbin = x_container_mbin_create(x_core_unsigned_long_mod,
+        x_core_unsigned_long_equal, x_core_unsigned_long_destroy,
+        X_CONTAINER_MBIN_SET_TYPE_SET);
   } else {
     mbin = x_container_mbin_create(x_core_uuid_mod, x_core_uuid_equal,
         x_core_uuid_destroy, X_CONTAINER_MBIN_SET_TYPE_SET);
@@ -46,7 +47,7 @@ int main(int argc, char *argv[])
         /*  printf("added %lu\n", *l);  */
         items_added++;
       } else {
-        x_core_long_destroy(l);
+        x_core_unsigned_long_destroy(l);
       }
     } else {
       uuid = x_core_uuid_create();

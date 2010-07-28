@@ -412,7 +412,7 @@ void x_container_list_destroy(void *list_object)
 
 }
 
-void x_container_list_dont_destroys(x_container_list_t *list)
+void x_container_list_dont_destroy_objects(x_container_list_t *list)
 {
   list->destroy = NULL;
 }

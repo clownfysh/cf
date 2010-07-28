@@ -28,7 +28,7 @@ typedef void *(*x_core_get_object_f)(void *object);
 
 typedef unsigned long (*x_core_hash_f)(void *object);
 
-typedef unsigned long (*x_core_mod_f)(void *object, unsigned long modulus);
+typedef unsigned long (*x_core_mod_f)(void *object, unsigned long divisor);
 
 void x_core_print(void *object, x_core_get_as_string_f get_as_string);
 

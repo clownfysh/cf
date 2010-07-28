@@ -22,8 +22,7 @@ int x_core_unsigned_long_compare(void *unsigned_long_object_a,
   return compare;
 }
 
-void *x_core_unsigned_long_copy
-(void *unsigned_long_object)
+void *x_core_unsigned_long_copy(void *unsigned_long_object)
 {
   assert(unsigned_long_object);
   unsigned long *long_value;
@@ -43,6 +42,17 @@ void *x_core_unsigned_long_copy
 void x_core_unsigned_long_destroy(void *unsigned_long_object)
 {
   free(unsigned_long_object);
+}
+
+x_core_bool_t x_core_unsigned_long_equal(void *unsigned_long_a_object,
+    void *unsigned_long_b_object)
+{
+  assert(unsigned_long_a_object);
+  assert(unsigned_long_b_object);
+  unsigned long *unsigned_long_a = unsigned_long_a_object;
+  unsigned long *unsigned_long_b = unsigned_long_b_object;
+
+  return *unsigned_long_a == *unsigned_long_b;
 }
 
 char *x_core_unsigned_long_get_as_string(void *unsigned_long_object)
@@ -71,4 +81,12 @@ void x_core_unsigned_long_init_objectey(x_core_objectey_t *objectey)
   objectey->compare = x_core_unsigned_long_compare;
   objectey->copy = x_core_unsigned_long_copy;
   objectey->destroy = x_core_unsigned_long_destroy;
+}
+
+unsigned long x_core_unsigned_long_mod(void *unsigned_long_object,
+    unsigned long divisor)
+{
+  assert(unsigned_long_object);
+  unsigned long *unsigned_long = unsigned_long_object;
+  return *unsigned_long % divisor;
 }

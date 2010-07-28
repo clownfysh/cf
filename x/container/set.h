@@ -52,7 +52,7 @@ void x_container_set_destroy(void *set_object);
 x_container_set_t *x_container_set_difference(x_container_set_t *set_a,
     x_container_set_t *set_b);
 
-void x_container_set_dont_destroys(x_container_set_t *set);
+void x_container_set_dont_destroy_objects(x_container_set_t *set);
 
 x_core_bool_t x_container_set_expunge(x_container_set_t *set,
     x_container_set_t *expunge_these);

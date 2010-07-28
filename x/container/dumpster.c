@@ -62,7 +62,7 @@ x_core_bool_t x_container_dumpster_take_objects_from_list
 
   success = x_core_bool_true;
 
-  x_container_list_dont_destroys(list);
+  x_container_list_dont_destroy_objects(list);
   x_container_list_iterate_start(list);
   while ((object = x_container_list_iterate_next(list))) {
     if (x_container_dumpster_add(dumpster, object)) {

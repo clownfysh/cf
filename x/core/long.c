@@ -104,11 +104,11 @@ void x_core_long_init_objectey(x_core_objectey_t *objectey)
   objectey->destroy = x_core_long_destroy;
 }
 
-unsigned long x_core_long_mod(void *long_object, unsigned long modulus)
+unsigned long x_core_long_mod(void *long_object, unsigned long divisor)
 {
   assert(long_object);
   unsigned long *l = long_object;
-  return *l % modulus;
+  return *l % divisor;
 }
 
 void x_core_long_print(void *long_object)

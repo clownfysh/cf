@@ -141,10 +141,18 @@ x_core_bool_t x_core_uuid_equal(void *uuid_a_object, void *uuid_b_object)
 {
   assert(uuid_a_object);
   assert(uuid_b_object);
-  unsigned char *uuid_a = uuid_a_object;  /*  yeah, I know we're gettin' crazy
+  return (0 == x_core_uuid_compare(uuid_a_object, uuid_b_object));
+}
+
+/*
+x_core_bool_t x_core_uuid_equal(void *uuid_a_object, void *uuid_b_object)
+{
+  assert(uuid_a_object);
+  assert(uuid_b_object);
+  unsigned char *uuid_a = uuid_a_object;   yeah, I know we're gettin' crazy
                                               with the Cheeze Whiz here...just
                                               experimenting...don't rely on
-                                              this code  */
+                                              this code
   unsigned char *uuid_b = uuid_b_object;
   x_core_bool_t equal = x_core_bool_true;
   unsigned char i;
@@ -158,6 +166,7 @@ x_core_bool_t x_core_uuid_equal(void *uuid_a_object, void *uuid_b_object)
 
   return equal;
 }
+*/
 
 unsigned long x_core_uuid_get_memory_size_bytes(x_core_uuid_t *uuid)
 {
@@ -223,17 +232,6 @@ x_core_bool_t x_core_uuid_is_null(x_core_uuid_t *uuid)
   return is_null;
 }
 
-unsigned long x_core_uuid_mod(void *uuid_object, unsigned long modulus)
-{
-  x_trace("TODO: implement");
-  exit(0);
-
-  assert(uuid_object);
-  char *s;
-  unsigned long remainder;
-
-  s = x_core_uuid_get_string(uuid_object);
-  remainder = *((unsigned long *) s + 32) % modulus;
-
-  return remainder;
-}
+#if defined CF_PLATFORM_LINUX
+#include "x/core/uuid.linux.impl.c"
+#endif

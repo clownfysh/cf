@@ -35,6 +35,6 @@ unsigned long x_core_uuid_hash(x_core_uuid_t *uuid);
 
 x_core_bool_t x_core_uuid_is_null(x_core_uuid_t *uuid);
 
-unsigned long x_core_uuid_mod(void *uuid_object, unsigned long modulus);
+unsigned long x_core_uuid_mod(void *uuid_object, unsigned long divisor);
 
 #endif

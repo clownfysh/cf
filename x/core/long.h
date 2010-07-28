@@ -22,7 +22,7 @@ char *x_core_long_get_as_string(void *long_object);
 
 void x_core_long_init_objectey(x_core_objectey_t *objectey);
 
-unsigned long x_core_long_mod(void *long_object, unsigned long modulus);
+unsigned long x_core_long_mod(void *long_object, unsigned long divisor);
 
 void x_core_long_print(void *long_object);
 
