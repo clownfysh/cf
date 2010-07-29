@@ -173,12 +173,12 @@ void x_core_show_memory(void *location, unsigned short length)
 {
   char *char_location;
   char c;
-  unsigned short eacx_char;
+  unsigned short each_char;
 
   char_location = location;
 
-  for (eacx_char = 0; eacx_char < length; eacx_char++) {
-    c = *(char_location + eacx_char);
+  for (each_char = 0; each_char < length; each_char++) {
+    c = *(char_location + each_char);
     if (isprint((int) c)) {
       printf("%c", c);
     } else {

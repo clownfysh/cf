@@ -49,6 +49,8 @@ struct x_net_starclient_t {
 
   void *custom_client_context;
   x_audit_log_t *log;
+
+  x_core_objectey_t nameobject_objectey;
 };
 
 static x_core_bool_t client_connected(x_net_starclient_t *starclient,
@@ -345,6 +347,7 @@ x_net_starclient_t *x_net_starclient_create(x_container_list_t *star_arm_ips,
     starclient->custom_client_context = custom_client_context;
     starclient->unsent_messages_queue_size
       = DEFAULT_UNSENT_MESSAGES_QUEUE_SIZE;
+    x_core_nameobject_init_objectey(&starclient->nameobject_objectey);
     for (engine_id = 0; engine_id < X_NET_ENGINE_TYPE_COUNT; engine_id++) {
       *(starclient->message_type_counts + engine_id) = -1;
     }
@@ -410,8 +413,8 @@ x_core_bool_t x_net_starclient_create_clients(x_net_starclient_t *starclient)
   assert(starclient);
   x_core_bool_t success;
 
-  starclient->clients = x_container_set_create(x_core_nameobject_compare,
-      x_core_nameobject_copy, x_core_nameobject_destroy);
+  starclient->clients
+    = x_container_set_create(&starclient->nameobject_objectey);
   if (starclient->clients) {
     success = x_core_bool_true;
   } else {
@@ -524,7 +527,7 @@ x_net_client_t *x_net_starclient_get_client(x_net_starclient_t *starclient,
   x_core_nameobject_t *nameclient;
   x_net_client_t *client;
   x_core_bool_t found_it;
-  int eacx_socket;
+  int each_socket;
 
   found_it = x_core_bool_false;
   client = NULL;
@@ -533,8 +536,8 @@ x_net_client_t *x_net_starclient_get_client(x_net_starclient_t *starclient,
   while (!found_it && (nameclient = x_container_list_iterate_next
           (starclient->client_list))) {
     client = x_core_nameobject_get_object(nameclient);
-    eacx_socket = x_net_client_get_socket(client);
-    if (eacx_socket == socket) {
+    each_socket = x_net_client_get_socket(client);
+    if (each_socket == socket) {
       found_it = x_core_bool_true;
     }
   }

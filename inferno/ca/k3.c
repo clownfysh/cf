@@ -75,8 +75,8 @@ void *inferno_ca_k3_create_context(void *parameter_object)
   unsigned long rule_number;
   unsigned long value;
   unsigned long place_value;
-  unsigned short eacx_bit;
-  unsigned short eacx_link;
+  unsigned short each_bit;
+  unsigned short each_link;
   unsigned long div;
 
   context = malloc(sizeof *context);
@@ -85,9 +85,9 @@ void *inferno_ca_k3_create_context(void *parameter_object)
 
     value = rule_number;
     place_value = 8388608;  /*  2^23  */
-    for (eacx_bit = 0; eacx_bit < 24; eacx_bit++) {
+    for (each_bit = 0; each_bit < 24; each_bit++) {
       div = value / place_value;
-      *(context->rule + eacx_bit) = div;
+      *(context->rule + each_bit) = div;
       value = value % place_value;
       place_value /= 2;
       if (0 == place_value) {
@@ -95,10 +95,10 @@ void *inferno_ca_k3_create_context(void *parameter_object)
       }
     }
 
-    for (eacx_link = 0; eacx_link < 8; eacx_link++) {
-      (*(context->map + eacx_link)).a = *(context->rule + (eacx_link * 3) + 0);
-      (*(context->map + eacx_link)).b = *(context->rule + (eacx_link * 3) + 1);
-      (*(context->map + eacx_link)).c = *(context->rule + (eacx_link * 3) + 2);
+    for (each_link = 0; each_link < 8; each_link++) {
+      (*(context->map + each_link)).a = *(context->rule + (each_link * 3) + 0);
+      (*(context->map + each_link)).b = *(context->rule + (each_link * 3) + 1);
+      (*(context->map + each_link)).c = *(context->rule + (each_link * 3) + 2);
     }
   } else {
     x_core_trace("malloc");

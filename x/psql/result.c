@@ -15,8 +15,8 @@ x_psql_result_t *x_psql_result_create(PGresult *pg_result,
   x_psql_result_t *result;
   int row_count;
   int field_count;
-  int eacx_row;
-  int eacx_column;
+  int each_row;
+  int each_column;
   char *field_name;
   char *field_value;
   x_container_map_t *map;
@@ -31,15 +31,15 @@ x_psql_result_t *x_psql_result_create(PGresult *pg_result,
     if (result->rows) {
       field_count = PQnfields(pg_result);
       so_far_so_good = x_core_bool_true;
-      for (eacx_row = 0; eacx_row < row_count; eacx_row++) {
+      for (each_row = 0; each_row < row_count; each_row++) {
         map = x_container_map_create(string_objectey, string_objectey,
             X_CONTAINER_MAP_DONT_DESTROY);
         if (map) {
-          for (eacx_column = 0; eacx_column < field_count; eacx_column++) {
-            field_name = PQfname(pg_result, eacx_column);
-            field_value = PQgetvalue(pg_result, eacx_row, eacx_column);
+          for (each_column = 0; each_column < field_count; each_column++) {
+            field_name = PQfname(pg_result, each_column);
+            field_value = PQgetvalue(pg_result, each_row, each_column);
             if (x_container_map_add(map, field_name, field_value)) {
-              x_container_array_add(result->rows, eacx_row, map);
+              x_container_array_add(result->rows, each_row, map);
             } else {
               *error = x_psql_result_create_error_x_container_map_add_failed;
               so_far_so_good = x_core_bool_false;

@@ -179,7 +179,7 @@ x_core_bool_t load_points_from_file(stravel_t *stravel, char *points_filename)
 {
   x_file_csv_t *csv;
   x_core_bool_t success;
-  unsigned short eacx_point;
+  unsigned short each_point;
   double x;
   double y;
 
@@ -189,11 +189,11 @@ x_core_bool_t load_points_from_file(stravel_t *stravel, char *points_filename)
     stravel->point_count = x_file_csv_get_object_count(csv);
     x_audit_log_enter(stravel->log, "stvl", "loading %lu points from %s",
         stravel->point_count, points_filename);
-    for (eacx_point = 0; eacx_point < stravel->point_count; eacx_point++) {
-      x = x_file_csv_get_value_by_name_as_double(csv, eacx_point, "x");
-      y = x_file_csv_get_value_by_name_as_double(csv, eacx_point, "y");
-      stravel->points[eacx_point][0] = x;
-      stravel->points[eacx_point][1] = y;
+    for (each_point = 0; each_point < stravel->point_count; each_point++) {
+      x = x_file_csv_get_value_by_name_as_double(csv, each_point, "x");
+      y = x_file_csv_get_value_by_name_as_double(csv, each_point, "y");
+      stravel->points[each_point][0] = x;
+      stravel->points[each_point][1] = y;
     }
     x_file_csv_destroy(csv);
   } else {
@@ -209,7 +209,7 @@ x_core_bool_t save_points_to_file(stravel_t *stravel, char *filename)
   assert(stravel);
   x_file_basic_t *file;
   x_core_bool_t success;
-  unsigned short eacx_point;
+  unsigned short each_point;
   double x;
   double y;
   char string[64];
@@ -224,9 +224,9 @@ x_core_bool_t save_points_to_file(stravel_t *stravel, char *filename)
       x_audit_log_trace(stravel->log, "stvl", "x_file_basic_write_string");
     }
 
-    for (eacx_point = 0; eacx_point < stravel->point_count; eacx_point++) {
-      x = stravel->points[eacx_point][0];
-      y = stravel->points[eacx_point][1];
+    for (each_point = 0; each_point < stravel->point_count; each_point++) {
+      x = stravel->points[each_point][0];
+      y = stravel->points[each_point][1];
       if (sprintf(string, "%.5f,%.5f\n", x, y) >= 0) {  /*  TODO  */
         if (!x_file_basic_write_string(file, string)) {
           success = x_core_bool_false;
@@ -254,7 +254,7 @@ x_core_bool_t save_solution_to_file(stravel_t *stravel,
   assert(stravel);
   assert(filename);
   x_core_bool_t visited[MAX_POINTS];
-  unsigned short eacx_point;
+  unsigned short each_point;
   unsigned char bit_0;
   unsigned char bit_1;
   unsigned short fork;
@@ -266,8 +266,8 @@ x_core_bool_t save_solution_to_file(stravel_t *stravel,
   double y;
   char string[64];
 
-  for (eacx_point = 0; eacx_point < stravel->point_count; eacx_point++) {
-    visited[eacx_point] = x_core_bool_false;
+  for (each_point = 0; each_point < stravel->point_count; each_point++) {
+    visited[each_point] = x_core_bool_false;
   }
 
   file
@@ -294,8 +294,8 @@ x_core_bool_t save_solution_to_file(stravel_t *stravel,
     }
     visited[current_point] = x_core_bool_true;
 
-    for (eacx_point = 0; eacx_point < (stravel->point_count - 1);
-         eacx_point++) {
+    for (each_point = 0; each_point < (stravel->point_count - 1);
+         each_point++) {
       bit_0 = x_core_bitarray_get_bit(solution, (current_point * 2) + 0);
       bit_1 = x_core_bitarray_get_bit(solution, (current_point * 2) + 1);
       fork = (bit_0 * 1) + (bit_1 * 2);

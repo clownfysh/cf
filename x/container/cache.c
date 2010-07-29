@@ -6,6 +6,7 @@ struct x_container_cache_t {
   x_container_set_t *objects;
   x_core_qutex_t *objects_qutex;
   x_core_condition_f remove_condition;
+  x_core_objectey_t objects_objectey;
 };
 
 x_core_bool_t x_container_cache_add(x_container_cache_t *cache,
@@ -33,9 +34,8 @@ void x_container_cache_clear(x_container_cache_t *cache)
   x_core_qutex_unlock_exclusive(cache->objects_qutex);
 }
 
-x_container_cache_t *x_container_cache_create
-(x_core_compare_f compare, x_core_copy_f copy,
-    x_core_destroy_f destroy,
+x_container_cache_t *x_container_cache_create(x_core_compare_f compare,
+    x_core_copy_f copy, x_core_destroy_f destroy,
     x_core_condition_f remove_condition)
 {
   x_container_cache_t *cache;
@@ -45,8 +45,10 @@ x_container_cache_t *x_container_cache_create
   if (cache) {
     cache->remove_condition = remove_condition;
     cache->objects_qutex = NULL;
-    cache->objects = x_container_set_create(compare, copy,
-        destroy);
+    x_core_objectey_init(&cache->objects_objectey, compare, copy, destroy,
+        X_CORE_NO_EQUAL_FUNCTION, X_CORE_NO_GET_AS_STRING_FUNCTION,
+        X_CORE_NO_MOD_FUNCTION);
+    cache->objects = x_container_set_create(&cache->objects_objectey);
     if (cache->objects) {
       so_far_so_good = x_core_bool_true;
     } else {

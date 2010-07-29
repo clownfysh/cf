@@ -344,13 +344,13 @@ x_container_list_t *x_container_list_create_from_message
 {
   x_container_list_t *list;
   long list_size;
-  long eacx_object;
+  long each_object;
   void *object;
 
   list = x_container_list_create(compare, copy, destroy);
   if (list) {
     list_size = x_core_message_take_long_value(message);
-    for (eacx_object = 0; eacx_object < list_size; eacx_object++) {
+    for (each_object = 0; each_object < list_size; each_object++) {
       object = create_from_message(message);
       if (!x_container_list_add_last(list, object)) {
         x_core_trace("x_container_list_add_last");

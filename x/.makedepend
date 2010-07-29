@@ -66,6 +66,7 @@
 ./xcache/item.o: /home/matthew/cf/x/core/uuid.h
 ./xcache/item.o: /home/matthew/cf/x/core/message.h
 ./xcache/item.o: /home/matthew/cf/x/core/engine.h
+./xcache/item.o: /home/matthew/cf/x/core/objectey.h
 ./xcache/system.o: /home/matthew/cf/x/container/cache.h
 ./xcache/system.o: /home/matthew/cf/x/core/object.h
 ./xcache/system.o: /home/matthew/cf/x/core/bool.h
@@ -136,6 +137,7 @@
 ./xcache/system.o: /home/matthew/cf/x/core/uuid.h
 ./xcache/system.o: /home/matthew/cf/x/core/message.h
 ./xcache/system.o: /home/matthew/cf/x/core/engine.h
+./xcache/system.o: /home/matthew/cf/x/core/objectey.h
 ./xcache/system.o: /home/matthew/cf/x/xcache/system.h
 ./circle/system.o: /home/matthew/cf/x/circle/system.h
 ./circle/system.o: /home/matthew/cf/x/core/tools.h
@@ -4921,6 +4923,7 @@
 ./core/uuid.o: /home/matthew/cf/x/core/types.h /home/matthew/cf/x/core/uuid.h
 ./core/uuid.o: /home/matthew/cf/x/core/message.h
 ./core/uuid.o: /home/matthew/cf/x/core/engine.h
+./core/uuid.o: /home/matthew/cf/x/core/objectey.h
 ./core/mutex.o: /home/matthew/cf/x/core/mutex.h
 ./core/mutex.o: /home/matthew/cf/x/core/bool.h
 ./core/mutex.o: /home/matthew/cf/x/core/declarations.h
@@ -5234,6 +5237,7 @@
 ./core/nameobject.o: /home/matthew/cf/x/core/object.h
 ./core/nameobject.o: /home/matthew/cf/x/core/bool.h
 ./core/nameobject.o: /home/matthew/cf/x/core/declarations.h
+./core/nameobject.o: /home/matthew/cf/x/core/objectey.h
 ./core/nameobject.o: /home/matthew/cf/x/core/tools.h
 ./core/nameobject.o: /home/matthew/cf/x/core/standard.h
 ./core/nameobject.o: /usr/include/arpa/inet.h /usr/include/features.h

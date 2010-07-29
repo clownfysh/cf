@@ -14,6 +14,8 @@ struct x_math_combination_t {
   x_core_destroy_f destroy;
 
   x_core_bool_t iterate_first;
+
+  x_core_objectey_t *set_objectey;
 };
 
 static x_container_set_t *create_set_based_on_flags
@@ -23,17 +25,16 @@ x_container_set_t *create_set_based_on_flags(x_math_combination_t *combination)
 {
   assert(combination);
   x_container_set_t *set;
-  unsigned long eacx_element;
+  unsigned long each_element;
   void *object;
   void *object_copy;
 
-  set = x_container_set_create(combination->compare,
-      combination->copy, combination->destroy);
+  set = x_container_set_create(combination->set_objectey);
   if (set) {
-    for (eacx_element = 0; eacx_element < combination->element_count;
-         eacx_element++) {
-      if (1 == x_core_bitarray_get_bit(combination->flags, eacx_element)) {
-        object = x_container_array_find(combination->elements, eacx_element);
+    for (each_element = 0; each_element < combination->element_count;
+         each_element++) {
+      if (1 == x_core_bitarray_get_bit(combination->flags, each_element)) {
+        object = x_container_array_find(combination->elements, each_element);
         object_copy = combination->copy(object);
         if (object_copy) {
           if (!x_container_set_add(set, object_copy)) {
@@ -63,10 +64,7 @@ x_math_combination_t *x_math_combination_create(x_container_set_t *set)
     combination->flags = NULL;
     combination->iterate_first = x_core_bool_false;
     combination->element_count = x_container_set_get_size(set);
-    combination->compare = x_container_set_get_compare_function(set);
-    combination->copy = x_container_set_get_copy_function(set);
-    combination->destroy = x_container_set_get_destroy_function(set);
-
+    combination->set_objectey = x_container_set_get_objectey(set);
     combination->elements_set = x_container_set_copy(set);
     if (combination->elements_set) {
       so_far_so_good = x_core_bool_true;

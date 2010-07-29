@@ -5,6 +5,7 @@
 struct x_net_exchange_t {
   x_container_set_t *posts;
   x_net_postey_t *postey;
+  x_core_objectey_t postey_objectey;
 };
 
 x_net_exchange_t *x_net_exchange_create(x_net_postey_t *postey)
@@ -17,8 +18,11 @@ x_net_exchange_t *x_net_exchange_create(x_net_postey_t *postey)
   if (exchange) {
     success = x_core_bool_true;
     exchange->postey = postey;
-    exchange->posts = x_container_set_create(postey->compare,
-        X_CORE_NO_COPY_FUNCTION, X_CORE_NO_DESTROY_FUNCTION);
+    x_core_objectey_init(&exchange->postey_objectey, postey->compare,
+        X_CORE_NO_COPY_FUNCTION, X_CORE_NO_DESTROY_FUNCTION,
+        X_CORE_NO_EQUAL_FUNCTION, X_CORE_NO_GET_AS_STRING_FUNCTION,
+        X_CORE_NO_MOD_FUNCTION);
+    exchange->posts = x_container_set_create(&exchange->postey_objectey);
     if (!exchange->posts) {
       x_core_trace("x_container_set_create");
       success = x_core_bool_false;

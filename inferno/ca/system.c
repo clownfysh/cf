@@ -262,8 +262,8 @@ x_core_bool_t inferno_ca_system_save_snapshot_jpeg(inferno_ca_system_t *system,
   x_core_color_t color;
   inferno_ca_state_t *state;
   inferno_ca_t *cell;
-  unsigned long eacx_step;
-  unsigned long eacx_cell;
+  unsigned long each_step;
+  unsigned long each_cell;
 
   cell_count = system->highest_cell_count;
   step_count = x_container_array_get_size(system->state_history);
@@ -272,23 +272,23 @@ x_core_bool_t inferno_ca_system_save_snapshot_jpeg(inferno_ca_system_t *system,
   if (image_buffer) {
     success = x_core_bool_true;
 
-    eacx_step = 0;
+    each_step = 0;
     x_container_array_iterate_start(system->state_history);
     while ((state = x_container_array_iterate_next(system->state_history))) {
-      for (eacx_cell = 0; eacx_cell < cell_count; eacx_cell++) {
-        cell = inferno_ca_state_get_cell(state, eacx_cell);
+      for (each_cell = 0; each_cell < cell_count; each_cell++) {
+        cell = inferno_ca_state_get_cell(state, each_cell);
 
         system->systemey->get_cell_color(cell, &color);
 
-        image_buffer[(eacx_step * cell_count * 3)
-            + (eacx_cell * 3) + 0] = color.red;
-        image_buffer[(eacx_step * cell_count * 3)
-            + (eacx_cell * 3) + 1] = color.green;
-        image_buffer[(eacx_step * cell_count * 3)
-            + (eacx_cell * 3) + 2] = color.blue;
+        image_buffer[(each_step * cell_count * 3)
+            + (each_cell * 3) + 0] = color.red;
+        image_buffer[(each_step * cell_count * 3)
+            + (each_cell * 3) + 1] = color.green;
+        image_buffer[(each_step * cell_count * 3)
+            + (each_cell * 3) + 2] = color.blue;
 
       }
-      eacx_step++;
+      each_step++;
     }
 
     write_jpeg_file(filename, 100, image_buffer, step_count, cell_count);
@@ -307,7 +307,7 @@ x_core_bool_t inferno_ca_system_save_snapshot_text(inferno_ca_system_t *system,
   assert(system);
   inferno_ca_state_t *state;
   unsigned long cell_count;
-  unsigned long eacx_cell;
+  unsigned long each_cell;
   unsigned long cell_value;
   x_file_basic_t *file;
   x_core_bool_t success;
@@ -321,8 +321,8 @@ x_core_bool_t inferno_ca_system_save_snapshot_text(inferno_ca_system_t *system,
     x_container_array_iterate_start(system->state_history);
     while ((state = x_container_array_iterate_next(system->state_history))) {
       cell_count = inferno_ca_state_get_cell_count(state);
-      for (eacx_cell = 0; eacx_cell < cell_count; eacx_cell++) {
-        cell_value = inferno_ca_state_get_cell_value(state, eacx_cell);
+      for (each_cell = 0; each_cell < cell_count; each_cell++) {
+        cell_value = inferno_ca_state_get_cell_value(state, each_cell);
 
         /*
           TODO: make this into a named function

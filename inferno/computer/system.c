@@ -16,11 +16,11 @@ static void init_computations(inferno_computer_system_t *system);
 void compute_witx_logic(inferno_computer_system_t *system)
 {
   assert(system);
-  unsigned long eacx_computation;
+  unsigned long each_computation;
 
-  for (eacx_computation = 0; eacx_computation < system->order;
-       eacx_computation++) {
-    system->logic(eacx_computation, system->computations + eacx_computation);
+  for (each_computation = 0; each_computation < system->order;
+       each_computation++) {
+    system->logic(each_computation, system->computations + each_computation);
   }
 }
 
@@ -79,8 +79,8 @@ char *inferno_computer_system_get_as_string(void *system_object)
   inferno_computer_system_t *system;
   unsigned long string_size;
   char *string;
-  unsigned long eacx_computation;
-  unsigned long eacx_bit;
+  unsigned long each_computation;
+  unsigned long each_bit;
   unsigned long string_position;
   inferno_computer_output_t *output;
   x_core_bit_t bit;
@@ -91,11 +91,11 @@ char *inferno_computer_system_get_as_string(void *system_object)
   string = malloc(string_size + 1);
   if (string) {
     string_position = 0;
-    for (eacx_computation = 0; eacx_computation < system->order;
-         eacx_computation++) {
-      for (eacx_bit = 0; eacx_bit < INFERNO_COMPUTER_OUTPUT_BITS; eacx_bit++) {
-        output = system->computations + eacx_computation;
-        bit = *(output->bits + eacx_bit);
+    for (each_computation = 0; each_computation < system->order;
+         each_computation++) {
+      for (each_bit = 0; each_bit < INFERNO_COMPUTER_OUTPUT_BITS; each_bit++) {
+        output = system->computations + each_computation;
+        bit = *(output->bits + each_bit);
         if (bit) {
           *(string + string_position) = '1';
         } else {
@@ -137,20 +137,20 @@ x_core_bool_t inferno_computer_system_save_as_file(inferno_computer_system_t *sy
 
 void free_computations(inferno_computer_system_t *system)
 {
-  unsigned long eacx_computation;
+  unsigned long each_computation;
 
-  for (eacx_computation = 0; eacx_computation < system->order;
-       eacx_computation++) {
-    inferno_computer_output_free(system->computations + eacx_computation);
+  for (each_computation = 0; each_computation < system->order;
+       each_computation++) {
+    inferno_computer_output_free(system->computations + each_computation);
   }
 }
 
 void init_computations(inferno_computer_system_t *system)
 {
-  unsigned long eacx_computation;
+  unsigned long each_computation;
 
-  for (eacx_computation = 0; eacx_computation < system->order;
-       eacx_computation++) {
-    inferno_computer_output_init(system->computations + eacx_computation);
+  for (each_computation = 0; each_computation < system->order;
+       each_computation++) {
+    inferno_computer_output_init(system->computations + each_computation);
   }
 }

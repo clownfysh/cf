@@ -39,6 +39,8 @@ struct x_net_hyperpost_t {
   x_core_bool_t socket_closed;
 
   x_net_post_stats_t stats;
+
+  x_core_objectey_t nameobject_objectey;
 };
 
 static char *get_header_lines(x_net_hypermessage_t *hypermessage,
@@ -262,9 +264,9 @@ void *x_net_hyperpost_create(int socket)
   }
 
   if (so_far_so_good) {
-    hyperpost->in_hyperheaders = x_container_set_create
-      (x_core_nameobject_compare, x_core_nameobject_copy,
-          x_core_nameobject_destroy);
+    x_core_nameobject_init_objectey(&hyperpost->nameobject_objectey);
+    hyperpost->in_hyperheaders
+      = x_container_set_create(&hyperpost->nameobject_objectey);
     if (!hyperpost->in_hyperheaders) {
       x_core_trace("x_container_set_create");
       so_far_so_good = x_core_bool_false;

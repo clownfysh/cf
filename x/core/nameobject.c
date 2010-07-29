@@ -207,6 +207,14 @@ void *x_core_nameobject_get_object(x_core_nameobject_t *nameobject)
   return nameobject->object;
 }
 
+void x_core_nameobject_init_objectey(x_core_objectey_t *objectey)
+{
+  x_core_objectey_init(objectey, x_core_nameobject_compare,
+      x_core_nameobject_copy, x_core_nameobject_destroy,
+      X_CORE_NO_EQUAL_FUNCTION, X_CORE_NO_GET_AS_STRING_FUNCTION,
+      X_CORE_NO_MOD_FUNCTION);
+}
+
 void x_core_nameobject_print(void *nameobject_object)
 {
   assert(nameobject_object);

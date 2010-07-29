@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
 {
   inferno_computer_system_t *inferno_computer_system;
   inferno_computer_output_t *inferno_computer_output;
-  unsigned short eacx_input;
+  unsigned short each_input;
 
   inferno_computer_system = inferno_computer_system_create(4, or_logic);
   if (!inferno_computer_system) {
@@ -38,9 +38,10 @@ int main(int argc, char *argv[])
 
   inferno_computer_system_print(inferno_computer_system);
 
-  for (eacx_input = 0; eacx_input < 4; eacx_input++) {
-    inferno_computer_output = inferno_computer_system_compute(inferno_computer_system, eacx_input);
-    printf("%i -> %i\n", eacx_input, *(inferno_computer_output->bits + 0));
+  for (each_input = 0; each_input < 4; each_input++) {
+    inferno_computer_output
+      = inferno_computer_system_compute(inferno_computer_system, each_input);
+    printf("%i -> %i\n", each_input, *(inferno_computer_output->bits + 0));
   }
 
   inferno_computer_system_destroy(inferno_computer_system);

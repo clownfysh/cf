@@ -39,7 +39,7 @@ x_core_bitarray_t *create_from_signed_long(long value, unsigned short bits,
   x_core_bool_t negative;
   x_core_bitarray_t *bitarray;
   unsigned long place_value;
-  unsigned long eacx_bit;
+  unsigned long each_bit;
   unsigned long div;
 
   bitarray = x_core_bitarray_create(bits);
@@ -54,10 +54,10 @@ x_core_bitarray_t *create_from_signed_long(long value, unsigned short bits,
     value = labs(value);
 
     place_value = max_place_value;
-    for (eacx_bit = 1; eacx_bit < bits; eacx_bit++) {
+    for (each_bit = 1; each_bit < bits; each_bit++) {
       div = value / place_value;
       if (1 == div) {
-        x_core_bitarray_set_bit(bitarray, eacx_bit, 1);
+        x_core_bitarray_set_bit(bitarray, each_bit, 1);
       }
       value = value % place_value;
       place_value /= 2;
@@ -76,16 +76,16 @@ x_core_bitarray_t *create_from_unsigned_long(unsigned long value,
   assert(bits >= 2);
   x_core_bitarray_t *bitarray;
   unsigned long place_value;
-  unsigned long eacx_bit;
+  unsigned long each_bit;
   unsigned long div;
 
   bitarray = x_core_bitarray_create(bits);
   if (bitarray) {
     place_value = max_place_value;
-    for (eacx_bit = 0; eacx_bit < bits; eacx_bit++) {
+    for (each_bit = 0; each_bit < bits; each_bit++) {
       div = value / place_value;
       if (1 == div) {
-        x_core_bitarray_set_bit(bitarray, eacx_bit, 1);
+        x_core_bitarray_set_bit(bitarray, each_bit, 1);
       }
       value = value % place_value;
       place_value /= 2;
@@ -108,7 +108,7 @@ long get_signed_long(x_core_bitarray_t *bitarray, unsigned long index,
   assert(x_core_bitarray_get_size(bitarray) >= 2);
   assert((index + bits) <= x_core_bitarray_get_size(bitarray));
   long value;
-  unsigned short eacx_bit;
+  unsigned short each_bit;
   unsigned long place_value;
   x_core_bit_t negative;
   x_core_bit_t bit;
@@ -117,8 +117,8 @@ long get_signed_long(x_core_bitarray_t *bitarray, unsigned long index,
 
   value = 0;
   place_value = max_place_value;
-  for (eacx_bit = 1; eacx_bit < bits; eacx_bit++) {
-    bit = x_core_bitarray_get_bit(bitarray, index + eacx_bit);
+  for (each_bit = 1; each_bit < bits; each_bit++) {
+    bit = x_core_bitarray_get_bit(bitarray, index + each_bit);
     if (bit) {
       value += place_value;
     }
@@ -139,14 +139,14 @@ unsigned long get_unsigned_long(x_core_bitarray_t *bitarray,
   assert(bits >= 2);
   assert(x_core_bitarray_get_size(bitarray) >= 2);
   unsigned long value;
-  unsigned short eacx_bit;
+  unsigned short each_bit;
   unsigned long place_value;
   x_core_bit_t bit;
 
   value = 0;
   place_value = max_place_value;
-  for (eacx_bit = 0; eacx_bit < bits; eacx_bit++) {
-    bit = x_core_bitarray_get_bit(bitarray, index + eacx_bit);
+  for (each_bit = 0; each_bit < bits; each_bit++) {
+    bit = x_core_bitarray_get_bit(bitarray, index + each_bit);
     if (bit) {
       value += place_value;
     }
@@ -306,7 +306,7 @@ x_core_bitarray_t *x_core_bitarray_create_from_message
   x_core_bitarray_t *bitarray;
   char *string;
   unsigned long string_length;
-  unsigned long eacx_bit;
+  unsigned long each_bit;
   char bit_char;
   x_core_bit_t bit;
 
@@ -315,14 +315,14 @@ x_core_bitarray_t *x_core_bitarray_create_from_message
     string_length = strlen(string);
     bitarray = x_core_bitarray_create(string_length);
     if (bitarray) {
-      for (eacx_bit = 0; eacx_bit < string_length; eacx_bit++) {
-        bit_char = *(string + eacx_bit);
+      for (each_bit = 0; each_bit < string_length; each_bit++) {
+        bit_char = *(string + each_bit);
         if ('0' == bit_char) {
           bit = 0;
         } else {
           bit = 1;
         }
-        x_core_bitarray_set_bit(bitarray, eacx_bit, bit);
+        x_core_bitarray_set_bit(bitarray, each_bit, bit);
       }
     } else {
       x_core_trace("x_core_bitarray_create");
@@ -359,7 +359,7 @@ x_core_bitarray_t *x_core_bitarray_create_from_string_bits(char *string,
     unsigned long string_length, unsigned short bits)
 {
   assert(string);
-  unsigned short eacx_char;
+  unsigned short each_char;
   unsigned char c;
   x_core_bitarray_t *bitarray;
   x_core_bitarray_t *char_bitarray;
@@ -369,11 +369,11 @@ x_core_bitarray_t *x_core_bitarray_create_from_string_bits(char *string,
   bitarray = x_core_bitarray_create(bits);
   if (bitarray) {
     char_count = bits / X_CORE_BITARRAY_BITS_IN_CHAR;
-    for (eacx_char = 0; eacx_char < char_count; eacx_char++) {
-      c = *(string + eacx_char);
+    for (each_char = 0; each_char < char_count; each_char++) {
+      c = *(string + each_char);
       char_bitarray = x_core_bitarray_create_from_unsigned_char(c);
       if (char_bitarray) {
-        bit_position = eacx_char * X_CORE_BITARRAY_BITS_IN_CHAR;
+        bit_position = each_char * X_CORE_BITARRAY_BITS_IN_CHAR;
         x_core_bitarray_set_bits_from_bitarray(bitarray, bit_position,
             char_bitarray, 0, X_CORE_BITARRAY_BITS_IN_CHAR);
         x_core_bitarray_destroy(char_bitarray);
@@ -448,7 +448,7 @@ char *x_core_bitarray_get_as_string(void *bitarray_object)
   x_core_bitarray_t *bitarray;
   char *string;
   unsigned long bitarray_size;
-  unsigned long eacx_bit;
+  unsigned long each_bit;
   unsigned long char_index;
   unsigned long bit_index;
   x_core_bit_t bit;
@@ -469,14 +469,14 @@ char *x_core_bitarray_get_as_string(void *bitarray_object)
   string = malloc(string_size);
   if (string) {
     memset(string, 0, string_size);
-    for (eacx_bit = 0; eacx_bit < bitarray_size; eacx_bit++) {
+    for (each_bit = 0; each_bit < bitarray_size; each_bit++) {
 
-      char_index = (eacx_bit * 2) / 8;
-      bit_index = (eacx_bit * 2) % 8;
+      char_index = (each_bit * 2) / 8;
+      bit_index = (each_bit * 2) % 8;
 
       c = string + char_index;
 
-      bit = x_core_bitarray_get_bit(bitarray, eacx_bit);
+      bit = x_core_bitarray_get_bit(bitarray, each_bit);
       if (bit) {
         x_core_set_bit_in_unsigned_char((unsigned char *) c, bit_index, 1);
         x_core_set_bit_in_unsigned_char((unsigned char *) c, bit_index + 1, 1);
@@ -625,7 +625,7 @@ char *x_core_bitarray_get_string(x_core_bitarray_t *bitarray,
   assert(bitarray);
   char *string;
   unsigned long string_length;
-  unsigned long eacx_char;
+  unsigned long each_char;
   unsigned long start_bit;
   unsigned char c;
 
@@ -633,10 +633,10 @@ char *x_core_bitarray_get_string(x_core_bitarray_t *bitarray,
 
   string = malloc(string_length + 1);
   if (string) {
-    for (eacx_char = 0; eacx_char < string_length; eacx_char++) {
-      start_bit = index + (eacx_char * X_CORE_BITARRAY_BITS_IN_CHAR);
+    for (each_char = 0; each_char < string_length; each_char++) {
+      start_bit = index + (each_char * X_CORE_BITARRAY_BITS_IN_CHAR);
       c = x_core_bitarray_get_unsigned_char(bitarray, start_bit);
-      *(string + eacx_char) = c;
+      *(string + each_char) = c;
     }
     *(string + string_length) = '\0';
   } else {
@@ -830,7 +830,7 @@ x_core_bool_t increment(x_core_bitarray_t *bitarray, unsigned long position)
 {
   assert(bitarray);
   x_core_bool_t success;
-  long eacx_bit;
+  long each_bit;
   x_core_bit_t bit;
   unsigned long array_size;
 
@@ -844,8 +844,8 @@ x_core_bool_t increment(x_core_bitarray_t *bitarray, unsigned long position)
       success = x_core_bool_true;
       x_core_bitarray_set_bit(bitarray, position, 1);
       if (position > 0) {
-        for (eacx_bit = (position - 1); eacx_bit >= 0; eacx_bit--) {
-          x_core_bitarray_set_bit(bitarray, eacx_bit, 0);
+        for (each_bit = (position - 1); each_bit >= 0; each_bit--) {
+          x_core_bitarray_set_bit(bitarray, each_bit, 0);
         }
       }
     } else {

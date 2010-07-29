@@ -15,7 +15,7 @@ int x_core_bitarray_compare(void *bitarray_object_a,
   x_core_bitarray_t *bitarray_a;
   x_core_bitarray_t *bitarray_b;
   int compare_result;
-  unsigned long eacx_bit;
+  unsigned long each_bit;
   x_core_bit_t bit_a;
   x_core_bit_t bit_b;
 
@@ -25,9 +25,9 @@ int x_core_bitarray_compare(void *bitarray_object_a,
   compare_result = x_core_long_compare(&bitarray_a->array_size,
       &bitarray_b->array_size);
   if (0 == compare_result) {
-    for (eacx_bit = 0; eacx_bit < bitarray_a->array_size; eacx_bit++) {
-      bit_a = *(bitarray_a->array + eacx_bit);
-      bit_b = *(bitarray_b->array + eacx_bit);
+    for (each_bit = 0; each_bit < bitarray_a->array_size; each_bit++) {
+      bit_a = *(bitarray_a->array + each_bit);
+      bit_b = *(bitarray_b->array + each_bit);
       if (bit_a < bit_b) {
         compare_result = -1;
         break;

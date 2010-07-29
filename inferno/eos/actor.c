@@ -317,7 +317,7 @@ void meet_actor(inferno_eos_actor_t *actor_a, inferno_eos_actor_t *actor_b)
 {
   meet_gene_t meet_gene;
   unsigned long meet_gene_start_address;
-  unsigned long eacx_gene;
+  unsigned long each_gene;
   x_core_bit_t bit;
   inferno_box_system_t *box;
 
@@ -327,14 +327,14 @@ void meet_actor(inferno_eos_actor_t *actor_a, inferno_eos_actor_t *actor_b)
 
   actor_b->score_is_valid = x_core_bool_false;
 
-  for (eacx_gene = meet_gene.address;
-       eacx_gene < (meet_gene.address + meet_gene.length);
-       eacx_gene++) {
-    bit = x_core_bitarray_get_bit(actor_a->solution, eacx_gene);
-    x_core_bitarray_set_bit(actor_b->solution, eacx_gene, bit);
+  for (each_gene = meet_gene.address;
+       each_gene < (meet_gene.address + meet_gene.length);
+       each_gene++) {
+    bit = x_core_bitarray_get_bit(actor_a->solution, each_gene);
+    x_core_bitarray_set_bit(actor_b->solution, each_gene, bit);
     if (MUTATION) {
       if (0 == x_core_random_unsigned_long(MUTATION_INCIDENCE_PER)) {
-        x_core_bitarray_set_bit(actor_b->solution, eacx_gene,
+        x_core_bitarray_set_bit(actor_b->solution, each_gene,
             x_core_random_unsigned_long(2));
       }
     }

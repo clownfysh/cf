@@ -9,6 +9,7 @@
 struct x_audit_log_t {
   x_container_set_t *files;
   pthread_mutex_t mutex;
+  x_core_objectey_t files_objectey;
 };
 
 static int compare_files(void *a_file_object,
@@ -73,8 +74,11 @@ x_audit_log_t *x_audit_log_create(FILE *file)
   }
 
   if (so_far_so_good) {
-    log->files = x_container_set_create(compare_files, X_CORE_NO_COPY_FUNCTION,
-        X_CORE_NO_DESTROY_FUNCTION);
+    x_core_objectey_init(&log->files_objectey, compare_files,
+        X_CORE_NO_COPY_FUNCTION, X_CORE_NO_DESTROY_FUNCTION,
+        X_CORE_NO_EQUAL_FUNCTION, X_CORE_NO_GET_AS_STRING_FUNCTION,
+        X_CORE_NO_MOD_FUNCTION);
+    log->files = x_container_set_create(&log->files_objectey);
     if (log->files) {
       if (file) {
         if (x_container_set_add(log->files, file)) {

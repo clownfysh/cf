@@ -159,7 +159,7 @@ x_net_client_t *x_net_client_create(const char *server_ip_address,
   assert(server_ip_address);
   x_net_client_t *client;
   x_core_bool_t success;
-  unsigned long eacx_engine_id;
+  unsigned long each_engine_id;
   x_core_bool_t messaging_mutex_needs_destroy;
   x_core_bool_t connected;
 
@@ -175,9 +175,9 @@ x_net_client_t *x_net_client_create(const char *server_ip_address,
     client->server_min_port = server_min_port;
     client->server_max_port = server_max_port;
     client->server_socket_closed = x_core_bool_true;
-    for (eacx_engine_id = 0; eacx_engine_id < X_NET_ENGINE_TYPE_COUNT;
-         eacx_engine_id++) {
-      *(client->engines_array + eacx_engine_id) = NULL;
+    for (each_engine_id = 0; each_engine_id < X_NET_ENGINE_TYPE_COUNT;
+         each_engine_id++) {
+      *(client->engines_array + each_engine_id) = NULL;
     }
     x_net_postey_init(&client->postey, x_net_post_compare,
         x_net_post_create, x_net_post_create_decoy,
@@ -344,7 +344,7 @@ x_core_bool_t x_net_client_register_engine(x_net_client_t *client,
 {
   engine_container_t *engine_container;
   x_core_bool_t success;
-  unsigned short eacx_handler;
+  unsigned short each_handler;
 
   engine_container = malloc(sizeof *engine_container);
   if (engine_container) {
@@ -361,9 +361,9 @@ x_core_bool_t x_net_client_register_engine(x_net_client_t *client,
       = malloc((sizeof *engine_container->message_handlers)
           * message_type_count);
     if (engine_container->message_handlers) {
-      for (eacx_handler = 0; eacx_handler < message_type_count;
-           eacx_handler++) {
-        *(engine_container->message_handlers + eacx_handler) = NULL;
+      for (each_handler = 0; each_handler < message_type_count;
+           each_handler++) {
+        *(engine_container->message_handlers + each_handler) = NULL;
       }
       success = x_core_bool_true;
     } else {

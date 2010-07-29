@@ -22,6 +22,9 @@ struct x_net_hypermessage_t {
   x_core_content_t content_type;
   char *resource_name;
   x_container_set_t *pri_parameters;
+
+  x_core_objectey_t nameobject_objectey;
+  x_core_objectey_t uuid_objectey;
 };
 
 static x_core_bool_t x_net_hypermessage_create_pri
@@ -51,6 +54,7 @@ x_net_hypermessage_t *x_net_hypermessage_create(int client_socket,
     hypermessage->body_size = 0;
     hypermessage->resource_name = NULL;
     hypermessage->pri_parameters = NULL;
+    x_core_uuid_init_objectey(&hypermessage->uuid_objectey);
 
     if (resource_path) {
       hypermessage->resource_path = strdup(resource_path);
@@ -74,9 +78,9 @@ x_net_hypermessage_t *x_net_hypermessage_create(int client_socket,
     if (hyperheaders) {
       hypermessage->hyperheaders = x_container_set_copy(hyperheaders);
     } else {
+      x_core_nameobject_init_objectey(&hypermessage->nameobject_objectey);
       hypermessage->hyperheaders
-        = x_container_set_create(x_core_nameobject_compare,
-            x_core_nameobject_copy, x_core_nameobject_destroy);
+        = x_container_set_create(&hypermessage->nameobject_objectey);
       if (!hypermessage->hyperheaders) {
         so_far_so_good = x_core_bool_false;
         x_core_trace("x_container_set_create");
@@ -120,9 +124,8 @@ x_core_bool_t x_net_hypermessage_create_pri(x_net_hypermessage_t *hypermessage)
   hypermessage->resource_name = strdup(resource_name);
   parameters = strtok(NULL, "?");
   if (parameters) {
-    hypermessage->pri_parameters = x_container_set_create
-      (x_core_nameobject_compare, x_core_nameobject_copy,
-          x_core_nameobject_destroy);
+    hypermessage->pri_parameters
+      = x_container_set_create(&hypermessage->nameobject_objectey);
     if (hypermessage->pri_parameters) {
       success = x_core_bool_true;
       parameter = strtok_r(parameters, "&", &parameter_context);
@@ -381,8 +384,7 @@ x_container_set_t *x_net_hypermessage_get_pri_parameter_as_uuid_set
   x_container_list_t *uuid_strings;
   x_container_set_t *uuid_set;
 
-  uuid_set = x_container_set_create
-    (x_core_uuid_compare, x_core_uuid_copy, x_core_uuid_destroy);
+  uuid_set = x_container_set_create(&hypermessage->uuid_objectey);
   if (uuid_set) {
     parameter_string
       = x_net_hypermessage_get_pri_parameter(hypermessage, parameter_name);

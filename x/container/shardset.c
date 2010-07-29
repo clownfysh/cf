@@ -14,6 +14,8 @@ struct x_container_shardset_t {
   void *iterator;
 
   pthread_mutex_t mutex;
+
+  x_core_objectey_t set_objectey;
 };
 
 static void x_container_shardset_create_rollback
@@ -60,12 +62,12 @@ x_core_bool_t x_container_shardset_add_replace
 void x_container_shardset_clear(x_container_shardset_t *shardset)
 {
   assert(shardset);
-  unsigned short eacx_shard;
+  unsigned short each_shard;
 
-  for (eacx_shard = 0; eacx_shard < shardset->shard_count; eacx_shard++) {
-    pthread_mutex_lock(shardset->shard_mutexes + eacx_shard);
-    x_container_set_clear(*(shardset->shards + eacx_shard));
-    pthread_mutex_unlock(shardset->shard_mutexes + eacx_shard);
+  for (each_shard = 0; each_shard < shardset->shard_count; each_shard++) {
+    pthread_mutex_lock(shardset->shard_mutexes + each_shard);
+    x_container_set_clear(*(shardset->shards + each_shard));
+    pthread_mutex_unlock(shardset->shard_mutexes + each_shard);
   }
 }
 
@@ -73,15 +75,14 @@ void x_container_shardset_clear(x_container_shardset_t *shardset)
   TODO: simplify
   TODO: ugh...some rollback code is in the rollback method, some not...fix
 */
-x_container_shardset_t *x_container_shardset_create
-(x_core_compare_f compare, x_core_copy_f copy,
-    x_core_destroy_f destroy, x_core_hash_f hash_object,
+x_container_shardset_t *x_container_shardset_create(x_core_compare_f compare,
+    x_core_copy_f copy, x_core_destroy_f destroy, x_core_hash_f hash_object,
     unsigned short shard_count)
 {
   assert(shard_count > 0);
   x_container_shardset_t *shardset;
   x_core_bool_t so_far_so_good;
-  unsigned short eacx_shard;
+  unsigned short each_shard;
   x_core_bool_t mutex_needs_destroy;
 
   mutex_needs_destroy = x_core_bool_false;
@@ -94,8 +95,8 @@ x_container_shardset_t *x_container_shardset_create
   if (shardset) {
     shardset->shard_count = shard_count;
     shardset->hash_object = hash_object;
-    for (eacx_shard = 0; eacx_shard < shard_count; eacx_shard++) {
-      *(shardset->shards + eacx_shard) = NULL;
+    for (each_shard = 0; each_shard < shard_count; each_shard++) {
+      *(shardset->shards + each_shard) = NULL;
     }
     so_far_so_good = x_core_bool_true;
   } else {
@@ -104,10 +105,13 @@ x_container_shardset_t *x_container_shardset_create
   }
 
   if (so_far_so_good) {
-    for (eacx_shard = 0; eacx_shard < shard_count; eacx_shard++) {
-      *(shardset->shards + eacx_shard) = x_container_set_create
-        (compare, copy, destroy);
-      if (!*(shardset->shards + eacx_shard)) {
+    x_core_objectey_init(&shardset->set_objectey, compare, copy, destroy,
+        X_CORE_NO_EQUAL_FUNCTION, X_CORE_NO_GET_AS_STRING_FUNCTION,
+        X_CORE_NO_MOD_FUNCTION);
+    for (each_shard = 0; each_shard < shard_count; each_shard++) {
+      *(shardset->shards + each_shard)
+        = x_container_set_create(&shardset->set_objectey);
+      if (!*(shardset->shards + each_shard)) {
         x_core_trace("x_container_set_create");
         so_far_so_good = x_core_bool_false;
         break;
@@ -116,9 +120,9 @@ x_container_shardset_t *x_container_shardset_create
   }
 
   if (so_far_so_good) {
-    for (eacx_shard = 0; eacx_shard < shard_count; eacx_shard++) {
+    for (each_shard = 0; each_shard < shard_count; each_shard++) {
       if (0 != pthread_mutex_init
-          (shardset->shard_mutexes + eacx_shard, NULL)) {
+          (shardset->shard_mutexes + each_shard, NULL)) {
         x_core_trace("pthread_mutex_init");
         so_far_so_good = x_core_bool_false;
         break;
@@ -151,23 +155,23 @@ x_container_shardset_t *x_container_shardset_create
 void x_container_shardset_create_rollback(x_container_shardset_t *shardset)
 {
   assert(shardset);
-  unsigned short eacx_shard;
+  unsigned short each_shard;
 
   if (shardset->shards) {
-    for (eacx_shard = 0; eacx_shard < shardset->shard_count;
-         eacx_shard++) {
-      if (*(shardset->shards + eacx_shard)) {
-        x_container_set_destroy(*(shardset->shards + eacx_shard));
+    for (each_shard = 0; each_shard < shardset->shard_count;
+         each_shard++) {
+      if (*(shardset->shards + each_shard)) {
+        x_container_set_destroy(*(shardset->shards + each_shard));
       }
     }
     free(shardset->shards);
   }
 
   if (shardset->shard_mutexes) {
-    for (eacx_shard = 0; eacx_shard < shardset->shard_count;
-         eacx_shard++) {
+    for (each_shard = 0; each_shard < shardset->shard_count;
+         each_shard++) {
       if (0 != pthread_mutex_destroy
-          (shardset->shard_mutexes + eacx_shard)) {
+          (shardset->shard_mutexes + each_shard)) {
         x_core_trace("pthread_mutex_destroy");
       }
     }
@@ -177,11 +181,11 @@ void x_container_shardset_create_rollback(x_container_shardset_t *shardset)
 void x_container_shardset_destroy(x_container_shardset_t *shardset)
 {
   assert(shardset);
-  unsigned short eacx_shard;
+  unsigned short each_shard;
 
-  for (eacx_shard = 0; eacx_shard < shardset->shard_count; eacx_shard++) {
-    x_container_set_destroy(*(shardset->shards + eacx_shard));
-    if (0 != pthread_mutex_destroy(shardset->shard_mutexes + eacx_shard)) {
+  for (each_shard = 0; each_shard < shardset->shard_count; each_shard++) {
+    x_container_set_destroy(*(shardset->shards + each_shard));
+    if (0 != pthread_mutex_destroy(shardset->shard_mutexes + each_shard)) {
       x_core_trace("pthread_mutex_destroy");
     }
   }
@@ -231,15 +235,15 @@ void *x_container_shardset_find_copy
 unsigned long x_container_shardset_get_size(x_container_shardset_t *shardset)
 {
   assert(shardset);
-  unsigned short eacx_shard;
+  unsigned short each_shard;
   unsigned long total_size;
 
   total_size = 0;
 
-  for (eacx_shard = 0; eacx_shard < shardset->shard_count; eacx_shard++) {
-    pthread_mutex_lock(shardset->shard_mutexes + eacx_shard);
-    total_size += x_container_set_get_size(*(shardset->shards + eacx_shard));
-    pthread_mutex_unlock(shardset->shard_mutexes + eacx_shard);
+  for (each_shard = 0; each_shard < shardset->shard_count; each_shard++) {
+    pthread_mutex_lock(shardset->shard_mutexes + each_shard);
+    total_size += x_container_set_get_size(*(shardset->shards + each_shard));
+    pthread_mutex_unlock(shardset->shard_mutexes + each_shard);
   }
 
   return total_size;
@@ -336,13 +340,13 @@ void x_container_shardset_print(x_container_shardset_t *shardset,
     x_core_get_as_string_f get_object_as_string)
 {
   assert(shardset);
-  unsigned short eacx_shard;
+  unsigned short each_shard;
 
-  for (eacx_shard = 0; eacx_shard < shardset->shard_count; eacx_shard++) {
-    pthread_mutex_lock(shardset->shard_mutexes + eacx_shard);
-    x_container_set_print(*(shardset->shards + eacx_shard),
+  for (each_shard = 0; each_shard < shardset->shard_count; each_shard++) {
+    pthread_mutex_lock(shardset->shard_mutexes + each_shard);
+    x_container_set_print(*(shardset->shards + each_shard),
         get_object_as_string);
-    pthread_mutex_unlock(shardset->shard_mutexes + eacx_shard);
+    pthread_mutex_unlock(shardset->shard_mutexes + each_shard);
   }
 }
 
@@ -367,18 +371,18 @@ unsigned long x_container_shardset_remove_if(x_container_shardset_t *shardset,
     x_core_condition_f object_condition)
 {
   assert(shardset);
-  unsigned short eacx_shard;
+  unsigned short each_shard;
   x_container_set_t *set;
   void *object;
   unsigned long total_items_removed;
 
   total_items_removed = 0;
 
-  for (eacx_shard = 0; eacx_shard < shardset->shard_count; eacx_shard++) {
+  for (each_shard = 0; each_shard < shardset->shard_count; each_shard++) {
 
-    pthread_mutex_lock(shardset->shard_mutexes + eacx_shard);
+    pthread_mutex_lock(shardset->shard_mutexes + each_shard);
     {
-      set = *(shardset->shards + eacx_shard);
+      set = *(shardset->shards + each_shard);
       x_container_set_iterate_start(set);
       while ((object = x_container_set_iterate_next(set))) {
         if (object_condition(object)) {
@@ -387,7 +391,7 @@ unsigned long x_container_shardset_remove_if(x_container_shardset_t *shardset,
         }
       }
     }
-    pthread_mutex_unlock(shardset->shard_mutexes + eacx_shard);
+    pthread_mutex_unlock(shardset->shard_mutexes + each_shard);
 
   }
 

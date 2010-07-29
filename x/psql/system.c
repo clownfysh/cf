@@ -63,7 +63,7 @@ x_psql_system_t *x_psql_system_create(const char *db_host, const char *db_name,
   assert(error);
   x_psql_system_t *system;
   ConnStatusType pq_status;
-  unsigned short eacx_connection;
+  unsigned short each_connection;
   x_core_bool_t so_far_so_good;
   x_core_bool_t connection_mutex_needs_destroy[MAX_CONNECTION_COUNT];
   char *connection_string;
@@ -79,8 +79,8 @@ x_psql_system_t *x_psql_system_create(const char *db_host, const char *db_name,
   system = malloc(sizeof *system);
   if (system) {
     x_core_objectey_init(&system->string_objectey, x_core_string_compare,
-        x_core_string_copy, x_core_string_destroy,
-        x_core_string_get_as_string);
+        x_core_string_copy, x_core_string_destroy, X_CORE_NO_EQUAL_FUNCTION,
+        x_core_string_get_as_string, X_CORE_NO_MOD_FUNCTION);
 
     system->connection_count = connection_count;
     system->log = log;
@@ -91,18 +91,18 @@ x_psql_system_t *x_psql_system_create(const char *db_host, const char *db_name,
     system->db_host = strdup(db_host);
     system->db_name = strdup(db_name);
 
-    for (eacx_connection = 0; eacx_connection < connection_count;
-         eacx_connection++) {
-      *(system->connections + eacx_connection) = NULL;
-      *(connection_mutex_needs_destroy + eacx_connection) = x_core_bool_false;
+    for (each_connection = 0; each_connection < connection_count;
+         each_connection++) {
+      *(system->connections + each_connection) = NULL;
+      *(connection_mutex_needs_destroy + each_connection) = x_core_bool_false;
     }
 
     so_far_so_good = x_core_bool_true;
-    for (eacx_connection = 0; eacx_connection < connection_count;
-         eacx_connection++) {
+    for (each_connection = 0; each_connection < connection_count;
+         each_connection++) {
       if (0 == pthread_mutex_init
-          (system->connection_mutexes + eacx_connection, NULL)) {
-        *(connection_mutex_needs_destroy + eacx_connection) = x_core_bool_true;
+          (system->connection_mutexes + each_connection, NULL)) {
+        *(connection_mutex_needs_destroy + each_connection) = x_core_bool_true;
       } else {
         so_far_so_good = x_core_bool_false;
         x_audit_log_trace(log, "hpsq", "pthread_mutex_init");
@@ -119,11 +119,11 @@ x_psql_system_t *x_psql_system_create(const char *db_host, const char *db_name,
   if (so_far_so_good) {
     if (asprintf(&connection_string, "host=%s dbname=%s user=%s password=%s",
             db_host, db_name, db_user, db_password) != -1) {
-      for (eacx_connection = 0; eacx_connection < connection_count;
-           eacx_connection++) {
-        *(system->connections + eacx_connection)
+      for (each_connection = 0; each_connection < connection_count;
+           each_connection++) {
+        *(system->connections + each_connection)
           = PQconnectdb(connection_string);
-        pq_status = PQstatus(*(system->connections + eacx_connection));
+        pq_status = PQstatus(*(system->connections + each_connection));
         if (CONNECTION_OK != pq_status) {
           switch (pq_status) {
             case CONNECTION_BAD:
@@ -134,8 +134,8 @@ x_psql_system_t *x_psql_system_create(const char *db_host, const char *db_name,
               break;
           }
           x_audit_log_trace(log, "hpsq", "PQsetdbLogin");
-          PQfinish(*(system->connections + eacx_connection));
-          *(system->connections + eacx_connection) = NULL;
+          PQfinish(*(system->connections + each_connection));
+          *(system->connections + each_connection) = NULL;
           free(system);
           system = NULL;
           break;
@@ -148,16 +148,16 @@ x_psql_system_t *x_psql_system_create(const char *db_host, const char *db_name,
   }
 
   if (system && !so_far_so_good) {
-    for (eacx_connection = 0; eacx_connection < connection_count;
-         eacx_connection++) {
-      if (*(connection_mutex_needs_destroy + eacx_connection)) {
+    for (each_connection = 0; each_connection < connection_count;
+         each_connection++) {
+      if (*(connection_mutex_needs_destroy + each_connection)) {
         if (pthread_mutex_destroy
-            (system->connection_mutexes + eacx_connection) != 0) {
+            (system->connection_mutexes + each_connection) != 0) {
           x_audit_log_trace(log, "hpsq", "pthread_mutex_destroy");
         }
       }
-      if (*(system->connections + eacx_connection)) {
-        PQfinish(*(system->connections + eacx_connection));
+      if (*(system->connections + each_connection)) {
+        PQfinish(*(system->connections + each_connection));
       }
     }
     free(system);
@@ -170,17 +170,17 @@ x_psql_system_t *x_psql_system_create(const char *db_host, const char *db_name,
 void x_psql_system_destroy(x_psql_system_t *system)
 {
   assert(system);
-  unsigned short eacx_connection;
+  unsigned short each_connection;
 
   free(system->db_host);
   free(system->db_name);
-  for (eacx_connection = 0; eacx_connection < system->connection_count;
-       eacx_connection++) {
+  for (each_connection = 0; each_connection < system->connection_count;
+       each_connection++) {
     if (pthread_mutex_destroy
-        (system->connection_mutexes + eacx_connection) != 0) {
+        (system->connection_mutexes + each_connection) != 0) {
       x_audit_log_trace(system->log, "hpsq", "pthread_mutex_destroy");
     }
-    PQfinish(*(system->connections + eacx_connection));
+    PQfinish(*(system->connections + each_connection));
   }
   free(system);
 }

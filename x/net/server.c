@@ -94,6 +94,8 @@ struct x_net_server_t {
   x_audit_log_t *log;
 
   x_config_system_t *config_system;
+
+  x_core_objectey_t client_posts_objectey;
 };
 
 struct running_engine_t {
@@ -394,7 +396,7 @@ x_core_bool_t create_engine_container_message_handlers
 {
   assert(engine_container);
   assert(log);
-  unsigned long eacx_handler;
+  unsigned long each_handler;
   x_core_bool_t success;
 
   engine_container->message_handlers_size = message_type_count;
@@ -402,8 +404,8 @@ x_core_bool_t create_engine_container_message_handlers
     = malloc((sizeof *engine_container->message_handlers)
         * message_type_count);
   if (engine_container->message_handlers) {
-    for (eacx_handler = 0; eacx_handler < message_type_count; eacx_handler++) {
-      *(engine_container->message_handlers + eacx_handler) = NULL;
+    for (each_handler = 0; each_handler < message_type_count; each_handler++) {
+      *(engine_container->message_handlers + each_handler) = NULL;
     }
     success = x_core_bool_true;
   } else {
@@ -436,7 +438,7 @@ x_core_bool_t create_engine_container_performance_period
 void create_engine_container_rollback(engine_container_t *engine_container)
 {
   assert(engine_container);
-  unsigned short eacx_thread;
+  unsigned short each_thread;
 
   if (engine_container->engine_object) {
     engine_container->enginey->destroy(engine_container->engine_object);
@@ -444,9 +446,9 @@ void create_engine_container_rollback(engine_container_t *engine_container)
   if (engine_container->inbox) {
     x_container_list_destroy(engine_container->inbox);
   }
-  for (eacx_thread = 0; eacx_thread < MAX_THREADS_PER_ENGINE; eacx_thread++) {
-    if (engine_container->thread_inboxes[eacx_thread]) {
-      x_container_list_destroy(engine_container->thread_inboxes[eacx_thread]);
+  for (each_thread = 0; each_thread < MAX_THREADS_PER_ENGINE; each_thread++) {
+    if (engine_container->thread_inboxes[each_thread]) {
+      x_container_list_destroy(engine_container->thread_inboxes[each_thread]);
     }
   }
   if (engine_container->message_handlers) {
@@ -461,14 +463,14 @@ void create_engine_container_rollback(engine_container_t *engine_container)
 void create_engine_container_stats(engine_container_t *engine_container)
 {
   assert(engine_container);
-  unsigned short eacx_thread;
+  unsigned short each_thread;
 
   engine_container->messages_per_second = 0.0;
   engine_container->messages_per_period = 0;
   engine_container->reported_idle = x_core_bool_false;
-  for (eacx_thread = 0; eacx_thread < MAX_THREADS_PER_ENGINE; eacx_thread++) {
-    *(engine_container->messages_per_second_thread + eacx_thread) = 0.0;
-    *(engine_container->messages_per_period_thread + eacx_thread) = 0;
+  for (each_thread = 0; each_thread < MAX_THREADS_PER_ENGINE; each_thread++) {
+    *(engine_container->messages_per_second_thread + each_thread) = 0.0;
+    *(engine_container->messages_per_period_thread + each_thread) = 0;
   }
 }
 
@@ -479,30 +481,30 @@ x_core_bool_t create_engine_container_threads
   assert(engine_container);
   assert(messagey);
   assert(log);
-  unsigned short eacx_thread;
-  pthread_mutex_t *eacx_mutex;
+  unsigned short each_thread;
+  pthread_mutex_t *each_mutex;
   x_core_bool_t success;
 
   success = x_core_bool_true;
 
-  for (eacx_thread = 0; eacx_thread < MAX_THREADS_PER_ENGINE; eacx_thread++) {
+  for (each_thread = 0; each_thread < MAX_THREADS_PER_ENGINE; each_thread++) {
 
     *(engine_container->run_threads_quiesce_requested
-        + eacx_thread) = x_core_bool_false;
+        + each_thread) = x_core_bool_false;
     *(engine_container->run_threads_quiesce_completed
-        + eacx_thread) = x_core_bool_false;
+        + each_thread) = x_core_bool_false;
 
-    *(engine_container->thread_inboxes + eacx_thread)
+    *(engine_container->thread_inboxes + each_thread)
       = x_container_list_create(X_CORE_NO_COMPARE_FUNCTION,
           X_CORE_NO_COPY_FUNCTION, messagey->destroy);
-    if (!*(engine_container->thread_inboxes + eacx_thread)) {
+    if (!*(engine_container->thread_inboxes + each_thread)) {
       success = x_core_bool_false;
       x_audit_log_trace(log, "hnet", "x_container_list_create");
       break;
     }
 
-    eacx_mutex = &engine_container->thread_inbox_mutexes[eacx_thread];
-    if (0 != pthread_mutex_init(eacx_mutex, NULL)) {
+    each_mutex = &engine_container->thread_inbox_mutexes[each_thread];
+    if (0 != pthread_mutex_init(each_mutex, NULL)) {
       success = x_core_bool_false;
       x_audit_log_trace(log, "hnet", "pthread_mutex_init");
       break;
@@ -621,7 +623,7 @@ void deliver_messages_to_engine(x_net_server_t *server,
 {
   assert(server);
   assert(engine_container);
-  unsigned short eacx_thread;
+  unsigned short each_thread;
   unsigned long inbox_size;
   unsigned long target_number_of_messages_to_deliver;
   unsigned long actual_messages_delivered;
@@ -642,11 +644,11 @@ void deliver_messages_to_engine(x_net_server_t *server,
       engine_container->reported_idle = x_core_bool_false;
 
       string = NULL;
-      for (eacx_thread = 0; eacx_thread < engine_container->run_thread_count;
-           eacx_thread++) {
+      for (each_thread = 0; each_thread < engine_container->run_thread_count;
+           each_thread++) {
         messages_per_second_this_period_on_this_thread
           = engine_container->messages_per_period_thread
-          [eacx_thread] / ((double) PERFORMANCE_PERIOD_SECONDS);
+          [each_thread] / ((double) PERFORMANCE_PERIOD_SECONDS);
         snprintf(little_string, 5 + 1, " %0.1f ",
             messages_per_second_this_period_on_this_thread);
         string = x_core_string_append(string, little_string);
@@ -669,9 +671,9 @@ void deliver_messages_to_engine(x_net_server_t *server,
     }
 
     engine_container->messages_per_period = 0;
-    for (eacx_thread = 0; eacx_thread < engine_container->run_thread_count;
-         eacx_thread++) {
-      *(engine_container->messages_per_period_thread + eacx_thread) = 0;
+    for (each_thread = 0; each_thread < engine_container->run_thread_count;
+         each_thread++) {
+      *(engine_container->messages_per_period_thread + each_thread) = 0;
     }
   }
 
@@ -683,13 +685,13 @@ void deliver_messages_to_engine(x_net_server_t *server,
       target_number_of_messages_to_deliver = 1;
     }
 
-    for (eacx_thread = 0; eacx_thread < engine_container->run_thread_count;
-         eacx_thread++) {
+    for (each_thread = 0; each_thread < engine_container->run_thread_count;
+         each_thread++) {
       actual_messages_delivered_thread = deliver_messages_to_engine_thread
-        (server, engine_container, eacx_thread,
+        (server, engine_container, each_thread,
             target_number_of_messages_to_deliver);
       actual_messages_delivered += actual_messages_delivered_thread;
-      engine_container->messages_per_period_thread[eacx_thread]
+      engine_container->messages_per_period_thread[each_thread]
         += actual_messages_delivered_thread;
     }
     engine_container->messages_per_period += actual_messages_delivered;
@@ -703,7 +705,7 @@ unsigned long deliver_messages_to_engine_thread(x_net_server_t *server,
   assert(server);
   assert(engine_container);
   unsigned long messages_delivered;
-  unsigned long eacx_message;
+  unsigned long each_message;
   x_container_list_t *thread_inbox;
   pthread_mutex_t *thread_inbox_mutex;
   void *message;
@@ -713,8 +715,8 @@ unsigned long deliver_messages_to_engine_thread(x_net_server_t *server,
   thread_inbox = engine_container->thread_inboxes[thread_index];
 
   if (0 == pthread_mutex_trylock(thread_inbox_mutex)) {
-    for (eacx_message = 0; eacx_message < target_number_of_messages_to_deliver;
-         eacx_message++) {
+    for (each_message = 0; each_message < target_number_of_messages_to_deliver;
+         each_message++) {
       if ((message = x_container_list_find_first(engine_container->inbox))) {
         if (x_container_list_add_last(thread_inbox, message)) {
           x_container_list_remove_first(engine_container->inbox);
@@ -745,13 +747,13 @@ void destroy_engine_container(void *engine_container_object)
 {
   assert(engine_container_object);
   engine_container_t *engine_container;
-  unsigned short eacx_thread;
+  unsigned short each_thread;
 
   engine_container = engine_container_object;
 
   engine_container->enginey->destroy(engine_container->engine_object);
-  for (eacx_thread = 0; eacx_thread < MAX_THREADS_PER_ENGINE; eacx_thread++) {
-    x_container_list_destroy(engine_container->thread_inboxes[eacx_thread]);
+  for (each_thread = 0; each_thread < MAX_THREADS_PER_ENGINE; each_thread++) {
+    x_container_list_destroy(engine_container->thread_inboxes[each_thread]);
   }
   x_container_list_destroy(engine_container->inbox);
   free(engine_container->message_handlers);
@@ -913,8 +915,12 @@ x_core_bool_t x_net_server_create_client_posts(x_net_server_t *server)
   assert(server);
   x_core_bool_t success;
 
-  server->client_posts = x_container_set_create(server->postey->compare,
-      X_CORE_NO_COPY_FUNCTION, server->postey->destroy);
+  x_core_objectey_init(&server->client_posts_objectey, server->postey->compare,
+      X_CORE_NO_COPY_FUNCTION, server->postey->destroy,
+      X_CORE_NO_EQUAL_FUNCTION, X_CORE_NO_GET_AS_STRING_FUNCTION,
+      X_CORE_NO_MOD_FUNCTION);
+  server->client_posts
+    = x_container_set_create(&server->client_posts_objectey);
   if (server->client_posts) {
     success = x_core_bool_true;
   } else {
@@ -939,14 +945,14 @@ x_core_bool_t x_net_server_create_engines(x_net_server_t *server)
 {
   assert(server);
   x_core_bool_t success;
-  unsigned long eacx_engine_id;
+  unsigned long each_engine_id;
 
   server->engines = x_container_list_create(X_CORE_NO_COMPARE_FUNCTION,
       X_CORE_NO_COPY_FUNCTION, destroy_engine_container);
   if (server->engines) {
-    for (eacx_engine_id = 0; eacx_engine_id < X_NET_SERVER_MAX_ENGINES;
-         eacx_engine_id++) {
-      server->engines_array[eacx_engine_id] = NULL;
+    for (each_engine_id = 0; each_engine_id < X_NET_SERVER_MAX_ENGINES;
+         each_engine_id++) {
+      server->engines_array[each_engine_id] = NULL;
     }
     success = x_core_bool_true;
   } else {
@@ -1591,16 +1597,16 @@ x_core_bool_t start(x_net_server_t *server)
 x_core_bool_t start_engine(x_net_server_t *server, x_net_engine_id_t engine_id)
 {
   x_core_bool_t success;
-  unsigned short eacx_thread;
+  unsigned short each_thread;
   engine_container_t *engine_container;
 
   success = x_core_bool_true;
   engine_container = server->engines_array[engine_id];
 
-  for (eacx_thread = 0; eacx_thread < engine_container->min_run_threads;
-       eacx_thread++) {
+  for (each_thread = 0; each_thread < engine_container->min_run_threads;
+       each_thread++) {
     success = start_engine_run_thread(server, engine_id, engine_container,
-        eacx_thread);
+        each_thread);
     if (success) {
       engine_container->run_thread_count++;
     } else {
@@ -1661,7 +1667,7 @@ x_core_bool_t start_engine_run_thread(x_net_server_t *server,
 
 void stop(x_net_server_t *server)
 {
-  unsigned short eacx_thread;
+  unsigned short each_thread;
   unsigned short run_thread_count;
   engine_container_t *engine_container;
 
@@ -1682,8 +1688,8 @@ void stop(x_net_server_t *server)
       join_thread(server, engine_container->maintain_thread);
     }
     run_thread_count = engine_container->run_thread_count;
-    for (eacx_thread = 0; eacx_thread < run_thread_count; eacx_thread++) {
-      join_thread(server, engine_container->threads[eacx_thread]);
+    for (each_thread = 0; each_thread < run_thread_count; each_thread++) {
+      join_thread(server, engine_container->threads[each_thread]);
     }
   }
 }

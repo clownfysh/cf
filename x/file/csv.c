@@ -129,18 +129,18 @@ x_container_array_t *x_file_csv_get_field_by_index_as_array(x_file_csv_t *csv,
 {
   assert(csv);
   x_container_array_t *array;
-  unsigned long eacx_object;
+  unsigned long each_object;
   char *value;
   char *value_copy;
 
   array = x_container_array_create(csv->object_count, x_core_string_compare,
       x_core_string_copy, x_core_string_destroy);
   if (array) {
-    for (eacx_object = 0; eacx_object < csv->object_count; eacx_object++) {
-      value = get_value_by_index_as_string(csv, eacx_object, field_index);
+    for (each_object = 0; each_object < csv->object_count; each_object++) {
+      value = get_value_by_index_as_string(csv, each_object, field_index);
       value_copy = strdup(value);
       if (value_copy) {
-        x_container_array_add(array, eacx_object, value_copy);
+        x_container_array_add(array, each_object, value_copy);
       } else {
         x_core_trace("strdup");
         x_container_array_destroy(array);
@@ -161,18 +161,18 @@ x_container_array_t *x_file_csv_get_field_by_name_as_array(x_file_csv_t *csv,
   assert(csv);
   assert(field_name);
   x_container_array_t *array;
-  unsigned long eacx_object;
+  unsigned long each_object;
   char *value;
   char *value_copy;
 
   array = x_container_array_create(csv->object_count, x_core_string_compare,
       x_core_string_copy, x_core_string_destroy);
   if (array) {
-    for (eacx_object = 0; eacx_object < csv->object_count; eacx_object++) {
-      value = get_value_by_name_as_string(csv, eacx_object, field_name);
+    for (each_object = 0; each_object < csv->object_count; each_object++) {
+      value = get_value_by_name_as_string(csv, each_object, field_name);
       value_copy = strdup(value);
       if (value_copy) {
-        x_container_array_add(array, eacx_object, value_copy);
+        x_container_array_add(array, each_object, value_copy);
       } else {
         x_core_trace("strdup");
         x_container_array_destroy(array);

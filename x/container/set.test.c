@@ -25,14 +25,16 @@ int main(int argc, char *argv[])
   unsigned long n;
   unsigned long items_added;
   x_core_uuid_t *uuid;
+  x_core_objectey_t unsigned_long_objectey;
+  x_core_objectey_t uuid_objectey;
 
   printf("creating set...\n");
   if (TEST_USING_LONGS) {
-    set = x_container_set_create(x_core_unsigned_long_compare,
-        x_core_unsigned_long_copy, x_core_unsigned_long_destroy);
+    x_core_unsigned_long_init_objectey(&unsigned_long_objectey);
+    set = x_container_set_create(&unsigned_long_objectey);
   } else {
-    set = x_container_set_create(x_core_uuid_compare, x_core_uuid_copy,
-        x_core_uuid_destroy);
+    x_core_unsigned_long_init_objectey(&uuid_objectey);
+    set = x_container_set_create(&uuid_objectey);
   }
   assert(set);
 

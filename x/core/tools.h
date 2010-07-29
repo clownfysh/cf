@@ -16,6 +16,8 @@ void x_core_do_nothing();
 
 #define x_core_hash(string) x_core_hash_djb2_xor(string)
 
+#define x_core_implement() x_trace("TODO: implement"); exit(19)
+
 #define x_core_max(a, b) ((a > b) ? a : b)
 
 #define x_core_min(a, b) ((a < b) ? a : b)

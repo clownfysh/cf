@@ -80,7 +80,7 @@ int x_container_array_compare(void *array_object_a,
   void *object_a;
   void *object_b;
   unsigned long array_size;
-  unsigned long eacx_element;
+  unsigned long each_element;
   x_core_compare_f compare;
 
   array_a = array_object_a;
@@ -91,9 +91,9 @@ int x_container_array_compare(void *array_object_a,
   if (0 == compare_result) {
     array_size = array_a->array_size;
     compare = array_a->compare;
-    for (eacx_element = 0; eacx_element < array_size; eacx_element++) {
-      object_a = *(array_a->array + eacx_element);
-      object_b = *(array_b->array + eacx_element);
+    for (each_element = 0; each_element < array_size; each_element++) {
+      object_a = *(array_a->array + each_element);
+      object_b = *(array_b->array + each_element);
       if (object_a && object_b) {
         compare_result = compare(object_a, object_b);
       } else if (!object_a && object_b) {
@@ -143,11 +143,11 @@ unsigned long x_container_array_count_non_null_objects
 {
   assert(array);
   unsigned long count;
-  unsigned long eacx_object;
+  unsigned long each_object;
 
   count = 0;
-  for (eacx_object = 0; eacx_object < array->array_size; eacx_object++) {
-    if (*(array->array + eacx_object)) {
+  for (each_object = 0; each_object < array->array_size; each_object++) {
+    if (*(array->array + each_object)) {
       count++;
     }
   }
@@ -195,16 +195,16 @@ x_container_array_t *x_container_array_create_from_message
 {
   x_container_array_t *array;
   long array_size;
-  long eacx_object;
+  long each_object;
   void *object;
 
   array_size = x_core_message_take_long_value(message);
   array = x_container_array_create(array_size, compare_object, copy,
       destroy);
   if (array) {
-    for (eacx_object = 0; eacx_object < array_size; eacx_object++) {
+    for (each_object = 0; each_object < array_size; each_object++) {
       object = create_from_message(message);
-      x_container_array_add(array, eacx_object, object);
+      x_container_array_add(array, each_object, object);
     }
   } else {
     x_core_trace("create");
@@ -279,15 +279,15 @@ void x_container_array_expunge_set(x_container_array_t *array,
   assert(array);
   assert(expunge_these);
   void *object;
-  unsigned long eacx_object;
+  unsigned long each_object;
 
-  for (eacx_object = 0; eacx_object < array->array_size; eacx_object++) {
-    object = *(array->array + eacx_object);
+  for (each_object = 0; each_object < array->array_size; each_object++) {
+    object = *(array->array + each_object);
     if (x_container_set_find(expunge_these, object)) {
       if (array->destroy) {
         array->destroy(object);
       }
-      *(array->array + eacx_object) = NULL;
+      *(array->array + each_object) = NULL;
     }
   }
 }
@@ -298,15 +298,15 @@ void x_container_array_expunge_set_inverse(x_container_array_t *array,
   assert(array);
   assert(expunge_all_but_these);
   void *object;
-  unsigned long eacx_object;
+  unsigned long each_object;
 
-  for (eacx_object = 0; eacx_object < array->array_size; eacx_object++) {
-    object = *(array->array + eacx_object);
+  for (each_object = 0; each_object < array->array_size; each_object++) {
+    object = *(array->array + each_object);
     if (!x_container_set_find(expunge_all_but_these, object)) {
       if (array->destroy) {
         array->destroy(object);
       }
-      *(array->array + eacx_object) = NULL;
+      *(array->array + each_object) = NULL;
     }
   }
 }
@@ -486,10 +486,10 @@ void x_container_array_iterate_start(x_container_array_t *array)
 void x_container_array_print(x_container_array_t *array)
 {
   assert(array);
-  unsigned long eacx_element;
+  unsigned long each_element;
 
-  for (eacx_element = 0; eacx_element < array->array_size; eacx_element++) {
-    printf("[%p]", *(array->array + eacx_element));
+  for (each_element = 0; each_element < array->array_size; each_element++) {
+    printf("[%p]", *(array->array + each_element));
   }
   printf("\n");
 }

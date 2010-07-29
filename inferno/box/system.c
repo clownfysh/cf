@@ -151,19 +151,19 @@ inferno_box_cell_t *inferno_box_cell_create(inferno_box_system_t *system,
   assert(system);
   assert(coordinate);
   inferno_box_cell_t *cell;
-  unsigned char eacx_x;
-  unsigned char eacx_y;
-  unsigned char eacx_z;
+  unsigned char each_x;
+  unsigned char each_y;
+  unsigned char each_z;
 
   cell = malloc(sizeof *cell);
   if (cell) {
     cell->system = system;
     inferno_box_coordinate_init_witx_coordinate(&cell->coordinate, coordinate);
     cell->object = NULL;
-    for (eacx_x = 0; eacx_x < 3; eacx_x++) {
-      for (eacx_y = 0; eacx_y < 3; eacx_y++) {
-        for (eacx_z = 0; eacx_z < 3; eacx_z++) {
-          cell->neighbors[eacx_x][eacx_y][eacx_z] = NULL;
+    for (each_x = 0; each_x < 3; each_x++) {
+      for (each_y = 0; each_y < 3; each_y++) {
+        for (each_z = 0; each_z < 3; each_z++) {
+          cell->neighbors[each_x][each_y][each_z] = NULL;
         }
       }
     }
@@ -474,10 +474,10 @@ void set_neighbor_references(inferno_box_system_t *system)
 {
   assert(system);
   inferno_box_cell_t *cell;
-  unsigned long eacx_cell;
+  unsigned long each_cell;
 
-  for (eacx_cell = 0; eacx_cell < system->volume; eacx_cell++) {
-    cell = x_container_array_find(system->cells, eacx_cell);
+  for (each_cell = 0; each_cell < system->volume; each_cell++) {
+    cell = x_container_array_find(system->cells, each_cell);
     set_neighbor_references_for_cell(system, cell);
   }
 }

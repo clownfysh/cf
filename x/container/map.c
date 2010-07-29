@@ -8,6 +8,7 @@ struct x_container_map_t {
   x_core_objectey_t *left_objectey;
   x_core_objectey_t *right_objectey;
   x_core_bool_t destroy;
+  x_core_objectey_t pairs_objectey;
 };
 
 x_core_bool_t x_container_map_add(x_container_map_t *map, void *left,
@@ -81,8 +82,10 @@ x_container_map_t *x_container_map_create(x_core_objectey_t *left_objectey,
     map->left_objectey = left_objectey;
     map->right_objectey = right_objectey;
     map->destroy = destroy;
-    map->pairs = x_container_set_create(x_core_pair_compare_left,
-        x_core_pair_copy, x_core_pair_destroy);
+    x_core_objectey_init(&map->pairs_objectey, x_core_pair_compare_left,
+        x_core_pair_copy, x_core_pair_destroy, X_CORE_NO_EQUAL_FUNCTION,
+        X_CORE_NO_GET_AS_STRING_FUNCTION, X_CORE_NO_MOD_FUNCTION);
+    map->pairs = x_container_set_create(&map->pairs_objectey);
     if (!map->pairs) {
       x_core_trace("x_container_set_create");
       free(map);

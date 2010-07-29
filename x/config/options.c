@@ -175,13 +175,13 @@ x_core_bool_t x_config_options_find_list_as_strings
 void parse_options(x_config_options_t *options, int argc, char *argv[])
 {
   assert(options);
-  int eacx_word;
+  int each_word;
   char *substring;
   char *name;
   char *value;
 
-  for (eacx_word = 1; (eacx_word + 1) < argc; eacx_word += 2) {
-    name = *(argv + eacx_word);
+  for (each_word = 1; (each_word + 1) < argc; each_word += 2) {
+    name = *(argv + each_word);
     substring = x_core_string_substring(name, 0, 2);
     if (substring) {
       if (0 == strcmp("--", substring)) {
@@ -190,7 +190,7 @@ void parse_options(x_config_options_t *options, int argc, char *argv[])
           if (!x_container_dumpster_add(options->dumpster, name)) {
             x_core_trace("x_container_dumpster_add");
           }
-          value = strdup(*(argv + eacx_word + 1));
+          value = strdup(*(argv + each_word + 1));
           if (!x_container_dumpster_add(options->dumpster, value)) {
             x_core_trace("x_container_dumpster_add");
           }

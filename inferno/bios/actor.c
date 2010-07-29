@@ -134,8 +134,8 @@ unsigned long eight_from_eight(inferno_bios_actor_t *actor, unsigned long ulong_
     unsigned long ulong_7)
 {
   unsigned long cells[8][EFE_LENGTH];
-  unsigned long eacx_x;
-  unsigned long eacx_y;
+  unsigned long each_x;
+  unsigned long each_y;
   unsigned long ca_in_0;
   unsigned long ca_in_1;
   unsigned long ca_in_2;
@@ -158,8 +158,8 @@ unsigned long eight_from_eight(inferno_bios_actor_t *actor, unsigned long ulong_
   cells[6][0] = ulong_6;
   cells[7][0] = ulong_7;
 
-  for (eacx_y = 1; eacx_y < EFE_LENGTH; eacx_y++) {
-    for (eacx_x = 0; eacx_x < 8; eacx_x++) {
+  for (each_y = 1; each_y < EFE_LENGTH; each_y++) {
+    for (each_x = 0; each_x < 8; each_x++) {
 
       /*  it might make a difference if these indexes, before being
           wrapped, had a constant added to them so that they weren't at
@@ -173,18 +173,18 @@ unsigned long eight_from_eight(inferno_bios_actor_t *actor, unsigned long ulong_
           beginning of the gene, so having these things farther longo the
           gene would make them more likely to be changeable.  but I'm
           not sure there even is such a preference.  */
-      ca_index_0 = x_core_wrap_index(eacx_x - 1, 8);
-      ca_index_1 = eacx_x;
-      ca_index_2 = x_core_wrap_index(eacx_x + 1, 8);
+      ca_index_0 = x_core_wrap_index(each_x - 1, 8);
+      ca_index_1 = each_x;
+      ca_index_2 = x_core_wrap_index(each_x + 1, 8);
 
-      ca_in_0 = cells[ca_index_0][eacx_y - 1];
-      ca_in_1 = cells[ca_index_1][eacx_y - 1];
-      ca_in_2 = cells[ca_index_2][eacx_y - 1];
+      ca_in_0 = cells[ca_index_0][each_y - 1];
+      ca_in_1 = cells[ca_index_1][each_y - 1];
+      ca_in_2 = cells[ca_index_2][each_y - 1];
       ca_out_address = CA_OUT_ADDRESS_SPREAD_FACTOR * (
         (4 * ca_in_0) + (2 * ca_in_1) + (1 * ca_in_2)
         );
       ca_out = x_core_bitarray_get_bit(actor->solution, ca_out_address);
-      cells[eacx_x][eacx_y] = ca_out;
+      cells[each_x][each_y] = ca_out;
     }
   }
 
@@ -204,8 +204,8 @@ unsigned long eight_from_sixteen(inferno_bios_actor_t *actor, unsigned long ulon
     unsigned long ulong_13, unsigned long ulong_14, unsigned long ulong_15)
 {
   unsigned long cells[8][EFE_LENGTH];
-  unsigned long eacx_x;
-  unsigned long eacx_y;
+  unsigned long each_x;
+  unsigned long each_y;
   unsigned long ca_in_0;
   unsigned long ca_in_1;
   unsigned long ca_in_2;
@@ -240,19 +240,19 @@ unsigned long eight_from_sixteen(inferno_bios_actor_t *actor, unsigned long ulon
   cells[6][1] = ulong_14;
   cells[7][1] = ulong_15;
 
-  for (eacx_y = 2; eacx_y < EFE_LENGTH; eacx_y++) {
-    for (eacx_x = 0; eacx_x < 8; eacx_x++) {
-      ca_index_0 = x_core_wrap_index(eacx_x - 1, 8);
-      ca_index_1 = eacx_x;
-      ca_index_2 = x_core_wrap_index(eacx_x + 1, 8);
+  for (each_y = 2; each_y < EFE_LENGTH; each_y++) {
+    for (each_x = 0; each_x < 8; each_x++) {
+      ca_index_0 = x_core_wrap_index(each_x - 1, 8);
+      ca_index_1 = each_x;
+      ca_index_2 = x_core_wrap_index(each_x + 1, 8);
 
-      ca_in_0 = cells[ca_index_0][eacx_y - 1];
-      ca_in_1 = cells[ca_index_1][eacx_y - 1];
-      ca_in_2 = cells[ca_index_2][eacx_y - 1];
+      ca_in_0 = cells[ca_index_0][each_y - 1];
+      ca_in_1 = cells[ca_index_1][each_y - 1];
+      ca_in_2 = cells[ca_index_2][each_y - 1];
 
-      ca_in_3 = cells[ca_index_0][eacx_y - 2];
-      ca_in_4 = cells[ca_index_1][eacx_y - 2];
-      ca_in_5 = cells[ca_index_2][eacx_y - 2];
+      ca_in_3 = cells[ca_index_0][each_y - 2];
+      ca_in_4 = cells[ca_index_1][each_y - 2];
+      ca_in_5 = cells[ca_index_2][each_y - 2];
 
       ca_out_address = CA_OUT_ADDRESS_SPREAD_FACTOR * (
         (32 * ca_in_5) + (16 * ca_in_4) + (8 * ca_in_3)
@@ -260,7 +260,7 @@ unsigned long eight_from_sixteen(inferno_bios_actor_t *actor, unsigned long ulon
         );
 
       ca_out = x_core_bitarray_get_bit(actor->solution, ca_out_address);
-      cells[eacx_x][eacx_y] = ca_out;
+      cells[each_x][each_y] = ca_out;
     }
   }
 
@@ -283,8 +283,8 @@ unsigned long eight_from_twenty_four(inferno_bios_actor_t *actor,
     unsigned long ulong_21, unsigned long ulong_22, unsigned long ulong_23)
 {
   unsigned long cells[8][EFE_LENGTH];
-  unsigned long eacx_x;
-  unsigned long eacx_y;
+  unsigned long each_x;
+  unsigned long each_y;
   unsigned long ca_in_0;
   unsigned long ca_in_1;
   unsigned long ca_in_2;
@@ -331,23 +331,23 @@ unsigned long eight_from_twenty_four(inferno_bios_actor_t *actor,
   cells[6][2] = ulong_22;
   cells[7][2] = ulong_23;
 
-  for (eacx_y = 3; eacx_y < EFE_LENGTH; eacx_y++) {
-    for (eacx_x = 0; eacx_x < 8; eacx_x++) {
-      ca_index_0 = x_core_wrap_index(eacx_x - 1, 8);
-      ca_index_1 = eacx_x;
-      ca_index_2 = x_core_wrap_index(eacx_x + 1, 8);
+  for (each_y = 3; each_y < EFE_LENGTH; each_y++) {
+    for (each_x = 0; each_x < 8; each_x++) {
+      ca_index_0 = x_core_wrap_index(each_x - 1, 8);
+      ca_index_1 = each_x;
+      ca_index_2 = x_core_wrap_index(each_x + 1, 8);
 
-      ca_in_0 = cells[ca_index_0][eacx_y - 1];
-      ca_in_1 = cells[ca_index_1][eacx_y - 1];
-      ca_in_2 = cells[ca_index_2][eacx_y - 1];
+      ca_in_0 = cells[ca_index_0][each_y - 1];
+      ca_in_1 = cells[ca_index_1][each_y - 1];
+      ca_in_2 = cells[ca_index_2][each_y - 1];
 
-      ca_in_3 = cells[ca_index_0][eacx_y - 2];
-      ca_in_4 = cells[ca_index_1][eacx_y - 2];
-      ca_in_5 = cells[ca_index_2][eacx_y - 2];
+      ca_in_3 = cells[ca_index_0][each_y - 2];
+      ca_in_4 = cells[ca_index_1][each_y - 2];
+      ca_in_5 = cells[ca_index_2][each_y - 2];
 
-      ca_in_6 = cells[ca_index_0][eacx_y - 3];
-      ca_in_7 = cells[ca_index_1][eacx_y - 3];
-      ca_in_8 = cells[ca_index_2][eacx_y - 3];
+      ca_in_6 = cells[ca_index_0][each_y - 3];
+      ca_in_7 = cells[ca_index_1][each_y - 3];
+      ca_in_8 = cells[ca_index_2][each_y - 3];
 
       ca_out_address = CA_OUT_ADDRESS_SPREAD_FACTOR * (
         (256 * ca_in_8) + (128 * ca_in_7) + (64 * ca_in_6)
@@ -356,7 +356,7 @@ unsigned long eight_from_twenty_four(inferno_bios_actor_t *actor,
         );
 
       ca_out = x_core_bitarray_get_bit(actor->solution, ca_out_address);
-      cells[eacx_x][eacx_y] = ca_out;
+      cells[each_x][each_y] = ca_out;
     }
   }
 
@@ -816,7 +816,7 @@ void meet_actor_details(inferno_bios_actor_t *actor_a, inferno_bios_actor_t *act
   assert(actor_b);
   meet_gene_t meet_gene;
   unsigned long meet_gene_start_address;
-  unsigned long eacx_gene;
+  unsigned long each_gene;
   inferno_box_system_t *box;
   x_core_bit_t bit;
 
@@ -826,14 +826,14 @@ void meet_actor_details(inferno_bios_actor_t *actor_a, inferno_bios_actor_t *act
 
   actor_b->score_is_valid = x_core_bool_false;
 
-  for (eacx_gene = meet_gene.address;
-       eacx_gene < (meet_gene.address + meet_gene.length);
-       eacx_gene++) {
-    bit = x_core_bitarray_get_bit(actor_a->solution, eacx_gene);
-    x_core_bitarray_set_bit(actor_b->solution, eacx_gene, bit);
+  for (each_gene = meet_gene.address;
+       each_gene < (meet_gene.address + meet_gene.length);
+       each_gene++) {
+    bit = x_core_bitarray_get_bit(actor_a->solution, each_gene);
+    x_core_bitarray_set_bit(actor_b->solution, each_gene, bit);
     if (MUTATION) {
       if (0 == x_core_random_unsigned_long(MUTATION_INCIDENCE_PER)) {
-        x_core_bitarray_set_bit(actor_b->solution, eacx_gene,
+        x_core_bitarray_set_bit(actor_b->solution, each_gene,
             x_core_random_unsigned_long(2));
       }
     }

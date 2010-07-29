@@ -95,7 +95,7 @@ char *inferno_ca_state_get_as_string(void *state_object)
 {
   assert(state_object);
   inferno_ca_state_t *state;
-  unsigned long eacx_cell;
+  unsigned long each_cell;
   char *string;
   char c;
   inferno_ca_t *cell;
@@ -107,15 +107,15 @@ char *inferno_ca_state_get_as_string(void *state_object)
 
   string = malloc(cell_count + 1);
   if (string) {
-    for (eacx_cell = 0; eacx_cell < cell_count; eacx_cell++) {
-      cell = &(*(state->cells + eacx_cell));
+    for (each_cell = 0; each_cell < cell_count; each_cell++) {
+      cell = &(*(state->cells + each_cell));
       inferno_ca_value = cell->value;
       if (inferno_ca_value < 10) {
         c = 48 + inferno_ca_value;
       } else {
         c = 120;
       }
-      *(string + eacx_cell) = c;
+      *(string + each_cell) = c;
     }
     *(string + cell_count) = '\0';
   } else {

@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
   x_core_uuid_t *uuid_b;
   int compare_result;
   x_core_uuid_t *uuid_c;
-  unsigned long eacx_uuid;
+  unsigned long each_uuid;
 
   uuid_a = x_core_uuid_create();
   if (!uuid_a) {
@@ -59,7 +59,7 @@ int main(int argc, char *argv[])
 
   if (x_core_bool_false) {
     printf("creating/destroying a uuid %d times\n", REPETITIONS);
-    for (eacx_uuid = 0; eacx_uuid < REPETITIONS; eacx_uuid++) {
+    for (each_uuid = 0; each_uuid < REPETITIONS; each_uuid++) {
       uuid_c = x_core_uuid_create();
       if (!uuid_c) {
         x_core_trace_exit("x_core_uuid_create");

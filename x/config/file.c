@@ -9,6 +9,7 @@ struct x_config_file_t {
   /* TODO: reimplement with x_container_map_t, like config_options? */
   x_container_set_t *strings;
   x_container_set_t *string_lists;
+  x_core_objectey_t nameobject_objectey;
 };
 
 static x_core_bool_t find_as_string(x_config_file_t *file, char *name,
@@ -69,16 +70,15 @@ x_config_file_t *x_config_file_create(char *filename)
   }
 
   if (so_far_so_good) {
-    file->strings = x_container_set_create(x_core_nameobject_compare,
-        x_core_nameobject_copy, x_core_nameobject_destroy);
+    x_core_nameobject_init_objectey(&file->nameobject_objectey);
+    file->strings = x_container_set_create(&file->nameobject_objectey);
     if (!file->strings) {
       so_far_so_good = x_core_bool_false;
     }
   }
 
   if (so_far_so_good) {
-    file->string_lists = x_container_set_create(x_core_nameobject_compare,
-        x_core_nameobject_copy, x_core_nameobject_destroy);
+    file->string_lists = x_container_set_create(&file->nameobject_objectey);
     if (!file->string_lists) {
       so_far_so_good = x_core_bool_false;
     }

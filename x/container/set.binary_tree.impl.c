@@ -18,9 +18,6 @@ struct set_object_t {
 };
 
 struct x_container_set_t {
-  x_core_copy_f copy;
-  x_core_compare_f compare;
-  x_core_destroy_f destroy;
   x_core_get_as_string_f get_object_as_string;
   unsigned long size;
   x_core_bool_t iterate_remove;
@@ -30,6 +27,8 @@ struct x_container_set_t {
   set_object_t *base;
 
   pthread_mutex_t mutex;
+
+  x_core_objectey_t *objectey;
 };
 
 static void assign_to_child(set_object_t *parent, set_object_t *child,
@@ -157,12 +156,12 @@ set_object_t *find_first_parent_greater_than_me(x_container_set_t *set,
 
   parent = set_object->parent;
   if (parent) {
-    compare = set->compare(parent->object,
+    compare = set->objectey->compare(parent->object,
         set_object->object);
     while (compare < 0) {
       parent = parent->parent;
       if (parent) {
-        compare = set->compare(parent->object,
+        compare = set->objectey->compare(parent->object,
             set_object->object);
       } else {
         break;
@@ -216,7 +215,7 @@ set_object_t *find_set_object_containing(x_container_set_t *set,
   set_object_t *containing_object;
 
   if (base_set_object) {
-    compare = set->compare(object, base_set_object->object);
+    compare = set->objectey->compare(object, base_set_object->object);
     if (compare < 0) {
       containing_object = find_set_object_containing(set,
           base_set_object->left, object);
@@ -233,8 +232,7 @@ set_object_t *find_set_object_containing(x_container_set_t *set,
   return containing_object;
 }
 
-x_core_bool_t x_container_set_add(x_container_set_t *set,
-    void *object)
+x_core_bool_t x_container_set_add(x_container_set_t *set, void *object)
 {
   assert(set);
   assert(object);
@@ -254,8 +252,7 @@ x_core_bool_t x_container_set_add(x_container_set_t *set,
   return success;
 }
 
-x_core_bool_t x_container_set_add_replace(x_container_set_t *set,
-    void *object)
+x_core_bool_t x_container_set_add_replace(x_container_set_t *set, void *object)
 {
   x_core_bool_t success;
 
@@ -267,18 +264,15 @@ x_core_bool_t x_container_set_add_replace(x_container_set_t *set,
   return success;
 }
 
-x_container_set_t *x_container_set_create
-(x_core_compare_f compare, x_core_copy_f copy,
-    x_core_destroy_f destroy)
+x_container_set_t *x_container_set_create(x_core_objectey_t *objectey)
 {
-  assert(compare);
+  assert(objectey);
+  assert(objectey->compare);
   x_container_set_t *set;
 
   set = malloc(sizeof *set);
   if (set) {
-    set->copy = copy;
-    set->compare = compare;
-    set->destroy = destroy;
+    set->objectey = objectey;
     set->get_object_as_string = NULL;
     set->base = NULL;
     set->size = 0;
@@ -304,8 +298,7 @@ void x_container_set_destroy(void *set_object)
   free(set);
 }
 
-void *x_container_set_find(x_container_set_t *set,
-    void *decoy_object)
+void *x_container_set_find(x_container_set_t *set, void *decoy_object)
 {
   set_object_t *set_object;
   void *found_object;
@@ -334,6 +327,11 @@ void *x_container_set_find_any(x_container_set_t *set)
   return any_object;
 }
 
+x_core_objectey_t *x_container_set_get_objectey(x_container_set_t *set)
+{
+  return set->objectey;
+}
+
 void x_container_set_print(x_container_set_t *set,
     x_core_get_as_string_f get_object_as_string)
 {
@@ -343,8 +341,7 @@ void x_container_set_print(x_container_set_t *set,
   printf("\n");
 }
 
-x_core_bool_t x_container_set_remove(x_container_set_t *set,
-    void *object)
+x_core_bool_t x_container_set_remove(x_container_set_t *set, void *object)
 {
   x_core_bool_t success;
   set_object_t *set_object;
@@ -395,7 +392,7 @@ set_object_t *put_object(x_container_set_t *set, set_object_t *base_set_object,
       x_core_trace("set_object_create");
     }
   } else {
-    compare = set->compare(object, base_set_object->object);
+    compare = set->objectey->compare(object, base_set_object->object);
     if (compare < 0) {
       new_set_object = put_object(set, base_set_object->left, object,
           base_set_object);
@@ -540,8 +537,8 @@ void set_object_destroy(x_container_set_t *set, set_object_t *set_object)
   assert(set);
   assert(set_object);
 
-  if (set_object->object && set->destroy) {
-    set->destroy(set_object->object);
+  if (set_object->object && set->objectey->destroy) {
+    set->objectey->destroy(set_object->object);
   }
   free(set_object);
 }

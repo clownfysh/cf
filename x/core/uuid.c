@@ -31,15 +31,12 @@ x_core_bool_t x_core_uuid_add_to_message(void *uuid_object,
   return success;
 }
 
-int x_core_uuid_compare(void *uuid_object_a, void *uuid_object_b)
+int x_core_uuid_compare(void *uuid_a_object, void *uuid_b_object)
 {
-  assert(uuid_object_a);
-  assert(uuid_object_b);
-  x_core_uuid_t *uuid_a;
-  x_core_uuid_t *uuid_b;
-
-  uuid_a = uuid_object_a;
-  uuid_b = uuid_object_b;
+  assert(uuid_a_object);
+  assert(uuid_b_object);
+  x_core_uuid_t *uuid_a = uuid_a_object;
+  x_core_uuid_t *uuid_b = uuid_b_object;
 
   return uuid_compare(uuid_a->uuid, uuid_b->uuid);
 }
@@ -144,29 +141,18 @@ x_core_bool_t x_core_uuid_equal(void *uuid_a_object, void *uuid_b_object)
   return (0 == x_core_uuid_compare(uuid_a_object, uuid_b_object));
 }
 
-/*
-x_core_bool_t x_core_uuid_equal(void *uuid_a_object, void *uuid_b_object)
+char *x_core_uuid_get_as_string(void *uuid_object)
 {
-  assert(uuid_a_object);
-  assert(uuid_b_object);
-  unsigned char *uuid_a = uuid_a_object;   yeah, I know we're gettin' crazy
-                                              with the Cheeze Whiz here...just
-                                              experimenting...don't rely on
-                                              this code
-  unsigned char *uuid_b = uuid_b_object;
-  x_core_bool_t equal = x_core_bool_true;
-  unsigned char i;
+  assert(uuid_object);
+  char *s;
 
-  for (i = 0; i < 16; i++) {
-    if (*(uuid_a + i) != *(uuid_b + i)) {
-      equal = x_core_bool_false;
-      break;
-    }
+  s = strdup(x_core_uuid_get_string(uuid_object));
+  if (!s) {
+    x_trace("strdup");
   }
 
-  return equal;
+  return s;
 }
-*/
 
 unsigned long x_core_uuid_get_memory_size_bytes(x_core_uuid_t *uuid)
 {
@@ -209,6 +195,13 @@ unsigned long x_core_uuid_hash(x_core_uuid_t *uuid)
   hash = x_core_hash_djb2_xor(uuid->string);
 
   return hash;
+}
+
+void x_core_uuid_init_objectey(x_core_objectey_t *objectey)
+{
+  x_core_objectey_init(objectey, x_core_uuid_compare, x_core_uuid_copy,
+      x_core_uuid_destroy, x_core_uuid_equal, x_core_uuid_get_as_string,
+      x_core_uuid_mod);
 }
 
 x_core_bool_t x_core_uuid_is_null(x_core_uuid_t *uuid)

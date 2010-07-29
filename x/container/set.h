@@ -36,12 +36,10 @@ x_core_bool_t x_container_set_contains(x_container_set_t *superset,
 
 void *x_container_set_copy(void *set_object);
 
-x_container_set_t *x_container_set_create(x_core_compare_f compare,
-    x_core_copy_f copy, x_core_destroy_f destroy);
+x_container_set_t *x_container_set_create(x_core_objectey_t *objectey);
 
 x_container_set_t *x_container_set_create_from_message
-(x_core_compare_f compare, x_core_copy_f copy, x_core_destroy_f destroy,
-    x_core_message_t *message,
+(x_core_objectey_t *objectey, x_core_message_t *message,
     x_core_message_create_from_message_f create_from_message);
 
 x_container_set_t *x_container_set_create_from_union(x_container_set_t *set_a,
@@ -49,6 +47,9 @@ x_container_set_t *x_container_set_create_from_union(x_container_set_t *set_a,
 
 void x_container_set_destroy(void *set_object);
 
+/*
+  rename as a verb?
+*/
 x_container_set_t *x_container_set_difference(x_container_set_t *set_a,
     x_container_set_t *set_b);
 
@@ -77,6 +78,8 @@ x_core_compare_f x_container_set_get_compare_function(x_container_set_t *set);
 x_core_copy_f x_container_set_get_copy_function(x_container_set_t *set);
 
 x_core_destroy_f x_container_set_get_destroy_function(x_container_set_t *set);
+
+x_core_objectey_t *x_container_set_get_objectey(x_container_set_t *set);
 
 unsigned long x_container_set_get_size(x_container_set_t *set);
 

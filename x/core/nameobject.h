@@ -2,6 +2,7 @@
 #define x_core_nameobject_h
 
 #include "x/core/object.h"
+#include "x/core/objectey.h"
 
 struct x_core_nameobject_t;
 typedef struct x_core_nameobject_t x_core_nameobject_t;
@@ -21,11 +22,13 @@ void x_core_nameobject_destroy(void *nameobject_object);
 
 void x_core_nameobject_destroy_decoy(void *nameobject_object);
 
-char *x_core_nameget_as_string(void *nameobject_object);
+char *x_core_nameobject_get_as_string(void *nameobject_object);
 
 char *x_core_nameobject_get_name(x_core_nameobject_t *nameobject);
 
 void *x_core_nameobject_get_object(x_core_nameobject_t *nameobject);
+
+void x_core_nameobject_init_objectey(x_core_objectey_t *objectey);
 
 void x_core_nameobject_print(void *nameobject_object);
 

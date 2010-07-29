@@ -6,6 +6,9 @@
 #define X_CORE_NO_COMPARE_FUNCTION NULL
 #define X_CORE_NO_COPY_FUNCTION NULL
 #define X_CORE_NO_DESTROY_FUNCTION NULL
+#define X_CORE_NO_EQUAL_FUNCTION NULL
+#define X_CORE_NO_GET_AS_STRING_FUNCTION NULL
+#define X_CORE_NO_MOD_FUNCTION NULL
 
 typedef int (*x_core_compare_f)(void *a_object, void *b_object);
 
