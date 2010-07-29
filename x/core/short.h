@@ -7,7 +7,7 @@
 x_core_bool_t x_core_short_add_to_message(void *short_object,
     x_core_message_t *message);
 
-int x_core_short_compare(void *short_object_a, void *short_object_b);
+int x_core_short_compare(void *short_a_object, void *short_b_object);
 
 void *x_core_short_copy(void *short_object);
 

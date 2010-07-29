@@ -1,15 +1,15 @@
 #include "x/core/tools.h"
 #include "x/core/unsigned_short.h"
 
-int x_core_unsigned_short_compare(void *unsigned_short_object_a,
-    void *unsigned_short_object_b)
+int x_core_unsigned_short_compare(void *unsigned_short_a_object,
+    void *unsigned_short_b_object)
 {
   unsigned short *short_a;
   unsigned short *short_b;
   int compare;
 
-  short_a = unsigned_short_object_a;
-  short_b = unsigned_short_object_b;
+  short_a = unsigned_short_a_object;
+  short_b = unsigned_short_b_object;
 
   if (*short_a > *short_b) {
     compare = 1;

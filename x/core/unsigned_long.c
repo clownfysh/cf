@@ -1,15 +1,15 @@
 #include "x/core/tools.h"
 #include "x/core/unsigned_long.h"
 
-int x_core_unsigned_long_compare(void *unsigned_long_object_a,
-    void *unsigned_long_object_b)
+int x_core_unsigned_long_compare(void *unsigned_long_a_object,
+    void *unsigned_long_b_object)
 {
   unsigned long *long_a;
   unsigned long *long_b;
   int compare;
 
-  long_a = unsigned_long_object_a;
-  long_b = unsigned_long_object_b;
+  long_a = unsigned_long_a_object;
+  long_b = unsigned_long_b_object;
 
   if (*long_a > *long_b) {
     compare = 1;

@@ -4,8 +4,8 @@
 #include "x/core/object.h"
 #include "x/core/types.h"
 
-int x_core_unsigned_short_compare(void *unsigned_short_object_a,
-    void *unsigned_short_object_b);
+int x_core_unsigned_short_compare(void *unsigned_short_a_object,
+    void *unsigned_short_b_object);
 
 void *x_core_unsigned_short_copy(void *unsigned_short_object);
 

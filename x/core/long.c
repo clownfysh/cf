@@ -8,15 +8,14 @@ x_core_bool_t x_core_long_add_to_message(void *long_object,
   return x_core_message_add_long(message, long_object);
 }
 
-int x_core_long_compare(void *long_object_a,
-    void *long_object_b)
+int x_core_long_compare(void *long_a_object, void *long_b_object)
 {
   long *long_a;
   long *long_b;
   int compare;
 
-  long_a = long_object_a;
-  long_b = long_object_b;
+  long_a = long_a_object;
+  long_b = long_b_object;
 
   if (*long_a > *long_b) {
     compare = 1;
@@ -61,22 +60,10 @@ x_core_bool_t x_core_long_equal(void *long_a_object, void *long_b_object)
 {
   assert(long_a_object);
   assert(long_b_object);
-  unsigned char *long_a = long_a_object;  /*  yeah, I know we're gettin' crazy
-                                              with the Cheeze Whiz here...just
-                                              experimenting...don't rely on
-                                              this code  */
-  unsigned char *long_b = long_b_object;
-  x_core_bool_t equal = x_core_bool_true;
-  unsigned char i;
+  unsigned long *long_a = long_a_object;
+  unsigned long *long_b = long_b_object;
 
-  for (i = 0; i < 4; i++) {
-    if (*(long_a + i) != *(long_b + i)) {
-      equal = x_core_bool_false;
-      break;
-    }
-  }
-
-  return equal;
+  return *long_a == *long_b;
 }
 
 char *x_core_long_get_as_string(void *long_object)

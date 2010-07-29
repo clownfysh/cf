@@ -8,7 +8,7 @@
 x_core_bool_t x_core_long_add_to_message(void *long_object,
     x_core_message_t *message);
 
-int x_core_long_compare(void *long_object_a, void *long_object_b);
+int x_core_long_compare(void *long_a_object, void *long_b_object);
 
 void *x_core_long_copy(void *long_object);
 

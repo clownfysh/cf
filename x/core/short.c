@@ -8,15 +8,14 @@ x_core_bool_t x_core_short_add_to_message(void *short_object,
   return x_core_message_add_short(message, short_object);
 }
 
-int x_core_short_compare(void *short_object_a,
-    void *short_object_b)
+int x_core_short_compare(void *short_a_object, void *short_b_object)
 {
   short *short_a;
   short *short_b;
   int compare;
 
-  short_a = short_object_a;
-  short_b = short_object_b;
+  short_a = short_a_object;
+  short_b = short_b_object;
 
   if (*short_a > *short_b) {
     compare = 1;
