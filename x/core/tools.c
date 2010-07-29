@@ -5,11 +5,6 @@
 
 x_core_bool_t x_core_stop_requested;
 
-unsigned short x_core_coin_toss()
-{
-  return random() % 2;
-}
-
 void x_core_do_nothing() {}
 
 x_core_bool_t x_core_get_current_time_string(x_core_time_string_t time_string)
@@ -104,7 +99,7 @@ x_core_bool_t x_core_key_hit()
   tv.tv_usec = 0;
   FD_ZERO(&fds);
   FD_SET(STDIN_FILENO, &fds);
-  select(STDIN_FILENO+1, &fds, NULL, NULL, &tv);
+  select(STDIN_FILENO + 1, &fds, NULL, NULL, &tv);
 
   if (FD_ISSET(STDIN_FILENO, &fds)) {
     hit = x_core_bool_true;
@@ -357,6 +352,11 @@ x_core_bool_t x_core_time_is_remaining_microseconds(struct timeval *start_time,
   }
 
   return is_remaining;
+}
+
+unsigned short x_core_toss_coin()
+{
+  return random() % 2;
 }
 
 void x_core_truncate_string(char *string, unsigned short max_length)

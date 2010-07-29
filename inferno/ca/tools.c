@@ -146,5 +146,5 @@ unsigned long inferno_ca_select_value_0()
 
 unsigned long inferno_ca_select_value_salt_and_pepper()
 {
-  return x_core_coin_toss();
+  return x_core_toss_coin();
 }

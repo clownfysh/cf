@@ -7,7 +7,7 @@ int main(int argc, char *argv[])
 
   for (n = 0; n < 32; n++) {
     for (m = 0; m < 64; m++) {
-      printf("%i", x_core_coin_toss());
+      printf("%i", x_core_toss_coin());
     }
     printf("\n");
   }

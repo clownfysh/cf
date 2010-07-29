@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
   if (x_core_bool_false) {
     printf("tossing a coin %d times\n", REPETITIONS);
     for (eacx_toss = 0; eacx_toss < REPETITIONS; eacx_toss++) {
-      toss_result = x_core_coin_toss();
+      toss_result = x_core_toss_coin();
     }
   }
 

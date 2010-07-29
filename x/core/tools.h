@@ -31,11 +31,6 @@ extern x_core_bool_t x_core_stop_requested;
 
 unsigned long x_get_microseconds();
 
-/*
-  TODO: rename x_core_toss_coin()
-*/
-unsigned short x_core_coin_toss();
-
 x_core_bool_t x_core_get_current_time_string(x_core_time_string_t time_string);
 
 double x_core_gray_coin_toss();
@@ -93,6 +88,8 @@ void x_core_terminal_nonblock();
  */
 x_core_bool_t x_core_time_is_remaining_microseconds(struct timeval *start_time,
     unsigned long max_wall_time_microseconds);
+
+unsigned short x_core_toss_coin();
 
 void x_core_truncate_string(char *string, unsigned short max_length);
 

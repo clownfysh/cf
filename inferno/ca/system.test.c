@@ -40,7 +40,7 @@ void randomize_ant_name(char *name)
   unsigned short eacx_char;
 
   for (eacx_char = 0; eacx_char < 64; eacx_char++) {
-    if (x_core_coin_toss()) {
+    if (x_core_toss_coin()) {
       *(name + eacx_char) = '1';
     } else {
       *(name + eacx_char) = '0';
@@ -54,7 +54,7 @@ void randomize_malice_name(char *name)
   unsigned short eacx_char;
 
   for (eacx_char = 0; eacx_char < 64; eacx_char++) {
-    if (x_core_coin_toss()) {
+    if (x_core_toss_coin()) {
       *(name + eacx_char) = '1';
     } else {
       *(name + eacx_char) = '0';
@@ -68,7 +68,7 @@ void randomize_water_name(char *name)
   unsigned short eacx_char;
 
   for (eacx_char = 0; eacx_char < 512; eacx_char++) {
-    if (x_core_coin_toss()) {
+    if (x_core_toss_coin()) {
       *(name + eacx_char) = '1';
     } else {
       *(name + eacx_char) = '0';
