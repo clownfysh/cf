@@ -3,9 +3,9 @@
 #define BECOME_SIMPLE_DIVISOR 2
 #define MAX_OBJECTS_PER_BIN 8
 
-#define PRIMES_COUNT 11
-static unsigned long primes[PRIMES_COUNT] = {2, 3, 5, 7, 11, 13, 17, 19, 23,
-                                             29, 31};
+#define PRIMES_COUNT 10
+static unsigned long primes[PRIMES_COUNT] = {29, 23, 19, 17, 13, 11, 7, 5, 3,
+                                             2};
 
 struct x_container_mbin_t {
   x_core_bool_t container;
