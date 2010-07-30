@@ -76,8 +76,8 @@ void x_container_shardset_clear(x_container_shardset_t *shardset)
   TODO: ugh...some rollback code is in the rollback method, some not...fix
 */
 x_container_shardset_t *x_container_shardset_create(x_core_compare_f compare,
-    x_core_copy_f copy, x_core_destroy_f destroy, x_core_hash_f hash_object,
-    unsigned short shard_count)
+    x_core_copy_f copy, x_core_destroy_f destroy, x_core_equal_f equal,
+    x_core_hash_f hash_object, x_core_mod_f mod, unsigned short shard_count)
 {
   assert(shard_count > 0);
   x_container_shardset_t *shardset;
@@ -106,8 +106,7 @@ x_container_shardset_t *x_container_shardset_create(x_core_compare_f compare,
 
   if (so_far_so_good) {
     x_core_objectey_init(&shardset->set_objectey, compare, copy, destroy,
-        X_CORE_NO_EQUAL_FUNCTION, X_CORE_NO_GET_AS_STRING_FUNCTION,
-        X_CORE_NO_MOD_FUNCTION);
+        equal, X_CORE_NO_GET_AS_STRING_FUNCTION, mod);
     for (each_shard = 0; each_shard < shard_count; each_shard++) {
       *(shardset->shards + each_shard)
         = x_container_set_create(&shardset->set_objectey);

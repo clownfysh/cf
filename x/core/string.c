@@ -48,6 +48,11 @@ void x_core_string_destroy(void *string_object)
   free(string_object);
 }
 
+x_core_bool_t x_core_string_equal(void *string_a_object, void *string_b_object)
+{
+  return (0 == x_core_string_compare(string_a_object, string_b_object));
+}
+
 char *x_core_string_get_as_string(void *string_object)
 {
   assert(string_object);
@@ -71,11 +76,31 @@ unsigned long x_core_string_hash(void *string_object)
 void x_core_string_init_objectey(x_core_objectey_t *objectey)
 {
   assert(objectey);
+  x_core_objectey_init(objectey, x_core_string_compare, x_core_string_copy,
+      x_core_string_destroy, x_core_string_equal, x_core_string_get_as_string,
+      x_core_string_mod);
+}
 
-  objectey->compare = x_core_string_compare;
-  objectey->copy = x_core_string_copy;
-  objectey->destroy = x_core_string_destroy;
-  objectey->get_as_string = x_core_string_get_as_string;
+unsigned long x_core_string_mod(void *string_object, unsigned long divisor)
+{
+  assert(string_object);
+  char *string = string_object;
+  unsigned long dividend = 0;
+  unsigned char i;
+  char c;
+  unsigned long place_value = 1;
+
+  for (i = 0; i < 4; i++) {
+    c = *(string + i);
+    if (c) {
+      dividend += (c * place_value);
+    } else {
+      break;
+    }
+    place_value *= 256;
+  }
+
+  return dividend % divisor;
 }
 
 void x_core_string_print(void *string_object)

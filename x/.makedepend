@@ -3253,9 +3253,9 @@
 ./container/set.o: /home/matthew/cf/x/container/set.h
 ./container/set.o: /home/matthew/cf/x/container/list.h
 ./container/set.o: /home/matthew/cf/x/core/objectey.h
-./container/set.o: /home/matthew/cf/x/container/set.binary_tree.impl.c
 ./container/set.o: /home/matthew/cf/x/core/long.h
-./container/set.o: /home/matthew/cf/x/core/string.h
+./container/set.o: /home/matthew/cf/x/container/set.mbin.impl.c
+./container/set.o: /home/matthew/cf/x/container/mbin.h
 ./container/set.o: /home/matthew/cf/x/core/tools.h
 ./container/set.o: /home/matthew/cf/x/core/standard.h
 ./container/set.o: /usr/include/arpa/inet.h /usr/include/features.h
@@ -3388,6 +3388,7 @@
 ./container/mbin.o: ./container/mbin.h /home/matthew/cf/x/core/object.h
 ./container/mbin.o: /home/matthew/cf/x/core/bool.h
 ./container/mbin.o: /home/matthew/cf/x/core/declarations.h
+./container/mbin.o: /home/matthew/cf/x/core/objectey.h
 ./container/mbin.o: /home/matthew/cf/x/core/tools.h
 ./container/mbin.o: /home/matthew/cf/x/core/standard.h
 ./container/mbin.o: /usr/include/arpa/inet.h /usr/include/features.h

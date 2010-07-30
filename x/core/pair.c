@@ -125,6 +125,11 @@ void x_core_pair_destroy_decoy(x_core_pair_t *pair)
   free(pair);
 }
 
+x_core_bool_t x_core_pair_equal_left(void *pair_a_object, void *pair_b_object)
+{
+  return (0 == x_core_pair_compare_left(pair_a_object, pair_b_object));
+}
+
 char *x_core_pair_get_as_string(void *pair_object)
 {
   assert(pair_object);
@@ -181,4 +186,11 @@ void x_core_pair_init_objectey(x_core_objectey_t *objectey)
   objectey->copy = x_core_pair_copy;
   objectey->destroy = x_core_pair_destroy;
   objectey->get_as_string = x_core_pair_get_as_string;
+}
+
+unsigned long x_core_pair_mod_left(void *pair_object, unsigned long divisor)
+{
+  assert(pair_object);
+  x_core_pair_t *pair = pair_object;
+  return pair->left_objectey->mod(pair->left, divisor);
 }

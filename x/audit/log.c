@@ -1,5 +1,6 @@
 #include "x/audit/log.h"
 #include "x/container/set.h"
+#include "x/core/unsigned_long.h"
 
 #define MAX_ENTRY_SIZE 1024
 #define MAX_LINE_LENGTH 79
@@ -12,8 +13,7 @@ struct x_audit_log_t {
   x_core_objectey_t files_objectey;
 };
 
-static int compare_files(void *a_file_object,
-    void *b_file_object);
+static int compare_files(void *a_file_object, void *b_file_object);
 
 static x_core_bool_t enter_file(char *formatted_entry, FILE *file);
 
@@ -76,8 +76,8 @@ x_audit_log_t *x_audit_log_create(FILE *file)
   if (so_far_so_good) {
     x_core_objectey_init(&log->files_objectey, compare_files,
         X_CORE_NO_COPY_FUNCTION, X_CORE_NO_DESTROY_FUNCTION,
-        X_CORE_NO_EQUAL_FUNCTION, X_CORE_NO_GET_AS_STRING_FUNCTION,
-        X_CORE_NO_MOD_FUNCTION);
+        x_core_unsigned_long_equal, X_CORE_NO_GET_AS_STRING_FUNCTION,
+        x_core_unsigned_long_mod);
     log->files = x_container_set_create(&log->files_objectey);
     if (log->files) {
       if (file) {

@@ -105,6 +105,9 @@ _tests: $(objects) $(object_tests)
 
 _programs: $(programs)
 
+_run_tests:
+	@run-tests $(object_tests)
+
 %.o: %.c
 	@quiet-execute "$(mode_identifier) $@" "$(compiler) $< -o $@ -c $(compile_options)"
 

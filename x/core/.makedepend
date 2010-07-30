@@ -960,7 +960,7 @@
 ./uuid.o: /usr/include/jmorecfg.h /home/matthew/cf/x/core/bit.h
 ./uuid.o: /home/matthew/cf/x/core/object.h /home/matthew/cf/x/core/types.h
 ./uuid.o: /home/matthew/cf/x/core/uuid.h /home/matthew/cf/x/core/message.h
-./uuid.o: /home/matthew/cf/x/core/engine.h
+./uuid.o: /home/matthew/cf/x/core/engine.h /home/matthew/cf/x/core/objectey.h
 ./mutex.o: /home/matthew/cf/x/core/mutex.h /home/matthew/cf/x/core/bool.h
 ./mutex.o: /home/matthew/cf/x/core/declarations.h
 ./mutex.o: /home/matthew/cf/x/core/tools.h /home/matthew/cf/x/core/standard.h
@@ -1246,6 +1246,9 @@
 ./nameobject.o: /home/matthew/cf/x/core/object.h
 ./nameobject.o: /home/matthew/cf/x/core/bool.h
 ./nameobject.o: /home/matthew/cf/x/core/declarations.h
+./nameobject.o: /home/matthew/cf/x/core/objectey.h
+./nameobject.o: /home/matthew/cf/x/core/string.h
+./nameobject.o: /home/matthew/cf/x/core/types.h
 ./nameobject.o: /home/matthew/cf/x/core/tools.h
 ./nameobject.o: /home/matthew/cf/x/core/standard.h /usr/include/arpa/inet.h
 ./nameobject.o: /usr/include/features.h /usr/include/bits/predefs.h
@@ -1300,7 +1303,6 @@
 ./nameobject.o: /usr/include/bits/confname.h /usr/include/getopt.h
 ./nameobject.o: /usr/include/jpeglib.h /usr/include/jconfig.h
 ./nameobject.o: /usr/include/jmorecfg.h /home/matthew/cf/x/core/bit.h
-./nameobject.o: /home/matthew/cf/x/core/types.h
 ./scratch.o: /home/matthew/cf/x/core/standard.h /usr/include/arpa/inet.h
 ./scratch.o: /usr/include/features.h /usr/include/bits/predefs.h
 ./scratch.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h

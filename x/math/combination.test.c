@@ -11,8 +11,8 @@ int main(int argc, char *argv[])
   x_core_objectey_t set_objectey;
 
   x_core_objectey_init(&set_objectey, x_core_string_compare,
-      x_core_string_copy, X_CORE_NO_DESTROY_FUNCTION, X_CORE_NO_EQUAL_FUNCTION,
-      X_CORE_NO_GET_AS_STRING_FUNCTION, X_CORE_NO_MOD_FUNCTION);
+      x_core_string_copy, X_CORE_NO_DESTROY_FUNCTION, x_core_string_equal,
+      x_core_string_get_as_string, x_core_string_mod);
   set = x_container_set_create(&set_objectey);
   if (!set) {
     x_core_trace_exit("x_container_set_create");

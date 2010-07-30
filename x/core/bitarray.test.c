@@ -11,6 +11,8 @@ static void test_set_functions();
 
 int main(int argc, char *argv[])
 {
+  x_disable_test();
+
   x_core_bitarray_t *bitarray;
 
   bitarray = x_core_bitarray_create(4);

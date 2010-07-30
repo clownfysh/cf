@@ -1,5 +1,6 @@
 #include "x/container/array.h"
 #include "x/container/set.h"
+#include "x/core/long.h"
 
 #if defined X_CONTAINER_SET_BINARY_TREE_IMPL
 #include "x/container/set.binary_tree.impl.c"
@@ -10,16 +11,8 @@
 #elif defined X_CONTAINER_SET_SKIP_LIST_IMPL
 #include "x/container/set.skip_list.impl.c"
 #else
-#include "x/container/set.binary_tree.impl.c"
+#include "x/container/set.mbin.impl.c"
 #endif
-
-set_object_t *_x_container_set_find_first(x_container_set_t *set);
-
-set_object_t *_x_container_set_find_next(x_container_set_t *set,
-    set_object_t *set_object);
-
-void _x_container_set_remove_set_object(x_container_set_t *set,
-    set_object_t *set_object);
 
 x_core_bool_t x_container_set_absorb(x_container_set_t *set,
     x_container_set_t *absorb_these)
@@ -68,19 +61,20 @@ x_core_bool_t x_container_set_absorb_copy(x_container_set_t *set,
 {
   assert(set);
   assert(absorb_these);
-  assert(set->objectey->destroy);
+  assert(x_container_set_get_objectey(set)->destroy);
   void *object;
   void *object_copy;
   x_core_bool_t success;
+  x_core_objectey_t *objectey = x_container_set_get_objectey(set);
 
   success = x_core_bool_true;
 
   x_container_set_iterate_start(absorb_these);
   while ((object = x_container_set_iterate_next(absorb_these))) {
-    object_copy = set->objectey->copy(object);
+    object_copy = objectey->copy(object);
     if (object_copy) {
       if (!x_container_set_add(set, object_copy)) {
-        set->objectey->destroy(object_copy);
+        objectey->destroy(object_copy);
       }
     } else {
       success = x_core_bool_false;
@@ -96,19 +90,20 @@ x_core_bool_t x_container_set_absorb_list_copy(x_container_set_t *set,
 {
   assert(set);
   assert(absorb_these);
-  assert(set->objectey->destroy);
+  assert(x_container_set_get_objectey(set)->destroy);
   void *object;
   void *object_copy;
   x_core_bool_t success;
+  x_core_objectey_t *objectey = x_container_set_get_objectey(set);
 
   success = x_core_bool_true;
 
   x_container_list_iterate_start(absorb_these);
   while ((object = x_container_list_iterate_next(absorb_these))) {
-    object_copy = set->objectey->copy(object);
+    object_copy = objectey->copy(object);
     if (object_copy) {
       if (!x_container_set_add(set, object_copy)) {
-        set->objectey->destroy(object_copy);
+        objectey->destroy(object_copy);
       }
     } else {
       success = x_core_bool_false;
@@ -171,7 +166,7 @@ int x_container_set_compare(void *set_object_a,
 
   compare_result = x_core_long_compare(&size_a, &size_b);
   if (0 == compare_result) {
-    compare = x_container_set_get_compare_function(set_a);
+    compare = x_container_set_get_objectey(set_a)->compare;
     x_container_set_iterate_start(set_a);
     x_container_set_iterate_start(set_b);
     while ((object_a = x_container_set_iterate_next(set_a))) {
@@ -214,16 +209,17 @@ void *x_container_set_copy(void *set_object)
   x_container_set_t *copy;
   void *original_object;
   void *copied_object;
+  x_core_objectey_t *objectey = x_container_set_get_objectey(set);
 
-  copy = x_container_set_create(set->objectey);
+  copy = x_container_set_create(objectey);
   if (copy) {
     x_container_set_iterate_start(set);
     while ((original_object = x_container_set_iterate_next(set))) {
-      copied_object = set->objectey->copy(original_object);
+      copied_object = objectey->copy(original_object);
       if (copied_object) {
         if (!x_container_set_add(copy, copied_object)) {
           x_core_trace("x_container_set_add");
-          set->objectey->destroy(copied_object);
+          objectey->destroy(copied_object);
           x_container_set_destroy(copy);
           copy = NULL;
           break;
@@ -314,7 +310,7 @@ x_container_set_t *x_container_set_difference(x_container_set_t *set_a,
 
 void x_container_set_dont_destroy_objects(x_container_set_t *set)
 {
-  set->objectey->destroy = NULL;
+  x_container_set_get_objectey(set)->destroy = NULL;
 }
 
 x_core_bool_t x_container_set_expunge(x_container_set_t *set,
@@ -346,7 +342,7 @@ void *x_container_set_find_copy(x_container_set_t *set, void *decoy_object)
 
   found_object = x_container_set_find(set, decoy_object);
   if (found_object) {
-    found_object_copy = set->objectey->copy(found_object);
+    found_object_copy = x_container_set_get_objectey(set)->copy(found_object);
     if (!found_object_copy) {
       x_core_trace("copy");
     }
@@ -379,11 +375,12 @@ x_container_array_t *x_container_set_get_as_array(x_container_set_t *set)
   void *object;
   unsigned long object_count;
   unsigned long object_index;
+  x_core_objectey_t *objectey = x_container_set_get_objectey(set);
 
-  object_count = set->size;
+  object_count = x_container_set_get_size(set);
 
-  array = x_container_array_create(object_count, set->objectey->compare,
-      set->objectey->copy, X_CORE_NO_DESTROY_FUNCTION);
+  array = x_container_array_create(object_count, objectey->compare,
+      objectey->copy, X_CORE_NO_DESTROY_FUNCTION);
   if (array) {
     object_index = 0;
     x_container_set_iterate_start(set);
@@ -403,8 +400,9 @@ x_container_list_t *x_container_set_get_as_list(x_container_set_t *set)
   assert(set);
   x_container_list_t *list;
   void *object;
+  x_core_objectey_t *objectey = x_container_set_get_objectey(set);
 
-  list = x_container_list_create(set->objectey->compare, set->objectey->copy,
+  list = x_container_list_create(objectey->compare, objectey->copy,
       X_CORE_NO_DESTROY_FUNCTION);
   if (list) {
     x_container_set_iterate_start(set);
@@ -432,7 +430,7 @@ char *x_container_set_get_as_delimited_string(x_container_set_t *set,
   x_core_bool_t success;
 
   string = NULL;
-  last_object_index = set->size - 1;
+  last_object_index = x_container_set_get_size(set) - 1;
   success = x_core_bool_true;
 
   object_index = 0;
@@ -472,77 +470,6 @@ char *x_container_set_get_as_delimited_string(x_container_set_t *set,
   return string;
 }
 
-x_core_compare_f x_container_set_get_compare_function(x_container_set_t *set)
-{
-  return set->objectey->compare;
-}
-
-x_core_copy_f x_container_set_get_copy_function(x_container_set_t *set)
-{
-  return set->objectey->copy;
-}
-
-x_core_destroy_f x_container_set_get_destroy_function(x_container_set_t *set)
-{
-  return set->objectey->destroy;
-}
-
-unsigned long x_container_set_get_size(x_container_set_t *set)
-{
-  return set->size;
-}
-
-void *x_container_set_iterate_next(x_container_set_t *set)
-{
-  assert(set);
-  void *next_object;
-  set_object_t *successor;
-
-  if (set->iterator) {
-    if (set->iterate_first) {
-      next_object = set->iterator->object;
-      set->iterate_first = x_core_bool_false;
-    } else {
-      if (set->iterate_remove) {
-        successor = _x_container_set_find_next(set, set->iterator);
-        _x_container_set_remove_set_object(set, set->iterator);
-        set->iterator = successor;
-        set->iterate_remove = x_core_bool_false;
-      } else {
-        set->iterator = _x_container_set_find_next(set, set->iterator);
-      }
-      if (set->iterator) {
-        next_object = set->iterator->object;
-      } else {
-        next_object = NULL;
-      }
-    }
-  } else {
-    next_object = NULL;
-  }
-
-  return next_object;
-}
-
-void x_container_set_iterate_remove(x_container_set_t *set)
-{
-  set->iterate_remove = x_core_bool_true;
-}
-
-void x_container_set_iterate_start(x_container_set_t *set)
-{
-  assert(set);
-
-  set->iterator = _x_container_set_find_first(set);
-  set->iterate_remove = x_core_bool_false;
-  set->iterate_first = x_core_bool_true;
-}
-
-void x_container_set_lock(x_container_set_t *set)
-{
-  pthread_mutex_lock(&set->mutex);
-}
-
 x_core_bool_t x_container_set_overlaps(x_container_set_t *set_a,
     x_container_set_t *set_b)
 {
@@ -575,9 +502,4 @@ x_core_bool_t x_container_set_overlaps(x_container_set_t *set_a,
   }
 
   return overlaps;
-}
-
-void x_container_set_unlock(x_container_set_t *set)
-{
-  pthread_mutex_unlock(&set->mutex);
 }

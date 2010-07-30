@@ -31,6 +31,14 @@ struct x_container_set_t {
   x_core_objectey_t *objectey;
 };
 
+set_object_t *_x_container_set_find_first(x_container_set_t *set);
+
+set_object_t *_x_container_set_find_next(x_container_set_t *set,
+    set_object_t *set_object);
+
+void _x_container_set_remove_set_object(x_container_set_t *set,
+    set_object_t *set_object);
+
 static void assign_to_child(set_object_t *parent, set_object_t *child,
     set_object_t *new_value);
 
@@ -49,8 +57,7 @@ static set_object_t *find_set_object_containing(x_container_set_t *set,
 static void print(x_container_set_t *set, set_object_t *base_set_object);
 
 static set_object_t *put_object(x_container_set_t *set,
-    set_object_t *base_set_object, void *object,
-    set_object_t *parent);
+    set_object_t *base_set_object, void *object, set_object_t *parent);
 
 static void remove_set_object_botx_children(x_container_set_t *set,
     set_object_t *set_object);
@@ -332,6 +339,62 @@ x_core_objectey_t *x_container_set_get_objectey(x_container_set_t *set)
   return set->objectey;
 }
 
+unsigned long x_container_set_get_size(x_container_set_t *set)
+{
+  return set->size;
+}
+
+void *x_container_set_iterate_next(x_container_set_t *set)
+{
+  assert(set);
+  void *next_object;
+  set_object_t *successor;
+
+  if (set->iterator) {
+    if (set->iterate_first) {
+      next_object = set->iterator->object;
+      set->iterate_first = x_core_bool_false;
+    } else {
+      if (set->iterate_remove) {
+        successor = _x_container_set_find_next(set, set->iterator);
+        _x_container_set_remove_set_object(set, set->iterator);
+        set->iterator = successor;
+        set->iterate_remove = x_core_bool_false;
+      } else {
+        set->iterator = _x_container_set_find_next(set, set->iterator);
+      }
+      if (set->iterator) {
+        next_object = set->iterator->object;
+      } else {
+        next_object = NULL;
+      }
+    }
+  } else {
+    next_object = NULL;
+  }
+
+  return next_object;
+}
+
+void x_container_set_iterate_remove(x_container_set_t *set)
+{
+  set->iterate_remove = x_core_bool_true;
+}
+
+void x_container_set_iterate_start(x_container_set_t *set)
+{
+  assert(set);
+
+  set->iterator = _x_container_set_find_first(set);
+  set->iterate_remove = x_core_bool_false;
+  set->iterate_first = x_core_bool_true;
+}
+
+void x_container_set_lock(x_container_set_t *set)
+{
+  pthread_mutex_lock(&set->mutex);
+}
+
 void x_container_set_print(x_container_set_t *set,
     x_core_get_as_string_f get_object_as_string)
 {
@@ -355,6 +418,11 @@ x_core_bool_t x_container_set_remove(x_container_set_t *set, void *object)
   }
 
   return success;
+}
+
+void x_container_set_unlock(x_container_set_t *set)
+{
+  pthread_mutex_unlock(&set->mutex);
 }
 
 void print(x_container_set_t *set, set_object_t *base_set_object)

@@ -1,4 +1,5 @@
 #include "x/core/nameobject.h"
+#include "x/core/string.h"
 #include "x/core/tools.h"
 
 struct x_core_nameobject_t {
@@ -167,7 +168,14 @@ void x_core_nameobject_destroy_decoy(void *nameobject_object)
   free(nameobject);
 }
 
-char *x_core_nameget_as_string(void *nameobject_object)
+x_core_bool_t x_core_nameobject_equal(void *nameobject_a_object,
+    void *nameobject_b_object)
+{
+  return (0 == x_core_nameobject_compare(nameobject_a_object,
+          nameobject_b_object));
+}
+
+char *x_core_nameobject_get_as_string(void *nameobject_object)
 {
   assert(nameobject_object);
   x_core_nameobject_t *nameobject;
@@ -211,8 +219,16 @@ void x_core_nameobject_init_objectey(x_core_objectey_t *objectey)
 {
   x_core_objectey_init(objectey, x_core_nameobject_compare,
       x_core_nameobject_copy, x_core_nameobject_destroy,
-      X_CORE_NO_EQUAL_FUNCTION, X_CORE_NO_GET_AS_STRING_FUNCTION,
-      X_CORE_NO_MOD_FUNCTION);
+      x_core_nameobject_equal, x_core_nameobject_get_as_string,
+      x_core_nameobject_mod);
+}
+
+unsigned long x_core_nameobject_mod(void *nameobject_object,
+    unsigned long divisor)
+{
+  assert(nameobject_object);
+  x_core_nameobject_t *nameobject = nameobject_object;
+  return x_core_string_mod(nameobject->name, divisor);
 }
 
 void x_core_nameobject_print(void *nameobject_object)

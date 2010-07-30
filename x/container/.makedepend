@@ -129,19 +129,18 @@
 ./set.o: /home/matthew/cf/x/core/object.h /home/matthew/cf/x/core/types.h
 ./set.o: /home/matthew/cf/x/container/set.h
 ./set.o: /home/matthew/cf/x/container/list.h
-./set.o: /home/matthew/cf/x/core/objectey.h
-./set.o: /home/matthew/cf/x/container/set.binary_tree.impl.c
-./set.o: /home/matthew/cf/x/core/long.h /home/matthew/cf/x/core/string.h
-./set.o: /home/matthew/cf/x/core/tools.h /home/matthew/cf/x/core/standard.h
-./set.o: /usr/include/arpa/inet.h /usr/include/features.h
-./set.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
-./set.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
-./set.o: /usr/include/gnu/stubs-32.h /usr/include/netinet/in.h
-./set.o: /usr/include/stdint.h /usr/include/bits/wchar.h
-./set.o: /usr/include/sys/socket.h /usr/include/sys/uio.h
-./set.o: /usr/include/sys/types.h /usr/include/bits/types.h
-./set.o: /usr/include/bits/typesizes.h /usr/include/time.h
-./set.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
+./set.o: /home/matthew/cf/x/core/objectey.h /home/matthew/cf/x/core/long.h
+./set.o: /home/matthew/cf/x/container/set.mbin.impl.c
+./set.o: /home/matthew/cf/x/container/mbin.h /home/matthew/cf/x/core/tools.h
+./set.o: /home/matthew/cf/x/core/standard.h /usr/include/arpa/inet.h
+./set.o: /usr/include/features.h /usr/include/bits/predefs.h
+./set.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+./set.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
+./set.o: /usr/include/netinet/in.h /usr/include/stdint.h
+./set.o: /usr/include/bits/wchar.h /usr/include/sys/socket.h
+./set.o: /usr/include/sys/uio.h /usr/include/sys/types.h
+./set.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+./set.o: /usr/include/time.h /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
 ./set.o: /usr/include/endian.h /usr/include/bits/endian.h
 ./set.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
 ./set.o: /usr/include/bits/select.h /usr/include/bits/sigset.h
@@ -246,15 +245,16 @@
 ./mbin.o: mbin.h /home/matthew/cf/x/core/object.h
 ./mbin.o: /home/matthew/cf/x/core/bool.h
 ./mbin.o: /home/matthew/cf/x/core/declarations.h
-./mbin.o: /home/matthew/cf/x/core/tools.h /home/matthew/cf/x/core/standard.h
-./mbin.o: /usr/include/arpa/inet.h /usr/include/features.h
-./mbin.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
-./mbin.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
-./mbin.o: /usr/include/gnu/stubs-32.h /usr/include/netinet/in.h
-./mbin.o: /usr/include/stdint.h /usr/include/bits/wchar.h
-./mbin.o: /usr/include/sys/socket.h /usr/include/sys/uio.h
-./mbin.o: /usr/include/sys/types.h /usr/include/bits/types.h
-./mbin.o: /usr/include/bits/typesizes.h /usr/include/time.h
+./mbin.o: /home/matthew/cf/x/core/objectey.h /home/matthew/cf/x/core/tools.h
+./mbin.o: /home/matthew/cf/x/core/standard.h /usr/include/arpa/inet.h
+./mbin.o: /usr/include/features.h /usr/include/bits/predefs.h
+./mbin.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+./mbin.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
+./mbin.o: /usr/include/netinet/in.h /usr/include/stdint.h
+./mbin.o: /usr/include/bits/wchar.h /usr/include/sys/socket.h
+./mbin.o: /usr/include/sys/uio.h /usr/include/sys/types.h
+./mbin.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+./mbin.o: /usr/include/time.h
 ./mbin.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
 ./mbin.o: /usr/include/endian.h /usr/include/bits/endian.h
 ./mbin.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h

@@ -18,11 +18,16 @@ void *x_core_string_create_from_message(x_core_message_t *message);
 
 void x_core_string_destroy(void *string_object);
 
+x_core_bool_t x_core_string_equal(void *string_a_object,
+    void *string_b_object);
+
 char *x_core_string_get_as_string(void *string_object);
 
 unsigned long x_core_string_hash(void *string_object);
 
 void x_core_string_init_objectey(x_core_objectey_t *objectey);
+
+unsigned long x_core_string_mod(void *string_object, unsigned long divisor);
 
 void x_core_string_print(void *string_object);
 

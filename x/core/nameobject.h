@@ -22,6 +22,9 @@ void x_core_nameobject_destroy(void *nameobject_object);
 
 void x_core_nameobject_destroy_decoy(void *nameobject_object);
 
+x_core_bool_t x_core_nameobject_equal(void *nameobject_a_object,
+    void *nameobject_b_object);
+
 char *x_core_nameobject_get_as_string(void *nameobject_object);
 
 char *x_core_nameobject_get_name(x_core_nameobject_t *nameobject);
@@ -29,6 +32,9 @@ char *x_core_nameobject_get_name(x_core_nameobject_t *nameobject);
 void *x_core_nameobject_get_object(x_core_nameobject_t *nameobject);
 
 void x_core_nameobject_init_objectey(x_core_objectey_t *objectey);
+
+unsigned long x_core_nameobject_mod(void *nameobject_object,
+    unsigned long divisor);
 
 void x_core_nameobject_print(void *nameobject_object);
 

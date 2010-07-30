@@ -10,8 +10,8 @@ int main(int argc, char *argv[])
   char *string;
 
   shardset = x_container_shardset_create(x_core_string_compare,
-      x_core_string_copy, X_CORE_NO_DESTROY_FUNCTION, x_core_string_hash,
-      SHARD_COUNT);
+      x_core_string_copy, X_CORE_NO_DESTROY_FUNCTION, x_core_string_equal,
+      x_core_string_hash, x_core_string_mod, SHARD_COUNT);
   if (!shardset) {
     x_core_trace_exit("x_container_shardset_create");
   }

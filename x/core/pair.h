@@ -28,6 +28,8 @@ void x_core_pair_destroy(void *pair_object);
 
 void x_core_pair_destroy_decoy(x_core_pair_t *pair);
 
+x_core_bool_t x_core_pair_equal_left(void *pair_a_object, void *pair_b_object);
+
 char *x_core_pair_get_as_string(void *pair_object);
 
 void *x_core_pair_get_left(x_core_pair_t *pair);
@@ -39,5 +41,7 @@ void *x_core_pair_get_right(x_core_pair_t *pair);
 x_core_objectey_t *x_core_pair_get_right_objectey(x_core_pair_t *pair);
 
 void x_core_pair_init_objectey(x_core_objectey_t *objectey);
+
+unsigned long x_core_pair_mod_left(void *pair_object, unsigned long divisor);
 
 #endif

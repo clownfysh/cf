@@ -11,9 +11,6 @@ struct x_container_mbin_t {
   x_core_bool_t container;
   void **objects;
   x_container_mbin_t **bins;
-  x_core_mod_f mod;
-  x_core_equal_f equal;
-  x_core_destroy_f destroy;
   unsigned long object_count;
   unsigned long contained_object_count;
   unsigned long level;
@@ -21,11 +18,11 @@ struct x_container_mbin_t {
   unsigned long iterator;
   x_core_bool_t iterate_remove;
   x_container_mbin_set_type_t set_type;
+  x_core_objectey_t *objectey;
 };
 
-static x_container_mbin_t *create(x_core_mod_f mod, x_core_equal_f equal,
-    x_core_destroy_f destroy, unsigned long level,
-    x_container_mbin_set_type_t set_type);
+static x_container_mbin_t *create(x_core_objectey_t *objectey,
+    unsigned long level, x_container_mbin_set_type_t set_type);
 
 static x_core_bool_t create_bins(x_container_mbin_t *mbin);
 
@@ -35,12 +32,12 @@ static void become_simple(x_container_mbin_t *mbin);
 
 static void destroy_bins(x_container_mbin_t *mbin);
 
-x_container_mbin_t *create(x_core_mod_f mod, x_core_equal_f equal,
-    x_core_destroy_f destroy, unsigned long level,
+x_container_mbin_t *create(x_core_objectey_t *objectey, unsigned long level,
     x_container_mbin_set_type_t set_type)
 {
-  assert(mod);
-  assert(equal);
+  assert(objectey);
+  assert(objectey->mod);
+  assert(objectey->equal);
   assert(level < PRIMES_COUNT);
   x_container_mbin_t *mbin;
 
@@ -50,9 +47,7 @@ x_container_mbin_t *create(x_core_mod_f mod, x_core_equal_f equal,
     mbin->bins = NULL;
     mbin->object_count = 0;
     mbin->contained_object_count = 0;
-    mbin->mod = mod;
-    mbin->equal = equal;
-    mbin->destroy = destroy;
+    mbin->objectey = objectey;
     mbin->level = level;
     mbin->bin_count = primes[level];
     mbin->set_type = set_type;
@@ -79,11 +74,11 @@ x_core_bool_t create_bins(x_container_mbin_t *mbin)
     success = x_core_bool_true;
     for (i = 0; i < mbin->bin_count; i++) {
       if (mbin->level < (PRIMES_COUNT - 1)) {
-        *(mbin->bins + i) = create(mbin->mod, mbin->equal, mbin->destroy,
-            mbin->level + 1, mbin->set_type);
+        *(mbin->bins + i) = create(mbin->objectey, mbin->level + 1,
+            mbin->set_type);
       } else {
-        *(mbin->bins + i) = create(mbin->mod, mbin->equal, mbin->destroy,
-            mbin->level, mbin->set_type);
+        *(mbin->bins + i)
+          = create(mbin->objectey, mbin->level, mbin->set_type);
         x_trace("ran out of primes");
       }
       if (!*(mbin->bins + i)) {
@@ -114,7 +109,7 @@ x_core_bool_t become_container(x_container_mbin_t *mbin)
     assert(mbin->bins);
     for (i = 0; i < mbin->object_count; i++) {
       object = *(mbin->objects + i);
-      remainder = mbin->mod(object, mbin->bin_count);
+      remainder = mbin->objectey->mod(object, mbin->bin_count);
       if (!x_container_mbin_add(*(mbin->bins + remainder), object)) {
         x_trace("x_container_mbin_add");
         success = x_core_bool_false;
@@ -195,7 +190,7 @@ x_core_bool_t x_container_mbin_add(x_container_mbin_t *mbin, void *object)
 
   if (success) {
     if (mbin->container) {
-      remainder = mbin->mod(object, mbin->bin_count);
+      remainder = mbin->objectey->mod(object, mbin->bin_count);
       bin = *(mbin->bins + remainder);
 
       if (X_CONTAINER_MBIN_SET_TYPE_MULTISET == mbin->set_type) {
@@ -247,11 +242,10 @@ void x_container_mbin_clear(x_container_mbin_t *mbin)
   }
 }
 
-x_container_mbin_t *x_container_mbin_create(x_core_mod_f mod,
-    x_core_equal_f equal, x_core_destroy_f destroy,
+x_container_mbin_t *x_container_mbin_create(x_core_objectey_t *objectey,
     x_container_mbin_set_type_t set_type)
 {
-  return create(mod, equal, destroy, 0, set_type);
+  return create(objectey, 0, set_type);
 }
 
 void x_container_mbin_destroy(x_container_mbin_t *mbin)
@@ -262,9 +256,9 @@ void x_container_mbin_destroy(x_container_mbin_t *mbin)
   if (mbin->container) {
     destroy_bins(mbin);
   } else {
-    if (mbin->destroy) {
+    if (mbin->objectey->destroy) {
       for (i = 0; i < mbin->object_count; i++) {
-        mbin->destroy(*(mbin->objects + i));
+        mbin->objectey->destroy(*(mbin->objects + i));
       }
     }
   }
@@ -277,7 +271,7 @@ void x_container_mbin_dont_destroy_objects(x_container_mbin_t *mbin)
   assert(mbin);
   unsigned long i;
 
-  mbin->destroy = NULL;
+  mbin->objectey->destroy = NULL;
   if (mbin->container) {
     for (i = 0; i < mbin->bin_count; i++) {
       x_container_mbin_dont_destroy_objects(*(mbin->bins + i));
@@ -296,11 +290,11 @@ void *x_container_mbin_find(x_container_mbin_t *mbin, void *decoy_object)
   /*  printf("find()\n");  */
 
   if (mbin->container) {
-    remainder = mbin->mod(decoy_object, mbin->bin_count);
+    remainder = mbin->objectey->mod(decoy_object, mbin->bin_count);
     object = x_container_mbin_find(*(mbin->bins + remainder), decoy_object);
   } else {
     for (i = 0; i < mbin->object_count; i++) {
-      if (mbin->equal(decoy_object, *(mbin->objects + i))) {
+      if (mbin->objectey->equal(decoy_object, *(mbin->objects + i))) {
         object = *(mbin->objects + i);
         break;
       }
@@ -308,6 +302,12 @@ void *x_container_mbin_find(x_container_mbin_t *mbin, void *decoy_object)
   }
 
   return object;
+}
+
+x_core_objectey_t *x_container_mbin_get_objectey(x_container_mbin_t *mbin)
+{
+  assert(mbin);
+  return mbin->objectey;
 }
 
 unsigned long x_container_mbin_get_size(x_container_mbin_t *mbin)
@@ -360,8 +360,8 @@ void *x_container_mbin_iterate_next(x_container_mbin_t *mbin)
       assert(mbin->iterator > 0);
       assert(mbin->object_count > 0);
       assert(mbin->iterator <= mbin->object_count);
-      if (mbin->destroy) {
-        mbin->destroy(*(mbin->objects + (mbin->iterator - 1)));
+      if (mbin->objectey->destroy) {
+        mbin->objectey->destroy(*(mbin->objects + (mbin->iterator - 1)));
       }
       if (mbin->object_count > 1) {
         *(mbin->objects + (mbin->iterator - 1))
@@ -395,7 +395,7 @@ x_core_bool_t x_container_mbin_remove(x_container_mbin_t *mbin,
   unsigned long i;
 
   if (mbin->container) {
-    remainder = mbin->mod(decoy_object, mbin->bin_count);
+    remainder = mbin->objectey->mod(decoy_object, mbin->bin_count);
     if (x_container_mbin_remove(*(mbin->bins + remainder), decoy_object)) {
       success = x_core_bool_true;
       mbin->contained_object_count--;
@@ -406,10 +406,10 @@ x_core_bool_t x_container_mbin_remove(x_container_mbin_t *mbin,
     }
   } else {
     for (i = 0; i < mbin->object_count; i++) {
-      if (mbin->equal(decoy_object, *(mbin->objects + i))) {
+      if (mbin->objectey->equal(decoy_object, *(mbin->objects + i))) {
         success = x_core_bool_true;
-        if (mbin->destroy) {
-          mbin->destroy(*(mbin->objects + i));
+        if (mbin->objectey->destroy) {
+          mbin->objectey->destroy(*(mbin->objects + i));
         }
         if (mbin->object_count > 0) {
           *(mbin->objects + i) = *(mbin->objects + (mbin->object_count - 1));

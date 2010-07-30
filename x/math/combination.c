@@ -9,10 +9,6 @@ struct x_math_combination_t {
   unsigned long element_count;
   x_core_bitarray_t *flags;
 
-  x_core_compare_f compare;
-  x_core_copy_f copy;
-  x_core_destroy_f destroy;
-
   x_core_bool_t iterate_first;
 
   x_core_objectey_t *set_objectey;
@@ -35,7 +31,7 @@ x_container_set_t *create_set_based_on_flags(x_math_combination_t *combination)
          each_element++) {
       if (1 == x_core_bitarray_get_bit(combination->flags, each_element)) {
         object = x_container_array_find(combination->elements, each_element);
-        object_copy = combination->copy(object);
+        object_copy = combination->set_objectey->copy(object);
         if (object_copy) {
           if (!x_container_set_add(set, object_copy)) {
             x_core_trace("x_container_set_add");

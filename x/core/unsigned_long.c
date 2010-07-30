@@ -76,11 +76,10 @@ char *x_core_unsigned_long_get_as_string(void *unsigned_long_object)
 void x_core_unsigned_long_init_objectey(x_core_objectey_t *objectey)
 {
   assert(objectey);
-
-  objectey->get_as_string = x_core_unsigned_long_get_as_string;
-  objectey->compare = x_core_unsigned_long_compare;
-  objectey->copy = x_core_unsigned_long_copy;
-  objectey->destroy = x_core_unsigned_long_destroy;
+  x_core_objectey_init(objectey, x_core_unsigned_long_compare,
+      x_core_unsigned_long_copy, x_core_unsigned_long_destroy,
+      x_core_unsigned_long_equal, x_core_unsigned_long_get_as_string,
+      x_core_unsigned_long_mod);
 }
 
 unsigned long x_core_unsigned_long_mod(void *unsigned_long_object,

@@ -3,6 +3,8 @@
 
 int main(int argc, char *argv[])
 {
+  x_disable_test();
+
   x_file_csv_t *csv;
   unsigned long object_count;
   unsigned long field_count;
