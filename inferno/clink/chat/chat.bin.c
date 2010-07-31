@@ -1,4 +1,4 @@
-#include "cf/x/clink/system.h"
+#include "cf/inferno/clink/system.h"
 #include "cf/x/core/string.h"
 #include "cf/x/core/tools.h"
 
@@ -11,7 +11,7 @@
 
 /*  static char *get_as_string(void *string_object);  */
 int main(int argc, char *argv[]);
-static cf_x_core_bool_t think(cf_x_clink_system_t *system, void *object,
+static cf_x_core_bool_t think(cf_inferno_clink_system_t *system, void *object,
     void *context);
 
 /*
@@ -25,7 +25,7 @@ char *get_as_string(void *string_object)
 
 int main(int argc, char *argv[])
 {
-  cf_x_clink_system_t *clink;
+  cf_inferno_clink_system_t *clink;
   char read_string[STRING_BUFFER_LENGTH];
   char *word_a;
   char *word_b;
@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
 
   file = fopen("/home/matthew/gg2.txt", "r");
 
-  clink = cf_x_clink_system_create(MAX_CONCEPTS, MAX_LINKS, cf_x_core_string_compare,
+  clink = cf_inferno_clink_system_create(MAX_CONCEPTS, MAX_LINKS, cf_x_core_string_compare,
       cf_x_core_string_destroy, NULL);
   if (clink) {
     do {
@@ -48,21 +48,21 @@ int main(int argc, char *argv[])
       while ((word_b = strtok(NULL, DELIMITERS))) {
         word_a_copy = strdup(word_a);
         word_b_copy = strdup(word_b);
-        cf_x_clink_system_link(clink, word_a_copy, word_b_copy);
+        cf_inferno_clink_system_link(clink, word_a_copy, word_b_copy);
         /*  printf("%s->%s,", word_a_copy, word_b_copy);  */
         word_a = word_b;
       }
       /*  printf("\n");  */
-      /*  cf_x_clink_system_print(clink, get_as_string);  */
+      /*  cf_inferno_clink_system_print(clink, get_as_string);  */
       printf("~ ");
-      if (!cf_x_clink_system_think_tree(clink, think, MAX_OBJECTS,
+      if (!cf_inferno_clink_system_think_tree(clink, think, MAX_OBJECTS,
               BRANCH_DENSITY)) {
         cf_x_trace("x_clink_system_think_tree");
       }
       printf("\n");
 
     } while (!stop_requested);
-    cf_x_clink_system_destroy(clink);
+    cf_inferno_clink_system_destroy(clink);
   } else {
     cf_x_trace("x_clink_system_create");
   }
@@ -70,7 +70,7 @@ int main(int argc, char *argv[])
   return 0;
 }
 
-cf_x_core_bool_t think(cf_x_clink_system_t *system, void *object,
+cf_x_core_bool_t think(cf_inferno_clink_system_t *system, void *object,
     void *context)
 {
   assert(system);

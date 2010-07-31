@@ -1,4 +1,4 @@
-#include "cf/x/clink/eoc/atom.h"
+#include "cf/inferno/clink/eoc/atom.h"
 #include "cf/x/core/tools.h"
 
 #define FRAME_SLEEP_MICROSECONDS 10000
@@ -9,27 +9,27 @@
 
 #define SPARKS_PER_FRAME ((WORLD_WIDTH * WORLD_HEIGHT) / 2)
 
-struct cf_x_clink_eoc_t {
-  cf_x_clink_eoc_atom_t *world[WORLD_WIDTH][WORLD_HEIGHT];
+struct cf_inferno_clink_eoc_t {
+  cf_inferno_clink_eoc_atom_t *world[WORLD_WIDTH][WORLD_HEIGHT];
 };
-typedef struct cf_x_clink_eoc_t cf_x_clink_eoc_t;
+typedef struct cf_inferno_clink_eoc_t cf_inferno_clink_eoc_t;
 
-static cf_x_clink_eoc_t *create();
+static cf_inferno_clink_eoc_t *create();
 
-static void destroy(cf_x_clink_eoc_t *eoc);
+static void destroy(cf_inferno_clink_eoc_t *eoc);
 
-static cf_x_clink_eoc_atom_t *get_target_atom(cf_x_clink_eoc_t *eoc,
+static cf_inferno_clink_eoc_atom_t *get_target_atom(cf_inferno_clink_eoc_t *eoc,
     unsigned long atom_x, unsigned long atom_y, unsigned long *target_atom_x,
     unsigned long *target_atom_y);
 
-static void swap(cf_x_clink_eoc_t *eoc, unsigned long x, unsigned long y,
+static void swap(cf_inferno_clink_eoc_t *eoc, unsigned long x, unsigned long y,
     unsigned long target_x, unsigned long target_y);
 
 int main(int argc, char *argv[]);
 
-cf_x_clink_eoc_t *create()
+cf_inferno_clink_eoc_t *create()
 {
-  cf_x_clink_eoc_t *eoc;
+  cf_inferno_clink_eoc_t *eoc;
   unsigned long x;
   unsigned long y;
 
@@ -37,7 +37,7 @@ cf_x_clink_eoc_t *create()
   if (eoc) {
     for (x = 0; x < WORLD_WIDTH; x++) {
       for (y = 0; y < WORLD_HEIGHT; y++) {
-        eoc->world[x][y] = cf_x_clink_eoc_atom_create(MAX_CONCEPTS, MAX_LINKS);
+        eoc->world[x][y] = cf_inferno_clink_eoc_atom_create(MAX_CONCEPTS, MAX_LINKS);
         if (!eoc->world[x][y]) {
           cf_x_trace("x_clink_eoc_atom_create");
           exit(1);
@@ -51,30 +51,30 @@ cf_x_clink_eoc_t *create()
   return eoc;
 }
 
-void destroy(cf_x_clink_eoc_t *eoc)
+void destroy(cf_inferno_clink_eoc_t *eoc)
 {
   unsigned long x;
   unsigned long y;
 
   for (x = 0; x < WORLD_WIDTH; x++) {
     for (y = 0; y < WORLD_HEIGHT; y++) {
-      cf_x_clink_eoc_atom_destroy(eoc->world[x][y]);
+      cf_inferno_clink_eoc_atom_destroy(eoc->world[x][y]);
     }
   }
 }
 
-cf_x_clink_eoc_atom_t *get_target_atom(cf_x_clink_eoc_t *eoc, unsigned long atom_x,
+cf_inferno_clink_eoc_atom_t *get_target_atom(cf_inferno_clink_eoc_t *eoc, unsigned long atom_x,
     unsigned long atom_y, unsigned long *target_atom_x,
     unsigned long *target_atom_y)
 {
   assert(eoc);
   assert(target_atom_x);
   assert(target_atom_y);
-  cf_x_clink_eoc_atom_t *observer = eoc->world[atom_x][atom_y];
-  cf_x_clink_eoc_atom_t *target;
+  cf_inferno_clink_eoc_atom_t *observer = eoc->world[atom_x][atom_y];
+  cf_inferno_clink_eoc_atom_t *target;
   unsigned char direction;
 
-  direction = cf_x_clink_eoc_atom_get_direction(observer);
+  direction = cf_inferno_clink_eoc_atom_get_direction(observer);
   *target_atom_x = cf_x_core_wrap_index(atom_x + ((direction % 3) - 1),
       WORLD_WIDTH);
   *target_atom_y
@@ -84,11 +84,11 @@ cf_x_clink_eoc_atom_t *get_target_atom(cf_x_clink_eoc_t *eoc, unsigned long atom
   return target;
 }
 
-void swap(cf_x_clink_eoc_t *eoc, unsigned long x, unsigned long y,
+void swap(cf_inferno_clink_eoc_t *eoc, unsigned long x, unsigned long y,
     unsigned long target_x, unsigned long target_y)
 {
   assert(eoc);
-  cf_x_clink_eoc_atom_t *temporary;
+  cf_inferno_clink_eoc_atom_t *temporary;
 
   temporary = eoc->world[target_x][target_y];
   eoc->world[target_x][target_y] = eoc->world[x][y];
@@ -97,14 +97,14 @@ void swap(cf_x_clink_eoc_t *eoc, unsigned long x, unsigned long y,
 
 int main(int argc, char *argv[])
 {
-  cf_x_clink_eoc_t *eoc;
+  cf_inferno_clink_eoc_t *eoc;
   unsigned long x;
   unsigned long y;
   unsigned long a;
   unsigned long b;
   unsigned long target_x;
   unsigned long target_y;
-  cf_x_clink_eoc_atom_t *target;
+  cf_inferno_clink_eoc_atom_t *target;
   unsigned char target_face;
   unsigned char neighbor_face;
   unsigned char face;
@@ -133,13 +133,13 @@ int main(int argc, char *argv[])
         for (j = 0; j < 16; j++) {
           a = cf_x_core_wrap_index(x + ((random() % 3) - 1), WORLD_WIDTH);
           b = cf_x_core_wrap_index(y + ((random() % 3) - 1), WORLD_HEIGHT);
-          neighbor_face = cf_x_clink_eoc_atom_get_face(eoc->world[a][b]);
-          cf_x_clink_eoc_atom_observe(eoc->world[x][y], neighbor_face);
+          neighbor_face = cf_inferno_clink_eoc_atom_get_face(eoc->world[a][b]);
+          cf_inferno_clink_eoc_atom_observe(eoc->world[x][y], neighbor_face);
         }
 
         target = get_target_atom(eoc, x, y, &target_x, &target_y);
-        target_face = cf_x_clink_eoc_atom_get_face(target);
-        face = cf_x_clink_eoc_atom_get_face(eoc->world[x][y]);
+        target_face = cf_inferno_clink_eoc_atom_get_face(target);
+        face = cf_inferno_clink_eoc_atom_get_face(eoc->world[x][y]);
         if (face > target_face) {
           swap(eoc, x, y, target_x, target_y);
         }
@@ -148,7 +148,7 @@ int main(int argc, char *argv[])
 
       for (x = 0; x < WORLD_WIDTH; x++) {
         for (y = 0; y < WORLD_HEIGHT; y++) {
-          face = cf_x_clink_eoc_atom_get_face(eoc->world[x][y]);
+          face = cf_inferno_clink_eoc_atom_get_face(eoc->world[x][y]);
           mvaddch(y, x, (face + 42) | COLOR_PAIR((face % 7) + 1));
         }
       }

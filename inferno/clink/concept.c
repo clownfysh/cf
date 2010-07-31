@@ -1,7 +1,7 @@
-#include "cf/x/clink/concept.h"
+#include "cf/inferno/clink/concept.h"
 #include "cf/x/core/tools.h"
 
-struct cf_x_clink_concept_t {
+struct cf_inferno_clink_concept_t {
   void *object;
   void **objects;
   unsigned long max_links;
@@ -9,13 +9,13 @@ struct cf_x_clink_concept_t {
   cf_x_core_destroy_f destroy;
 };
 
-cf_x_clink_concept_t *cf_x_clink_concept_create(void *object,
+cf_inferno_clink_concept_t *cf_inferno_clink_concept_create(void *object,
     unsigned long max_links, cf_x_core_compare_f compare,
     cf_x_core_destroy_f destroy)
 {
   assert(object);
   assert(compare);
-  cf_x_clink_concept_t *concept;
+  cf_inferno_clink_concept_t *concept;
 
   concept = malloc(sizeof *concept);
   if (concept) {
@@ -36,7 +36,7 @@ cf_x_clink_concept_t *cf_x_clink_concept_create(void *object,
   return concept;
 }
 
-void cf_x_clink_concept_destroy(cf_x_clink_concept_t *concept)
+void cf_inferno_clink_concept_destroy(cf_inferno_clink_concept_t *concept)
 {
   assert(concept);
   unsigned long link;
@@ -51,7 +51,7 @@ void cf_x_clink_concept_destroy(cf_x_clink_concept_t *concept)
   free(concept);
 }
 
-void *cf_x_clink_concept_get_linked_object(cf_x_clink_concept_t *concept,
+void *cf_inferno_clink_concept_get_linked_object(cf_inferno_clink_concept_t *concept,
     unsigned long link_index)
 {
   assert(concept);
@@ -59,13 +59,13 @@ void *cf_x_clink_concept_get_linked_object(cf_x_clink_concept_t *concept,
   return *(concept->objects + link_index);
 }
 
-void *cf_x_clink_concept_get_object(cf_x_clink_concept_t *concept)
+void *cf_inferno_clink_concept_get_object(cf_inferno_clink_concept_t *concept)
 {
   assert(concept);
   return concept->object;
 }
 
-void cf_x_clink_concept_note_object(cf_x_clink_concept_t *concept, void *object)
+void cf_inferno_clink_concept_note_object(cf_inferno_clink_concept_t *concept, void *object)
 {
   assert(concept);
   assert(object);
@@ -107,7 +107,7 @@ void cf_x_clink_concept_note_object(cf_x_clink_concept_t *concept, void *object)
   }
 }
 
-void cf_x_clink_concept_print(cf_x_clink_concept_t *concept,
+void cf_inferno_clink_concept_print(cf_inferno_clink_concept_t *concept,
     cf_x_core_get_as_string_f get_as_string)
 {
   assert(concept);
