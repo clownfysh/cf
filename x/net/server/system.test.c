@@ -55,12 +55,12 @@ int main(int argc, char *argv[])
       cf_x_core_message_get_client_socket, cf_x_core_message_get_engine_id,
       cf_x_core_message_get_type);
 
-  cf_x_net_post_postey_init(&postey, cf_x_net_post_compare, cf_x_net_post_create,
-      cf_x_net_post_create_decoy, cf_x_net_post_destroy, cf_x_net_post_destroy_decoy,
-      cf_x_net_post_get_last_receive_activity_time, cf_x_net_post_get_socket,
-      cf_x_net_post_get_stats, cf_x_net_post_receive_message,
-      cf_x_net_post_receive_messages, cf_x_net_post_send_message,
-      cf_x_net_post_send_messages, cf_x_net_post_is_socket_closed);
+  cf_x_net_post_postey_init(&postey, cf_x_net_post_system_compare, cf_x_net_post_system_create,
+      cf_x_net_post_system_create_decoy, cf_x_net_post_system_destroy, cf_x_net_post_system_destroy_decoy,
+      cf_x_net_post_system_get_last_receive_activity_time, cf_x_net_post_system_get_socket,
+      cf_x_net_post_system_get_stats, cf_x_net_post_system_receive_message,
+      cf_x_net_post_system_receive_messages, cf_x_net_post_system_send_message,
+      cf_x_net_post_system_send_messages, cf_x_net_post_system_is_socket_closed);
 
   server = cf_x_net_server_system_create("standard", port, port, TEST_SERVER_MAX_THREADS,
       &messagey, &postey, CF_X_NET_ENGINE_NO_GET_NAME_FUNCTION,
