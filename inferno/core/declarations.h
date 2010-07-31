@@ -1,7 +1,0 @@
-#ifndef cf_inferno_core_declarations_h
-#define cf_inferno_core_declarations_h
-
-struct cf_inferno_core_message_t;
-typedef struct cf_inferno_core_message_t cf_inferno_core_message_t;
-
-#endif
