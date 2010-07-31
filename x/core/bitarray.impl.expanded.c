@@ -1,5 +1,5 @@
 #include "cf/x/core/bitarray.h"
-#include "cf/x/core/long.h"
+#include "cf/x/core/basic/long.h"
 #include "cf/x/core/tools.h"
 
 struct cf_x_core_bitarray_t {
@@ -22,7 +22,7 @@ int cf_x_core_bitarray_compare(void *bitarray_object_a,
   bitarray_a = bitarray_object_a;
   bitarray_b = bitarray_object_b;
 
-  compare_result = cf_x_core_long_compare(&bitarray_a->array_size,
+  compare_result = cf_x_core_basic_long_compare(&bitarray_a->array_size,
       &bitarray_b->array_size);
   if (0 == compare_result) {
     for (each_bit = 0; each_bit < bitarray_a->array_size; each_bit++) {

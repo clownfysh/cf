@@ -1,8 +1,8 @@
 #include "cf/x/case/array.h"
+#include "cf/x/core/basic/unsigned_long.h"
 #include "cf/x/case/set.h"
 #include "cf/x/core/string.h"
 #include "cf/x/core/tools.h"
-#include "cf/x/core/unsigned_long.h"
 
 struct cf_x_case_array_t {
   void **array;
@@ -86,7 +86,7 @@ int cf_x_case_array_compare(void *array_object_a,
   array_a = array_object_a;
   array_b = array_object_b;
 
-  compare_result = cf_x_core_unsigned_long_compare(&array_a->array_size,
+  compare_result = cf_x_core_basic_unsigned_long_compare(&array_a->array_size,
       &array_b->array_size);
   if (0 == compare_result) {
     array_size = array_a->array_size;

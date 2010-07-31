@@ -1,14 +1,14 @@
-#include "cf/x/core/long.h"
+#include "cf/x/core/basic/long.h"
 #include "cf/x/core/message.h"
 #include "cf/x/core/tools.h"
 
-cf_x_core_bool_t cf_x_core_long_add_to_message(void *long_object,
+cf_x_core_bool_t cf_x_core_basic_long_add_to_message(void *long_object,
     cf_x_core_message_t *message)
 {
   return cf_x_core_message_add_long(message, long_object);
 }
 
-int cf_x_core_long_compare(void *long_a_object, void *long_b_object)
+int cf_x_core_basic_long_compare(void *long_a_object, void *long_b_object)
 {
   long *long_a;
   long *long_b;
@@ -28,7 +28,7 @@ int cf_x_core_long_compare(void *long_a_object, void *long_b_object)
   return compare;
 }
 
-void *cf_x_core_long_copy(void *long_object)
+void *cf_x_core_basic_long_copy(void *long_object)
 {
   assert(long_object);
   long *long_value;
@@ -45,18 +45,18 @@ void *cf_x_core_long_copy(void *long_object)
   return long_copy;
 }
 
-void *cf_x_core_long_create_from_message(cf_x_core_message_t *message)
+void *cf_x_core_basic_long_create_from_message(cf_x_core_message_t *message)
 {
   return cf_x_core_message_take_long(message);
 }
 
-void cf_x_core_long_destroy(void *long_object)
+void cf_x_core_basic_long_destroy(void *long_object)
 {
   assert(long_object);
   free(long_object);
 }
 
-cf_x_core_bool_t cf_x_core_long_equal(void *long_a_object, void *long_b_object)
+cf_x_core_bool_t cf_x_core_basic_long_equal(void *long_a_object, void *long_b_object)
 {
   assert(long_a_object);
   assert(long_b_object);
@@ -66,7 +66,7 @@ cf_x_core_bool_t cf_x_core_long_equal(void *long_a_object, void *long_b_object)
   return *long_a == *long_b;
 }
 
-char *cf_x_core_long_get_as_string(void *long_object)
+char *cf_x_core_basic_long_get_as_string(void *long_object)
 {
   assert(long_object);
   long *long_value;
@@ -81,22 +81,22 @@ char *cf_x_core_long_get_as_string(void *long_object)
   return string;
 }
 
-void cf_x_core_long_init_objectey(cf_x_core_objectey_t *objectey)
+void cf_x_core_basic_long_init_objectey(cf_x_core_objectey_t *objectey)
 {
   assert(objectey);
-  cf_x_core_objectey_init(objectey, cf_x_core_long_compare, cf_x_core_long_copy,
-      cf_x_core_long_destroy, cf_x_core_long_equal, cf_x_core_long_get_as_string,
-      cf_x_core_long_mod);
+  cf_x_core_objectey_init(objectey, cf_x_core_basic_long_compare, cf_x_core_basic_long_copy,
+      cf_x_core_basic_long_destroy, cf_x_core_basic_long_equal, cf_x_core_basic_long_get_as_string,
+      cf_x_core_basic_long_mod);
 }
 
-unsigned long cf_x_core_long_mod(void *long_object, unsigned long divisor)
+unsigned long cf_x_core_basic_long_mod(void *long_object, unsigned long divisor)
 {
   assert(long_object);
   unsigned long *l = long_object;
   return *l % divisor;
 }
 
-void cf_x_core_long_print(void *long_object)
+void cf_x_core_basic_long_print(void *long_object)
 {
-  cf_x_core_print(long_object, cf_x_core_long_get_as_string);
+  cf_x_core_print(long_object, cf_x_core_basic_long_get_as_string);
 }

@@ -1,8 +1,8 @@
 #include "cf/x/case/array.h"
+#include "cf/x/core/basic/unsigned_long.h"
 #include "cf/x/case/list.h"
 #include "cf/x/core/string.h"
 #include "cf/x/core/tools.h"
-#include "cf/x/core/unsigned_long.h"
 
 struct list_object_t;
 typedef struct list_object_t list_object_t;
@@ -207,7 +207,7 @@ int cf_x_case_list_compare(void *list_object_a,
   list_a = list_object_a;
   list_b = list_object_b;
 
-  compare_result = cf_x_core_unsigned_long_compare(&list_a->size, &list_b->size);
+  compare_result = cf_x_core_basic_unsigned_long_compare(&list_a->size, &list_b->size);
   if (0 == compare_result) {
     compare = list_a->compare;
 

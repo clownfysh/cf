@@ -1,8 +1,8 @@
 #include "cf/inferno/archetype/system.h"
 #include "cf/x/case/array.h"
-#include "cf/x/core/double.h"
+#include "cf/x/core/basic/double.h"
+#include "cf/x/core/basic/unsigned_short.h"
 #include "cf/x/core/tools.h"
-#include "cf/x/core/unsigned_short.h"
 
 #define RECALCULATE_GRANULARITY 2
 
@@ -19,7 +19,8 @@ struct cf_inferno_archetype_system_t {
 static cf_x_core_bool_t calculate_poles_and_weights
 (cf_inferno_archetype_system_t *system);
 
-cf_x_core_bool_t calculate_poles_and_weights(cf_inferno_archetype_system_t *system)
+cf_x_core_bool_t calculate_poles_and_weights
+(cf_inferno_archetype_system_t *system)
 {
   assert(system);
   cf_x_core_bool_t success;
@@ -77,12 +78,12 @@ cf_x_core_bool_t calculate_poles_and_weights(cf_inferno_archetype_system_t *syst
       success = cf_x_core_bool_false;
       cf_x_audit_log_trace(system->log, "arch", "x_core_bit_copy");
     }
-    weight_copy = cf_x_core_double_copy(&weight);
+    weight_copy = cf_x_core_basic_double_copy(&weight);
     if (weight_copy) {
       cf_x_case_array_add(system->weights, attribute_index, weight_copy);
     } else {
       success = cf_x_core_bool_false;
-      cf_x_audit_log_trace(system->log, "arch", "inferno_core_double_copy");
+      cf_x_audit_log_trace(system->log, "arch", "cf_x_core_basic_double_copy");
     }
   }
 
@@ -133,7 +134,7 @@ void *cf_inferno_archetype_system_create(cf_x_case_array_t *classified_objects,
 
   if (so_far_so_good) {
     system->weights = cf_x_case_array_create(system->attribute_count,
-        cf_x_core_double_compare, cf_x_core_double_copy, cf_x_core_double_destroy);
+        cf_x_core_basic_double_compare, cf_x_core_basic_double_copy, cf_x_core_basic_double_destroy);
     if (!system->weights) {
       so_far_so_good = cf_x_core_bool_false;
       cf_x_audit_log_trace(log, "arch", "x_case_array_create");

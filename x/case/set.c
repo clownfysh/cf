@@ -1,6 +1,6 @@
 #include "cf/x/case/array.h"
+#include "cf/x/core/basic/long.h"
 #include "cf/x/case/set.h"
-#include "cf/x/core/long.h"
 
 #if defined CF_X_CASE_SET_BINARY_TREE_IMPL
 #include "cf/x/case/set.impl.binary_tree.c"
@@ -166,7 +166,7 @@ int cf_x_case_set_compare(void *set_object_a,
   size_a = cf_x_case_set_get_size(set_a);
   size_b = cf_x_case_set_get_size(set_b);
 
-  compare_result = cf_x_core_long_compare(&size_a, &size_b);
+  compare_result = cf_x_core_basic_long_compare(&size_a, &size_b);
   if (0 == compare_result) {
     compare = cf_x_case_set_get_objectey(set_a)->compare;
     cf_x_case_set_iterate_start(set_a);

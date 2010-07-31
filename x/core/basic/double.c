@@ -1,14 +1,14 @@
-#include "cf/x/core/double.h"
+#include "cf/x/core/basic/double.h"
 #include "cf/x/core/message.h"
 #include "cf/x/core/tools.h"
 
-cf_x_core_bool_t cf_x_core_double_add_to_message(void *double_object,
+cf_x_core_bool_t cf_x_core_basic_double_add_to_message(void *double_object,
     cf_x_core_message_t *message)
 {
   return cf_x_core_message_add_double(message, double_object);
 }
 
-int cf_x_core_double_compare(void *double_object_a,
+int cf_x_core_basic_double_compare(void *double_object_a,
     void *double_object_b)
 {
   assert(double_object_a);
@@ -31,7 +31,7 @@ int cf_x_core_double_compare(void *double_object_a,
   return compare_result;
 }
 
-void *cf_x_core_double_copy(void *double_object)
+void *cf_x_core_basic_double_copy(void *double_object)
 {
   assert(double_object);
   double *double_value;
@@ -48,12 +48,12 @@ void *cf_x_core_double_copy(void *double_object)
   return double_copy;
 }
 
-void *cf_x_core_double_create_from_message(cf_x_core_message_t *message)
+void *cf_x_core_basic_double_create_from_message(cf_x_core_message_t *message)
 {
   return cf_x_core_message_take_double(message);
 }
 
-void cf_x_core_double_destroy(void *double_object)
+void cf_x_core_basic_double_destroy(void *double_object)
 {
   free(double_object);
 }

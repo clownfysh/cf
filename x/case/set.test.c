@@ -30,10 +30,10 @@ int main(int argc, char *argv[])
 
   printf("creating set...\n");
   if (TEST_USING_LONGS) {
-    cf_x_core_unsigned_long_init_objectey(&unsigned_long_objectey);
+    cf_x_core_basic_unsigned_long_init_objectey(&unsigned_long_objectey);
     set = cf_x_case_set_create(&unsigned_long_objectey);
   } else {
-    cf_x_core_unsigned_long_init_objectey(&uuid_objectey);
+    cf_x_core_basic_unsigned_long_init_objectey(&uuid_objectey);
     set = cf_x_case_set_create(&uuid_objectey);
   }
   assert(set);
@@ -47,7 +47,7 @@ int main(int argc, char *argv[])
       if (cf_x_case_set_add(set, l)) {
         items_added++;
       } else {
-        cf_x_core_unsigned_long_destroy(l);
+        cf_x_core_basic_unsigned_long_destroy(l);
       }
     } else {
       uuid = cf_x_core_uuid_create();

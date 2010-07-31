@@ -1,6 +1,6 @@
-#include "cf/x/core/long.h"
+#include "cf/x/core/basic/long.h"
+#include "cf/x/core/basic/short.h"
 #include "cf/x/core/message.h"
-#include "cf/x/core/short.h"
 #include "cf/x/core/tools.h"
 #include "cf/x/net/server_stats.h"
 
@@ -13,62 +13,62 @@ cf_x_core_bool_t cf_x_net_server_add_stats_to_message
 
   success = cf_x_core_bool_true;
 
-  if (!cf_x_core_long_add_to_message(&server_stats->engine_count, message)) {
+  if (!cf_x_core_basic_long_add_to_message(&server_stats->engine_count, message)) {
     success = cf_x_core_bool_false;
   }
 
-  if (!cf_x_core_long_add_to_message
+  if (!cf_x_core_basic_long_add_to_message
       (&server_stats->server_send_message_failure_count, message)) {
     success = cf_x_core_bool_false;
   }
 
-  if (!cf_x_core_long_add_to_message
+  if (!cf_x_core_basic_long_add_to_message
       (&server_stats->engine_cant_handle_message_now_count, message)) {
     success = cf_x_core_bool_false;
   }
 
-  if (!cf_x_core_long_add_to_message
+  if (!cf_x_core_basic_long_add_to_message
       (&server_stats->engine_handled_message_count, message)) {
     success = cf_x_core_bool_false;
   }
 
-  if (!cf_x_core_long_add_to_message
+  if (!cf_x_core_basic_long_add_to_message
       (&server_stats->engine_cant_handle_message_now_count, message)) {
     success = cf_x_core_bool_false;
   }
 
-  if (!cf_x_core_long_add_to_message
+  if (!cf_x_core_basic_long_add_to_message
       (&server_stats->discarded_message_for_nonexistent_client_count,
           message)) {
     success = cf_x_core_bool_false;
   }
 
-  if (!cf_x_core_long_add_to_message
+  if (!cf_x_core_basic_long_add_to_message
       (&server_stats->discarded_message_for_unregistered_engine_count,
           message)) {
     success = cf_x_core_bool_false;
   }
 
-  if (!cf_x_core_long_add_to_message
+  if (!cf_x_core_basic_long_add_to_message
       (&server_stats->discarded_message_engine_inbox_add_failed_count,
           message)) {
     success = cf_x_core_bool_false;
   }
 
-  if (!cf_x_core_long_add_to_message(&server_stats->uptime_seconds, message)) {
+  if (!cf_x_core_basic_long_add_to_message(&server_stats->uptime_seconds, message)) {
     success = cf_x_core_bool_false;
   }
 
-  if (!cf_x_core_long_add_to_message(&server_stats->connected_client_count,
+  if (!cf_x_core_basic_long_add_to_message(&server_stats->connected_client_count,
           message)) {
     success = cf_x_core_bool_false;
   }
 
-  if (!cf_x_core_short_add_to_message(&server_stats->max_threads, message)) {
+  if (!cf_x_core_basic_short_add_to_message(&server_stats->max_threads, message)) {
     success = cf_x_core_bool_false;
   }
 
-  if (!cf_x_core_short_add_to_message(&server_stats->thread_count, message)) {
+  if (!cf_x_core_basic_short_add_to_message(&server_stats->thread_count, message)) {
     success = cf_x_core_bool_false;
   }
 
