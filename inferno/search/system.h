@@ -39,7 +39,7 @@ typedef struct inferno_searcx_system_t inferno_searcx_system_t;
  */
 inferno_searcx_system_t *inferno_searcx_system_create
 (inferno_core_score_solution_f score_solution, inferno_core_goal_t goal, void *context,
-    x_container_array_t *initial_solutions, inferno_searcx_algorithm_t algorithm,
+    x_case_array_t *initial_solutions, inferno_searcx_algorithm_t algorithm,
     x_audit_log_t *log);
 
 /*!
@@ -64,7 +64,7 @@ void inferno_searcx_system_destroy(inferno_searcx_system_t *system);
  *
  * \return an array of x_core_bitarray_t pointers
  */
-x_container_array_t *inferno_searcx_system_get_solutions_copy
+x_case_array_t *inferno_searcx_system_get_solutions_copy
 (inferno_searcx_system_t *system, unsigned short max_solution_count);
 
 /*!

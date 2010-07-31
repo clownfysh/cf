@@ -1,7 +1,7 @@
 #ifndef x_net_post_h
 #define x_net_post_h
 
-#include "x/container/list.h"
+#include "x/case/list.h"
 #include "x/core/message.h"
 #include "x/core/types.h"
 #include "x/net/post_stats.h"
@@ -35,6 +35,6 @@ x_core_bool_t x_net_post_send_message(void *post_object, void *message_object);
 
 void x_net_post_send_messages(void *post_object);
 
-x_container_list_t *x_net_post_take_unsent_messages(x_net_post_t *post);
+x_case_list_t *x_net_post_take_unsent_messages(x_net_post_t *post);
 
 #endif

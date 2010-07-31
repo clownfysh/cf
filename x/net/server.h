@@ -3,7 +3,7 @@
 
 #include "x/audit/log.h"
 #include "x/config/system.h"
-#include "x/container/list.h"
+#include "x/case/list.h"
 #include "x/core/engine.h"
 #include "x/core/message.h"
 #include "x/core/messagey.h"
@@ -62,9 +62,9 @@ void x_net_server_set_unresponsive_client_time_seconds
 
 x_core_bool_t x_net_server_start(x_net_server_t *server);
 
-x_container_list_t *x_net_server_take_unprocessed_messages
+x_case_list_t *x_net_server_take_unprocessed_messages
 (x_net_server_t *server);
 
-x_container_list_t *x_net_server_take_unsent_messages(x_net_server_t *server);
+x_case_list_t *x_net_server_take_unsent_messages(x_net_server_t *server);
 
 #endif

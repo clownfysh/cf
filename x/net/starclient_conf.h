@@ -6,7 +6,7 @@
 struct x_net_starclient_conf_t {
   x_config_file_t *conf;
 
-  x_container_list_t *star_arm_ips;
+  x_case_list_t *star_arm_ips;
   unsigned short star_arm_port_min;
   unsigned short star_arm_port_max;
 

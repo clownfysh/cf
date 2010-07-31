@@ -10,7 +10,7 @@ typedef struct x_net_node_t x_net_node_t;
 
 x_net_node_t *x_net_node_create(char *node_ip, unsigned short node_min_port,
     unsigned short node_max_port, unsigned short node_max_threads,
-    x_container_list_t *peer_node_ips, unsigned short peer_node_port_min,
+    x_case_list_t *peer_node_ips, unsigned short peer_node_port_min,
     unsigned short peer_node_port_max, x_audit_log_t *log);
 
 void x_net_node_destroy(x_net_node_t *node);

@@ -303,7 +303,7 @@ x_core_bool_t x_psql_system_query_count(x_psql_system_t *system, char *sql,
   assert(error_text);
   x_core_bool_t success;
   x_psql_result_t *result;
-  x_container_map_t *row;
+  x_case_map_t *row;
   char *count_string;
   x_psql_system_query_error_t x_psql_system_query_error;
 
@@ -313,7 +313,7 @@ x_core_bool_t x_psql_system_query_count(x_psql_system_t *system, char *sql,
     (system, sql, &x_psql_system_query_error, error_text);
   if (result) {
     row = x_psql_result_get_row(result, 0);
-    count_string = x_container_map_find(row, "c");
+    count_string = x_case_map_find(row, "c");
     if (count_string) {
       success = x_core_bool_true;
       *count = atol(count_string);

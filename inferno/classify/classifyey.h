@@ -2,11 +2,11 @@
 #define inferno_classify_classifyey_h
 
 #include "x/audit/log.h"
-#include "x/container/array.h"
+#include "x/case/array.h"
 #include "x/core/bitarray.h"
 
 typedef void *(*inferno_classify_classifyey_create_f)
-  (x_container_array_t *classified_objects, x_audit_log_t *log);
+  (x_case_array_t *classified_objects, x_audit_log_t *log);
 
 typedef void (*inferno_classify_classifyey_destroy_f)(void *system_void);
 

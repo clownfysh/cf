@@ -2,7 +2,7 @@
 #define inferno_classify_system_h
 
 #include "x/audit/log.h"
-#include "x/container/array.h"
+#include "x/case/array.h"
 #include "x/core/bit.h"
 #include "x/core/bitarray.h"
 #include "x/core/tools.h"
@@ -37,7 +37,7 @@ typedef struct inferno_classify_system_t inferno_classify_system_t;
  * \return context variable for the classify, or NULL if not successful
  */
 inferno_classify_system_t *inferno_classify_system_create
-(x_container_array_t *classified_objects, inferno_classify_algorithm_t algorithm,
+(x_case_array_t *classified_objects, inferno_classify_algorithm_t algorithm,
     x_audit_log_t *log);
 
 /*!
@@ -72,8 +72,8 @@ x_core_bit_t inferno_classify_system_classify_object(inferno_classify_system_t *
  *         corresponding input object.  if you pass in 100 objects, this will
  *         return an array of 100 classifications.
  */
-x_container_array_t *inferno_classify_system_classify_objects
-(inferno_classify_system_t *system, x_container_array_t *objects);
+x_case_array_t *inferno_classify_system_classify_objects
+(inferno_classify_system_t *system, x_case_array_t *objects);
 
 /*!
  * spend some time learning about observed objects.  call this when you want to
@@ -125,6 +125,6 @@ x_core_bool_t inferno_classify_system_observe_object(inferno_classify_system_t *
  * \return the success of the call
  */
 x_core_bool_t inferno_classify_system_observe_objects(inferno_classify_system_t *system,
-    x_container_array_t *classified_objects);
+    x_case_array_t *classified_objects);
 
 #endif

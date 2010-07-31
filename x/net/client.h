@@ -2,7 +2,7 @@
 #define x_net_client_h
 
 #include "x/audit/log.h"
-#include "x/container/list.h"
+#include "x/case/list.h"
 #include "x/core/message.h"
 #include "x/core/messagey.h"
 #include "x/net/postey.h"
@@ -46,6 +46,6 @@ void x_net_client_register_message_handler(x_net_client_t *client,
 x_core_bool_t x_net_client_send_message(x_net_client_t *client,
     x_core_message_t *message);
 
-x_container_list_t *x_net_client_take_unsent_messages(x_net_client_t *client);
+x_case_list_t *x_net_client_take_unsent_messages(x_net_client_t *client);
 
 #endif

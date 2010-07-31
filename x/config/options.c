@@ -1,12 +1,12 @@
 #include "x/config/options.h"
-#include "x/container/dumpster.h"
-#include "x/container/map.h"
+#include "x/case/dumpster.h"
+#include "x/case/map.h"
 #include "x/core/string.h"
 #include "x/core/tools.h"
 
 struct x_config_options_t {
-  x_container_map_t *options;
-  x_container_dumpster_t *dumpster;
+  x_case_map_t *options;
+  x_case_dumpster_t *dumpster;
 };
 
 static void parse_options(x_config_options_t *options, int argc, char *argv[]);
@@ -20,12 +20,12 @@ x_config_options_t *x_config_options_create(int argc, char *argv[],
   options = malloc(sizeof *options);
   if (options) {
     options->dumpster = NULL;
-    options->options = x_container_map_create(&objects->string_objectey,
-        &objects->string_objectey, X_CONTAINER_MAP_DONT_DESTROY);
+    options->options = x_case_map_create(&objects->string_objectey,
+        &objects->string_objectey, X_CASE_MAP_DONT_DESTROY);
     if (options->options) {
       so_far_so_good = x_core_bool_true;
     } else {
-      x_core_trace("x_container_map_create");
+      x_core_trace("x_case_map_create");
       so_far_so_good = x_core_bool_false;
     }
   } else {
@@ -34,9 +34,9 @@ x_config_options_t *x_config_options_create(int argc, char *argv[],
   }
 
   if (so_far_so_good) {
-    options->dumpster = x_container_dumpster_create(&objects->string_objectey);
+    options->dumpster = x_case_dumpster_create(&objects->string_objectey);
     if (!options->dumpster) {
-      x_core_trace("x_container_dumpster_create");
+      x_core_trace("x_case_dumpster_create");
     }
   }
 
@@ -45,9 +45,9 @@ x_config_options_t *x_config_options_create(int argc, char *argv[],
   }
 
   if (!so_far_so_good && options) {
-    x_container_map_destroy(options->options);
+    x_case_map_destroy(options->options);
     if (options->dumpster) {
-      x_container_dumpster_destroy(options->dumpster);
+      x_case_dumpster_destroy(options->dumpster);
     }
     free(options);
     options = NULL;
@@ -60,8 +60,8 @@ void x_config_options_destroy(x_config_options_t *options)
 {
   assert(options);
 
-  x_container_map_destroy(options->options);
-  x_container_dumpster_destroy(options->dumpster);
+  x_case_map_destroy(options->options);
+  x_case_dumpster_destroy(options->dumpster);
   free(options);
 }
 
@@ -71,7 +71,7 @@ x_core_bool_t x_config_options_find(x_config_options_t *options, char *name)
   assert(name);
   x_core_bool_t found;
 
-  if (x_container_map_find(options->options, name)) {
+  if (x_case_map_find(options->options, name)) {
     found = x_core_bool_true;
   } else {
     found = x_core_bool_false;
@@ -89,7 +89,7 @@ x_core_bool_t x_config_options_find_as_double(x_config_options_t *options,
   x_core_bool_t found;
   char *value_string;
 
-  value_string = x_container_map_find(options->options, name);
+  value_string = x_case_map_find(options->options, name);
   if (value_string) {
     found = x_core_bool_true;
     *value = atof(value_string);
@@ -110,7 +110,7 @@ x_core_bool_t x_config_options_find_as_string(x_config_options_t *options,
   assert(default_value);
   x_core_bool_t found;
 
-  *value = x_container_map_find(options->options, name);
+  *value = x_case_map_find(options->options, name);
   if (*value) {
     found = x_core_bool_true;
   } else {
@@ -131,7 +131,7 @@ x_core_bool_t x_config_options_find_as_unsigned_short
   x_core_bool_t found;
   char *value_string;
 
-  value_string = x_container_map_find(options->options, name);
+  value_string = x_case_map_find(options->options, name);
   if (value_string) {
     found = x_core_bool_true;
     *value = atoi(value_string);
@@ -153,7 +153,7 @@ x_core_bool_t x_config_options_find_as_unsigned_long
   x_core_bool_t found;
   char *value_string;
 
-  value_string = x_container_map_find(options->options, name);
+  value_string = x_case_map_find(options->options, name);
   if (value_string) {
     found = x_core_bool_true;
     *value = atol(value_string);
@@ -166,7 +166,7 @@ x_core_bool_t x_config_options_find_as_unsigned_long
 }
 
 x_core_bool_t x_config_options_find_list_as_strings
-(x_config_options_t *options, char *name, x_container_list_t **list)
+(x_config_options_t *options, char *name, x_case_list_t **list)
 {
   x_core_trace_exit("TODO: implement");
   return x_core_bool_false;
@@ -187,15 +187,15 @@ void parse_options(x_config_options_t *options, int argc, char *argv[])
       if (0 == strcmp("--", substring)) {
         name = strdup(name + 2);
         if (name) {
-          if (!x_container_dumpster_add(options->dumpster, name)) {
-            x_core_trace("x_container_dumpster_add");
+          if (!x_case_dumpster_add(options->dumpster, name)) {
+            x_core_trace("x_case_dumpster_add");
           }
           value = strdup(*(argv + each_word + 1));
-          if (!x_container_dumpster_add(options->dumpster, value)) {
-            x_core_trace("x_container_dumpster_add");
+          if (!x_case_dumpster_add(options->dumpster, value)) {
+            x_core_trace("x_case_dumpster_add");
           }
-          if (!x_container_map_add(options->options, name, value)) {
-            x_core_trace("x_container_map_add");
+          if (!x_case_map_add(options->options, name, value)) {
+            x_core_trace("x_case_map_add");
             free(name);
           }
         } else {

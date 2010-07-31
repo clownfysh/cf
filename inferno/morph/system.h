@@ -39,7 +39,7 @@ typedef struct inferno_morpinferno_system_t inferno_morpinferno_system_t;
  */
 inferno_morpinferno_system_t *inferno_morpinferno_system_create
 (inferno_core_score_solution_f score_solution, inferno_core_goal_t goal, void *context,
-    x_container_array_t *initial_solutions, x_audit_log_t *log);
+    x_case_array_t *initial_solutions, x_audit_log_t *log);
 
 /*!
  * destroy an inhesion::morph system.  release resources the morph is using.
@@ -64,7 +64,7 @@ void inferno_morpinferno_system_destroy(inferno_morpinferno_system_t *system);
  * \return an array of pointers to inferno_core_solution_t variables, which the
  *         caller of this function is responsible for freeing.
  */
-x_container_array_t *inferno_morpinferno_system_get_solutions_copy
+x_case_array_t *inferno_morpinferno_system_get_solutions_copy
 (inferno_morpinferno_system_t *system, unsigned short max_solution_count);
 
 /*!

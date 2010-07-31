@@ -8,10 +8,10 @@ static x_core_bool_t init_box_add_random_actors(inferno_box_system_t *box,
 
 static x_core_bool_t init_box_add_actors_from_initial_solutions
 (inferno_box_system_t *box, inferno_core_actorey_create_f actor_create,
-    void *searcx_system, x_container_array_t *initial_solutions,
+    void *searcx_system, x_case_array_t *initial_solutions,
     x_audit_log_t *log);
 
-x_container_array_t *inferno_core_create_solutions_from_box(inferno_box_system_t *box,
+x_case_array_t *inferno_core_create_solutions_from_box(inferno_box_system_t *box,
     unsigned long max_solution_count, inferno_core_get_solution_f get_solution,
     inferno_core_score_solution_f score_solution, inferno_core_goal_t goal,
     x_core_compare_f compare_maximize, x_core_compare_f compare_minimize,
@@ -24,14 +24,14 @@ x_container_array_t *inferno_core_create_solutions_from_box(inferno_box_system_t
   assert(compare_minimize);
   assert(copy_object);
   assert(log);
-  x_container_array_t *solutions;
+  x_case_array_t *solutions;
   x_core_compare_f compare_objects;
   unsigned long box_volume;
   unsigned long index;
   x_core_bitarray_t *solution;
   x_core_bitarray_t *solution_copy;
   void *object;
-  x_container_array_t *objects;
+  x_case_array_t *objects;
 
   if (INFERNO_CORE_GOAL_MAXIMIZE_SCORE == goal) {
     compare_objects = compare_maximize;
@@ -42,30 +42,30 @@ x_container_array_t *inferno_core_create_solutions_from_box(inferno_box_system_t
   box_volume = inferno_box_system_get_volume(box);
   max_solution_count = x_core_min(max_solution_count, box_volume);
 
-  objects = x_container_array_create(box_volume, compare_objects,
+  objects = x_case_array_create(box_volume, compare_objects,
       copy_object, X_CORE_NO_DESTROY_FUNCTION);
   if (objects) {
     inferno_box_system_iterate_start(box);
     index = 0;
     while ((object = inferno_box_system_iterate_next(box))) {
-      x_container_array_add(objects, index, object);
+      x_case_array_add(objects, index, object);
       index++;
     }
 
-    x_container_array_sort(objects);
+    x_case_array_sort(objects);
 
-    solutions = x_container_array_create(max_solution_count,
+    solutions = x_case_array_create(max_solution_count,
         x_core_bitarray_compare, x_core_bitarray_copy,
         x_core_bitarray_destroy);
     if (solutions) {
-      x_container_array_iterate_start(objects);
+      x_case_array_iterate_start(objects);
       for (index = 0; index < max_solution_count; index++) {
-        object = x_container_array_iterate_next(objects);
+        object = x_case_array_iterate_next(objects);
         solution = get_solution(object);
         if (solution) {
           solution_copy = x_core_bitarray_copy(solution);
           if (solution_copy) {
-            x_container_array_add(solutions, index, solution_copy);
+            x_case_array_add(solutions, index, solution_copy);
           } else {
             x_audit_log_trace(log, "ih", "x_core_bitarray_copy");
           }
@@ -75,12 +75,12 @@ x_container_array_t *inferno_core_create_solutions_from_box(inferno_box_system_t
         index++;
       }
     } else {
-      x_audit_log_trace(log, "ih", "x_container_array_create");
+      x_audit_log_trace(log, "ih", "x_case_array_create");
     }
-    x_container_array_destroy(objects);
+    x_case_array_destroy(objects);
   } else {
     solutions = NULL;
-    x_audit_log_trace(log, "ih", "x_container_array_create");
+    x_audit_log_trace(log, "ih", "x_case_array_create");
   }
 
   return solutions;
@@ -88,7 +88,7 @@ x_container_array_t *inferno_core_create_solutions_from_box(inferno_box_system_t
 
 inferno_box_system_t *inferno_core_create_actor_box(void *searcx_system,
     inferno_box_coordinate_t *dimension_coordinate,
-    x_container_array_t *initial_solutions, inferno_core_actorey_t *actorey,
+    x_case_array_t *initial_solutions, inferno_core_actorey_t *actorey,
     x_audit_log_t *log)
 {
   assert(searcx_system);
@@ -166,7 +166,7 @@ x_core_bool_t init_box_add_random_actors(inferno_box_system_t *box,
 /*  TODO: sort this array ourselves, by solution score  */
 x_core_bool_t init_box_add_actors_from_initial_solutions(inferno_box_system_t *box,
     inferno_core_actorey_create_f actor_create, void *searcx_system,
-    x_container_array_t *initial_solutions, x_audit_log_t *log)
+    x_case_array_t *initial_solutions, x_audit_log_t *log)
 {
   assert(box);
   assert(initial_solutions);
@@ -177,8 +177,8 @@ x_core_bool_t init_box_add_actors_from_initial_solutions(inferno_box_system_t *b
 
   success = x_core_bool_true;
 
-  x_container_array_iterate_start(initial_solutions);
-  while ((bitarray = x_container_array_iterate_next(initial_solutions))) {
+  x_case_array_iterate_start(initial_solutions);
+  while ((bitarray = x_case_array_iterate_next(initial_solutions))) {
     actor = actor_create(searcx_system, bitarray);
     if (actor) {
       inferno_box_system_replace_random(box, actor);

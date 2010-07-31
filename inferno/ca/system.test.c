@@ -79,7 +79,7 @@ void randomize_water_name(char *name)
 void test_ant(char *name)
 {
   inferno_ca_system_t *cell_system;
-  x_container_array_t *initial_state_history;
+  x_case_array_t *initial_state_history;
   unsigned long initial_time_step_count;
   unsigned long cell_count;
   x_core_run_t *run;
@@ -122,13 +122,13 @@ void test_ant(char *name)
 
   inferno_ca_system_destroy(cell_system);
   x_core_run_destroy(run);
-  x_container_array_destroy(initial_state_history);
+  x_case_array_destroy(initial_state_history);
 }
 
 void test_clear(unsigned short name)
 {
   inferno_ca_system_t *cell_system;
-  x_container_array_t *initial_state_history;
+  x_case_array_t *initial_state_history;
   unsigned long initial_time_step_count;
   unsigned long cell_count;
   x_core_run_t *run;
@@ -171,13 +171,13 @@ void test_clear(unsigned short name)
 
   inferno_ca_system_destroy(cell_system);
   x_core_run_destroy(run);
-  x_container_array_destroy(initial_state_history);
+  x_case_array_destroy(initial_state_history);
 }
 
 void test_crow(unsigned short name)
 {
   inferno_ca_system_t *cell_system;
-  x_container_array_t *initial_state_history;
+  x_case_array_t *initial_state_history;
   unsigned long initial_time_step_count;
   unsigned long cell_count;
   x_core_run_t *run;
@@ -220,13 +220,13 @@ void test_crow(unsigned short name)
 
   inferno_ca_system_destroy(cell_system);
   x_core_run_destroy(run);
-  x_container_array_destroy(initial_state_history);
+  x_case_array_destroy(initial_state_history);
 }
 
 void test_eca(unsigned short name)
 {
   inferno_ca_system_t *cell_system;
-  x_container_array_t *initial_state_history;
+  x_case_array_t *initial_state_history;
   unsigned long initial_time_step_count;
   unsigned long cell_count;
   x_core_run_t *run;
@@ -269,14 +269,14 @@ void test_eca(unsigned short name)
 
   inferno_ca_system_destroy(cell_system);
   x_core_run_destroy(run);
-  x_container_array_destroy(initial_state_history);
+  x_case_array_destroy(initial_state_history);
 }
 
 /*
 void test_fly(char *name)
 {
   inferno_ca_system_t *cell_system;
-  x_container_array_t *initial_state_history;
+  x_case_array_t *initial_state_history;
   unsigned long initial_time_step_count;
   unsigned long cell_count;
   x_core_run_t *run;
@@ -319,14 +319,14 @@ void test_fly(char *name)
 
   inferno_ca_system_destroy(cell_system);
   x_core_run_destroy(run);
-  x_container_array_destroy(initial_state_history);
+  x_case_array_destroy(initial_state_history);
 }
 */
 
 void test_k3(unsigned long name)
 {
   inferno_ca_system_t *cell_system;
-  x_container_array_t *initial_state_history;
+  x_case_array_t *initial_state_history;
   unsigned long initial_time_step_count;
   unsigned long cell_count;
   x_core_run_t *run;
@@ -367,14 +367,14 @@ void test_k3(unsigned long name)
 
   inferno_ca_system_destroy(cell_system);
   x_core_run_destroy(run);
-  x_container_array_destroy(initial_state_history);
+  x_case_array_destroy(initial_state_history);
   free(filename);
 }
 
 void test_malice(char *name)
 {
   inferno_ca_system_t *cell_system;
-  x_container_array_t *initial_state_history;
+  x_case_array_t *initial_state_history;
   unsigned long initial_time_step_count;
   unsigned long cell_count;
   x_core_run_t *run;
@@ -417,13 +417,13 @@ void test_malice(char *name)
 
   inferno_ca_system_destroy(cell_system);
   x_core_run_destroy(run);
-  x_container_array_destroy(initial_state_history);
+  x_case_array_destroy(initial_state_history);
 }
 
 void test_water(char *name)
 {
   inferno_ca_system_t *cell_system;
-  x_container_array_t *initial_state_history;
+  x_case_array_t *initial_state_history;
   unsigned long initial_time_step_count;
   unsigned long cell_count;
   x_core_run_t *run;
@@ -467,7 +467,7 @@ void test_water(char *name)
 
   inferno_ca_system_destroy(cell_system);
   x_core_run_destroy(run);
-  x_container_array_destroy(initial_state_history);
+  x_case_array_destroy(initial_state_history);
 }
 
 int main(int argc, char *argv[])

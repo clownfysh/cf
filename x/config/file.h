@@ -1,7 +1,7 @@
 #ifndef x_config_file_h
 #define x_config_file_h
 
-#include "x/container/list.h"
+#include "x/case/list.h"
 
 struct x_config_file_t;
 typedef struct x_config_file_t x_config_file_t;
@@ -25,6 +25,6 @@ x_core_bool_t x_config_file_find_as_unsigned_short(x_config_file_t *file,
     char *name, unsigned short *value, unsigned short default_value);
 
 x_core_bool_t x_config_file_find_list_as_strings(x_config_file_t *file,
-    char *name, x_container_list_t **list);
+    char *name, x_case_list_t **list);
 
 #endif

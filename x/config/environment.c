@@ -79,7 +79,7 @@ x_core_bool_t x_config_environment_find_as_unsigned_short
 }
 
 x_core_bool_t x_config_environment_find_list_as_strings
-(x_config_environment_t *environment, char *name, x_container_list_t **list)
+(x_config_environment_t *environment, char *name, x_case_list_t **list)
 {
   assert(environment);
   assert(name);

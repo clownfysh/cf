@@ -10,7 +10,7 @@ struct inferno_morpinferno_system_t {
 
 inferno_morpinferno_system_t *inferno_morpinferno_system_create
 (inferno_core_score_solution_f score_solution, inferno_core_goal_t goal, void *context,
-    x_container_array_t *initial_solutions, x_audit_log_t *log)
+    x_case_array_t *initial_solutions, x_audit_log_t *log)
 {
   assert(score_solution);
   assert(log);
@@ -42,7 +42,7 @@ void inferno_morpinferno_system_destroy(inferno_morpinferno_system_t *system)
   free(system);
 }
 
-x_container_array_t *inferno_morpinferno_system_get_solutions_copy
+x_case_array_t *inferno_morpinferno_system_get_solutions_copy
 (inferno_morpinferno_system_t *system, unsigned short max_solution_count)
 {
   assert(system);

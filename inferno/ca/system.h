@@ -3,11 +3,11 @@
 
 #include "inferno/ca/state.h"
 #include "inferno/ca/systemey.h"
-#include "x/container/array.h"
+#include "x/case/array.h"
 #include "x/core/run.h"
 
 inferno_ca_system_t *inferno_ca_system_create
-(x_container_array_t *initial_state_history,
+(x_case_array_t *initial_state_history,
     unsigned long initial_time_step_count, inferno_ca_systemey_t *systemey);
 
 void inferno_ca_system_default_get_cell_color(inferno_ca_t *cell,

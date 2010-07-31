@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
   char *x_psql_system_query_error_text;
   x_psql_result_t *x_psql_result;
   char *sql;
-  x_container_map_t *row;
+  x_case_map_t *row;
   x_psql_system_execute_error_t x_psql_system_execute_error;
   char *x_psql_system_execute_error_text;
   x_audit_log_t *log;
@@ -52,8 +52,8 @@ int main(int argc, char *argv[])
 
   x_psql_result_iterate_start(x_psql_result);
   while ((row = x_psql_result_iterate_next(x_psql_result))) {
-    printf("id=%s name=%s\n", (char *) x_container_map_find(row, "id"),
-        (char *) x_container_map_find(row, "name"));
+    printf("id=%s name=%s\n", (char *) x_case_map_find(row, "id"),
+        (char *) x_case_map_find(row, "name"));
   }
 
   x_psql_result_destroy(x_psql_result);

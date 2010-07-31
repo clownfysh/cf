@@ -1,4 +1,4 @@
-#include "x/container/cache.h"
+#include "x/case/cache.h"
 #include "x/core/constants.h"
 #include "x/core/tools.h"
 #include "x/xcache/item.h"
@@ -7,7 +7,7 @@
 #define WAIT_ON_OBJECT_SLEEP_MICROSECONDS X_CORE_STANDARD_SLEEP_MICROSECONDS
 
 struct x_xcache_system_t {
-  x_container_cache_t *container_cache;
+  x_case_cache_t *container_cache;
   pthread_mutex_t mutex;
 };
 
@@ -30,7 +30,7 @@ void *find_copy_expire(x_xcache_system_t *system,
 
     pthread_mutex_lock(&system->mutex);
     {
-      item = x_container_cache_find(system->container_cache, item_decoy);
+      item = x_case_cache_find(system->container_cache, item_decoy);
       if (item) {
         object_copy = x_xcache_item_get_object_copy(item);
         if (!object_copy) {
@@ -65,10 +65,10 @@ x_core_bool_t x_xcache_system_add(x_xcache_system_t *system,
   item = x_xcache_item_create(object_uuid, object, copy, destroy,
       lifetime_seconds);
   if (item) {
-    success = x_container_cache_add(system->container_cache, item);
+    success = x_case_cache_add(system->container_cache, item);
     if (!success) {
       x_xcache_item_destroy(item);
-      x_core_trace("x_container_cache_add");
+      x_core_trace("x_case_cache_add");
     }
   } else {
     x_core_trace("x_xcache_item_create");
@@ -79,7 +79,7 @@ x_core_bool_t x_xcache_system_add(x_xcache_system_t *system,
 
 void x_xcache_system_clear(x_xcache_system_t *system)
 {
-  x_container_cache_clear(system->container_cache);
+  x_case_cache_clear(system->container_cache);
 }
 
 x_xcache_system_t *x_xcache_system_create()
@@ -92,7 +92,7 @@ x_xcache_system_t *x_xcache_system_create()
 
   system = malloc(sizeof *system);
   if (system) {
-    system->container_cache = x_container_cache_create(x_xcache_item_compare,
+    system->container_cache = x_case_cache_create(x_xcache_item_compare,
         x_xcache_item_copy, x_xcache_item_destroy, x_xcache_item_is_expired);
     if (system->container_cache) {
       so_far_so_good = x_core_bool_true;
@@ -116,7 +116,7 @@ x_xcache_system_t *x_xcache_system_create()
 
   if (system && !so_far_so_good) {
     if (system->container_cache) {
-      x_container_cache_destroy(system->container_cache);
+      x_case_cache_destroy(system->container_cache);
     }
     if (mutex_needs_destroy) {
       if (0 != pthread_mutex_destroy(&system->mutex)) {
@@ -133,7 +133,7 @@ x_xcache_system_t *x_xcache_system_create()
 void x_xcache_system_destroy(x_xcache_system_t *system)
 {
   assert(system);
-  x_container_cache_destroy(system->container_cache);
+  x_case_cache_destroy(system->container_cache);
   if (0 != pthread_mutex_destroy(&system->mutex)) {
     x_core_trace("pthread_mutex_destroy");
   }
@@ -167,12 +167,12 @@ void *x_xcache_system_find_wait_copy_expire
 
 unsigned long x_xcache_system_get_size(x_xcache_system_t *system)
 {
-  return x_container_cache_get_size(system->container_cache);
+  return x_case_cache_get_size(system->container_cache);
 }
 
 void x_xcache_system_remove_objects(x_xcache_system_t *system)
 {
   pthread_mutex_lock(&system->mutex);
-  x_container_cache_remove_objects(system->container_cache);
+  x_case_cache_remove_objects(system->container_cache);
   pthread_mutex_unlock(&system->mutex);
 }

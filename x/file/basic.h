@@ -1,7 +1,7 @@
 #ifndef x_file_basic_h
 #define x_file_basic_h
 
-#include "x/container/list.h"
+#include "x/case/list.h"
 #include "x/core/types.h"
 #include "x/file/mode.h"
 
@@ -17,11 +17,11 @@ x_core_bool_t x_file_basic_exists(const char *filename);
 x_core_bool_t x_file_basic_get_as_blob(x_file_basic_t *file, char **blob,
     unsigned long *blob_size);
 
-x_container_list_t *x_file_basic_get_as_line_list(x_file_basic_t *file);
+x_case_list_t *x_file_basic_get_as_line_list(x_file_basic_t *file);
 
 char *x_file_basic_get_as_string(x_file_basic_t *file);
 
-x_container_list_t *x_file_basic_get_as_token_list(x_file_basic_t *file,
+x_case_list_t *x_file_basic_get_as_token_list(x_file_basic_t *file,
     char *delimiters);
 
 FILE *x_file_basic_get_file(x_file_basic_t *file);

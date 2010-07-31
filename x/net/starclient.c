@@ -1,4 +1,4 @@
-#include "x/container/set.h"
+#include "x/case/set.h"
 #include "x/core/nameobject.h"
 #include "x/core/period.h"
 #include "x/core/tools.h"
@@ -23,7 +23,7 @@ struct message_handler_info_t {
 typedef struct message_handler_info_t message_handler_info_t;
 
 struct x_net_starclient_t {
-  x_container_list_t *star_arm_ips;
+  x_case_list_t *star_arm_ips;
   unsigned short star_arm_port_min;
   unsigned short star_arm_port_max;
 
@@ -31,21 +31,21 @@ struct x_net_starclient_t {
   unsigned short node_server_exclude_min_port;
   unsigned short node_server_exclude_max_port;
 
-  x_container_set_t *clients;
-  x_container_list_t *client_list;
+  x_case_set_t *clients;
+  x_case_list_t *client_list;
 
   x_net_maintain_t maintain_schedule;
   x_core_bool_t stop_requested;
   x_core_period_t *maintain_period;
 
-  x_container_list_t *unsent_messages;
+  x_case_list_t *unsent_messages;
   unsigned long unsent_messages_queue_size;
 
   unsigned long last_star_arm_count;
   x_core_bool_t need_to_print_stats;
 
   long message_type_counts[X_NET_ENGINE_TYPE_COUNT];
-  x_container_list_t *message_handler_info;
+  x_case_list_t *message_handler_info;
 
   void *custom_client_context;
   x_audit_log_t *log;
@@ -123,7 +123,7 @@ x_core_bool_t client_connected(x_net_starclient_t *starclient,
       take_unsent_messages(starclient, client);
       nameclient_decoy = x_core_nameobject_create_decoy(client_name);
       if (nameclient_decoy) {
-        if (x_container_set_remove(starclient->clients, nameclient_decoy)) {
+        if (x_case_set_remove(starclient->clients, nameclient_decoy)) {
           printf("[star] lost connection with %s\n", client_name);
           starclient->need_to_print_stats = x_core_bool_true;
         } else {
@@ -199,7 +199,7 @@ void establisx_connection(x_net_starclient_t *starclient, char *client_name,
         X_CORE_NO_COPY_FUNCTION, x_net_client_destroy,
         x_net_client_get_as_string);
     if (nameclient) {
-      if (x_container_set_add(starclient->clients, nameclient)) {
+      if (x_case_set_add(starclient->clients, nameclient)) {
         if (register_engines_witx_client(starclient, client)) {
           register_message_handlers_witx_client(starclient, client);
           printf("[star] connect to %s\n", client_name);
@@ -209,7 +209,7 @@ void establisx_connection(x_net_starclient_t *starclient, char *client_name,
           x_core_trace("register_engines_witx_client");
         }
       } else {
-        x_core_trace("x_container_set_add");
+        x_core_trace("x_case_set_add");
         x_core_nameobject_destroy(nameclient);
       }
     } else {
@@ -250,7 +250,7 @@ x_net_client_t *find_client(x_net_starclient_t *starclient, char *client_name)
 
   nameclient_decoy = x_core_nameobject_create_decoy(client_name);
   if (nameclient_decoy) {
-    nameclient = x_container_set_find(starclient->clients, nameclient_decoy);
+    nameclient = x_case_set_find(starclient->clients, nameclient_decoy);
     x_core_nameobject_destroy_decoy(nameclient_decoy);
     if (nameclient) {
       client = x_core_nameobject_get_object(nameclient);
@@ -271,7 +271,7 @@ x_net_client_t *get_random_client(x_net_starclient_t *starclient)
   x_core_nameobject_t *nameclient;
   x_net_client_t *client;
 
-  nameclient = x_container_list_find_random(starclient->client_list);
+  nameclient = x_case_list_find_random(starclient->client_list);
   if (nameclient) {
     client = x_core_nameobject_get_object(nameclient);
   } else {
@@ -290,8 +290,8 @@ x_core_bool_t x_net_starclient_connect(x_net_starclient_t *starclient)
   char *client_name;
   unsigned long star_arm_count;
 
-  x_container_list_iterate_start(starclient->star_arm_ips);
-  while ((arm_ip = x_container_list_iterate_next(starclient->star_arm_ips))) {
+  x_case_list_iterate_start(starclient->star_arm_ips);
+  while ((arm_ip = x_case_list_iterate_next(starclient->star_arm_ips))) {
     for (port = starclient->star_arm_port_min;
          port <= starclient->star_arm_port_max; port++) {
       if (!exclude_ip_port_combination(starclient, arm_ip, port)) {
@@ -306,12 +306,12 @@ x_core_bool_t x_net_starclient_connect(x_net_starclient_t *starclient)
     }
   }
 
-  star_arm_count = x_container_set_get_size(starclient->clients);
+  star_arm_count = x_case_set_get_size(starclient->clients);
   if (star_arm_count != starclient->last_star_arm_count) {
     starclient->need_to_print_stats = x_core_bool_true;
   }
 
-  if (x_container_set_get_size(starclient->clients) > 0) {
+  if (x_case_set_get_size(starclient->clients) > 0) {
     connected_to_at_least_one = x_core_bool_true;
   } else {
     connected_to_at_least_one = x_core_bool_false;
@@ -320,7 +320,7 @@ x_core_bool_t x_net_starclient_connect(x_net_starclient_t *starclient)
   return connected_to_at_least_one;
 }
 
-x_net_starclient_t *x_net_starclient_create(x_container_list_t *star_arm_ips,
+x_net_starclient_t *x_net_starclient_create(x_case_list_t *star_arm_ips,
     unsigned short star_arm_port_min, unsigned short star_arm_port_max,
     char *node_server_exclude_ip, unsigned short node_server_exclude_min_port,
     unsigned short node_server_exclude_max_port, void *custom_client_context,
@@ -397,7 +397,7 @@ x_core_bool_t x_net_starclient_create_client_list
   assert(starclient);
   x_core_bool_t success;
 
-  starclient->client_list = x_container_list_create(x_core_nameobject_compare,
+  starclient->client_list = x_case_list_create(x_core_nameobject_compare,
       x_core_nameobject_copy, X_CORE_NO_DESTROY_FUNCTION);
   if (starclient->client_list) {
     success = x_core_bool_true;
@@ -414,7 +414,7 @@ x_core_bool_t x_net_starclient_create_clients(x_net_starclient_t *starclient)
   x_core_bool_t success;
 
   starclient->clients
-    = x_container_set_create(&starclient->nameobject_objectey);
+    = x_case_set_create(&starclient->nameobject_objectey);
   if (starclient->clients) {
     success = x_core_bool_true;
   } else {
@@ -447,12 +447,12 @@ x_core_bool_t x_net_starclient_create_message_handler_info
   assert(starclient);
   x_core_bool_t success;
 
-  starclient->message_handler_info = x_container_list_create
+  starclient->message_handler_info = x_case_list_create
     (X_CORE_NO_COMPARE_FUNCTION, X_CORE_NO_COPY_FUNCTION, free);
   if (starclient->message_handler_info) {
     success = x_core_bool_true;
   } else {
-    x_core_trace("x_container_list_create");
+    x_core_trace("x_case_list_create");
     success = x_core_bool_false;
   }
 
@@ -465,7 +465,7 @@ x_core_bool_t x_net_starclient_create_unsent_messages
   assert(starclient);
   x_core_bool_t success;
 
-  starclient->unsent_messages = x_container_list_create
+  starclient->unsent_messages = x_case_list_create
     (X_CORE_NO_COMPARE_FUNCTION, x_core_message_copy,
         X_CORE_NO_DESTROY_FUNCTION);
   if (starclient->unsent_messages) {
@@ -482,19 +482,19 @@ void x_net_starclient_create_rollback(x_net_starclient_t *starclient)
   assert(starclient);
 
   if (starclient->clients) {
-    x_container_set_destroy(starclient->clients);
+    x_case_set_destroy(starclient->clients);
   }
   if (starclient->maintain_period) {
     x_core_period_destroy(starclient->maintain_period);
   }
   if (starclient->unsent_messages) {
-    x_container_list_destroy(starclient->unsent_messages);
+    x_case_list_destroy(starclient->unsent_messages);
   }
   if (starclient->client_list) {
-    x_container_list_destroy(starclient->client_list);
+    x_case_list_destroy(starclient->client_list);
   }
   if (starclient->message_handler_info) {
-    x_container_list_destroy(starclient->message_handler_info);
+    x_case_list_destroy(starclient->message_handler_info);
   }
   free(starclient);
 }
@@ -505,18 +505,18 @@ void x_net_starclient_destroy(x_net_starclient_t *starclient)
   unsigned int unsent_message_count;
 
   unsent_message_count
-    = x_container_list_get_size(starclient->unsent_messages);
+    = x_case_list_get_size(starclient->unsent_messages);
 
   if (unsent_message_count > 0) {
     printf("[star] %u messages in unsent queue were lost\n",
         unsent_message_count);
   }
 
-  x_container_set_destroy(starclient->clients);
+  x_case_set_destroy(starclient->clients);
   x_core_period_destroy(starclient->maintain_period);
-  x_container_list_destroy(starclient->unsent_messages);
-  x_container_list_destroy(starclient->client_list);
-  x_container_list_destroy(starclient->message_handler_info);
+  x_case_list_destroy(starclient->unsent_messages);
+  x_case_list_destroy(starclient->client_list);
+  x_case_list_destroy(starclient->message_handler_info);
   free(starclient);
 }
 
@@ -532,8 +532,8 @@ x_net_client_t *x_net_starclient_get_client(x_net_starclient_t *starclient,
   found_it = x_core_bool_false;
   client = NULL;
 
-  x_container_list_iterate_start(starclient->client_list);
-  while (!found_it && (nameclient = x_container_list_iterate_next
+  x_case_list_iterate_start(starclient->client_list);
+  while (!found_it && (nameclient = x_case_list_iterate_next
           (starclient->client_list))) {
     client = x_core_nameobject_get_object(nameclient);
     each_socket = x_net_client_get_socket(client);
@@ -552,7 +552,7 @@ void x_net_starclient_get_stats(x_net_starclient_t *starclient,
   assert(starclient_stats);
 
   starclient_stats->connected_server_count
-    = x_container_set_get_size(starclient->clients);
+    = x_case_set_get_size(starclient->clients);
 }
 
 void x_net_starclient_process_messages(x_net_starclient_t *starclient)
@@ -561,8 +561,8 @@ void x_net_starclient_process_messages(x_net_starclient_t *starclient)
   x_core_nameobject_t *nameclient;
   x_net_client_t *client;
 
-  x_container_set_iterate_start(starclient->clients);
-  while ((nameclient = x_container_set_iterate_next(starclient->clients))) {
+  x_case_set_iterate_start(starclient->clients);
+  while ((nameclient = x_case_set_iterate_next(starclient->clients))) {
     client = x_core_nameobject_get_object(nameclient);
     x_net_client_process_messages(client);
   }
@@ -589,8 +589,8 @@ x_core_bool_t x_net_starclient_register_engine(x_net_starclient_t *starclient,
 
   *(starclient->message_type_counts + engine_id) = message_type_count;
 
-  x_container_set_iterate_start(starclient->clients);
-  while ((nameclient = x_container_set_iterate_next(starclient->clients))) {
+  x_case_set_iterate_start(starclient->clients);
+  while ((nameclient = x_case_set_iterate_next(starclient->clients))) {
     client = x_core_nameobject_get_object(nameclient);
     if (!x_net_client_register_engine(client, engine_id, message_type_count)) {
       success = x_core_bool_false;
@@ -614,17 +614,17 @@ void x_net_starclient_register_message_handler(x_net_starclient_t *starclient,
     message_handler_info->engine_id = engine_id;
     message_handler_info->message_type = message_type;
     message_handler_info->message_handler = message_handler;
-    if (!x_container_list_add_last
+    if (!x_case_list_add_last
         (starclient->message_handler_info, message_handler_info)) {
-      x_core_trace("x_container_list_add_last");
+      x_core_trace("x_case_list_add_last");
       free(message_handler_info);
     }
   } else {
     x_core_trace("malloc");
   }
 
-  x_container_set_iterate_start(starclient->clients);
-  while ((nameclient = x_container_set_iterate_next(starclient->clients))) {
+  x_case_set_iterate_start(starclient->clients);
+  while ((nameclient = x_case_set_iterate_next(starclient->clients))) {
     client = x_core_nameobject_get_object(nameclient);
     x_net_client_register_message_handler
       (client, engine_id, message_type, message_handler);
@@ -677,8 +677,8 @@ x_core_bool_t x_net_starclient_send_message_to_all_arms
 
   success = x_core_bool_true;
 
-  x_container_set_iterate_start(starclient->clients);
-  while ((nameclient = x_container_set_iterate_next(starclient->clients))) {
+  x_case_set_iterate_start(starclient->clients);
+  while ((nameclient = x_case_set_iterate_next(starclient->clients))) {
     client = x_core_nameobject_get_object(nameclient);
     message_copy = x_core_message_copy(message);
     if (message_copy) {
@@ -709,7 +709,7 @@ x_core_bool_t x_net_starclient_star_available(x_net_starclient_t *starclient)
   x_core_bool_t available;
   unsigned long client_count;
 
-  client_count = x_container_set_get_size(starclient->clients);
+  client_count = x_case_set_get_size(starclient->clients);
 
   if (client_count > 0) {
     available = x_core_bool_true;
@@ -725,7 +725,7 @@ void print_stats(x_net_starclient_t *starclient)
   assert(starclient);
   unsigned long star_arm_count;
 
-  star_arm_count = x_container_set_get_size(starclient->clients);
+  star_arm_count = x_case_set_get_size(starclient->clients);
 
   printf("[star] connected to %lu arms of the star\n", star_arm_count);
   starclient->last_star_arm_count = star_arm_count;
@@ -740,10 +740,10 @@ x_core_bool_t put_messsage_in_unsent_queue(x_net_starclient_t *starclient,
   unsigned long messages_in_queue;
   x_core_bool_t success;
 
-  messages_in_queue = x_container_list_get_size(starclient->unsent_messages);
+  messages_in_queue = x_case_list_get_size(starclient->unsent_messages);
 
   if (starclient->unsent_messages_queue_size > messages_in_queue) {
-    if (x_container_list_add_last(starclient->unsent_messages, message)) {
+    if (x_case_list_add_last(starclient->unsent_messages, message)) {
       success = x_core_bool_true;
     } else {
       success = x_core_bool_false;
@@ -759,14 +759,14 @@ void re_route_unsent_messages(x_net_starclient_t *starclient)
 {
   assert(starclient);
   x_core_message_t *message;
-  x_container_list_t *unsent_messages;
+  x_case_list_t *unsent_messages;
 
   unsent_messages = starclient->unsent_messages;
 
-  x_container_list_iterate_start(unsent_messages);
-  while ((message = x_container_list_iterate_next(unsent_messages))) {
+  x_case_list_iterate_start(unsent_messages);
+  while ((message = x_case_list_iterate_next(unsent_messages))) {
     x_net_starclient_send_message_to_any_arm(starclient, message);
-    x_container_list_iterate_remove(unsent_messages);
+    x_case_list_iterate_remove(unsent_messages);
   }
 }
 
@@ -775,10 +775,10 @@ void rebuild_client_list(x_net_starclient_t *starclient)
   assert(starclient);
   x_core_nameobject_t *nameclient;
 
-  x_container_list_clear(starclient->client_list);
-  x_container_set_iterate_start(starclient->clients);
-  while ((nameclient = x_container_set_iterate_next(starclient->clients))) {
-    x_container_list_add_last(starclient->client_list, nameclient);
+  x_case_list_clear(starclient->client_list);
+  x_case_set_iterate_start(starclient->clients);
+  while ((nameclient = x_case_set_iterate_next(starclient->clients))) {
+    x_case_list_add_last(starclient->client_list, nameclient);
   }
 }
 
@@ -816,9 +816,9 @@ void register_message_handlers_witx_client(x_net_starclient_t *starclient,
   assert(client);
   message_handler_info_t *message_handler_info;
 
-  x_container_list_iterate_start(starclient->message_handler_info);
+  x_case_list_iterate_start(starclient->message_handler_info);
   while ((message_handler_info
-          = x_container_list_iterate_next(starclient->message_handler_info))) {
+          = x_case_list_iterate_next(starclient->message_handler_info))) {
     x_net_client_register_message_handler(client,
         message_handler_info->engine_id, message_handler_info->message_type,
         message_handler_info->message_handler);
@@ -830,21 +830,21 @@ void take_unsent_messages(x_net_starclient_t *starclient,
 {
   assert(starclient);
   assert(client);
-  x_container_list_t *unsent_messages;
+  x_case_list_t *unsent_messages;
   x_core_message_t *message;
   unsigned long discarded_message_count;
 
   discarded_message_count = 0;
 
   unsent_messages = x_net_client_take_unsent_messages(client);
-  x_container_list_iterate_start(unsent_messages);
-  while ((message = x_container_list_iterate_next(unsent_messages))) {
+  x_case_list_iterate_start(unsent_messages);
+  while ((message = x_case_list_iterate_next(unsent_messages))) {
     if (!put_messsage_in_unsent_queue(starclient, message)) {
       discarded_message_count++;
       x_core_message_destroy(message);
     }
   }
-  x_container_list_destroy(unsent_messages);
+  x_case_list_destroy(unsent_messages);
 
   if (discarded_message_count > 0) {
     printf("[star] unsent message queue is full, unable to take %lu "

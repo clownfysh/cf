@@ -37,7 +37,7 @@ x_core_bool_t inferno_memory_system_find(inferno_memory_system_t *system,
   return x_core_bool_false;
 }
 
-x_container_array_t *inferno_memory_system_find_cloud(inferno_memory_system_t *system,
+x_case_array_t *inferno_memory_system_find_cloud(inferno_memory_system_t *system,
     unsigned long base, unsigned long cloud_size_max)
 {
   return NULL;

@@ -1,7 +1,7 @@
 #ifndef x_file_csv_h
 #define x_file_csv_h
 
-#include "x/container/array.h"
+#include "x/case/array.h"
 #include "x/core/bit.h"
 #include "x/core/object.h"
 
@@ -15,10 +15,10 @@ x_file_csv_t *x_file_csv_create_extended(char *filename,
 
 void x_file_csv_destroy(void *csv_object);
 
-x_container_array_t *x_file_csv_get_field_by_name_as_array(x_file_csv_t *csv,
+x_case_array_t *x_file_csv_get_field_by_name_as_array(x_file_csv_t *csv,
     char *field_name);
 
-x_container_array_t *x_file_csv_get_field_by_index_as_array(x_file_csv_t *csv,
+x_case_array_t *x_file_csv_get_field_by_index_as_array(x_file_csv_t *csv,
     unsigned long field_index);
 
 unsigned long x_file_csv_get_field_count(x_file_csv_t *csv);

@@ -25,7 +25,7 @@ struct x_net_client_t {
   unsigned short server_max_port;
   unsigned short server_port;
 
-  x_container_list_t *engines;
+  x_case_list_t *engines;
   engine_container_t *engines_array[X_NET_ENGINE_TYPE_COUNT];
 
   x_core_bool_t server_socket_closed;
@@ -208,7 +208,7 @@ x_net_client_t *x_net_client_create(const char *server_ip_address,
   }
 
   if (success) {
-    client->engines = x_container_list_create(X_CORE_NO_COMPARE_FUNCTION,
+    client->engines = x_case_list_create(X_CORE_NO_COMPARE_FUNCTION,
         X_CORE_NO_COPY_FUNCTION, destroy_engine_container);
     if (!client->engines) {
       success = x_core_bool_false;
@@ -243,7 +243,7 @@ x_net_client_t *x_net_client_create(const char *server_ip_address,
       free(client->server_ip_address);
     }
     if (client->engines) {
-      x_container_list_destroy(client->engines);
+      x_case_list_destroy(client->engines);
     }
     if (messaging_mutex_needs_destroy) {
       pthread_mutex_destroy(&client->messaging_mutex);
@@ -268,7 +268,7 @@ void x_net_client_destroy(void *client_object)
   }
   x_net_exchange_destroy(client->exchange);
   free(client->server_ip_address);
-  x_container_list_destroy(client->engines);
+  x_case_list_destroy(client->engines);
   pthread_mutex_destroy(&client->messaging_mutex);
 
   free(client);
@@ -374,7 +374,7 @@ x_core_bool_t x_net_client_register_engine(x_net_client_t *client,
 
   if (success) {
     *(client->engines_array + engine_id) = engine_container;
-    if (!x_container_list_add_last(client->engines, engine_container)) {
+    if (!x_case_list_add_last(client->engines, engine_container)) {
       success = x_core_bool_false;
     }
   }
@@ -431,10 +431,10 @@ x_core_bool_t x_net_client_send_message(x_net_client_t *client,
   return success;
 }
 
-x_container_list_t *x_net_client_take_unsent_messages(x_net_client_t *client)
+x_case_list_t *x_net_client_take_unsent_messages(x_net_client_t *client)
 {
   assert(client);
-  x_container_list_t *messages;
+  x_case_list_t *messages;
 
   pthread_mutex_lock(&client->messaging_mutex);
   messages = x_net_post_take_unsent_messages(client->post);

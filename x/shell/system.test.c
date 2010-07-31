@@ -1,4 +1,4 @@
-#include "x/container/list.h"
+#include "x/case/list.h"
 #include "x/core/constants.h"
 #include "x/core/period.h"
 #include "x/core/string.h"
@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
 
   x_core_shell_t *shell;
   x_core_period_t *period;
-  x_container_list_t *input;
+  x_case_list_t *input;
   char *command_string;
 
   signal(SIGINT, handle_signal);
@@ -53,11 +53,11 @@ int main(int argc, char *argv[])
   while (!x_core_stop_requested) {
     input = x_core_shell_take_input(shell);
     if (input) {
-      x_container_list_iterate_start(input);
-      while ((command_string = x_container_list_iterate_next(input))) {
+      x_case_list_iterate_start(input);
+      while ((command_string = x_case_list_iterate_next(input))) {
         printf(":%s:\n", command_string);
       }
-      x_container_list_destroy(input);
+      x_case_list_destroy(input);
     }
 
     if (x_core_bool_false && x_core_period_once(period)) {

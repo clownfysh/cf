@@ -1,5 +1,5 @@
-#include "x/container/list.h"
-#include "x/container/set.h"
+#include "x/case/list.h"
+#include "x/case/set.h"
 #include "x/core/constants.h"
 #include "x/core/engine.h"
 #include "x/core/message.h"
@@ -29,12 +29,12 @@ struct engine_container_t {
   x_core_bool_t stop_requested;
   unsigned long sleep;
 
-  x_container_list_t *inbox;
+  x_case_list_t *inbox;
 
   pthread_t threads[MAX_THREADS_PER_ENGINE];
   x_core_bool_t run_threads_quiesce_requested[MAX_THREADS_PER_ENGINE];
   x_core_bool_t run_threads_quiesce_completed[MAX_THREADS_PER_ENGINE];
-  x_container_list_t *thread_inboxes[MAX_THREADS_PER_ENGINE];
+  x_case_list_t *thread_inboxes[MAX_THREADS_PER_ENGINE];
   pthread_mutex_t thread_inbox_mutexes[MAX_THREADS_PER_ENGINE];
 
   unsigned short min_run_threads;
@@ -71,14 +71,14 @@ struct x_net_server_t {
   pthread_t accept_thread;
   x_core_bool_t accept_thread_created;
 
-  x_container_list_t *outbox;
+  x_case_list_t *outbox;
   pthread_mutex_t outbox_mutex;
 
-  x_container_set_t *client_posts;
+  x_case_set_t *client_posts;
   x_net_exchange_t *client_exchange;
   pthread_mutex_t client_posts_mutex;
 
-  x_container_list_t *engines;
+  x_case_list_t *engines;
   engine_container_t *engines_array[X_NET_SERVER_MAX_ENGINES];
 
   void *custom_server_object;
@@ -267,21 +267,21 @@ void *accept_thread(void *server_object)
 
 void close_disconnected_clients(x_net_server_t *server)
 {
-  assert(x_container_set_get_size(server->client_posts)
+  assert(x_case_set_get_size(server->client_posts)
       == x_net_exchange_get_post_count(server->client_exchange));
 
   void *client_post_object;
-  x_container_set_t *client_posts;
+  x_case_set_t *client_posts;
   int client_socket;
   x_core_bool_t success;
 
   client_posts = server->client_posts;
 
-  x_container_set_iterate_start(client_posts);
-  while ((client_post_object = x_container_set_iterate_next(client_posts))) {
+  x_case_set_iterate_start(client_posts);
+  while ((client_post_object = x_case_set_iterate_next(client_posts))) {
     if (server->postey->socket_closed(client_post_object)) {
       client_socket = server->postey->get_socket(client_post_object);
-      x_container_set_iterate_remove(client_posts);
+      x_case_set_iterate_remove(client_posts);
       success = x_core_bool_true;
       if (!x_net_exchange_unregister_post
           (server->client_exchange, client_socket)) {
@@ -293,16 +293,16 @@ void close_disconnected_clients(x_net_server_t *server)
     }
   }
 
-  assert(x_container_set_get_size(server->client_posts)
+  assert(x_case_set_get_size(server->client_posts)
       == x_net_exchange_get_post_count(server->client_exchange));
 }
 
 void close_unresponsive_clients(x_net_server_t *server)
 {
-  assert(x_container_set_get_size(server->client_posts)
+  assert(x_case_set_get_size(server->client_posts)
       == x_net_exchange_get_post_count(server->client_exchange));
   void *client_post_object;
-  x_container_set_t *client_posts;
+  x_case_set_t *client_posts;
   int client_socket;
   time_t current_time;
   time_t post_activity_time;
@@ -310,13 +310,13 @@ void close_unresponsive_clients(x_net_server_t *server)
   client_posts = server->client_posts;
   current_time = time(NULL);
 
-  x_container_set_iterate_start(client_posts);
-  while ((client_post_object = x_container_set_iterate_next(client_posts))) {
+  x_case_set_iterate_start(client_posts);
+  while ((client_post_object = x_case_set_iterate_next(client_posts))) {
     post_activity_time = server->postey->get_last_receive_activity_time
       (client_post_object);
     if (current_time - post_activity_time
         > server->unresponsive_client_time_seconds) {
-      x_container_set_iterate_remove(client_posts);
+      x_case_set_iterate_remove(client_posts);
       client_socket = server->postey->get_socket(client_post_object);
       if (!x_net_exchange_unregister_post(server->client_exchange,
               client_socket)) {
@@ -357,11 +357,11 @@ engine_container_t *create_engine_container(x_net_server_t *server,
   }
 
   if (so_far_so_good) {
-    engine_container->inbox = x_container_list_create
+    engine_container->inbox = x_case_list_create
       (X_CORE_NO_COMPARE_FUNCTION, X_CORE_NO_COPY_FUNCTION,
           X_CORE_NO_DESTROY_FUNCTION);
     if (!engine_container->inbox) {
-      x_audit_log_trace(server->log, "hnet", "x_container_list_create");
+      x_audit_log_trace(server->log, "hnet", "x_case_list_create");
       so_far_so_good = x_core_bool_false;
     }
   }
@@ -444,11 +444,11 @@ void create_engine_container_rollback(engine_container_t *engine_container)
     engine_container->enginey->destroy(engine_container->engine_object);
   }
   if (engine_container->inbox) {
-    x_container_list_destroy(engine_container->inbox);
+    x_case_list_destroy(engine_container->inbox);
   }
   for (each_thread = 0; each_thread < MAX_THREADS_PER_ENGINE; each_thread++) {
     if (engine_container->thread_inboxes[each_thread]) {
-      x_container_list_destroy(engine_container->thread_inboxes[each_thread]);
+      x_case_list_destroy(engine_container->thread_inboxes[each_thread]);
     }
   }
   if (engine_container->message_handlers) {
@@ -495,11 +495,11 @@ x_core_bool_t create_engine_container_threads
         + each_thread) = x_core_bool_false;
 
     *(engine_container->thread_inboxes + each_thread)
-      = x_container_list_create(X_CORE_NO_COMPARE_FUNCTION,
+      = x_case_list_create(X_CORE_NO_COMPARE_FUNCTION,
           X_CORE_NO_COPY_FUNCTION, messagey->destroy);
     if (!*(engine_container->thread_inboxes + each_thread)) {
       success = x_core_bool_false;
-      x_audit_log_trace(log, "hnet", "x_container_list_create");
+      x_audit_log_trace(log, "hnet", "x_case_list_create");
       break;
     }
 
@@ -546,7 +546,7 @@ x_core_bool_t create_post_for_new_client(x_net_server_t *server,
 
     pthread_mutex_lock(&server->client_posts_mutex);
     {
-      if (x_container_set_add(server->client_posts, post_object)) {
+      if (x_case_set_add(server->client_posts, post_object)) {
         success = x_core_bool_true;
         if (!x_net_exchange_register_post
             (server->client_exchange, post_object)) {
@@ -555,7 +555,7 @@ x_core_bool_t create_post_for_new_client(x_net_server_t *server,
           success = x_core_bool_false;
         }
       } else {
-        x_audit_log_trace(server->log, "hnet", "x_container_set_add");
+        x_audit_log_trace(server->log, "hnet", "x_case_set_add");
         success = x_core_bool_false;
       }
     }
@@ -678,7 +678,7 @@ void deliver_messages_to_engine(x_net_server_t *server,
   }
 
   if (engine_container->run_thread_count > 0) {
-    inbox_size = x_container_list_get_size(engine_container->inbox);
+    inbox_size = x_case_list_get_size(engine_container->inbox);
     target_number_of_messages_to_deliver
       = inbox_size / engine_container->run_thread_count;
     if (0 == target_number_of_messages_to_deliver) {
@@ -706,7 +706,7 @@ unsigned long deliver_messages_to_engine_thread(x_net_server_t *server,
   assert(engine_container);
   unsigned long messages_delivered;
   unsigned long each_message;
-  x_container_list_t *thread_inbox;
+  x_case_list_t *thread_inbox;
   pthread_mutex_t *thread_inbox_mutex;
   void *message;
 
@@ -717,9 +717,9 @@ unsigned long deliver_messages_to_engine_thread(x_net_server_t *server,
   if (0 == pthread_mutex_trylock(thread_inbox_mutex)) {
     for (each_message = 0; each_message < target_number_of_messages_to_deliver;
          each_message++) {
-      if ((message = x_container_list_find_first(engine_container->inbox))) {
-        if (x_container_list_add_last(thread_inbox, message)) {
-          x_container_list_remove_first(engine_container->inbox);
+      if ((message = x_case_list_find_first(engine_container->inbox))) {
+        if (x_case_list_add_last(thread_inbox, message)) {
+          x_case_list_remove_first(engine_container->inbox);
           messages_delivered++;
         } else {
           x_audit_log_trace(server->log, "hnet", "list_add_last");
@@ -737,8 +737,8 @@ void deliver_messages_to_engines(x_net_server_t *server)
   assert(server);
   engine_container_t *engine_container;
 
-  x_container_list_iterate_start(server->engines);
-  while ((engine_container = x_container_list_iterate_next(server->engines))) {
+  x_case_list_iterate_start(server->engines);
+  while ((engine_container = x_case_list_iterate_next(server->engines))) {
     deliver_messages_to_engine(server, engine_container);
   }
 }
@@ -753,9 +753,9 @@ void destroy_engine_container(void *engine_container_object)
 
   engine_container->enginey->destroy(engine_container->engine_object);
   for (each_thread = 0; each_thread < MAX_THREADS_PER_ENGINE; each_thread++) {
-    x_container_list_destroy(engine_container->thread_inboxes[each_thread]);
+    x_case_list_destroy(engine_container->thread_inboxes[each_thread]);
   }
-  x_container_list_destroy(engine_container->inbox);
+  x_case_list_destroy(engine_container->inbox);
   free(engine_container->message_handlers);
   x_core_period_destroy(engine_container->performance_period);
 
@@ -774,7 +774,7 @@ void destroy_running_engine(running_engine_t *running_engine)
 
 unsigned long engine_count(x_net_server_t *server)
 {
-  return x_container_list_get_size(server->engines);
+  return x_case_list_get_size(server->engines);
 }
 
 x_core_bool_t engine_is_registered(x_net_server_t *server,
@@ -804,7 +804,7 @@ void *find_client_post(x_net_server_t *server, int client_socket)
   decoy_post_object = server->postey->create_decoy(client_socket);
   if (decoy_post_object) {
     client_post_object
-      = x_container_set_find(server->client_posts, decoy_post_object);
+      = x_case_set_find(server->client_posts, decoy_post_object);
     server->postey->destroy_decoy(decoy_post_object);
   } else {
     x_audit_log_trace(server->log, "hnet", "postey->create_decoy");
@@ -920,7 +920,7 @@ x_core_bool_t x_net_server_create_client_posts(x_net_server_t *server)
       X_CORE_NO_EQUAL_FUNCTION, X_CORE_NO_GET_AS_STRING_FUNCTION,
       X_CORE_NO_MOD_FUNCTION);
   server->client_posts
-    = x_container_set_create(&server->client_posts_objectey);
+    = x_case_set_create(&server->client_posts_objectey);
   if (server->client_posts) {
     success = x_core_bool_true;
   } else {
@@ -934,7 +934,7 @@ x_core_bool_t x_net_server_create_client_posts(x_net_server_t *server)
     } else {
       success = x_core_bool_false;
       x_audit_log_trace(server->log, "hnet", "pthread_mutex_init");
-      x_container_set_destroy(server->client_posts);
+      x_case_set_destroy(server->client_posts);
     }
   }
 
@@ -947,7 +947,7 @@ x_core_bool_t x_net_server_create_engines(x_net_server_t *server)
   x_core_bool_t success;
   unsigned long each_engine_id;
 
-  server->engines = x_container_list_create(X_CORE_NO_COMPARE_FUNCTION,
+  server->engines = x_case_list_create(X_CORE_NO_COMPARE_FUNCTION,
       X_CORE_NO_COPY_FUNCTION, destroy_engine_container);
   if (server->engines) {
     for (each_engine_id = 0; each_engine_id < X_NET_SERVER_MAX_ENGINES;
@@ -957,7 +957,7 @@ x_core_bool_t x_net_server_create_engines(x_net_server_t *server)
     success = x_core_bool_true;
   } else {
     success = x_core_bool_false;
-    x_audit_log_trace(server->log, "hnet", "x_container_list_create");
+    x_audit_log_trace(server->log, "hnet", "x_case_list_create");
   }
 
   return success;
@@ -968,7 +968,7 @@ x_core_bool_t x_net_server_create_outbox(x_net_server_t *server)
   assert(server);
   x_core_bool_t success;
 
-  server->outbox = x_container_list_create(X_CORE_NO_COMPARE_FUNCTION,
+  server->outbox = x_case_list_create(X_CORE_NO_COMPARE_FUNCTION,
       X_CORE_NO_COPY_FUNCTION, X_CORE_NO_DESTROY_FUNCTION);
   if (server->outbox) {
     success = x_core_bool_true;
@@ -983,7 +983,7 @@ x_core_bool_t x_net_server_create_outbox(x_net_server_t *server)
     } else {
       success = x_core_bool_false;
       x_audit_log_trace(server->log, "hnet", "pthread_mutex_init");
-      x_container_list_destroy(server->outbox);
+      x_case_list_destroy(server->outbox);
     }
   }
 
@@ -997,16 +997,16 @@ void x_net_server_create_rollback(x_net_server_t *server)
       free(server->name);
     }
     if (server->outbox) {
-      x_container_list_destroy(server->outbox);
+      x_case_list_destroy(server->outbox);
     }
     if (server->client_posts) {
-      x_container_set_destroy(server->client_posts);
+      x_case_set_destroy(server->client_posts);
     }
     if (server->client_exchange) {
       x_net_exchange_destroy(server->client_exchange);
     }
     if (server->engines) {
-      x_container_list_destroy(server->engines);
+      x_case_list_destroy(server->engines);
     }
     free(server);
   }
@@ -1019,15 +1019,15 @@ void x_net_server_destroy(x_net_server_t *server)
 
   join_thread(server, server->server_thread);
 
-  x_container_list_iterate_start(server->outbox);
-  while ((message_object = x_container_list_iterate_next(server->outbox))) {
+  x_case_list_iterate_start(server->outbox);
+  while ((message_object = x_case_list_iterate_next(server->outbox))) {
     server->messagey->destroy(message_object);
   }
-  x_container_list_destroy(server->outbox);
+  x_case_list_destroy(server->outbox);
 
-  x_container_set_destroy(server->client_posts);
+  x_case_set_destroy(server->client_posts);
   x_net_exchange_destroy(server->client_exchange);
-  x_container_list_destroy(server->engines);
+  x_case_list_destroy(server->engines);
   free(server->name);
   free(server);
 }
@@ -1094,7 +1094,7 @@ void x_net_server_get_stats(x_net_server_t *server,
   server_stats->discarded_message_engine_inbox_add_failed_count
     = server->stats.discarded_message_engine_inbox_add_failed_count;
   server_stats->uptime_seconds = time(NULL) - server->create_time;
-  server_stats->connected_client_count = x_container_set_get_size
+  server_stats->connected_client_count = x_case_set_get_size
     (server->client_posts);
   server_stats->max_threads = server->max_threads;
   server_stats->thread_count = server->thread_count;
@@ -1159,7 +1159,7 @@ void x_net_server_process_messages(x_net_server_t *server,
     x_net_engine_id_t engine_id, unsigned short thread_index)
 {
   assert(server);
-  x_container_list_t *inbox;
+  x_case_list_t *inbox;
   pthread_mutex_t *inbox_mutex;
   x_net_message_status_t message_status;
   void *message_object;
@@ -1172,8 +1172,8 @@ void x_net_server_process_messages(x_net_server_t *server,
   inbox_mutex = &engine_container->thread_inbox_mutexes[thread_index];
 
   pthread_mutex_lock(inbox_mutex);
-  x_container_list_iterate_start(inbox);
-  while ((message_object = x_container_list_iterate_next(inbox))) {
+  x_case_list_iterate_start(inbox);
+  while ((message_object = x_case_list_iterate_next(inbox))) {
     handler = engine_container->enginey->get_handler_for_message
       (engine_container->engine_object, message_object);
     if (handler) {
@@ -1182,11 +1182,11 @@ void x_net_server_process_messages(x_net_server_t *server,
       switch (message_status) {
         case X_NET_MESSAGE_STATUS_HANDLED:
           server->stats.engine_handled_message_count++;
-          x_container_list_iterate_remove(inbox);
+          x_case_list_iterate_remove(inbox);
           break;
         case X_NET_MESSAGE_STATUS_CANT_HANDLE:
           server->stats.engine_cant_handle_message_count++;
-          x_container_list_iterate_remove(inbox);
+          x_case_list_iterate_remove(inbox);
           break;
         case X_NET_MESSAGE_STATUS_CANT_HANDLE_NOW:
           server->stats.engine_cant_handle_message_now_count++;
@@ -1201,7 +1201,7 @@ void x_net_server_process_messages(x_net_server_t *server,
           x_net_engine_get_name(engine_container->engine_id,
               server->get_engine_name),
           message_type);
-      x_container_list_iterate_remove(inbox);
+      x_case_list_iterate_remove(inbox);
     }
   }
   pthread_mutex_unlock(inbox_mutex);
@@ -1237,8 +1237,8 @@ x_core_bool_t x_net_server_register_engine(x_net_server_t *server,
 
   if (success) {
     server->engines_array[engine_id] = engine_container;
-    if (!x_container_list_add_last(server->engines, engine_container)) {
-      x_audit_log_trace(server->log, "hnet", "x_container_list_add_last");
+    if (!x_case_list_add_last(server->engines, engine_container)) {
+      x_audit_log_trace(server->log, "hnet", "x_case_list_add_last");
       success = x_core_bool_false;
     }
   }
@@ -1289,7 +1289,7 @@ x_core_bool_t x_net_server_send_message(x_net_server_t *server,
   x_core_bool_t success;
 
   pthread_mutex_lock(&server->outbox_mutex);
-  if (x_container_list_add_last(server->outbox, message_object)) {
+  if (x_case_list_add_last(server->outbox, message_object)) {
     success = x_core_bool_true;
   } else {
     success = x_core_bool_false;
@@ -1329,13 +1329,13 @@ x_core_bool_t x_net_server_start(x_net_server_t *server)
   return success;
 }
 
-x_container_list_t *x_net_server_take_unprocessed_messages
+x_case_list_t *x_net_server_take_unprocessed_messages
 (x_net_server_t *server)
 {
   return NULL;
 }
 
-x_container_list_t *x_net_server_take_unsent_messages(x_net_server_t *server)
+x_case_list_t *x_net_server_take_unsent_messages(x_net_server_t *server)
 {
   return NULL;
 }
@@ -1400,18 +1400,18 @@ void post_messages_to_clients(x_net_server_t *server)
   int client_socket;
 
   pthread_mutex_lock(&server->outbox_mutex);
-  x_container_list_iterate_start(server->outbox);
-  while ((message_object = x_container_list_iterate_next(server->outbox))) {
+  x_case_list_iterate_start(server->outbox);
+  while ((message_object = x_case_list_iterate_next(server->outbox))) {
     client_socket = server->messagey->get_client_socket(message_object);
     client_post_object = find_client_post(server, client_socket);
     if (client_post_object) {
       if (server->postey->send_message(client_post_object, message_object)) {
-        x_container_list_iterate_remove(server->outbox);
+        x_case_list_iterate_remove(server->outbox);
       } else {
         x_audit_log_trace(server->log, "hnet", "postey->send_message");
       }
     } else {
-      x_container_list_iterate_remove(server->outbox);
+      x_case_list_iterate_remove(server->outbox);
       server->stats.discarded_message_for_nonexistent_client_count++;
       server->messagey->destroy(message_object);
       x_audit_log_enter(server->log, "hnet", "server "
@@ -1430,15 +1430,15 @@ void receive_messages_from_client_post(x_net_server_t *server,
   void *message_object;
   x_net_engine_id_t engine_id;
   engine_container_t *engine_container;
-  x_container_list_t *engine_inbox;
+  x_case_list_t *engine_inbox;
 
   while ((message_object = server->postey->receive_message(post_object))) {
     engine_id = server->messagey->get_engine_id(message_object);
     if (engine_is_registered(server, engine_id)) {
       engine_container = server->engines_array[engine_id];
       engine_inbox = engine_container->inbox;
-      if (!x_container_list_add_last(engine_inbox, message_object)) {
-        x_audit_log_trace(server->log, "hnet", "x_container_list_add_last");
+      if (!x_case_list_add_last(engine_inbox, message_object)) {
+        x_audit_log_trace(server->log, "hnet", "x_case_list_add_last");
         server->stats.discarded_message_engine_inbox_add_failed_count++;
         server->messagey->destroy(message_object);
       }
@@ -1457,11 +1457,11 @@ void receive_messages_from_client_post(x_net_server_t *server,
 void receive_messages_from_clients(x_net_server_t *server)
 {
   void *client_post_object;
-  x_container_set_t *client_posts;
+  x_case_set_t *client_posts;
 
   client_posts = server->client_posts;
-  x_container_set_iterate_start(client_posts);
-  while ((client_post_object = x_container_set_iterate_next(client_posts))) {
+  x_case_set_iterate_start(client_posts);
+  while ((client_post_object = x_case_set_iterate_next(client_posts))) {
     receive_messages_from_client_post(server, client_post_object);
   }
 }
@@ -1564,8 +1564,8 @@ x_core_bool_t start(x_net_server_t *server)
   signal(SIGUSR2, handle_signal);
   signal(SIGPIPE, SIG_IGN);
 
-  x_container_list_iterate_start(server->engines);
-  while ((engine_container = x_container_list_iterate_next(server->engines))) {
+  x_case_list_iterate_start(server->engines);
+  while ((engine_container = x_case_list_iterate_next(server->engines))) {
     engine_id = engine_container->engine_id;
     if (!start_engine(server, engine_id)) {
       success = x_core_bool_false;
@@ -1677,13 +1677,13 @@ void stop(x_net_server_t *server)
 
   x_net_serversocket_destroy(server->socket);
 
-  x_container_list_iterate_start(server->engines);
-  while ((engine_container = x_container_list_iterate_next(server->engines))) {
+  x_case_list_iterate_start(server->engines);
+  while ((engine_container = x_case_list_iterate_next(server->engines))) {
     engine_container->stop_requested = x_core_bool_true;
   }
 
-  x_container_list_iterate_start(server->engines);
-  while ((engine_container = x_container_list_iterate_next(server->engines))) {
+  x_case_list_iterate_start(server->engines);
+  while ((engine_container = x_case_list_iterate_next(server->engines))) {
     if (engine_container->enginey->maintain) {
       join_thread(server, engine_container->maintain_thread);
     }

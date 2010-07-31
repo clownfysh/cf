@@ -374,9 +374,9 @@ int main(int argc, char *argv[])
   x_audit_log_t *log;
   char *points_filename;
   inferno_searcx_system_t *system;
-  x_container_array_t *initial_solutions;
+  x_case_array_t *initial_solutions;
   unsigned short initial_solution_count;
-  x_container_array_t *solutions;
+  x_case_array_t *solutions;
   unsigned short solution_count;
   x_core_bool_t still_searching;
   unsigned short i;
@@ -452,13 +452,13 @@ int main(int argc, char *argv[])
       inferno_searcx_system_search(system, MAX_SEARCX_TIME_MICROSECONDS);
       solutions = inferno_searcx_system_get_solutions_copy(system, 1);
       if (solutions) {
-        solution = x_container_array_find(solutions, 0);
+        solution = x_case_array_find(solutions, 0);
         if (!score_solution(&stravel, solution, &best_score)) {
           x_audit_log_trace_exit(log, "stvl", "score_solution");
         }
-        solution_count = x_container_array_get_size(solutions);
+        solution_count = x_case_array_get_size(solutions);
         for (i = 0; i < solution_count; i++) {
-          solution = x_container_array_find(solutions, i);
+          solution = x_case_array_find(solutions, i);
           if (!score_solution(&stravel, solution, &score)) {
             x_audit_log_trace_exit(log, "stvl", "score_solution");
           }
@@ -472,7 +472,7 @@ int main(int argc, char *argv[])
               (log, "stvl", "reached goal distance, stopping search");
           }
         }
-        x_container_array_destroy(solutions);
+        x_case_array_destroy(solutions);
       } else {
         x_audit_log_trace_exit
           (log, "stvl", "inferno_searcx_system_get_solutions_copy");
@@ -488,13 +488,13 @@ int main(int argc, char *argv[])
 
     solutions = inferno_searcx_system_get_solutions_copy(system, 1);
     if (solutions) {
-      solution = x_container_array_find(solutions, 0);
+      solution = x_case_array_find(solutions, 0);
       x_audit_log_enter
         (log, "stvl", "saving solution to %s", SOLUTION_FILENAME);
       if (!save_solution_to_file(&stravel, solution, SOLUTION_FILENAME)) {
         x_audit_log_trace_exit(log, "stvl", "save_solution_to_file");
       }
-      x_container_array_destroy(solutions);
+      x_case_array_destroy(solutions);
     } else {
       x_audit_log_trace_exit
         (log, "stvl", "inferno_searcx_system_get_solutions_copy");

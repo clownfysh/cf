@@ -12,7 +12,7 @@ struct inferno_eos_system_t {
 };
 
 void *inferno_eos_system_create(inferno_core_score_solution_f score_solution,
-    inferno_core_goal_t goal, void *context, x_container_array_t *initial_solutions,
+    inferno_core_goal_t goal, void *context, x_case_array_t *initial_solutions,
     x_audit_log_t *log)
 {
   assert(score_solution);
@@ -82,12 +82,12 @@ inferno_core_score_solution_f inferno_eos_system_get_score_solution
   return system->score_solution;
 }
 
-x_container_array_t *inferno_eos_system_get_solutions_copy(void *system_object,
+x_case_array_t *inferno_eos_system_get_solutions_copy(void *system_object,
     unsigned short max_solution_count)
 {
   assert(system_object);
   inferno_eos_system_t *system;
-  x_container_array_t *solutions;
+  x_case_array_t *solutions;
 
   system = system_object;
 

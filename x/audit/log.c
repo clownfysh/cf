@@ -1,5 +1,5 @@
 #include "x/audit/log.h"
-#include "x/container/set.h"
+#include "x/case/set.h"
 #include "x/core/unsigned_long.h"
 
 #define MAX_ENTRY_SIZE 1024
@@ -8,7 +8,7 @@
 #define SPACE_CHAR ' '
 
 struct x_audit_log_t {
-  x_container_set_t *files;
+  x_case_set_t *files;
   pthread_mutex_t mutex;
   x_core_objectey_t files_objectey;
 };
@@ -54,7 +54,7 @@ x_core_bool_t x_audit_log_add_file(x_audit_log_t *log, FILE *file)
   x_core_bool_t success;
 
   pthread_mutex_lock(&log->mutex);
-  success = x_container_set_add(log->files, file);
+  success = x_case_set_add(log->files, file);
   pthread_mutex_unlock(&log->mutex);
 
   return success;
@@ -78,10 +78,10 @@ x_audit_log_t *x_audit_log_create(FILE *file)
         X_CORE_NO_COPY_FUNCTION, X_CORE_NO_DESTROY_FUNCTION,
         x_core_unsigned_long_equal, X_CORE_NO_GET_AS_STRING_FUNCTION,
         x_core_unsigned_long_mod);
-    log->files = x_container_set_create(&log->files_objectey);
+    log->files = x_case_set_create(&log->files_objectey);
     if (log->files) {
       if (file) {
-        if (x_container_set_add(log->files, file)) {
+        if (x_case_set_add(log->files, file)) {
           so_far_so_good = x_core_bool_true;
         } else {
           so_far_so_good = x_core_bool_false;
@@ -102,7 +102,7 @@ x_audit_log_t *x_audit_log_create(FILE *file)
 
   if (!so_far_so_good && log) {
     if (log->files) {
-      x_container_set_destroy(log->files);
+      x_case_set_destroy(log->files);
     }
   }
 
@@ -114,7 +114,7 @@ void x_audit_log_destroy(x_audit_log_t *log)
 {
   assert(log);
 
-  x_container_set_destroy(log->files);
+  x_case_set_destroy(log->files);
   pthread_mutex_destroy(&log->mutex);
   free(log);
 }
@@ -172,7 +172,7 @@ x_core_bool_t x_audit_log_remove_file(x_audit_log_t *log, FILE *file)
   x_core_bool_t success;
 
   pthread_mutex_lock(&log->mutex);
-  success = x_container_set_remove(log->files, file);
+  success = x_case_set_remove(log->files, file);
   pthread_mutex_unlock(&log->mutex);
 
   return success;
@@ -317,8 +317,8 @@ x_core_bool_t write_entry_to_all_files(x_audit_log_t *log,
 
   pthread_mutex_lock(&log->mutex);
   {
-    x_container_set_iterate_start(log->files);
-    while ((file = x_container_set_iterate_next(log->files))) {
+    x_case_set_iterate_start(log->files);
+    while ((file = x_case_set_iterate_next(log->files))) {
       if (!enter_file(formatted_entry, file)) {
         x_core_trace("enter_file");
         success = x_core_bool_false;

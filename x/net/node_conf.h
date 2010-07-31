@@ -10,7 +10,7 @@ struct x_net_node_conf_t {
   unsigned short node_port;
   unsigned short node_max_threads;
 
-  x_container_list_t *peer_node_ips;
+  x_case_list_t *peer_node_ips;
   unsigned short peer_node_port_min;
   unsigned short peer_node_port_max;
 };

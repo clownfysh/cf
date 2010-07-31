@@ -2,14 +2,14 @@
 #define inferno_archetype_system_h
 
 #include "x/audit/log.h"
-#include "x/container/array.h"
+#include "x/case/array.h"
 #include "x/core/bitarray.h"
 #include "inferno/classify/classifyey.h"
 
 struct inferno_archetype_system_t;
 typedef struct inferno_archetype_system_t inferno_archetype_system_t;
 
-void *inferno_archetype_system_create(x_container_array_t *classified_objects,
+void *inferno_archetype_system_create(x_case_array_t *classified_objects,
     x_audit_log_t *log);
 
 void inferno_archetype_system_destroy(void *system_void);

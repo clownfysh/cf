@@ -1,7 +1,7 @@
 #ifndef x_config_environment_h
 #define x_config_environment_h
 
-#include "x/container/list.h"
+#include "x/case/list.h"
 
 struct x_config_environment_t;
 typedef struct x_config_environment_t x_config_environment_t;
@@ -30,6 +30,6 @@ x_core_bool_t x_config_environment_find_as_unsigned_short
     unsigned short default_value);
 
 x_core_bool_t x_config_environment_find_list_as_strings
-(x_config_environment_t *environment, char *name, x_container_list_t **list);
+(x_config_environment_t *environment, char *name, x_case_list_t **list);
 
 #endif

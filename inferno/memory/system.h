@@ -1,7 +1,7 @@
 #ifndef inferno_memory_system_h
 #define inferno_memory_system_h
 
-#include "x/container/array.h"
+#include "x/case/array.h"
 #include "x/core/bool.h"
 
 struct inferno_memory_system_t;
@@ -18,7 +18,7 @@ void inferno_memory_system_destroy(inferno_memory_system_t *system);
 x_core_bool_t inferno_memory_system_find(inferno_memory_system_t *system,
     unsigned long base, unsigned long link, unsigned long corollary);
 
-x_container_array_t *inferno_memory_system_find_cloud(inferno_memory_system_t *system,
+x_case_array_t *inferno_memory_system_find_cloud(inferno_memory_system_t *system,
     unsigned long base, unsigned long cloud_size_max);
 
 x_core_bool_t inferno_memory_system_remove(inferno_memory_system_t *system,

@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
   x_config_file_t *conf;
   unsigned short port_min;
   unsigned short port_max;
-  x_container_list_t *node_ip_list;
+  x_case_list_t *node_ip_list;
   char *node_ip;
 
   conf = x_config_file_create("x/config/file_test.conf");
@@ -33,8 +33,8 @@ int main(int argc, char *argv[])
     printf("port_min:%i\n", port_min);
     printf("port_max:%i\n", port_max);
     if (node_ip_list) {
-      x_container_list_iterate_start(node_ip_list);
-      while ((node_ip = x_container_list_iterate_next(node_ip_list))) {
+      x_case_list_iterate_start(node_ip_list);
+      while ((node_ip = x_case_list_iterate_next(node_ip_list))) {
         printf("node_ip:%s\n", node_ip);
       }
     }

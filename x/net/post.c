@@ -1,4 +1,4 @@
-#include "x/container/list.h"
+#include "x/case/list.h"
 #include "x/core/tools.h"
 #include "x/net/post.h"
 #include "x/net/socket.h"
@@ -18,8 +18,8 @@ typedef struct post_message_header_t post_message_header_t;
 
 struct x_net_post_t {
   int socket;
-  x_container_list_t *inbox;
-  x_container_list_t *outbox;
+  x_case_list_t *inbox;
+  x_case_list_t *outbox;
   post_message_header_t current_message_header;
   char *current_message_data;
   x_core_bool_t have_message_header;
@@ -159,12 +159,12 @@ x_core_bool_t x_net_post_create_inbox(x_net_post_t *post)
 {
   x_core_bool_t success;
 
-  post->inbox = x_container_list_create(X_CORE_NO_COMPARE_FUNCTION,
+  post->inbox = x_case_list_create(X_CORE_NO_COMPARE_FUNCTION,
       x_core_message_copy, X_CORE_NO_DESTROY_FUNCTION);
   if (post->inbox) {
     success = x_core_bool_true;
   } else {
-    x_core_trace("x_container_list_create");
+    x_core_trace("x_case_list_create");
     success = x_core_bool_false;
   }
 
@@ -182,12 +182,12 @@ x_core_bool_t x_net_post_create_outbox(x_net_post_t *post)
 {
   x_core_bool_t success;
 
-  post->outbox = x_container_list_create(X_CORE_NO_COMPARE_FUNCTION,
+  post->outbox = x_case_list_create(X_CORE_NO_COMPARE_FUNCTION,
       x_core_message_copy, x_core_message_destroy);
   if (post->outbox) {
     success = x_core_bool_true;
   } else {
-    x_core_trace("x_container_list_create");
+    x_core_trace("x_case_list_create");
     success = x_core_bool_false;
   }
 
@@ -201,10 +201,10 @@ void x_net_post_create_rollback(x_net_post_t *post)
       free(post->in_buffer);
     }
     if (post->inbox) {
-      x_container_list_destroy(post->inbox);
+      x_case_list_destroy(post->inbox);
     }
     if (post->outbox) {
-      x_container_list_destroy(post->outbox);
+      x_case_list_destroy(post->outbox);
     }
   }
 }
@@ -217,13 +217,13 @@ void x_net_post_destroy(void *post_object)
 
   post = post_object;
 
-  x_container_list_iterate_start(post->inbox);
-  while ((message = x_container_list_iterate_next(post->inbox))) {
+  x_case_list_iterate_start(post->inbox);
+  while ((message = x_case_list_iterate_next(post->inbox))) {
     x_core_message_destroy(message);
   }
-  x_container_list_destroy(post->inbox);
+  x_case_list_destroy(post->inbox);
 
-  x_container_list_destroy(post->outbox);
+  x_case_list_destroy(post->outbox);
 
   if (post->in_buffer) {
     free(post->in_buffer);
@@ -302,9 +302,9 @@ void *x_net_post_receive_message(void *post_object)
 
   post = post_object;
 
-  message = x_container_list_find_first(post->inbox);
+  message = x_case_list_find_first(post->inbox);
   if (message) {
-    x_container_list_remove_first(post->inbox);
+    x_case_list_remove_first(post->inbox);
   }
 
   return message;
@@ -341,7 +341,7 @@ x_core_bool_t x_net_post_send_message(void *post_object,
 
   post = post_object;
 
-  success = x_container_list_add_last(post->outbox, message_object);
+  success = x_case_list_add_last(post->outbox, message_object);
 
   return success;
 }
@@ -363,25 +363,25 @@ void x_net_post_send_messages(void *post_object)
   }
 }
 
-x_container_list_t *x_net_post_take_unsent_messages(x_net_post_t *post)
+x_case_list_t *x_net_post_take_unsent_messages(x_net_post_t *post)
 {
   assert(post);
-  x_container_list_t *list;
+  x_case_list_t *list;
   x_core_message_t *message;
 
-  list = x_container_list_create(X_CORE_NO_COMPARE_FUNCTION,
+  list = x_case_list_create(X_CORE_NO_COMPARE_FUNCTION,
       x_core_message_copy, X_CORE_NO_DESTROY_FUNCTION);
   if (list) {
-    x_container_list_iterate_start(post->outbox);
-    while ((message = x_container_list_iterate_next(post->outbox))) {
-      if (x_container_list_add_last(list, message)) {
-        x_container_list_iterate_remove(post->outbox);
+    x_case_list_iterate_start(post->outbox);
+    while ((message = x_case_list_iterate_next(post->outbox))) {
+      if (x_case_list_add_last(list, message)) {
+        x_case_list_iterate_remove(post->outbox);
       } else {
-        x_core_trace("x_container_list_add_last");
+        x_core_trace("x_case_list_add_last");
       }
     }
   } else {
-    x_core_trace("x_container_list_create");
+    x_core_trace("x_case_list_create");
   }
 
   return list;
@@ -448,10 +448,10 @@ x_core_bool_t put_received_message_in_inbox(x_net_post_t *post)
       post->in_message_header.engine_id, post->in_message_header.message_type,
       post->in_buffer, post->in_message_header.data_size);
   if (message) {
-    if (x_container_list_add_last(post->inbox, message)) {
+    if (x_case_list_add_last(post->inbox, message)) {
       success = x_core_bool_true;
     } else {
-      x_core_trace("x_container_list_add_last");
+      x_core_trace("x_case_list_add_last");
       success = x_core_bool_false;
     }
   } else {
@@ -554,10 +554,10 @@ void send_messages_get_new_message(x_net_post_t *post)
 {
   x_core_message_t *message;
 
-  message = x_container_list_find_first(post->outbox);
+  message = x_case_list_find_first(post->outbox);
   if (message) {
     if (put_message_into_out_buffer(post, message)) {
-      x_container_list_remove_first(post->outbox);
+      x_case_list_remove_first(post->outbox);
       post->currently_sending_out_buffer = x_core_bool_true;
     } else {
       x_core_trace("put_message_into_out_buffer");

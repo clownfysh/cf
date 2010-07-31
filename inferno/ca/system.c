@@ -7,7 +7,7 @@
 struct inferno_ca_system_t {
   inferno_ca_systemey_t *systemey;
 
-  x_container_array_t *state_history;
+  x_case_array_t *state_history;
   unsigned long current_time_step;
   unsigned long highest_cell_count;
 
@@ -25,11 +25,11 @@ static GLOBAL(void) write_jpeg_file(char *filename, int quality,
     JSAMPLE *image_buffer, int image_height, int image_width);
 
 inferno_ca_system_t *inferno_ca_system_create
-(x_container_array_t *initial_state_history,
+(x_case_array_t *initial_state_history,
     unsigned long initial_time_step_count, inferno_ca_systemey_t *systemey)
 {
   assert(initial_state_history);
-  assert(x_container_array_get_size(initial_state_history) > 0);
+  assert(x_case_array_get_size(initial_state_history) > 0);
   assert(systemey);
   inferno_ca_system_t *system;
   inferno_ca_state_t *state;
@@ -49,20 +49,20 @@ inferno_ca_system_t *inferno_ca_system_create
     system->highest_cell_count = 0;
 
     initial_state_history_size
-      = x_container_array_get_size(initial_state_history);
+      = x_case_array_get_size(initial_state_history);
     initial_state_history_array_size = initial_state_history_size
       + initial_time_step_count;
-    system->state_history = x_container_array_create
+    system->state_history = x_case_array_create
       (initial_state_history_array_size, inferno_ca_state_compare,
           inferno_ca_state_copy, inferno_ca_state_destroy);
     if (system->state_history) {
 
       time_step = 0;
-      x_container_array_iterate_start(initial_state_history);
-      while ((state = x_container_array_iterate_next(initial_state_history))) {
+      x_case_array_iterate_start(initial_state_history);
+      while ((state = x_case_array_iterate_next(initial_state_history))) {
 
         state_copy = inferno_ca_state_copy(state);
-        x_container_array_add(system->state_history, time_step, state_copy);
+        x_case_array_add(system->state_history, time_step, state_copy);
         time_step++;
 
         state_cell_count = inferno_ca_state_get_cell_count(state);
@@ -118,7 +118,7 @@ void inferno_ca_system_destroy(inferno_ca_system_t *system)
   if (system->systemey->destroy_context) {
     system->systemey->destroy_context(system->context_object);
   }
-  x_container_array_destroy(system->state_history);
+  x_case_array_destroy(system->state_history);
   free(system);
 }
 
@@ -139,7 +139,7 @@ inferno_ca_t *inferno_ca_system_get_cell(inferno_ca_system_t *system,
   inferno_ca_state_t *state;
   inferno_ca_t *cell;
 
-  state = x_container_array_find(system->state_history, time_step);
+  state = x_case_array_find(system->state_history, time_step);
   cell = inferno_ca_state_get_cell(state, cell_index);
 
   return cell;
@@ -200,7 +200,7 @@ inferno_ca_t *inferno_ca_system_get_relative_cell(inferno_ca_system_t *system,
 inferno_ca_state_t *inferno_ca_system_get_state(inferno_ca_system_t *system,
     unsigned long time_step)
 {
-  return x_container_array_find(system->state_history, time_step);
+  return x_case_array_find(system->state_history, time_step);
 }
 
 void inferno_ca_system_run(inferno_ca_system_t *system, x_core_run_t *run)
@@ -221,7 +221,7 @@ void inferno_ca_system_run(inferno_ca_system_t *system, x_core_run_t *run)
     current_state = get_current_state(system);
     cell_count = inferno_ca_state_get_cell_count(current_state);
 
-    state_history_size = x_container_array_get_size(system->state_history);
+    state_history_size = x_case_array_get_size(system->state_history);
     if (create_new_current_state(system)) {
       if (system->systemey->start_time_step) {
         system->systemey->start_time_step(system);
@@ -266,15 +266,15 @@ x_core_bool_t inferno_ca_system_save_snapshot_jpeg(inferno_ca_system_t *system,
   unsigned long each_cell;
 
   cell_count = system->highest_cell_count;
-  step_count = x_container_array_get_size(system->state_history);
+  step_count = x_case_array_get_size(system->state_history);
 
   image_buffer = malloc(sizeof(JSAMPLE) * cell_count * step_count * 3);
   if (image_buffer) {
     success = x_core_bool_true;
 
     each_step = 0;
-    x_container_array_iterate_start(system->state_history);
-    while ((state = x_container_array_iterate_next(system->state_history))) {
+    x_case_array_iterate_start(system->state_history);
+    while ((state = x_case_array_iterate_next(system->state_history))) {
       for (each_cell = 0; each_cell < cell_count; each_cell++) {
         cell = inferno_ca_state_get_cell(state, each_cell);
 
@@ -318,8 +318,8 @@ x_core_bool_t inferno_ca_system_save_snapshot_text(inferno_ca_system_t *system,
   file = x_file_basic_create
     (filename, X_FILE_MODE_TRUNCATE_OR_CREATE_FOR_WRITE);
   if (file) {
-    x_container_array_iterate_start(system->state_history);
-    while ((state = x_container_array_iterate_next(system->state_history))) {
+    x_case_array_iterate_start(system->state_history);
+    while ((state = x_case_array_iterate_next(system->state_history))) {
       cell_count = inferno_ca_state_get_cell_count(state);
       for (each_cell = 0; each_cell < cell_count; each_cell++) {
         cell_value = inferno_ca_state_get_cell_value(state, each_cell);
@@ -358,7 +358,7 @@ void inferno_ca_system_set_cell(inferno_ca_system_t *system, unsigned long time_
   assert(system);
   inferno_ca_state_t *state;
 
-  state = x_container_array_find(system->state_history, time_step);
+  state = x_case_array_find(system->state_history, time_step);
   inferno_ca_state_set_cell(state, cell_index, cell);
 }
 
@@ -398,7 +398,7 @@ x_core_bool_t create_new_current_state(inferno_ca_system_t *system)
   new_current_state = inferno_ca_state_copy(old_current_state);
   if (new_current_state) {
     success = x_core_bool_true;
-    x_container_array_add(system->state_history, system->current_time_step + 1,
+    x_case_array_add(system->state_history, system->current_time_step + 1,
         new_current_state);
   } else {
     success = x_core_bool_false;
@@ -410,7 +410,7 @@ x_core_bool_t create_new_current_state(inferno_ca_system_t *system)
 
 inferno_ca_state_t *get_current_state(inferno_ca_system_t *system)
 {
-  return x_container_array_find(system->state_history,
+  return x_case_array_find(system->state_history,
       system->current_time_step);
 }
 

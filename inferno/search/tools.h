@@ -1,7 +1,7 @@
 #ifndef inferno_searcx_tools_h
 #define inferno_searcx_tools_h
 
-#include "x/container/array.h"
+#include "x/case/array.h"
 #include "inferno/box/system.h"
 #include "inferno/core/actorey.h"
 #include "inferno/core/goal.h"
@@ -36,10 +36,10 @@ typedef x_core_bool_t (*inferno_core_score_solution_f)(void *context,
 
 inferno_box_system_t *inferno_core_create_actor_box(void *searcx_system,
     inferno_box_coordinate_t *dimension_coordinate,
-    x_container_array_t *initial_solutions, inferno_core_actorey_t *actorey,
+    x_case_array_t *initial_solutions, inferno_core_actorey_t *actorey,
     x_audit_log_t *log);
 
-x_container_array_t *inferno_core_create_solutions_from_box(inferno_box_system_t *box,
+x_case_array_t *inferno_core_create_solutions_from_box(inferno_box_system_t *box,
     unsigned long max_solution_count, inferno_core_get_solution_f get_solution,
     inferno_core_score_solution_f score_solution, inferno_core_goal_t goal,
     x_core_compare_f compare_maximize, x_core_compare_f compare_minimize,

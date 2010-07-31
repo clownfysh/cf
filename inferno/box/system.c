@@ -1,10 +1,10 @@
 #include "inferno/box/system.h"
-#include "x/container/array.h"
+#include "x/case/array.h"
 
 struct inferno_box_system_t {
   inferno_box_coordinate_t dimension_coordinate;
   unsigned long volume;
-  x_container_array_t *cells;
+  x_case_array_t *cells;
   inferno_box_object_get_cell_f get_cell;
   inferno_box_object_set_cell_f set_cell;
   x_core_destroy_f destroy_object;
@@ -85,7 +85,7 @@ x_core_bool_t create_cells(inferno_box_system_t *system)
 
   success = x_core_bool_true;
 
-  system->cells = x_container_array_create(system->volume,
+  system->cells = x_case_array_create(system->volume,
       inferno_box_cell_compare, inferno_box_cell_copy, inferno_box_cell_destroy);
   if (system->cells) {
     for (coordinate.x = 0; coordinate.x < system->dimension_coordinate.x;
@@ -97,7 +97,7 @@ x_core_bool_t create_cells(inferno_box_system_t *system)
           cell = inferno_box_cell_create(system, &coordinate);
           if (cell) {
             cells_array_index = get_cells_array_index(system, &coordinate);
-            x_container_array_add(system->cells, cells_array_index, cell);
+            x_case_array_add(system->cells, cells_array_index, cell);
           } else {
             success = x_core_bool_false;
             x_audit_log_trace(system->log, "box", "inferno_box_cell_create");
@@ -107,7 +107,7 @@ x_core_bool_t create_cells(inferno_box_system_t *system)
     }
   } else {
     success = x_core_bool_false;
-    x_audit_log_trace(system->log, "box", "x_container_array_create");
+    x_audit_log_trace(system->log, "box", "x_case_array_create");
   }
 
   return success;
@@ -121,7 +121,7 @@ inferno_box_cell_t *find_cell(inferno_box_system_t *system,
   unsigned long cells_array_index;
 
   cells_array_index = get_cells_array_index(system, coordinate);
-  return x_container_array_find(system->cells, cells_array_index);
+  return x_case_array_find(system->cells, cells_array_index);
 }
 
 unsigned long get_cells_array_index(inferno_box_system_t *system,
@@ -260,7 +260,7 @@ inferno_box_system_t *inferno_box_system_create
 
   if (!so_far_so_good && system) {
     if (system->cells) {
-      x_container_array_destroy(system->cells);
+      x_case_array_destroy(system->cells);
     }
     free(system);
     system = NULL;
@@ -272,7 +272,7 @@ inferno_box_system_t *inferno_box_system_create
 void inferno_box_system_destroy(inferno_box_system_t *system)
 {
   assert(system);
-  x_container_array_destroy(system->cells);
+  x_case_array_destroy(system->cells);
   free(system);
 }
 
@@ -293,7 +293,7 @@ void *inferno_box_system_find_random(inferno_box_system_t *system)
   assert(system);
   inferno_box_cell_t *cell;
 
-  cell = x_container_array_find_random(system->cells);
+  cell = x_case_array_find_random(system->cells);
   return cell->object;
 }
 
@@ -333,7 +333,7 @@ void *inferno_box_system_iterate_next(inferno_box_system_t *system)
   inferno_box_cell_t *cell;
   void *object;
 
-  cell = x_container_array_iterate_next(system->cells);
+  cell = x_case_array_iterate_next(system->cells);
   if (cell) {
     object = cell->object;
   } else {
@@ -345,7 +345,7 @@ void *inferno_box_system_iterate_next(inferno_box_system_t *system)
 
 void inferno_box_system_iterate_start(inferno_box_system_t *system)
 {
-  x_container_array_iterate_start(system->cells);
+  x_case_array_iterate_start(system->cells);
 }
 
 void inferno_box_system_move_absolute(inferno_box_system_t *system, void *object,
@@ -477,7 +477,7 @@ void set_neighbor_references(inferno_box_system_t *system)
   unsigned long each_cell;
 
   for (each_cell = 0; each_cell < system->volume; each_cell++) {
-    cell = x_container_array_find(system->cells, each_cell);
+    cell = x_case_array_find(system->cells, each_cell);
     set_neighbor_references_for_cell(system, cell);
   }
 }

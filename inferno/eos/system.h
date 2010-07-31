@@ -7,7 +7,7 @@
 
 void *inferno_eos_system_create(inferno_core_score_solution_f score_solution,
     inferno_core_goal_t goal, void *context,
-    x_container_array_t *initial_solutions, x_audit_log_t *log);
+    x_case_array_t *initial_solutions, x_audit_log_t *log);
 
 void inferno_eos_system_destroy(void *system_object);
 
@@ -22,7 +22,7 @@ x_audit_log_t *inferno_eos_system_get_log(inferno_eos_system_t *system);
 inferno_core_score_solution_f inferno_eos_system_get_score_solution
 (inferno_eos_system_t *system);
 
-x_container_array_t *inferno_eos_system_get_solutions_copy(void *system_object,
+x_case_array_t *inferno_eos_system_get_solutions_copy(void *system_object,
     unsigned short max_solution_count);
 
 void inferno_eos_system_init_searchey(inferno_searcx_searchey_t *searchey);

@@ -1,4 +1,4 @@
-#include "x/container/list.h"
+#include "x/case/list.h"
 #include "x/core/nameobject.h"
 #include "x/core/string.h"
 #include "x/core/tools.h"
@@ -13,8 +13,8 @@
 struct x_net_hyperpost_t {
   int socket;
 
-  x_container_list_t *inbox;
-  x_container_list_t *outbox;
+  x_case_list_t *inbox;
+  x_case_list_t *outbox;
 
   char *out_buffer;
   unsigned long out_buffer_size;
@@ -32,7 +32,7 @@ struct x_net_hyperpost_t {
   x_net_hypermethod_t in_hypermethod;
   char *in_resource_path;
   x_net_hyperversion_t in_hyperversion;
-  x_container_set_t *in_hyperheaders;
+  x_case_set_t *in_hyperheaders;
   char *in_body;
 
   time_t last_receive_activity_time;
@@ -88,7 +88,7 @@ char *get_header_lines(x_net_hypermessage_t *hypermessage,
 {
   assert(hypermessage);
   assert(header_lines_size);
-  x_container_set_t *hyperheaders;
+  x_case_set_t *hyperheaders;
   char *header_lines;
   x_core_nameobject_t *header;
   char *header_name;
@@ -103,9 +103,9 @@ char *get_header_lines(x_net_hypermessage_t *hypermessage,
   *header_lines_size = 0;
   hyperheaders = x_net_hypermessage_get_hyperheaders(hypermessage);
 
-  x_container_set_iterate_start(hyperheaders);
+  x_case_set_iterate_start(hyperheaders);
 
-  while ((header = x_container_set_iterate_next(hyperheaders))) {
+  while ((header = x_case_set_iterate_next(hyperheaders))) {
 
     header_name = x_core_nameobject_get_name(header);
     header_value = x_core_nameobject_get_object(header);
@@ -266,15 +266,15 @@ void *x_net_hyperpost_create(int socket)
   if (so_far_so_good) {
     x_core_nameobject_init_objectey(&hyperpost->nameobject_objectey);
     hyperpost->in_hyperheaders
-      = x_container_set_create(&hyperpost->nameobject_objectey);
+      = x_case_set_create(&hyperpost->nameobject_objectey);
     if (!hyperpost->in_hyperheaders) {
-      x_core_trace("x_container_set_create");
+      x_core_trace("x_case_set_create");
       so_far_so_good = x_core_bool_false;
     }
   }
 
   if (so_far_so_good) {
-    hyperpost->inbox = x_container_list_create(X_CORE_NO_COMPARE_FUNCTION,
+    hyperpost->inbox = x_case_list_create(X_CORE_NO_COMPARE_FUNCTION,
         X_CORE_NO_COPY_FUNCTION, X_CORE_NO_DESTROY_FUNCTION);
     if (!hyperpost->inbox) {
       so_far_so_good = x_core_bool_false;
@@ -282,7 +282,7 @@ void *x_net_hyperpost_create(int socket)
   }
 
   if (so_far_so_good) {
-    hyperpost->outbox = x_container_list_create(X_CORE_NO_COMPARE_FUNCTION,
+    hyperpost->outbox = x_case_list_create(X_CORE_NO_COMPARE_FUNCTION,
         X_CORE_NO_COPY_FUNCTION, x_net_hypermessage_destroy);
     if (!hyperpost->outbox) {
       so_far_so_good = x_core_bool_false;
@@ -316,10 +316,10 @@ void x_net_hyperpost_create_rollback(x_net_hyperpost_t *hyperpost)
   assert(hyperpost);
 
   if (hyperpost->inbox) {
-    x_container_list_destroy(hyperpost->inbox);
+    x_case_list_destroy(hyperpost->inbox);
   }
   if (hyperpost->outbox) {
-    x_container_list_destroy(hyperpost->outbox);
+    x_case_list_destroy(hyperpost->outbox);
   }
   free(hyperpost);
 }
@@ -332,15 +332,15 @@ void x_net_hyperpost_destroy(void *hyperpost_object)
 
   hyperpost = hyperpost_object;
 
-  x_container_list_iterate_start(hyperpost->inbox);
-  while ((hypermessage = x_container_list_iterate_next(hyperpost->inbox))) {
+  x_case_list_iterate_start(hyperpost->inbox);
+  while ((hypermessage = x_case_list_iterate_next(hyperpost->inbox))) {
     x_net_hypermessage_destroy(hypermessage);
   }
-  x_container_list_destroy(hyperpost->inbox);
+  x_case_list_destroy(hyperpost->inbox);
 
-  x_container_list_destroy(hyperpost->outbox);
+  x_case_list_destroy(hyperpost->outbox);
 
-  x_container_set_destroy(hyperpost->in_hyperheaders);
+  x_case_set_destroy(hyperpost->in_hyperheaders);
 
   if (hyperpost->in_resource_path) {
     free(hyperpost->in_resource_path);
@@ -419,9 +419,9 @@ void *x_net_hyperpost_receive_message
 
   hyperpost = hyperpost_object;
 
-  hypermessage = x_container_list_find_first(hyperpost->inbox);
+  hypermessage = x_case_list_find_first(hyperpost->inbox);
   if (hypermessage) {
-    x_container_list_remove_first(hyperpost->inbox);
+    x_case_list_remove_first(hyperpost->inbox);
   }
 
   return hypermessage;
@@ -451,7 +451,7 @@ x_core_bool_t x_net_hyperpost_send_message(void *hyperpost_object,
 
   hyperpost = hyperpost_object;
 
-  success = x_container_list_add_last(hyperpost->outbox, hypermessage_object);
+  success = x_case_list_add_last(hyperpost->outbox, hypermessage_object);
 
   return success;
 }
@@ -610,7 +610,7 @@ void parse_incoming_message_headers(x_net_hyperpost_t *hyperpost)
         nameobject = x_core_nameobject_create(name, value, x_core_string_copy,
             x_core_string_destroy, x_core_string_get_as_string);
         if (nameobject) {
-          if (!x_container_set_add(hyperpost->in_hyperheaders, nameobject)) {
+          if (!x_case_set_add(hyperpost->in_hyperheaders, nameobject)) {
             x_core_nameobject_destroy(nameobject);
           }
         }
@@ -706,10 +706,10 @@ x_core_bool_t put_received_message_in_inbox(x_net_hyperpost_t *hyperpost)
       hyperpost->in_resource_path, hyperpost->in_hyperversion,
       hyperpost->in_hyperheaders);
   if (hypermessage) {
-    if (x_container_list_add_last(hyperpost->inbox, hypermessage)) {
+    if (x_case_list_add_last(hyperpost->inbox, hypermessage)) {
       success = x_core_bool_true;
     } else {
-      x_core_trace("x_container_list_add_last");
+      x_core_trace("x_case_list_add_last");
       success = x_core_bool_false;
     }
   } else {
@@ -762,7 +762,7 @@ void reset_for_next_receive(x_net_hyperpost_t *hyperpost)
     free(hyperpost->in_resource_path);
     hyperpost->in_resource_path = NULL;
   }
-  x_container_set_clear(hyperpost->in_hyperheaders);
+  x_case_set_clear(hyperpost->in_hyperheaders);
   if (hyperpost->in_body) {
     free(hyperpost->in_body);
     hyperpost->in_body = NULL;
@@ -782,10 +782,10 @@ void send_messages_get_new_message(x_net_hyperpost_t *hyperpost)
 {
   x_net_hypermessage_t *hypermessage;
 
-  hypermessage = x_container_list_find_first(hyperpost->outbox);
+  hypermessage = x_case_list_find_first(hyperpost->outbox);
   if (hypermessage) {
     if (put_message_into_out_buffer(hyperpost, hypermessage)) {
-      x_container_list_remove_first(hyperpost->outbox);
+      x_case_list_remove_first(hyperpost->outbox);
       hyperpost->currently_sending_out_buffer = x_core_bool_true;
     } else {
       x_core_trace("put_message_into_out_buffer");

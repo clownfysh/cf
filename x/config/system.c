@@ -221,7 +221,7 @@ x_core_bool_t x_config_system_find_as_unsigned_short(x_config_system_t *system,
 }
 
 x_core_bool_t x_config_system_find_list_as_strings(x_config_system_t *system,
-    char *name, x_container_list_t **list)
+    char *name, x_case_list_t **list)
 {
   assert(system);
   assert(name);

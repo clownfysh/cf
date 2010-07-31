@@ -1,14 +1,14 @@
 #include "x/config/file.h"
-#include "x/container/set.h"
+#include "x/case/set.h"
 #include "x/core/nameobject.h"
 #include "x/core/string.h"
 #include "x/core/tools.h"
 #include "x/file/basic.h"
 
 struct x_config_file_t {
-  /* TODO: reimplement with x_container_map_t, like config_options? */
-  x_container_set_t *strings;
-  x_container_set_t *string_lists;
+  /* TODO: reimplement with x_case_map_t, like config_options? */
+  x_case_set_t *strings;
+  x_case_set_t *string_lists;
   x_core_objectey_t nameobject_objectey;
 };
 
@@ -41,7 +41,7 @@ x_core_bool_t find_as_string(x_config_file_t *file, char *name,
 
   nameobject_decoy = x_core_nameobject_create_decoy(name);
   if (nameobject_decoy) {
-    nameobject = x_container_set_find(file->strings, nameobject_decoy);
+    nameobject = x_case_set_find(file->strings, nameobject_decoy);
     x_core_nameobject_destroy_decoy(nameobject_decoy);
     if (nameobject) {
       found_it = x_core_bool_true;
@@ -71,14 +71,14 @@ x_config_file_t *x_config_file_create(char *filename)
 
   if (so_far_so_good) {
     x_core_nameobject_init_objectey(&file->nameobject_objectey);
-    file->strings = x_container_set_create(&file->nameobject_objectey);
+    file->strings = x_case_set_create(&file->nameobject_objectey);
     if (!file->strings) {
       so_far_so_good = x_core_bool_false;
     }
   }
 
   if (so_far_so_good) {
-    file->string_lists = x_container_set_create(&file->nameobject_objectey);
+    file->string_lists = x_case_set_create(&file->nameobject_objectey);
     if (!file->string_lists) {
       so_far_so_good = x_core_bool_false;
     }
@@ -103,10 +103,10 @@ void x_config_file_create_rollback(x_config_file_t *file)
   assert(file);
 
   if (file->strings) {
-    x_container_set_destroy(file->strings);
+    x_case_set_destroy(file->strings);
   }
   if (file->string_lists) {
-    x_container_set_destroy(file->string_lists);
+    x_case_set_destroy(file->string_lists);
   }
   free(file);
 
@@ -118,8 +118,8 @@ void x_config_file_destroy(x_config_file_t *file)
   assert(file->strings);
   assert(file->string_lists);
 
-  x_container_set_destroy(file->strings);
-  x_container_set_destroy(file->string_lists);
+  x_case_set_destroy(file->strings);
+  x_case_set_destroy(file->string_lists);
   free(file);
 
 }
@@ -133,7 +133,7 @@ x_core_bool_t x_config_file_find(x_config_file_t *file, char *name)
 
   nameobject_decoy = x_core_nameobject_create_decoy(name);
   if (nameobject_decoy) {
-    if (x_container_set_find(file->strings, nameobject_decoy)) {
+    if (x_case_set_find(file->strings, nameobject_decoy)) {
       found_it = x_core_bool_true;
     } else {
       found_it = x_core_bool_false;
@@ -225,7 +225,7 @@ x_core_bool_t x_config_file_find_as_unsigned_short(x_config_file_t *file,
 }
 
 x_core_bool_t x_config_file_find_list_as_strings(x_config_file_t *file,
-    char *name, x_container_list_t **list)
+    char *name, x_case_list_t **list)
 {
   assert(file);
   assert(name);
@@ -237,7 +237,7 @@ x_core_bool_t x_config_file_find_list_as_strings(x_config_file_t *file,
 
   nameobject_decoy = x_core_nameobject_create_decoy(name);
   if (nameobject_decoy) {
-    nameobject = x_container_set_find(file->string_lists, nameobject_decoy);
+    nameobject = x_case_set_find(file->string_lists, nameobject_decoy);
     x_core_nameobject_destroy_decoy(nameobject_decoy);
     if (nameobject) {
       success = x_core_bool_true;
@@ -277,20 +277,20 @@ void parse_list_value(x_config_file_t *file, char *name, char *value)
   assert(name);
   assert(value);
   x_core_nameobject_t *nameobject;
-  x_container_list_t *list;
+  x_case_list_t *list;
   char *string;
   char *string_copy;
   char *strtok_context;
 
-  list = x_container_list_create(x_core_string_compare, x_core_string_copy,
+  list = x_case_list_create(x_core_string_compare, x_core_string_copy,
       x_core_string_destroy);
   if (list) {
     string = strtok_r(value, ",", &strtok_context);
     while (string) {
       string_copy = strdup(string);
       if (string_copy) {
-        if (!x_container_list_add_last(list, string_copy)) {
-          x_core_trace("x_container_list_add_last");
+        if (!x_case_list_add_last(list, string_copy)) {
+          x_core_trace("x_case_list_add_last");
         }
       } else {
         x_core_trace("strdup");
@@ -298,17 +298,17 @@ void parse_list_value(x_config_file_t *file, char *name, char *value)
       string = strtok_r(NULL, ",", &strtok_context);
     }
     nameobject = x_core_nameobject_create(name, list, X_CORE_NO_COPY_FUNCTION,
-        x_container_list_destroy, x_container_list_get_as_string);
+        x_case_list_destroy, x_case_list_get_as_string);
     if (nameobject) {
-      if (!x_container_set_add(file->string_lists, nameobject)) {
-        x_core_trace("x_container_set_add");
+      if (!x_case_set_add(file->string_lists, nameobject)) {
+        x_core_trace("x_case_set_add");
         x_core_nameobject_destroy(nameobject);
       }
     } else {
       x_core_trace("x_core_nameobject_create");
     }
   } else {
-    x_core_trace("x_container_list_create");
+    x_core_trace("x_case_list_create");
   }
 
 }
@@ -323,8 +323,8 @@ void parse_string_value(x_config_file_t *file, char *name, char *value)
   nameobject = x_core_nameobject_create(name, value, x_core_string_copy,
       x_core_string_destroy, x_core_string_get_as_string);
   if (nameobject) {
-    if (!x_container_set_add(file->strings, nameobject)) {
-      x_core_trace("x_container_set_add");
+    if (!x_case_set_add(file->strings, nameobject)) {
+      x_core_trace("x_case_set_add");
     }
   } else {
     x_core_trace("x_core_nameobject_create");
@@ -337,7 +337,7 @@ void read_file(x_config_file_t *file, char *filename)
   assert(file);
   assert(filename);
   x_file_basic_t *file_basic;
-  x_container_list_t *lines;
+  x_case_list_t *lines;
   char *line;
   char *name;
   char *value;
@@ -347,8 +347,8 @@ void read_file(x_config_file_t *file, char *filename)
   if (file_basic) {
     lines = x_file_basic_get_as_line_list(file_basic);
     if (lines) {
-      x_container_list_iterate_start(lines);
-      while ((line = x_container_list_iterate_next(lines))) {
+      x_case_list_iterate_start(lines);
+      while ((line = x_case_list_iterate_next(lines))) {
         if (!line_is_a_comment(line)) {
           name = strtok_r(line, ":", &strtok_context);
           if (name) {
@@ -364,7 +364,7 @@ void read_file(x_config_file_t *file, char *filename)
           }
         }
       }
-      x_container_list_destroy(lines);
+      x_case_list_destroy(lines);
     }
     x_file_basic_destroy(file_basic);
   } else {

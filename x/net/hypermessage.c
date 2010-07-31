@@ -1,5 +1,5 @@
-#include "x/container/list.h"
-#include "x/container/set.h"
+#include "x/case/list.h"
+#include "x/case/set.h"
 #include "x/core/content.h"
 #include "x/core/messagey.h"
 #include "x/core/nameobject.h"
@@ -15,13 +15,13 @@ struct x_net_hypermessage_t {
   x_net_hyperstatus_t hyperstatus;
   char *resource_path;
   x_net_hyperversion_t hyperversion;
-  x_container_set_t *hyperheaders;
+  x_case_set_t *hyperheaders;
   char *body;
   unsigned long body_size;
 
   x_core_content_t content_type;
   char *resource_name;
-  x_container_set_t *pri_parameters;
+  x_case_set_t *pri_parameters;
 
   x_core_objectey_t nameobject_objectey;
   x_core_objectey_t uuid_objectey;
@@ -39,7 +39,7 @@ static void x_net_hypermessage_create_rollback
 x_net_hypermessage_t *x_net_hypermessage_create(int client_socket,
     x_net_hypermethod_t hypermethod, x_net_hyperstatus_t hyperstatus,
     char *resource_path, x_net_hyperversion_t hyperversion,
-    x_container_set_t *hyperheaders)
+    x_case_set_t *hyperheaders)
 {
   x_net_hypermessage_t *hypermessage;
   x_core_bool_t so_far_so_good;
@@ -76,14 +76,14 @@ x_net_hypermessage_t *x_net_hypermessage_create(int client_socket,
 
   if (so_far_so_good) {
     if (hyperheaders) {
-      hypermessage->hyperheaders = x_container_set_copy(hyperheaders);
+      hypermessage->hyperheaders = x_case_set_copy(hyperheaders);
     } else {
       x_core_nameobject_init_objectey(&hypermessage->nameobject_objectey);
       hypermessage->hyperheaders
-        = x_container_set_create(&hypermessage->nameobject_objectey);
+        = x_case_set_create(&hypermessage->nameobject_objectey);
       if (!hypermessage->hyperheaders) {
         so_far_so_good = x_core_bool_false;
-        x_core_trace("x_container_set_create");
+        x_core_trace("x_case_set_create");
       }
     }
   }
@@ -125,7 +125,7 @@ x_core_bool_t x_net_hypermessage_create_pri(x_net_hypermessage_t *hypermessage)
   parameters = strtok(NULL, "?");
   if (parameters) {
     hypermessage->pri_parameters
-      = x_container_set_create(&hypermessage->nameobject_objectey);
+      = x_case_set_create(&hypermessage->nameobject_objectey);
     if (hypermessage->pri_parameters) {
       success = x_core_bool_true;
       parameter = strtok_r(parameters, "&", &parameter_context);
@@ -137,7 +137,7 @@ x_core_bool_t x_net_hypermessage_create_pri(x_net_hypermessage_t *hypermessage)
               x_core_string_copy, x_core_string_destroy,
               x_core_string_get_as_string);
           if (nameobject) {
-            if (!x_container_set_add
+            if (!x_case_set_add
                 (hypermessage->pri_parameters, nameobject)) {
               x_core_nameobject_destroy(nameobject);
             }
@@ -149,7 +149,7 @@ x_core_bool_t x_net_hypermessage_create_pri(x_net_hypermessage_t *hypermessage)
         parameter = strtok_r(NULL, "&", &parameter_context);
       }
     } else {
-      x_core_trace("x_container_set_create");
+      x_core_trace("x_case_set_create");
       success = x_core_bool_false;
     }
   } else {
@@ -168,7 +168,7 @@ void x_net_hypermessage_create_rollback(x_net_hypermessage_t *hypermessage)
     free(hypermessage->resource_path);
   }
   if (hypermessage->hyperheaders) {
-    x_container_set_destroy(hypermessage->hyperheaders);
+    x_case_set_destroy(hypermessage->hyperheaders);
   }
   if (hypermessage->body) {
     free(hypermessage->body);
@@ -196,10 +196,10 @@ void x_net_hypermessage_destroy(void *hypermessage_object)
   }
 
   if (hypermessage->pri_parameters) {
-    x_container_set_destroy(hypermessage->pri_parameters);
+    x_case_set_destroy(hypermessage->pri_parameters);
   }
 
-  x_container_set_destroy(hypermessage->hyperheaders);
+  x_case_set_destroy(hypermessage->hyperheaders);
 
   free(hypermessage);
 }
@@ -240,13 +240,13 @@ x_core_nameobject_t *x_net_hypermessage_get_hyperheader
   x_core_nameobject_t *found_header;
 
   decoy_header = x_core_nameobject_create_decoy(header_name);
-  found_header = x_container_set_find
+  found_header = x_case_set_find
     (hypermessage->hyperheaders, decoy_header);
 
   return found_header;
 }
 
-x_container_set_t *x_net_hypermessage_get_hyperheaders
+x_case_set_t *x_net_hypermessage_get_hyperheaders
 (x_net_hypermessage_t *hypermessage)
 {
   return hypermessage->hyperheaders;
@@ -286,7 +286,7 @@ char *x_net_hypermessage_get_pri_parameter(x_net_hypermessage_t *hypermessage,
     nameobject_decoy = x_core_nameobject_create_decoy(parameter_name);
     if (nameobject_decoy) {
       nameobject
-        = x_container_set_find(hypermessage->pri_parameters, nameobject_decoy);
+        = x_case_set_find(hypermessage->pri_parameters, nameobject_decoy);
       if (nameobject) {
         parameter_value = x_core_nameobject_get_object(nameobject);
       } else {
@@ -373,7 +373,7 @@ x_core_uuid_t *x_net_hypermessage_get_pri_parameter_as_uuid
   return uuid;
 }
 
-x_container_set_t *x_net_hypermessage_get_pri_parameter_as_uuid_set
+x_case_set_t *x_net_hypermessage_get_pri_parameter_as_uuid_set
 (x_net_hypermessage_t *hypermessage, char *parameter_name)
 {
   assert(hypermessage);
@@ -381,25 +381,25 @@ x_container_set_t *x_net_hypermessage_get_pri_parameter_as_uuid_set
   x_core_uuid_t *uuid;
   char *uuid_string;
   char *parameter_string;
-  x_container_list_t *uuid_strings;
-  x_container_set_t *uuid_set;
+  x_case_list_t *uuid_strings;
+  x_case_set_t *uuid_set;
 
-  uuid_set = x_container_set_create(&hypermessage->uuid_objectey);
+  uuid_set = x_case_set_create(&hypermessage->uuid_objectey);
   if (uuid_set) {
     parameter_string
       = x_net_hypermessage_get_pri_parameter(hypermessage, parameter_name);
     if (parameter_string) {
       uuid_strings
-        = x_container_list_create_strings_from_string(parameter_string, ",");
+        = x_case_list_create_strings_from_string(parameter_string, ",");
       if (uuid_strings) {
-        x_container_list_iterate_start(uuid_strings);
-        while ((uuid_string = x_container_list_iterate_next(uuid_strings))) {
+        x_case_list_iterate_start(uuid_strings);
+        while ((uuid_string = x_case_list_iterate_next(uuid_strings))) {
           uuid = x_core_uuid_create_from_string(uuid_string);
           if (uuid) {
-            if (!x_container_set_find(uuid_set, uuid)) {
-              if (!x_container_set_add(uuid_set, uuid)) {
+            if (!x_case_set_find(uuid_set, uuid)) {
+              if (!x_case_set_add(uuid_set, uuid)) {
                 x_core_uuid_destroy(uuid);
-                x_core_trace("x_container_set_add");
+                x_core_trace("x_case_set_add");
               }
             } else {
               x_core_uuid_destroy(uuid);
@@ -408,21 +408,21 @@ x_container_set_t *x_net_hypermessage_get_pri_parameter_as_uuid_set
             x_core_trace("x_core_uuid_create_from_string");
           }
         }
-        x_container_list_destroy(uuid_strings);
+        x_case_list_destroy(uuid_strings);
       } else {
-        x_core_trace("x_container_list_create_string_from_strings");
+        x_core_trace("x_case_list_create_string_from_strings");
       }
     } else {
       x_core_trace("x_net_hypermessage_get_pri_parameter");
     }
   } else {
-    x_core_trace("x_container_set_create");
+    x_core_trace("x_case_set_create");
   }
 
   return uuid_set;
 }
 
-x_container_set_t *x_net_hypermessage_get_pri_parameters
+x_case_set_t *x_net_hypermessage_get_pri_parameters
 (x_net_hypermessage_t *hypermessage)
 {
   return hypermessage->pri_parameters;
@@ -492,7 +492,7 @@ x_core_bool_t x_net_hypermessage_set_hyperheader
   nameobject = x_core_nameobject_create(header_name, header_value,
       x_core_string_copy, x_core_string_destroy, x_core_string_get_as_string);
   if (nameobject) {
-    if (x_container_set_add(hypermessage->hyperheaders, nameobject)) {
+    if (x_case_set_add(hypermessage->hyperheaders, nameobject)) {
       success = x_core_bool_true;
     } else {
       success = x_core_bool_false;

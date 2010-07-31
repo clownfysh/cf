@@ -13,7 +13,7 @@ static char *slurp_string(x_file_basic_t *file);
 
 struct x_file_basic_t {
   FILE *file;
-  x_container_list_t *token_list_cache;
+  x_case_list_t *token_list_cache;
 };
 
 x_file_basic_t *x_file_basic_create(const char *filename, x_file_mode_t mode)
@@ -40,7 +40,7 @@ void x_file_basic_destroy(x_file_basic_t *file)
   assert(file);
 
   if (file->token_list_cache) {
-    x_container_list_destroy(file->token_list_cache);
+    x_case_list_destroy(file->token_list_cache);
   }
 
   fclose(file->file);
@@ -71,7 +71,7 @@ x_core_bool_t x_file_basic_get_as_blob(x_file_basic_t *file, char **blob,
   return slurp(file, blob, blob_size);
 }
 
-x_container_list_t *x_file_basic_get_as_line_list(x_file_basic_t *file)
+x_case_list_t *x_file_basic_get_as_line_list(x_file_basic_t *file)
 {
   return x_file_basic_get_as_token_list(file, "\n");
 }
@@ -81,19 +81,19 @@ char *x_file_basic_get_as_string(x_file_basic_t *file)
   return slurp_string(file);
 }
 
-x_container_list_t *x_file_basic_get_as_token_list(x_file_basic_t *file,
+x_case_list_t *x_file_basic_get_as_token_list(x_file_basic_t *file,
     char *delimiters)
 {
   assert(file);
   assert(delimiters);
-  x_container_list_t *token_list;
+  x_case_list_t *token_list;
   char *token;
   char *token_copy;
   char *file_string;
   char *strtok_context;
 
   if (!file->token_list_cache) {
-    file->token_list_cache = x_container_list_create(x_core_string_compare,
+    file->token_list_cache = x_case_list_create(x_core_string_compare,
         x_core_string_copy, x_core_string_destroy);
     if (file->token_list_cache) {
       file_string = slurp_string(file);
@@ -101,8 +101,8 @@ x_container_list_t *x_file_basic_get_as_token_list(x_file_basic_t *file,
       while (token) {
         token_copy = strdup(token);
         if (token_copy) {
-          if (!x_container_list_add_last(file->token_list_cache, token_copy)) {
-            x_core_trace("x_container_list_add_last");
+          if (!x_case_list_add_last(file->token_list_cache, token_copy)) {
+            x_core_trace("x_case_list_add_last");
             free(token_copy);
           }
         } else {
@@ -112,14 +112,14 @@ x_container_list_t *x_file_basic_get_as_token_list(x_file_basic_t *file,
       }
       free(file_string);
     } else {
-      x_core_trace("x_container_list_create");
+      x_core_trace("x_case_list_create");
     }
   }
 
   if (file->token_list_cache) {
-    token_list = x_container_list_copy(file->token_list_cache);
+    token_list = x_case_list_copy(file->token_list_cache);
     if (!token_list) {
-      x_core_trace("x_container_list_copy");
+      x_core_trace("x_case_list_copy");
     }
   } else {
     token_list = NULL;

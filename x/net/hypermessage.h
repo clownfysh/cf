@@ -1,7 +1,7 @@
 #ifndef x_net_hypermessage_h
 #define x_net_hypermessage_h
 
-#include "x/container/set.h"
+#include "x/case/set.h"
 #include "x/core/content.h"
 #include "x/core/engine.h"
 #include "x/core/nameobject.h"
@@ -33,7 +33,7 @@ typedef struct x_net_hypermessage_t x_net_hypermessage_t;
 x_net_hypermessage_t *x_net_hypermessage_create(int client_socket,
     x_net_hypermethod_t hypermethod, x_net_hyperstatus_t hyperstatus,
     char *resource_path, x_net_hyperversion_t hyperversion,
-    x_container_set_t *hyperheaders);
+    x_case_set_t *hyperheaders);
 
 void x_net_hypermessage_destroy(void *hypermessage_object);
 
@@ -49,7 +49,7 @@ x_net_engine_id_t x_net_hypermessage_get_engine_id(void *message_object);
 x_core_nameobject_t *x_net_hypermessage_get_hyperheader
 (x_net_hypermessage_t *hypermessage, char *header_name);
 
-x_container_set_t *x_net_hypermessage_get_hyperheaders
+x_case_set_t *x_net_hypermessage_get_hyperheaders
 (x_net_hypermessage_t *hypermessage);
 
 x_net_hypermethod_t x_net_hypermessage_get_hypermethod
@@ -76,10 +76,10 @@ x_core_bool_t x_net_hypermessage_get_pri_parameter_as_unsigned_long
 x_core_uuid_t *x_net_hypermessage_get_pri_parameter_as_uuid
 (x_net_hypermessage_t *hypermessage, char *parameter_name);
 
-x_container_set_t *x_net_hypermessage_get_pri_parameter_as_uuid_set
+x_case_set_t *x_net_hypermessage_get_pri_parameter_as_uuid_set
 (x_net_hypermessage_t *hypermessage, char *parameter_name);
 
-x_container_set_t *x_net_hypermessage_get_pri_parameters
+x_case_set_t *x_net_hypermessage_get_pri_parameters
 (x_net_hypermessage_t *hypermessage);
 
 char *x_net_hypermessage_get_resource_path(x_net_hypermessage_t *hypermessage);

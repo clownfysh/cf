@@ -11,7 +11,7 @@ typedef struct x_net_starclient_t x_net_starclient_t;
 
 x_core_bool_t x_net_starclient_connect(x_net_starclient_t *starclient);
 
-x_net_starclient_t *x_net_starclient_create(x_container_list_t *star_arm_ips,
+x_net_starclient_t *x_net_starclient_create(x_case_list_t *star_arm_ips,
     unsigned short star_arm_port_min, unsigned short star_arm_port_max,
     char *node_server_exclude_ip, unsigned short node_server_exclude_min_port,
     unsigned short node_server_exclude_max_port, void *custom_client_context,
