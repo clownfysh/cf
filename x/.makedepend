@@ -3096,6 +3096,7 @@
 ./audit/log.o: /home/matthew/cf/x/core/message.h
 ./audit/log.o: /home/matthew/cf/x/core/engine.h
 ./audit/log.o: /home/matthew/cf/x/core/objectey.h
+./audit/log.o: /home/matthew/cf/x/core/unsigned_long.h
 ./container/map.o: /home/matthew/cf/x/container/map.h
 ./container/map.o: /home/matthew/cf/x/core/bool.h
 ./container/map.o: /home/matthew/cf/x/core/declarations.h
@@ -5239,6 +5240,8 @@
 ./core/nameobject.o: /home/matthew/cf/x/core/bool.h
 ./core/nameobject.o: /home/matthew/cf/x/core/declarations.h
 ./core/nameobject.o: /home/matthew/cf/x/core/objectey.h
+./core/nameobject.o: /home/matthew/cf/x/core/string.h
+./core/nameobject.o: /home/matthew/cf/x/core/types.h
 ./core/nameobject.o: /home/matthew/cf/x/core/tools.h
 ./core/nameobject.o: /home/matthew/cf/x/core/standard.h
 ./core/nameobject.o: /usr/include/arpa/inet.h /usr/include/features.h
@@ -5301,7 +5304,6 @@
 ./core/nameobject.o: /usr/include/bits/confname.h /usr/include/getopt.h
 ./core/nameobject.o: /usr/include/jpeglib.h /usr/include/jconfig.h
 ./core/nameobject.o: /usr/include/jmorecfg.h /home/matthew/cf/x/core/bit.h
-./core/nameobject.o: /home/matthew/cf/x/core/types.h
 ./core/scratch.o: /home/matthew/cf/x/core/standard.h /usr/include/arpa/inet.h
 ./core/scratch.o: /usr/include/features.h /usr/include/bits/predefs.h
 ./core/scratch.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
