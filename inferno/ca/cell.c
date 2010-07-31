@@ -1,17 +1,17 @@
-#include "inferno/ca/cell.h"
-#include "x/core/standard.h"
+#include "cf/inferno/ca/cell.h"
+#include "cf/x/core/standard.h"
 
-inferno_ca_t inferno_ca_copy(inferno_ca_t cell)
+cf_inferno_ca_t cf_inferno_ca_copy(cf_inferno_ca_t cell)
 {
-  inferno_ca_t inferno_ca_copy;
+  cf_inferno_ca_t cf_inferno_ca_copy;
 
-  inferno_ca_copy.value = cell.value;
-  inferno_ca_copy.rule = cell.rule;
+  cf_inferno_ca_copy.value = cell.value;
+  cf_inferno_ca_copy.rule = cell.rule;
 
-  return inferno_ca_copy;
+  return cf_inferno_ca_copy;
 }
 
-void inferno_ca_init(inferno_ca_t *cell, unsigned long value, unsigned long rule)
+void cf_inferno_ca_init(cf_inferno_ca_t *cell, unsigned long value, unsigned long rule)
 {
   assert(cell);
 

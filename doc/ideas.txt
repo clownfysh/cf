@@ -1,0 +1,4 @@
++ generalized teoc (eoc?) system for experimenting with cultural plans
+  + economic simulations :: take what I know experientally from busyness and
+    model various types of it, to experiment with what's really best for the
+    whole

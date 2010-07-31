@@ -1,5 +1,7 @@
++ rename they interfaces _i or something?
 + change trace-exits to x_core_implement();s
   + name it x_core_todo_implement?
 + move set's binary tree implementation into a binary tree module
 + stuff that's in various "tools" modules...sometimes has the system name
   prefix, sometimes doesn't...consistify
++ add a cf_ prefix

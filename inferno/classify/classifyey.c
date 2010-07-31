@@ -1,16 +1,16 @@
-#include "inferno/classify/classifyey.h"
-#include "x/core/tools.h"
+#include "cf/inferno/classify/classifyey.h"
+#include "cf/x/core/tools.h"
 
-void inferno_classify_classifyey_free
-(inferno_classify_classifyey_t *classifyey) {}
+void cf_inferno_classify_classifyey_free
+(cf_inferno_classify_classifyey_t *classifyey) {}
 
-void inferno_classify_classifyey_init
-(inferno_classify_classifyey_t *classifyey,
-    inferno_classify_classifyey_create_f create,
-    inferno_classify_classifyey_destroy_f destroy,
-    inferno_classify_classifyey_classify_object_f classify_object,
-    inferno_classify_classifyey_learn_f learn,
-    inferno_classify_classifyey_observe_object_f observe_object)
+void cf_inferno_classify_classifyey_init
+(cf_inferno_classify_classifyey_t *classifyey,
+    cf_inferno_classify_classifyey_create_f create,
+    cf_inferno_classify_classifyey_destroy_f destroy,
+    cf_inferno_classify_classifyey_classify_object_f classify_object,
+    cf_inferno_classify_classifyey_learn_f learn,
+    cf_inferno_classify_classifyey_observe_object_f observe_object)
 {
   assert(classifyey);
   assert(create);

@@ -1,6 +1,0 @@
-#ifndef x_container_set_mbin_impl_h
-#define x_container_set_mbin_impl_h
-
-#define x_container_set_get_size x_container_mbin_get_size
-
-#endif

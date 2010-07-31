@@ -3,14 +3,12 @@
 #include <ctype.h>
 #include <dirent.h>
 #include <fcntl.h>
-#include <libpq-fe.h>
 #include <math.h>
 
 #include <ncurses.h>
 #undef false
 #undef true
 
-#include <openssl/rand.h>
 #include <pthread.h>
 #include <signal.h>
 #include <stdarg.h>

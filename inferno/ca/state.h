@@ -1,44 +1,44 @@
-#ifndef inferno_ca_state_h
-#define inferno_ca_state_h
+#ifndef cf_inferno_ca_state_h
+#define cf_inferno_ca_state_h
 
-#include "inferno/ca/cell.h"
+#include "cf/inferno/ca/cell.h"
 
-struct inferno_ca_state_t;
-typedef struct inferno_ca_state_t inferno_ca_state_t;
+struct cf_inferno_ca_state_t;
+typedef struct cf_inferno_ca_state_t cf_inferno_ca_state_t;
 
-int inferno_ca_state_compare(void *state_object_a, void *state_object_b);
+int cf_inferno_ca_state_compare(void *state_object_a, void *state_object_b);
 
-void *inferno_ca_state_copy(void *state_object);
+void *cf_inferno_ca_state_copy(void *state_object);
 
-inferno_ca_state_t *inferno_ca_state_create(unsigned long cell_count);
+cf_inferno_ca_state_t *cf_inferno_ca_state_create(unsigned long cell_count);
 
-inferno_ca_state_t *inferno_ca_state_create_from_cells(inferno_ca_t *cells,
+cf_inferno_ca_state_t *cf_inferno_ca_state_create_from_cells(cf_inferno_ca_t *cells,
     unsigned long cell_count);
 
-void inferno_ca_state_destroy(void *state_object);
+void cf_inferno_ca_state_destroy(void *state_object);
 
-char *inferno_ca_state_get_as_string(void *state_object);
+char *cf_inferno_ca_state_get_as_string(void *state_object);
 
-inferno_ca_t *inferno_ca_state_get_cell(inferno_ca_state_t *state,
+cf_inferno_ca_t *cf_inferno_ca_state_get_cell(cf_inferno_ca_state_t *state,
     unsigned long cell_index);
 
-unsigned long inferno_ca_state_get_cell_count(inferno_ca_state_t *state);
+unsigned long cf_inferno_ca_state_get_cell_count(cf_inferno_ca_state_t *state);
 
-unsigned long inferno_ca_state_get_cell_rule(inferno_ca_state_t *state,
+unsigned long cf_inferno_ca_state_get_cell_rule(cf_inferno_ca_state_t *state,
     unsigned long cell_index);
 
-unsigned long inferno_ca_state_get_cell_value(inferno_ca_state_t *state,
+unsigned long cf_inferno_ca_state_get_cell_value(cf_inferno_ca_state_t *state,
     unsigned long cell_index);
 
-void inferno_ca_state_print(inferno_ca_state_t *state);
+void cf_inferno_ca_state_print(cf_inferno_ca_state_t *state);
 
-void inferno_ca_state_set_cell(inferno_ca_state_t *state, unsigned long cell_index,
-    inferno_ca_t *cell);
+void cf_inferno_ca_state_set_cell(cf_inferno_ca_state_t *state, unsigned long cell_index,
+    cf_inferno_ca_t *cell);
 
-void inferno_ca_state_set_cell_rule(inferno_ca_state_t *state,
-    unsigned long cell_index, unsigned long inferno_ca_rule);
+void cf_inferno_ca_state_set_cell_rule(cf_inferno_ca_state_t *state,
+    unsigned long cell_index, unsigned long cf_inferno_ca_rule);
 
-void inferno_ca_state_set_cell_value(inferno_ca_state_t *state,
-    unsigned long cell_index, unsigned long inferno_ca_value);
+void cf_inferno_ca_state_set_cell_value(cf_inferno_ca_state_t *state,
+    unsigned long cell_index, unsigned long cf_inferno_ca_value);
 
 #endif

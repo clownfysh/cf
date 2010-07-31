@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 # DO NOT DELETE
 
 ./xcache/item.o: /home/matthew/cf/x/core/tools.h
@@ -6187,3 +6188,5 @@
 ./clink/concept.o: /usr/include/jconfig.h /usr/include/jmorecfg.h
 ./clink/concept.o: /home/matthew/cf/x/core/bit.h
 ./clink/concept.o: /home/matthew/cf/x/core/types.h
+=======
+>>>>>>> 51b45c6d3c71b96313ae7561d9321298bb7ab9aa

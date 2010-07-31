@@ -1,6 +1,6 @@
-#ifndef inferno_bios_constants_h
-#define inferno_bios_constants_h
+#ifndef cf_inferno_bios_constants_h
+#define cf_inferno_bios_constants_h
 
-#define INFERNO_BIOS_BOX_DIMENSION 64
+#define CF_INFERNO_BIOS_BOX_DIMENSION 64
 
 #endif

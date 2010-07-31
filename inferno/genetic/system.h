@@ -1,24 +1,24 @@
-#ifndef inferno_genetic_system_h
-#define inferno_genetic_system_h
+#ifndef cf_inferno_genetic_system_h
+#define cf_inferno_genetic_system_h
 
-#include "inferno/core/goal.h"
-#include "inferno/search/searchey.h"
-#include "inferno/search/tools.h"
+#include "cf/inferno/core/goal.h"
+#include "cf/inferno/search/searchey.h"
+#include "cf/inferno/search/tools.h"
 
-struct inferno_genetic_system_t;
-typedef struct inferno_genetic_system_t inferno_genetic_system_t;
+struct cf_inferno_genetic_system_t;
+typedef struct cf_inferno_genetic_system_t cf_inferno_genetic_system_t;
 
-void *inferno_genetic_system_create(inferno_core_score_solution_f score_solution,
-    inferno_core_goal_t goal, void *context,
-    x_container_array_t *initial_solutions, x_audit_log_t *log);
+void *cf_inferno_genetic_system_create(cf_inferno_core_score_solution_f score_solution,
+    cf_inferno_core_goal_t goal, void *context,
+    cf_x_case_array_t *initial_solutions, cf_x_audit_log_t *log);
 
-void inferno_genetic_system_destroy(void *system_object);
+void cf_inferno_genetic_system_destroy(void *system_object);
 
-x_container_array_t *inferno_genetic_system_get_solutions_copy(void *system_object,
+cf_x_case_array_t *cf_inferno_genetic_system_get_solutions_copy(void *system_object,
     unsigned short max_solution_count);
 
-void inferno_genetic_system_init_searchey(inferno_searcx_searchey_t *searchey);
+void cf_inferno_genetic_system_init_searchey(cf_inferno_searcx_searchey_t *searchey);
 
-void inferno_genetic_system_search(void *system_object);
+void cf_inferno_genetic_system_search(void *system_object);
 
 #endif

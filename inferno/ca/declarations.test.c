@@ -1,4 +1,4 @@
-#include "inferno/ca/declarations.h"
+#include "cf/inferno/ca/declarations.h"
 
 int main(int argc, char *argv[])
 {

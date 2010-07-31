@@ -1,7 +1,7 @@
-#ifndef inferno_bios_declarations_h
-#define inferno_bios_declarations_h
+#ifndef cf_inferno_bios_declarations_h
+#define cf_inferno_bios_declarations_h
 
-struct inferno_bios_system_t;
-typedef struct inferno_bios_system_t inferno_bios_system_t;
+struct cf_inferno_bios_system_t;
+typedef struct cf_inferno_bios_system_t cf_inferno_bios_system_t;
 
 #endif

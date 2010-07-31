@@ -1,5 +1,0 @@
-
-# DO NOT DELETE
-
-./system.o: /home/matthew/cf/sorea/sight/system.h
-./window.o: /home/matthew/cf/sorea/sight/window.h

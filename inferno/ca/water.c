@@ -1,7 +1,7 @@
-#include "inferno/ca/water.h"
-#include "x/core/tools.h"
+#include "cf/inferno/ca/water.h"
+#include "cf/x/core/tools.h"
 
-inferno_ca_t inferno_ca_water_calculate_new_cell_state(inferno_ca_system_t *system,
+cf_inferno_ca_t cf_inferno_ca_water_calculate_new_cell_state(cf_inferno_ca_system_t *system,
     unsigned long cell_index)
 {
   assert(system);
@@ -16,15 +16,15 @@ inferno_ca_t inferno_ca_water_calculate_new_cell_state(inferno_ca_system_t *syst
   unsigned long neighbor_6_index;
   unsigned long neighbor_7_index;
   unsigned long neighbor_8_index;
-  inferno_ca_t *neighbor_0_cell;
-  inferno_ca_t *neighbor_1_cell;
-  inferno_ca_t *neighbor_2_cell;
-  inferno_ca_t *neighbor_3_cell;
-  inferno_ca_t *neighbor_4_cell;
-  inferno_ca_t *neighbor_5_cell;
-  inferno_ca_t *neighbor_6_cell;
-  inferno_ca_t *neighbor_7_cell;
-  inferno_ca_t *neighbor_8_cell;
+  cf_inferno_ca_t *neighbor_0_cell;
+  cf_inferno_ca_t *neighbor_1_cell;
+  cf_inferno_ca_t *neighbor_2_cell;
+  cf_inferno_ca_t *neighbor_3_cell;
+  cf_inferno_ca_t *neighbor_4_cell;
+  cf_inferno_ca_t *neighbor_5_cell;
+  cf_inferno_ca_t *neighbor_6_cell;
+  cf_inferno_ca_t *neighbor_7_cell;
+  cf_inferno_ca_t *neighbor_8_cell;
   unsigned long neighbor_0_value;
   unsigned long neighbor_1_value;
   unsigned long neighbor_2_value;
@@ -36,45 +36,45 @@ inferno_ca_t inferno_ca_water_calculate_new_cell_state(inferno_ca_system_t *syst
   unsigned long neighbor_8_value;
   unsigned short neighborhood;
   unsigned long new_cell_value;
-  inferno_ca_t new_cell_state;
+  cf_inferno_ca_t new_cell_state;
 
-  name_object = inferno_ca_system_get_name(system);
+  name_object = cf_inferno_ca_system_get_name(system);
   name = name_object;
 
-  neighbor_0_index = inferno_ca_water_get_relative_cell_index
+  neighbor_0_index = cf_inferno_ca_water_get_relative_cell_index
     (system, cell_index, 0);
-  neighbor_1_index = inferno_ca_water_get_relative_cell_index
+  neighbor_1_index = cf_inferno_ca_water_get_relative_cell_index
     (system, cell_index, 1);
-  neighbor_2_index = inferno_ca_water_get_relative_cell_index
+  neighbor_2_index = cf_inferno_ca_water_get_relative_cell_index
     (system, cell_index, 2);
-  neighbor_3_index = inferno_ca_water_get_relative_cell_index
+  neighbor_3_index = cf_inferno_ca_water_get_relative_cell_index
     (system, cell_index, 3);
-  neighbor_4_index = inferno_ca_water_get_relative_cell_index
+  neighbor_4_index = cf_inferno_ca_water_get_relative_cell_index
     (system, cell_index, 4);
-  neighbor_5_index = inferno_ca_water_get_relative_cell_index
+  neighbor_5_index = cf_inferno_ca_water_get_relative_cell_index
     (system, cell_index, 5);
-  neighbor_6_index = inferno_ca_water_get_relative_cell_index
+  neighbor_6_index = cf_inferno_ca_water_get_relative_cell_index
     (system, cell_index, 6);
-  neighbor_7_index = inferno_ca_water_get_relative_cell_index
+  neighbor_7_index = cf_inferno_ca_water_get_relative_cell_index
     (system, cell_index, 7);
-  neighbor_8_index = inferno_ca_water_get_relative_cell_index
+  neighbor_8_index = cf_inferno_ca_water_get_relative_cell_index
     (system, cell_index, 8);
 
-  neighbor_0_cell = inferno_ca_system_get_relative_cell
+  neighbor_0_cell = cf_inferno_ca_system_get_relative_cell
     (system, -2, neighbor_0_index);
-  neighbor_1_cell = inferno_ca_system_get_relative_cell
+  neighbor_1_cell = cf_inferno_ca_system_get_relative_cell
     (system, -2, neighbor_1_index);
-  neighbor_2_cell = inferno_ca_system_get_relative_cell
+  neighbor_2_cell = cf_inferno_ca_system_get_relative_cell
     (system, -2, neighbor_2_index);
-  neighbor_3_cell = inferno_ca_system_get_relative_cell
+  neighbor_3_cell = cf_inferno_ca_system_get_relative_cell
     (system, -1, neighbor_3_index);
-  neighbor_4_cell = inferno_ca_system_get_relative_cell
+  neighbor_4_cell = cf_inferno_ca_system_get_relative_cell
     (system, -1, neighbor_4_index);
-  neighbor_5_cell = inferno_ca_system_get_relative_cell
+  neighbor_5_cell = cf_inferno_ca_system_get_relative_cell
     (system, -1, neighbor_5_index);
-  neighbor_6_cell = inferno_ca_system_get_current_cell(system, neighbor_6_index);
-  neighbor_7_cell = inferno_ca_system_get_current_cell(system, neighbor_7_index);
-  neighbor_8_cell = inferno_ca_system_get_current_cell(system, neighbor_8_index);
+  neighbor_6_cell = cf_inferno_ca_system_get_current_cell(system, neighbor_6_index);
+  neighbor_7_cell = cf_inferno_ca_system_get_current_cell(system, neighbor_7_index);
+  neighbor_8_cell = cf_inferno_ca_system_get_current_cell(system, neighbor_8_index);
 
   neighbor_0_value = neighbor_0_cell->value;
   neighbor_1_value = neighbor_1_cell->value;
@@ -98,19 +98,19 @@ inferno_ca_t inferno_ca_water_calculate_new_cell_state(inferno_ca_system_t *syst
   }
 
   new_cell_state.value = new_cell_value;
-  inferno_ca_init(&new_cell_state, new_cell_value, INFERNO_CA_NO_RULE);
+  cf_inferno_ca_init(&new_cell_state, new_cell_value, CF_INFERNO_CA_NO_RULE);
 
   return new_cell_state;
 }
 
-unsigned long inferno_ca_water_get_relative_cell_index(inferno_ca_system_t *system,
+unsigned long cf_inferno_ca_water_get_relative_cell_index(cf_inferno_ca_system_t *system,
     unsigned long cell_index, unsigned long relationship)
 {
   assert(system);
   unsigned long cell_count;
   unsigned long relative_cell_index;
 
-  cell_count = inferno_ca_system_get_cell_count(system);
+  cell_count = cf_inferno_ca_system_get_cell_count(system);
 
   if (0 == cell_index) {
     switch (relationship) {
@@ -130,7 +130,7 @@ unsigned long inferno_ca_water_get_relative_cell_index(inferno_ca_system_t *syst
         relative_cell_index = cell_index + 1;
         break;
       default:
-        x_core_trace("invalid cell relationship index");
+        cf_x_core_trace("invalid cell relationship index");
         relative_cell_index = cell_index;
         break;
     }
@@ -153,7 +153,7 @@ unsigned long inferno_ca_water_get_relative_cell_index(inferno_ca_system_t *syst
         relative_cell_index = 0;
         break;
       default:
-        x_core_trace("invalid cell relationship index");
+        cf_x_core_trace("invalid cell relationship index");
         relative_cell_index = cell_index;
         break;
     }
@@ -176,7 +176,7 @@ unsigned long inferno_ca_water_get_relative_cell_index(inferno_ca_system_t *syst
         relative_cell_index = cell_index + 1;
         break;
       default:
-        x_core_trace("invalid cell relationship index");
+        cf_x_core_trace("invalid cell relationship index");
         relative_cell_index = cell_index;
         break;
     }
@@ -186,12 +186,12 @@ unsigned long inferno_ca_water_get_relative_cell_index(inferno_ca_system_t *syst
   return relative_cell_index;
 }
 
-void inferno_ca_water_init_systemey(inferno_ca_systemey_t *systemey, void *name_object)
+void cf_inferno_ca_water_init_systemey(cf_inferno_ca_systemey_t *systemey, void *name_object)
 {
-  inferno_ca_systemey_init(systemey, name_object,
-      inferno_ca_water_calculate_new_cell_state, INFERNO_CA_NO_CREATE_CONTEXT_FUNCTION,
-      INFERNO_CA_NO_DESTROY_CONTEXT_FUNCTION, INFERNO_CA_NO_END_TIME_STEP_FUNCTION,
-      inferno_ca_system_get_cell_color_binary,
-      inferno_ca_water_get_relative_cell_index,
-      INFERNO_CA_NO_START_TIME_STEP_FUNCTION);
+  cf_inferno_ca_systemey_init(systemey, name_object,
+      cf_inferno_ca_water_calculate_new_cell_state, CF_INFERNO_CA_NO_CREATE_CONTEXT_FUNCTION,
+      CF_INFERNO_CA_NO_DESTROY_CONTEXT_FUNCTION, CF_INFERNO_CA_NO_END_TIME_STEP_FUNCTION,
+      cf_inferno_ca_system_get_cell_color_binary,
+      cf_inferno_ca_water_get_relative_cell_index,
+      CF_INFERNO_CA_NO_START_TIME_STEP_FUNCTION);
 }

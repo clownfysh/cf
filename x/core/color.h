@@ -1,14 +1,14 @@
-#ifndef x_core_color_h
-#define x_core_color_h
+#ifndef cf_x_core_color_h
+#define cf_x_core_color_h
 
-struct x_core_color_t {
+struct cf_x_core_color_t {
   unsigned long red;
   unsigned long blue;
   unsigned long green;
 };
-typedef struct x_core_color_t x_core_color_t;
+typedef struct cf_x_core_color_t cf_x_core_color_t;
 
-void x_core_color_init(x_core_color_t *color, unsigned long red,
+void cf_x_core_color_init(cf_x_core_color_t *color, unsigned long red,
     unsigned long blue, unsigned long green);
 
 #endif

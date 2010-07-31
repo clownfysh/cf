@@ -1,4 +1,4 @@
-#include "inferno/ca/clear.h"
+#include "cf/inferno/ca/clear.h"
 
 int main(int argc, char *argv[])
 {

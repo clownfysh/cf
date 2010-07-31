@@ -1,8 +1,8 @@
-#include "inferno/box/coordinate.h"
-#include "x/core/standard.h"
+#include "cf/inferno/box/coordinate.h"
+#include "cf/x/core/standard.h"
 
-void inferno_box_coordinate_copy(inferno_box_coordinate_t *destination,
-    inferno_box_coordinate_t *source)
+void cf_inferno_box_coordinate_copy(cf_inferno_box_coordinate_t *destination,
+    cf_inferno_box_coordinate_t *source)
 {
   assert(destination);
   assert(source);
@@ -12,10 +12,10 @@ void inferno_box_coordinate_copy(inferno_box_coordinate_t *destination,
   destination->z = source->z;
 }
 
-void inferno_box_coordinate_free(inferno_box_coordinate_t *coordinate) {}
+void cf_inferno_box_coordinate_free(cf_inferno_box_coordinate_t *coordinate) {}
 
-void inferno_box_coordinate_init_witx_coordinate(inferno_box_coordinate_t *coordinate,
-    inferno_box_coordinate_t *initial_coordinate)
+void cf_inferno_box_coordinate_init_witx_coordinate(cf_inferno_box_coordinate_t *coordinate,
+    cf_inferno_box_coordinate_t *initial_coordinate)
 {
   assert(coordinate);
 
@@ -24,8 +24,8 @@ void inferno_box_coordinate_init_witx_coordinate(inferno_box_coordinate_t *coord
   coordinate->z = initial_coordinate->z;
 }
 
-void inferno_box_coordinate_init_witx_random(inferno_box_coordinate_t *coordinate,
-    inferno_box_coordinate_t *dimension_coordinate)
+void cf_inferno_box_coordinate_init_witx_random(cf_inferno_box_coordinate_t *coordinate,
+    cf_inferno_box_coordinate_t *dimension_coordinate)
 {
   assert(coordinate);
   assert(dimension_coordinate);
@@ -35,7 +35,7 @@ void inferno_box_coordinate_init_witx_random(inferno_box_coordinate_t *coordinat
   coordinate->z = random() % dimension_coordinate->z;
 }
 
-void inferno_box_coordinate_init_witx_xyz(inferno_box_coordinate_t *coordinate,
+void cf_inferno_box_coordinate_init_witx_xyz(cf_inferno_box_coordinate_t *coordinate,
     unsigned short x, unsigned short y, unsigned short z)
 {
   assert(coordinate);

@@ -1,56 +1,56 @@
-#include "inferno/ca/eca.h"
-#include "inferno/ca/k3.h"
-#include "inferno/core/constants.h"
-#include "x/core/bit.h"
-#include "x/core/constants.h"
-#include "x/core/tools.h"
+#include "cf/inferno/ca/eca.h"
+#include "cf/inferno/ca/k3.h"
+#include "cf/inferno/core/constants.h"
+#include "cf/x/core/bit.h"
+#include "cf/x/core/constants.h"
+#include "cf/x/core/tools.h"
 
 struct k3_cell_t {
-  x_core_bit_t a;
-  x_core_bit_t b;
-  x_core_bit_t c;
+  cf_x_core_bit_t a;
+  cf_x_core_bit_t b;
+  cf_x_core_bit_t c;
 };
 typedef struct k3_cell_t k3_cell_t;
 
 struct k3_context_t {
-  x_core_bit_t rule[24];
+  cf_x_core_bit_t rule[24];
   k3_cell_t map[8];
 };
 typedef struct k3_context_t k3_context_t;
 
-inferno_ca_t inferno_ca_k3_calculate_new_cell_state(inferno_ca_system_t *system,
+cf_inferno_ca_t cf_inferno_ca_k3_calculate_new_cell_state(cf_inferno_ca_system_t *system,
     unsigned long cell_index)
 {
   assert(system);
   unsigned long neighbor_0_index;
   unsigned long neighbor_1_index;
   unsigned long neighbor_2_index;
-  inferno_ca_t *neighbor_0_cell;
-  inferno_ca_t *neighbor_1_cell;
-  inferno_ca_t *neighbor_2_cell;
+  cf_inferno_ca_t *neighbor_0_cell;
+  cf_inferno_ca_t *neighbor_1_cell;
+  cf_inferno_ca_t *neighbor_2_cell;
   unsigned long new_cell_value;
-  inferno_ca_t new_cell_state;
-  x_core_bit_t in_a;
-  x_core_bit_t in_b;
-  x_core_bit_t in_c;
-  x_core_bit_t link_number;
-  x_core_bit_t out_a;
-  x_core_bit_t out_b;
-  x_core_bit_t out_c;
+  cf_inferno_ca_t new_cell_state;
+  cf_x_core_bit_t in_a;
+  cf_x_core_bit_t in_b;
+  cf_x_core_bit_t in_c;
+  cf_x_core_bit_t link_number;
+  cf_x_core_bit_t out_a;
+  cf_x_core_bit_t out_b;
+  cf_x_core_bit_t out_c;
   k3_context_t *context;
 
-  context = inferno_ca_system_get_context(system);
+  context = cf_inferno_ca_system_get_context(system);
 
   neighbor_0_index
-    = inferno_ca_eca_get_relative_cell_index(system, cell_index, 0);
+    = cf_inferno_ca_eca_get_relative_cell_index(system, cell_index, 0);
   neighbor_1_index
-    = inferno_ca_eca_get_relative_cell_index(system, cell_index, 1);
+    = cf_inferno_ca_eca_get_relative_cell_index(system, cell_index, 1);
   neighbor_2_index
-    = inferno_ca_eca_get_relative_cell_index(system, cell_index, 2);
+    = cf_inferno_ca_eca_get_relative_cell_index(system, cell_index, 2);
 
-  neighbor_0_cell = inferno_ca_system_get_current_cell(system, neighbor_0_index);
-  neighbor_1_cell = inferno_ca_system_get_current_cell(system, neighbor_1_index);
-  neighbor_2_cell = inferno_ca_system_get_current_cell(system, neighbor_2_index);
+  neighbor_0_cell = cf_inferno_ca_system_get_current_cell(system, neighbor_0_index);
+  neighbor_1_cell = cf_inferno_ca_system_get_current_cell(system, neighbor_1_index);
+  neighbor_2_cell = cf_inferno_ca_system_get_current_cell(system, neighbor_2_index);
 
   in_a = neighbor_0_cell->value / 4;
   in_b = (neighbor_1_cell->value / 2) % 2;
@@ -64,12 +64,12 @@ inferno_ca_t inferno_ca_k3_calculate_new_cell_state(inferno_ca_system_t *system,
   new_cell_value = (out_a) + (out_b * 2) + (out_c * 4);
 
   new_cell_state.value = new_cell_value;
-  inferno_ca_init(&new_cell_state, new_cell_value, INFERNO_CA_NO_RULE);
+  cf_inferno_ca_init(&new_cell_state, new_cell_value, CF_INFERNO_CA_NO_RULE);
 
   return new_cell_state;
 }
 
-void *inferno_ca_k3_create_context(void *parameter_object)
+void *cf_inferno_ca_k3_create_context(void *parameter_object)
 {
   k3_context_t *context;
   unsigned long rule_number;
@@ -101,55 +101,55 @@ void *inferno_ca_k3_create_context(void *parameter_object)
       (*(context->map + each_link)).c = *(context->rule + (each_link * 3) + 2);
     }
   } else {
-    x_core_trace("malloc");
+    cf_x_core_trace("malloc");
   }
 
   return context;
 }
 
-void inferno_ca_k3_destroy_context(void *context_object)
+void cf_inferno_ca_k3_destroy_context(void *context_object)
 {
   free(context_object);
 }
 
-void inferno_ca_k3_get_cell_color(inferno_ca_t *cell, x_core_color_t *color)
+void cf_inferno_ca_k3_get_cell_color(cf_inferno_ca_t *cell, cf_x_core_color_t *color)
 {
-  x_core_bit_t a;
-  x_core_bit_t b;
-  x_core_bit_t c;
+  cf_x_core_bit_t a;
+  cf_x_core_bit_t b;
+  cf_x_core_bit_t c;
 
   a = cell->value % 2;
   b = (cell->value / 2) % 2;
   c = cell->value / 4;
 
   if (0 == a) {
-    color->red = X_CORE_MAX_COLOR;
+    color->red = CF_X_CORE_MAX_COLOR;
   } else {
     color->red = 0;
   }
   if (0 == b) {
-    color->green = X_CORE_MAX_COLOR;
+    color->green = CF_X_CORE_MAX_COLOR;
   } else {
     color->green = 0;
   }
   if (0 == c) {
-    color->blue = X_CORE_MAX_COLOR;
+    color->blue = CF_X_CORE_MAX_COLOR;
   } else {
     color->blue = 0;
   }
 }
 
-unsigned long inferno_ca_k3_get_relative_cell_index(inferno_ca_system_t *system,
+unsigned long cf_inferno_ca_k3_get_relative_cell_index(cf_inferno_ca_system_t *system,
     unsigned long cell_index, unsigned long relationship)
 {
-  return inferno_ca_eca_get_relative_cell_index(system, cell_index, relationship);
+  return cf_inferno_ca_eca_get_relative_cell_index(system, cell_index, relationship);
 }
 
-void inferno_ca_k3_init_systemey(inferno_ca_systemey_t *systemey, void *name_object)
+void cf_inferno_ca_k3_init_systemey(cf_inferno_ca_systemey_t *systemey, void *name_object)
 {
-  inferno_ca_systemey_init(systemey, name_object,
-      inferno_ca_k3_calculate_new_cell_state, inferno_ca_k3_create_context,
-      inferno_ca_k3_destroy_context, INFERNO_CA_NO_END_TIME_STEP_FUNCTION,
-      inferno_ca_k3_get_cell_color, inferno_ca_k3_get_relative_cell_index,
-      INFERNO_CA_NO_START_TIME_STEP_FUNCTION);
+  cf_inferno_ca_systemey_init(systemey, name_object,
+      cf_inferno_ca_k3_calculate_new_cell_state, cf_inferno_ca_k3_create_context,
+      cf_inferno_ca_k3_destroy_context, CF_INFERNO_CA_NO_END_TIME_STEP_FUNCTION,
+      cf_inferno_ca_k3_get_cell_color, cf_inferno_ca_k3_get_relative_cell_index,
+      CF_INFERNO_CA_NO_START_TIME_STEP_FUNCTION);
 }

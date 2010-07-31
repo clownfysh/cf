@@ -1,13 +1,13 @@
-#include "inferno/search/system.h"
-#include "x/audit/log.h"
-#include "x/config/options.h"
-#include "x/core/bitarray.h"
-#include "x/core/objects.h"
-#include "x/file/basic.h"
-#include "x/file/csv.h"
-#include "x/math/tools.h"
+#include "cf/inferno/search/system.h"
+#include "cf/x/core/log.h"
+#include "cf/x/config/options.h"
+#include "cf/x/core/bitarray.h"
+#include "cf/x/core/objects.h"
+#include "cf/x/file/basic.h"
+#include "cf/x/file/csv.h"
+#include "cf/x/math/tools.h"
 
-#define DEFAULT_SEARCX_ALGORITHM INFERNO_SEARCX_ALGORITHM_BIOS
+#define DEFAULT_SEARCX_ALGORITHM CF_INFERNO_SEARCX_ALGORITHM_BIOS
 #define MAX_POINTS 64
 #define MAX_OVERALL_TIME_MICROSECONDS 1000000 * 60 * 5
 #define MAX_SEARCX_TIME_MICROSECONDS 1000000
@@ -15,14 +15,14 @@
 #define POINTS_FILENAME "stravel_points.csv"
 #define SOLUTION_FILENAME "stravel_solution.csv"
 
-#define RANDOM_POINT_COUNT x_core_min(64, MAX_POINTS)
+#define RANDOM_POINT_COUNT cf_x_core_min(64, MAX_POINTS)
 
 struct stravel_t {
   unsigned short point_count;
   double points[MAX_POINTS][2];
   double distances[MAX_POINTS][MAX_POINTS];
   unsigned short current_point;
-  x_audit_log_t *log;
+  cf_x_audit_log_t *log;
 };
 typedef struct stravel_t stravel_t;
 
@@ -43,20 +43,20 @@ static int compare_points(const void *comparable_point_a_void,
 static void create_random_points(stravel_t *stravel);
 
 static unsigned short get_fork_point(stravel_t *stravel,
-    unsigned short current_point, unsigned char fork, x_core_bool_t visited[]);
+    unsigned short current_point, unsigned char fork, cf_x_core_bool_t visited[]);
 
 static double get_point_distance_from_cache(stravel_t *stravel,
     unsigned short point_a, unsigned short point_b);
 
-static x_core_bool_t load_points_from_file(stravel_t *stravel,
+static cf_x_core_bool_t load_points_from_file(stravel_t *stravel,
     char *points_filename);
 
-static x_core_bool_t save_points_to_file(stravel_t *stravel, char *filename);
+static cf_x_core_bool_t save_points_to_file(stravel_t *stravel, char *filename);
 
-static x_core_bool_t save_solution_to_file(stravel_t *stravel,
-    x_core_bitarray_t *solution, char *filename);
+static cf_x_core_bool_t save_solution_to_file(stravel_t *stravel,
+    cf_x_core_bitarray_t *solution, char *filename);
 
-static x_core_bool_t score_solution(void *context, x_core_bitarray_t *solution,
+static cf_x_core_bool_t score_solution(void *context, cf_x_core_bitarray_t *solution,
     double *score);
 
 static void cache_distances(stravel_t *stravel)
@@ -85,7 +85,7 @@ double calculate_point_distance(stravel_t *stravel, unsigned short point_a,
   x2 = stravel->points[point_b][0];
   y2 = stravel->points[point_b][1];
 
-  d = x_math_tools_calculate_distance(x1, y1, x2, y2);
+  d = cf_x_math_tools_calculate_distance(x1, y1, x2, y2);
 
   return d;
 }
@@ -133,7 +133,7 @@ void create_random_points(stravel_t *stravel)
 
   stravel->point_count = RANDOM_POINT_COUNT;
 
-  x_core_seed_random_witx_time();
+  cf_x_core_seed_random_witx_time();
   for (i = 0; i < stravel->point_count; i++) {
     stravel->points[i][0] = ((random() % 1000000) / 1000000.0) * POINT_RANGE;
     stravel->points[i][1] = ((random() % 1000000) / 1000000.0) * POINT_RANGE;
@@ -141,7 +141,7 @@ void create_random_points(stravel_t *stravel)
 }
 
 unsigned short get_fork_point(stravel_t *stravel, unsigned short current_point,
-    unsigned char fork, x_core_bool_t visited[])
+    unsigned char fork, cf_x_core_bool_t visited[])
 {
   comparable_point_t closest_points[stravel->point_count];
   unsigned short i;
@@ -175,164 +175,164 @@ double get_point_distance_from_cache(stravel_t *stravel,
   return stravel->distances[point_a][point_b];
 }
 
-x_core_bool_t load_points_from_file(stravel_t *stravel, char *points_filename)
+cf_x_core_bool_t load_points_from_file(stravel_t *stravel, char *points_filename)
 {
-  x_file_csv_t *csv;
-  x_core_bool_t success;
+  cf_x_file_csv_t *csv;
+  cf_x_core_bool_t success;
   unsigned short each_point;
   double x;
   double y;
 
-  csv = x_file_csv_create_extended(points_filename, 0, MAX_POINTS - 1);
+  csv = cf_x_file_csv_create_extended(points_filename, 0, MAX_POINTS - 1);
   if (csv) {
-    success = x_core_bool_true;
-    stravel->point_count = x_file_csv_get_object_count(csv);
-    x_audit_log_enter(stravel->log, "stvl", "loading %lu points from %s",
+    success = cf_x_core_bool_true;
+    stravel->point_count = cf_x_file_csv_get_object_count(csv);
+    cf_x_audit_log_enter(stravel->log, "stvl", "loading %lu points from %s",
         stravel->point_count, points_filename);
     for (each_point = 0; each_point < stravel->point_count; each_point++) {
-      x = x_file_csv_get_value_by_name_as_double(csv, each_point, "x");
-      y = x_file_csv_get_value_by_name_as_double(csv, each_point, "y");
+      x = cf_x_file_csv_get_value_by_name_as_double(csv, each_point, "x");
+      y = cf_x_file_csv_get_value_by_name_as_double(csv, each_point, "y");
       stravel->points[each_point][0] = x;
       stravel->points[each_point][1] = y;
     }
-    x_file_csv_destroy(csv);
+    cf_x_file_csv_destroy(csv);
   } else {
-    success = x_core_bool_false;
-    x_audit_log_trace(stravel->log, "stvl", "x_file_csv_create");
+    success = cf_x_core_bool_false;
+    cf_x_audit_log_trace(stravel->log, "stvl", "x_file_csv_create");
   }
 
   return success;
 }
 
-x_core_bool_t save_points_to_file(stravel_t *stravel, char *filename)
+cf_x_core_bool_t save_points_to_file(stravel_t *stravel, char *filename)
 {
   assert(stravel);
-  x_file_basic_t *file;
-  x_core_bool_t success;
+  cf_x_file_basic_t *file;
+  cf_x_core_bool_t success;
   unsigned short each_point;
   double x;
   double y;
   char string[64];
 
   file
-    = x_file_basic_create(filename, X_FILE_MODE_TRUNCATE_OR_CREATE_FOR_WRITE);
+    = cf_x_file_basic_create(filename, CF_X_FILE_MODE_TRUNCATE_OR_CREATE_FOR_WRITE);
   if (file) {
-    success = x_core_bool_true;
+    success = cf_x_core_bool_true;
 
-    if (!x_file_basic_write_string(file, "x,y\n")) {
-      success = x_core_bool_false;
-      x_audit_log_trace(stravel->log, "stvl", "x_file_basic_write_string");
+    if (!cf_x_file_basic_write_string(file, "x,y\n")) {
+      success = cf_x_core_bool_false;
+      cf_x_audit_log_trace(stravel->log, "stvl", "x_file_basic_write_string");
     }
 
     for (each_point = 0; each_point < stravel->point_count; each_point++) {
       x = stravel->points[each_point][0];
       y = stravel->points[each_point][1];
       if (sprintf(string, "%.5f,%.5f\n", x, y) >= 0) {  /*  TODO  */
-        if (!x_file_basic_write_string(file, string)) {
-          success = x_core_bool_false;
-          x_audit_log_trace(stravel->log, "stvl", "x_file_basic_write_string");
+        if (!cf_x_file_basic_write_string(file, string)) {
+          success = cf_x_core_bool_false;
+          cf_x_audit_log_trace(stravel->log, "stvl", "x_file_basic_write_string");
           break;
         }
       } else {
-        success = x_core_bool_false;
-        x_audit_log_trace(stravel->log, "stvl", "sprintf");
+        success = cf_x_core_bool_false;
+        cf_x_audit_log_trace(stravel->log, "stvl", "sprintf");
         break;
       }
     }
-    x_file_basic_destroy(file);
+    cf_x_file_basic_destroy(file);
   } else {
-    success = x_core_bool_false;
-    x_audit_log_trace(stravel->log, "stvl", "x_file_basic_create");
+    success = cf_x_core_bool_false;
+    cf_x_audit_log_trace(stravel->log, "stvl", "x_file_basic_create");
   }
 
   return success;
 }
 
-x_core_bool_t save_solution_to_file(stravel_t *stravel,
-    x_core_bitarray_t *solution, char *filename)
+cf_x_core_bool_t save_solution_to_file(stravel_t *stravel,
+    cf_x_core_bitarray_t *solution, char *filename)
 {
   assert(stravel);
   assert(filename);
-  x_core_bool_t visited[MAX_POINTS];
+  cf_x_core_bool_t visited[MAX_POINTS];
   unsigned short each_point;
   unsigned char bit_0;
   unsigned char bit_1;
   unsigned short fork;
   unsigned short current_point;
   unsigned short next_point;
-  x_file_basic_t *file;
-  x_core_bool_t success;
+  cf_x_file_basic_t *file;
+  cf_x_core_bool_t success;
   double x;
   double y;
   char string[64];
 
   for (each_point = 0; each_point < stravel->point_count; each_point++) {
-    visited[each_point] = x_core_bool_false;
+    visited[each_point] = cf_x_core_bool_false;
   }
 
   file
-    = x_file_basic_create(filename, X_FILE_MODE_TRUNCATE_OR_CREATE_FOR_WRITE);
+    = cf_x_file_basic_create(filename, CF_X_FILE_MODE_TRUNCATE_OR_CREATE_FOR_WRITE);
   if (file) {
-    success = x_core_bool_true;
+    success = cf_x_core_bool_true;
 
-    if (!x_file_basic_write_string(file, "x,y\n")) {
-      success = x_core_bool_false;
-      x_audit_log_trace(stravel->log, "stvl", "x_file_basic_write_string");
+    if (!cf_x_file_basic_write_string(file, "x,y\n")) {
+      success = cf_x_core_bool_false;
+      cf_x_audit_log_trace(stravel->log, "stvl", "x_file_basic_write_string");
     }
 
     current_point = 0;
     x = stravel->points[current_point][0];
     y = stravel->points[current_point][1];
     if (sprintf(string, "%.5f,%.5f\n", x, y) >= 0) {  /*  TODO  */
-      if (!x_file_basic_write_string(file, string)) {
-        success = x_core_bool_false;
-        x_audit_log_trace(stravel->log, "stvl", "x_file_basic_write_string");
+      if (!cf_x_file_basic_write_string(file, string)) {
+        success = cf_x_core_bool_false;
+        cf_x_audit_log_trace(stravel->log, "stvl", "x_file_basic_write_string");
       }
     } else {
-      success = x_core_bool_false;
-      x_audit_log_trace(stravel->log, "stvl", "sprintf");
+      success = cf_x_core_bool_false;
+      cf_x_audit_log_trace(stravel->log, "stvl", "sprintf");
     }
-    visited[current_point] = x_core_bool_true;
+    visited[current_point] = cf_x_core_bool_true;
 
     for (each_point = 0; each_point < (stravel->point_count - 1);
          each_point++) {
-      bit_0 = x_core_bitarray_get_bit(solution, (current_point * 2) + 0);
-      bit_1 = x_core_bitarray_get_bit(solution, (current_point * 2) + 1);
+      bit_0 = cf_x_core_bitarray_get_bit(solution, (current_point * 2) + 0);
+      bit_1 = cf_x_core_bitarray_get_bit(solution, (current_point * 2) + 1);
       fork = (bit_0 * 1) + (bit_1 * 2);
       next_point = get_fork_point(stravel, current_point, fork, visited);
       x = stravel->points[next_point][0];
       y = stravel->points[next_point][1];
       if (sprintf(string, "%.5f,%.5f\n", x, y) >= 0) {  /*  TODO  */
-        if (!x_file_basic_write_string(file, string)) {
-          success = x_core_bool_false;
-          x_audit_log_trace(stravel->log, "stvl", "x_file_basic_write_string");
+        if (!cf_x_file_basic_write_string(file, string)) {
+          success = cf_x_core_bool_false;
+          cf_x_audit_log_trace(stravel->log, "stvl", "x_file_basic_write_string");
           break;
         }
       } else {
-        success = x_core_bool_false;
-        x_audit_log_trace(stravel->log, "stvl", "sprintf");
+        success = cf_x_core_bool_false;
+        cf_x_audit_log_trace(stravel->log, "stvl", "sprintf");
         break;
       }
 
-      visited[next_point] = x_core_bool_true;
+      visited[next_point] = cf_x_core_bool_true;
       current_point = next_point;
     }
-    x_file_basic_destroy(file);
+    cf_x_file_basic_destroy(file);
   } else {
-    success = x_core_bool_false;
-    x_audit_log_trace(stravel->log, "stvl", "x_file_basic_create");
+    success = cf_x_core_bool_false;
+    cf_x_audit_log_trace(stravel->log, "stvl", "x_file_basic_create");
   }
 
   return success;
 }
 
-x_core_bool_t score_solution(void *context, x_core_bitarray_t *solution,
+cf_x_core_bool_t score_solution(void *context, cf_x_core_bitarray_t *solution,
     double *score)
 {
   assert(score);
   assert(solution);
   assert(score);
-  x_core_bool_t visited[MAX_POINTS];
+  cf_x_core_bool_t visited[MAX_POINTS];
   unsigned short i;
   unsigned bit_0;
   unsigned bit_1;
@@ -347,40 +347,40 @@ x_core_bool_t score_solution(void *context, x_core_bitarray_t *solution,
   *score = 0.0;
 
   for (i = 0; i < stravel->point_count; i++) {
-    visited[i] = x_core_bool_false;
+    visited[i] = cf_x_core_bool_false;
   }
 
   current_point = 0;
-  visited[0] = x_core_bool_true;
+  visited[0] = cf_x_core_bool_true;
   for (i = 0; i < (stravel->point_count - 1); i++) {
-    bit_0 = x_core_bitarray_get_bit(solution, (current_point * 2) + 0);
-    bit_1 = x_core_bitarray_get_bit(solution, (current_point * 2) + 1);
+    bit_0 = cf_x_core_bitarray_get_bit(solution, (current_point * 2) + 0);
+    bit_1 = cf_x_core_bitarray_get_bit(solution, (current_point * 2) + 1);
     fork = (bit_0 * 1) + (bit_1 * 2);
     next_point = get_fork_point(stravel, current_point, fork, visited);
-    visited[next_point] = x_core_bool_true;
+    visited[next_point] = cf_x_core_bool_true;
     distance
       = get_point_distance_from_cache(stravel, current_point, next_point);
     *score += distance;
     current_point = next_point;
   }
 
-  return x_core_bool_true;
+  return cf_x_core_bool_true;
 }
 
 int main(int argc, char *argv[])
 {
-  x_config_options_t *options;
-  x_core_objects_t objects;
-  x_audit_log_t *log;
+  cf_x_config_options_t *options;
+  cf_x_core_objects_t objects;
+  cf_x_audit_log_t *log;
   char *points_filename;
-  inferno_searcx_system_t *system;
-  x_container_array_t *initial_solutions;
+  cf_inferno_searcx_system_t *system;
+  cf_x_case_array_t *initial_solutions;
   unsigned short initial_solution_count;
-  x_container_array_t *solutions;
+  cf_x_case_array_t *solutions;
   unsigned short solution_count;
-  x_core_bool_t still_searching;
+  cf_x_core_bool_t still_searching;
   unsigned short i;
-  x_core_bitarray_t *solution;
+  cf_x_core_bitarray_t *solution;
   double score;
   double best_score;
   stravel_t stravel;
@@ -388,125 +388,125 @@ int main(int argc, char *argv[])
   double sqrt_point_count;
   struct timeval start_time;
   char *searcx_algorithm_string;
-  inferno_searcx_algorithm_t searcx_algorithm;
+  cf_inferno_searcx_algorithm_t searcx_algorithm;
 
   initial_solutions = NULL;
   initial_solution_count = 0;
 
-  x_core_objects_init(&objects);
+  cf_x_core_objects_init(&objects);
 
-  log = x_audit_log_create(stdout);
+  log = cf_x_audit_log_create(stdout);
   if (!log) {
-    x_core_trace_exit("x_audit_log_create");
+    cf_x_core_trace_exit("x_audit_log_create");
   }
   stravel.log = log;
 
-  options = x_config_options_create(argc, argv, &objects);
+  options = cf_x_config_options_create(argc, argv, &objects);
   if (!options) {
-    x_audit_log_trace_exit(log, "stvl", "x_config_options_create");
+    cf_x_audit_log_trace_exit(log, "stvl", "x_config_options_create");
   }
 
-  if (x_config_options_find_as_string(options, "points_filename",
+  if (cf_x_config_options_find_as_string(options, "points_filename",
           &points_filename, "")) {
     if (!load_points_from_file(&stravel, points_filename)) {
-      x_audit_log_trace_exit(log, "stvl", "load_points_from_file");
+      cf_x_audit_log_trace_exit(log, "stvl", "load_points_from_file");
     }
   } else {
-    x_audit_log_enter
+    cf_x_audit_log_enter
       (log, "stvl", "creating %lu random points", RANDOM_POINT_COUNT);
     create_random_points(&stravel);
   }
 
-  if (x_config_options_find_as_string(options, "searcx_algorithm",
+  if (cf_x_config_options_find_as_string(options, "searcx_algorithm",
           &searcx_algorithm_string, "")) {
-    if (!inferno_searcx_algorithm_get_from_string
+    if (!cf_inferno_searcx_algorithm_get_from_string
         (searcx_algorithm_string, &searcx_algorithm)) {
       searcx_algorithm = DEFAULT_SEARCX_ALGORITHM;
     }
   } else {
     searcx_algorithm = DEFAULT_SEARCX_ALGORITHM;
   }
-  searcx_algorithm_string = inferno_searcx_algorithm_get_string(searcx_algorithm);
-  x_audit_log_enter(log, "stvl", "search algorithm: %s",
+  searcx_algorithm_string = cf_inferno_searcx_algorithm_get_string(searcx_algorithm);
+  cf_x_audit_log_enter(log, "stvl", "search algorithm: %s",
       searcx_algorithm_string);
 
-  x_audit_log_enter(log, "stvl", "saving points to stravel_points.csv");
+  cf_x_audit_log_enter(log, "stvl", "saving points to stravel_points.csv");
   if (!save_points_to_file(&stravel, POINTS_FILENAME)) {
-    x_audit_log_trace_exit(log, "stvl", "save_points_to_file");
+    cf_x_audit_log_trace_exit(log, "stvl", "save_points_to_file");
   }
 
   sqrt_point_count = sqrt(stravel.point_count);
   goal_distance = ((POINT_RANGE * sqrt_point_count) + POINT_RANGE) * 1.0;
 
-  x_audit_log_enter(log, "stvl", "caching point distances");
+  cf_x_audit_log_enter(log, "stvl", "caching point distances");
   cache_distances(&stravel);
 
-  x_audit_log_enter(log, "stvl", "creating search system");
-  system = inferno_searcx_system_create(score_solution, INFERNO_CORE_GOAL_MINIMIZE_SCORE,
+  cf_x_audit_log_enter(log, "stvl", "creating search system");
+  system = cf_inferno_searcx_system_create(score_solution, CF_INFERNO_CORE_GOAL_MINIMIZE_SCORE,
       &stravel, initial_solutions, searcx_algorithm, log);
   if (system) {
-    x_audit_log_enter(log, "stvl", "goal distance: %.2f", goal_distance);
+    cf_x_audit_log_enter(log, "stvl", "goal distance: %.2f", goal_distance);
     gettimeofday(&start_time, NULL);
-    still_searching = x_core_bool_true;
+    still_searching = cf_x_core_bool_true;
     while (still_searching) {
-      inferno_searcx_system_search(system, MAX_SEARCX_TIME_MICROSECONDS);
-      solutions = inferno_searcx_system_get_solutions_copy(system, 1);
+      cf_inferno_searcx_system_search(system, MAX_SEARCX_TIME_MICROSECONDS);
+      solutions = cf_inferno_searcx_system_get_solutions_copy(system, 1);
       if (solutions) {
-        solution = x_container_array_find(solutions, 0);
+        solution = cf_x_case_array_find(solutions, 0);
         if (!score_solution(&stravel, solution, &best_score)) {
-          x_audit_log_trace_exit(log, "stvl", "score_solution");
+          cf_x_audit_log_trace_exit(log, "stvl", "score_solution");
         }
-        solution_count = x_container_array_get_size(solutions);
+        solution_count = cf_x_case_array_get_size(solutions);
         for (i = 0; i < solution_count; i++) {
-          solution = x_container_array_find(solutions, i);
+          solution = cf_x_case_array_find(solutions, i);
           if (!score_solution(&stravel, solution, &score)) {
-            x_audit_log_trace_exit(log, "stvl", "score_solution");
+            cf_x_audit_log_trace_exit(log, "stvl", "score_solution");
           }
-          if (x_core_bool_true) {
-            x_audit_log_enter(log, "stvl", "distance: %.2f", score);
+          if (cf_x_core_bool_true) {
+            cf_x_audit_log_enter(log, "stvl", "distance: %.2f", score);
           }
           fflush(stdout);
           if (score <= goal_distance) {
-            still_searching = x_core_bool_false;
-            x_audit_log_enter
+            still_searching = cf_x_core_bool_false;
+            cf_x_audit_log_enter
               (log, "stvl", "reached goal distance, stopping search");
           }
         }
-        x_container_array_destroy(solutions);
+        cf_x_case_array_destroy(solutions);
       } else {
-        x_audit_log_trace_exit
+        cf_x_audit_log_trace_exit
           (log, "stvl", "inferno_searcx_system_get_solutions_copy");
         break;
       }
-      if (!x_core_time_is_remaining_microseconds
+      if (!cf_x_core_time_is_remaining_microseconds
           (&start_time, MAX_OVERALL_TIME_MICROSECONDS)) {
-        still_searching = x_core_bool_false;
-        x_audit_log_enter
+        still_searching = cf_x_core_bool_false;
+        cf_x_audit_log_enter
           (log, "stvl", "max search time elapsed, stopping search");
       }
     }
 
-    solutions = inferno_searcx_system_get_solutions_copy(system, 1);
+    solutions = cf_inferno_searcx_system_get_solutions_copy(system, 1);
     if (solutions) {
-      solution = x_container_array_find(solutions, 0);
-      x_audit_log_enter
+      solution = cf_x_case_array_find(solutions, 0);
+      cf_x_audit_log_enter
         (log, "stvl", "saving solution to %s", SOLUTION_FILENAME);
       if (!save_solution_to_file(&stravel, solution, SOLUTION_FILENAME)) {
-        x_audit_log_trace_exit(log, "stvl", "save_solution_to_file");
+        cf_x_audit_log_trace_exit(log, "stvl", "save_solution_to_file");
       }
-      x_container_array_destroy(solutions);
+      cf_x_case_array_destroy(solutions);
     } else {
-      x_audit_log_trace_exit
+      cf_x_audit_log_trace_exit
         (log, "stvl", "inferno_searcx_system_get_solutions_copy");
     }
 
-    inferno_searcx_system_destroy(system);
+    cf_inferno_searcx_system_destroy(system);
   } else {
-    x_audit_log_trace_exit(log, "stvl", "inferno_searcx_system_create");
+    cf_x_audit_log_trace_exit(log, "stvl", "inferno_searcx_system_create");
   }
 
-  x_config_options_destroy(options);
-  x_audit_log_destroy(log);
+  cf_x_config_options_destroy(options);
+  cf_x_audit_log_destroy(log);
 
   return 0;
 }

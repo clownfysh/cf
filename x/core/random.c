@@ -1,15 +1,15 @@
-#include "x/core/standard.h"
-#include "x/core/random.h"
+#include "cf/x/core/standard.h"
+#include "cf/x/core/random.h"
 
-#define X_CORE_RANDOM_01_PARAM 7
-#define X_CORE_RANDOM_01_SEEDS 25
+#define CF_X_CORE_RANDOM_01_PARAM 7
+#define CF_X_CORE_RANDOM_01_SEEDS 25
 
-double x_core_random_01()
+double cf_x_core_random_01()
 {
   return random() / (RAND_MAX + 1.0);
 }
 
-double x_core_random_gaussian(double mean, double stddev)
+double cf_x_core_random_gaussian(double mean, double stddev)
 {
   double x1;
   double x2;
@@ -19,8 +19,8 @@ double x_core_random_gaussian(double mean, double stddev)
   double y;
 
   do {
-    x1 = (2.0 * x_core_random_01()) - 1.0;
-    x2 = (2.0 * x_core_random_01()) - 1.0;
+    x1 = (2.0 * cf_x_core_random_01()) - 1.0;
+    x2 = (2.0 * cf_x_core_random_01()) - 1.0;
     w = (x1 * x1) + (x2 * x2);
   } while (w >= 1.0);
 
@@ -33,7 +33,7 @@ double x_core_random_gaussian(double mean, double stddev)
   return (stddev * y) + (1.0 * mean);
 }
 
-unsigned long x_core_random_poisson(double mean)
+unsigned long cf_x_core_random_poisson(double mean)
 {
   unsigned long k;
   double l;
@@ -45,13 +45,13 @@ unsigned long x_core_random_poisson(double mean)
 
   do {
     k++;
-    p *= x_core_random_01();
+    p *= cf_x_core_random_01();
   } while (p >= l);
 
   return k - 1;
 }
 
-unsigned long x_core_random_unsigned_long(unsigned long range)
+unsigned long cf_x_core_random_unsigned_long(unsigned long range)
 {
   return random() % range;
 }

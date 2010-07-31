@@ -1,14 +1,14 @@
-#include "inferno/ca/ant.h"
-#include "inferno/ca/clear.h"
-#include "inferno/ca/crow.h"
-#include "inferno/ca/eca.h"
-#include "inferno/ca/fly.h"
-#include "inferno/ca/k3.h"
-#include "inferno/ca/malice.h"
-#include "inferno/ca/system.h"
-#include "inferno/ca/tools.h"
-#include "inferno/ca/water.h"
-#include "x/core/tools.h"
+#include "cf/inferno/ca/ant.h"
+#include "cf/inferno/ca/clear.h"
+#include "cf/inferno/ca/crow.h"
+#include "cf/inferno/ca/eca.h"
+#include "cf/inferno/ca/fly.h"
+#include "cf/inferno/ca/k3.h"
+#include "cf/inferno/ca/malice.h"
+#include "cf/inferno/ca/system.h"
+#include "cf/inferno/ca/tools.h"
+#include "cf/inferno/ca/water.h"
+#include "cf/x/core/tools.h"
 
 static void randomize_ant_name(char *name);
 
@@ -40,7 +40,7 @@ void randomize_ant_name(char *name)
   unsigned short each_char;
 
   for (each_char = 0; each_char < 64; each_char++) {
-    if (x_core_toss_coin()) {
+    if (cf_x_core_toss_coin()) {
       *(name + each_char) = '1';
     } else {
       *(name + each_char) = '0';
@@ -54,7 +54,7 @@ void randomize_malice_name(char *name)
   unsigned short each_char;
 
   for (each_char = 0; each_char < 64; each_char++) {
-    if (x_core_toss_coin()) {
+    if (cf_x_core_toss_coin()) {
       *(name + each_char) = '1';
     } else {
       *(name + each_char) = '0';
@@ -68,7 +68,7 @@ void randomize_water_name(char *name)
   unsigned short each_char;
 
   for (each_char = 0; each_char < 512; each_char++) {
-    if (x_core_toss_coin()) {
+    if (cf_x_core_toss_coin()) {
       *(name + each_char) = '1';
     } else {
       *(name + each_char) = '0';
@@ -78,396 +78,396 @@ void randomize_water_name(char *name)
 
 void test_ant(char *name)
 {
-  inferno_ca_system_t *cell_system;
-  x_container_array_t *initial_state_history;
+  cf_inferno_ca_system_t *cell_system;
+  cf_x_case_array_t *initial_state_history;
   unsigned long initial_time_step_count;
   unsigned long cell_count;
-  x_core_run_t *run;
+  cf_x_sync_run_t *run;
   char *filename;
-  inferno_ca_systemey_t cell_systemey;
+  cf_inferno_ca_systemey_t cell_systemey;
 
   cell_count = 256;
   initial_time_step_count = 256;
   initial_state_history
-    = inferno_ca_create_initial_state_single_cell_binary(cell_count, 2);
+    = cf_inferno_ca_create_initial_state_single_cell_binary(cell_count, 2);
 
-  inferno_ca_ant_init_systemey(&cell_systemey, name);
+  cf_inferno_ca_ant_init_systemey(&cell_systemey, name);
 
-  cell_system = inferno_ca_system_create(initial_state_history,
+  cell_system = cf_inferno_ca_system_create(initial_state_history,
       initial_time_step_count, &cell_systemey);
   if (!cell_system) {
-    x_core_trace("inferno_ca_system_create");
+    cf_x_core_trace("inferno_ca_system_create");
   }
 
-  run = x_core_run_create(X_CORE_RUN_STYLE_ITERATIONS);
+  run = cf_x_sync_run_create(CF_X_SYNC_RUN_STYLE_ITERATIONS);
   if (!run) {
-    x_core_trace_exit("x_core_run_create");
+    cf_x_core_trace_exit("x_core_run_create");
   }
-  x_core_run_set_max_iterations(run, initial_time_step_count);
+  cf_x_sync_run_set_max_iterations(run, initial_time_step_count);
 
-  inferno_ca_system_run(cell_system, run);
+  cf_inferno_ca_system_run(cell_system, run);
 
   filename = malloc(128);
   if (!filename) {
-    x_core_trace_exit("malloc");
+    cf_x_core_trace_exit("malloc");
   }
 
   sprintf(filename, "snapshots/ant/%s.jpg", name);
 
-  if (!inferno_ca_system_save_snapshot_jpeg(cell_system, filename)) {
-    x_core_trace("inferno_ca_system_save_snapshot_jpeg");
+  if (!cf_inferno_ca_system_save_snapshot_jpeg(cell_system, filename)) {
+    cf_x_core_trace("inferno_ca_system_save_snapshot_jpeg");
   }
 
   free(filename);
 
-  inferno_ca_system_destroy(cell_system);
-  x_core_run_destroy(run);
-  x_container_array_destroy(initial_state_history);
+  cf_inferno_ca_system_destroy(cell_system);
+  cf_x_sync_run_destroy(run);
+  cf_x_case_array_destroy(initial_state_history);
 }
 
 void test_clear(unsigned short name)
 {
-  inferno_ca_system_t *cell_system;
-  x_container_array_t *initial_state_history;
+  cf_inferno_ca_system_t *cell_system;
+  cf_x_case_array_t *initial_state_history;
   unsigned long initial_time_step_count;
   unsigned long cell_count;
-  x_core_run_t *run;
+  cf_x_sync_run_t *run;
   char *filename;
-  inferno_ca_systemey_t cell_systemey;
+  cf_inferno_ca_systemey_t cell_systemey;
 
   cell_count = 256;
   initial_time_step_count = 256;
   initial_state_history
-    = inferno_ca_create_initial_state_single_cell_binary(cell_count, 1);
+    = cf_inferno_ca_create_initial_state_single_cell_binary(cell_count, 1);
 
-  inferno_ca_clear_init_systemey(&cell_systemey, &name);
+  cf_inferno_ca_clear_init_systemey(&cell_systemey, &name);
 
-  cell_system = inferno_ca_system_create(initial_state_history,
+  cell_system = cf_inferno_ca_system_create(initial_state_history,
       initial_time_step_count, &cell_systemey);
   if (!cell_system) {
-    x_core_trace("inferno_ca_system_create");
+    cf_x_core_trace("inferno_ca_system_create");
   }
 
-  run = x_core_run_create(X_CORE_RUN_STYLE_ITERATIONS);
+  run = cf_x_sync_run_create(CF_X_SYNC_RUN_STYLE_ITERATIONS);
   if (!run) {
-    x_core_trace_exit("x_core_run_create");
+    cf_x_core_trace_exit("x_core_run_create");
   }
-  x_core_run_set_max_iterations(run, initial_time_step_count);
+  cf_x_sync_run_set_max_iterations(run, initial_time_step_count);
 
-  inferno_ca_system_run(cell_system, run);
+  cf_inferno_ca_system_run(cell_system, run);
 
   filename = malloc(128);
   if (!filename) {
-    x_core_trace_exit("malloc");
+    cf_x_core_trace_exit("malloc");
   }
 
   sprintf(filename, "snapshots/clear/%03i.jpg", name);
 
-  if (!inferno_ca_system_save_snapshot_jpeg(cell_system, filename)) {
-    x_core_trace("inferno_ca_system_save_snapshot_jpeg");
+  if (!cf_inferno_ca_system_save_snapshot_jpeg(cell_system, filename)) {
+    cf_x_core_trace("inferno_ca_system_save_snapshot_jpeg");
   }
 
   free(filename);
 
-  inferno_ca_system_destroy(cell_system);
-  x_core_run_destroy(run);
-  x_container_array_destroy(initial_state_history);
+  cf_inferno_ca_system_destroy(cell_system);
+  cf_x_sync_run_destroy(run);
+  cf_x_case_array_destroy(initial_state_history);
 }
 
 void test_crow(unsigned short name)
 {
-  inferno_ca_system_t *cell_system;
-  x_container_array_t *initial_state_history;
+  cf_inferno_ca_system_t *cell_system;
+  cf_x_case_array_t *initial_state_history;
   unsigned long initial_time_step_count;
   unsigned long cell_count;
-  x_core_run_t *run;
+  cf_x_sync_run_t *run;
   char *filename;
-  inferno_ca_systemey_t cell_systemey;
+  cf_inferno_ca_systemey_t cell_systemey;
 
   cell_count = 128;
   initial_time_step_count = 128;
   initial_state_history
-    = inferno_ca_create_initial_state_single_cell_binary(cell_count, 2);
+    = cf_inferno_ca_create_initial_state_single_cell_binary(cell_count, 2);
 
-  inferno_ca_crow_init_systemey(&cell_systemey, &name);
+  cf_inferno_ca_crow_init_systemey(&cell_systemey, &name);
 
-  cell_system = inferno_ca_system_create(initial_state_history,
+  cell_system = cf_inferno_ca_system_create(initial_state_history,
       initial_time_step_count, &cell_systemey);
   if (!cell_system) {
-    x_core_trace("inferno_ca_system_create");
+    cf_x_core_trace("inferno_ca_system_create");
   }
 
-  run = x_core_run_create(X_CORE_RUN_STYLE_ITERATIONS);
+  run = cf_x_sync_run_create(CF_X_SYNC_RUN_STYLE_ITERATIONS);
   if (!run) {
-    x_core_trace_exit("x_core_run_create");
+    cf_x_core_trace_exit("x_core_run_create");
   }
-  x_core_run_set_max_iterations(run, initial_time_step_count);
+  cf_x_sync_run_set_max_iterations(run, initial_time_step_count);
 
-  inferno_ca_system_run(cell_system, run);
+  cf_inferno_ca_system_run(cell_system, run);
 
   filename = malloc(128);
   if (!filename) {
-    x_core_trace_exit("malloc");
+    cf_x_core_trace_exit("malloc");
   }
 
   sprintf(filename, "snapshots/crow/%05i.jpg", name);
 
-  if (!inferno_ca_system_save_snapshot_jpeg(cell_system, filename)) {
-    x_core_trace("inferno_ca_system_save_snapshot_jpeg");
+  if (!cf_inferno_ca_system_save_snapshot_jpeg(cell_system, filename)) {
+    cf_x_core_trace("inferno_ca_system_save_snapshot_jpeg");
   }
 
   free(filename);
 
-  inferno_ca_system_destroy(cell_system);
-  x_core_run_destroy(run);
-  x_container_array_destroy(initial_state_history);
+  cf_inferno_ca_system_destroy(cell_system);
+  cf_x_sync_run_destroy(run);
+  cf_x_case_array_destroy(initial_state_history);
 }
 
 void test_eca(unsigned short name)
 {
-  inferno_ca_system_t *cell_system;
-  x_container_array_t *initial_state_history;
+  cf_inferno_ca_system_t *cell_system;
+  cf_x_case_array_t *initial_state_history;
   unsigned long initial_time_step_count;
   unsigned long cell_count;
-  x_core_run_t *run;
+  cf_x_sync_run_t *run;
   char *filename;
-  inferno_ca_systemey_t cell_systemey;
+  cf_inferno_ca_systemey_t cell_systemey;
 
   cell_count = 79;
   initial_time_step_count = 25;
   initial_state_history
-    = inferno_ca_create_initial_state_single_cell_binary(cell_count, 1);
+    = cf_inferno_ca_create_initial_state_single_cell_binary(cell_count, 1);
 
-  inferno_ca_eca_init_systemey(&cell_systemey, &name);
+  cf_inferno_ca_eca_init_systemey(&cell_systemey, &name);
 
-  cell_system = inferno_ca_system_create(initial_state_history,
+  cell_system = cf_inferno_ca_system_create(initial_state_history,
       initial_time_step_count, &cell_systemey);
   if (!cell_system) {
-    x_core_trace("inferno_ca_system_create");
+    cf_x_core_trace("inferno_ca_system_create");
   }
 
-  run = x_core_run_create(X_CORE_RUN_STYLE_ITERATIONS);
+  run = cf_x_sync_run_create(CF_X_SYNC_RUN_STYLE_ITERATIONS);
   if (!run) {
-    x_core_trace_exit("x_core_run_create");
+    cf_x_core_trace_exit("x_core_run_create");
   }
-  x_core_run_set_max_iterations(run, initial_time_step_count);
+  cf_x_sync_run_set_max_iterations(run, initial_time_step_count);
 
-  inferno_ca_system_run(cell_system, run);
+  cf_inferno_ca_system_run(cell_system, run);
 
   filename = malloc(128);
   if (!filename) {
-    x_core_trace_exit("malloc");
+    cf_x_core_trace_exit("malloc");
   }
 
   sprintf(filename, "snapshots/eca/%03i.jpg", name);
 
-  if (!inferno_ca_system_save_snapshot_jpeg(cell_system, filename)) {
-    x_core_trace("inferno_ca_system_save_snapshot_jpeg");
+  if (!cf_inferno_ca_system_save_snapshot_jpeg(cell_system, filename)) {
+    cf_x_core_trace("inferno_ca_system_save_snapshot_jpeg");
   }
 
   free(filename);
 
-  inferno_ca_system_destroy(cell_system);
-  x_core_run_destroy(run);
-  x_container_array_destroy(initial_state_history);
+  cf_inferno_ca_system_destroy(cell_system);
+  cf_x_sync_run_destroy(run);
+  cf_x_case_array_destroy(initial_state_history);
 }
 
 /*
 void test_fly(char *name)
 {
-  inferno_ca_system_t *cell_system;
-  x_container_array_t *initial_state_history;
+  cf_inferno_ca_system_t *cell_system;
+  cf_x_case_array_t *initial_state_history;
   unsigned long initial_time_step_count;
   unsigned long cell_count;
-  x_core_run_t *run;
+  cf_x_sync_run_t *run;
   char *filename;
-  inferno_ca_systemey_t cell_systemey;
+  cf_inferno_ca_systemey_t cell_systemey;
 
   cell_count = 256;
   initial_time_step_count = 256;
   initial_state_history
-    = inferno_ca_create_initial_state_single_cell_binary(cell_count, 2);
+    = cf_inferno_ca_create_initial_state_single_cell_binary(cell_count, 2);
 
-  inferno_ca_fly_init_systemey(&cell_systemey, name);
+  cf_inferno_ca_fly_init_systemey(&cell_systemey, name);
 
-  cell_system = inferno_ca_system_create(initial_state_history,
+  cell_system = cf_inferno_ca_system_create(initial_state_history,
       initial_time_step_count, &cell_systemey);
   if (!cell_system) {
-    x_core_trace("inferno_ca_system_create");
+    cf_x_core_trace("inferno_ca_system_create");
   }
 
-  run = x_core_run_create(X_CORE_RUN_STYLE_ITERATIONS);
+  run = cf_x_sync_run_create(CF_X_SYNC_RUN_STYLE_ITERATIONS);
   if (!run) {
-    x_core_trace_exit("x_core_run_create");
+    cf_x_core_trace_exit("x_core_run_create");
   }
-  x_core_run_set_max_iterations(run, initial_time_step_count);
+  cf_x_sync_run_set_max_iterations(run, initial_time_step_count);
 
-  inferno_ca_system_run(cell_system, run);
+  cf_inferno_ca_system_run(cell_system, run);
 
   filename = malloc(128);
   if (!filename) {
-    x_core_trace_exit("malloc");
+    cf_x_core_trace_exit("malloc");
   }
 
   sprintf(filename, "snapshots/fly/%s.jpg", name);
 
-  if (!inferno_ca_system_save_snapshot_jpeg(cell_system, filename)) {
-    x_core_trace("inferno_ca_system_save_snapshot_jpeg");
+  if (!cf_inferno_ca_system_save_snapshot_jpeg(cell_system, filename)) {
+    cf_x_core_trace("inferno_ca_system_save_snapshot_jpeg");
   }
 
   free(filename);
 
-  inferno_ca_system_destroy(cell_system);
-  x_core_run_destroy(run);
-  x_container_array_destroy(initial_state_history);
+  cf_inferno_ca_system_destroy(cell_system);
+  cf_x_sync_run_destroy(run);
+  cf_x_case_array_destroy(initial_state_history);
 }
 */
 
 void test_k3(unsigned long name)
 {
-  inferno_ca_system_t *cell_system;
-  x_container_array_t *initial_state_history;
+  cf_inferno_ca_system_t *cell_system;
+  cf_x_case_array_t *initial_state_history;
   unsigned long initial_time_step_count;
   unsigned long cell_count;
-  x_core_run_t *run;
+  cf_x_sync_run_t *run;
   char *filename;
-  inferno_ca_systemey_t cell_systemey;
+  cf_inferno_ca_systemey_t cell_systemey;
 
   filename = malloc(128);
   if (!filename) {
-    x_core_trace_exit("malloc");
+    cf_x_core_trace_exit("malloc");
   }
 
   cell_count = 128;
   initial_time_step_count = 128;
   initial_state_history
-    = inferno_ca_create_initial_state_single_cell_k3(cell_count);
+    = cf_inferno_ca_create_initial_state_single_cell_k3(cell_count);
 
-  inferno_ca_k3_init_systemey(&cell_systemey, &name);
+  cf_inferno_ca_k3_init_systemey(&cell_systemey, &name);
 
-  cell_system = inferno_ca_system_create(initial_state_history,
+  cell_system = cf_inferno_ca_system_create(initial_state_history,
       initial_time_step_count, &cell_systemey);
   if (!cell_system) {
-    x_core_trace("inferno_ca_system_create");
+    cf_x_core_trace("inferno_ca_system_create");
   }
 
-  run = x_core_run_create(X_CORE_RUN_STYLE_ITERATIONS);
+  run = cf_x_sync_run_create(CF_X_SYNC_RUN_STYLE_ITERATIONS);
   if (!run) {
-    x_core_trace_exit("x_core_run_create");
+    cf_x_core_trace_exit("x_core_run_create");
   }
-  x_core_run_set_max_iterations(run, initial_time_step_count);
+  cf_x_sync_run_set_max_iterations(run, initial_time_step_count);
 
-  inferno_ca_system_run(cell_system, run);
+  cf_inferno_ca_system_run(cell_system, run);
 
   sprintf(filename, "snapshots/k3/%08lu.jpg", name);
 
-  if (!inferno_ca_system_save_snapshot_jpeg(cell_system, filename)) {
-    x_core_trace("inferno_ca_system_save_snapshot_jpeg");
+  if (!cf_inferno_ca_system_save_snapshot_jpeg(cell_system, filename)) {
+    cf_x_core_trace("inferno_ca_system_save_snapshot_jpeg");
   }
 
-  inferno_ca_system_destroy(cell_system);
-  x_core_run_destroy(run);
-  x_container_array_destroy(initial_state_history);
+  cf_inferno_ca_system_destroy(cell_system);
+  cf_x_sync_run_destroy(run);
+  cf_x_case_array_destroy(initial_state_history);
   free(filename);
 }
 
 void test_malice(char *name)
 {
-  inferno_ca_system_t *cell_system;
-  x_container_array_t *initial_state_history;
+  cf_inferno_ca_system_t *cell_system;
+  cf_x_case_array_t *initial_state_history;
   unsigned long initial_time_step_count;
   unsigned long cell_count;
-  x_core_run_t *run;
+  cf_x_sync_run_t *run;
   char *filename;
-  inferno_ca_systemey_t cell_systemey;
+  cf_inferno_ca_systemey_t cell_systemey;
 
   cell_count = 128;
   initial_time_step_count = 256;
   initial_state_history
-    = inferno_ca_create_initial_state_single_cell_binary(cell_count, 2);
+    = cf_inferno_ca_create_initial_state_single_cell_binary(cell_count, 2);
 
-  inferno_ca_malice_init_systemey(&cell_systemey, name);
+  cf_inferno_ca_malice_init_systemey(&cell_systemey, name);
 
-  cell_system = inferno_ca_system_create(initial_state_history,
+  cell_system = cf_inferno_ca_system_create(initial_state_history,
       initial_time_step_count, &cell_systemey);
   if (!cell_system) {
-    x_core_trace("inferno_ca_system_create");
+    cf_x_core_trace("inferno_ca_system_create");
   }
 
-  run = x_core_run_create(X_CORE_RUN_STYLE_ITERATIONS);
+  run = cf_x_sync_run_create(CF_X_SYNC_RUN_STYLE_ITERATIONS);
   if (!run) {
-    x_core_trace_exit("x_core_run_create");
+    cf_x_core_trace_exit("x_core_run_create");
   }
-  x_core_run_set_max_iterations(run, initial_time_step_count);
+  cf_x_sync_run_set_max_iterations(run, initial_time_step_count);
 
-  inferno_ca_system_run(cell_system, run);
+  cf_inferno_ca_system_run(cell_system, run);
 
   filename = malloc(128);
   if (!filename) {
-    x_core_trace_exit("malloc");
+    cf_x_core_trace_exit("malloc");
   }
 
   sprintf(filename, "snapshots/malice/%s.jpg", name);
 
-  if (!inferno_ca_system_save_snapshot_jpeg(cell_system, filename)) {
-    x_core_trace("inferno_ca_system_save_snapshot_jpeg");
+  if (!cf_inferno_ca_system_save_snapshot_jpeg(cell_system, filename)) {
+    cf_x_core_trace("inferno_ca_system_save_snapshot_jpeg");
   }
 
   free(filename);
 
-  inferno_ca_system_destroy(cell_system);
-  x_core_run_destroy(run);
-  x_container_array_destroy(initial_state_history);
+  cf_inferno_ca_system_destroy(cell_system);
+  cf_x_sync_run_destroy(run);
+  cf_x_case_array_destroy(initial_state_history);
 }
 
 void test_water(char *name)
 {
-  inferno_ca_system_t *cell_system;
-  x_container_array_t *initial_state_history;
+  cf_inferno_ca_system_t *cell_system;
+  cf_x_case_array_t *initial_state_history;
   unsigned long initial_time_step_count;
   unsigned long cell_count;
-  x_core_run_t *run;
+  cf_x_sync_run_t *run;
   char *filename;
-  inferno_ca_systemey_t cell_systemey;
+  cf_inferno_ca_systemey_t cell_systemey;
 
   cell_count = 256;
   initial_time_step_count = 512;
   initial_state_history
-    = inferno_ca_create_initial_state_single_cell_binary(cell_count, 3);
+    = cf_inferno_ca_create_initial_state_single_cell_binary(cell_count, 3);
 
-  inferno_ca_water_init_systemey(&cell_systemey, name);
+  cf_inferno_ca_water_init_systemey(&cell_systemey, name);
 
-  cell_system = inferno_ca_system_create(initial_state_history,
+  cell_system = cf_inferno_ca_system_create(initial_state_history,
       initial_time_step_count, &cell_systemey);
   if (!cell_system) {
-    x_core_trace("inferno_ca_system_create");
+    cf_x_core_trace("inferno_ca_system_create");
   }
 
-  run = x_core_run_create(X_CORE_RUN_STYLE_ITERATIONS);
+  run = cf_x_sync_run_create(CF_X_SYNC_RUN_STYLE_ITERATIONS);
   if (!run) {
-    x_core_trace_exit("x_core_run_create");
+    cf_x_core_trace_exit("x_core_run_create");
   }
-  x_core_run_set_max_iterations(run, initial_time_step_count);
+  cf_x_sync_run_set_max_iterations(run, initial_time_step_count);
 
-  inferno_ca_system_run(cell_system, run);
+  cf_inferno_ca_system_run(cell_system, run);
 
   filename = malloc(128);
   if (!filename) {
-    x_core_trace_exit("malloc");
+    cf_x_core_trace_exit("malloc");
   }
 
-  x_core_truncate_string(name, 64);
+  cf_x_core_truncate_string(name, 64);
   sprintf(filename, "snapshots/water/%s.jpg", name);
 
-  if (!inferno_ca_system_save_snapshot_jpeg(cell_system, filename)) {
-    x_core_trace("inferno_ca_system_save_snapshot_jpeg");
+  if (!cf_inferno_ca_system_save_snapshot_jpeg(cell_system, filename)) {
+    cf_x_core_trace("inferno_ca_system_save_snapshot_jpeg");
   }
 
   free(filename);
 
-  inferno_ca_system_destroy(cell_system);
-  x_core_run_destroy(run);
-  x_container_array_destroy(initial_state_history);
+  cf_inferno_ca_system_destroy(cell_system);
+  cf_x_sync_run_destroy(run);
+  cf_x_case_array_destroy(initial_state_history);
 }
 
 int main(int argc, char *argv[])
@@ -477,9 +477,9 @@ int main(int argc, char *argv[])
   char malice_name[65];
   char water_name[513];
 
-  x_core_seed_random_witx_time();
+  cf_x_core_seed_random_witx_time();
 
-  if (x_core_bool_false) {
+  if (cf_x_core_bool_false) {
 
     ant_name[64] = '\0';
     for (i = 0; i < 32; i++) {
@@ -515,7 +515,7 @@ int main(int argc, char *argv[])
     test_k3(14817253);
     test_k3(15736917);
     test_k3(16777215);
-    if (x_core_bool_false) {
+    if (cf_x_core_bool_false) {
       for (i = 0; i < 32; i++) {
         test_k3(random() % 16777216);
       }

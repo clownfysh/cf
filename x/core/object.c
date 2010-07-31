@@ -1,7 +1,7 @@
-#include "x/core/object.h"
-#include "x/core/tools.h"
+#include "cf/x/core/object.h"
+#include "cf/x/core/tools.h"
 
-void x_core_print(void *object, x_core_get_as_string_f get_object_as_string)
+void cf_x_core_print(void *object, cf_x_core_get_as_string_f get_object_as_string)
 {
   assert(object);
   assert(get_object_as_string);
@@ -12,6 +12,6 @@ void x_core_print(void *object, x_core_get_as_string_f get_object_as_string)
     printf("%s\n", object_string);
     free(object_string);
   } else {
-    x_core_trace("get_as_string");
+    cf_x_core_trace("get_as_string");
   }
 }

@@ -1,24 +1,24 @@
-#ifndef inferno_classify_system_h
-#define inferno_classify_system_h
+#ifndef cf_inferno_classify_system_h
+#define cf_inferno_classify_system_h
 
-#include "x/audit/log.h"
-#include "x/container/array.h"
-#include "x/core/bit.h"
-#include "x/core/bitarray.h"
-#include "x/core/tools.h"
-#include "inferno/core/goal.h"
-#include "inferno/classify/algorithm.h"
+#include "cf/x/core/log.h"
+#include "cf/x/case/array.h"
+#include "cf/x/core/bit.h"
+#include "cf/x/core/bitarray.h"
+#include "cf/x/core/tools.h"
+#include "cf/inferno/core/goal.h"
+#include "cf/inferno/classify/algorithm.h"
 
-struct inferno_classify_system_t;
-typedef struct inferno_classify_system_t inferno_classify_system_t;
+struct cf_inferno_classify_system_t;
+typedef struct cf_inferno_classify_system_t cf_inferno_classify_system_t;
 
 /*!
  * create an inhesion::classify system.  the resulting pointer is a context
  * variable that other classify methods use.  when you're finished using the
- * classification system, call inferno_classify_system_destroy() to release
+ * classification system, call cf_inferno_classify_system_destroy() to release
  * resources the classify is using.
  *
- * \param classified_objects an array of x_core_bitarray_t *s, each one
+ * \param classified_objects an array of cf_x_core_bitarray_t *s, each one
  *        representing an object that has already been classified.  the objects
  *        should all be of the same size in bits, and they need to contain at
  *        least two bits.  the last bit in each object is the a-priori
@@ -36,16 +36,16 @@ typedef struct inferno_classify_system_t inferno_classify_system_t;
  *
  * \return context variable for the classify, or NULL if not successful
  */
-inferno_classify_system_t *inferno_classify_system_create
-(x_container_array_t *classified_objects, inferno_classify_algorithm_t algorithm,
-    x_audit_log_t *log);
+cf_inferno_classify_system_t *cf_inferno_classify_system_create
+(cf_x_case_array_t *classified_objects, cf_inferno_classify_algorithm_t algorithm,
+    cf_x_audit_log_t *log);
 
 /*!
  * destroy a classify system.  free up resources the classify is using.
  *
  * \param system pointer to the classify system to destroy
  */
-void inferno_classify_system_destroy(inferno_classify_system_t *system);
+void cf_inferno_classify_system_destroy(cf_inferno_classify_system_t *system);
 
 /*!
  * classify one unknown object.
@@ -58,22 +58,22 @@ void inferno_classify_system_destroy(inferno_classify_system_t *system);
  *
  * \return the classification of the object
  */
-x_core_bit_t inferno_classify_system_classify_object(inferno_classify_system_t *system,
-    x_core_bitarray_t *object);
+cf_x_core_bit_t cf_inferno_classify_system_classify_object(cf_inferno_classify_system_t *system,
+    cf_x_core_bitarray_t *object);
 
 /*!
  * classify an array of unknown objects.
  *
  * \param system the classify system to use
- * \param objects an array of x_core_bitarray_t *s, each representing an
+ * \param objects an array of cf_x_core_bitarray_t *s, each representing an
  *        unclassified object
  *
- * \return an array of x_core_bit_t values.  each is the classification of the
+ * \return an array of cf_x_core_bit_t values.  each is the classification of the
  *         corresponding input object.  if you pass in 100 objects, this will
  *         return an array of 100 classifications.
  */
-x_container_array_t *inferno_classify_system_classify_objects
-(inferno_classify_system_t *system, x_container_array_t *objects);
+cf_x_case_array_t *cf_inferno_classify_system_classify_objects
+(cf_inferno_classify_system_t *system, cf_x_case_array_t *objects);
 
 /*!
  * spend some time learning about observed objects.  call this when you want to
@@ -90,7 +90,7 @@ x_container_array_t *inferno_classify_system_classify_objects
  *
  * \return the success of the call.
  */
-x_core_bool_t inferno_classify_system_learn(inferno_classify_system_t *system,
+cf_x_core_bool_t cf_inferno_classify_system_learn(cf_inferno_classify_system_t *system,
     unsigned long max_wall_time_microseconds);
 
 /*!
@@ -111,8 +111,8 @@ x_core_bool_t inferno_classify_system_learn(inferno_classify_system_t *system,
  *
  * \return the success of the call
  */
-x_core_bool_t inferno_classify_system_observe_object(inferno_classify_system_t *system,
-    x_core_bitarray_t *classified_object);
+cf_x_core_bool_t cf_inferno_classify_system_observe_object(cf_inferno_classify_system_t *system,
+    cf_x_core_bitarray_t *classified_object);
 
 /*!
  * observe additional objects.  like observe_object() except for observing many
@@ -120,11 +120,11 @@ x_core_bool_t inferno_classify_system_observe_object(inferno_classify_system_t *
  *
  * \param system the classify system to use
  * \param classified_objects an array of objects for inhesion::classify to
- *        observe.  each object in the array is an x_core_bitarray_t *.
+ *        observe.  each object in the array is an cf_x_core_bitarray_t *.
  *
  * \return the success of the call
  */
-x_core_bool_t inferno_classify_system_observe_objects(inferno_classify_system_t *system,
-    x_container_array_t *classified_objects);
+cf_x_core_bool_t cf_inferno_classify_system_observe_objects(cf_inferno_classify_system_t *system,
+    cf_x_case_array_t *classified_objects);
 
 #endif

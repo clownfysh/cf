@@ -1,20 +1,20 @@
-#include "x/circle/system.h"
+#include "cf/x/circle/system.h"
 
 int main(int argc, char *argv[])
 {
-  x_circle_system_t *circle;
+  cf_x_circle_system_t *circle;
   unsigned long i;
   unsigned long x;
 
-  circle = x_circle_system_create();
+  circle = cf_x_circle_system_create();
   if (circle) {
     for (i = 0; i < 4000000; i++) {
-      /*  printf("%lu\n", x_circle_system_get_long(circle));  */
-      x = x_circle_system_get_long(circle);
+      /*  printf("%lu\n", cf_x_circle_system_get_long(circle));  */
+      x = cf_x_circle_system_get_long(circle);
     }
-    x_circle_system_destroy(circle);
+    cf_x_circle_system_destroy(circle);
   } else {
-    x_trace("x_circle_system_create");
+    cf_x_trace("x_circle_system_create");
   }
 
   return 0;

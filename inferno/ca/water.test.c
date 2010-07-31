@@ -1,4 +1,4 @@
-#include "inferno/ca/k3.h"
+#include "cf/inferno/ca/k3.h"
 
 int main(int argc, char *argv[])
 {

@@ -1,6 +1,6 @@
-#include "x/core/engine.h"
+#include "cf/x/core/engine.h"
 
-static char *engine_names[X_NET_ENGINE_TYPE_COUNT] = {
+static char *engine_names[CF_X_NET_ENGINE_TYPE_COUNT] = {
   "void",
   "test",
   "ping",
@@ -8,12 +8,12 @@ static char *engine_names[X_NET_ENGINE_TYPE_COUNT] = {
   "hyper",
 };
 
-char *x_net_engine_get_name(unsigned long engine_id,
-    x_net_engine_get_name_f get_engine_name)
+char *cf_x_net_engine_get_name(unsigned long engine_id,
+    cf_x_net_engine_get_name_f get_engine_name)
 {
   char *engine_name;
 
-  if (engine_id < X_NET_ENGINE_TYPE_COUNT) {
+  if (engine_id < CF_X_NET_ENGINE_TYPE_COUNT) {
     engine_name = engine_names[engine_id];
   } else {
     if (get_engine_name) {

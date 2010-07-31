@@ -1,39 +1,39 @@
-#ifndef inferno_classify_classifyey_h
-#define inferno_classify_classifyey_h
+#ifndef cf_inferno_classify_classifyey_h
+#define cf_inferno_classify_classifyey_h
 
-#include "x/audit/log.h"
-#include "x/container/array.h"
-#include "x/core/bitarray.h"
+#include "cf/x/core/log.h"
+#include "cf/x/case/array.h"
+#include "cf/x/core/bitarray.h"
 
-typedef void *(*inferno_classify_classifyey_create_f)
-  (x_container_array_t *classified_objects, x_audit_log_t *log);
+typedef void *(*cf_inferno_classify_classifyey_create_f)
+  (cf_x_case_array_t *classified_objects, cf_x_audit_log_t *log);
 
-typedef void (*inferno_classify_classifyey_destroy_f)(void *system_void);
+typedef void (*cf_inferno_classify_classifyey_destroy_f)(void *system_void);
 
-typedef x_core_bit_t (*inferno_classify_classifyey_classify_object_f)
-(void *system_void, x_core_bitarray_t *object);
+typedef cf_x_core_bit_t (*cf_inferno_classify_classifyey_classify_object_f)
+(void *system_void, cf_x_core_bitarray_t *object);
 
-typedef x_core_bool_t (*inferno_classify_classifyey_learn_f)(void *system_void);
+typedef cf_x_core_bool_t (*cf_inferno_classify_classifyey_learn_f)(void *system_void);
 
-typedef x_core_bool_t (*inferno_classify_classifyey_observe_object_f)
-(void *system_void, x_core_bitarray_t *classified_object);
+typedef cf_x_core_bool_t (*cf_inferno_classify_classifyey_observe_object_f)
+(void *system_void, cf_x_core_bitarray_t *classified_object);
 
-struct inferno_classify_classifyey_t {
-  inferno_classify_classifyey_create_f create;
-  inferno_classify_classifyey_destroy_f destroy;
-  inferno_classify_classifyey_classify_object_f classify_object;
-  inferno_classify_classifyey_learn_f learn;
-  inferno_classify_classifyey_observe_object_f observe_object;
+struct cf_inferno_classify_classifyey_t {
+  cf_inferno_classify_classifyey_create_f create;
+  cf_inferno_classify_classifyey_destroy_f destroy;
+  cf_inferno_classify_classifyey_classify_object_f classify_object;
+  cf_inferno_classify_classifyey_learn_f learn;
+  cf_inferno_classify_classifyey_observe_object_f observe_object;
 };
-typedef struct inferno_classify_classifyey_t inferno_classify_classifyey_t;
+typedef struct cf_inferno_classify_classifyey_t cf_inferno_classify_classifyey_t;
 
-void inferno_classify_classifyey_free(inferno_classify_classifyey_t *classifyey);
+void cf_inferno_classify_classifyey_free(cf_inferno_classify_classifyey_t *classifyey);
 
-void inferno_classify_classifyey_init(inferno_classify_classifyey_t *classifyey,
-    inferno_classify_classifyey_create_f create,
-    inferno_classify_classifyey_destroy_f destroy,
-    inferno_classify_classifyey_classify_object_f classify_object,
-    inferno_classify_classifyey_learn_f learn,
-    inferno_classify_classifyey_observe_object_f observe_object);
+void cf_inferno_classify_classifyey_init(cf_inferno_classify_classifyey_t *classifyey,
+    cf_inferno_classify_classifyey_create_f create,
+    cf_inferno_classify_classifyey_destroy_f destroy,
+    cf_inferno_classify_classifyey_classify_object_f classify_object,
+    cf_inferno_classify_classifyey_learn_f learn,
+    cf_inferno_classify_classifyey_observe_object_f observe_object);
 
 #endif

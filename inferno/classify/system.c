@@ -1,26 +1,26 @@
-#include "inferno/archetype/system.h"
-#include "inferno/classify/classifyey.h"
-#include "inferno/classify/system.h"
+#include "cf/inferno/archetype/system.h"
+#include "cf/inferno/classify/classifyey.h"
+#include "cf/inferno/classify/system.h"
 
-struct inferno_classify_system_t {
-  inferno_classify_classifyey_t classifyey;
+struct cf_inferno_classify_system_t {
+  cf_inferno_classify_classifyey_t classifyey;
   void *classify_object;
-  x_audit_log_t *log;
+  cf_x_audit_log_t *log;
 };
 
-static void init_classifyey(inferno_classify_classifyey_t *classifyey,
-    inferno_classify_algorithm_t algorithm);
+static void init_classifyey(cf_inferno_classify_classifyey_t *classifyey,
+    cf_inferno_classify_algorithm_t algorithm);
 
-inferno_classify_system_t *inferno_classify_system_create
-(x_container_array_t *classified_objects, inferno_classify_algorithm_t algorithm,
-    x_audit_log_t *log)
+cf_inferno_classify_system_t *cf_inferno_classify_system_create
+(cf_x_case_array_t *classified_objects, cf_inferno_classify_algorithm_t algorithm,
+    cf_x_audit_log_t *log)
 {
   assert(classified_objects);
-  assert(x_container_array_get_size(classified_objects) > 0);
-  assert(x_core_bitarray_get_size(x_container_array_find
+  assert(cf_x_case_array_get_size(classified_objects) > 0);
+  assert(cf_x_core_bitarray_get_size(cf_x_case_array_find
           (classified_objects, 0)) >= 2);
   assert(log);
-  inferno_classify_system_t *system;
+  cf_inferno_classify_system_t *system;
 
   system = malloc(sizeof *system);
   if (system) {
@@ -29,18 +29,18 @@ inferno_classify_system_t *inferno_classify_system_create
     system->classify_object = system->classifyey.create(classified_objects,
         log);
     if (!system->classify_object) {
-      x_audit_log_trace(log, "clss", "create");
+      cf_x_audit_log_trace(log, "clss", "create");
       free(system);
       system = NULL;
     }
   } else {
-    x_core_trace("malloc");
+    cf_x_core_trace("malloc");
   }
 
   return system;
 }
 
-void inferno_classify_system_destroy(inferno_classify_system_t *system)
+void cf_inferno_classify_system_destroy(cf_inferno_classify_system_t *system)
 {
   assert(system);
 
@@ -48,106 +48,106 @@ void inferno_classify_system_destroy(inferno_classify_system_t *system)
   free(system);
 }
 
-x_core_bit_t inferno_classify_system_classify_object(inferno_classify_system_t *system,
-    x_core_bitarray_t *object)
+cf_x_core_bit_t cf_inferno_classify_system_classify_object(cf_inferno_classify_system_t *system,
+    cf_x_core_bitarray_t *object)
 {
   return system->classifyey.classify_object(system->classify_object, object);
 }
 
-x_container_array_t *inferno_classify_system_classify_objects
-(inferno_classify_system_t *system, x_container_array_t *objects)
+cf_x_case_array_t *cf_inferno_classify_system_classify_objects
+(cf_inferno_classify_system_t *system, cf_x_case_array_t *objects)
 {
   assert(system);
   assert(objects);
-  x_core_bitarray_t *object;
-  x_container_array_t *classes;
+  cf_x_core_bitarray_t *object;
+  cf_x_case_array_t *classes;
   unsigned long object_count;
-  x_core_bit_t class;
-  x_core_bit_t *class_object;
+  cf_x_core_bit_t class;
+  cf_x_core_bit_t *class_object;
   unsigned long index;
 
-  object_count = x_container_array_get_size(objects);
-  classes = x_container_array_create(object_count, x_core_bit_compare,
-      x_core_bit_copy, x_core_bit_destroy);
+  object_count = cf_x_case_array_get_size(objects);
+  classes = cf_x_case_array_create(object_count, cf_x_core_bit_compare,
+      cf_x_core_bit_copy, cf_x_core_bit_destroy);
   if (classes) {
-    x_container_array_iterate_start(objects);
+    cf_x_case_array_iterate_start(objects);
     index = 0;
-    while ((object = x_container_array_iterate_next(objects))) {
+    while ((object = cf_x_case_array_iterate_next(objects))) {
       class
         = system->classifyey.classify_object(system->classify_object, object);
       class_object = malloc(sizeof *class_object);
       if (class_object) {
-        x_container_array_add(classes, index, class_object);
+        cf_x_case_array_add(classes, index, class_object);
       } else {
-        x_audit_log_trace(system->log, "clss", "malloc");
+        cf_x_audit_log_trace(system->log, "clss", "malloc");
       }
       index++;
     }
   } else {
-    x_core_trace("x_container_array_create");
+    cf_x_core_trace("x_case_array_create");
   }
 
   return classes;
 }
 
-x_core_bool_t inferno_classify_system_learn(inferno_classify_system_t *system,
+cf_x_core_bool_t cf_inferno_classify_system_learn(cf_inferno_classify_system_t *system,
     unsigned long max_wall_time_microseconds)
 {
   assert(system);
   struct timeval start_time;
-  x_core_bool_t success;
+  cf_x_core_bool_t success;
 
   gettimeofday(&start_time, NULL);
 
-  success = x_core_bool_true;
+  success = cf_x_core_bool_true;
   do {
     if (!system->classifyey.learn(system->classify_object)) {
-      success = x_core_bool_false;
-      x_audit_log_trace(system->log, "clss", "learn");
+      success = cf_x_core_bool_false;
+      cf_x_audit_log_trace(system->log, "clss", "learn");
     }
-  } while (x_core_time_is_remaining_microseconds
+  } while (cf_x_core_time_is_remaining_microseconds
       (&start_time, max_wall_time_microseconds));
 
   return success;
 }
 
-x_core_bool_t inferno_classify_system_observe_object(inferno_classify_system_t *system,
-    x_core_bitarray_t *classified_object)
+cf_x_core_bool_t cf_inferno_classify_system_observe_object(cf_inferno_classify_system_t *system,
+    cf_x_core_bitarray_t *classified_object)
 {
   return system->classifyey.observe_object(system->classify_object,
       classified_object);
 }
 
-x_core_bool_t inferno_classify_system_observe_objects(inferno_classify_system_t *system,
-    x_container_array_t *classified_objects)
+cf_x_core_bool_t cf_inferno_classify_system_observe_objects(cf_inferno_classify_system_t *system,
+    cf_x_case_array_t *classified_objects)
 {
   assert(system);
   assert(classified_objects);
-  x_core_bool_t success;
-  x_core_bitarray_t *object;
+  cf_x_core_bool_t success;
+  cf_x_core_bitarray_t *object;
 
-  success = x_core_bool_true;
+  success = cf_x_core_bool_true;
 
-  x_container_array_iterate_start(classified_objects);
-  while ((object = x_container_array_iterate_next(classified_objects))) {
+  cf_x_case_array_iterate_start(classified_objects);
+  while ((object = cf_x_case_array_iterate_next(classified_objects))) {
     if (!system->classifyey.observe_object(system->classify_object, object)) {
-      success = x_core_bool_false;
-      x_audit_log_trace(system->log, "clss", "observe_object");
+      success = cf_x_core_bool_false;
+      cf_x_audit_log_trace(system->log, "clss", "observe_object");
     }
   }
 
   return success;
 }
 
-void init_classifyey(inferno_classify_classifyey_t *classifyey,
-    inferno_classify_algorithm_t algorithm)
+void init_classifyey(cf_inferno_classify_classifyey_t *classifyey,
+    cf_inferno_classify_algorithm_t algorithm)
 {
   assert(classifyey);
 
   switch (algorithm) {
     default:
-    case INFERNO_CLASSIFY_ALGORITHM_ARCHETYPE:
-      inferno_archetype_system_init_classifyey(classifyey);
+    case CF_INFERNO_CLASSIFY_ALGORITHM_ARCHETYPE:
+      cf_inferno_archetype_system_init_classifyey(classifyey);
       break;
   }
 }

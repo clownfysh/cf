@@ -1,26 +1,26 @@
-#ifndef chage_atom_h
-#define chage_atom_h
+#ifndef cf_chage_atom_h
+#define cf_chage_atom_h
 
-#include "chage/sing/system.h"
-#include "chage/tools.h"
-#include "x/core/tools.h"
+#include "cf/chage/sing/system.h"
+#include "cf/chage/tools.h"
+#include "cf/x/core/tools.h"
 
-struct chage_atom_t;
-typedef struct chage_atom_t chage_atom_t;
+struct cf_chage_atom_t;
+typedef struct cf_chage_atom_t cf_chage_atom_t;
 
-chage_atom_t *chage_atom_create(chage_atom_t *container);
+cf_chage_atom_t *cf_chage_atom_create(cf_chage_atom_t *container);
 
-void chage_atom_destroy(chage_atom_t *atom);
+void cf_chage_atom_destroy(cf_chage_atom_t *atom);
 
-chage_atom_t *chage_atom_get_contained(chage_atom_t *atom,
+cf_chage_atom_t *cf_chage_atom_get_contained(cf_chage_atom_t *atom,
     position_t position);
 
-chage_atom_t *chage_atom_get_container(chage_atom_t *atom);
+cf_chage_atom_t *cf_chage_atom_get_container(cf_chage_atom_t *atom);
 
-x_core_bool_t chage_atom_spark(chage_atom_t *atom);
+cf_x_core_bool_t cf_chage_atom_spark(cf_chage_atom_t *atom);
 
-x_core_bool_t chage_atom_spark_distance(chage_atom_t *atom,
+cf_x_core_bool_t cf_chage_atom_spark_distance(cf_chage_atom_t *atom,
     unsigned long target_distance, unsigned long actual_distance,
-    chage_interval_t start_interval, x_core_bool_t *interval_expired);
+    cf_chage_interval_t start_interval, cf_x_core_bool_t *interval_expired);
 
 #endif

@@ -1,4 +1,4 @@
-#include "x/net/ping.h"
+#include "cf/x/net/ping.h"
 
 int main(int argc, char *argv[])
 {

@@ -1,27 +1,27 @@
-#include "inferno/ccsv/system.h"
-#include "x/core/tools.h"
+#include "cf/inferno/ccsv/system.h"
+#include "cf/x/core/tools.h"
 
-struct inferno_ccsv_system_t {
+struct cf_inferno_ccsv_system_t {
 };
 
-inferno_ccsv_system_t *inferno_ccsv_system_create()
+cf_inferno_ccsv_system_t *cf_inferno_ccsv_system_create()
 {
-  inferno_ccsv_system_t *system;
+  cf_inferno_ccsv_system_t *system;
 
   system = malloc(sizeof *system);
   if (system) {
 
   } else {
-    x_core_trace("malloc");
+    cf_x_core_trace("malloc");
   }
 
   return system;
 }
 
-void inferno_ccsv_system_destroy(void *system_void)
+void cf_inferno_ccsv_system_destroy(void *system_void)
 {
   assert(system_void);
-  inferno_ccsv_system_t *system;
+  cf_inferno_ccsv_system_t *system;
 
   system = system_void;
 

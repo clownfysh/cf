@@ -1,7 +1,7 @@
-#include "x/net/ip_address.h"
+#include "cf/x/net/ip_address.h"
 
-struct x_net_ip_address_t {};
+struct cf_x_net_ip_address_t {};
 
-x_net_ip_address_t *x_net_ip_address_create();
+cf_x_net_ip_address_t *cf_x_net_ip_address_create();
 
-void x_net_ip_address_destroy();
+void cf_x_net_ip_address_destroy();

@@ -1,4 +1,4 @@
-#include "inferno/archetype/system.h"
+#include "cf/inferno/archetype/system.h"
 
 int main(int argc, char *argv[])
 {

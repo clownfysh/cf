@@ -1,24 +1,24 @@
-#include "inferno/stravel/system.h"
-#include "x/core/tools.h"
+#include "cf/inferno/stravel/system.h"
+#include "cf/x/core/tools.h"
 
-struct inferno_stravel_system_t {
+struct cf_inferno_stravel_system_t {
 };
 
-inferno_stravel_system_t *inferno_stravel_system_create()
+cf_inferno_stravel_system_t *cf_inferno_stravel_system_create()
 {
-  inferno_stravel_system_t *system;
+  cf_inferno_stravel_system_t *system;
 
   system = malloc(sizeof *system);
   if (system) {
 
   } else {
-    x_core_trace("malloc");
+    cf_x_core_trace("malloc");
   }
 
   return system;
 }
 
-void inferno_stravel_system_destroy(inferno_stravel_system_t *system)
+void cf_inferno_stravel_system_destroy(cf_inferno_stravel_system_t *system)
 {
   assert(system);
   free(system);
