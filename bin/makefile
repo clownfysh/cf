@@ -71,7 +71,7 @@ clean:
 	@find . -name "*.bin" -exec rm {} \;
 	@find . -name ".makedepend.bak" -exec rm {} \;
 	@find . -name ".etags" -exec rm {} \;
-	@echo "" > .makedepend
+	@find . -name ".makedepend" -exec blank-file {} \;
 	@clean
 
 help:
