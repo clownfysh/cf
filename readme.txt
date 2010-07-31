@@ -15,8 +15,8 @@ Set up environment
 
 Install dependencies
   + development headers (stddef.h etc.)
-    + set $CF_C_STANDARD_INCLUDE_DIR to the place on your OS that includes them
-      (for example: /usr/lib/gcc/i486-linux-gnu/4.2.4/include)
+    + set $CF_C_STANDARD to the place on your OS that includes them (for
+      example: /usr/lib/gcc/i486-linux-gnu/4.2.4/include)
   + an ANSI C compiler                  ( http://en.wikipedia.org/wiki/ANSI_C )
   + POSIX Threads                ( http://en.wikipedia.org/wiki/POSIX_Threads )
   + ncurses                            ( http://en.wikipedia.org/wiki/Ncurses )
