@@ -13,7 +13,8 @@ things.  They're free; use them however you like.  For more, visit:
 inferno :: search, classify, morph
   sorea :: os human-human, human-machine interface
  struct :: ...
-      x :: base library :: containers, networking, etc.
+   sync :: ...
+      x :: objects, containers, networking
 
 --[ setup ]--------------------------------------------------------------------
 

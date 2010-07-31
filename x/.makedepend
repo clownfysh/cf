@@ -3573,7 +3573,7 @@
 ./container/hasha.o: /usr/include/jpeglib.h /usr/include/jconfig.h
 ./container/hasha.o: /usr/include/jmorecfg.h /home/matthew/cf/x/core/bit.h
 ./container/hasha.o: /home/matthew/cf/x/core/types.h
-./container/hash_table.o: /home/matthew/cf/x/container/hasha.h
+./container/hash_table.o: /home/matthew/cf/x/container/hash_table.h
 ./container/hash_table.o: /home/matthew/cf/x/core/object.h
 ./container/hash_table.o: /home/matthew/cf/x/core/bool.h
 ./container/hash_table.o: /home/matthew/cf/x/core/declarations.h
