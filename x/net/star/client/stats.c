@@ -1,8 +1,8 @@
 #include "cf/x/core/tools.h"
 #include "cf/x/net/star/client/stats.h"
 
-cf_x_core_bool_t cf_x_net_starclient_add_stats_to_message
-(cf_x_net_starclient_stats_t *starclient_stats, cf_x_core_message_t *message)
+cf_x_core_bool_t cf_x_net_star_client_system_add_stats_to_message
+(cf_x_net_star_client_stats_t *starclient_stats, cf_x_core_message_t *message)
 {
   assert(message);
   assert(starclient_stats);
@@ -18,11 +18,11 @@ cf_x_core_bool_t cf_x_net_starclient_add_stats_to_message
   return success;
 }
 
-cf_x_net_starclient_stats_t *cf_x_net_starclient_create_stats_from_message
+cf_x_net_star_client_stats_t *cf_x_net_star_client_system_create_stats_from_message
 (cf_x_core_message_t *message)
 {
   assert(message);
-  cf_x_net_starclient_stats_t *starclient_stats;
+  cf_x_net_star_client_stats_t *starclient_stats;
 
   starclient_stats = malloc(sizeof *starclient_stats);
   if (starclient_stats) {

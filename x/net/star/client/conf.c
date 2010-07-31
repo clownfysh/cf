@@ -6,22 +6,22 @@
 #define DEFAULT_STAR_ARM_PORT_MIN 9000
 #define DEFAULT_STAR_ARM_PORT_MAX 10000
 
-static cf_x_core_bool_t cf_x_net_starclient_conf_create_node_server_exclude_ip
-(cf_x_net_starclient_conf_t *starclient_conf);
+static cf_x_core_bool_t cf_x_net_star_client_conf_create_node_server_exclude_ip
+(cf_x_net_star_client_conf_t *starclient_conf);
 
-static cf_x_core_bool_t cf_x_net_starclient_conf_create_node_server_exclude_port
-(cf_x_net_starclient_conf_t *starclient_conf);
+static cf_x_core_bool_t cf_x_net_star_client_conf_create_node_server_exclude_port
+(cf_x_net_star_client_conf_t *starclient_conf);
 
-static cf_x_core_bool_t cf_x_net_starclient_conf_create_star_arm_port_range
-(cf_x_net_starclient_conf_t *starclient_conf);
+static cf_x_core_bool_t cf_x_net_star_client_conf_create_star_arm_port_range
+(cf_x_net_star_client_conf_t *starclient_conf);
 
-static cf_x_core_bool_t cf_x_net_starclient_conf_create_star_arm_ips
-(cf_x_net_starclient_conf_t *starclient_conf);
+static cf_x_core_bool_t cf_x_net_star_client_conf_create_star_arm_ips
+(cf_x_net_star_client_conf_t *starclient_conf);
 
-cf_x_net_starclient_conf_t *cf_x_net_starclient_conf_create(char *conf_filename)
+cf_x_net_star_client_conf_t *cf_x_net_star_client_conf_create(char *conf_filename)
 {
   assert(conf_filename);
-  cf_x_net_starclient_conf_t *starclient_conf;
+  cf_x_net_star_client_conf_t *starclient_conf;
   cf_x_core_bool_t so_far_so_good;
 
   starclient_conf = malloc(sizeof *starclient_conf);
@@ -38,22 +38,22 @@ cf_x_net_starclient_conf_t *cf_x_net_starclient_conf_create(char *conf_filename)
   }
 
   if (so_far_so_good) {
-    so_far_so_good = cf_x_net_starclient_conf_create_node_server_exclude_ip
+    so_far_so_good = cf_x_net_star_client_conf_create_node_server_exclude_ip
       (starclient_conf);
   }
 
   if (so_far_so_good) {
     so_far_so_good
-      = cf_x_net_starclient_conf_create_node_server_exclude_port(starclient_conf);
+      = cf_x_net_star_client_conf_create_node_server_exclude_port(starclient_conf);
   }
 
   if (so_far_so_good) {
     so_far_so_good
-      = cf_x_net_starclient_conf_create_star_arm_ips(starclient_conf);
+      = cf_x_net_star_client_conf_create_star_arm_ips(starclient_conf);
   }
 
   if (so_far_so_good) {
-    so_far_so_good = cf_x_net_starclient_conf_create_star_arm_port_range
+    so_far_so_good = cf_x_net_star_client_conf_create_star_arm_port_range
       (starclient_conf);
   }
 
@@ -68,8 +68,8 @@ cf_x_net_starclient_conf_t *cf_x_net_starclient_conf_create(char *conf_filename)
   return starclient_conf;
 }
 
-cf_x_core_bool_t cf_x_net_starclient_conf_create_node_server_exclude_ip
-(cf_x_net_starclient_conf_t *starclient_conf)
+cf_x_core_bool_t cf_x_net_star_client_conf_create_node_server_exclude_ip
+(cf_x_net_star_client_conf_t *starclient_conf)
 {
   assert(starclient_conf);
   cf_x_core_bool_t success;
@@ -86,8 +86,8 @@ cf_x_core_bool_t cf_x_net_starclient_conf_create_node_server_exclude_ip
   return success;
 }
 
-cf_x_core_bool_t cf_x_net_starclient_conf_create_node_server_exclude_port
-(cf_x_net_starclient_conf_t *starclient_conf)
+cf_x_core_bool_t cf_x_net_star_client_conf_create_node_server_exclude_port
+(cf_x_net_star_client_conf_t *starclient_conf)
 {
   assert(starclient_conf);
   cf_x_core_bool_t success;
@@ -106,8 +106,8 @@ cf_x_core_bool_t cf_x_net_starclient_conf_create_node_server_exclude_port
   return success;
 }
 
-cf_x_core_bool_t cf_x_net_starclient_conf_create_star_arm_ips
-(cf_x_net_starclient_conf_t *starclient_conf)
+cf_x_core_bool_t cf_x_net_star_client_conf_create_star_arm_ips
+(cf_x_net_star_client_conf_t *starclient_conf)
 {
   assert(starclient_conf);
   cf_x_core_bool_t success;
@@ -123,8 +123,8 @@ cf_x_core_bool_t cf_x_net_starclient_conf_create_star_arm_ips
   return success;
 }
 
-cf_x_core_bool_t cf_x_net_starclient_conf_create_star_arm_port_range
-(cf_x_net_starclient_conf_t *starclient_conf)
+cf_x_core_bool_t cf_x_net_star_client_conf_create_star_arm_port_range
+(cf_x_net_star_client_conf_t *starclient_conf)
 {
   assert(starclient_conf);
   cf_x_core_bool_t success;
@@ -149,7 +149,7 @@ cf_x_core_bool_t cf_x_net_starclient_conf_create_star_arm_port_range
   return success;
 }
 
-void cf_x_net_starclient_conf_destroy(cf_x_net_starclient_conf_t *starclient_conf)
+void cf_x_net_star_client_conf_destroy(cf_x_net_star_client_conf_t *starclient_conf)
 {
   assert(starclient_conf);
   cf_x_config_file_destroy(starclient_conf->conf);

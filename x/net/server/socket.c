@@ -1,8 +1,8 @@
 #include "cf/x/net/server/socket.h"
 
-#define CF_X_NET_SERVERSOCKET_LISTEN_MAX_PENDING 8
+#define CF_X_NET_SERVER_SOCKET_LISTEN_MAX_PENDING 8
 
-int cf_x_net_serversocket_accept(int serversocket,
+int cf_x_net_server_socket_accept(int serversocket,
     struct sockaddr_in *client_address,
     socklen_t *client_address_size)
 {
@@ -15,7 +15,7 @@ int cf_x_net_serversocket_accept(int serversocket,
   return client_socket;
 }
 
-int cf_x_net_serversocket_create(unsigned short port)
+int cf_x_net_server_socket_create(unsigned short port)
 {
   int serversocket;
   struct sockaddr_in server_address;
@@ -29,7 +29,7 @@ int cf_x_net_serversocket_create(unsigned short port)
     server_address.sin_port = htons(port);
     if (bind(serversocket, (struct sockaddr *) &server_address,
             sizeof server_address) >= 0) {
-      if (listen(serversocket, CF_X_NET_SERVERSOCKET_LISTEN_MAX_PENDING) < 0) {
+      if (listen(serversocket, CF_X_NET_SERVER_SOCKET_LISTEN_MAX_PENDING) < 0) {
         close(serversocket);
         serversocket = -1;
       }
@@ -42,7 +42,7 @@ int cf_x_net_serversocket_create(unsigned short port)
   return serversocket;
 }
 
-void cf_x_net_serversocket_destroy(int serversocket)
+void cf_x_net_server_socket_destroy(int serversocket)
 {
   if (serversocket != -1) {
     close(serversocket);

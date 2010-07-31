@@ -2,15 +2,15 @@
 #include "cf/x/config/options.h"
 #include "cf/x/core/tools.h"
 
-void cf_x_config_disable_if_running_batcx_tests(int argc, char *argv[])
+void cf_x_config_disable_if_running_batch_tests(int argc, char *argv[])
 {
-  if (cf_x_config_running_batcx_tests(argc, argv)) {
+  if (cf_x_config_running_batch_tests(argc, argv)) {
     printf("  %s disabled in batch test mode\n", *argv);
     exit(0);
   }
 }
 
-cf_x_core_bool_t cf_x_config_running_batcx_tests(int argc, char *argv[])
+cf_x_core_bool_t cf_x_config_running_batch_tests(int argc, char *argv[])
 {
   cf_x_config_options_t *options;
   cf_x_core_bool_t batch;

@@ -8,7 +8,7 @@
 
 struct cf_x_net_testengine_t {
   void *things_the_engine_needs_to_share;
-  cf_x_net_server_t *cf_x_net_server;
+  cf_x_net_server_system_t *cf_x_net_server;
   void *custom_server_object;
 };
 
@@ -23,7 +23,7 @@ cf_x_net_message_status_t handle_ping(void *engine_object,
   cf_x_net_ping_t *ping;
   cf_x_core_message_t *pong_message;
   cf_x_net_testengine_t *engine;
-  cf_x_net_server_t *cf_x_net_server;
+  cf_x_net_server_system_t *cf_x_net_server;
   cf_x_net_message_status_t message_status;
   int client_socket;
   cf_x_core_message_t *message;
@@ -45,7 +45,7 @@ cf_x_net_message_status_t handle_ping(void *engine_object,
           = cf_x_net_testmessage_create(client_socket, CF_X_NET_TESTMESSAGE_PONG);
         if (pong_message) {
           if (cf_x_net_pong_add_to_message(pong, pong_message)) {
-            if (cf_x_net_server_send_message(cf_x_net_server, pong_message)) {
+            if (cf_x_net_server_system_send_message(cf_x_net_server, pong_message)) {
               message_status = CF_X_NET_MESSAGE_STATUS_HANDLED;
             } else {
               message_status = CF_X_NET_MESSAGE_STATUS_CANT_HANDLE;
@@ -78,7 +78,7 @@ cf_x_net_message_status_t handle_ping(void *engine_object,
   return message_status;
 }
 
-void *cf_x_net_testengine_create(cf_x_net_server_t *cf_x_net_server,
+void *cf_x_net_testengine_create(cf_x_net_server_system_t *cf_x_net_server,
     void *custom_server_object)
 {
   assert(cf_x_net_server);
@@ -93,7 +93,7 @@ void *cf_x_net_testengine_create(cf_x_net_server_t *cf_x_net_server,
     engine->custom_server_object = custom_server_object;
   }
 
-  cf_x_net_server_register_message_handler(cf_x_net_server, CF_X_NET_ENGINE_TEST,
+  cf_x_net_server_system_register_message_handler(cf_x_net_server, CF_X_NET_ENGINE_TEST,
       CF_X_NET_TESTMESSAGE_PING, handle_ping);
   return engine;
 }
@@ -106,18 +106,18 @@ void cf_x_net_testengine_destroy(void *engine_object)
   free(engine_object);
 }
 
-cf_x_net_server_handle_message_f cf_x_net_testengine_get_handler_for_message
+cf_x_net_server_system_handle_message_f cf_x_net_testengine_get_handler_for_message
 (void *engine_object, void *message_object)
 {
   assert(engine_object);
   assert(message_object);
   cf_x_net_testengine_t *engine;
-  cf_x_net_server_handle_message_f handler;
+  cf_x_net_server_system_handle_message_f handler;
   cf_x_core_message_t *message;
 
   engine = engine_object;
   message = message_object;
-  handler = cf_x_net_server_get_handler_for_message(engine->cf_x_net_server, message);
+  handler = cf_x_net_server_system_get_handler_for_message(engine->cf_x_net_server, message);
 
   return handler;
 }
@@ -135,7 +135,7 @@ void cf_x_net_testengine_run(void *engine_thread_object)
   assert(engine_thread_object);
   cf_x_net_engine_thread_t *engine_thread;
   cf_x_net_testengine_t *engine;
-  cf_x_net_server_t *server;
+  cf_x_net_server_system_t *server;
   unsigned short thread_index;
 
   engine_thread = engine_thread_object;
@@ -143,7 +143,7 @@ void cf_x_net_testengine_run(void *engine_thread_object)
   server = engine->cf_x_net_server;
   thread_index = engine_thread->thread_index;
 
-  cf_x_net_server_process_messages(server, CF_X_NET_ENGINE_TEST, thread_index);
+  cf_x_net_server_system_process_messages(server, CF_X_NET_ENGINE_TEST, thread_index);
 }
 
 void cf_x_net_testengine_start(void *engine_thread_object)

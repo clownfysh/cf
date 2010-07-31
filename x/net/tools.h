@@ -19,10 +19,10 @@ enum cf_x_net_message_status_t {
 };
 typedef enum cf_x_net_message_status_t cf_x_net_message_status_t;
 
-typedef cf_x_net_message_status_t (*cf_x_net_server_handle_message_f)
+typedef cf_x_net_message_status_t (*cf_x_net_server_system_handle_message_f)
 (void *engine_object, void *message_object);
 
-struct cf_x_net_server_t;
-typedef struct cf_x_net_server_t cf_x_net_server_t;
+struct cf_x_net_server_system_t;
+typedef struct cf_x_net_server_system_t cf_x_net_server_system_t;
 
 #endif

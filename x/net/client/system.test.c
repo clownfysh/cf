@@ -36,7 +36,7 @@ void handle_pong(void *custom_client_context, cf_x_core_message_t *message)
 
 int main(int argc, char *argv[])
 {
-  cf_x_config_disable_if_running_batcx_tests(argc, argv);
+  cf_x_config_disable_if_running_batch_tests(argc, argv);
 
   cf_x_net_client_system_t *client;
   cf_x_core_message_t *ping_message;

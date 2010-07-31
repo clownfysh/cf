@@ -4,11 +4,11 @@
 
 struct cf_x_net_exchange_t {
   cf_x_case_set_t *posts;
-  cf_x_net_postey_t *postey;
+  cf_x_net_post_postey_t *postey;
   cf_x_core_objectey_t postey_objectey;
 };
 
-cf_x_net_exchange_t *cf_x_net_exchange_create(cf_x_net_postey_t *postey)
+cf_x_net_exchange_t *cf_x_net_exchange_create(cf_x_net_post_postey_t *postey)
 {
   assert(postey);
   cf_x_net_exchange_t *exchange;

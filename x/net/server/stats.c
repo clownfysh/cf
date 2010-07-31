@@ -4,7 +4,7 @@
 #include "cf/x/core/tools.h"
 #include "cf/x/net/server/stats.h"
 
-cf_x_core_bool_t cf_x_net_server_add_stats_to_message
+cf_x_core_bool_t cf_x_net_server_system_add_stats_to_message
 (cf_x_net_server_stats_t *server_stats, cf_x_core_message_t *message)
 {
   assert(message);
@@ -75,7 +75,7 @@ cf_x_core_bool_t cf_x_net_server_add_stats_to_message
   return success;
 }
 
-cf_x_net_server_stats_t *cf_x_net_server_create_stats_from_message
+cf_x_net_server_stats_t *cf_x_net_server_system_create_stats_from_message
 (cf_x_core_message_t *message)
 {
   assert(message);

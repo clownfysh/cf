@@ -15,7 +15,7 @@ typedef struct engine_container_t engine_container_t;
 struct cf_x_net_client_system_t {
   int socket;
 
-  cf_x_net_post_t *post;
+  cf_x_net_post_system_t *post;
   cf_x_net_exchange_t *exchange;
   pthread_mutex_t messaging_mutex;
 
@@ -30,7 +30,7 @@ struct cf_x_net_client_system_t {
 
   cf_x_core_bool_t server_socket_closed;
 
-  cf_x_net_postey_t postey;
+  cf_x_net_post_postey_t postey;
   cf_x_net_engine_get_name_f get_engine_name;
 
   cf_x_audit_log_t *log;
@@ -67,7 +67,7 @@ cf_x_core_bool_t connect_to_server(cf_x_net_client_system_t *client)
 
       pthread_mutex_lock(&client->messaging_mutex);
       {
-        client->post = cf_x_net_post_create(client->socket);
+        client->post = cf_x_net_post_system_create(client->socket);
         if (client->post) {
           if (cf_x_net_exchange_register_post
               (client->exchange, client->post)) {
@@ -77,7 +77,7 @@ cf_x_core_bool_t connect_to_server(cf_x_net_client_system_t *client)
                 "x_net_exchange_register_post");
             cf_x_net_client_socket_destroy(client->socket);
             client->server_socket_closed = cf_x_core_bool_true;
-            cf_x_net_post_destroy(client->post);
+            cf_x_net_post_system_destroy(client->post);
             client->post = NULL;
           }
         } else {
@@ -135,7 +135,7 @@ cf_x_core_bool_t handle_disconnect(cf_x_net_client_system_t *client)
 
   if (cf_x_net_exchange_unregister_post(client->exchange, client->socket)) {
     success = cf_x_core_bool_true;
-    cf_x_net_post_destroy(client->post);
+    cf_x_net_post_system_destroy(client->post);
     client->post = NULL;
   } else {
     success = cf_x_core_bool_false;
@@ -179,14 +179,14 @@ cf_x_net_client_system_t *cf_x_net_client_system_create(const char *server_ip_ad
          each_engine_id++) {
       *(client->engines_array + each_engine_id) = NULL;
     }
-    cf_x_net_postey_init(&client->postey, cf_x_net_post_compare,
-        cf_x_net_post_create, cf_x_net_post_create_decoy,
-        cf_x_net_post_destroy, cf_x_net_post_destroy_decoy,
-        cf_x_net_post_get_last_receive_activity_time,
-        cf_x_net_post_get_socket, cf_x_net_post_get_stats,
-        cf_x_net_post_receive_message, cf_x_net_post_receive_messages,
-        cf_x_net_post_send_message, cf_x_net_post_send_messages,
-        cf_x_net_post_is_socket_closed);
+    cf_x_net_post_postey_init(&client->postey, cf_x_net_post_system_compare,
+        cf_x_net_post_system_create, cf_x_net_post_system_create_decoy,
+        cf_x_net_post_system_destroy, cf_x_net_post_system_destroy_decoy,
+        cf_x_net_post_system_get_last_receive_activity_time,
+        cf_x_net_post_system_get_socket, cf_x_net_post_system_get_stats,
+        cf_x_net_post_system_receive_message, cf_x_net_post_system_receive_messages,
+        cf_x_net_post_system_send_message, cf_x_net_post_system_send_messages,
+        cf_x_net_post_system_is_socket_closed);
     success = cf_x_core_bool_true;
   } else {
     success = cf_x_core_bool_false;
@@ -264,7 +264,7 @@ void cf_x_net_client_system_destroy(void *client_object)
 
   cf_x_net_client_socket_destroy(client->socket);
   if (client->post) {
-    cf_x_net_post_destroy(client->post);
+    cf_x_net_post_system_destroy(client->post);
   }
   cf_x_net_exchange_destroy(client->exchange);
   free(client->server_ip_address);
@@ -406,11 +406,11 @@ cf_x_core_bool_t cf_x_net_client_system_send_message(cf_x_net_client_system_t *c
 
     pthread_mutex_lock(&client->messaging_mutex);
     {
-      if (cf_x_net_post_send_message(client->post, message)) {
+      if (cf_x_net_post_system_send_message(client->post, message)) {
         success = cf_x_core_bool_true;
         cf_x_net_exchange_send_and_receive_messages(client->exchange);
 
-        if (cf_x_net_post_is_socket_closed(client->post)) {
+        if (cf_x_net_post_system_is_socket_closed(client->post)) {
           client->server_socket_closed = cf_x_core_bool_true;
           if (!handle_disconnect(client)) {
             cf_x_audit_log_trace(client->log, "hnet", "handle_disconnect");
@@ -437,7 +437,7 @@ cf_x_case_list_t *cf_x_net_client_system_take_unsent_messages(cf_x_net_client_sy
   cf_x_case_list_t *messages;
 
   pthread_mutex_lock(&client->messaging_mutex);
-  messages = cf_x_net_post_take_unsent_messages(client->post);
+  messages = cf_x_net_post_system_take_unsent_messages(client->post);
   pthread_mutex_unlock(&client->messaging_mutex);
 
   return messages;
@@ -452,9 +452,9 @@ cf_x_core_message_t *receive_message(cf_x_net_client_system_t *client)
     pthread_mutex_lock(&client->messaging_mutex);
     {
       cf_x_net_exchange_send_and_receive_messages(client->exchange);
-      message = cf_x_net_post_receive_message(client->post);
+      message = cf_x_net_post_system_receive_message(client->post);
 
-      if (cf_x_net_post_is_socket_closed(client->post)) {
+      if (cf_x_net_post_system_is_socket_closed(client->post)) {
         client->server_socket_closed = cf_x_core_bool_true;
         if (!handle_disconnect(client)) {
           cf_x_audit_log_trace(client->log, "hnet", "handle_disconnect");

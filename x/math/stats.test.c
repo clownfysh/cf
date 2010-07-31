@@ -22,7 +22,7 @@ math_stats_test_case test_cases[] =
 
 int main(int argc, char *argv[])
 {
-  cf_x_config_disable_if_running_batcx_tests(argc, argv);
+  cf_x_config_disable_if_running_batch_tests(argc, argv);
 
   int result = 0;
   int line = 0;

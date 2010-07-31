@@ -1,18 +1,18 @@
 #include "cf/x/net/post/postey.h"
 
-void cf_x_net_postey_init(cf_x_net_postey_t *postey, cf_x_net_postey_compare_f compare,
-    cf_x_net_postey_create_f create, cf_x_net_postey_create_decoy_f create_decoy,
-    cf_x_net_postey_destroy_f destroy, cf_x_net_postey_destroy_decoy_f destroy_decoy,
+void cf_x_net_post_postey_init(cf_x_net_post_postey_t *postey, cf_x_net_post_postey_compare_f compare,
+    cf_x_net_post_postey_create_f create, cf_x_net_post_postey_create_decoy_f create_decoy,
+    cf_x_net_post_postey_destroy_f destroy, cf_x_net_post_postey_destroy_decoy_f destroy_decoy,
 
-    cf_x_net_postey_get_last_receive_activity_time_f
+    cf_x_net_post_postey_get_last_receive_activity_time_f
     get_last_receive_activity_time,
 
-    cf_x_net_postey_get_socket_f get_socket, cf_x_net_postey_get_stats_f get_stats,
-    cf_x_net_postey_receive_message_f receive_message,
-    cf_x_net_postey_receive_messages_f receive_messages,
-    cf_x_net_postey_send_message_f send_message,
-    cf_x_net_postey_send_messages_f send_messages,
-    cf_x_net_postey_socket_closed_f socket_closed)
+    cf_x_net_post_postey_get_socket_f get_socket, cf_x_net_post_postey_get_stats_f get_stats,
+    cf_x_net_post_postey_receive_message_f receive_message,
+    cf_x_net_post_postey_receive_messages_f receive_messages,
+    cf_x_net_post_postey_send_message_f send_message,
+    cf_x_net_post_postey_send_messages_f send_messages,
+    cf_x_net_post_postey_socket_closed_f socket_closed)
 {
   assert(postey);
 

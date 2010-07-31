@@ -7,12 +7,12 @@
 struct cf_x_pingpong_engine_t;
 typedef struct cf_x_pingpong_engine_t cf_x_pingpong_engine_t;
 
-void *cf_x_pingpong_engine_create(cf_x_net_server_t *cf_x_net_server,
+void *cf_x_pingpong_engine_create(cf_x_net_server_system_t *cf_x_net_server,
     void *custom_server_object);
 
 void cf_x_pingpong_engine_destroy(void *engine_object);
 
-cf_x_net_server_handle_message_f cf_x_pingpong_engine_get_handler_for_message
+cf_x_net_server_system_handle_message_f cf_x_pingpong_engine_get_handler_for_message
 (void *engine_object, void *message_object);
 
 void cf_x_pingpong_engine_maintain(void *engine_object);

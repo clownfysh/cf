@@ -16,7 +16,7 @@ struct post_message_header_t {
 };
 typedef struct post_message_header_t post_message_header_t;
 
-struct cf_x_net_post_t {
+struct cf_x_net_post_system_t {
   int socket;
   cf_x_case_list_t *inbox;
   cf_x_case_list_t *outbox;
@@ -40,17 +40,17 @@ struct cf_x_net_post_t {
   cf_x_core_bool_t socket_closed;
 };
 
-static void cf_x_net_post_create_in_buffer(cf_x_net_post_t *post);
+static void cf_x_net_post_system_create_in_buffer(cf_x_net_post_system_t *post);
 
-static cf_x_core_bool_t cf_x_net_post_create_inbox(cf_x_net_post_t *post);
+static cf_x_core_bool_t cf_x_net_post_system_create_inbox(cf_x_net_post_system_t *post);
 
-static void cf_x_net_post_create_out_buffer(cf_x_net_post_t *post);
+static void cf_x_net_post_system_create_out_buffer(cf_x_net_post_system_t *post);
 
-static cf_x_core_bool_t cf_x_net_post_create_outbox(cf_x_net_post_t *post);
+static cf_x_core_bool_t cf_x_net_post_system_create_outbox(cf_x_net_post_system_t *post);
 
-static void cf_x_net_post_create_rollback(cf_x_net_post_t *post);
+static void cf_x_net_post_system_create_rollback(cf_x_net_post_system_t *post);
 
-static void init_post_message_header(cf_x_net_post_t *post,
+static void init_post_message_header(cf_x_net_post_system_t *post,
     post_message_header_t *post_message_header,
     cf_x_core_message_encoding_t encoding, cf_x_net_engine_id_t engine_id,
     unsigned long message_type, unsigned long data_size);
@@ -58,29 +58,29 @@ static void init_post_message_header(cf_x_net_post_t *post,
 static void ntox_post_message_header
 (post_message_header_t *post_message_header);
 
-static cf_x_core_bool_t put_message_into_out_buffer(cf_x_net_post_t *post,
+static cf_x_core_bool_t put_message_into_out_buffer(cf_x_net_post_system_t *post,
     cf_x_core_message_t *message);
 
-static cf_x_core_bool_t put_received_message_in_inbox(cf_x_net_post_t *post);
+static cf_x_core_bool_t put_received_message_in_inbox(cf_x_net_post_system_t *post);
 
-static cf_x_core_bool_t receive_messages_body(cf_x_net_post_t *post);
+static cf_x_core_bool_t receive_messages_body(cf_x_net_post_system_t *post);
 
-static cf_x_core_bool_t receive_messages_header(cf_x_net_post_t *post);
+static cf_x_core_bool_t receive_messages_header(cf_x_net_post_system_t *post);
 
-static void reset_for_next_receive(cf_x_net_post_t *post);
+static void reset_for_next_receive(cf_x_net_post_system_t *post);
 
-static void reset_for_next_send(cf_x_net_post_t *post);
+static void reset_for_next_send(cf_x_net_post_system_t *post);
 
-static void send_messages_get_new_message(cf_x_net_post_t *post);
+static void send_messages_get_new_message(cf_x_net_post_system_t *post);
 
-static cf_x_core_bool_t send_messages_send_current_message(cf_x_net_post_t *post);
+static cf_x_core_bool_t send_messages_send_current_message(cf_x_net_post_system_t *post);
 
-int cf_x_net_post_compare(void *post_object_a,
+int cf_x_net_post_system_compare(void *post_object_a,
     void *post_object_b)
 {
   int compare_result;
-  cf_x_net_post_t *post_a;
-  cf_x_net_post_t *post_b;
+  cf_x_net_post_system_t *post_a;
+  cf_x_net_post_system_t *post_b;
 
   post_a = post_object_a;
   post_b = post_object_b;
@@ -96,9 +96,9 @@ int cf_x_net_post_compare(void *post_object_a,
   return compare_result;
 }
 
-void *cf_x_net_post_create(int socket)
+void *cf_x_net_post_system_create(int socket)
 {
-  cf_x_net_post_t *post;
+  cf_x_net_post_system_t *post;
   cf_x_core_bool_t success;
 
   post = malloc(sizeof *post);
@@ -109,8 +109,8 @@ void *cf_x_net_post_create(int socket)
     post->currently_sending_out_buffer = cf_x_core_bool_false;
     post->last_receive_activity_time = time(NULL);
     cf_x_net_post_stats_init(&post->stats);
-    cf_x_net_post_create_in_buffer(post);
-    cf_x_net_post_create_out_buffer(post);
+    cf_x_net_post_system_create_in_buffer(post);
+    cf_x_net_post_system_create_out_buffer(post);
     post->socket_closed = cf_x_core_bool_false;
     success = cf_x_core_bool_true;
   } else {
@@ -119,24 +119,24 @@ void *cf_x_net_post_create(int socket)
   }
 
   if (success) {
-    success = cf_x_net_post_create_inbox(post);
+    success = cf_x_net_post_system_create_inbox(post);
   }
 
   if (success) {
-    success = cf_x_net_post_create_outbox(post);
+    success = cf_x_net_post_system_create_outbox(post);
   }
 
   if (!success) {
-    cf_x_net_post_create_rollback(post);
+    cf_x_net_post_system_create_rollback(post);
     post = NULL;
   }
 
   return post;
 }
 
-void *cf_x_net_post_create_decoy(int socket)
+void *cf_x_net_post_system_create_decoy(int socket)
 {
-  cf_x_net_post_t *post;
+  cf_x_net_post_system_t *post;
 
   post = malloc(sizeof *post);
   if (post) {
@@ -148,14 +148,14 @@ void *cf_x_net_post_create_decoy(int socket)
   return post;
 }
 
-void cf_x_net_post_create_in_buffer(cf_x_net_post_t *post)
+void cf_x_net_post_system_create_in_buffer(cf_x_net_post_system_t *post)
 {
   post->in_buffer = NULL;
   post->in_buffer_have_complete_header = cf_x_core_bool_false;
   post->in_buffer_receive_position = 0;
 }
 
-cf_x_core_bool_t cf_x_net_post_create_inbox(cf_x_net_post_t *post)
+cf_x_core_bool_t cf_x_net_post_system_create_inbox(cf_x_net_post_system_t *post)
 {
   cf_x_core_bool_t success;
 
@@ -171,14 +171,14 @@ cf_x_core_bool_t cf_x_net_post_create_inbox(cf_x_net_post_t *post)
   return success;
 }
 
-void cf_x_net_post_create_out_buffer(cf_x_net_post_t *post)
+void cf_x_net_post_system_create_out_buffer(cf_x_net_post_system_t *post)
 {
   post->out_buffer = NULL;
   post->currently_sending_out_buffer = cf_x_core_bool_false;
   post->out_buffer_send_position = 0;
 }
 
-cf_x_core_bool_t cf_x_net_post_create_outbox(cf_x_net_post_t *post)
+cf_x_core_bool_t cf_x_net_post_system_create_outbox(cf_x_net_post_system_t *post)
 {
   cf_x_core_bool_t success;
 
@@ -194,7 +194,7 @@ cf_x_core_bool_t cf_x_net_post_create_outbox(cf_x_net_post_t *post)
   return success;
 }
 
-void cf_x_net_post_create_rollback(cf_x_net_post_t *post)
+void cf_x_net_post_system_create_rollback(cf_x_net_post_system_t *post)
 {
   if (post) {
     if (post->in_buffer) {
@@ -209,10 +209,10 @@ void cf_x_net_post_create_rollback(cf_x_net_post_t *post)
   }
 }
 
-void cf_x_net_post_destroy(void *post_object)
+void cf_x_net_post_system_destroy(void *post_object)
 {
   assert(post_object);
-  cf_x_net_post_t *post;
+  cf_x_net_post_system_t *post;
   cf_x_core_message_t *message;
 
   post = post_object;
@@ -235,37 +235,37 @@ void cf_x_net_post_destroy(void *post_object)
   free(post);
 }
 
-void cf_x_net_post_destroy_decoy(void *post_object)
+void cf_x_net_post_system_destroy_decoy(void *post_object)
 {
   free(post_object);
 }
 
-time_t cf_x_net_post_get_last_receive_activity_time(void *post_object)
+time_t cf_x_net_post_system_get_last_receive_activity_time(void *post_object)
 {
   assert(post_object);
-  cf_x_net_post_t *post;
+  cf_x_net_post_system_t *post;
 
   post = post_object;
 
   return post->last_receive_activity_time;
 }
 
-int cf_x_net_post_get_socket(void *post_object)
+int cf_x_net_post_system_get_socket(void *post_object)
 {
   assert(post_object);
-  cf_x_net_post_t *post;
+  cf_x_net_post_system_t *post;
 
   post = post_object;
 
   return post->socket;
 }
 
-void cf_x_net_post_get_stats(void *post_object,
+void cf_x_net_post_system_get_stats(void *post_object,
     cf_x_net_post_stats_t *post_stats)
 {
   assert(post_object);
   assert(post_stats);
-  cf_x_net_post_t *post;
+  cf_x_net_post_system_t *post;
 
   post = post_object;
 
@@ -284,20 +284,20 @@ void cf_x_net_post_get_stats(void *post_object,
     = post->stats.messages_not_sent_due_to_socket_send_failures;
 }
 
-cf_x_core_bool_t cf_x_net_post_is_socket_closed(void *post_object)
+cf_x_core_bool_t cf_x_net_post_system_is_socket_closed(void *post_object)
 {
   assert(post_object);
-  cf_x_net_post_t *post;
+  cf_x_net_post_system_t *post;
 
   post = post_object;
 
   return post->socket_closed;
 }
 
-void *cf_x_net_post_receive_message(void *post_object)
+void *cf_x_net_post_system_receive_message(void *post_object)
 {
   assert(post_object);
-  cf_x_net_post_t *post;
+  cf_x_net_post_system_t *post;
   cf_x_core_message_t *message;
 
   post = post_object;
@@ -310,10 +310,10 @@ void *cf_x_net_post_receive_message(void *post_object)
   return message;
 }
 
-void cf_x_net_post_receive_messages(void *post_object)
+void cf_x_net_post_system_receive_messages(void *post_object)
 {
   assert(post_object);
-  cf_x_net_post_t *post;
+  cf_x_net_post_system_t *post;
 
   post = post_object;
 
@@ -331,13 +331,13 @@ void cf_x_net_post_receive_messages(void *post_object)
   }
 }
 
-cf_x_core_bool_t cf_x_net_post_send_message(void *post_object,
+cf_x_core_bool_t cf_x_net_post_system_send_message(void *post_object,
     void *message_object)
 {
   assert(post_object);
   assert(message_object);
   cf_x_core_bool_t success;
-  cf_x_net_post_t *post;
+  cf_x_net_post_system_t *post;
 
   post = post_object;
 
@@ -346,10 +346,10 @@ cf_x_core_bool_t cf_x_net_post_send_message(void *post_object,
   return success;
 }
 
-void cf_x_net_post_send_messages(void *post_object)
+void cf_x_net_post_system_send_messages(void *post_object)
 {
   assert(post_object);
-  cf_x_net_post_t *post;
+  cf_x_net_post_system_t *post;
 
   post = post_object;
 
@@ -363,7 +363,7 @@ void cf_x_net_post_send_messages(void *post_object)
   }
 }
 
-cf_x_case_list_t *cf_x_net_post_take_unsent_messages(cf_x_net_post_t *post)
+cf_x_case_list_t *cf_x_net_post_system_take_unsent_messages(cf_x_net_post_system_t *post)
 {
   assert(post);
   cf_x_case_list_t *list;
@@ -387,7 +387,7 @@ cf_x_case_list_t *cf_x_net_post_take_unsent_messages(cf_x_net_post_t *post)
   return list;
 }
 
-void init_post_message_header(cf_x_net_post_t *post,
+void init_post_message_header(cf_x_net_post_system_t *post,
     post_message_header_t *post_message_header,
     cf_x_core_message_encoding_t encoding, cf_x_net_engine_id_t engine_id,
     unsigned long message_type, unsigned long data_size)
@@ -408,7 +408,7 @@ void ntox_post_message_header(post_message_header_t *post_message_header)
   post_message_header->data_size = ntohl(post_message_header->data_size);
 }
 
-cf_x_core_bool_t put_message_into_out_buffer(cf_x_net_post_t *post,
+cf_x_core_bool_t put_message_into_out_buffer(cf_x_net_post_system_t *post,
     cf_x_core_message_t *message)
 {
   cf_x_core_bool_t success;
@@ -439,7 +439,7 @@ cf_x_core_bool_t put_message_into_out_buffer(cf_x_net_post_t *post,
   return success;
 }
 
-cf_x_core_bool_t put_received_message_in_inbox(cf_x_net_post_t *post)
+cf_x_core_bool_t put_received_message_in_inbox(cf_x_net_post_system_t *post)
 {
   cf_x_core_bool_t success;
   cf_x_core_message_t *message;
@@ -462,7 +462,7 @@ cf_x_core_bool_t put_received_message_in_inbox(cf_x_net_post_t *post)
   return success;
 }
 
-cf_x_core_bool_t receive_messages_body(cf_x_net_post_t *post)
+cf_x_core_bool_t receive_messages_body(cf_x_net_post_system_t *post)
 {
   assert(post);
   assert(post->in_buffer_have_complete_header);
@@ -500,7 +500,7 @@ cf_x_core_bool_t receive_messages_body(cf_x_net_post_t *post)
   return received_complete_message;
 }
 
-cf_x_core_bool_t receive_messages_header(cf_x_net_post_t *post)
+cf_x_core_bool_t receive_messages_header(cf_x_net_post_system_t *post)
 {
   unsigned long bytes_remaining_to_receive;
   int actual_bytes_read;
@@ -534,7 +534,7 @@ cf_x_core_bool_t receive_messages_header(cf_x_net_post_t *post)
   return received_a_header;
 }
 
-void reset_for_next_receive(cf_x_net_post_t *post)
+void reset_for_next_receive(cf_x_net_post_system_t *post)
 {
   free(post->in_buffer);
   post->in_buffer = NULL;
@@ -542,7 +542,7 @@ void reset_for_next_receive(cf_x_net_post_t *post)
   post->in_buffer_receive_position = 0;
 }
 
-void reset_for_next_send(cf_x_net_post_t *post)
+void reset_for_next_send(cf_x_net_post_system_t *post)
 {
   free(post->out_buffer);
   post->out_buffer = NULL;
@@ -550,7 +550,7 @@ void reset_for_next_send(cf_x_net_post_t *post)
   post->out_buffer_send_position = 0;
 }
 
-void send_messages_get_new_message(cf_x_net_post_t *post)
+void send_messages_get_new_message(cf_x_net_post_system_t *post)
 {
   cf_x_core_message_t *message;
 
@@ -565,7 +565,7 @@ void send_messages_get_new_message(cf_x_net_post_t *post)
   }
 }
 
-cf_x_core_bool_t send_messages_send_current_message(cf_x_net_post_t *post)
+cf_x_core_bool_t send_messages_send_current_message(cf_x_net_post_system_t *post)
 {
   cf_x_core_bool_t sent_complete_message;
   unsigned long bytes_remaining_to_send;

@@ -7,25 +7,25 @@
 #define DEFAULT_PEER_NODE_PORT_MIN 8000
 #define DEFAULT_PEER_NODE_PORT_MAX 9000
 
-static cf_x_core_bool_t cf_x_net_node_conf_create_node_ip
-(cf_x_net_node_conf_t *node_conf);
+static cf_x_core_bool_t cf_x_net_star_node_conf_create_node_ip
+(cf_x_net_star_node_conf_t *node_conf);
 
-static cf_x_core_bool_t cf_x_net_node_conf_create_node_max_threads
-(cf_x_net_node_conf_t *node_conf);
+static cf_x_core_bool_t cf_x_net_star_node_conf_create_node_max_threads
+(cf_x_net_star_node_conf_t *node_conf);
 
-static cf_x_core_bool_t cf_x_net_node_conf_create_node_port
-(cf_x_net_node_conf_t *node_conf);
+static cf_x_core_bool_t cf_x_net_star_node_conf_create_node_port
+(cf_x_net_star_node_conf_t *node_conf);
 
-static cf_x_core_bool_t cf_x_net_node_conf_create_peer_node_ips
-(cf_x_net_node_conf_t *node_conf);
+static cf_x_core_bool_t cf_x_net_star_node_conf_create_peer_node_ips
+(cf_x_net_star_node_conf_t *node_conf);
 
-static cf_x_core_bool_t cf_x_net_node_conf_create_peer_node_port_range
-(cf_x_net_node_conf_t *node_conf);
+static cf_x_core_bool_t cf_x_net_star_node_conf_create_peer_node_port_range
+(cf_x_net_star_node_conf_t *node_conf);
 
-cf_x_net_node_conf_t *cf_x_net_node_conf_create(char *conf_filename)
+cf_x_net_star_node_conf_t *cf_x_net_star_node_conf_create(char *conf_filename)
 {
   assert(conf_filename);
-  cf_x_net_node_conf_t *node_conf;
+  cf_x_net_star_node_conf_t *node_conf;
   cf_x_core_bool_t so_far_so_good;
 
   node_conf = malloc(sizeof *node_conf);
@@ -43,23 +43,23 @@ cf_x_net_node_conf_t *cf_x_net_node_conf_create(char *conf_filename)
   }
 
   if (so_far_so_good) {
-    so_far_so_good = cf_x_net_node_conf_create_node_ip(node_conf);
+    so_far_so_good = cf_x_net_star_node_conf_create_node_ip(node_conf);
   }
 
   if (so_far_so_good) {
-    so_far_so_good = cf_x_net_node_conf_create_node_max_threads(node_conf);
+    so_far_so_good = cf_x_net_star_node_conf_create_node_max_threads(node_conf);
   }
 
   if (so_far_so_good) {
-    so_far_so_good = cf_x_net_node_conf_create_node_port(node_conf);
+    so_far_so_good = cf_x_net_star_node_conf_create_node_port(node_conf);
   }
 
   if (so_far_so_good) {
-    so_far_so_good = cf_x_net_node_conf_create_peer_node_ips(node_conf);
+    so_far_so_good = cf_x_net_star_node_conf_create_peer_node_ips(node_conf);
   }
 
   if (so_far_so_good) {
-    so_far_so_good = cf_x_net_node_conf_create_peer_node_port_range(node_conf);
+    so_far_so_good = cf_x_net_star_node_conf_create_peer_node_port_range(node_conf);
   }
 
   if (!so_far_so_good && node_conf) {
@@ -73,7 +73,7 @@ cf_x_net_node_conf_t *cf_x_net_node_conf_create(char *conf_filename)
   return node_conf;
 }
 
-cf_x_core_bool_t cf_x_net_node_conf_create_node_ip(cf_x_net_node_conf_t *node_conf)
+cf_x_core_bool_t cf_x_net_star_node_conf_create_node_ip(cf_x_net_star_node_conf_t *node_conf)
 {
   assert(node_conf);
   cf_x_core_bool_t success;
@@ -89,8 +89,8 @@ cf_x_core_bool_t cf_x_net_node_conf_create_node_ip(cf_x_net_node_conf_t *node_co
   return success;
 }
 
-cf_x_core_bool_t cf_x_net_node_conf_create_node_max_threads
-(cf_x_net_node_conf_t *node_conf)
+cf_x_core_bool_t cf_x_net_star_node_conf_create_node_max_threads
+(cf_x_net_star_node_conf_t *node_conf)
 {
   assert(node_conf);
   cf_x_core_bool_t success;
@@ -107,7 +107,7 @@ cf_x_core_bool_t cf_x_net_node_conf_create_node_max_threads
   return success;
 }
 
-cf_x_core_bool_t cf_x_net_node_conf_create_node_port(cf_x_net_node_conf_t *node_conf)
+cf_x_core_bool_t cf_x_net_star_node_conf_create_node_port(cf_x_net_star_node_conf_t *node_conf)
 {
   assert(node_conf);
   cf_x_core_bool_t success;
@@ -123,8 +123,8 @@ cf_x_core_bool_t cf_x_net_node_conf_create_node_port(cf_x_net_node_conf_t *node_
   return success;
 }
 
-cf_x_core_bool_t cf_x_net_node_conf_create_peer_node_ips
-(cf_x_net_node_conf_t *node_conf)
+cf_x_core_bool_t cf_x_net_star_node_conf_create_peer_node_ips
+(cf_x_net_star_node_conf_t *node_conf)
 {
   assert(node_conf);
   cf_x_core_bool_t success;
@@ -140,8 +140,8 @@ cf_x_core_bool_t cf_x_net_node_conf_create_peer_node_ips
   return success;
 }
 
-cf_x_core_bool_t cf_x_net_node_conf_create_peer_node_port_range
-(cf_x_net_node_conf_t *node_conf)
+cf_x_core_bool_t cf_x_net_star_node_conf_create_peer_node_port_range
+(cf_x_net_star_node_conf_t *node_conf)
 {
   assert(node_conf);
   cf_x_core_bool_t success;
@@ -165,7 +165,7 @@ cf_x_core_bool_t cf_x_net_node_conf_create_peer_node_port_range
   return success;
 }
 
-void cf_x_net_node_conf_destroy(cf_x_net_node_conf_t *node_conf)
+void cf_x_net_star_node_conf_destroy(cf_x_net_star_node_conf_t *node_conf)
 {
   assert(node_conf);
   cf_x_config_file_destroy(node_conf->conf);

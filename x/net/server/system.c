@@ -17,7 +17,7 @@
 
 #define DEFAULT_UNRESPONSIVE_CLIENT_TIME_SECONDS 32
 #define ENGINE_INITIAL_SLEEP_MICROSECONDS CF_X_CORE_STANDARD_SLEEP_MICROSECONDS
-#define CF_X_NET_SERVER_SLEEP_MICROSECONDS CF_X_CORE_STANDARD_SLEEP_MICROSECONDS
+#define CF_X_NET_SERVER_SYSTEM_SLEEP_MICROSECONDS CF_X_CORE_STANDARD_SLEEP_MICROSECONDS
 #define MAX_THREADS_PER_ENGINE 8
 #define PERFORMANCE_PERIOD_SECONDS 4
 
@@ -44,7 +44,7 @@ struct engine_container_t {
   pthread_t maintain_thread;
   cf_x_net_maintain_t maintain_schedule;
 
-  cf_x_net_server_handle_message_f *message_handlers;
+  cf_x_net_server_system_handle_message_f *message_handlers;
   unsigned long message_handlers_size;
 
   double messages_per_second;
@@ -56,7 +56,7 @@ struct engine_container_t {
 };
 typedef struct engine_container_t engine_container_t;
 
-struct cf_x_net_server_t {
+struct cf_x_net_server_system_t {
   char *name;
   int socket;
   unsigned short min_port;
@@ -79,14 +79,14 @@ struct cf_x_net_server_t {
   pthread_mutex_t client_posts_mutex;
 
   cf_x_case_list_t *engines;
-  engine_container_t *engines_array[CF_X_NET_SERVER_MAX_ENGINES];
+  engine_container_t *engines_array[CF_X_NET_SERVER_SYSTEM_MAX_ENGINES];
 
   void *custom_server_object;
 
   unsigned long unresponsive_client_time_seconds;
 
   cf_x_core_messagey_t *messagey;
-  cf_x_net_postey_t *postey;
+  cf_x_net_post_postey_t *postey;
   cf_x_net_engine_get_name_f get_engine_name;
 
   time_t create_time;
@@ -99,7 +99,7 @@ struct cf_x_net_server_t {
 };
 
 struct running_engine_t {
-  cf_x_net_server_t *server;
+  cf_x_net_server_system_t *server;
   void *engine_object;
   cf_x_net_engine_id_t engine_id;
 
@@ -112,7 +112,7 @@ struct running_engine_t {
 typedef struct running_engine_t running_engine_t;
 
 struct maintaining_engine_t {
-  cf_x_net_server_t *server;
+  cf_x_net_server_system_t *server;
   void *engine_object;
   cf_x_net_engine_id_t engine_id;
 
@@ -122,11 +122,11 @@ typedef struct maintaining_engine_t maintaining_engine_t;
 
 static void *accept_thread(void *server_object);
 
-static void close_disconnected_clients(cf_x_net_server_t *server);
+static void close_disconnected_clients(cf_x_net_server_system_t *server);
 
-static void close_unresponsive_clients(cf_x_net_server_t *server);
+static void close_unresponsive_clients(cf_x_net_server_system_t *server);
 
-static engine_container_t *create_engine_container(cf_x_net_server_t *server,
+static engine_container_t *create_engine_container(cf_x_net_server_system_t *server,
     cf_x_net_engine_id_t engine_id, void *custom_server_object,
     cf_x_net_engine_enginey_t *enginey, unsigned short min_run_threads,
     unsigned short max_run_threads, cf_x_net_maintain_t maintain_schedule,
@@ -149,29 +149,29 @@ static cf_x_core_bool_t create_engine_container_threads
 (engine_container_t *engine_container, cf_x_core_messagey_t *messagey,
     cf_x_audit_log_t *log);
 
-static maintaining_engine_t *create_maintaining_engine(cf_x_net_server_t *server,
+static maintaining_engine_t *create_maintaining_engine(cf_x_net_server_system_t *server,
     void *engine_object, cf_x_net_engine_id_t engine_id,
     cf_x_net_engine_enginey_maintain_f maintain);
 
-static cf_x_core_bool_t create_post_for_new_client(cf_x_net_server_t *server,
+static cf_x_core_bool_t create_post_for_new_client(cf_x_net_server_system_t *server,
     int client_socket);
 
-static running_engine_t *create_running_engine(cf_x_net_server_t *server,
+static running_engine_t *create_running_engine(cf_x_net_server_system_t *server,
     void *engine_object, cf_x_net_engine_id_t engine_id,
     cf_x_net_engine_enginey_start_f start, cf_x_net_engine_enginey_run_f run,
     cf_x_net_engine_enginey_stop_f stop, unsigned short thread_index);
 
-static cf_x_core_bool_t create_thread(cf_x_net_server_t *server,
+static cf_x_core_bool_t create_thread(cf_x_net_server_system_t *server,
     pthread_t *pthread_address, thread_f thread_function, void *thread);
 
-static void deliver_messages_to_engine(cf_x_net_server_t *server,
+static void deliver_messages_to_engine(cf_x_net_server_system_t *server,
     engine_container_t *engine_container);
 
-static unsigned long deliver_messages_to_engine_thread(cf_x_net_server_t *server,
+static unsigned long deliver_messages_to_engine_thread(cf_x_net_server_system_t *server,
     engine_container_t *engine_container, unsigned short thread_index,
     unsigned long target_number_of_messages_to_deliver);
 
-static void deliver_messages_to_engines(cf_x_net_server_t *server);
+static void deliver_messages_to_engines(cf_x_net_server_system_t *server);
 
 static void destroy_engine_container(void *engine_container_object);
 
@@ -180,71 +180,71 @@ static void destroy_maintaining_engine
 
 static void destroy_running_engine(running_engine_t *running_engine);
 
-static unsigned long engine_count(cf_x_net_server_t *server);
+static unsigned long engine_count(cf_x_net_server_system_t *server);
 
-static cf_x_core_bool_t engine_is_registered(cf_x_net_server_t *server,
+static cf_x_core_bool_t engine_is_registered(cf_x_net_server_system_t *server,
     cf_x_net_engine_id_t engine_id);
 
-static void engine_sleep(cf_x_net_server_t *server, cf_x_net_engine_id_t engine_id);
+static void engine_sleep(cf_x_net_server_system_t *server, cf_x_net_engine_id_t engine_id);
 
-static void *find_client_post(cf_x_net_server_t *server,
+static void *find_client_post(cf_x_net_server_system_t *server,
     int client_socket);
 
 static void handle_signal(int signal);
 
-static cf_x_core_bool_t cf_x_net_server_create_client_exchange
-(cf_x_net_server_t *server);
+static cf_x_core_bool_t cf_x_net_server_system_create_client_exchange
+(cf_x_net_server_system_t *server);
 
-static cf_x_core_bool_t cf_x_net_server_create_client_posts(cf_x_net_server_t *server);
+static cf_x_core_bool_t cf_x_net_server_system_create_client_posts(cf_x_net_server_system_t *server);
 
-static cf_x_core_bool_t cf_x_net_server_create_engines(cf_x_net_server_t *server);
+static cf_x_core_bool_t cf_x_net_server_system_create_engines(cf_x_net_server_system_t *server);
 
-static cf_x_core_bool_t cf_x_net_server_create_outbox(cf_x_net_server_t *server);
+static cf_x_core_bool_t cf_x_net_server_system_create_outbox(cf_x_net_server_system_t *server);
 
-static void cf_x_net_server_create_rollback(cf_x_net_server_t *server);
+static void cf_x_net_server_system_create_rollback(cf_x_net_server_system_t *server);
 
-static cf_x_core_bool_t cf_x_net_server_register_engine_create
+static cf_x_core_bool_t cf_x_net_server_system_register_engine_create
 (engine_container_t *engine_container, cf_x_net_engine_enginey_create_f create,
-    cf_x_net_server_t *server, void *custom_server_object);
+    cf_x_net_server_system_t *server, void *custom_server_object);
 
-static cf_x_core_bool_t join_thread(cf_x_net_server_t *server, pthread_t thread);
+static cf_x_core_bool_t join_thread(cf_x_net_server_system_t *server, pthread_t thread);
 
 static void *maintain_engine(void *maintaining_engine_object);
 
-static void manage_threads(cf_x_net_server_t *server);
+static void manage_threads(cf_x_net_server_system_t *server);
 
-static void post_messages_to_clients(cf_x_net_server_t *server);
+static void post_messages_to_clients(cf_x_net_server_system_t *server);
 
-static void receive_messages_from_client_post(cf_x_net_server_t *server,
+static void receive_messages_from_client_post(cf_x_net_server_system_t *server,
     void *post_object);
 
-static void receive_messages_from_clients(cf_x_net_server_t *server);
+static void receive_messages_from_clients(cf_x_net_server_system_t *server);
 
 static void *run_engine(void *running_engine_object);
 
-static cf_x_core_bool_t serversocket_bind_listen(cf_x_net_server_t *server);
+static cf_x_core_bool_t serversocket_bind_listen(cf_x_net_server_system_t *server);
 
 static void *server_thread(void *server_object);
 
-static void stop(cf_x_net_server_t *server);
+static void stop(cf_x_net_server_system_t *server);
 
-static cf_x_core_bool_t start(cf_x_net_server_t *server);
+static cf_x_core_bool_t start(cf_x_net_server_system_t *server);
 
-static cf_x_core_bool_t start_engine(cf_x_net_server_t *server,
+static cf_x_core_bool_t start_engine(cf_x_net_server_system_t *server,
     cf_x_net_engine_id_t engine_id);
 
-static cf_x_core_bool_t start_engine_maintain_thread(cf_x_net_server_t *server,
+static cf_x_core_bool_t start_engine_maintain_thread(cf_x_net_server_system_t *server,
     cf_x_net_engine_id_t engine_id, engine_container_t *engine_container);
 
-static cf_x_core_bool_t start_engine_run_thread(cf_x_net_server_t *server,
+static cf_x_core_bool_t start_engine_run_thread(cf_x_net_server_system_t *server,
     cf_x_net_engine_id_t engine_id, engine_container_t *engine_container,
     unsigned short thread_index);
 
-static cf_x_core_bool_t threads_maxed_out(cf_x_net_server_t *server);
+static cf_x_core_bool_t threads_maxed_out(cf_x_net_server_system_t *server);
 
 void *accept_thread(void *server_object)
 {
-  cf_x_net_server_t *server;
+  cf_x_net_server_system_t *server;
   struct sockaddr_in client_address;
   socklen_t client_address_size;
   int client_socket;
@@ -252,20 +252,20 @@ void *accept_thread(void *server_object)
   server = server_object;
 
   while (!cf_x_core_stop_requested) {
-    client_socket = cf_x_net_serversocket_accept
+    client_socket = cf_x_net_server_socket_accept
       (server->socket, &client_address, &client_address_size);
     if (client_socket >= 0) {
       if (!create_post_for_new_client(server, client_socket)) {
         cf_x_audit_log_trace(server->log, "hnet", "x_net_serversocket_accept");
       }
     }
-    usleep(CF_X_NET_SERVER_SLEEP_MICROSECONDS);
+    usleep(CF_X_NET_SERVER_SYSTEM_SLEEP_MICROSECONDS);
   }
 
   return NULL;
 }
 
-void close_disconnected_clients(cf_x_net_server_t *server)
+void close_disconnected_clients(cf_x_net_server_system_t *server)
 {
   assert(cf_x_case_set_get_size(server->client_posts)
       == cf_x_net_exchange_get_post_count(server->client_exchange));
@@ -297,7 +297,7 @@ void close_disconnected_clients(cf_x_net_server_t *server)
       == cf_x_net_exchange_get_post_count(server->client_exchange));
 }
 
-void close_unresponsive_clients(cf_x_net_server_t *server)
+void close_unresponsive_clients(cf_x_net_server_system_t *server)
 {
   assert(cf_x_case_set_get_size(server->client_posts)
       == cf_x_net_exchange_get_post_count(server->client_exchange));
@@ -330,7 +330,7 @@ void close_unresponsive_clients(cf_x_net_server_t *server)
   }
 }
 
-engine_container_t *create_engine_container(cf_x_net_server_t *server,
+engine_container_t *create_engine_container(cf_x_net_server_system_t *server,
     cf_x_net_engine_id_t engine_id, void *custom_server_object,
     cf_x_net_engine_enginey_t *enginey, unsigned short min_run_threads,
     unsigned short max_run_threads, cf_x_net_maintain_t maintain_schedule,
@@ -514,7 +514,7 @@ cf_x_core_bool_t create_engine_container_threads
   return success;
 }
 
-maintaining_engine_t *create_maintaining_engine(cf_x_net_server_t *server,
+maintaining_engine_t *create_maintaining_engine(cf_x_net_server_system_t *server,
     void *engine_object, cf_x_net_engine_id_t engine_id,
     cf_x_net_engine_enginey_maintain_f maintain)
 {
@@ -533,7 +533,7 @@ maintaining_engine_t *create_maintaining_engine(cf_x_net_server_t *server,
   return maintaining_engine;
 }
 
-cf_x_core_bool_t create_post_for_new_client(cf_x_net_server_t *server,
+cf_x_core_bool_t create_post_for_new_client(cf_x_net_server_system_t *server,
     int client_socket)
 {
   assert(server);
@@ -573,7 +573,7 @@ cf_x_core_bool_t create_post_for_new_client(cf_x_net_server_t *server,
   return success;
 }
 
-running_engine_t *create_running_engine(cf_x_net_server_t *server,
+running_engine_t *create_running_engine(cf_x_net_server_system_t *server,
     void *engine_object, cf_x_net_engine_id_t engine_id,
     cf_x_net_engine_enginey_start_f start, cf_x_net_engine_enginey_run_f run,
     cf_x_net_engine_enginey_stop_f stop, unsigned short thread_index)
@@ -594,7 +594,7 @@ running_engine_t *create_running_engine(cf_x_net_server_t *server,
   return running_engine;
 }
 
-cf_x_core_bool_t create_thread(cf_x_net_server_t *server, pthread_t *pthread_address,
+cf_x_core_bool_t create_thread(cf_x_net_server_system_t *server, pthread_t *pthread_address,
     thread_f thread_function, void *thread)
 {
   cf_x_core_bool_t success;
@@ -618,7 +618,7 @@ cf_x_core_bool_t create_thread(cf_x_net_server_t *server, pthread_t *pthread_add
 /*
   TODO: compartmentalize the reporting part of this function
 */
-void deliver_messages_to_engine(cf_x_net_server_t *server,
+void deliver_messages_to_engine(cf_x_net_server_system_t *server,
     engine_container_t *engine_container)
 {
   assert(server);
@@ -698,7 +698,7 @@ void deliver_messages_to_engine(cf_x_net_server_t *server,
   }
 }
 
-unsigned long deliver_messages_to_engine_thread(cf_x_net_server_t *server,
+unsigned long deliver_messages_to_engine_thread(cf_x_net_server_system_t *server,
     engine_container_t *engine_container, unsigned short thread_index,
     unsigned long target_number_of_messages_to_deliver)
 {
@@ -732,7 +732,7 @@ unsigned long deliver_messages_to_engine_thread(cf_x_net_server_t *server,
   return messages_delivered;
 }
 
-void deliver_messages_to_engines(cf_x_net_server_t *server)
+void deliver_messages_to_engines(cf_x_net_server_system_t *server)
 {
   assert(server);
   engine_container_t *engine_container;
@@ -772,12 +772,12 @@ void destroy_running_engine(running_engine_t *running_engine)
   free(running_engine);
 }
 
-unsigned long engine_count(cf_x_net_server_t *server)
+unsigned long engine_count(cf_x_net_server_system_t *server)
 {
   return cf_x_case_list_get_size(server->engines);
 }
 
-cf_x_core_bool_t engine_is_registered(cf_x_net_server_t *server,
+cf_x_core_bool_t engine_is_registered(cf_x_net_server_system_t *server,
     cf_x_net_engine_id_t engine_id)
 {
   cf_x_core_bool_t is_registered;
@@ -791,12 +791,12 @@ cf_x_core_bool_t engine_is_registered(cf_x_net_server_t *server,
   return is_registered;
 }
 
-void engine_sleep(cf_x_net_server_t *server, cf_x_net_engine_id_t engine_id)
+void engine_sleep(cf_x_net_server_system_t *server, cf_x_net_engine_id_t engine_id)
 {
   usleep(server->engines_array[engine_id]->sleep);
 }
 
-void *find_client_post(cf_x_net_server_t *server, int client_socket)
+void *find_client_post(cf_x_net_server_system_t *server, int client_socket)
 {
   void *client_post_object;
   void *decoy_post_object;
@@ -827,9 +827,9 @@ void handle_signal(int signal)
   }
 }
 
-cf_x_net_server_t *cf_x_net_server_create(const char *name, unsigned short min_port,
+cf_x_net_server_system_t *cf_x_net_server_system_create(const char *name, unsigned short min_port,
     unsigned short max_port, unsigned short max_threads,
-    cf_x_core_messagey_t *messagey, cf_x_net_postey_t *postey,
+    cf_x_core_messagey_t *messagey, cf_x_net_post_postey_t *postey,
     cf_x_net_engine_get_name_f get_engine_name,
     cf_x_config_system_t *config_system, cf_x_audit_log_t *log)
 {
@@ -837,7 +837,7 @@ cf_x_net_server_t *cf_x_net_server_create(const char *name, unsigned short min_p
   assert(messagey);
   assert(postey);
   assert(log);
-  cf_x_net_server_t *server;
+  cf_x_net_server_system_t *server;
   cf_x_core_bool_t so_far_so_good;
 
   server = malloc(sizeof *server);
@@ -871,30 +871,30 @@ cf_x_net_server_t *cf_x_net_server_create(const char *name, unsigned short min_p
   }
 
   if (so_far_so_good) {
-    so_far_so_good = cf_x_net_server_create_outbox(server);
+    so_far_so_good = cf_x_net_server_system_create_outbox(server);
   }
 
   if (so_far_so_good) {
-    so_far_so_good = cf_x_net_server_create_client_posts(server);
+    so_far_so_good = cf_x_net_server_system_create_client_posts(server);
   }
 
   if (so_far_so_good) {
-    so_far_so_good = cf_x_net_server_create_client_exchange(server);
+    so_far_so_good = cf_x_net_server_system_create_client_exchange(server);
   }
 
   if (so_far_so_good) {
-    so_far_so_good = cf_x_net_server_create_engines(server);
+    so_far_so_good = cf_x_net_server_system_create_engines(server);
   }
 
   if (!so_far_so_good) {
-    cf_x_net_server_create_rollback(server);
+    cf_x_net_server_system_create_rollback(server);
     server = NULL;
   }
 
   return server;
 }
 
-cf_x_core_bool_t cf_x_net_server_create_client_exchange(cf_x_net_server_t *server)
+cf_x_core_bool_t cf_x_net_server_system_create_client_exchange(cf_x_net_server_system_t *server)
 {
   assert(server);
   cf_x_core_bool_t success;
@@ -910,7 +910,7 @@ cf_x_core_bool_t cf_x_net_server_create_client_exchange(cf_x_net_server_t *serve
   return success;
 }
 
-cf_x_core_bool_t cf_x_net_server_create_client_posts(cf_x_net_server_t *server)
+cf_x_core_bool_t cf_x_net_server_system_create_client_posts(cf_x_net_server_system_t *server)
 {
   assert(server);
   cf_x_core_bool_t success;
@@ -941,7 +941,7 @@ cf_x_core_bool_t cf_x_net_server_create_client_posts(cf_x_net_server_t *server)
   return success;
 }
 
-cf_x_core_bool_t cf_x_net_server_create_engines(cf_x_net_server_t *server)
+cf_x_core_bool_t cf_x_net_server_system_create_engines(cf_x_net_server_system_t *server)
 {
   assert(server);
   cf_x_core_bool_t success;
@@ -950,7 +950,7 @@ cf_x_core_bool_t cf_x_net_server_create_engines(cf_x_net_server_t *server)
   server->engines = cf_x_case_list_create(CF_X_CORE_NO_COMPARE_FUNCTION,
       CF_X_CORE_NO_COPY_FUNCTION, destroy_engine_container);
   if (server->engines) {
-    for (each_engine_id = 0; each_engine_id < CF_X_NET_SERVER_MAX_ENGINES;
+    for (each_engine_id = 0; each_engine_id < CF_X_NET_SERVER_SYSTEM_MAX_ENGINES;
          each_engine_id++) {
       server->engines_array[each_engine_id] = NULL;
     }
@@ -963,7 +963,7 @@ cf_x_core_bool_t cf_x_net_server_create_engines(cf_x_net_server_t *server)
   return success;
 }
 
-cf_x_core_bool_t cf_x_net_server_create_outbox(cf_x_net_server_t *server)
+cf_x_core_bool_t cf_x_net_server_system_create_outbox(cf_x_net_server_system_t *server)
 {
   assert(server);
   cf_x_core_bool_t success;
@@ -990,7 +990,7 @@ cf_x_core_bool_t cf_x_net_server_create_outbox(cf_x_net_server_t *server)
   return success;
 }
 
-void cf_x_net_server_create_rollback(cf_x_net_server_t *server)
+void cf_x_net_server_system_create_rollback(cf_x_net_server_system_t *server)
 {
   if (server) {
     if (server->name) {
@@ -1012,7 +1012,7 @@ void cf_x_net_server_create_rollback(cf_x_net_server_t *server)
   }
 }
 
-void cf_x_net_server_destroy(cf_x_net_server_t *server)
+void cf_x_net_server_system_destroy(cf_x_net_server_system_t *server)
 {
   assert(server);
   void *message_object;
@@ -1032,23 +1032,23 @@ void cf_x_net_server_destroy(cf_x_net_server_t *server)
   free(server);
 }
 
-cf_x_core_bool_t cf_x_net_server_engine_run_thread_quiesce_requested
-(cf_x_net_server_t *server, cf_x_net_engine_id_t engine_id,
+cf_x_core_bool_t cf_x_net_server_system_engine_run_thread_quiesce_requested
+(cf_x_net_server_system_t *server, cf_x_net_engine_id_t engine_id,
     unsigned short thread_index)
 {
   return server->engines_array[engine_id]
     ->run_threads_quiesce_requested[thread_index];
 }
 
-cf_x_net_server_handle_message_f cf_x_net_server_get_handler_for_message
-(cf_x_net_server_t *server, void *message_object)
+cf_x_net_server_system_handle_message_f cf_x_net_server_system_get_handler_for_message
+(cf_x_net_server_system_t *server, void *message_object)
 {
   assert(server);
   assert(message_object);
   engine_container_t *engine_container;
   cf_x_net_engine_id_t engine_id;
   unsigned long message_type;
-  cf_x_net_server_handle_message_f handler;
+  cf_x_net_server_system_handle_message_f handler;
 
   engine_id = server->messagey->get_engine_id(message_object);
   engine_container = server->engines_array[engine_id];
@@ -1068,12 +1068,12 @@ cf_x_net_server_handle_message_f cf_x_net_server_get_handler_for_message
   return handler;
 }
 
-cf_x_config_system_t *cf_x_net_server_get_config_system(cf_x_net_server_t *server)
+cf_x_config_system_t *cf_x_net_server_system_get_config_system(cf_x_net_server_system_t *server)
 {
   return server->config_system;
 }
 
-void cf_x_net_server_get_stats(cf_x_net_server_t *server,
+void cf_x_net_server_system_get_stats(cf_x_net_server_system_t *server,
     cf_x_net_server_stats_t *server_stats)
 {
   assert(server_stats);
@@ -1100,14 +1100,14 @@ void cf_x_net_server_get_stats(cf_x_net_server_t *server,
   server_stats->thread_count = server->thread_count;
 }
 
-void cf_x_net_server_print_stats(cf_x_net_server_t *server)
+void cf_x_net_server_system_print_stats(cf_x_net_server_system_t *server)
 {
   cf_x_net_server_stats_t stats;
   cf_x_core_time_t *time;
   char *time_string;
   cf_x_core_days_hours_minutes_seconds_t days_hours_minutes_seconds;
 
-  cf_x_net_server_get_stats(server, &stats);
+  cf_x_net_server_system_get_stats(server, &stats);
 
   time = cf_x_core_time_create(stats.uptime_seconds);
   if (time) {
@@ -1155,7 +1155,7 @@ void cf_x_net_server_print_stats(cf_x_net_server_t *server)
   }
 }
 
-void cf_x_net_server_process_messages(cf_x_net_server_t *server,
+void cf_x_net_server_system_process_messages(cf_x_net_server_system_t *server,
     cf_x_net_engine_id_t engine_id, unsigned short thread_index)
 {
   assert(server);
@@ -1163,7 +1163,7 @@ void cf_x_net_server_process_messages(cf_x_net_server_t *server,
   pthread_mutex_t *inbox_mutex;
   cf_x_net_message_status_t message_status;
   void *message_object;
-  cf_x_net_server_handle_message_f handler;
+  cf_x_net_server_system_handle_message_f handler;
   unsigned long message_type;
   engine_container_t *engine_container;
 
@@ -1207,7 +1207,7 @@ void cf_x_net_server_process_messages(cf_x_net_server_t *server,
   pthread_mutex_unlock(inbox_mutex);
 }
 
-cf_x_core_bool_t cf_x_net_server_register_engine(cf_x_net_server_t *server,
+cf_x_core_bool_t cf_x_net_server_system_register_engine(cf_x_net_server_system_t *server,
     cf_x_net_engine_id_t engine_id, void *custom_server_object,
     cf_x_net_engine_enginey_t *enginey, unsigned short min_run_threads,
     unsigned short max_run_threads, cf_x_net_maintain_t maintain_schedule,
@@ -1244,16 +1244,16 @@ cf_x_core_bool_t cf_x_net_server_register_engine(cf_x_net_server_t *server,
   }
 
   if (success) {
-    success = cf_x_net_server_register_engine_create(engine_container,
+    success = cf_x_net_server_system_register_engine_create(engine_container,
         enginey->create, server, custom_server_object);
   }
 
   return success;
 }
 
-cf_x_core_bool_t cf_x_net_server_register_engine_create
+cf_x_core_bool_t cf_x_net_server_system_register_engine_create
 (engine_container_t *engine_container, cf_x_net_engine_enginey_create_f create,
-    cf_x_net_server_t *server, void *custom_server_object)
+    cf_x_net_server_system_t *server, void *custom_server_object)
 {
   assert(engine_container);
   cf_x_core_bool_t success;
@@ -1269,9 +1269,9 @@ cf_x_core_bool_t cf_x_net_server_register_engine_create
   return success;
 }
 
-void cf_x_net_server_register_message_handler(cf_x_net_server_t *server,
+void cf_x_net_server_system_register_message_handler(cf_x_net_server_system_t *server,
     cf_x_net_engine_id_t engine_id, unsigned long message_type,
-    cf_x_net_server_handle_message_f message_handler)
+    cf_x_net_server_system_handle_message_f message_handler)
 {
   assert(server);
   assert(server->engines_array[engine_id]);
@@ -1283,7 +1283,7 @@ void cf_x_net_server_register_message_handler(cf_x_net_server_t *server,
   *(engine_container->message_handlers + message_type) = message_handler;
 }
 
-cf_x_core_bool_t cf_x_net_server_send_message(cf_x_net_server_t *server,
+cf_x_core_bool_t cf_x_net_server_system_send_message(cf_x_net_server_system_t *server,
     void *message_object)
 {
   cf_x_core_bool_t success;
@@ -1300,13 +1300,13 @@ cf_x_core_bool_t cf_x_net_server_send_message(cf_x_net_server_t *server,
   return success;
 }
 
-void cf_x_net_server_set_unresponsive_client_time_seconds(cf_x_net_server_t *server,
+void cf_x_net_server_system_set_unresponsive_client_time_seconds(cf_x_net_server_system_t *server,
     unsigned long unresponsive_client_time_seconds)
 {
   server->unresponsive_client_time_seconds = unresponsive_client_time_seconds;
 }
 
-cf_x_core_bool_t cf_x_net_server_start(cf_x_net_server_t *server)
+cf_x_core_bool_t cf_x_net_server_system_start(cf_x_net_server_system_t *server)
 {
   cf_x_core_bool_t success;
 
@@ -1329,18 +1329,18 @@ cf_x_core_bool_t cf_x_net_server_start(cf_x_net_server_t *server)
   return success;
 }
 
-cf_x_case_list_t *cf_x_net_server_take_unprocessed_messages
-(cf_x_net_server_t *server)
+cf_x_case_list_t *cf_x_net_server_system_take_unprocessed_messages
+(cf_x_net_server_system_t *server)
 {
   return NULL;
 }
 
-cf_x_case_list_t *cf_x_net_server_take_unsent_messages(cf_x_net_server_t *server)
+cf_x_case_list_t *cf_x_net_server_system_take_unsent_messages(cf_x_net_server_system_t *server)
 {
   return NULL;
 }
 
-cf_x_core_bool_t join_thread(cf_x_net_server_t *server, pthread_t thread)
+cf_x_core_bool_t join_thread(cf_x_net_server_system_t *server, pthread_t thread)
 {
   cf_x_core_bool_t success;
 
@@ -1359,7 +1359,7 @@ void *maintain_engine(void *maintaining_engine_object)
   maintaining_engine_t *maintaining_engine;
   void *engine_object;
   cf_x_net_engine_id_t engine_id;
-  cf_x_net_server_t *server;
+  cf_x_net_server_system_t *server;
   engine_container_t *engine_container;
   cf_x_sync_period_t *maintenance_period;
 
@@ -1388,11 +1388,11 @@ void *maintain_engine(void *maintaining_engine_object)
   return NULL;
 }
 
-void manage_threads(cf_x_net_server_t *server)
+void manage_threads(cf_x_net_server_system_t *server)
 {
 }
 
-void post_messages_to_clients(cf_x_net_server_t *server)
+void post_messages_to_clients(cf_x_net_server_system_t *server)
 {
   assert(server);
   void *message_object;
@@ -1422,7 +1422,7 @@ void post_messages_to_clients(cf_x_net_server_t *server)
   pthread_mutex_unlock(&server->outbox_mutex);
 }
 
-void receive_messages_from_client_post(cf_x_net_server_t *server,
+void receive_messages_from_client_post(cf_x_net_server_system_t *server,
     void *post_object)
 {
   assert(server);
@@ -1454,7 +1454,7 @@ void receive_messages_from_client_post(cf_x_net_server_t *server,
   }
 }
 
-void receive_messages_from_clients(cf_x_net_server_t *server)
+void receive_messages_from_clients(cf_x_net_server_system_t *server)
 {
   void *client_post_object;
   cf_x_case_set_t *client_posts;
@@ -1471,7 +1471,7 @@ void *run_engine(void *running_engine_object)
   running_engine_t *running_engine;
   void *engine_object;
   cf_x_net_engine_id_t engine_id;
-  cf_x_net_server_t *server;
+  cf_x_net_server_system_t *server;
   engine_container_t *engine_container;
   cf_x_net_engine_thread_t *engine_thread;
 
@@ -1496,7 +1496,7 @@ void *run_engine(void *running_engine_object)
   return NULL;
 }
 
-cf_x_core_bool_t serversocket_bind_listen(cf_x_net_server_t *server)
+cf_x_core_bool_t serversocket_bind_listen(cf_x_net_server_system_t *server)
 {
   assert(server);
   cf_x_core_bool_t success;
@@ -1506,7 +1506,7 @@ cf_x_core_bool_t serversocket_bind_listen(cf_x_net_server_t *server)
 
   for (port = server->min_port;
        (port <= server->max_port) && (!success); port++) {
-    server->socket = cf_x_net_serversocket_create(port);
+    server->socket = cf_x_net_server_socket_create(port);
     if (server->socket >= 0) {
       success = cf_x_core_bool_true;
       cf_x_audit_log_enter(server->log, "hnet", "listening on port %i", port);
@@ -1520,7 +1520,7 @@ cf_x_core_bool_t serversocket_bind_listen(cf_x_net_server_t *server)
 
 void *server_thread(void *server_object)
 {
-  cf_x_net_server_t *server;
+  cf_x_net_server_system_t *server;
 
   server = server_object;
 
@@ -1542,7 +1542,7 @@ void *server_thread(void *server_object)
 
     manage_threads(server);
 
-    usleep(CF_X_NET_SERVER_SLEEP_MICROSECONDS);
+    usleep(CF_X_NET_SERVER_SYSTEM_SLEEP_MICROSECONDS);
 
   }
 
@@ -1551,7 +1551,7 @@ void *server_thread(void *server_object)
   return NULL;
 }
 
-cf_x_core_bool_t start(cf_x_net_server_t *server)
+cf_x_core_bool_t start(cf_x_net_server_system_t *server)
 {
   engine_container_t *engine_container;
   cf_x_net_engine_id_t engine_id;
@@ -1594,7 +1594,7 @@ cf_x_core_bool_t start(cf_x_net_server_t *server)
   return success;
 }
 
-cf_x_core_bool_t start_engine(cf_x_net_server_t *server, cf_x_net_engine_id_t engine_id)
+cf_x_core_bool_t start_engine(cf_x_net_server_system_t *server, cf_x_net_engine_id_t engine_id)
 {
   cf_x_core_bool_t success;
   unsigned short each_thread;
@@ -1621,7 +1621,7 @@ cf_x_core_bool_t start_engine(cf_x_net_server_t *server, cf_x_net_engine_id_t en
   return success;
 }
 
-cf_x_core_bool_t start_engine_maintain_thread(cf_x_net_server_t *server,
+cf_x_core_bool_t start_engine_maintain_thread(cf_x_net_server_system_t *server,
     cf_x_net_engine_id_t engine_id, engine_container_t *engine_container)
 {
   cf_x_core_bool_t success;
@@ -1642,7 +1642,7 @@ cf_x_core_bool_t start_engine_maintain_thread(cf_x_net_server_t *server,
   return success;
 }
 
-cf_x_core_bool_t start_engine_run_thread(cf_x_net_server_t *server,
+cf_x_core_bool_t start_engine_run_thread(cf_x_net_server_system_t *server,
     cf_x_net_engine_id_t engine_id, engine_container_t *engine_container,
     unsigned short thread_index)
 {
@@ -1665,7 +1665,7 @@ cf_x_core_bool_t start_engine_run_thread(cf_x_net_server_t *server,
   return success;
 }
 
-void stop(cf_x_net_server_t *server)
+void stop(cf_x_net_server_system_t *server)
 {
   unsigned short each_thread;
   unsigned short run_thread_count;
@@ -1675,7 +1675,7 @@ void stop(cf_x_net_server_t *server)
     join_thread(server, server->accept_thread);
   }
 
-  cf_x_net_serversocket_destroy(server->socket);
+  cf_x_net_server_socket_destroy(server->socket);
 
   cf_x_case_list_iterate_start(server->engines);
   while ((engine_container = cf_x_case_list_iterate_next(server->engines))) {
@@ -1694,7 +1694,7 @@ void stop(cf_x_net_server_t *server)
   }
 }
 
-cf_x_core_bool_t threads_maxed_out(cf_x_net_server_t *server)
+cf_x_core_bool_t threads_maxed_out(cf_x_net_server_system_t *server)
 {
   assert(server);
   cf_x_core_bool_t maxed_out;

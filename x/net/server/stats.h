@@ -19,10 +19,10 @@ struct cf_x_net_server_stats_t {
 };
 typedef struct cf_x_net_server_stats_t cf_x_net_server_stats_t;
 
-cf_x_core_bool_t cf_x_net_server_add_stats_to_message
+cf_x_core_bool_t cf_x_net_server_system_add_stats_to_message
 (cf_x_net_server_stats_t *server_stats, cf_x_core_message_t *message);
 
-cf_x_net_server_stats_t *cf_x_net_server_create_stats_from_message
+cf_x_net_server_stats_t *cf_x_net_server_system_create_stats_from_message
 (cf_x_core_message_t *message);
 
 void cf_x_net_server_stats_init(cf_x_net_server_stats_t *server_stats);

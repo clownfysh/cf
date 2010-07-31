@@ -22,7 +22,7 @@ struct message_handler_info_t {
 };
 typedef struct message_handler_info_t message_handler_info_t;
 
-struct cf_x_net_starclient_t {
+struct cf_x_net_star_client_system_t {
   cf_x_case_list_t *star_arm_ips;
   unsigned short star_arm_port_min;
   unsigned short star_arm_port_max;
@@ -53,59 +53,59 @@ struct cf_x_net_starclient_t {
   cf_x_core_objectey_t nameobject_objectey;
 };
 
-static cf_x_core_bool_t client_connected(cf_x_net_starclient_t *starclient,
+static cf_x_core_bool_t client_connected(cf_x_net_star_client_system_t *starclient,
     char *client_name);
 
 static char *create_client_name(char *server_ip, unsigned short server_port);
 
-static void establisx_connection(cf_x_net_starclient_t *starclient,
+static void establisx_connection(cf_x_net_star_client_system_t *starclient,
     char *client_name, char *server_ip, unsigned short server_min_port,
     unsigned short server_max_port, void *custom_client_context);
 
 static cf_x_core_bool_t exclude_ip_port_combination
-(cf_x_net_starclient_t *starclient, char *ip, unsigned short port);
+(cf_x_net_star_client_system_t *starclient, char *ip, unsigned short port);
 
-static cf_x_net_client_system_t *find_client(cf_x_net_starclient_t *starclient,
+static cf_x_net_client_system_t *find_client(cf_x_net_star_client_system_t *starclient,
     char *client_name);
 
-static cf_x_net_client_system_t *get_random_client(cf_x_net_starclient_t *starclient);
+static cf_x_net_client_system_t *get_random_client(cf_x_net_star_client_system_t *starclient);
 
-static cf_x_core_bool_t cf_x_net_starclient_create_client_list
-(cf_x_net_starclient_t *starclient);
+static cf_x_core_bool_t cf_x_net_star_client_system_create_client_list
+(cf_x_net_star_client_system_t *starclient);
 
-static cf_x_core_bool_t cf_x_net_starclient_create_clients
-(cf_x_net_starclient_t *starclient);
+static cf_x_core_bool_t cf_x_net_star_client_system_create_clients
+(cf_x_net_star_client_system_t *starclient);
 
-static cf_x_core_bool_t cf_x_net_starclient_create_maintain_period
-(cf_x_net_starclient_t *starclient);
+static cf_x_core_bool_t cf_x_net_star_client_system_create_maintain_period
+(cf_x_net_star_client_system_t *starclient);
 
-static cf_x_core_bool_t cf_x_net_starclient_create_message_handler_info
-(cf_x_net_starclient_t *starclient);
+static cf_x_core_bool_t cf_x_net_star_client_system_create_message_handler_info
+(cf_x_net_star_client_system_t *starclient);
 
-static cf_x_core_bool_t cf_x_net_starclient_create_unsent_messages
-(cf_x_net_starclient_t *starclient);
+static cf_x_core_bool_t cf_x_net_star_client_system_create_unsent_messages
+(cf_x_net_star_client_system_t *starclient);
 
-static void cf_x_net_starclient_create_rollback(cf_x_net_starclient_t *starclient);
+static void cf_x_net_star_client_system_create_rollback(cf_x_net_star_client_system_t *starclient);
 
-static void print_stats(cf_x_net_starclient_t *starclient);
+static void print_stats(cf_x_net_star_client_system_t *starclient);
 
 static cf_x_core_bool_t put_messinferno_in_unsent_queue
-(cf_x_net_starclient_t *starclient, cf_x_core_message_t *message);
+(cf_x_net_star_client_system_t *starclient, cf_x_core_message_t *message);
 
-static void re_route_unsent_messages(cf_x_net_starclient_t *starclient);
+static void re_route_unsent_messages(cf_x_net_star_client_system_t *starclient);
 
-static void rebuild_client_list(cf_x_net_starclient_t *starclient);
+static void rebuild_client_list(cf_x_net_star_client_system_t *starclient);
 
 static cf_x_core_bool_t register_engines_witx_client
-(cf_x_net_starclient_t *starclient, cf_x_net_client_system_t *client);
+(cf_x_net_star_client_system_t *starclient, cf_x_net_client_system_t *client);
 
 static void register_message_handlers_witx_client
-(cf_x_net_starclient_t *starclient, cf_x_net_client_system_t *client);
+(cf_x_net_star_client_system_t *starclient, cf_x_net_client_system_t *client);
 
-static void take_unsent_messages(cf_x_net_starclient_t *starclient,
+static void take_unsent_messages(cf_x_net_star_client_system_t *starclient,
     cf_x_net_client_system_t *client);
 
-cf_x_core_bool_t client_connected(cf_x_net_starclient_t *starclient,
+cf_x_core_bool_t client_connected(cf_x_net_star_client_system_t *starclient,
     char *client_name)
 {
   assert(starclient);
@@ -179,7 +179,7 @@ char *create_client_name(char *server_ip, unsigned short server_port)
   return client_name;
 }
 
-void establisx_connection(cf_x_net_starclient_t *starclient, char *client_name,
+void establisx_connection(cf_x_net_star_client_system_t *starclient, char *client_name,
     char *server_ip, unsigned short server_min_port,
     unsigned short server_max_port, void *custom_client_context)
 {
@@ -221,7 +221,7 @@ void establisx_connection(cf_x_net_starclient_t *starclient, char *client_name,
   }
 }
 
-cf_x_core_bool_t exclude_ip_port_combination(cf_x_net_starclient_t *starclient,
+cf_x_core_bool_t exclude_ip_port_combination(cf_x_net_star_client_system_t *starclient,
     char *ip, unsigned short port)
 {
   assert(starclient);
@@ -240,7 +240,7 @@ cf_x_core_bool_t exclude_ip_port_combination(cf_x_net_starclient_t *starclient,
   return exclude;
 }
 
-cf_x_net_client_system_t *find_client(cf_x_net_starclient_t *starclient, char *client_name)
+cf_x_net_client_system_t *find_client(cf_x_net_star_client_system_t *starclient, char *client_name)
 {
   assert(starclient);
   assert(client_name);
@@ -265,7 +265,7 @@ cf_x_net_client_system_t *find_client(cf_x_net_starclient_t *starclient, char *c
   return client;
 }
 
-cf_x_net_client_system_t *get_random_client(cf_x_net_starclient_t *starclient)
+cf_x_net_client_system_t *get_random_client(cf_x_net_star_client_system_t *starclient)
 {
   assert(starclient);
   cf_x_core_nameobject_t *nameclient;
@@ -281,7 +281,7 @@ cf_x_net_client_system_t *get_random_client(cf_x_net_starclient_t *starclient)
   return client;
 }
 
-cf_x_core_bool_t cf_x_net_starclient_connect(cf_x_net_starclient_t *starclient)
+cf_x_core_bool_t cf_x_net_star_client_system_connect(cf_x_net_star_client_system_t *starclient)
 {
   assert(starclient);
   cf_x_core_bool_t connected_to_at_least_one;
@@ -320,7 +320,7 @@ cf_x_core_bool_t cf_x_net_starclient_connect(cf_x_net_starclient_t *starclient)
   return connected_to_at_least_one;
 }
 
-cf_x_net_starclient_t *cf_x_net_starclient_create(cf_x_case_list_t *star_arm_ips,
+cf_x_net_star_client_system_t *cf_x_net_star_client_system_create(cf_x_case_list_t *star_arm_ips,
     unsigned short star_arm_port_min, unsigned short star_arm_port_max,
     char *node_server_exclude_ip, unsigned short node_server_exclude_min_port,
     unsigned short node_server_exclude_max_port, void *custom_client_context,
@@ -328,7 +328,7 @@ cf_x_net_starclient_t *cf_x_net_starclient_create(cf_x_case_list_t *star_arm_ips
 {
   assert(star_arm_ips);
   assert(log);
-  cf_x_net_starclient_t *starclient;
+  cf_x_net_star_client_system_t *starclient;
   cf_x_core_bool_t so_far_so_good;
   unsigned long engine_id;
 
@@ -351,7 +351,7 @@ cf_x_net_starclient_t *cf_x_net_starclient_create(cf_x_case_list_t *star_arm_ips
     for (engine_id = 0; engine_id < CF_X_NET_ENGINE_TYPE_COUNT; engine_id++) {
       *(starclient->message_type_counts + engine_id) = -1;
     }
-    if (cf_x_net_starclient_create_clients(starclient)) {
+    if (cf_x_net_star_client_system_create_clients(starclient)) {
       so_far_so_good = cf_x_core_bool_true;
     } else {
       so_far_so_good = cf_x_core_bool_false;
@@ -362,23 +362,23 @@ cf_x_net_starclient_t *cf_x_net_starclient_create(cf_x_case_list_t *star_arm_ips
   }
 
   if (so_far_so_good) {
-    so_far_so_good = cf_x_net_starclient_create_maintain_period(starclient);
+    so_far_so_good = cf_x_net_star_client_system_create_maintain_period(starclient);
   }
 
   if (so_far_so_good) {
-    so_far_so_good = cf_x_net_starclient_create_unsent_messages(starclient);
+    so_far_so_good = cf_x_net_star_client_system_create_unsent_messages(starclient);
   }
 
   if (so_far_so_good) {
-    so_far_so_good = cf_x_net_starclient_create_client_list(starclient);
+    so_far_so_good = cf_x_net_star_client_system_create_client_list(starclient);
   }
 
   if (so_far_so_good) {
-    so_far_so_good = cf_x_net_starclient_create_message_handler_info(starclient);
+    so_far_so_good = cf_x_net_star_client_system_create_message_handler_info(starclient);
   }
 
   if (!so_far_so_good && starclient) {
-    cf_x_net_starclient_create_rollback(starclient);
+    cf_x_net_star_client_system_create_rollback(starclient);
     starclient = NULL;
   }
 
@@ -391,8 +391,8 @@ cf_x_net_starclient_t *cf_x_net_starclient_create(cf_x_case_list_t *star_arm_ips
   return starclient;
 }
 
-cf_x_core_bool_t cf_x_net_starclient_create_client_list
-(cf_x_net_starclient_t *starclient)
+cf_x_core_bool_t cf_x_net_star_client_system_create_client_list
+(cf_x_net_star_client_system_t *starclient)
 {
   assert(starclient);
   cf_x_core_bool_t success;
@@ -408,7 +408,7 @@ cf_x_core_bool_t cf_x_net_starclient_create_client_list
   return success;
 }
 
-cf_x_core_bool_t cf_x_net_starclient_create_clients(cf_x_net_starclient_t *starclient)
+cf_x_core_bool_t cf_x_net_star_client_system_create_clients(cf_x_net_star_client_system_t *starclient)
 {
   assert(starclient);
   cf_x_core_bool_t success;
@@ -424,8 +424,8 @@ cf_x_core_bool_t cf_x_net_starclient_create_clients(cf_x_net_starclient_t *starc
   return success;
 }
 
-cf_x_core_bool_t cf_x_net_starclient_create_maintain_period
-(cf_x_net_starclient_t *starclient)
+cf_x_core_bool_t cf_x_net_star_client_system_create_maintain_period
+(cf_x_net_star_client_system_t *starclient)
 {
   assert(starclient);
   cf_x_core_bool_t success;
@@ -441,8 +441,8 @@ cf_x_core_bool_t cf_x_net_starclient_create_maintain_period
   return success;
 }
 
-cf_x_core_bool_t cf_x_net_starclient_create_message_handler_info
-(cf_x_net_starclient_t *starclient)
+cf_x_core_bool_t cf_x_net_star_client_system_create_message_handler_info
+(cf_x_net_star_client_system_t *starclient)
 {
   assert(starclient);
   cf_x_core_bool_t success;
@@ -459,8 +459,8 @@ cf_x_core_bool_t cf_x_net_starclient_create_message_handler_info
   return success;
 }
 
-cf_x_core_bool_t cf_x_net_starclient_create_unsent_messages
-(cf_x_net_starclient_t *starclient)
+cf_x_core_bool_t cf_x_net_star_client_system_create_unsent_messages
+(cf_x_net_star_client_system_t *starclient)
 {
   assert(starclient);
   cf_x_core_bool_t success;
@@ -477,7 +477,7 @@ cf_x_core_bool_t cf_x_net_starclient_create_unsent_messages
   return success;
 }
 
-void cf_x_net_starclient_create_rollback(cf_x_net_starclient_t *starclient)
+void cf_x_net_star_client_system_create_rollback(cf_x_net_star_client_system_t *starclient)
 {
   assert(starclient);
 
@@ -499,7 +499,7 @@ void cf_x_net_starclient_create_rollback(cf_x_net_starclient_t *starclient)
   free(starclient);
 }
 
-void cf_x_net_starclient_destroy(cf_x_net_starclient_t *starclient)
+void cf_x_net_star_client_system_destroy(cf_x_net_star_client_system_t *starclient)
 {
   assert(starclient);
   unsigned int unsent_message_count;
@@ -520,7 +520,7 @@ void cf_x_net_starclient_destroy(cf_x_net_starclient_t *starclient)
   free(starclient);
 }
 
-cf_x_net_client_system_t *cf_x_net_starclient_get_client(cf_x_net_starclient_t *starclient,
+cf_x_net_client_system_t *cf_x_net_star_client_system_get_client(cf_x_net_star_client_system_t *starclient,
     int socket)
 {
   assert(starclient);
@@ -545,8 +545,8 @@ cf_x_net_client_system_t *cf_x_net_starclient_get_client(cf_x_net_starclient_t *
   return client;
 }
 
-void cf_x_net_starclient_get_stats(cf_x_net_starclient_t *starclient,
-    cf_x_net_starclient_stats_t *starclient_stats)
+void cf_x_net_star_client_system_get_stats(cf_x_net_star_client_system_t *starclient,
+    cf_x_net_star_client_stats_t *starclient_stats)
 {
   assert(starclient);
   assert(starclient_stats);
@@ -555,7 +555,7 @@ void cf_x_net_starclient_get_stats(cf_x_net_starclient_t *starclient,
     = cf_x_case_set_get_size(starclient->clients);
 }
 
-void cf_x_net_starclient_process_messages(cf_x_net_starclient_t *starclient)
+void cf_x_net_star_client_system_process_messages(cf_x_net_star_client_system_t *starclient)
 {
   assert(starclient);
   cf_x_core_nameobject_t *nameclient;
@@ -568,7 +568,7 @@ void cf_x_net_starclient_process_messages(cf_x_net_starclient_t *starclient)
   }
 
   if (cf_x_sync_period_once(starclient->maintain_period)) {
-    cf_x_net_starclient_connect(starclient);
+    cf_x_net_star_client_system_connect(starclient);
     rebuild_client_list(starclient);
     re_route_unsent_messages(starclient);
     if (starclient->need_to_print_stats) {
@@ -577,7 +577,7 @@ void cf_x_net_starclient_process_messages(cf_x_net_starclient_t *starclient)
   }
 }
 
-cf_x_core_bool_t cf_x_net_starclient_register_engine(cf_x_net_starclient_t *starclient,
+cf_x_core_bool_t cf_x_net_star_client_system_register_engine(cf_x_net_star_client_system_t *starclient,
     cf_x_net_engine_id_t engine_id, unsigned long message_type_count)
 {
   assert(starclient);
@@ -600,7 +600,7 @@ cf_x_core_bool_t cf_x_net_starclient_register_engine(cf_x_net_starclient_t *star
   return success;
 }
 
-void cf_x_net_starclient_register_message_handler(cf_x_net_starclient_t *starclient,
+void cf_x_net_star_client_system_register_message_handler(cf_x_net_star_client_system_t *starclient,
     cf_x_net_engine_id_t engine_id, unsigned long message_type,
     cf_x_net_client_system_handle_message_f message_handler)
 {
@@ -631,8 +631,8 @@ void cf_x_net_starclient_register_message_handler(cf_x_net_starclient_t *starcli
   }
 }
 
-cf_x_core_bool_t cf_x_net_starclient_send_message_to_any_arm
-(cf_x_net_starclient_t *starclient, cf_x_core_message_t *message)
+cf_x_core_bool_t cf_x_net_star_client_system_send_message_to_any_arm
+(cf_x_net_star_client_system_t *starclient, cf_x_core_message_t *message)
 {
   assert(starclient);
   assert(message);
@@ -665,8 +665,8 @@ cf_x_core_bool_t cf_x_net_starclient_send_message_to_any_arm
   return success;
 }
 
-cf_x_core_bool_t cf_x_net_starclient_send_message_to_all_arms
-(cf_x_net_starclient_t *starclient, cf_x_core_message_t *message)
+cf_x_core_bool_t cf_x_net_star_client_system_send_message_to_all_arms
+(cf_x_net_star_client_system_t *starclient, cf_x_core_message_t *message)
 {
   assert(starclient);
   assert(message);
@@ -697,13 +697,13 @@ cf_x_core_bool_t cf_x_net_starclient_send_message_to_all_arms
   return success;
 }
 
-void cf_x_net_starclient_set_unsent_messages_queue_size
-(cf_x_net_starclient_t *starclient, unsigned long queue_size)
+void cf_x_net_star_client_system_set_unsent_messages_queue_size
+(cf_x_net_star_client_system_t *starclient, unsigned long queue_size)
 {
   starclient->unsent_messages_queue_size = queue_size;
 }
 
-cf_x_core_bool_t cf_x_net_starclient_star_available(cf_x_net_starclient_t *starclient)
+cf_x_core_bool_t cf_x_net_star_client_system_star_available(cf_x_net_star_client_system_t *starclient)
 {
   assert(starclient);
   cf_x_core_bool_t available;
@@ -720,7 +720,7 @@ cf_x_core_bool_t cf_x_net_starclient_star_available(cf_x_net_starclient_t *starc
   return available;
 }
 
-void print_stats(cf_x_net_starclient_t *starclient)
+void print_stats(cf_x_net_star_client_system_t *starclient)
 {
   assert(starclient);
   unsigned long star_arm_count;
@@ -732,7 +732,7 @@ void print_stats(cf_x_net_starclient_t *starclient)
   starclient->need_to_print_stats = cf_x_core_bool_false;
 }
 
-cf_x_core_bool_t put_messinferno_in_unsent_queue(cf_x_net_starclient_t *starclient,
+cf_x_core_bool_t put_messinferno_in_unsent_queue(cf_x_net_star_client_system_t *starclient,
     cf_x_core_message_t *message)
 {
   assert(starclient);
@@ -755,7 +755,7 @@ cf_x_core_bool_t put_messinferno_in_unsent_queue(cf_x_net_starclient_t *starclie
   return success;
 }
 
-void re_route_unsent_messages(cf_x_net_starclient_t *starclient)
+void re_route_unsent_messages(cf_x_net_star_client_system_t *starclient)
 {
   assert(starclient);
   cf_x_core_message_t *message;
@@ -765,12 +765,12 @@ void re_route_unsent_messages(cf_x_net_starclient_t *starclient)
 
   cf_x_case_list_iterate_start(unsent_messages);
   while ((message = cf_x_case_list_iterate_next(unsent_messages))) {
-    cf_x_net_starclient_send_message_to_any_arm(starclient, message);
+    cf_x_net_star_client_system_send_message_to_any_arm(starclient, message);
     cf_x_case_list_iterate_remove(unsent_messages);
   }
 }
 
-void rebuild_client_list(cf_x_net_starclient_t *starclient)
+void rebuild_client_list(cf_x_net_star_client_system_t *starclient)
 {
   assert(starclient);
   cf_x_core_nameobject_t *nameclient;
@@ -782,7 +782,7 @@ void rebuild_client_list(cf_x_net_starclient_t *starclient)
   }
 }
 
-cf_x_core_bool_t register_engines_witx_client(cf_x_net_starclient_t *starclient,
+cf_x_core_bool_t register_engines_witx_client(cf_x_net_star_client_system_t *starclient,
     cf_x_net_client_system_t *client)
 {
   assert(starclient);
@@ -809,7 +809,7 @@ cf_x_core_bool_t register_engines_witx_client(cf_x_net_starclient_t *starclient,
   return success;
 }
 
-void register_message_handlers_witx_client(cf_x_net_starclient_t *starclient,
+void register_message_handlers_witx_client(cf_x_net_star_client_system_t *starclient,
     cf_x_net_client_system_t *client)
 {
   assert(starclient);
@@ -825,7 +825,7 @@ void register_message_handlers_witx_client(cf_x_net_starclient_t *starclient,
   }
 }
 
-void take_unsent_messages(cf_x_net_starclient_t *starclient,
+void take_unsent_messages(cf_x_net_star_client_system_t *starclient,
     cf_x_net_client_system_t *client)
 {
   assert(starclient);

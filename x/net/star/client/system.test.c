@@ -22,10 +22,10 @@ void handle_signal(int signal)
 
 int main(int argc, char *argv[])
 {
-  cf_x_config_disable_if_running_batcx_tests(argc, argv);
+  cf_x_config_disable_if_running_batch_tests(argc, argv);
 
-  cf_x_net_starclient_t *starclient;
-  cf_x_net_starclient_conf_t *starclient_conf;
+  cf_x_net_star_client_system_t *starclient;
+  cf_x_net_star_client_conf_t *starclient_conf;
   cf_x_sync_period_t *period;
   void *custom_client_context;
   cf_x_audit_log_t *log;
@@ -47,12 +47,12 @@ int main(int argc, char *argv[])
     cf_x_core_trace_exit("x_core_period_create");
   }
 
-  starclient_conf = cf_x_net_starclient_conf_create("x_net_starclient_test.conf");
+  starclient_conf = cf_x_net_star_client_conf_create("x_net_starclient_test.conf");
   if (!starclient_conf) {
     cf_x_core_trace_exit("x_net_starclient_conf_create");
   }
 
-  starclient = cf_x_net_starclient_create(starclient_conf->star_arm_ips,
+  starclient = cf_x_net_star_client_system_create(starclient_conf->star_arm_ips,
       starclient_conf->star_arm_port_min,
       starclient_conf->star_arm_port_max,
       starclient_conf->node_server_exclude_ip,
@@ -60,15 +60,15 @@ int main(int argc, char *argv[])
       starclient_conf->node_server_exclude_port,
       custom_client_context, log);
   if (starclient) {
-    if (cf_x_net_starclient_connect(starclient)) {
+    if (cf_x_net_star_client_system_connect(starclient)) {
       printf("starclient connected to star\n");
       while (!cf_x_core_stop_requested) {
-        cf_x_net_starclient_process_messages(starclient);
+        cf_x_net_star_client_system_process_messages(starclient);
 
         /*
           TODO: move this to the starclient
         */
-        if (!cf_x_net_starclient_star_available(starclient)) {
+        if (!cf_x_net_star_client_system_star_available(starclient)) {
           if (cf_x_sync_period_once(period)) {
             printf("star is unavailable\n");
           }
@@ -84,8 +84,8 @@ int main(int argc, char *argv[])
     cf_x_core_trace("x_net_starclient_create");
   }
 
-  cf_x_net_starclient_destroy(starclient);
-  cf_x_net_starclient_conf_destroy(starclient_conf);
+  cf_x_net_star_client_system_destroy(starclient);
+  cf_x_net_star_client_conf_destroy(starclient_conf);
   cf_x_sync_period_destroy(period);
   cf_x_audit_log_destroy(log);
 

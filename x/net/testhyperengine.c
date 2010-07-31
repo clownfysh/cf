@@ -9,7 +9,7 @@
 
 struct cf_x_net_testhyperengine_t {
   void *things_the_engine_needs_to_share;
-  cf_x_net_server_t *cf_x_net_server;
+  cf_x_net_server_system_t *cf_x_net_server;
   void *custom_server_object;
 };
 
@@ -28,7 +28,7 @@ cf_x_net_message_status_t handle_about(void *engine_object,
   cf_x_net_http_message_t *message;
   cf_x_net_http_message_t *response_message;
   int client_socket;
-  cf_x_net_server_t *cf_x_net_server;
+  cf_x_net_server_system_t *cf_x_net_server;
   char *body;
   unsigned long body_size;
 
@@ -50,7 +50,7 @@ cf_x_net_message_status_t handle_about(void *engine_object,
     cf_x_core_trace("x_net_hypermessage_create");
   }
 
-  if (!cf_x_net_server_send_message(cf_x_net_server, response_message)) {
+  if (!cf_x_net_server_system_send_message(cf_x_net_server, response_message)) {
     cf_x_core_trace("x_net_server_send_message");
   }
 
@@ -66,7 +66,7 @@ cf_x_net_message_status_t handle_not_found(void *engine_object,
   cf_x_net_http_message_t *message;
   cf_x_net_http_message_t *response_message;
   int client_socket;
-  cf_x_net_server_t *cf_x_net_server;
+  cf_x_net_server_system_t *cf_x_net_server;
   char *body;
   unsigned long body_size;
 
@@ -88,14 +88,14 @@ cf_x_net_message_status_t handle_not_found(void *engine_object,
     cf_x_core_trace("x_net_hypermessage_create");
   }
 
-  if (!cf_x_net_server_send_message(cf_x_net_server, response_message)) {
+  if (!cf_x_net_server_system_send_message(cf_x_net_server, response_message)) {
     cf_x_core_trace("x_net_server_send_message");
   }
 
   return CF_X_NET_MESSAGE_STATUS_HANDLED;
 }
 
-void *cf_x_net_testhyperengine_create(cf_x_net_server_t *cf_x_net_server,
+void *cf_x_net_testhyperengine_create(cf_x_net_server_system_t *cf_x_net_server,
     void *custom_server_object)
 {
   assert(cf_x_net_server);
@@ -121,13 +121,13 @@ void cf_x_net_testhyperengine_destroy(void *engine_object)
   free(engine_object);
 }
 
-cf_x_net_server_handle_message_f cf_x_net_testhyperengine_get_handler_for_message
+cf_x_net_server_system_handle_message_f cf_x_net_testhyperengine_get_handler_for_message
 (void *engine_object, void *hypermessage_object)
 {
   assert(engine_object);
   assert(hypermessage_object);
   cf_x_net_testhyperengine_t *engine;
-  cf_x_net_server_handle_message_f handler;
+  cf_x_net_server_system_handle_message_f handler;
   cf_x_net_http_message_t *hypermessage;
   char *resource_name;
 
@@ -163,7 +163,7 @@ void cf_x_net_testhyperengine_run(void *engine_thread_object)
   assert(engine_thread_object);
   cf_x_net_engine_thread_t *engine_thread;
   cf_x_net_testhyperengine_t *engine;
-  cf_x_net_server_t *cf_x_net_server;
+  cf_x_net_server_system_t *cf_x_net_server;
   unsigned short thread_index;
 
   engine_thread = engine_thread_object;
@@ -171,7 +171,7 @@ void cf_x_net_testhyperengine_run(void *engine_thread_object)
   cf_x_net_server = engine->cf_x_net_server;
   thread_index = engine_thread->thread_index;
 
-  cf_x_net_server_process_messages
+  cf_x_net_server_system_process_messages
     (cf_x_net_server, CF_X_NET_ENGINE_HYPER, thread_index);
 }
 
