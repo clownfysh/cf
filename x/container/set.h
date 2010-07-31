@@ -7,12 +7,6 @@
 #include "x/core/object.h"
 #include "x/core/types.h"
 
-/*
-#if defined X_CONTAINER_SET_MBIN_IMPL
-#include "x/container/set.mbin.impl.h"
-#endif
-*/
-
 x_core_bool_t x_container_set_absorb(x_container_set_t *set,
     x_container_set_t *absorb_these);
 

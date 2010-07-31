@@ -226,5 +226,5 @@ x_core_bool_t x_core_uuid_is_null(x_core_uuid_t *uuid)
 }
 
 #if defined CF_PLATFORM_LINUX
-#include "x/core/uuid.linux.impl.c"
+#include "x/core/uuid.impl.linux.c"
 #endif

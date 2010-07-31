@@ -390,5 +390,5 @@ unsigned long x_core_wrap_index(long virtual_index, unsigned long range)
 }
 
 #if defined CF_PLATFORM_LINUX
-#include "x/core/tools.linux.impl.c"
+#include "x/core/tools.impl.linux.c"
 #endif

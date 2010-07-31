@@ -3,15 +3,17 @@
 #include "x/core/long.h"
 
 #if defined X_CONTAINER_SET_BINARY_TREE_IMPL
-#include "x/container/set.binary_tree.impl.c"
+#include "x/container/set.impl.binary_tree.c"
 #elif defined X_CONTAINER_SET_HASH_TABLE_IMPL
-#include "x/container/set.hash_table.impl.c"
+#include "x/container/set.imple.hash_table.c"
+#elif defined X_CONTAINER_SET_HASHA_IMPL
+#include "x/container/set.impl.hasha.c"
 #elif defined X_CONTAINER_SET_MBIN_IMPL
-#include "x/container/set.mbin.impl.c"
+#include "x/container/set.impl.mbin.c"
 #elif defined X_CONTAINER_SET_SKIP_LIST_IMPL
-#include "x/container/set.skip_list.impl.c"
+#include "x/container/set.impl.skip_list.c"
 #else
-#include "x/container/set.mbin.impl.c"
+#include "x/container/set.impl.mbin.c"
 #endif
 
 x_core_bool_t x_container_set_absorb(x_container_set_t *set,

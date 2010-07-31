@@ -2,11 +2,11 @@
 #include "x/core/tools.h"
 
 #if defined X_CORE_BITARRAY_COMPRESSED_IMPL
-#include "x/core/bitarray.compressed.impl.c"
+#include "x/core/bitarray.impl.compressed.c"
 #elif defined X_CORE_BITARRAY_EXPANDED_IMPL
-#include "x/core/bitarray.expanded.impl.c"
+#include "x/core/bitarray.impl.expanded.c"
 #else
-#include "x/core/bitarray.expanded.impl.c"
+#include "x/core/bitarray.impl.expanded.c"
 #endif
 
 #define UNSIGNED_CHAR_MAX_PLACE_VALUE 128
