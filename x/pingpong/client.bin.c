@@ -17,7 +17,7 @@ typedef struct ping_client_context_t ping_client_context_t;
 
 static void handle_pong(void *custom_client_context,
     cf_x_core_message_t *message);
-static void print_usage_exit();
+static void print_uinferno_exit();
 
 void handle_pong(void *custom_client_context, cf_x_core_message_t *message)
 {
@@ -36,9 +36,9 @@ void handle_pong(void *custom_client_context, cf_x_core_message_t *message)
   free(pong_string);
 }
 
-void print_usage_exit()
+void print_uinferno_exit()
 {
-  printf("\n    usage: ping_client serverIp serverPort pingMessage\n\n");
+  printf("\n    uinferno: ping_client serverIp serverPort pingMessage\n\n");
   exit(1);
 }
 
@@ -59,7 +59,7 @@ int main(int argc, char *argv[])
   signal(SIGPIPE, SIG_IGN);
 
   if (argc < 4) {
-    print_usage_exit();
+    print_uinferno_exit();
   }
   server_ip = argv[1];
   server_port = atoi(argv[2]);

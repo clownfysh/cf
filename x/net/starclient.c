@@ -89,7 +89,7 @@ static void cf_x_net_starclient_create_rollback(cf_x_net_starclient_t *starclien
 
 static void print_stats(cf_x_net_starclient_t *starclient);
 
-static cf_x_core_bool_t put_messsage_in_unsent_queue
+static cf_x_core_bool_t put_messinferno_in_unsent_queue
 (cf_x_net_starclient_t *starclient, cf_x_core_message_t *message);
 
 static void re_route_unsent_messages(cf_x_net_starclient_t *starclient);
@@ -654,7 +654,7 @@ cf_x_core_bool_t cf_x_net_starclient_send_message_to_any_arm
   if (sent_to_client) {
     success = cf_x_core_bool_true;
   } else {
-    if (put_messsage_in_unsent_queue(starclient, message)) {
+    if (put_messinferno_in_unsent_queue(starclient, message)) {
       success = cf_x_core_bool_true;
     } else {
       printf("[star] unsent message queue is full, unable to send message\n");
@@ -732,7 +732,7 @@ void print_stats(cf_x_net_starclient_t *starclient)
   starclient->need_to_print_stats = cf_x_core_bool_false;
 }
 
-cf_x_core_bool_t put_messsage_in_unsent_queue(cf_x_net_starclient_t *starclient,
+cf_x_core_bool_t put_messinferno_in_unsent_queue(cf_x_net_starclient_t *starclient,
     cf_x_core_message_t *message)
 {
   assert(starclient);
@@ -839,7 +839,7 @@ void take_unsent_messages(cf_x_net_starclient_t *starclient,
   unsent_messages = cf_x_net_client_take_unsent_messages(client);
   cf_x_case_list_iterate_start(unsent_messages);
   while ((message = cf_x_case_list_iterate_next(unsent_messages))) {
-    if (!put_messsage_in_unsent_queue(starclient, message)) {
+    if (!put_messinferno_in_unsent_queue(starclient, message)) {
       discarded_message_count++;
       cf_x_core_message_destroy(message);
     }
