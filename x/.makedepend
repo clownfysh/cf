@@ -3506,7 +3506,150 @@
 ./xcache/item.o: /home/matthew/cf/x/core/engine.h
 ./xcache/item.o: /home/matthew/cf/x/core/objectey.h
 ./container/hasha.o: /home/matthew/cf/x/container/hasha.h
+./container/hasha.o: /home/matthew/cf/x/core/object.h
+./container/hasha.o: /home/matthew/cf/x/core/bool.h
+./container/hasha.o: /home/matthew/cf/x/core/declarations.h
+./container/hasha.o: /home/matthew/cf/x/core/objectey.h
+./container/hasha.o: /home/matthew/cf/x/core/tools.h
+./container/hasha.o: /home/matthew/cf/x/core/standard.h
+./container/hasha.o: /usr/include/arpa/inet.h /usr/include/features.h
+./container/hasha.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
+./container/hasha.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
+./container/hasha.o: /usr/include/gnu/stubs-32.h /usr/include/netinet/in.h
+./container/hasha.o: /usr/include/stdint.h /usr/include/bits/wchar.h
+./container/hasha.o: /usr/include/sys/socket.h /usr/include/sys/uio.h
+./container/hasha.o: /usr/include/sys/types.h /usr/include/bits/types.h
+./container/hasha.o: /usr/include/bits/typesizes.h /usr/include/time.h
+./container/hasha.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
+./container/hasha.o: /usr/include/endian.h /usr/include/bits/endian.h
+./container/hasha.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
+./container/hasha.o: /usr/include/bits/select.h /usr/include/bits/sigset.h
+./container/hasha.o: /usr/include/bits/time.h /usr/include/sys/sysmacros.h
+./container/hasha.o: /usr/include/bits/pthreadtypes.h /usr/include/bits/uio.h
+./container/hasha.o: /usr/include/bits/socket.h /usr/include/bits/sockaddr.h
+./container/hasha.o: /usr/include/asm/socket.h
+./container/hasha.o: /usr/include/asm-generic/socket.h
+./container/hasha.o: /usr/include/asm/sockios.h
+./container/hasha.o: /usr/include/asm-generic/sockios.h
+./container/hasha.o: /usr/include/bits/in.h /usr/include/assert.h
+./container/hasha.o: /usr/include/ctype.h /usr/include/xlocale.h
+./container/hasha.o: /usr/include/dirent.h /usr/include/bits/dirent.h
+./container/hasha.o: /usr/include/bits/posix1_lim.h
+./container/hasha.o: /usr/include/bits/local_lim.h
+./container/hasha.o: /usr/include/linux/limits.h /usr/include/fcntl.h
+./container/hasha.o: /usr/include/bits/fcntl.h
+./container/hasha.o: /usr/include/postgresql/libpq-fe.h /usr/include/stdio.h
+./container/hasha.o: /usr/include/libio.h /usr/include/_G_config.h
+./container/hasha.o: /usr/include/wchar.h
+./container/hasha.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdarg.h
+./container/hasha.o: /usr/include/bits/stdio_lim.h
+./container/hasha.o: /usr/include/bits/sys_errlist.h
+./container/hasha.o: /usr/include/postgresql/postgres_ext.h
+./container/hasha.o: /usr/include/math.h /usr/include/bits/huge_val.h
+./container/hasha.o: /usr/include/bits/huge_valf.h
+./container/hasha.o: /usr/include/bits/huge_vall.h /usr/include/bits/inf.h
+./container/hasha.o: /usr/include/bits/nan.h /usr/include/bits/mathdef.h
+./container/hasha.o: /usr/include/bits/mathcalls.h /usr/include/ncurses.h
+./container/hasha.o: /usr/include/ncurses_dll.h
+./container/hasha.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdbool.h
+./container/hasha.o: /usr/include/unctrl.h /usr/include/curses.h
+./container/hasha.o: /usr/include/openssl/rand.h /usr/include/stdlib.h
+./container/hasha.o: /usr/include/alloca.h /usr/include/openssl/ossl_typ.h
+./container/hasha.o: /usr/include/openssl/e_os2.h
+./container/hasha.o: /usr/include/openssl/opensslconf.h
+./container/hasha.o: /usr/include/pthread.h /usr/include/sched.h
+./container/hasha.o: /usr/include/bits/sched.h /usr/include/signal.h
+./container/hasha.o: /usr/include/bits/setjmp.h /usr/include/string.h
+./container/hasha.o: /usr/include/sys/errno.h /usr/include/errno.h
+./container/hasha.o: /usr/include/bits/errno.h /usr/include/linux/errno.h
+./container/hasha.o: /usr/include/asm/errno.h
+./container/hasha.o: /usr/include/asm-generic/errno.h
+./container/hasha.o: /usr/include/asm-generic/errno-base.h
+./container/hasha.o: /usr/include/sys/stat.h /usr/include/bits/stat.h
+./container/hasha.o: /usr/include/termios.h /usr/include/bits/termios.h
+./container/hasha.o: /usr/include/sys/ttydefaults.h /usr/include/unistd.h
+./container/hasha.o: /usr/include/bits/posix_opt.h
+./container/hasha.o: /usr/include/bits/confname.h /usr/include/getopt.h
+./container/hasha.o: /usr/include/jpeglib.h /usr/include/jconfig.h
+./container/hasha.o: /usr/include/jmorecfg.h /home/matthew/cf/x/core/bit.h
+./container/hasha.o: /home/matthew/cf/x/core/types.h
 ./container/hash_table.o: /home/matthew/cf/x/container/hasha.h
+./container/hash_table.o: /home/matthew/cf/x/core/object.h
+./container/hash_table.o: /home/matthew/cf/x/core/bool.h
+./container/hash_table.o: /home/matthew/cf/x/core/declarations.h
+./container/hash_table.o: /home/matthew/cf/x/core/objectey.h
+./container/hash_table.o: /home/matthew/cf/x/core/tools.h
+./container/hash_table.o: /home/matthew/cf/x/core/standard.h
+./container/hash_table.o: /usr/include/arpa/inet.h /usr/include/features.h
+./container/hash_table.o: /usr/include/bits/predefs.h
+./container/hash_table.o: /usr/include/sys/cdefs.h
+./container/hash_table.o: /usr/include/bits/wordsize.h
+./container/hash_table.o: /usr/include/gnu/stubs.h
+./container/hash_table.o: /usr/include/gnu/stubs-32.h
+./container/hash_table.o: /usr/include/netinet/in.h /usr/include/stdint.h
+./container/hash_table.o: /usr/include/bits/wchar.h /usr/include/sys/socket.h
+./container/hash_table.o: /usr/include/sys/uio.h /usr/include/sys/types.h
+./container/hash_table.o: /usr/include/bits/types.h
+./container/hash_table.o: /usr/include/bits/typesizes.h /usr/include/time.h
+./container/hash_table.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
+./container/hash_table.o: /usr/include/endian.h /usr/include/bits/endian.h
+./container/hash_table.o: /usr/include/bits/byteswap.h
+./container/hash_table.o: /usr/include/sys/select.h
+./container/hash_table.o: /usr/include/bits/select.h
+./container/hash_table.o: /usr/include/bits/sigset.h /usr/include/bits/time.h
+./container/hash_table.o: /usr/include/sys/sysmacros.h
+./container/hash_table.o: /usr/include/bits/pthreadtypes.h
+./container/hash_table.o: /usr/include/bits/uio.h /usr/include/bits/socket.h
+./container/hash_table.o: /usr/include/bits/sockaddr.h
+./container/hash_table.o: /usr/include/asm/socket.h
+./container/hash_table.o: /usr/include/asm-generic/socket.h
+./container/hash_table.o: /usr/include/asm/sockios.h
+./container/hash_table.o: /usr/include/asm-generic/sockios.h
+./container/hash_table.o: /usr/include/bits/in.h /usr/include/assert.h
+./container/hash_table.o: /usr/include/ctype.h /usr/include/xlocale.h
+./container/hash_table.o: /usr/include/dirent.h /usr/include/bits/dirent.h
+./container/hash_table.o: /usr/include/bits/posix1_lim.h
+./container/hash_table.o: /usr/include/bits/local_lim.h
+./container/hash_table.o: /usr/include/linux/limits.h /usr/include/fcntl.h
+./container/hash_table.o: /usr/include/bits/fcntl.h
+./container/hash_table.o: /usr/include/postgresql/libpq-fe.h
+./container/hash_table.o: /usr/include/stdio.h /usr/include/libio.h
+./container/hash_table.o: /usr/include/_G_config.h /usr/include/wchar.h
+./container/hash_table.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdarg.h
+./container/hash_table.o: /usr/include/bits/stdio_lim.h
+./container/hash_table.o: /usr/include/bits/sys_errlist.h
+./container/hash_table.o: /usr/include/postgresql/postgres_ext.h
+./container/hash_table.o: /usr/include/math.h /usr/include/bits/huge_val.h
+./container/hash_table.o: /usr/include/bits/huge_valf.h
+./container/hash_table.o: /usr/include/bits/huge_vall.h
+./container/hash_table.o: /usr/include/bits/inf.h /usr/include/bits/nan.h
+./container/hash_table.o: /usr/include/bits/mathdef.h
+./container/hash_table.o: /usr/include/bits/mathcalls.h
+./container/hash_table.o: /usr/include/ncurses.h /usr/include/ncurses_dll.h
+./container/hash_table.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdbool.h
+./container/hash_table.o: /usr/include/unctrl.h /usr/include/curses.h
+./container/hash_table.o: /usr/include/openssl/rand.h /usr/include/stdlib.h
+./container/hash_table.o: /usr/include/alloca.h
+./container/hash_table.o: /usr/include/openssl/ossl_typ.h
+./container/hash_table.o: /usr/include/openssl/e_os2.h
+./container/hash_table.o: /usr/include/openssl/opensslconf.h
+./container/hash_table.o: /usr/include/pthread.h /usr/include/sched.h
+./container/hash_table.o: /usr/include/bits/sched.h /usr/include/signal.h
+./container/hash_table.o: /usr/include/bits/setjmp.h /usr/include/string.h
+./container/hash_table.o: /usr/include/sys/errno.h /usr/include/errno.h
+./container/hash_table.o: /usr/include/bits/errno.h
+./container/hash_table.o: /usr/include/linux/errno.h /usr/include/asm/errno.h
+./container/hash_table.o: /usr/include/asm-generic/errno.h
+./container/hash_table.o: /usr/include/asm-generic/errno-base.h
+./container/hash_table.o: /usr/include/sys/stat.h /usr/include/bits/stat.h
+./container/hash_table.o: /usr/include/termios.h /usr/include/bits/termios.h
+./container/hash_table.o: /usr/include/sys/ttydefaults.h
+./container/hash_table.o: /usr/include/unistd.h /usr/include/bits/posix_opt.h
+./container/hash_table.o: /usr/include/bits/confname.h /usr/include/getopt.h
+./container/hash_table.o: /usr/include/jpeglib.h /usr/include/jconfig.h
+./container/hash_table.o: /usr/include/jmorecfg.h
+./container/hash_table.o: /home/matthew/cf/x/core/bit.h
+./container/hash_table.o: /home/matthew/cf/x/core/types.h
 ./container/shardset.o: /home/matthew/cf/x/container/set.h
 ./container/shardset.o: /home/matthew/cf/x/container/list.h
 ./container/shardset.o: /home/matthew/cf/x/container/declarations.h
@@ -3805,6 +3948,79 @@
 ./container/array.o: /usr/include/jmorecfg.h /home/matthew/cf/x/core/bit.h
 ./container/array.o: /home/matthew/cf/x/core/unsigned_long.h
 ./container/skip_list.o: /home/matthew/cf/x/container/hasha.h
+./container/skip_list.o: /home/matthew/cf/x/core/object.h
+./container/skip_list.o: /home/matthew/cf/x/core/bool.h
+./container/skip_list.o: /home/matthew/cf/x/core/declarations.h
+./container/skip_list.o: /home/matthew/cf/x/core/objectey.h
+./container/skip_list.o: /home/matthew/cf/x/core/tools.h
+./container/skip_list.o: /home/matthew/cf/x/core/standard.h
+./container/skip_list.o: /usr/include/arpa/inet.h /usr/include/features.h
+./container/skip_list.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
+./container/skip_list.o: /usr/include/bits/wordsize.h
+./container/skip_list.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
+./container/skip_list.o: /usr/include/netinet/in.h /usr/include/stdint.h
+./container/skip_list.o: /usr/include/bits/wchar.h /usr/include/sys/socket.h
+./container/skip_list.o: /usr/include/sys/uio.h /usr/include/sys/types.h
+./container/skip_list.o: /usr/include/bits/types.h
+./container/skip_list.o: /usr/include/bits/typesizes.h /usr/include/time.h
+./container/skip_list.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
+./container/skip_list.o: /usr/include/endian.h /usr/include/bits/endian.h
+./container/skip_list.o: /usr/include/bits/byteswap.h
+./container/skip_list.o: /usr/include/sys/select.h /usr/include/bits/select.h
+./container/skip_list.o: /usr/include/bits/sigset.h /usr/include/bits/time.h
+./container/skip_list.o: /usr/include/sys/sysmacros.h
+./container/skip_list.o: /usr/include/bits/pthreadtypes.h
+./container/skip_list.o: /usr/include/bits/uio.h /usr/include/bits/socket.h
+./container/skip_list.o: /usr/include/bits/sockaddr.h
+./container/skip_list.o: /usr/include/asm/socket.h
+./container/skip_list.o: /usr/include/asm-generic/socket.h
+./container/skip_list.o: /usr/include/asm/sockios.h
+./container/skip_list.o: /usr/include/asm-generic/sockios.h
+./container/skip_list.o: /usr/include/bits/in.h /usr/include/assert.h
+./container/skip_list.o: /usr/include/ctype.h /usr/include/xlocale.h
+./container/skip_list.o: /usr/include/dirent.h /usr/include/bits/dirent.h
+./container/skip_list.o: /usr/include/bits/posix1_lim.h
+./container/skip_list.o: /usr/include/bits/local_lim.h
+./container/skip_list.o: /usr/include/linux/limits.h /usr/include/fcntl.h
+./container/skip_list.o: /usr/include/bits/fcntl.h
+./container/skip_list.o: /usr/include/postgresql/libpq-fe.h
+./container/skip_list.o: /usr/include/stdio.h /usr/include/libio.h
+./container/skip_list.o: /usr/include/_G_config.h /usr/include/wchar.h
+./container/skip_list.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdarg.h
+./container/skip_list.o: /usr/include/bits/stdio_lim.h
+./container/skip_list.o: /usr/include/bits/sys_errlist.h
+./container/skip_list.o: /usr/include/postgresql/postgres_ext.h
+./container/skip_list.o: /usr/include/math.h /usr/include/bits/huge_val.h
+./container/skip_list.o: /usr/include/bits/huge_valf.h
+./container/skip_list.o: /usr/include/bits/huge_vall.h
+./container/skip_list.o: /usr/include/bits/inf.h /usr/include/bits/nan.h
+./container/skip_list.o: /usr/include/bits/mathdef.h
+./container/skip_list.o: /usr/include/bits/mathcalls.h /usr/include/ncurses.h
+./container/skip_list.o: /usr/include/ncurses_dll.h
+./container/skip_list.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdbool.h
+./container/skip_list.o: /usr/include/unctrl.h /usr/include/curses.h
+./container/skip_list.o: /usr/include/openssl/rand.h /usr/include/stdlib.h
+./container/skip_list.o: /usr/include/alloca.h
+./container/skip_list.o: /usr/include/openssl/ossl_typ.h
+./container/skip_list.o: /usr/include/openssl/e_os2.h
+./container/skip_list.o: /usr/include/openssl/opensslconf.h
+./container/skip_list.o: /usr/include/pthread.h /usr/include/sched.h
+./container/skip_list.o: /usr/include/bits/sched.h /usr/include/signal.h
+./container/skip_list.o: /usr/include/bits/setjmp.h /usr/include/string.h
+./container/skip_list.o: /usr/include/sys/errno.h /usr/include/errno.h
+./container/skip_list.o: /usr/include/bits/errno.h /usr/include/linux/errno.h
+./container/skip_list.o: /usr/include/asm/errno.h
+./container/skip_list.o: /usr/include/asm-generic/errno.h
+./container/skip_list.o: /usr/include/asm-generic/errno-base.h
+./container/skip_list.o: /usr/include/sys/stat.h /usr/include/bits/stat.h
+./container/skip_list.o: /usr/include/termios.h /usr/include/bits/termios.h
+./container/skip_list.o: /usr/include/sys/ttydefaults.h /usr/include/unistd.h
+./container/skip_list.o: /usr/include/bits/posix_opt.h
+./container/skip_list.o: /usr/include/bits/confname.h /usr/include/getopt.h
+./container/skip_list.o: /usr/include/jpeglib.h /usr/include/jconfig.h
+./container/skip_list.o: /usr/include/jmorecfg.h
+./container/skip_list.o: /home/matthew/cf/x/core/bit.h
+./container/skip_list.o: /home/matthew/cf/x/core/types.h
 ./container/cache.o: /home/matthew/cf/x/container/cache.h
 ./container/cache.o: /home/matthew/cf/x/core/object.h
 ./container/cache.o: /home/matthew/cf/x/core/bool.h
@@ -3881,6 +4097,85 @@
 ./container/cache.o: /usr/include/jpeglib.h /usr/include/jconfig.h
 ./container/cache.o: /usr/include/jmorecfg.h /home/matthew/cf/x/core/bit.h
 ./container/binary_tree.o: /home/matthew/cf/x/container/hasha.h
+./container/binary_tree.o: /home/matthew/cf/x/core/object.h
+./container/binary_tree.o: /home/matthew/cf/x/core/bool.h
+./container/binary_tree.o: /home/matthew/cf/x/core/declarations.h
+./container/binary_tree.o: /home/matthew/cf/x/core/objectey.h
+./container/binary_tree.o: /home/matthew/cf/x/core/tools.h
+./container/binary_tree.o: /home/matthew/cf/x/core/standard.h
+./container/binary_tree.o: /usr/include/arpa/inet.h /usr/include/features.h
+./container/binary_tree.o: /usr/include/bits/predefs.h
+./container/binary_tree.o: /usr/include/sys/cdefs.h
+./container/binary_tree.o: /usr/include/bits/wordsize.h
+./container/binary_tree.o: /usr/include/gnu/stubs.h
+./container/binary_tree.o: /usr/include/gnu/stubs-32.h
+./container/binary_tree.o: /usr/include/netinet/in.h /usr/include/stdint.h
+./container/binary_tree.o: /usr/include/bits/wchar.h
+./container/binary_tree.o: /usr/include/sys/socket.h /usr/include/sys/uio.h
+./container/binary_tree.o: /usr/include/sys/types.h /usr/include/bits/types.h
+./container/binary_tree.o: /usr/include/bits/typesizes.h /usr/include/time.h
+./container/binary_tree.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
+./container/binary_tree.o: /usr/include/endian.h /usr/include/bits/endian.h
+./container/binary_tree.o: /usr/include/bits/byteswap.h
+./container/binary_tree.o: /usr/include/sys/select.h
+./container/binary_tree.o: /usr/include/bits/select.h
+./container/binary_tree.o: /usr/include/bits/sigset.h
+./container/binary_tree.o: /usr/include/bits/time.h
+./container/binary_tree.o: /usr/include/sys/sysmacros.h
+./container/binary_tree.o: /usr/include/bits/pthreadtypes.h
+./container/binary_tree.o: /usr/include/bits/uio.h /usr/include/bits/socket.h
+./container/binary_tree.o: /usr/include/bits/sockaddr.h
+./container/binary_tree.o: /usr/include/asm/socket.h
+./container/binary_tree.o: /usr/include/asm-generic/socket.h
+./container/binary_tree.o: /usr/include/asm/sockios.h
+./container/binary_tree.o: /usr/include/asm-generic/sockios.h
+./container/binary_tree.o: /usr/include/bits/in.h /usr/include/assert.h
+./container/binary_tree.o: /usr/include/ctype.h /usr/include/xlocale.h
+./container/binary_tree.o: /usr/include/dirent.h /usr/include/bits/dirent.h
+./container/binary_tree.o: /usr/include/bits/posix1_lim.h
+./container/binary_tree.o: /usr/include/bits/local_lim.h
+./container/binary_tree.o: /usr/include/linux/limits.h /usr/include/fcntl.h
+./container/binary_tree.o: /usr/include/bits/fcntl.h
+./container/binary_tree.o: /usr/include/postgresql/libpq-fe.h
+./container/binary_tree.o: /usr/include/stdio.h /usr/include/libio.h
+./container/binary_tree.o: /usr/include/_G_config.h /usr/include/wchar.h
+./container/binary_tree.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdarg.h
+./container/binary_tree.o: /usr/include/bits/stdio_lim.h
+./container/binary_tree.o: /usr/include/bits/sys_errlist.h
+./container/binary_tree.o: /usr/include/postgresql/postgres_ext.h
+./container/binary_tree.o: /usr/include/math.h /usr/include/bits/huge_val.h
+./container/binary_tree.o: /usr/include/bits/huge_valf.h
+./container/binary_tree.o: /usr/include/bits/huge_vall.h
+./container/binary_tree.o: /usr/include/bits/inf.h /usr/include/bits/nan.h
+./container/binary_tree.o: /usr/include/bits/mathdef.h
+./container/binary_tree.o: /usr/include/bits/mathcalls.h
+./container/binary_tree.o: /usr/include/ncurses.h /usr/include/ncurses_dll.h
+./container/binary_tree.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdbool.h
+./container/binary_tree.o: /usr/include/unctrl.h /usr/include/curses.h
+./container/binary_tree.o: /usr/include/openssl/rand.h /usr/include/stdlib.h
+./container/binary_tree.o: /usr/include/alloca.h
+./container/binary_tree.o: /usr/include/openssl/ossl_typ.h
+./container/binary_tree.o: /usr/include/openssl/e_os2.h
+./container/binary_tree.o: /usr/include/openssl/opensslconf.h
+./container/binary_tree.o: /usr/include/pthread.h /usr/include/sched.h
+./container/binary_tree.o: /usr/include/bits/sched.h /usr/include/signal.h
+./container/binary_tree.o: /usr/include/bits/setjmp.h /usr/include/string.h
+./container/binary_tree.o: /usr/include/sys/errno.h /usr/include/errno.h
+./container/binary_tree.o: /usr/include/bits/errno.h
+./container/binary_tree.o: /usr/include/linux/errno.h
+./container/binary_tree.o: /usr/include/asm/errno.h
+./container/binary_tree.o: /usr/include/asm-generic/errno.h
+./container/binary_tree.o: /usr/include/asm-generic/errno-base.h
+./container/binary_tree.o: /usr/include/sys/stat.h /usr/include/bits/stat.h
+./container/binary_tree.o: /usr/include/termios.h /usr/include/bits/termios.h
+./container/binary_tree.o: /usr/include/sys/ttydefaults.h
+./container/binary_tree.o: /usr/include/unistd.h
+./container/binary_tree.o: /usr/include/bits/posix_opt.h
+./container/binary_tree.o: /usr/include/bits/confname.h /usr/include/getopt.h
+./container/binary_tree.o: /usr/include/jpeglib.h /usr/include/jconfig.h
+./container/binary_tree.o: /usr/include/jmorecfg.h
+./container/binary_tree.o: /home/matthew/cf/x/core/bit.h
+./container/binary_tree.o: /home/matthew/cf/x/core/types.h
 ./container/map.o: /home/matthew/cf/x/container/map.h
 ./container/map.o: /home/matthew/cf/x/core/bool.h
 ./container/map.o: /home/matthew/cf/x/core/declarations.h
@@ -4024,6 +4319,70 @@
 ./container/set.o: /usr/include/jconfig.h /usr/include/jmorecfg.h
 ./container/set.o: /home/matthew/cf/x/core/bit.h
 ./container/declarations.o: /home/matthew/cf/x/container/declarations.h
+./container/mbin.o: ./container/mbin.h /home/matthew/cf/x/core/object.h
+./container/mbin.o: /home/matthew/cf/x/core/bool.h
+./container/mbin.o: /home/matthew/cf/x/core/declarations.h
+./container/mbin.o: /home/matthew/cf/x/core/objectey.h
+./container/mbin.o: /home/matthew/cf/x/core/tools.h
+./container/mbin.o: /home/matthew/cf/x/core/standard.h
+./container/mbin.o: /usr/include/arpa/inet.h /usr/include/features.h
+./container/mbin.o: /usr/include/bits/predefs.h /usr/include/sys/cdefs.h
+./container/mbin.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
+./container/mbin.o: /usr/include/gnu/stubs-32.h /usr/include/netinet/in.h
+./container/mbin.o: /usr/include/stdint.h /usr/include/bits/wchar.h
+./container/mbin.o: /usr/include/sys/socket.h /usr/include/sys/uio.h
+./container/mbin.o: /usr/include/sys/types.h /usr/include/bits/types.h
+./container/mbin.o: /usr/include/bits/typesizes.h /usr/include/time.h
+./container/mbin.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
+./container/mbin.o: /usr/include/endian.h /usr/include/bits/endian.h
+./container/mbin.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
+./container/mbin.o: /usr/include/bits/select.h /usr/include/bits/sigset.h
+./container/mbin.o: /usr/include/bits/time.h /usr/include/sys/sysmacros.h
+./container/mbin.o: /usr/include/bits/pthreadtypes.h /usr/include/bits/uio.h
+./container/mbin.o: /usr/include/bits/socket.h /usr/include/bits/sockaddr.h
+./container/mbin.o: /usr/include/asm/socket.h
+./container/mbin.o: /usr/include/asm-generic/socket.h
+./container/mbin.o: /usr/include/asm/sockios.h
+./container/mbin.o: /usr/include/asm-generic/sockios.h /usr/include/bits/in.h
+./container/mbin.o: /usr/include/assert.h /usr/include/ctype.h
+./container/mbin.o: /usr/include/xlocale.h /usr/include/dirent.h
+./container/mbin.o: /usr/include/bits/dirent.h /usr/include/bits/posix1_lim.h
+./container/mbin.o: /usr/include/bits/local_lim.h /usr/include/linux/limits.h
+./container/mbin.o: /usr/include/fcntl.h /usr/include/bits/fcntl.h
+./container/mbin.o: /usr/include/postgresql/libpq-fe.h /usr/include/stdio.h
+./container/mbin.o: /usr/include/libio.h /usr/include/_G_config.h
+./container/mbin.o: /usr/include/wchar.h
+./container/mbin.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdarg.h
+./container/mbin.o: /usr/include/bits/stdio_lim.h
+./container/mbin.o: /usr/include/bits/sys_errlist.h
+./container/mbin.o: /usr/include/postgresql/postgres_ext.h
+./container/mbin.o: /usr/include/math.h /usr/include/bits/huge_val.h
+./container/mbin.o: /usr/include/bits/huge_valf.h
+./container/mbin.o: /usr/include/bits/huge_vall.h /usr/include/bits/inf.h
+./container/mbin.o: /usr/include/bits/nan.h /usr/include/bits/mathdef.h
+./container/mbin.o: /usr/include/bits/mathcalls.h /usr/include/ncurses.h
+./container/mbin.o: /usr/include/ncurses_dll.h
+./container/mbin.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdbool.h
+./container/mbin.o: /usr/include/unctrl.h /usr/include/curses.h
+./container/mbin.o: /usr/include/openssl/rand.h /usr/include/stdlib.h
+./container/mbin.o: /usr/include/alloca.h /usr/include/openssl/ossl_typ.h
+./container/mbin.o: /usr/include/openssl/e_os2.h
+./container/mbin.o: /usr/include/openssl/opensslconf.h /usr/include/pthread.h
+./container/mbin.o: /usr/include/sched.h /usr/include/bits/sched.h
+./container/mbin.o: /usr/include/signal.h /usr/include/bits/setjmp.h
+./container/mbin.o: /usr/include/string.h /usr/include/sys/errno.h
+./container/mbin.o: /usr/include/errno.h /usr/include/bits/errno.h
+./container/mbin.o: /usr/include/linux/errno.h /usr/include/asm/errno.h
+./container/mbin.o: /usr/include/asm-generic/errno.h
+./container/mbin.o: /usr/include/asm-generic/errno-base.h
+./container/mbin.o: /usr/include/sys/stat.h /usr/include/bits/stat.h
+./container/mbin.o: /usr/include/termios.h /usr/include/bits/termios.h
+./container/mbin.o: /usr/include/sys/ttydefaults.h /usr/include/unistd.h
+./container/mbin.o: /usr/include/bits/posix_opt.h
+./container/mbin.o: /usr/include/bits/confname.h /usr/include/getopt.h
+./container/mbin.o: /usr/include/jpeglib.h /usr/include/jconfig.h
+./container/mbin.o: /usr/include/jmorecfg.h /home/matthew/cf/x/core/bit.h
+./container/mbin.o: /home/matthew/cf/x/core/types.h
 ./net/node_conf.o: /home/matthew/cf/x/core/tools.h
 ./net/node_conf.o: /home/matthew/cf/x/core/standard.h
 ./net/node_conf.o: /usr/include/arpa/inet.h /usr/include/features.h
