@@ -23,11 +23,11 @@ unsigned long cf_x_case_array_count_non_null_objects
 (cf_x_case_array_t *array);
 
 cf_x_case_array_t *cf_x_case_array_create(unsigned long initial_size,
-    cf_x_core_compare_f compare, cf_x_core_copy_f copy, cf_x_core_destroy_f destroy);
+    cf_x_core_object_compare_f compare, cf_x_core_object_copy_f copy, cf_x_core_object_destroy_f destroy);
 
 cf_x_case_array_t *cf_x_case_array_create_from_message
-(cf_x_core_compare_f compare_object, cf_x_core_copy_f copy,
-    cf_x_core_destroy_f destroy, cf_x_core_message_t *message,
+(cf_x_core_object_compare_f compare_object, cf_x_core_object_copy_f copy,
+    cf_x_core_object_destroy_f destroy, cf_x_core_message_t *message,
     cf_x_core_message_create_from_message_f create_from_message);
 
 cf_x_case_array_t *cf_x_case_array_create_strings_from_string
@@ -53,13 +53,13 @@ void *cf_x_case_array_find_last(cf_x_case_array_t *array);
 void **cf_x_case_array_get_array(cf_x_case_array_t *array);
 
 char *cf_x_case_array_get_as_delimited_string(cf_x_case_array_t *array,
-    cf_x_core_get_as_string_f get_as_string, char *delimiter);
+    cf_x_core_object_get_as_string_f get_as_string, char *delimiter);
 
-cf_x_core_compare_f cf_x_case_array_get_compare(cf_x_case_array_t *array);
+cf_x_core_object_compare_f cf_x_case_array_get_compare(cf_x_case_array_t *array);
 
-cf_x_core_copy_f cf_x_case_array_get_copy(cf_x_case_array_t *array);
+cf_x_core_object_copy_f cf_x_case_array_get_copy(cf_x_case_array_t *array);
 
-cf_x_core_destroy_f cf_x_case_array_get_destroy(cf_x_case_array_t *array);
+cf_x_core_object_destroy_f cf_x_case_array_get_destroy(cf_x_case_array_t *array);
 
 unsigned long cf_x_case_array_get_size(cf_x_case_array_t *array);
 

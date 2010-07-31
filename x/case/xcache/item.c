@@ -7,8 +7,8 @@ struct cf_x_case_xcache_item_t {
   cf_x_core_bool_t expired;
   cf_x_core_uuid_t *object_uuid;
   void *object;
-  cf_x_core_copy_f copy;
-  cf_x_core_destroy_f destroy;
+  cf_x_core_object_copy_f copy;
+  cf_x_core_object_destroy_f destroy;
 };
 
 int cf_x_case_xcache_item_compare(void *item_object_a,
@@ -31,8 +31,8 @@ void *cf_x_case_xcache_item_copy(void *item_object)
 }
 
 cf_x_case_xcache_item_t *cf_x_case_xcache_item_create(cf_x_core_uuid_t *object_uuid,
-    void *object, cf_x_core_copy_f copy,
-    cf_x_core_destroy_f destroy, unsigned long lifespan_seconds)
+    void *object, cf_x_core_object_copy_f copy,
+    cf_x_core_object_destroy_f destroy, unsigned long lifespan_seconds)
 {
   assert(object_uuid);
   assert(object);

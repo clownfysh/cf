@@ -25,7 +25,7 @@ int cf_x_core_pair_compare_left(void *pair_object_a, void *pair_object_b)
   cf_x_core_pair_t *pair_a;
   cf_x_core_pair_t *pair_b;
   int compare_result;
-  cf_x_core_compare_f compare;
+  cf_x_core_object_compare_f compare;
 
   pair_a = pair_object_a;
   pair_b = pair_object_b;
@@ -43,7 +43,7 @@ int cf_x_core_pair_compare_right(void *pair_object_a, void *pair_object_b)
   cf_x_core_pair_t *pair_a;
   cf_x_core_pair_t *pair_b;
   int compare_result;
-  cf_x_core_compare_f compare;
+  cf_x_core_object_compare_f compare;
 
   pair_a = pair_object_a;
   pair_b = pair_object_b;
@@ -135,8 +135,8 @@ char *cf_x_core_pair_get_as_string(void *pair_object)
   assert(pair_object);
   cf_x_core_pair_t *pair;
   char *string;
-  cf_x_core_get_as_string_f left_get_as_string;
-  cf_x_core_get_as_string_f right_get_as_string;
+  cf_x_core_object_get_as_string_f left_get_as_string;
+  cf_x_core_object_get_as_string_f right_get_as_string;
   char *left_string;
   char *right_string;
 

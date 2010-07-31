@@ -19,9 +19,9 @@ struct cf_x_case_list_t {
   unsigned long size;
   unsigned long size_limit;
 
-  cf_x_core_compare_f compare;
-  cf_x_core_copy_f copy;
-  cf_x_core_destroy_f destroy;
+  cf_x_core_object_compare_f compare;
+  cf_x_core_object_copy_f copy;
+  cf_x_core_object_destroy_f destroy;
 
   list_object_t *iterator;
   cf_x_core_bool_t iterate_remove;
@@ -202,7 +202,7 @@ int cf_x_case_list_compare(void *list_object_a,
   int compare_result;
   void *object_a;
   void *object_b;
-  cf_x_core_compare_f compare;
+  cf_x_core_object_compare_f compare;
 
   list_a = list_object_a;
   list_b = list_object_b;
@@ -272,8 +272,8 @@ void *cf_x_case_list_copy(void *list_object)
 }
 
 cf_x_case_list_t *cf_x_case_list_create
-(cf_x_core_compare_f compare, cf_x_core_copy_f copy,
-    cf_x_core_destroy_f destroy)
+(cf_x_core_object_compare_f compare, cf_x_core_object_copy_f copy,
+    cf_x_core_object_destroy_f destroy)
 {
   cf_x_case_list_t *list;
 
@@ -303,9 +303,9 @@ cf_x_case_list_t *cf_x_case_list_create_from_array_n(cf_x_case_array_t *array,
   void *object;
   void *object_copy;
   unsigned long object_index;
-  cf_x_core_compare_f compare;
-  cf_x_core_copy_f copy;
-  cf_x_core_destroy_f destroy;
+  cf_x_core_object_compare_f compare;
+  cf_x_core_object_copy_f copy;
+  cf_x_core_object_destroy_f destroy;
   unsigned long array_size;
 
   compare = cf_x_case_array_get_compare(array);
@@ -338,8 +338,8 @@ cf_x_case_list_t *cf_x_case_list_create_from_array_n(cf_x_case_array_t *array,
 }
 
 cf_x_case_list_t *cf_x_case_list_create_from_message
-(cf_x_core_compare_f compare, cf_x_core_copy_f copy,
-    cf_x_core_destroy_f destroy, cf_x_core_message_t *message,
+(cf_x_core_object_compare_f compare, cf_x_core_object_copy_f copy,
+    cf_x_core_object_destroy_f destroy, cf_x_core_message_t *message,
     cf_x_core_message_create_from_message_f create_from_message)
 {
   cf_x_case_list_t *list;
@@ -491,7 +491,7 @@ void *cf_x_case_list_find_random(cf_x_case_list_t *list)
 }
 
 char *cf_x_case_list_get_as_delimited_string(cf_x_case_list_t *list,
-    cf_x_core_get_as_string_f get_as_string, const char *delimiter)
+    cf_x_core_object_get_as_string_f get_as_string, const char *delimiter)
 {
   assert(list);
   assert(get_as_string);

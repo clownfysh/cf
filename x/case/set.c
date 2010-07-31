@@ -158,7 +158,7 @@ int cf_x_case_set_compare(void *set_object_a,
   void *object_b;
   unsigned long size_a;
   unsigned long size_b;
-  cf_x_core_compare_f compare;
+  cf_x_core_object_compare_f compare;
 
   set_a = set_object_a;
   set_b = set_object_b;
@@ -382,7 +382,7 @@ cf_x_case_array_t *cf_x_case_set_get_as_array(cf_x_case_set_t *set)
   object_count = cf_x_case_set_get_size(set);
 
   array = cf_x_case_array_create(object_count, objectey->compare,
-      objectey->copy, CF_X_CORE_NO_DESTROY_FUNCTION);
+      objectey->copy, CF_X_CORE_OBJECT_NO_DESTROY_F);
   if (array) {
     object_index = 0;
     cf_x_case_set_iterate_start(set);
@@ -405,7 +405,7 @@ cf_x_case_list_t *cf_x_case_set_get_as_list(cf_x_case_set_t *set)
   cf_x_core_objectey_t *objectey = cf_x_case_set_get_objectey(set);
 
   list = cf_x_case_list_create(objectey->compare, objectey->copy,
-      CF_X_CORE_NO_DESTROY_FUNCTION);
+      CF_X_CORE_OBJECT_NO_DESTROY_F);
   if (list) {
     cf_x_case_set_iterate_start(set);
     while ((object = cf_x_case_set_iterate_next(set))) {
@@ -419,7 +419,7 @@ cf_x_case_list_t *cf_x_case_set_get_as_list(cf_x_case_set_t *set)
 }
 
 char *cf_x_case_set_get_as_delimited_string(cf_x_case_set_t *set,
-    cf_x_core_get_as_string_f get_as_string, const char *delimiter)
+    cf_x_core_object_get_as_string_f get_as_string, const char *delimiter)
 {
   assert(set);
   assert(get_as_string);

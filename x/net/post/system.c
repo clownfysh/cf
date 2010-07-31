@@ -159,8 +159,8 @@ cf_x_core_bool_t cf_x_net_post_system_create_inbox(cf_x_net_post_system_t *post)
 {
   cf_x_core_bool_t success;
 
-  post->inbox = cf_x_case_list_create(CF_X_CORE_NO_COMPARE_FUNCTION,
-      cf_x_core_message_copy, CF_X_CORE_NO_DESTROY_FUNCTION);
+  post->inbox = cf_x_case_list_create(CF_X_CORE_OBJECT_NO_COMPARE_F,
+      cf_x_core_message_copy, CF_X_CORE_OBJECT_NO_DESTROY_F);
   if (post->inbox) {
     success = cf_x_core_bool_true;
   } else {
@@ -182,7 +182,7 @@ cf_x_core_bool_t cf_x_net_post_system_create_outbox(cf_x_net_post_system_t *post
 {
   cf_x_core_bool_t success;
 
-  post->outbox = cf_x_case_list_create(CF_X_CORE_NO_COMPARE_FUNCTION,
+  post->outbox = cf_x_case_list_create(CF_X_CORE_OBJECT_NO_COMPARE_F,
       cf_x_core_message_copy, cf_x_core_message_destroy);
   if (post->outbox) {
     success = cf_x_core_bool_true;
@@ -369,8 +369,8 @@ cf_x_case_list_t *cf_x_net_post_system_take_unsent_messages(cf_x_net_post_system
   cf_x_case_list_t *list;
   cf_x_core_message_t *message;
 
-  list = cf_x_case_list_create(CF_X_CORE_NO_COMPARE_FUNCTION,
-      cf_x_core_message_copy, CF_X_CORE_NO_DESTROY_FUNCTION);
+  list = cf_x_case_list_create(CF_X_CORE_OBJECT_NO_COMPARE_F,
+      cf_x_core_message_copy, CF_X_CORE_OBJECT_NO_DESTROY_F);
   if (list) {
     cf_x_case_list_iterate_start(post->outbox);
     while ((message = cf_x_case_list_iterate_next(post->outbox))) {

@@ -196,7 +196,7 @@ void establisx_connection(cf_x_net_star_client_system_t *starclient, char *clien
       starclient->log);
   if (client) {
     nameclient = cf_x_core_nameobject_create(client_name, client,
-        CF_X_CORE_NO_COPY_FUNCTION, cf_x_net_client_system_destroy,
+        CF_X_CORE_OBJECT_NO_COPY_F, cf_x_net_client_system_destroy,
         cf_x_net_client_system_get_as_string);
     if (nameclient) {
       if (cf_x_case_set_add(starclient->clients, nameclient)) {
@@ -398,7 +398,7 @@ cf_x_core_bool_t cf_x_net_star_client_system_create_client_list
   cf_x_core_bool_t success;
 
   starclient->client_list = cf_x_case_list_create(cf_x_core_nameobject_compare,
-      cf_x_core_nameobject_copy, CF_X_CORE_NO_DESTROY_FUNCTION);
+      cf_x_core_nameobject_copy, CF_X_CORE_OBJECT_NO_DESTROY_F);
   if (starclient->client_list) {
     success = cf_x_core_bool_true;
   } else {
@@ -448,7 +448,7 @@ cf_x_core_bool_t cf_x_net_star_client_system_create_message_handler_info
   cf_x_core_bool_t success;
 
   starclient->message_handler_info = cf_x_case_list_create
-    (CF_X_CORE_NO_COMPARE_FUNCTION, CF_X_CORE_NO_COPY_FUNCTION, free);
+    (CF_X_CORE_OBJECT_NO_COMPARE_F, CF_X_CORE_OBJECT_NO_COPY_F, free);
   if (starclient->message_handler_info) {
     success = cf_x_core_bool_true;
   } else {
@@ -466,8 +466,8 @@ cf_x_core_bool_t cf_x_net_star_client_system_create_unsent_messages
   cf_x_core_bool_t success;
 
   starclient->unsent_messages = cf_x_case_list_create
-    (CF_X_CORE_NO_COMPARE_FUNCTION, cf_x_core_message_copy,
-        CF_X_CORE_NO_DESTROY_FUNCTION);
+    (CF_X_CORE_OBJECT_NO_COMPARE_F, cf_x_core_message_copy,
+        CF_X_CORE_OBJECT_NO_DESTROY_F);
   if (starclient->unsent_messages) {
     success = cf_x_core_bool_true;
   } else {

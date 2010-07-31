@@ -274,16 +274,16 @@ void *cf_x_net_http_post_create(int socket)
   }
 
   if (so_far_so_good) {
-    hyperpost->inbox = cf_x_case_list_create(CF_X_CORE_NO_COMPARE_FUNCTION,
-        CF_X_CORE_NO_COPY_FUNCTION, CF_X_CORE_NO_DESTROY_FUNCTION);
+    hyperpost->inbox = cf_x_case_list_create(CF_X_CORE_OBJECT_NO_COMPARE_F,
+        CF_X_CORE_OBJECT_NO_COPY_F, CF_X_CORE_OBJECT_NO_DESTROY_F);
     if (!hyperpost->inbox) {
       so_far_so_good = cf_x_core_bool_false;
     }
   }
 
   if (so_far_so_good) {
-    hyperpost->outbox = cf_x_case_list_create(CF_X_CORE_NO_COMPARE_FUNCTION,
-        CF_X_CORE_NO_COPY_FUNCTION, cf_x_net_http_message_destroy);
+    hyperpost->outbox = cf_x_case_list_create(CF_X_CORE_OBJECT_NO_COMPARE_F,
+        CF_X_CORE_OBJECT_NO_COPY_F, cf_x_net_http_message_destroy);
     if (!hyperpost->outbox) {
       so_far_so_good = cf_x_core_bool_false;
     }

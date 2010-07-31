@@ -3,7 +3,7 @@
 #include "cf/x/core/tools.h"
 
 struct cf_x_case_shardset_t {
-  cf_x_core_hash_f hash_object;
+  cf_x_core_object_hash_f hash_object;
   unsigned short shard_count;
   cf_x_case_set_t *shards[CF_X_CASE_SHARDSET_MAX_SHARDS];
   pthread_mutex_t shard_mutexes[CF_X_CASE_SHARDSET_MAX_SHARDS];
@@ -75,9 +75,9 @@ void cf_x_case_shardset_clear(cf_x_case_shardset_t *shardset)
   TODO: simplify
   TODO: ugh...some rollback code is in the rollback method, some not...fix
 */
-cf_x_case_shardset_t *cf_x_case_shardset_create(cf_x_core_compare_f compare,
-    cf_x_core_copy_f copy, cf_x_core_destroy_f destroy, cf_x_core_equal_f equal,
-    cf_x_core_hash_f hash_object, cf_x_core_mod_f mod, unsigned short shard_count)
+cf_x_case_shardset_t *cf_x_case_shardset_create(cf_x_core_object_compare_f compare,
+    cf_x_core_object_copy_f copy, cf_x_core_object_destroy_f destroy, cf_x_core_object_compare_equal_f equal,
+    cf_x_core_object_hash_f hash_object, cf_x_core_object_mod_f mod, unsigned short shard_count)
 {
   assert(shard_count > 0);
   cf_x_case_shardset_t *shardset;
@@ -106,7 +106,7 @@ cf_x_case_shardset_t *cf_x_case_shardset_create(cf_x_core_compare_f compare,
 
   if (so_far_so_good) {
     cf_x_core_objectey_init(&shardset->set_objectey, compare, copy, destroy,
-        equal, CF_X_CORE_NO_GET_AS_STRING_FUNCTION, mod);
+        equal, CF_X_CORE_OBJECT_NO_GET_AS_STRING_F, mod);
     for (each_shard = 0; each_shard < shard_count; each_shard++) {
       *(shardset->shards + each_shard)
         = cf_x_case_set_create(&shardset->set_objectey);
@@ -336,7 +336,7 @@ void cf_x_case_shardset_lock(cf_x_case_shardset_t *shardset)
 }
 
 void cf_x_case_shardset_print(cf_x_case_shardset_t *shardset,
-    cf_x_core_get_as_string_f get_object_as_string)
+    cf_x_core_object_get_as_string_f get_object_as_string)
 {
   assert(shardset);
   unsigned short each_shard;
@@ -367,7 +367,7 @@ cf_x_core_bool_t cf_x_case_shardset_remove(cf_x_case_shardset_t *shardset,
 }
 
 unsigned long cf_x_case_shardset_remove_if(cf_x_case_shardset_t *shardset,
-    cf_x_core_condition_f object_condition)
+    cf_x_core_object_evaluate_condition_f object_condition)
 {
   assert(shardset);
   unsigned short each_shard;

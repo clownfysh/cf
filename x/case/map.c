@@ -84,7 +84,7 @@ cf_x_case_map_t *cf_x_case_map_create(cf_x_core_objectey_t *left_objectey,
     map->destroy = destroy;
     cf_x_core_objectey_init(&map->pairs_objectey, cf_x_core_pair_compare_left,
         cf_x_core_pair_copy, cf_x_core_pair_destroy, cf_x_core_pair_equal_left,
-        CF_X_CORE_NO_GET_AS_STRING_FUNCTION, cf_x_core_pair_mod_left);
+        CF_X_CORE_OBJECT_NO_GET_AS_STRING_F, cf_x_core_pair_mod_left);
     map->pairs = cf_x_case_set_create(&map->pairs_objectey);
     if (!map->pairs) {
       cf_x_core_trace("x_case_set_create");

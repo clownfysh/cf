@@ -19,9 +19,9 @@ cf_x_net_exchange_t *cf_x_net_exchange_create(cf_x_net_post_postey_t *postey)
     success = cf_x_core_bool_true;
     exchange->postey = postey;
     cf_x_core_objectey_init(&exchange->postey_objectey, postey->compare,
-        CF_X_CORE_NO_COPY_FUNCTION, CF_X_CORE_NO_DESTROY_FUNCTION,
-        CF_X_CORE_NO_EQUAL_FUNCTION, CF_X_CORE_NO_GET_AS_STRING_FUNCTION,
-        CF_X_CORE_NO_MOD_FUNCTION);
+        CF_X_CORE_OBJECT_NO_COPY_F, CF_X_CORE_OBJECT_NO_DESTROY_F,
+        CF_X_CORE_OBJECT_NO_EQUAL_F, CF_X_CORE_OBJECT_NO_GET_AS_STRING_F,
+        CF_X_CORE_OBJECT_NO_MOD_F);
     exchange->posts = cf_x_case_set_create(&exchange->postey_objectey);
     if (!exchange->posts) {
       cf_x_core_trace("x_case_set_create");

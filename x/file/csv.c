@@ -14,8 +14,6 @@ struct cf_x_file_csv_t {
   cf_x_case_map_t *name_to_index;
   cf_x_case_array_t *index_to_name;
   cf_x_case_array_t *objects;
-
-  cf_x_core_objects_t cf_x_core_objects;
 };
 
 static cf_x_case_array_t *create_index_to_name_array(cf_x_file_csv_t *csv,
@@ -54,7 +52,7 @@ cf_x_file_csv_t *cf_x_file_csv_create_extended(char *filename,
     csv->name_to_index = NULL;
     csv->index_to_name = NULL;
     csv->objects = NULL;
-    cf_x_core_objects_init(&csv->cf_x_core_objects);
+    cf_x_core_objects_init();
     file = cf_x_file_basic_create(filename, CF_X_FILE_MODE_OPEN_FOR_READ);
     if (file) {
       so_far_so_good = cf_x_core_bool_true;
@@ -120,12 +118,11 @@ void cf_x_file_csv_destroy(void *csv_object)
   cf_x_case_map_destroy(csv->name_to_index);
   cf_x_case_array_destroy(csv->index_to_name);
   cf_x_case_array_destroy(csv->objects);
-  cf_x_core_objects_free(&csv->cf_x_core_objects);
   free(csv);
 }
 
-cf_x_case_array_t *cf_x_file_csv_get_field_by_index_as_array(cf_x_file_csv_t *csv,
-    unsigned long field_index)
+cf_x_case_array_t *cf_x_file_csv_get_field_by_index_as_array
+(cf_x_file_csv_t *csv, unsigned long field_index)
 {
   assert(csv);
   cf_x_case_array_t *array;
@@ -155,8 +152,8 @@ cf_x_case_array_t *cf_x_file_csv_get_field_by_index_as_array(cf_x_file_csv_t *cs
   return array;
 }
 
-cf_x_case_array_t *cf_x_file_csv_get_field_by_name_as_array(cf_x_file_csv_t *csv,
-    char *field_name)
+cf_x_case_array_t *cf_x_file_csv_get_field_by_name_as_array
+(cf_x_file_csv_t *csv, char *field_name)
 {
   assert(csv);
   assert(field_name);
@@ -192,8 +189,8 @@ unsigned long cf_x_file_csv_get_field_count(cf_x_file_csv_t *csv)
   return csv->field_count;
 }
 
-cf_x_core_bool_t cf_x_file_csv_get_field_index(cf_x_file_csv_t *csv, char *field_name,
-    unsigned long *field_index)
+cf_x_core_bool_t cf_x_file_csv_get_field_index(cf_x_file_csv_t *csv,
+    char *field_name, unsigned long *field_index)
 {
   assert(csv);
   unsigned long *field_index_object;
@@ -210,7 +207,8 @@ cf_x_core_bool_t cf_x_file_csv_get_field_index(cf_x_file_csv_t *csv, char *field
   return success;
 }
 
-char *cf_x_file_csv_get_field_name(cf_x_file_csv_t *csv, unsigned long field_index)
+char *cf_x_file_csv_get_field_name(cf_x_file_csv_t *csv,
+    unsigned long field_index)
 {
   return cf_x_case_array_find(csv->index_to_name, field_index);
 }
@@ -221,8 +219,7 @@ unsigned long cf_x_file_csv_get_object_count(cf_x_file_csv_t *csv)
 }
 
 cf_x_core_bit_t cf_x_file_csv_get_value_by_index_as_bit(cf_x_file_csv_t *csv,
-    unsigned long object_index,
-    unsigned long field_index)
+    unsigned long object_index, unsigned long field_index)
 {
   assert(csv);
   char *value_string;
@@ -471,7 +468,8 @@ cf_x_case_array_t *create_index_to_name_array(cf_x_file_csv_t *csv,
   unsigned long field_index;
 
   index_to_name = cf_x_case_array_create(csv->field_count,
-      cf_x_core_string_compare, cf_x_core_string_copy, cf_x_core_string_destroy);
+      cf_x_core_string_compare, cf_x_core_string_copy,
+      cf_x_core_string_destroy);
   if (index_to_name) {
     line_list = cf_x_file_basic_get_as_line_list(file);
     if (line_list) {
@@ -529,9 +527,8 @@ cf_x_case_map_t *create_name_to_index_map(cf_x_file_csv_t *csv,
         (first_line, ",");
       if (field_names) {
         csv->field_count = cf_x_case_list_get_size(field_names);
-        map = cf_x_case_map_create(&csv->cf_x_core_objects.string_objectey,
-            &csv->cf_x_core_objects.unsigned_long_objectey,
-            CF_X_CASE_MAP_DESTROY);
+        map = cf_x_case_map_create(&cf_x_core_objects.string_objectey,
+            &cf_x_core_objects.unsigned_long_objectey, CF_X_CASE_MAP_DESTROY);
         if (map) {
           index = 0;
           cf_x_case_list_iterate_start(field_names);
@@ -570,8 +567,9 @@ cf_x_case_map_t *create_name_to_index_map(cf_x_file_csv_t *csv,
   return map;
 }
 
-cf_x_case_array_t *create_objects_array(cf_x_file_csv_t *csv, cf_x_file_basic_t *file,
-    unsigned long start_object, unsigned long end_object)
+cf_x_case_array_t *create_objects_array(cf_x_file_csv_t *csv,
+    cf_x_file_basic_t *file, unsigned long start_object,
+    unsigned long end_object)
 {
   assert(csv);
   assert(file);

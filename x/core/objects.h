@@ -8,12 +8,13 @@ struct cf_x_core_objects_t {
   cf_x_core_objectey_t pair_objectey;
   cf_x_core_objectey_t string_objectey;
   cf_x_core_objectey_t unsigned_long_objectey;
+  cf_x_core_objectey_t uuid_objectey;
   cf_x_core_objectey_t void_objectey;
 };
 typedef struct cf_x_core_objects_t cf_x_core_objects_t;
 
-void cf_x_core_objects_free(cf_x_core_objects_t *objects);
+cf_x_core_objects_t cf_x_core_objects;
 
-void cf_x_core_objects_init(cf_x_core_objects_t *objects);
+void cf_x_core_objects_init();
 
 #endif

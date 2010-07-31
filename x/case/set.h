@@ -71,13 +71,13 @@ cf_x_case_array_t *cf_x_case_set_get_as_array(cf_x_case_set_t *set);
 cf_x_case_list_t *cf_x_case_set_get_as_list(cf_x_case_set_t *set);
 
 char *cf_x_case_set_get_as_delimited_string(cf_x_case_set_t *set,
-    cf_x_core_get_as_string_f get_as_string, const char *delimiter);
+    cf_x_core_object_get_as_string_f get_as_string, const char *delimiter);
 
-cf_x_core_compare_f cf_x_case_set_get_compare_function(cf_x_case_set_t *set);
+cf_x_core_object_compare_f cf_x_case_set_get_compare_function(cf_x_case_set_t *set);
 
-cf_x_core_copy_f cf_x_case_set_get_copy_function(cf_x_case_set_t *set);
+cf_x_core_object_copy_f cf_x_case_set_get_copy_function(cf_x_case_set_t *set);
 
-cf_x_core_destroy_f cf_x_case_set_get_destroy_function(cf_x_case_set_t *set);
+cf_x_core_object_destroy_f cf_x_case_set_get_destroy_function(cf_x_case_set_t *set);
 
 cf_x_core_objectey_t *cf_x_case_set_get_objectey(cf_x_case_set_t *set);
 
@@ -95,7 +95,7 @@ cf_x_core_bool_t cf_x_case_set_overlaps(cf_x_case_set_t *set_a,
     cf_x_case_set_t *set_b);
 
 void cf_x_case_set_print(cf_x_case_set_t *set,
-    cf_x_core_get_as_string_f get_as_string);
+    cf_x_core_object_get_as_string_f get_as_string);
 
 cf_x_core_bool_t cf_x_case_set_remove(cf_x_case_set_t *set, void *object);
 

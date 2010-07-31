@@ -150,7 +150,7 @@ unsigned long cf_inferno_ca_state_get_cell_value(cf_inferno_ca_state_t *state,
 
 void cf_inferno_ca_state_print(cf_inferno_ca_state_t *state)
 {
-  cf_x_core_print(state, cf_inferno_ca_state_get_as_string);
+  cf_x_core_object_print(state, cf_inferno_ca_state_get_as_string);
 }
 
 void cf_inferno_ca_state_set_cell(cf_inferno_ca_state_t *state, unsigned long cell_index,

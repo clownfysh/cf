@@ -12,9 +12,9 @@ struct cf_x_case_array_t {
   cf_x_core_bool_t iterate_remove;
   cf_x_core_bool_t iterate_first;
 
-  cf_x_core_compare_f compare;
-  cf_x_core_copy_f copy;
-  cf_x_core_destroy_f destroy;
+  cf_x_core_object_compare_f compare;
+  cf_x_core_object_copy_f copy;
+  cf_x_core_object_destroy_f destroy;
 };
 
 void cf_x_case_array_add(cf_x_case_array_t *array, unsigned long index,
@@ -81,7 +81,7 @@ int cf_x_case_array_compare(void *array_object_a,
   void *object_b;
   unsigned long array_size;
   unsigned long each_element;
-  cf_x_core_compare_f compare;
+  cf_x_core_object_compare_f compare;
 
   array_a = array_object_a;
   array_b = array_object_b;
@@ -156,7 +156,7 @@ unsigned long cf_x_case_array_count_non_null_objects
 }
 
 cf_x_case_array_t *cf_x_case_array_create(unsigned long initial_size,
-    cf_x_core_compare_f compare, cf_x_core_copy_f copy, cf_x_core_destroy_f destroy)
+    cf_x_core_object_compare_f compare, cf_x_core_object_copy_f copy, cf_x_core_object_destroy_f destroy)
 {
   assert(compare);
   assert(copy);
@@ -189,8 +189,8 @@ cf_x_case_array_t *cf_x_case_array_create(unsigned long initial_size,
 }
 
 cf_x_case_array_t *cf_x_case_array_create_from_message
-(cf_x_core_compare_f compare_object, cf_x_core_copy_f copy,
-    cf_x_core_destroy_f destroy, cf_x_core_message_t *message,
+(cf_x_core_object_compare_f compare_object, cf_x_core_object_copy_f copy,
+    cf_x_core_object_destroy_f destroy, cf_x_core_message_t *message,
     cf_x_core_message_create_from_message_f create_from_message)
 {
   cf_x_case_array_t *array;
@@ -363,7 +363,7 @@ void **cf_x_case_array_get_array(cf_x_case_array_t *array)
 }
 
 char *cf_x_case_array_get_as_delimited_string(cf_x_case_array_t *array,
-    cf_x_core_get_as_string_f get_as_string, char *delimiter)
+    cf_x_core_object_get_as_string_f get_as_string, char *delimiter)
 {
   assert(array);
   assert(get_as_string);
@@ -416,19 +416,19 @@ char *cf_x_case_array_get_as_delimited_string(cf_x_case_array_t *array,
   return string;
 }
 
-cf_x_core_compare_f cf_x_case_array_get_compare
+cf_x_core_object_compare_f cf_x_case_array_get_compare
 (cf_x_case_array_t *array)
 {
   return array->compare;
 }
 
-cf_x_core_copy_f cf_x_case_array_get_copy
+cf_x_core_object_copy_f cf_x_case_array_get_copy
 (cf_x_case_array_t *array)
 {
   return array->copy;
 }
 
-cf_x_core_destroy_f cf_x_case_array_get_destroy
+cf_x_core_object_destroy_f cf_x_case_array_get_destroy
 (cf_x_case_array_t *array)
 {
   return array->destroy;
@@ -567,5 +567,5 @@ cf_x_core_bool_t cf_x_case_array_resize(cf_x_case_array_t *array,
 void cf_x_case_array_sort(cf_x_case_array_t *array)
 {
   qsort(array->array, array->array_size, sizeof(void *),
-      (cf_x_core_compare_const_f) array->compare);
+      (cf_x_core_object_compare_const_f) array->compare);
 }

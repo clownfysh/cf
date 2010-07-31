@@ -13,8 +13,8 @@ int cf_x_core_nameobject_compare(void *nameobject_object_a,
 void *cf_x_core_nameobject_copy(void *nameobject_object);
 
 cf_x_core_nameobject_t *cf_x_core_nameobject_create(char *name, void *object,
-    cf_x_core_copy_f copy, cf_x_core_destroy_f destroy,
-    cf_x_core_get_as_string_f get_as_string);
+    cf_x_core_object_copy_f copy, cf_x_core_object_destroy_f destroy,
+    cf_x_core_object_get_as_string_f get_as_string);
 
 cf_x_core_nameobject_t *cf_x_core_nameobject_create_decoy(char *name);
 

@@ -1,4 +1,4 @@
-formatting
+Formatting
   + use k & r style, except:
     + indent with two spaces
   + use braces around single-statement parts of if-then
@@ -13,7 +13,7 @@ formatting
     }
     unlock();
 
-structure
+Structure
   + in a function, use four blocks sepetated by double newlines
     + four blocks
       + assert preconditions and do declarations (with no initialization)
@@ -33,12 +33,14 @@ structure
     + function definitions
   + alphabetize functions by name in .h and .c files
 
-terms
+Terms
   + the highest level directory "cf" is called a project
   + lower-level directories are called "systems"
   + a .h/.c/.test.c triplet is associated with a "module"
 
-naming
+Naming
+items in a "tools" module can omit the module name?
+
   + name modules like project_domain_module (h_core_set)
   + name functions like domain_module_verb or module_verb_noun
     (h_core_set_add_object())
@@ -62,7 +64,7 @@ naming
   + name a system's central logical module "system" (with system.h/system.c/
     system.test.c)
 
-logic
+Logic
   + in a system that has a create() function, always have a destroy() function;
     in a system that has an init() function, always have a free() function and
     always call the free function even if the free function doesn't do anything

@@ -20,8 +20,8 @@ cf_inferno_box_system_t *cf_inferno_box_system_create
 (cf_inferno_box_coordinate_t *dimension_coordinate,
     cf_inferno_box_object_get_cell_f get_cell,
     cf_inferno_box_object_set_cell_f set_cell,
-    cf_x_core_compare_f compare_objects, cf_x_core_copy_f copy_object,
-    cf_x_core_destroy_f destroy_object, cf_x_audit_log_t *log);
+    cf_x_core_object_compare_f compare_objects, cf_x_core_object_copy_f copy_object,
+    cf_x_core_object_destroy_f destroy_object, cf_x_audit_log_t *log);
 
 void cf_inferno_box_system_destroy(cf_inferno_box_system_t *system);
 

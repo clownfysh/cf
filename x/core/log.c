@@ -75,8 +75,8 @@ cf_x_audit_log_t *cf_x_audit_log_create(FILE *file)
 
   if (so_far_so_good) {
     cf_x_core_objectey_init(&log->files_objectey, compare_files,
-        CF_X_CORE_NO_COPY_FUNCTION, CF_X_CORE_NO_DESTROY_FUNCTION,
-        cf_x_core_basic_unsigned_long_equal, CF_X_CORE_NO_GET_AS_STRING_FUNCTION,
+        CF_X_CORE_OBJECT_NO_COPY_F, CF_X_CORE_OBJECT_NO_DESTROY_F,
+        cf_x_core_basic_unsigned_long_equal, CF_X_CORE_OBJECT_NO_GET_AS_STRING_F,
         cf_x_core_basic_unsigned_long_mod);
     log->files = cf_x_case_set_create(&log->files_objectey);
     if (log->files) {

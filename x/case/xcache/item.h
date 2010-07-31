@@ -12,8 +12,8 @@ int cf_x_case_xcache_item_compare(void *item_object_a, void *item_object_b);
 void *cf_x_case_xcache_item_copy(void *item_object);
 
 cf_x_case_xcache_item_t *cf_x_case_xcache_item_create(cf_x_core_uuid_t *object_uuid,
-    void *object, cf_x_core_copy_f copy,
-    cf_x_core_destroy_f destroy, unsigned long lifespan_seconds);
+    void *object, cf_x_core_object_copy_f copy,
+    cf_x_core_object_destroy_f destroy, unsigned long lifespan_seconds);
 
 cf_x_case_xcache_item_t *cf_x_case_xcache_item_create_decoy(cf_x_core_uuid_t *object_uuid);
 

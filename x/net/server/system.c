@@ -358,8 +358,8 @@ engine_container_t *create_engine_container(cf_x_net_server_system_t *server,
 
   if (so_far_so_good) {
     engine_container->inbox = cf_x_case_list_create
-      (CF_X_CORE_NO_COMPARE_FUNCTION, CF_X_CORE_NO_COPY_FUNCTION,
-          CF_X_CORE_NO_DESTROY_FUNCTION);
+      (CF_X_CORE_OBJECT_NO_COMPARE_F, CF_X_CORE_OBJECT_NO_COPY_F,
+          CF_X_CORE_OBJECT_NO_DESTROY_F);
     if (!engine_container->inbox) {
       cf_x_audit_log_trace(server->log, "hnet", "x_case_list_create");
       so_far_so_good = cf_x_core_bool_false;
@@ -495,8 +495,8 @@ cf_x_core_bool_t create_engine_container_threads
         + each_thread) = cf_x_core_bool_false;
 
     *(engine_container->thread_inboxes + each_thread)
-      = cf_x_case_list_create(CF_X_CORE_NO_COMPARE_FUNCTION,
-          CF_X_CORE_NO_COPY_FUNCTION, messagey->destroy);
+      = cf_x_case_list_create(CF_X_CORE_OBJECT_NO_COMPARE_F,
+          CF_X_CORE_OBJECT_NO_COPY_F, messagey->destroy);
     if (!*(engine_container->thread_inboxes + each_thread)) {
       success = cf_x_core_bool_false;
       cf_x_audit_log_trace(log, "hnet", "x_case_list_create");
@@ -916,9 +916,9 @@ cf_x_core_bool_t cf_x_net_server_system_create_client_posts(cf_x_net_server_syst
   cf_x_core_bool_t success;
 
   cf_x_core_objectey_init(&server->client_posts_objectey, server->postey->compare,
-      CF_X_CORE_NO_COPY_FUNCTION, server->postey->destroy,
-      CF_X_CORE_NO_EQUAL_FUNCTION, CF_X_CORE_NO_GET_AS_STRING_FUNCTION,
-      CF_X_CORE_NO_MOD_FUNCTION);
+      CF_X_CORE_OBJECT_NO_COPY_F, server->postey->destroy,
+      CF_X_CORE_OBJECT_NO_EQUAL_F, CF_X_CORE_OBJECT_NO_GET_AS_STRING_F,
+      CF_X_CORE_OBJECT_NO_MOD_F);
   server->client_posts
     = cf_x_case_set_create(&server->client_posts_objectey);
   if (server->client_posts) {
@@ -947,8 +947,8 @@ cf_x_core_bool_t cf_x_net_server_system_create_engines(cf_x_net_server_system_t 
   cf_x_core_bool_t success;
   unsigned long each_engine_id;
 
-  server->engines = cf_x_case_list_create(CF_X_CORE_NO_COMPARE_FUNCTION,
-      CF_X_CORE_NO_COPY_FUNCTION, destroy_engine_container);
+  server->engines = cf_x_case_list_create(CF_X_CORE_OBJECT_NO_COMPARE_F,
+      CF_X_CORE_OBJECT_NO_COPY_F, destroy_engine_container);
   if (server->engines) {
     for (each_engine_id = 0; each_engine_id < CF_X_NET_SERVER_SYSTEM_MAX_ENGINES;
          each_engine_id++) {
@@ -968,8 +968,8 @@ cf_x_core_bool_t cf_x_net_server_system_create_outbox(cf_x_net_server_system_t *
   assert(server);
   cf_x_core_bool_t success;
 
-  server->outbox = cf_x_case_list_create(CF_X_CORE_NO_COMPARE_FUNCTION,
-      CF_X_CORE_NO_COPY_FUNCTION, CF_X_CORE_NO_DESTROY_FUNCTION);
+  server->outbox = cf_x_case_list_create(CF_X_CORE_OBJECT_NO_COMPARE_F,
+      CF_X_CORE_OBJECT_NO_COPY_F, CF_X_CORE_OBJECT_NO_DESTROY_F);
   if (server->outbox) {
     success = cf_x_core_bool_true;
   } else {

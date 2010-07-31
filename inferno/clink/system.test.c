@@ -59,7 +59,7 @@ int main(int argc, char *argv[])
   concept = NULL;
 
   clink = cf_inferno_clink_system_create(MAX_CONCEPTS, MAX_LINKS, compare,
-      CF_X_CORE_NO_DESTROY_FUNCTION, NULL);
+      CF_X_CORE_OBJECT_NO_DESTROY_F, NULL);
   if (clink) {
     c = s + 1;
     while (*c) {

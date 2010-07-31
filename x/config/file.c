@@ -297,7 +297,7 @@ void parse_list_value(cf_x_config_file_t *file, char *name, char *value)
       }
       string = strtok_r(NULL, ",", &strtok_context);
     }
-    nameobject = cf_x_core_nameobject_create(name, list, CF_X_CORE_NO_COPY_FUNCTION,
+    nameobject = cf_x_core_nameobject_create(name, list, CF_X_CORE_OBJECT_NO_COPY_F,
         cf_x_case_list_destroy, cf_x_case_list_get_as_string);
     if (nameobject) {
       if (!cf_x_case_set_add(file->string_lists, nameobject)) {

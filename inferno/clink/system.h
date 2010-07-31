@@ -11,8 +11,8 @@ typedef cf_x_core_bool_t (*cf_inferno_clink_system_think_f)(cf_inferno_clink_sys
     void *object, void *context);
 
 cf_inferno_clink_system_t *cf_inferno_clink_system_create(unsigned long max_concepts,
-    unsigned long max_links, cf_x_core_compare_f compare,
-    cf_x_core_destroy_f destroy, void *context);
+    unsigned long max_links, cf_x_core_object_compare_f compare,
+    cf_x_core_object_destroy_f destroy, void *context);
 
 void cf_inferno_clink_system_destroy(cf_inferno_clink_system_t *system);
 
@@ -32,7 +32,7 @@ void cf_inferno_clink_system_link(cf_inferno_clink_system_t *system, void *objec
     void *object_b);
 
 void cf_inferno_clink_system_print(cf_inferno_clink_system_t *system,
-    cf_x_core_get_as_string_f get_as_string);
+    cf_x_core_object_get_as_string_f get_as_string);
 
 cf_x_core_bool_t cf_inferno_clink_system_think_train(cf_inferno_clink_system_t *system,
     cf_inferno_clink_system_think_f think, unsigned long max_objects);

@@ -5,7 +5,7 @@
 struct cf_x_case_cache_t {
   cf_x_case_set_t *objects;
   cf_x_sync_qutex_t *objects_qutex;
-  cf_x_core_condition_f remove_condition;
+  cf_x_core_object_evaluate_condition_f remove_condition;
   cf_x_core_objectey_t objects_objectey;
 };
 
@@ -34,9 +34,9 @@ void cf_x_case_cache_clear(cf_x_case_cache_t *cache)
   cf_x_sync_qutex_unlock_exclusive(cache->objects_qutex);
 }
 
-cf_x_case_cache_t *cf_x_case_cache_create(cf_x_core_compare_f compare,
-    cf_x_core_copy_f copy, cf_x_core_destroy_f destroy,
-    cf_x_core_condition_f remove_condition)
+cf_x_case_cache_t *cf_x_case_cache_create(cf_x_core_object_compare_f compare,
+    cf_x_core_object_copy_f copy, cf_x_core_object_destroy_f destroy,
+    cf_x_core_object_evaluate_condition_f remove_condition)
 {
   cf_x_case_cache_t *cache;
   cf_x_core_bool_t so_far_so_good;
@@ -46,8 +46,8 @@ cf_x_case_cache_t *cf_x_case_cache_create(cf_x_core_compare_f compare,
     cache->remove_condition = remove_condition;
     cache->objects_qutex = NULL;
     cf_x_core_objectey_init(&cache->objects_objectey, compare, copy, destroy,
-        CF_X_CORE_NO_EQUAL_FUNCTION, CF_X_CORE_NO_GET_AS_STRING_FUNCTION,
-        CF_X_CORE_NO_MOD_FUNCTION);
+        CF_X_CORE_OBJECT_NO_EQUAL_F, CF_X_CORE_OBJECT_NO_GET_AS_STRING_F,
+        CF_X_CORE_OBJECT_NO_MOD_F);
     cache->objects = cf_x_case_set_create(&cache->objects_objectey);
     if (cache->objects) {
       so_far_so_good = cf_x_core_bool_true;

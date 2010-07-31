@@ -18,7 +18,7 @@ struct set_object_t {
 };
 
 struct cf_x_case_set_t {
-  cf_x_core_get_as_string_f get_object_as_string;
+  cf_x_core_object_get_as_string_f get_object_as_string;
   unsigned long size;
   cf_x_core_bool_t iterate_remove;
   cf_x_core_bool_t iterate_first;
@@ -396,7 +396,7 @@ void cf_x_case_set_lock(cf_x_case_set_t *set)
 }
 
 void cf_x_case_set_print(cf_x_case_set_t *set,
-    cf_x_core_get_as_string_f get_object_as_string)
+    cf_x_core_object_get_as_string_f get_object_as_string)
 {
   set->get_object_as_string = get_object_as_string;
   printf("set (%lu items) : ", set->size);

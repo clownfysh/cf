@@ -58,7 +58,7 @@ void cf_x_case_set_iterate_start(cf_x_case_set_t *set)
 }
 
 void cf_x_case_set_print(cf_x_case_set_t *set,
-    cf_x_core_get_as_string_f get_object_as_string)
+    cf_x_core_object_get_as_string_f get_object_as_string)
 {
   assert(set);
   assert(get_object_as_string);

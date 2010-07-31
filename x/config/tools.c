@@ -14,12 +14,11 @@ cf_x_core_bool_t cf_x_config_running_batch_tests(int argc, char *argv[])
 {
   cf_x_config_options_t *options;
   cf_x_core_bool_t batch;
-  cf_x_core_objects_t objects;
 
   batch = cf_x_core_bool_false;
-  cf_x_core_objects_init(&objects);
+  cf_x_core_objects_init();
 
-  options = cf_x_config_options_create(argc, argv, &objects);
+  options = cf_x_config_options_create(argc, argv, &cf_x_core_objects);
   if (options) {
     if (cf_x_config_options_find(options, "running-batch-tests")) {
       batch = cf_x_core_bool_true;
@@ -28,8 +27,6 @@ cf_x_core_bool_t cf_x_config_running_batch_tests(int argc, char *argv[])
   } else {
     cf_x_core_trace("x_config_options_create");
   }
-
-  cf_x_core_objects_free(&objects);
 
   return batch;
 }

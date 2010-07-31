@@ -9,7 +9,7 @@ typedef struct cf_x_case_xcache_system_t cf_x_case_xcache_system_t;
 
 cf_x_core_bool_t cf_x_case_xcache_system_add(cf_x_case_xcache_system_t *system,
     cf_x_core_uuid_t *object_uuid, void *object,
-    cf_x_core_copy_f copy, cf_x_core_destroy_f destroy,
+    cf_x_core_object_copy_f copy, cf_x_core_object_destroy_f destroy,
     unsigned long lifetime_seconds);
 
 void cf_x_case_xcache_system_clear(cf_x_case_xcache_system_t *system);

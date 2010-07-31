@@ -98,5 +98,5 @@ unsigned long cf_x_core_basic_long_mod(void *long_object, unsigned long divisor)
 
 void cf_x_core_basic_long_print(void *long_object)
 {
-  cf_x_core_print(long_object, cf_x_core_basic_long_get_as_string);
+  cf_x_core_object_print(long_object, cf_x_core_basic_long_get_as_string);
 }

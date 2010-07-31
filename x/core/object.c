@@ -1,7 +1,8 @@
 #include "cf/x/core/object.h"
 #include "cf/x/core/tools.h"
 
-void cf_x_core_print(void *object, cf_x_core_get_as_string_f get_object_as_string)
+void cf_x_core_object_print(void *object,
+    cf_x_core_object_get_as_string_f get_object_as_string)
 {
   assert(object);
   assert(get_object_as_string);

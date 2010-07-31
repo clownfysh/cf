@@ -723,7 +723,7 @@ cf_x_core_bool_t cf_x_core_bitarray_increment(cf_x_core_bitarray_t *bitarray)
 
 void cf_x_core_bitarray_print(cf_x_core_bitarray_t *bitarray)
 {
-  cf_x_core_print(bitarray, cf_x_core_bitarray_as_binary_string);
+  cf_x_core_object_print(bitarray, cf_x_core_bitarray_as_binary_string);
 }
 
 void cf_x_core_bitarray_randomize(cf_x_core_bitarray_t *bitarray)

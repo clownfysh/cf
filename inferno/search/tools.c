@@ -14,8 +14,8 @@ static cf_x_core_bool_t init_box_add_actors_from_initial_solutions
 cf_x_case_array_t *cf_inferno_core_create_solutions_from_box(cf_inferno_box_system_t *box,
     unsigned long max_solution_count, cf_inferno_core_get_solution_f get_solution,
     cf_inferno_core_score_solution_f score_solution, cf_inferno_core_goal_t goal,
-    cf_x_core_compare_f compare_maximize, cf_x_core_compare_f compare_minimize,
-    cf_x_core_copy_f copy_object, void *context, cf_x_audit_log_t *log)
+    cf_x_core_object_compare_f compare_maximize, cf_x_core_object_compare_f compare_minimize,
+    cf_x_core_object_copy_f copy_object, void *context, cf_x_audit_log_t *log)
 {
   assert(box);
   assert(get_solution);
@@ -25,7 +25,7 @@ cf_x_case_array_t *cf_inferno_core_create_solutions_from_box(cf_inferno_box_syst
   assert(copy_object);
   assert(log);
   cf_x_case_array_t *solutions;
-  cf_x_core_compare_f compare_objects;
+  cf_x_core_object_compare_f compare_objects;
   unsigned long box_volume;
   unsigned long index;
   cf_x_core_bitarray_t *solution;
@@ -43,7 +43,7 @@ cf_x_case_array_t *cf_inferno_core_create_solutions_from_box(cf_inferno_box_syst
   max_solution_count = cf_x_core_min(max_solution_count, box_volume);
 
   objects = cf_x_case_array_create(box_volume, compare_objects,
-      copy_object, CF_X_CORE_NO_DESTROY_FUNCTION);
+      copy_object, CF_X_CORE_OBJECT_NO_DESTROY_F);
   if (objects) {
     cf_inferno_box_system_iterate_start(box);
     index = 0;

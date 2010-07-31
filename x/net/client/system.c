@@ -208,8 +208,8 @@ cf_x_net_client_system_t *cf_x_net_client_system_create(const char *server_ip_ad
   }
 
   if (success) {
-    client->engines = cf_x_case_list_create(CF_X_CORE_NO_COMPARE_FUNCTION,
-        CF_X_CORE_NO_COPY_FUNCTION, destroy_engine_container);
+    client->engines = cf_x_case_list_create(CF_X_CORE_OBJECT_NO_COMPARE_F,
+        CF_X_CORE_OBJECT_NO_COPY_F, destroy_engine_container);
     if (!client->engines) {
       success = cf_x_core_bool_false;
     }
