@@ -33,7 +33,7 @@ struct cf_x_net_client_system_t {
   cf_x_net_post_postey_t postey;
   cf_x_net_engine_get_name_f get_engine_name;
 
-  cf_x_audit_log_t *log;
+  cf_x_core_log_t *log;
 };
 
 static cf_x_core_bool_t connect_to_server(cf_x_net_client_system_t *client);
@@ -62,7 +62,7 @@ cf_x_core_bool_t connect_to_server(cf_x_net_client_system_t *client)
       client->server_socket_closed = cf_x_core_bool_false;
       client->server_port = port;
 
-      cf_x_audit_log_enter(client->log, "hnet",
+      cf_x_core_log_enter(client->log, "hnet",
           "client connected to server on port %i", port);
 
       pthread_mutex_lock(&client->messaging_mutex);
@@ -73,7 +73,7 @@ cf_x_core_bool_t connect_to_server(cf_x_net_client_system_t *client)
               (client->exchange, client->post)) {
             success = cf_x_core_bool_true;
           } else {
-            cf_x_audit_log_trace(client->log, "hnet",
+            cf_x_core_log_trace(client->log, "hnet",
                 "x_net_exchange_register_post");
             cf_x_net_client_socket_destroy(client->socket);
             client->server_socket_closed = cf_x_core_bool_true;
@@ -81,7 +81,7 @@ cf_x_core_bool_t connect_to_server(cf_x_net_client_system_t *client)
             client->post = NULL;
           }
         } else {
-          cf_x_audit_log_trace(client->log, "hnet", "x_net_post_create");
+          cf_x_core_log_trace(client->log, "hnet", "x_net_post_create");
           cf_x_net_client_socket_destroy(client->socket);
           client->server_socket_closed = cf_x_core_bool_true;
         }
@@ -89,7 +89,7 @@ cf_x_core_bool_t connect_to_server(cf_x_net_client_system_t *client)
       pthread_mutex_unlock(&client->messaging_mutex);
 
     } else {
-      cf_x_audit_log_enter(client->log, "hnet",
+      cf_x_core_log_enter(client->log, "hnet",
           "client could not connect to server on port %i", port);
     }
   }
@@ -117,9 +117,9 @@ cf_x_core_bool_t ensure_client_is_connected(cf_x_net_client_system_t *client)
   if (client->server_socket_closed) {
     connected = connect_to_server(client);
     if (connected) {
-      cf_x_audit_log_enter(client->log, "hnet", "reconnected to server");
+      cf_x_core_log_enter(client->log, "hnet", "reconnected to server");
     } else {
-      cf_x_audit_log_enter(client->log, "hnet", "could not reconnect to server");
+      cf_x_core_log_enter(client->log, "hnet", "could not reconnect to server");
     }
   }
 
@@ -131,7 +131,7 @@ cf_x_core_bool_t handle_disconnect(cf_x_net_client_system_t *client)
   assert(client);
   cf_x_core_bool_t success;
 
-  cf_x_audit_log_enter(client->log, "hnet", "lost connection to server");
+  cf_x_core_log_enter(client->log, "hnet", "lost connection to server");
 
   if (cf_x_net_exchange_unregister_post(client->exchange, client->socket)) {
     success = cf_x_core_bool_true;
@@ -139,7 +139,7 @@ cf_x_core_bool_t handle_disconnect(cf_x_net_client_system_t *client)
     client->post = NULL;
   } else {
     success = cf_x_core_bool_false;
-    cf_x_audit_log_trace(client->log, "hnet", "x_net_exchange_unregister_post");
+    cf_x_core_log_trace(client->log, "hnet", "x_net_exchange_unregister_post");
   }
 
   return success;
@@ -154,7 +154,7 @@ void *cf_x_net_client_system_copy(void *client_object)
 cf_x_net_client_system_t *cf_x_net_client_system_create(const char *server_ip_address,
     unsigned short server_min_port, unsigned short server_max_port,
     cf_x_net_engine_get_name_f get_engine_name, void *custom_client_context,
-    cf_x_audit_log_t *log)
+    cf_x_core_log_t *log)
 {
   assert(server_ip_address);
   cf_x_net_client_system_t *client;
@@ -190,7 +190,7 @@ cf_x_net_client_system_t *cf_x_net_client_system_create(const char *server_ip_ad
     success = cf_x_core_bool_true;
   } else {
     success = cf_x_core_bool_false;
-    cf_x_audit_log_trace(client->log, "hnet", "malloc");
+    cf_x_core_log_trace(client->log, "hnet", "malloc");
   }
 
   if (success) {
@@ -220,7 +220,7 @@ cf_x_net_client_system_t *cf_x_net_client_system_create(const char *server_ip_ad
       messaging_mutex_needs_destroy = cf_x_core_bool_true;
     } else {
       success = cf_x_core_bool_false;
-      cf_x_audit_log_trace(client->log, "hnet", "pthread_mutex_init");
+      cf_x_core_log_trace(client->log, "hnet", "pthread_mutex_init");
     }
   }
 
@@ -228,7 +228,7 @@ cf_x_net_client_system_t *cf_x_net_client_system_create(const char *server_ip_ad
     connected = connect_to_server(client);
     if (!connected) {
       success = cf_x_core_bool_false;
-      cf_x_audit_log_trace(client->log, "hnet", "connect_to_server");
+      cf_x_core_log_trace(client->log, "hnet", "connect_to_server");
     }
   }
 
@@ -335,7 +335,7 @@ void cf_x_net_client_system_process_messages(cf_x_net_client_system_t *client)
       cf_x_core_message_destroy(message);
     }
   } else {
-    cf_x_audit_log_trace(client->log, "hnet", "ensure_client_is_connected");
+    cf_x_core_log_trace(client->log, "hnet", "ensure_client_is_connected");
   }
 }
 
@@ -351,7 +351,7 @@ cf_x_core_bool_t cf_x_net_client_system_register_engine(cf_x_net_client_system_t
     engine_container->engine_id = engine_id;
     success = cf_x_core_bool_true;
   } else {
-    cf_x_audit_log_trace(client->log, "hnet", "malloc");
+    cf_x_core_log_trace(client->log, "hnet", "malloc");
     success = cf_x_core_bool_false;
   }
 
@@ -367,7 +367,7 @@ cf_x_core_bool_t cf_x_net_client_system_register_engine(cf_x_net_client_system_t
       }
       success = cf_x_core_bool_true;
     } else {
-      cf_x_audit_log_trace(client->log, "hnet", "malloc");
+      cf_x_core_log_trace(client->log, "hnet", "malloc");
       success = cf_x_core_bool_false;
     }
   }
@@ -413,19 +413,19 @@ cf_x_core_bool_t cf_x_net_client_system_send_message(cf_x_net_client_system_t *c
         if (cf_x_net_post_system_is_socket_closed(client->post)) {
           client->server_socket_closed = cf_x_core_bool_true;
           if (!handle_disconnect(client)) {
-            cf_x_audit_log_trace(client->log, "hnet", "handle_disconnect");
+            cf_x_core_log_trace(client->log, "hnet", "handle_disconnect");
           }
         }
       } else {
         success = cf_x_core_bool_false;
-        cf_x_audit_log_trace(client->log, "hnet", "x_net_post_send_message");
+        cf_x_core_log_trace(client->log, "hnet", "x_net_post_send_message");
       }
     }
     pthread_mutex_unlock(&client->messaging_mutex);
 
   } else {
     success = cf_x_core_bool_false;
-    cf_x_audit_log_trace(client->log, "hnet", "ensure_client_is_connected");
+    cf_x_core_log_trace(client->log, "hnet", "ensure_client_is_connected");
   }
 
   return success;
@@ -457,7 +457,7 @@ cf_x_core_message_t *receive_message(cf_x_net_client_system_t *client)
       if (cf_x_net_post_system_is_socket_closed(client->post)) {
         client->server_socket_closed = cf_x_core_bool_true;
         if (!handle_disconnect(client)) {
-          cf_x_audit_log_trace(client->log, "hnet", "handle_disconnect");
+          cf_x_core_log_trace(client->log, "hnet", "handle_disconnect");
         }
       }
     }
@@ -465,7 +465,7 @@ cf_x_core_message_t *receive_message(cf_x_net_client_system_t *client)
 
   } else {
     message = NULL;
-    cf_x_audit_log_trace(client->log, "hnet", "ensure_client_is_connected");
+    cf_x_core_log_trace(client->log, "hnet", "ensure_client_is_connected");
   }
 
   return message;

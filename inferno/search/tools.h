@@ -37,13 +37,13 @@ typedef cf_x_core_bool_t (*cf_inferno_core_score_solution_f)(void *context,
 cf_inferno_box_system_t *cf_inferno_core_create_actor_box(void *searcx_system,
     cf_inferno_box_coordinate_t *dimension_coordinate,
     cf_x_case_array_t *initial_solutions, cf_inferno_core_actorey_t *actorey,
-    cf_x_audit_log_t *log);
+    cf_x_core_log_t *log);
 
 cf_x_case_array_t *cf_inferno_core_create_solutions_from_box(cf_inferno_box_system_t *box,
     unsigned long max_solution_count, cf_inferno_core_get_solution_f get_solution,
     cf_inferno_core_score_solution_f score_solution, cf_inferno_core_goal_t goal,
     cf_x_core_object_compare_f compare_maximize, cf_x_core_object_compare_f compare_minimize,
-    cf_x_core_object_copy_f copy_object, void *context, cf_x_audit_log_t *log);
+    cf_x_core_object_copy_f copy_object, void *context, cf_x_core_log_t *log);
 
 unsigned long cf_inferno_core_get_gene_start_address(cf_x_core_bitarray_t *solution,
     unsigned long gene_index);

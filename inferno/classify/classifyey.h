@@ -6,7 +6,7 @@
 #include "cf/x/core/bitarray.h"
 
 typedef void *(*cf_inferno_classify_classifyey_create_f)
-  (cf_x_case_array_t *classified_objects, cf_x_audit_log_t *log);
+  (cf_x_case_array_t *classified_objects, cf_x_core_log_t *log);
 
 typedef void (*cf_inferno_classify_classifyey_destroy_f)(void *system_void);
 

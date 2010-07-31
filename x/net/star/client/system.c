@@ -48,7 +48,7 @@ struct cf_x_net_star_client_system_t {
   cf_x_case_list_t *message_handler_info;
 
   void *custom_client_context;
-  cf_x_audit_log_t *log;
+  cf_x_core_log_t *log;
 
   cf_x_core_objectey_t nameobject_objectey;
 };
@@ -324,7 +324,7 @@ cf_x_net_star_client_system_t *cf_x_net_star_client_system_create(cf_x_case_list
     unsigned short star_arm_port_min, unsigned short star_arm_port_max,
     char *node_server_exclude_ip, unsigned short node_server_exclude_min_port,
     unsigned short node_server_exclude_max_port, void *custom_client_context,
-    cf_x_audit_log_t *log)
+    cf_x_core_log_t *log)
 {
   assert(star_arm_ips);
   assert(log);

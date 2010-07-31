@@ -11,7 +11,7 @@ typedef struct cf_x_net_star_node_system_t cf_x_net_star_node_system_t;
 cf_x_net_star_node_system_t *cf_x_net_star_node_system_create(char *node_ip, unsigned short node_min_port,
     unsigned short node_max_port, unsigned short node_max_threads,
     cf_x_case_list_t *peer_node_ips, unsigned short peer_node_port_min,
-    unsigned short peer_node_port_max, cf_x_audit_log_t *log);
+    unsigned short peer_node_port_max, cf_x_core_log_t *log);
 
 void cf_x_net_star_node_system_destroy(cf_x_net_star_node_system_t *node);
 

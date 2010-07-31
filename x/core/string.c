@@ -8,8 +8,7 @@ cf_x_core_bool_t cf_x_core_string_add_to_message(void *string_object,
   return cf_x_core_message_add_string(message, string_object);
 }
 
-int cf_x_core_string_compare(void *string_object_a,
-    void *string_object_b)
+int cf_x_core_string_compare(void *string_object_a, void *string_object_b)
 {
   const char *string_a;
   const char *string_b;
@@ -20,6 +19,12 @@ int cf_x_core_string_compare(void *string_object_a,
   compare = strcmp(string_a, string_b);
 
   return compare;
+}
+
+cf_x_core_bool_t cf_x_core_string_compare_equal(void *string_a_object,
+    void *string_b_object)
+{
+  return (0 == cf_x_core_string_compare(string_a_object, string_b_object));
 }
 
 void *cf_x_core_string_copy(void *string_object)
@@ -48,11 +53,6 @@ void cf_x_core_string_destroy(void *string_object)
   free(string_object);
 }
 
-cf_x_core_bool_t cf_x_core_string_equal(void *string_a_object, void *string_b_object)
-{
-  return (0 == cf_x_core_string_compare(string_a_object, string_b_object));
-}
-
 char *cf_x_core_string_get_as_string(void *string_object)
 {
   assert(string_object);
@@ -76,8 +76,9 @@ unsigned long cf_x_core_string_hash(void *string_object)
 void cf_x_core_string_init_objectey(cf_x_core_objectey_t *objectey)
 {
   assert(objectey);
-  cf_x_core_objectey_init(objectey, cf_x_core_string_compare, cf_x_core_string_copy,
-      cf_x_core_string_destroy, cf_x_core_string_equal, cf_x_core_string_get_as_string,
+  cf_x_core_objectey_init(objectey, cf_x_core_string_compare,
+      cf_x_core_string_compare_equal, cf_x_core_string_copy,
+      cf_x_core_string_destroy, cf_x_core_string_get_as_string,
       cf_x_core_string_mod);
 }
 

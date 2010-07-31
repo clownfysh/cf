@@ -4,18 +4,18 @@
 static cf_x_core_bool_t init_box_add_random_actors(cf_inferno_box_system_t *box,
     cf_inferno_box_coordinate_t *dimension_coordinate,
     cf_inferno_core_create_actor_random_f create_actor_random, void *searcx_system,
-    cf_x_audit_log_t *log);
+    cf_x_core_log_t *log);
 
 static cf_x_core_bool_t init_box_add_actors_from_initial_solutions
 (cf_inferno_box_system_t *box, cf_inferno_core_actorey_create_f actor_create,
     void *searcx_system, cf_x_case_array_t *initial_solutions,
-    cf_x_audit_log_t *log);
+    cf_x_core_log_t *log);
 
 cf_x_case_array_t *cf_inferno_core_create_solutions_from_box(cf_inferno_box_system_t *box,
     unsigned long max_solution_count, cf_inferno_core_get_solution_f get_solution,
     cf_inferno_core_score_solution_f score_solution, cf_inferno_core_goal_t goal,
     cf_x_core_object_compare_f compare_maximize, cf_x_core_object_compare_f compare_minimize,
-    cf_x_core_object_copy_f copy_object, void *context, cf_x_audit_log_t *log)
+    cf_x_core_object_copy_f copy_object, void *context, cf_x_core_log_t *log)
 {
   assert(box);
   assert(get_solution);
@@ -67,20 +67,20 @@ cf_x_case_array_t *cf_inferno_core_create_solutions_from_box(cf_inferno_box_syst
           if (solution_copy) {
             cf_x_case_array_add(solutions, index, solution_copy);
           } else {
-            cf_x_audit_log_trace(log, "ih", "x_core_bitarray_copy");
+            cf_x_core_log_trace(log, "ih", "x_core_bitarray_copy");
           }
         } else {
-          cf_x_audit_log_trace(log, "ih", "x_core_bitarray_copy");
+          cf_x_core_log_trace(log, "ih", "x_core_bitarray_copy");
         }
         index++;
       }
     } else {
-      cf_x_audit_log_trace(log, "ih", "x_case_array_create");
+      cf_x_core_log_trace(log, "ih", "x_case_array_create");
     }
     cf_x_case_array_destroy(objects);
   } else {
     solutions = NULL;
-    cf_x_audit_log_trace(log, "ih", "x_case_array_create");
+    cf_x_core_log_trace(log, "ih", "x_case_array_create");
   }
 
   return solutions;
@@ -89,7 +89,7 @@ cf_x_case_array_t *cf_inferno_core_create_solutions_from_box(cf_inferno_box_syst
 cf_inferno_box_system_t *cf_inferno_core_create_actor_box(void *searcx_system,
     cf_inferno_box_coordinate_t *dimension_coordinate,
     cf_x_case_array_t *initial_solutions, cf_inferno_core_actorey_t *actorey,
-    cf_x_audit_log_t *log)
+    cf_x_core_log_t *log)
 {
   assert(searcx_system);
   assert(dimension_coordinate);
@@ -108,17 +108,17 @@ cf_inferno_box_system_t *cf_inferno_core_create_actor_box(void *searcx_system,
                 searcx_system, initial_solutions, log)) {
           cf_inferno_box_system_destroy(box);
           box = NULL;
-          cf_x_audit_log_trace
+          cf_x_core_log_trace
             (log, "ih", "init_box_add_actors_from_initial_solutions");
         }
       }
     } else {
       cf_inferno_box_system_destroy(box);
       box = NULL;
-      cf_x_audit_log_trace(log, "ih", "init_box_add_random_actors");
+      cf_x_core_log_trace(log, "ih", "init_box_add_random_actors");
     }
   } else {
-    cf_x_audit_log_trace(log, "ih", "inferno_box_system_create");
+    cf_x_core_log_trace(log, "ih", "inferno_box_system_create");
   }
 
   return box;
@@ -127,7 +127,7 @@ cf_inferno_box_system_t *cf_inferno_core_create_actor_box(void *searcx_system,
 cf_x_core_bool_t init_box_add_random_actors(cf_inferno_box_system_t *box,
     cf_inferno_box_coordinate_t *dimension_coordinate,
     cf_inferno_core_create_actor_random_f create_actor_random, void *searcx_system,
-    cf_x_audit_log_t *log)
+    cf_x_core_log_t *log)
 {
   assert(box);
   assert(dimension_coordinate);
@@ -154,7 +154,7 @@ cf_x_core_bool_t init_box_add_random_actors(cf_inferno_box_system_t *box,
           cf_inferno_box_system_add(box, &coordinate, actor);
         } else {
           success = cf_x_core_bool_false;
-          cf_x_audit_log_trace(log, "cor3", "create_actor_random");
+          cf_x_core_log_trace(log, "cor3", "create_actor_random");
         }
       }
     }
@@ -166,7 +166,7 @@ cf_x_core_bool_t init_box_add_random_actors(cf_inferno_box_system_t *box,
 /*  TODO: sort this array ourselves, by solution score  */
 cf_x_core_bool_t init_box_add_actors_from_initial_solutions(cf_inferno_box_system_t *box,
     cf_inferno_core_actorey_create_f actor_create, void *searcx_system,
-    cf_x_case_array_t *initial_solutions, cf_x_audit_log_t *log)
+    cf_x_case_array_t *initial_solutions, cf_x_core_log_t *log)
 {
   assert(box);
   assert(initial_solutions);
@@ -184,7 +184,7 @@ cf_x_core_bool_t init_box_add_actors_from_initial_solutions(cf_inferno_box_syste
       cf_inferno_box_system_replace_random(box, actor);
     } else {
       success = cf_x_core_bool_false;
-      cf_x_audit_log_trace(log, "cor3", "actor_create");
+      cf_x_core_log_trace(log, "cor3", "actor_create");
     }
   }
 

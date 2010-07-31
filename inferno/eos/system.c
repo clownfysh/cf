@@ -8,12 +8,12 @@ struct cf_inferno_eos_system_t {
   cf_inferno_core_goal_t goal;
   cf_inferno_core_actorey_t actorey;
   void *context;
-  cf_x_audit_log_t *log;
+  cf_x_core_log_t *log;
 };
 
 void *cf_inferno_eos_system_create(cf_inferno_core_score_solution_f score_solution,
     cf_inferno_core_goal_t goal, void *context, cf_x_case_array_t *initial_solutions,
-    cf_x_audit_log_t *log)
+    cf_x_core_log_t *log)
 {
   assert(score_solution);
   assert(log);
@@ -33,13 +33,13 @@ void *cf_inferno_eos_system_create(cf_inferno_core_score_solution_f score_soluti
     system->box = cf_inferno_core_create_actor_box(system, &dimension_coordinate,
         initial_solutions, &system->actorey, log);
     if (!system->box) {
-      cf_x_audit_log_trace(log, "bios", "inferno_core_create_actor_box");
+      cf_x_core_log_trace(log, "bios", "inferno_core_create_actor_box");
       free(system);
       system = NULL;
     }
 
   } else {
-    cf_x_audit_log_trace(log, "eos", "malloc");
+    cf_x_core_log_trace(log, "eos", "malloc");
   }
 
   return system;
@@ -71,7 +71,7 @@ cf_inferno_core_goal_t cf_inferno_eos_system_get_goal(cf_inferno_eos_system_t *s
   return system->goal;
 }
 
-cf_x_audit_log_t *cf_inferno_eos_system_get_log(cf_inferno_eos_system_t *system)
+cf_x_core_log_t *cf_inferno_eos_system_get_log(cf_inferno_eos_system_t *system)
 {
   return system->log;
 }
@@ -97,7 +97,7 @@ cf_x_case_array_t *cf_inferno_eos_system_get_solutions_copy(void *system_object,
       cf_inferno_eos_actor_compare_minimize, cf_inferno_eos_actor_copy, system->context,
       system->log);
   if (!solutions) {
-    cf_x_audit_log_trace(system->log, "eos", "create_solutions_from_box");
+    cf_x_core_log_trace(system->log, "eos", "create_solutions_from_box");
   }
 
   return solutions;

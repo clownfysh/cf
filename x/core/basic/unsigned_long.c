@@ -22,6 +22,17 @@ int cf_x_core_basic_unsigned_long_compare(void *unsigned_long_a_object,
   return compare;
 }
 
+cf_x_core_bool_t cf_x_core_basic_unsigned_long_compare_equal
+(void *unsigned_long_a_object, void *unsigned_long_b_object)
+{
+  assert(unsigned_long_a_object);
+  assert(unsigned_long_b_object);
+  unsigned long *unsigned_long_a = unsigned_long_a_object;
+  unsigned long *unsigned_long_b = unsigned_long_b_object;
+
+  return *unsigned_long_a == *unsigned_long_b;
+}
+
 void *cf_x_core_basic_unsigned_long_copy(void *unsigned_long_object)
 {
   assert(unsigned_long_object);
@@ -42,17 +53,6 @@ void *cf_x_core_basic_unsigned_long_copy(void *unsigned_long_object)
 void cf_x_core_basic_unsigned_long_destroy(void *unsigned_long_object)
 {
   free(unsigned_long_object);
-}
-
-cf_x_core_bool_t cf_x_core_basic_unsigned_long_equal(void *unsigned_long_a_object,
-    void *unsigned_long_b_object)
-{
-  assert(unsigned_long_a_object);
-  assert(unsigned_long_b_object);
-  unsigned long *unsigned_long_a = unsigned_long_a_object;
-  unsigned long *unsigned_long_b = unsigned_long_b_object;
-
-  return *unsigned_long_a == *unsigned_long_b;
 }
 
 char *cf_x_core_basic_unsigned_long_get_as_string(void *unsigned_long_object)
@@ -77,8 +77,10 @@ void cf_x_core_basic_unsigned_long_init_objectey(cf_x_core_objectey_t *objectey)
 {
   assert(objectey);
   cf_x_core_objectey_init(objectey, cf_x_core_basic_unsigned_long_compare,
-      cf_x_core_basic_unsigned_long_copy, cf_x_core_basic_unsigned_long_destroy,
-      cf_x_core_basic_unsigned_long_equal, cf_x_core_basic_unsigned_long_get_as_string,
+      cf_x_core_basic_unsigned_long_compare_equal,
+      cf_x_core_basic_unsigned_long_copy,
+      cf_x_core_basic_unsigned_long_destroy,
+      cf_x_core_basic_unsigned_long_get_as_string,
       cf_x_core_basic_unsigned_long_mod);
 }
 

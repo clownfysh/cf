@@ -56,7 +56,7 @@ void cf_x_core_basic_long_destroy(void *long_object)
   free(long_object);
 }
 
-cf_x_core_bool_t cf_x_core_basic_long_equal(void *long_a_object, void *long_b_object)
+cf_x_core_bool_t cf_x_core_basic_long_compare_equal(void *long_a_object, void *long_b_object)
 {
   assert(long_a_object);
   assert(long_b_object);
@@ -84,8 +84,9 @@ char *cf_x_core_basic_long_get_as_string(void *long_object)
 void cf_x_core_basic_long_init_objectey(cf_x_core_objectey_t *objectey)
 {
   assert(objectey);
-  cf_x_core_objectey_init(objectey, cf_x_core_basic_long_compare, cf_x_core_basic_long_copy,
-      cf_x_core_basic_long_destroy, cf_x_core_basic_long_equal, cf_x_core_basic_long_get_as_string,
+  cf_x_core_objectey_init(objectey, cf_x_core_basic_long_compare,
+      cf_x_core_basic_long_compare_equal, cf_x_core_basic_long_copy,
+      cf_x_core_basic_long_destroy, cf_x_core_basic_long_get_as_string,
       cf_x_core_basic_long_mod);
 }
 

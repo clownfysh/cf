@@ -13,7 +13,7 @@ struct cf_inferno_archetype_system_t {
   double weight_total;
   cf_x_case_array_t *classified_objects;
   cf_x_core_bool_t new_objects_since_last_learn;
-  cf_x_audit_log_t *log;
+  cf_x_core_log_t *log;
 };
 
 static cf_x_core_bool_t calculate_poles_and_weights
@@ -76,14 +76,14 @@ cf_x_core_bool_t calculate_poles_and_weights
       cf_x_case_array_add(system->poles, attribute_index, pole_copy);
     } else {
       success = cf_x_core_bool_false;
-      cf_x_audit_log_trace(system->log, "arch", "x_core_bit_copy");
+      cf_x_core_log_trace(system->log, "arch", "x_core_bit_copy");
     }
     weight_copy = cf_x_core_basic_double_copy(&weight);
     if (weight_copy) {
       cf_x_case_array_add(system->weights, attribute_index, weight_copy);
     } else {
       success = cf_x_core_bool_false;
-      cf_x_audit_log_trace(system->log, "arch", "cf_x_core_basic_double_copy");
+      cf_x_core_log_trace(system->log, "arch", "cf_x_core_basic_double_copy");
     }
   }
 
@@ -91,7 +91,7 @@ cf_x_core_bool_t calculate_poles_and_weights
 }
 
 void *cf_inferno_archetype_system_create(cf_x_case_array_t *classified_objects,
-    cf_x_audit_log_t *log)
+    cf_x_core_log_t *log)
 {
   assert(classified_objects);
   assert(cf_x_case_array_get_size(classified_objects) > 0);
@@ -113,7 +113,7 @@ void *cf_inferno_archetype_system_create(cf_x_case_array_t *classified_objects,
     system->classified_objects = cf_x_case_array_copy(classified_objects);
     if (system->classified_objects) {
       so_far_so_good = cf_x_core_bool_true;
-      cf_x_audit_log_trace(log, "arch", "x_case_array_copy");
+      cf_x_core_log_trace(log, "arch", "x_case_array_copy");
     } else {
       so_far_so_good = cf_x_core_bool_false;
     }
@@ -128,7 +128,7 @@ void *cf_inferno_archetype_system_create(cf_x_case_array_t *classified_objects,
         cf_x_core_unsigned_short_destroy);
     if (!system->poles) {
       so_far_so_good = cf_x_core_bool_false;
-      cf_x_audit_log_trace(log, "arch", "x_case_array_create");
+      cf_x_core_log_trace(log, "arch", "x_case_array_create");
     }
   }
 
@@ -137,14 +137,14 @@ void *cf_inferno_archetype_system_create(cf_x_case_array_t *classified_objects,
         cf_x_core_basic_double_compare, cf_x_core_basic_double_copy, cf_x_core_basic_double_destroy);
     if (!system->weights) {
       so_far_so_good = cf_x_core_bool_false;
-      cf_x_audit_log_trace(log, "arch", "x_case_array_create");
+      cf_x_core_log_trace(log, "arch", "x_case_array_create");
     }
   }
 
   if (so_far_so_good) {
     if (!cf_inferno_archetype_system_learn(system)) {
       so_far_so_good = cf_x_core_bool_false;
-      cf_x_audit_log_trace(log, "arch", "inferno_archetype_system_learn");
+      cf_x_core_log_trace(log, "arch", "inferno_archetype_system_learn");
     }
   }
 
@@ -236,7 +236,7 @@ cf_x_core_bool_t cf_inferno_archetype_system_learn(void *system_void)
   if (system->new_objects_since_last_learn) {
     if (!calculate_poles_and_weights(system)) {
       success = cf_x_core_bool_false;
-      cf_x_audit_log_trace(system->log, "arch", "calculate_poles");
+      cf_x_core_log_trace(system->log, "arch", "calculate_poles");
     }
     if (success) {
       system->new_objects_since_last_learn = cf_x_core_bool_false;
@@ -264,7 +264,7 @@ cf_x_core_bool_t cf_inferno_archetype_system_observe_object(void *system_void,
         classified_object_copy);
   } else {
     success = cf_x_core_bool_false;
-    cf_x_audit_log_trace(system->log, "arch", "x_core_bitarray_copy");
+    cf_x_core_log_trace(system->log, "arch", "x_core_bitarray_copy");
   }
 
   return success;

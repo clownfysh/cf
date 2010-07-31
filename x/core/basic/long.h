@@ -16,7 +16,7 @@ void *cf_x_core_basic_long_create_from_message(cf_x_core_message_t *message);
 
 void cf_x_core_basic_long_destroy(void *long_object);
 
-cf_x_core_bool_t cf_x_core_basic_long_equal(void *long_a_object,
+cf_x_core_bool_t cf_x_core_basic_long_compare_equal(void *long_a_object,
     void *long_b_object);
 
 char *cf_x_core_basic_long_get_as_string(void *long_object);

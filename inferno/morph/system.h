@@ -31,7 +31,7 @@ typedef struct cf_inferno_morpinferno_system_t cf_inferno_morpinferno_system_t;
  *        put solutions you favor earlier in the array.  inhesion's use of
  *        these solutions is stochastic...don't count on multiple identical
  *        morph function calls producing identical results.
- * \param log pointer to an cf_x_audit_log_t where trace and log statements will
+ * \param log pointer to an cf_x_core_log_t where trace and log statements will
  *        be sent.
  *
  * \return pointer to an cf_inferno_morpinferno_system_t, or NULL if the call was
@@ -39,7 +39,7 @@ typedef struct cf_inferno_morpinferno_system_t cf_inferno_morpinferno_system_t;
  */
 cf_inferno_morpinferno_system_t *cf_inferno_morpinferno_system_create
 (cf_inferno_core_score_solution_f score_solution, cf_inferno_core_goal_t goal, void *context,
-    cf_x_case_array_t *initial_solutions, cf_x_audit_log_t *log);
+    cf_x_case_array_t *initial_solutions, cf_x_core_log_t *log);
 
 /*!
  * destroy an inhesion::morph system.  release resources the morph is using.

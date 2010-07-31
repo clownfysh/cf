@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
   cf_x_net_star_client_conf_t *starclient_conf;
   cf_x_sync_period_t *period;
   void *custom_client_context;
-  cf_x_audit_log_t *log;
+  cf_x_core_log_t *log;
 
   custom_client_context = NULL;
 
@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
   signal(SIGUSR2, handle_signal);
   signal(SIGPIPE, SIG_IGN);
 
-  log = cf_x_audit_log_create(stdout);
+  log = cf_x_core_log_create(stdout);
   if (!log) {
     cf_x_core_trace_exit("x_audit_log_create");
   }
@@ -87,7 +87,7 @@ int main(int argc, char *argv[])
   cf_x_net_star_client_system_destroy(starclient);
   cf_x_net_star_client_conf_destroy(starclient_conf);
   cf_x_sync_period_destroy(period);
-  cf_x_audit_log_destroy(log);
+  cf_x_core_log_destroy(log);
 
   return 0;
 }

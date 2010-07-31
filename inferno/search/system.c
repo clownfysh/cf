@@ -17,7 +17,7 @@ static void init_searchey(cf_inferno_searcx_searchey_t *searchey,
 cf_inferno_searcx_system_t *cf_inferno_searcx_system_create
 (cf_inferno_core_score_solution_f score_solution, cf_inferno_core_goal_t goal, void *context,
     cf_x_case_array_t *initial_solutions, cf_inferno_searcx_algorithm_t algorithm,
-    cf_x_audit_log_t *log)
+    cf_x_core_log_t *log)
 {
   assert(score_solution);
   assert(log);

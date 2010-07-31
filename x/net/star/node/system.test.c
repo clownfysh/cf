@@ -9,14 +9,14 @@ int main(int argc, char *argv[])
 
   cf_x_net_star_node_system_t *node;
   cf_x_net_star_node_conf_t *node_conf;
-  cf_x_audit_log_t *log;
+  cf_x_core_log_t *log;
 
   node_conf = cf_x_net_star_node_conf_create("x_net_node.conf");
   if (!node_conf) {
     cf_x_core_trace_exit("x_net_node_conf_create");
   }
 
-  log = cf_x_audit_log_create(stdout);
+  log = cf_x_core_log_create(stdout);
   if (!log) {
     cf_x_core_trace_exit("x_audit_log_create");
   }
@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
 
   cf_x_net_star_node_system_destroy(node);
   cf_x_net_star_node_conf_destroy(node_conf);
-  cf_x_audit_log_destroy(log);
+  cf_x_core_log_destroy(log);
 
   return 0;
 }

@@ -10,16 +10,16 @@ typedef char * cf_x_core_string_t;
 cf_x_core_bool_t cf_x_core_string_add_to_message(void *string_object,
     cf_x_core_message_t *message);
 
-int cf_x_core_string_compare(void *string_object_a, void *string_object_b);
+int cf_x_core_string_compare(void *string_a_object, void *string_b_object);
+
+cf_x_core_bool_t cf_x_core_string_compare_equal(void *string_a_object,
+    void *string_b_object);
 
 void *cf_x_core_string_copy(void *string_object);
 
 void *cf_x_core_string_create_from_message(cf_x_core_message_t *message);
 
 void cf_x_core_string_destroy(void *string_object);
-
-cf_x_core_bool_t cf_x_core_string_equal(void *string_a_object,
-    void *string_b_object);
 
 char *cf_x_core_string_get_as_string(void *string_object);
 

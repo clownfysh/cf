@@ -37,7 +37,7 @@ cf_x_case_mbin_t *create(cf_x_core_objectey_t *objectey, unsigned long level,
 {
   assert(objectey);
   assert(objectey->mod);
-  assert(objectey->equal);
+  assert(objectey->compare_equal);
   assert(level < PRIMES_COUNT);
   cf_x_case_mbin_t *mbin;
 
@@ -294,7 +294,7 @@ void *cf_x_case_mbin_find(cf_x_case_mbin_t *mbin, void *decoy_object)
     object = cf_x_case_mbin_find(*(mbin->bins + remainder), decoy_object);
   } else {
     for (i = 0; i < mbin->object_count; i++) {
-      if (mbin->objectey->equal(decoy_object, *(mbin->objects + i))) {
+      if (mbin->objectey->compare_equal(decoy_object, *(mbin->objects + i))) {
         object = *(mbin->objects + i);
         break;
       }
@@ -406,7 +406,7 @@ cf_x_core_bool_t cf_x_case_mbin_remove(cf_x_case_mbin_t *mbin,
     }
   } else {
     for (i = 0; i < mbin->object_count; i++) {
-      if (mbin->objectey->equal(decoy_object, *(mbin->objects + i))) {
+      if (mbin->objectey->compare_equal(decoy_object, *(mbin->objects + i))) {
         success = cf_x_core_bool_true;
         if (mbin->objectey->destroy) {
           mbin->objectey->destroy(*(mbin->objects + i));

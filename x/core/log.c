@@ -7,7 +7,7 @@
 #define SPACE_CUTOFF 64
 #define SPACE_CHAR ' '
 
-struct cf_x_audit_log_t {
+struct cf_x_core_log_t {
   cf_x_case_set_t *files;
   pthread_mutex_t mutex;
   cf_x_core_objectey_t files_objectey;
@@ -22,7 +22,7 @@ static unsigned short find_line_end(char *entry,
 
 static char *format_entry(char *entry);
 
-static cf_x_core_bool_t write_entry_to_all_files(cf_x_audit_log_t *log,
+static cf_x_core_bool_t write_entry_to_all_files(cf_x_core_log_t *log,
     char *formatted_entry);
 
 int compare_files(void *a_file_object, void *b_file_object)
@@ -47,7 +47,7 @@ int compare_files(void *a_file_object, void *b_file_object)
   return compare_result;
 }
 
-cf_x_core_bool_t cf_x_audit_log_add_file(cf_x_audit_log_t *log, FILE *file)
+cf_x_core_bool_t cf_x_core_log_add_file(cf_x_core_log_t *log, FILE *file)
 {
   assert(log);
   assert(file);
@@ -60,9 +60,9 @@ cf_x_core_bool_t cf_x_audit_log_add_file(cf_x_audit_log_t *log, FILE *file)
   return success;
 }
 
-cf_x_audit_log_t *cf_x_audit_log_create(FILE *file)
+cf_x_core_log_t *cf_x_core_log_create(FILE *file)
 {
-  cf_x_audit_log_t *log;
+  cf_x_core_log_t *log;
   cf_x_core_bool_t so_far_so_good;
 
   log = malloc(sizeof *log);
@@ -75,8 +75,9 @@ cf_x_audit_log_t *cf_x_audit_log_create(FILE *file)
 
   if (so_far_so_good) {
     cf_x_core_objectey_init(&log->files_objectey, compare_files,
+        cf_x_core_basic_unsigned_long_compare_equal,
         CF_X_CORE_OBJECT_NO_COPY_F, CF_X_CORE_OBJECT_NO_DESTROY_F,
-        cf_x_core_basic_unsigned_long_equal, CF_X_CORE_OBJECT_NO_GET_AS_STRING_F,
+        CF_X_CORE_OBJECT_NO_GET_AS_STRING_F,
         cf_x_core_basic_unsigned_long_mod);
     log->files = cf_x_case_set_create(&log->files_objectey);
     if (log->files) {
@@ -110,7 +111,7 @@ cf_x_audit_log_t *cf_x_audit_log_create(FILE *file)
   return log;
 }
 
-void cf_x_audit_log_destroy(cf_x_audit_log_t *log)
+void cf_x_core_log_destroy(cf_x_core_log_t *log)
 {
   assert(log);
 
@@ -119,7 +120,7 @@ void cf_x_audit_log_destroy(cf_x_audit_log_t *log)
   free(log);
 }
 
-cf_x_core_bool_t cf_x_audit_log_enter(cf_x_audit_log_t *log, const char *system,
+cf_x_core_bool_t cf_x_core_log_enter(cf_x_core_log_t *log, const char *system,
     const char *entry, ...)
 {
   assert(log);
@@ -165,7 +166,7 @@ cf_x_core_bool_t cf_x_audit_log_enter(cf_x_audit_log_t *log, const char *system,
   return success;
 }
 
-cf_x_core_bool_t cf_x_audit_log_remove_file(cf_x_audit_log_t *log, FILE *file)
+cf_x_core_bool_t cf_x_core_log_remove_file(cf_x_core_log_t *log, FILE *file)
 {
   assert(log);
   assert(file);
@@ -178,7 +179,7 @@ cf_x_core_bool_t cf_x_audit_log_remove_file(cf_x_audit_log_t *log, FILE *file)
   return success;
 }
 
-cf_x_core_bool_t _x_audit_log_trace(cf_x_audit_log_t *log, const char *system,
+cf_x_core_bool_t _x_audit_log_trace(cf_x_core_log_t *log, const char *system,
     const char *entry, const char *file, unsigned long line, ...)
 {
   assert(log);
@@ -305,7 +306,7 @@ char *format_entry(char *entry)
   return formatted_entry;
 }
 
-cf_x_core_bool_t write_entry_to_all_files(cf_x_audit_log_t *log,
+cf_x_core_bool_t write_entry_to_all_files(cf_x_core_log_t *log,
     char *formatted_entry)
 {
   assert(log);

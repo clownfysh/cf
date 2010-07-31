@@ -8,7 +8,7 @@ struct cf_inferno_box_system_t {
   cf_inferno_box_object_get_cell_f get_cell;
   cf_inferno_box_object_set_cell_f set_cell;
   cf_x_core_object_destroy_f destroy_object;
-  cf_x_audit_log_t *log;
+  cf_x_core_log_t *log;
 };
 
 struct cf_inferno_box_cell_t;
@@ -100,14 +100,14 @@ cf_x_core_bool_t create_cells(cf_inferno_box_system_t *system)
             cf_x_case_array_add(system->cells, cells_array_index, cell);
           } else {
             success = cf_x_core_bool_false;
-            cf_x_audit_log_trace(system->log, "box", "inferno_box_cell_create");
+            cf_x_core_log_trace(system->log, "box", "inferno_box_cell_create");
           }
         }
       }
     }
   } else {
     success = cf_x_core_bool_false;
-    cf_x_audit_log_trace(system->log, "box", "x_case_array_create");
+    cf_x_core_log_trace(system->log, "box", "x_case_array_create");
   }
 
   return success;
@@ -222,7 +222,7 @@ cf_inferno_box_system_t *cf_inferno_box_system_create
 (cf_inferno_box_coordinate_t *dimension_coordinate,
     cf_inferno_box_object_get_cell_f get_cell, cf_inferno_box_object_set_cell_f set_cell,
     cf_x_core_object_compare_f compare_objects, cf_x_core_object_copy_f copy_object,
-    cf_x_core_object_destroy_f destroy_object, cf_x_audit_log_t *log)
+    cf_x_core_object_destroy_f destroy_object, cf_x_core_log_t *log)
 {
   assert(dimension_coordinate);
   assert(dimension_coordinate->x >= 1);
@@ -251,7 +251,7 @@ cf_inferno_box_system_t *cf_inferno_box_system_create
       set_neighbor_references(system);
     } else {
       so_far_so_good = cf_x_core_bool_false;
-      cf_x_audit_log_trace(log, "box", "create_cells");
+      cf_x_core_log_trace(log, "box", "create_cells");
     }
   } else {
     so_far_so_good = cf_x_core_bool_false;

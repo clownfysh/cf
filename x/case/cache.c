@@ -45,9 +45,9 @@ cf_x_case_cache_t *cf_x_case_cache_create(cf_x_core_object_compare_f compare,
   if (cache) {
     cache->remove_condition = remove_condition;
     cache->objects_qutex = NULL;
-    cf_x_core_objectey_init(&cache->objects_objectey, compare, copy, destroy,
-        CF_X_CORE_OBJECT_NO_EQUAL_F, CF_X_CORE_OBJECT_NO_GET_AS_STRING_F,
-        CF_X_CORE_OBJECT_NO_MOD_F);
+    cf_x_core_objectey_init(&cache->objects_objectey, compare,
+        CF_X_CORE_OBJECT_NO_COMPARE_EQUAL_F, copy, destroy,
+        CF_X_CORE_OBJECT_NO_GET_AS_STRING_F, CF_X_CORE_OBJECT_NO_MOD_F);
     cache->objects = cf_x_case_set_create(&cache->objects_objectey);
     if (cache->objects) {
       so_far_so_good = cf_x_core_bool_true;

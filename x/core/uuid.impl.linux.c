@@ -1,7 +1,7 @@
 #include "cf/x/core/uuid.h"
 
 /*
-cf_x_core_bool_t cf_x_core_uuid_equal(void *uuid_a_object, void *uuid_b_object)
+cf_x_core_bool_t cf_x_core_uuid_compare_equal(void *uuid_a_object, void *uuid_b_object)
 {
   assert(uuid_a_object);
   assert(uuid_b_object);

@@ -6,7 +6,7 @@
 
 typedef void * (*cf_inferno_searcx_searchey_create_f)
 (cf_inferno_core_score_solution_f score_solution, cf_inferno_core_goal_t goal, void *context,
-    cf_x_case_array_t *initial_solutions, cf_x_audit_log_t *log);
+    cf_x_case_array_t *initial_solutions, cf_x_core_log_t *log);
 
 typedef void (*cf_inferno_searcx_searchey_destroy_f)(void *searcx_object);
 

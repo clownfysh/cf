@@ -10,6 +10,9 @@ typedef struct cf_x_core_nameobject_t cf_x_core_nameobject_t;
 int cf_x_core_nameobject_compare(void *nameobject_object_a,
     void *nameobject_object_b);
 
+cf_x_core_bool_t cf_x_core_nameobject_compare_equal(void *nameobject_a_object,
+    void *nameobject_b_object);
+
 void *cf_x_core_nameobject_copy(void *nameobject_object);
 
 cf_x_core_nameobject_t *cf_x_core_nameobject_create(char *name, void *object,
@@ -21,9 +24,6 @@ cf_x_core_nameobject_t *cf_x_core_nameobject_create_decoy(char *name);
 void cf_x_core_nameobject_destroy(void *nameobject_object);
 
 void cf_x_core_nameobject_destroy_decoy(void *nameobject_object);
-
-cf_x_core_bool_t cf_x_core_nameobject_equal(void *nameobject_a_object,
-    void *nameobject_b_object);
 
 char *cf_x_core_nameobject_get_as_string(void *nameobject_object);
 

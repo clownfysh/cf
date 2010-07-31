@@ -22,7 +22,7 @@ struct stravel_t {
   double points[MAX_POINTS][2];
   double distances[MAX_POINTS][MAX_POINTS];
   unsigned short current_point;
-  cf_x_audit_log_t *log;
+  cf_x_core_log_t *log;
 };
 typedef struct stravel_t stravel_t;
 
@@ -187,7 +187,7 @@ cf_x_core_bool_t load_points_from_file(stravel_t *stravel, char *points_filename
   if (csv) {
     success = cf_x_core_bool_true;
     stravel->point_count = cf_x_file_csv_get_object_count(csv);
-    cf_x_audit_log_enter(stravel->log, "stvl", "loading %lu points from %s",
+    cf_x_core_log_enter(stravel->log, "stvl", "loading %lu points from %s",
         stravel->point_count, points_filename);
     for (each_point = 0; each_point < stravel->point_count; each_point++) {
       x = cf_x_file_csv_get_value_by_name_as_double(csv, each_point, "x");
@@ -198,7 +198,7 @@ cf_x_core_bool_t load_points_from_file(stravel_t *stravel, char *points_filename
     cf_x_file_csv_destroy(csv);
   } else {
     success = cf_x_core_bool_false;
-    cf_x_audit_log_trace(stravel->log, "stvl", "x_file_csv_create");
+    cf_x_core_log_trace(stravel->log, "stvl", "x_file_csv_create");
   }
 
   return success;
@@ -221,7 +221,7 @@ cf_x_core_bool_t save_points_to_file(stravel_t *stravel, char *filename)
 
     if (!cf_x_file_basic_write_string(file, "x,y\n")) {
       success = cf_x_core_bool_false;
-      cf_x_audit_log_trace(stravel->log, "stvl", "x_file_basic_write_string");
+      cf_x_core_log_trace(stravel->log, "stvl", "x_file_basic_write_string");
     }
 
     for (each_point = 0; each_point < stravel->point_count; each_point++) {
@@ -230,19 +230,19 @@ cf_x_core_bool_t save_points_to_file(stravel_t *stravel, char *filename)
       if (sprintf(string, "%.5f,%.5f\n", x, y) >= 0) {  /*  TODO  */
         if (!cf_x_file_basic_write_string(file, string)) {
           success = cf_x_core_bool_false;
-          cf_x_audit_log_trace(stravel->log, "stvl", "x_file_basic_write_string");
+          cf_x_core_log_trace(stravel->log, "stvl", "x_file_basic_write_string");
           break;
         }
       } else {
         success = cf_x_core_bool_false;
-        cf_x_audit_log_trace(stravel->log, "stvl", "sprintf");
+        cf_x_core_log_trace(stravel->log, "stvl", "sprintf");
         break;
       }
     }
     cf_x_file_basic_destroy(file);
   } else {
     success = cf_x_core_bool_false;
-    cf_x_audit_log_trace(stravel->log, "stvl", "x_file_basic_create");
+    cf_x_core_log_trace(stravel->log, "stvl", "x_file_basic_create");
   }
 
   return success;
@@ -277,7 +277,7 @@ cf_x_core_bool_t save_solution_to_file(stravel_t *stravel,
 
     if (!cf_x_file_basic_write_string(file, "x,y\n")) {
       success = cf_x_core_bool_false;
-      cf_x_audit_log_trace(stravel->log, "stvl", "x_file_basic_write_string");
+      cf_x_core_log_trace(stravel->log, "stvl", "x_file_basic_write_string");
     }
 
     current_point = 0;
@@ -286,11 +286,11 @@ cf_x_core_bool_t save_solution_to_file(stravel_t *stravel,
     if (sprintf(string, "%.5f,%.5f\n", x, y) >= 0) {  /*  TODO  */
       if (!cf_x_file_basic_write_string(file, string)) {
         success = cf_x_core_bool_false;
-        cf_x_audit_log_trace(stravel->log, "stvl", "x_file_basic_write_string");
+        cf_x_core_log_trace(stravel->log, "stvl", "x_file_basic_write_string");
       }
     } else {
       success = cf_x_core_bool_false;
-      cf_x_audit_log_trace(stravel->log, "stvl", "sprintf");
+      cf_x_core_log_trace(stravel->log, "stvl", "sprintf");
     }
     visited[current_point] = cf_x_core_bool_true;
 
@@ -305,12 +305,12 @@ cf_x_core_bool_t save_solution_to_file(stravel_t *stravel,
       if (sprintf(string, "%.5f,%.5f\n", x, y) >= 0) {  /*  TODO  */
         if (!cf_x_file_basic_write_string(file, string)) {
           success = cf_x_core_bool_false;
-          cf_x_audit_log_trace(stravel->log, "stvl", "x_file_basic_write_string");
+          cf_x_core_log_trace(stravel->log, "stvl", "x_file_basic_write_string");
           break;
         }
       } else {
         success = cf_x_core_bool_false;
-        cf_x_audit_log_trace(stravel->log, "stvl", "sprintf");
+        cf_x_core_log_trace(stravel->log, "stvl", "sprintf");
         break;
       }
 
@@ -320,7 +320,7 @@ cf_x_core_bool_t save_solution_to_file(stravel_t *stravel,
     cf_x_file_basic_destroy(file);
   } else {
     success = cf_x_core_bool_false;
-    cf_x_audit_log_trace(stravel->log, "stvl", "x_file_basic_create");
+    cf_x_core_log_trace(stravel->log, "stvl", "x_file_basic_create");
   }
 
   return success;
@@ -371,7 +371,7 @@ int main(int argc, char *argv[])
 {
   cf_x_config_options_t *options;
   cf_x_core_objects_t objects;
-  cf_x_audit_log_t *log;
+  cf_x_core_log_t *log;
   char *points_filename;
   cf_inferno_searcx_system_t *system;
   cf_x_case_array_t *initial_solutions;
@@ -395,7 +395,7 @@ int main(int argc, char *argv[])
 
   cf_x_core_objects_init(&objects);
 
-  log = cf_x_audit_log_create(stdout);
+  log = cf_x_core_log_create(stdout);
   if (!log) {
     cf_x_core_trace_exit("x_audit_log_create");
   }
@@ -403,16 +403,16 @@ int main(int argc, char *argv[])
 
   options = cf_x_config_options_create(argc, argv, &objects);
   if (!options) {
-    cf_x_audit_log_trace_exit(log, "stvl", "x_config_options_create");
+    cf_x_core_log_trace_exit(log, "stvl", "x_config_options_create");
   }
 
   if (cf_x_config_options_find_as_string(options, "points_filename",
           &points_filename, "")) {
     if (!load_points_from_file(&stravel, points_filename)) {
-      cf_x_audit_log_trace_exit(log, "stvl", "load_points_from_file");
+      cf_x_core_log_trace_exit(log, "stvl", "load_points_from_file");
     }
   } else {
-    cf_x_audit_log_enter
+    cf_x_core_log_enter
       (log, "stvl", "creating %lu random points", RANDOM_POINT_COUNT);
     create_random_points(&stravel);
   }
@@ -427,25 +427,25 @@ int main(int argc, char *argv[])
     searcx_algorithm = DEFAULT_SEARCX_ALGORITHM;
   }
   searcx_algorithm_string = cf_inferno_searcx_algorithm_get_string(searcx_algorithm);
-  cf_x_audit_log_enter(log, "stvl", "search algorithm: %s",
+  cf_x_core_log_enter(log, "stvl", "search algorithm: %s",
       searcx_algorithm_string);
 
-  cf_x_audit_log_enter(log, "stvl", "saving points to stravel_points.csv");
+  cf_x_core_log_enter(log, "stvl", "saving points to stravel_points.csv");
   if (!save_points_to_file(&stravel, POINTS_FILENAME)) {
-    cf_x_audit_log_trace_exit(log, "stvl", "save_points_to_file");
+    cf_x_core_log_trace_exit(log, "stvl", "save_points_to_file");
   }
 
   sqrt_point_count = sqrt(stravel.point_count);
   goal_distance = ((POINT_RANGE * sqrt_point_count) + POINT_RANGE) * 1.0;
 
-  cf_x_audit_log_enter(log, "stvl", "caching point distances");
+  cf_x_core_log_enter(log, "stvl", "caching point distances");
   cache_distances(&stravel);
 
-  cf_x_audit_log_enter(log, "stvl", "creating search system");
+  cf_x_core_log_enter(log, "stvl", "creating search system");
   system = cf_inferno_searcx_system_create(score_solution, CF_INFERNO_CORE_GOAL_MINIMIZE_SCORE,
       &stravel, initial_solutions, searcx_algorithm, log);
   if (system) {
-    cf_x_audit_log_enter(log, "stvl", "goal distance: %.2f", goal_distance);
+    cf_x_core_log_enter(log, "stvl", "goal distance: %.2f", goal_distance);
     gettimeofday(&start_time, NULL);
     still_searching = cf_x_core_bool_true;
     while (still_searching) {
@@ -454,34 +454,34 @@ int main(int argc, char *argv[])
       if (solutions) {
         solution = cf_x_case_array_find(solutions, 0);
         if (!score_solution(&stravel, solution, &best_score)) {
-          cf_x_audit_log_trace_exit(log, "stvl", "score_solution");
+          cf_x_core_log_trace_exit(log, "stvl", "score_solution");
         }
         solution_count = cf_x_case_array_get_size(solutions);
         for (i = 0; i < solution_count; i++) {
           solution = cf_x_case_array_find(solutions, i);
           if (!score_solution(&stravel, solution, &score)) {
-            cf_x_audit_log_trace_exit(log, "stvl", "score_solution");
+            cf_x_core_log_trace_exit(log, "stvl", "score_solution");
           }
           if (cf_x_core_bool_true) {
-            cf_x_audit_log_enter(log, "stvl", "distance: %.2f", score);
+            cf_x_core_log_enter(log, "stvl", "distance: %.2f", score);
           }
           fflush(stdout);
           if (score <= goal_distance) {
             still_searching = cf_x_core_bool_false;
-            cf_x_audit_log_enter
+            cf_x_core_log_enter
               (log, "stvl", "reached goal distance, stopping search");
           }
         }
         cf_x_case_array_destroy(solutions);
       } else {
-        cf_x_audit_log_trace_exit
+        cf_x_core_log_trace_exit
           (log, "stvl", "inferno_searcx_system_get_solutions_copy");
         break;
       }
       if (!cf_x_core_time_is_remaining_microseconds
           (&start_time, MAX_OVERALL_TIME_MICROSECONDS)) {
         still_searching = cf_x_core_bool_false;
-        cf_x_audit_log_enter
+        cf_x_core_log_enter
           (log, "stvl", "max search time elapsed, stopping search");
       }
     }
@@ -489,24 +489,24 @@ int main(int argc, char *argv[])
     solutions = cf_inferno_searcx_system_get_solutions_copy(system, 1);
     if (solutions) {
       solution = cf_x_case_array_find(solutions, 0);
-      cf_x_audit_log_enter
+      cf_x_core_log_enter
         (log, "stvl", "saving solution to %s", SOLUTION_FILENAME);
       if (!save_solution_to_file(&stravel, solution, SOLUTION_FILENAME)) {
-        cf_x_audit_log_trace_exit(log, "stvl", "save_solution_to_file");
+        cf_x_core_log_trace_exit(log, "stvl", "save_solution_to_file");
       }
       cf_x_case_array_destroy(solutions);
     } else {
-      cf_x_audit_log_trace_exit
+      cf_x_core_log_trace_exit
         (log, "stvl", "inferno_searcx_system_get_solutions_copy");
     }
 
     cf_inferno_searcx_system_destroy(system);
   } else {
-    cf_x_audit_log_trace_exit(log, "stvl", "inferno_searcx_system_create");
+    cf_x_core_log_trace_exit(log, "stvl", "inferno_searcx_system_create");
   }
 
   cf_x_config_options_destroy(options);
-  cf_x_audit_log_destroy(log);
+  cf_x_core_log_destroy(log);
 
   return 0;
 }

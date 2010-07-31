@@ -41,6 +41,14 @@ int cf_x_core_uuid_compare(void *uuid_a_object, void *uuid_b_object)
   return uuid_compare(uuid_a->uuid, uuid_b->uuid);
 }
 
+cf_x_core_bool_t cf_x_core_uuid_compare_equal(void *uuid_a_object,
+    void *uuid_b_object)
+{
+  assert(uuid_a_object);
+  assert(uuid_b_object);
+  return (0 == cf_x_core_uuid_compare(uuid_a_object, uuid_b_object));
+}
+
 void *cf_x_core_uuid_copy(void *uuid_object)
 {
   assert(uuid_object);
@@ -134,13 +142,6 @@ void cf_x_core_uuid_destroy(void *uuid_object)
   free(uuid);
 }
 
-cf_x_core_bool_t cf_x_core_uuid_equal(void *uuid_a_object, void *uuid_b_object)
-{
-  assert(uuid_a_object);
-  assert(uuid_b_object);
-  return (0 == cf_x_core_uuid_compare(uuid_a_object, uuid_b_object));
-}
-
 char *cf_x_core_uuid_get_as_string(void *uuid_object)
 {
   assert(uuid_object);
@@ -199,8 +200,9 @@ unsigned long cf_x_core_uuid_hash(cf_x_core_uuid_t *uuid)
 
 void cf_x_core_uuid_init_objectey(cf_x_core_objectey_t *objectey)
 {
-  cf_x_core_objectey_init(objectey, cf_x_core_uuid_compare, cf_x_core_uuid_copy,
-      cf_x_core_uuid_destroy, cf_x_core_uuid_equal, cf_x_core_uuid_get_as_string,
+  cf_x_core_objectey_init(objectey, cf_x_core_uuid_compare,
+      cf_x_core_uuid_compare_equal, cf_x_core_uuid_copy,
+      cf_x_core_uuid_destroy, cf_x_core_uuid_get_as_string,
       cf_x_core_uuid_mod);
 }
 

@@ -33,14 +33,14 @@ int main(int argc, char *argv[])
   cf_x_net_engine_enginey_t enginey;
   cf_x_core_messagey_t messagey;
   cf_x_net_post_postey_t postey;
-  cf_x_audit_log_t *log;
+  cf_x_core_log_t *log;
 
   if (argc < 2) {
     print_use_exit();
   }
   server_port = atoi(argv[1]);
 
-  log = cf_x_audit_log_create(stdout);
+  log = cf_x_core_log_create(stdout);
   if (!log) {
     cf_x_core_trace_exit("x_audit_log_create");
   }
@@ -78,7 +78,7 @@ int main(int argc, char *argv[])
   }
 
   cf_x_net_server_system_destroy(server);
-  cf_x_audit_log_destroy(log);
+  cf_x_core_log_destroy(log);
 
   return 0;
 }

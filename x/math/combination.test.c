@@ -11,8 +11,9 @@ int main(int argc, char *argv[])
   cf_x_core_objectey_t set_objectey;
 
   cf_x_core_objectey_init(&set_objectey, cf_x_core_string_compare,
-      cf_x_core_string_copy, CF_X_CORE_OBJECT_NO_DESTROY_F, cf_x_core_string_equal,
-      cf_x_core_string_get_as_string, cf_x_core_string_mod);
+      cf_x_core_string_compare_equal, cf_x_core_string_copy,
+      CF_X_CORE_OBJECT_NO_DESTROY_F, cf_x_core_string_get_as_string,
+      cf_x_core_string_mod);
   set = cf_x_case_set_create(&set_objectey);
   if (!set) {
     cf_x_core_trace_exit("x_case_set_create");

@@ -168,7 +168,7 @@ void cf_x_core_nameobject_destroy_decoy(void *nameobject_object)
   free(nameobject);
 }
 
-cf_x_core_bool_t cf_x_core_nameobject_equal(void *nameobject_a_object,
+cf_x_core_bool_t cf_x_core_nameobject_compare_equal(void *nameobject_a_object,
     void *nameobject_b_object)
 {
   return (0 == cf_x_core_nameobject_compare(nameobject_a_object,
@@ -218,8 +218,8 @@ void *cf_x_core_nameobject_get_object(cf_x_core_nameobject_t *nameobject)
 void cf_x_core_nameobject_init_objectey(cf_x_core_objectey_t *objectey)
 {
   cf_x_core_objectey_init(objectey, cf_x_core_nameobject_compare,
-      cf_x_core_nameobject_copy, cf_x_core_nameobject_destroy,
-      cf_x_core_nameobject_equal, cf_x_core_nameobject_get_as_string,
+      cf_x_core_nameobject_compare_equal, cf_x_core_nameobject_copy,
+      cf_x_core_nameobject_destroy, cf_x_core_nameobject_get_as_string,
       cf_x_core_nameobject_mod);
 }
 

@@ -9,7 +9,7 @@ enum cf_x_core_bit_t {
 };
 typedef enum cf_x_core_bit_t cf_x_core_bit_t;
 
-int cf_x_core_bit_compare(void *bit_object_a, void *bit_object_b);
+int cf_x_core_bit_compare(void *bit_a_object, void *bit_b_object);
 
 void *cf_x_core_bit_copy(void *bit_object);
 

@@ -18,7 +18,7 @@ void *cf_x_net_client_system_copy(void *client_object);
 cf_x_net_client_system_t *cf_x_net_client_system_create(const char *server_ip_address,
     unsigned short server_min_port, unsigned short server_max_port,
     cf_x_net_engine_get_name_f get_engine_name, void *custom_client_context,
-    cf_x_audit_log_t *log);
+    cf_x_core_log_t *log);
 
 void cf_x_net_client_system_destroy(void *client_object);
 

@@ -1,15 +1,14 @@
 #include "cf/x/core/bit.h"
 #include "cf/x/core/tools.h"
 
-int cf_x_core_bit_compare(void *bit_object_a,
-    void *bit_object_b)
+int cf_x_core_bit_compare(void *bit_a_object, void *bit_b_object)
 {
   cf_x_core_bit_t *bit_a;
   cf_x_core_bit_t *bit_b;
   int compare;
 
-  bit_a = bit_object_a;
-  bit_b = bit_object_b;
+  bit_a = bit_a_object;
+  bit_b = bit_b_object;
   if (*bit_a > *bit_b) {
     compare = 1;
   } else if (*bit_a < *bit_b) {

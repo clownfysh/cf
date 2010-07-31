@@ -7,7 +7,7 @@
 
 void *cf_inferno_eos_system_create(cf_inferno_core_score_solution_f score_solution,
     cf_inferno_core_goal_t goal, void *context,
-    cf_x_case_array_t *initial_solutions, cf_x_audit_log_t *log);
+    cf_x_case_array_t *initial_solutions, cf_x_core_log_t *log);
 
 void cf_inferno_eos_system_destroy(void *system_object);
 
@@ -17,7 +17,7 @@ void *cf_inferno_eos_system_get_context(cf_inferno_eos_system_t *system);
 
 cf_inferno_core_goal_t cf_inferno_eos_system_get_goal(cf_inferno_eos_system_t *system);
 
-cf_x_audit_log_t *cf_inferno_eos_system_get_log(cf_inferno_eos_system_t *system);
+cf_x_core_log_t *cf_inferno_eos_system_get_log(cf_inferno_eos_system_t *system);
 
 cf_inferno_core_score_solution_f cf_inferno_eos_system_get_score_solution
 (cf_inferno_eos_system_t *system);

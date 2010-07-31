@@ -105,8 +105,8 @@ cf_x_case_shardset_t *cf_x_case_shardset_create(cf_x_core_object_compare_f compa
   }
 
   if (so_far_so_good) {
-    cf_x_core_objectey_init(&shardset->set_objectey, compare, copy, destroy,
-        equal, CF_X_CORE_OBJECT_NO_GET_AS_STRING_F, mod);
+    cf_x_core_objectey_init(&shardset->set_objectey, compare, equal, copy,
+        destroy, CF_X_CORE_OBJECT_NO_GET_AS_STRING_F, mod);
     for (each_shard = 0; each_shard < shard_count; each_shard++) {
       *(shardset->shards + each_shard)
         = cf_x_case_set_create(&shardset->set_objectey);

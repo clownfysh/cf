@@ -10,7 +10,7 @@ struct cf_inferno_archetype_system_t;
 typedef struct cf_inferno_archetype_system_t cf_inferno_archetype_system_t;
 
 void *cf_inferno_archetype_system_create(cf_x_case_array_t *classified_objects,
-    cf_x_audit_log_t *log);
+    cf_x_core_log_t *log);
 
 void cf_inferno_archetype_system_destroy(void *system_void);
 

@@ -5,7 +5,7 @@
 struct cf_inferno_classify_system_t {
   cf_inferno_classify_classifyey_t classifyey;
   void *classify_object;
-  cf_x_audit_log_t *log;
+  cf_x_core_log_t *log;
 };
 
 static void init_classifyey(cf_inferno_classify_classifyey_t *classifyey,
@@ -13,7 +13,7 @@ static void init_classifyey(cf_inferno_classify_classifyey_t *classifyey,
 
 cf_inferno_classify_system_t *cf_inferno_classify_system_create
 (cf_x_case_array_t *classified_objects, cf_inferno_classify_algorithm_t algorithm,
-    cf_x_audit_log_t *log)
+    cf_x_core_log_t *log)
 {
   assert(classified_objects);
   assert(cf_x_case_array_get_size(classified_objects) > 0);
@@ -29,7 +29,7 @@ cf_inferno_classify_system_t *cf_inferno_classify_system_create
     system->classify_object = system->classifyey.create(classified_objects,
         log);
     if (!system->classify_object) {
-      cf_x_audit_log_trace(log, "clss", "create");
+      cf_x_core_log_trace(log, "clss", "create");
       free(system);
       system = NULL;
     }
@@ -79,7 +79,7 @@ cf_x_case_array_t *cf_inferno_classify_system_classify_objects
       if (class_object) {
         cf_x_case_array_add(classes, index, class_object);
       } else {
-        cf_x_audit_log_trace(system->log, "clss", "malloc");
+        cf_x_core_log_trace(system->log, "clss", "malloc");
       }
       index++;
     }
@@ -103,7 +103,7 @@ cf_x_core_bool_t cf_inferno_classify_system_learn(cf_inferno_classify_system_t *
   do {
     if (!system->classifyey.learn(system->classify_object)) {
       success = cf_x_core_bool_false;
-      cf_x_audit_log_trace(system->log, "clss", "learn");
+      cf_x_core_log_trace(system->log, "clss", "learn");
     }
   } while (cf_x_core_time_is_remaining_microseconds
       (&start_time, max_wall_time_microseconds));
@@ -132,7 +132,7 @@ cf_x_core_bool_t cf_inferno_classify_system_observe_objects(cf_inferno_classify_
   while ((object = cf_x_case_array_iterate_next(classified_objects))) {
     if (!system->classifyey.observe_object(system->classify_object, object)) {
       success = cf_x_core_bool_false;
-      cf_x_audit_log_trace(system->log, "clss", "observe_object");
+      cf_x_core_log_trace(system->log, "clss", "observe_object");
     }
   }
 

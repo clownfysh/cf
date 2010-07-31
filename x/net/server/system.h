@@ -23,7 +23,7 @@ cf_x_net_server_system_t *cf_x_net_server_system_create(const char *name, unsign
     unsigned short max_port, unsigned short max_threads,
     cf_x_core_messagey_t *messagey, cf_x_net_post_postey_t *postey,
     cf_x_net_engine_get_name_f get_engine_name, cf_x_config_system_t *config_system,
-    cf_x_audit_log_t *log);
+    cf_x_core_log_t *log);
 
 void cf_x_net_server_system_destroy(cf_x_net_server_system_t *server);
 

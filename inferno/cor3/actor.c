@@ -207,7 +207,7 @@ double get_score(cf_inferno_cor3_actor_t *actor)
   assert(actor);
   void *context;
   cf_inferno_core_score_solution_f score_solution;
-  cf_x_audit_log_t *log;
+  cf_x_core_log_t *log;
 
   if (!actor->score_is_valid) {
     context = cf_inferno_cor3_system_get_context(actor->system);
@@ -216,7 +216,7 @@ double get_score(cf_inferno_cor3_actor_t *actor)
       actor->score_is_valid = cf_x_core_bool_true;
     } else {
       log = cf_inferno_cor3_system_get_log(actor->system);
-      cf_x_audit_log_trace(log, "cor3", "score_solution");
+      cf_x_core_log_trace(log, "cor3", "score_solution");
     }
   }
 
@@ -317,7 +317,7 @@ void *cf_inferno_cor3_actor_create(void *system_void, cf_x_core_bitarray_t *solu
   unsigned short y;
   unsigned short z;
   unsigned short i;
-  cf_x_audit_log_t *log;
+  cf_x_core_log_t *log;
   cf_inferno_cor3_system_t *system;
 
   system = system_void;
@@ -339,12 +339,12 @@ void *cf_inferno_cor3_actor_create(void *system_void, cf_x_core_bitarray_t *solu
     }
     actor->solution = cf_x_core_bitarray_copy(solution);
     if (!actor->solution) {
-      cf_x_audit_log_trace(log, "cor3", "x_core_bitarray_copy");
+      cf_x_core_log_trace(log, "cor3", "x_core_bitarray_copy");
       free(actor);
       actor = NULL;
     }
   } else {
-    cf_x_audit_log_trace(log, "cor3", "malloc");
+    cf_x_core_log_trace(log, "cor3", "malloc");
   }
 
   return actor;
@@ -355,7 +355,7 @@ void *cf_inferno_cor3_actor_create_random(void *system_void)
   assert(system_void);
   cf_x_core_bitarray_t *bitarray;
   cf_inferno_cor3_actor_t *actor;
-  cf_x_audit_log_t *log;
+  cf_x_core_log_t *log;
   cf_inferno_cor3_system_t *system;
 
   system = system_void;
@@ -365,13 +365,13 @@ void *cf_inferno_cor3_actor_create_random(void *system_void)
     actor = cf_inferno_cor3_actor_create(system, bitarray);
     if (!actor) {
       log = cf_inferno_cor3_system_get_log(system);
-      cf_x_audit_log_trace(log, "cor3", "inferno_cor3_actor_create");
+      cf_x_core_log_trace(log, "cor3", "inferno_cor3_actor_create");
     }
     cf_x_core_bitarray_destroy(bitarray);
   } else {
     actor = NULL;
     log = cf_inferno_cor3_system_get_log(system);
-    cf_x_audit_log_trace(log, "cor3", "x_core_bitarray_create_random");
+    cf_x_core_log_trace(log, "cor3", "x_core_bitarray_create_random");
   }
 
   return actor;

@@ -14,6 +14,9 @@ cf_x_core_bool_t cf_x_core_uuid_add_to_message(void *uuid_object,
 
 int cf_x_core_uuid_compare(void *uuid_a_object, void *uuid_b_object);
 
+cf_x_core_bool_t cf_x_core_uuid_compare_equal(void *uuid_a_object,
+    void *uuid_b_object);
+
 void *cf_x_core_uuid_copy(void *uuid_object);
 
 cf_x_core_uuid_t *cf_x_core_uuid_create();
@@ -25,8 +28,6 @@ cf_x_core_uuid_t *cf_x_core_uuid_create_from_string(const char *uuid_string);
 cf_x_core_uuid_t *cf_x_core_uuid_create_null();
 
 void cf_x_core_uuid_destroy(void *uuid_object);
-
-cf_x_core_bool_t cf_x_core_uuid_equal(void *uuid_a_object, void *uuid_b_object);
 
 char *cf_x_core_uuid_get_as_string(void *uuid_object);
 

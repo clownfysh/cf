@@ -12,7 +12,7 @@ struct _math_stats_test_case
 };
 typedef struct _math_stats_test_case math_stats_test_case;
 
-cf_x_audit_log_t *the_log = NULL;
+cf_x_core_log_t *the_log = NULL;
 
 math_stats_test_case test_cases[] =
 {
@@ -28,24 +28,24 @@ int main(int argc, char *argv[])
   int line = 0;
   unsigned long ii = 0;
 
-  the_log = cf_x_audit_log_create(stdout);
+  the_log = cf_x_core_log_create(stdout);
 
   for (ii = 0; test_cases[ii].name != NULL; ii++) {
     if ((line = test_cases[ii].test_function()) != 0) {
-      cf_x_audit_log_enter(the_log, "math", "... Test <%s> FAILED (here: %d)",
+      cf_x_core_log_enter(the_log, "math", "... Test <%s> FAILED (here: %d)",
           test_cases[ii].name, line);
       result++;
     } else {
-      cf_x_audit_log_enter(the_log, "math", "... Test <%s> passed",
+      cf_x_core_log_enter(the_log, "math", "... Test <%s> passed",
           test_cases[ii].name);
     }
   }
 
   if (result != 0) {
-    cf_x_audit_log_enter(the_log, "math", "Unit Test FAILED");
+    cf_x_core_log_enter(the_log, "math", "Unit Test FAILED");
   }
 
-  cf_x_audit_log_destroy(the_log);
+  cf_x_core_log_destroy(the_log);
   return result;
 }
 
