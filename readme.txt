@@ -6,7 +6,7 @@ C tools by Matthew Temple
 What's here
   + bin :: environment, makefile, scripts
   + chage :: chaos game engine
-  + sage :: search, classify, morph
+  + inferno :: search, classify, morph
   + x :: objects, containers, networking
 
 Set up environment
