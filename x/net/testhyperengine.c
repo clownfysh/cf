@@ -1,9 +1,9 @@
 #include "cf/x/core/content.h"
 #include "cf/x/core/types.h"
 #include "cf/x/core/tools.h"
-#include "cf/x/net/engine_thread.h"
-#include "cf/x/net/hypermessage.h"
-#include "cf/x/net/server.h"
+#include "cf/x/net/engine/thread.h"
+#include "cf/x/net/http/message.h"
+#include "cf/x/net/server/system.h"
 #include "cf/x/net/testhyperengine.h"
 #include "cf/x/net/testmessage.h"
 
@@ -25,8 +25,8 @@ cf_x_net_message_status_t handle_about(void *engine_object,
   assert(engine_object);
   assert(message_object);
   cf_x_net_testhyperengine_t *engine;
-  cf_x_net_hypermessage_t *message;
-  cf_x_net_hypermessage_t *response_message;
+  cf_x_net_http_message_t *message;
+  cf_x_net_http_message_t *response_message;
   int client_socket;
   cf_x_net_server_t *cf_x_net_server;
   char *body;
@@ -39,12 +39,12 @@ cf_x_net_message_status_t handle_about(void *engine_object,
   body = "about this site";
   body_size = strlen(body);
 
-  response_message = cf_x_net_hypermessage_create(client_socket,
+  response_message = cf_x_net_http_message_create(client_socket,
       CF_X_NET_HYPERMETHOD_UNKNOWN, CF_X_NET_HYPERSTATUS_OK,
-      CF_X_NET_HYPERMESSAGE_NO_RESOURCE_PATH, CF_X_NET_HYPERVERSION_1_0,
-      CF_X_NET_HYPERMESSAGE_NO_HEADERS);
+      CF_X_NET_HTTP_MESSAGE_NO_RESOURCE_PATH, CF_X_NET_HTTP_VERSION_1_0,
+      CF_X_NET_HTTP_MESSAGE_NO_HEADERS);
   if (response_message) {
-    cf_x_net_hypermessage_set_body(response_message,
+    cf_x_net_http_message_set_body(response_message,
         CF_X_CORE_CONTENT_MIME_TEXT_HTML, body, body_size);
   } else {
     cf_x_core_trace("x_net_hypermessage_create");
@@ -63,8 +63,8 @@ cf_x_net_message_status_t handle_not_found(void *engine_object,
   assert(engine_object);
   assert(message_object);
   cf_x_net_testhyperengine_t *engine;
-  cf_x_net_hypermessage_t *message;
-  cf_x_net_hypermessage_t *response_message;
+  cf_x_net_http_message_t *message;
+  cf_x_net_http_message_t *response_message;
   int client_socket;
   cf_x_net_server_t *cf_x_net_server;
   char *body;
@@ -77,12 +77,12 @@ cf_x_net_message_status_t handle_not_found(void *engine_object,
   body = "testhyperengine cannot handle this request";
   body_size = strlen(body);
 
-  response_message = cf_x_net_hypermessage_create(client_socket,
+  response_message = cf_x_net_http_message_create(client_socket,
       CF_X_NET_HYPERMETHOD_UNKNOWN, CF_X_NET_HYPERSTATUS_NOT_FOUND,
-      CF_X_NET_HYPERMESSAGE_NO_RESOURCE_PATH, CF_X_NET_HYPERVERSION_1_0,
-      CF_X_NET_HYPERMESSAGE_NO_HEADERS);
+      CF_X_NET_HTTP_MESSAGE_NO_RESOURCE_PATH, CF_X_NET_HTTP_VERSION_1_0,
+      CF_X_NET_HTTP_MESSAGE_NO_HEADERS);
   if (response_message) {
-    cf_x_net_hypermessage_set_body(response_message,
+    cf_x_net_http_message_set_body(response_message,
         CF_X_CORE_CONTENT_MIME_TEXT_HTML, body, body_size);
   } else {
     cf_x_core_trace("x_net_hypermessage_create");
@@ -128,13 +128,13 @@ cf_x_net_server_handle_message_f cf_x_net_testhyperengine_get_handler_for_messag
   assert(hypermessage_object);
   cf_x_net_testhyperengine_t *engine;
   cf_x_net_server_handle_message_f handler;
-  cf_x_net_hypermessage_t *hypermessage;
+  cf_x_net_http_message_t *hypermessage;
   char *resource_name;
 
   engine = engine_object;
   hypermessage = hypermessage_object;
 
-  resource_name = cf_x_net_hypermessage_get_resource_name(hypermessage);
+  resource_name = cf_x_net_http_message_get_resource_name(hypermessage);
 
   if (0 == strcmp("/", resource_name)) {
     handler = handle_about;

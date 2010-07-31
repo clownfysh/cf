@@ -1,5 +1,5 @@
 #include "cf/x/core/constants.h"
-#include "cf/x/core/days_hours_minutes_seconds.h"
+#include "cf/x/core/dhms.h"
 #include "cf/x/core/time.h"
 #include "cf/x/core/tools.h"
 

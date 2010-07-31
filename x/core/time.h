@@ -1,7 +1,7 @@
 #ifndef cf_x_core_time_h
 #define cf_x_core_time_h
 
-#include "cf/x/core/days_hours_minutes_seconds.h"
+#include "cf/x/core/dhms.h"
 
 struct cf_x_core_time_t;
 typedef struct cf_x_core_time_t cf_x_core_time_t;

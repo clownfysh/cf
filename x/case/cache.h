@@ -2,7 +2,7 @@
 #define cf_x_case_cache_h
 
 #include "cf/x/core/object.h"
-#include "cf/x/core/qutex.h"
+#include "cf/x/sync/qutex.h"
 
 struct cf_x_case_cache_t;
 typedef struct cf_x_case_cache_t cf_x_case_cache_t;

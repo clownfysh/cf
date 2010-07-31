@@ -1,7 +1,7 @@
 #ifndef cf_inferno_classify_system_h
 #define cf_inferno_classify_system_h
 
-#include "cf/x/audit/log.h"
+#include "cf/x/core/log.h"
 #include "cf/x/case/array.h"
 #include "cf/x/core/bit.h"
 #include "cf/x/core/bitarray.h"

@@ -4,7 +4,7 @@
 #include "cf/inferno/ca/state.h"
 #include "cf/inferno/ca/systemey.h"
 #include "cf/x/case/array.h"
-#include "cf/x/core/run.h"
+#include "cf/x/sync/run.h"
 
 cf_inferno_ca_system_t *cf_inferno_ca_system_create
 (cf_x_case_array_t *initial_state_history,
@@ -40,7 +40,7 @@ cf_inferno_ca_t *cf_inferno_ca_system_get_relative_cell(cf_inferno_ca_system_t *
 cf_inferno_ca_state_t *cf_inferno_ca_system_get_state(cf_inferno_ca_system_t *system,
     unsigned long time_step);
 
-void cf_inferno_ca_system_run(cf_inferno_ca_system_t *system, cf_x_core_run_t *run);
+void cf_inferno_ca_system_run(cf_inferno_ca_system_t *system, cf_x_sync_run_t *run);
 
 cf_x_core_bool_t cf_inferno_ca_system_save_snapshot_jpeg(cf_inferno_ca_system_t *system,
     char *filename);

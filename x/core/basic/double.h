@@ -6,7 +6,8 @@
 cf_x_core_bool_t cf_x_core_basic_double_add_to_message(void *double_object,
     cf_x_core_message_t *message);
 
-int cf_x_core_basic_double_compare(void *double_object_a, void *double_object_b);
+int cf_x_core_basic_double_compare(void *double_object_a,
+    void *double_object_b);
 
 void *cf_x_core_basic_double_copy(void *double_object);
 

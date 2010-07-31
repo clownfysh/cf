@@ -1,7 +1,7 @@
 #ifndef cf_x_net_exchange_h
 #define cf_x_net_exchange_h
 
-#include "cf/x/net/postey.h"
+#include "cf/x/net/post/postey.h"
 
 struct cf_x_net_exchange_t;
 typedef struct cf_x_net_exchange_t cf_x_net_exchange_t;

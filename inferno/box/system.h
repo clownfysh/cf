@@ -2,7 +2,7 @@
 #define cf_inferno_box_system_h
 
 #include "cf/inferno/box/coordinate.h"
-#include "cf/x/audit/log.h"
+#include "cf/x/core/log.h"
 
 typedef void * (*cf_inferno_box_object_get_cell_f)(void *object);
 

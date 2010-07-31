@@ -1,5 +1,5 @@
 #include "cf/inferno/search/system.h"
-#include "cf/x/audit/log.h"
+#include "cf/x/core/log.h"
 #include "cf/x/config/options.h"
 #include "cf/x/core/bitarray.h"
 #include "cf/x/core/objects.h"

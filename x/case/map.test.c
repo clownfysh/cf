@@ -1,5 +1,5 @@
 #include "cf/x/case/map.h"
-#include "cf/x/core/long.h"
+#include "cf/x/core/basic/long.h"
 #include "cf/x/core/objects.h"
 #include "cf/x/core/string.h"
 #include "cf/x/core/tools.h"

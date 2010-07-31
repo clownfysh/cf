@@ -2,7 +2,7 @@
 #define cf_x_net_testengine_h
 
 #include "cf/x/core/engine.h"
-#include "cf/x/net/server.h"
+#include "cf/x/net/server/system.h"
 
 struct cf_x_net_testengine_t;
 typedef struct cf_x_net_testengine_t cf_x_net_testengine_t;

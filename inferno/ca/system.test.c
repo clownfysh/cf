@@ -82,7 +82,7 @@ void test_ant(char *name)
   cf_x_case_array_t *initial_state_history;
   unsigned long initial_time_step_count;
   unsigned long cell_count;
-  cf_x_core_run_t *run;
+  cf_x_sync_run_t *run;
   char *filename;
   cf_inferno_ca_systemey_t cell_systemey;
 
@@ -99,11 +99,11 @@ void test_ant(char *name)
     cf_x_core_trace("inferno_ca_system_create");
   }
 
-  run = cf_x_core_run_create(CF_X_CORE_RUN_STYLE_ITERATIONS);
+  run = cf_x_sync_run_create(CF_X_SYNC_RUN_STYLE_ITERATIONS);
   if (!run) {
     cf_x_core_trace_exit("x_core_run_create");
   }
-  cf_x_core_run_set_max_iterations(run, initial_time_step_count);
+  cf_x_sync_run_set_max_iterations(run, initial_time_step_count);
 
   cf_inferno_ca_system_run(cell_system, run);
 
@@ -121,7 +121,7 @@ void test_ant(char *name)
   free(filename);
 
   cf_inferno_ca_system_destroy(cell_system);
-  cf_x_core_run_destroy(run);
+  cf_x_sync_run_destroy(run);
   cf_x_case_array_destroy(initial_state_history);
 }
 
@@ -131,7 +131,7 @@ void test_clear(unsigned short name)
   cf_x_case_array_t *initial_state_history;
   unsigned long initial_time_step_count;
   unsigned long cell_count;
-  cf_x_core_run_t *run;
+  cf_x_sync_run_t *run;
   char *filename;
   cf_inferno_ca_systemey_t cell_systemey;
 
@@ -148,11 +148,11 @@ void test_clear(unsigned short name)
     cf_x_core_trace("inferno_ca_system_create");
   }
 
-  run = cf_x_core_run_create(CF_X_CORE_RUN_STYLE_ITERATIONS);
+  run = cf_x_sync_run_create(CF_X_SYNC_RUN_STYLE_ITERATIONS);
   if (!run) {
     cf_x_core_trace_exit("x_core_run_create");
   }
-  cf_x_core_run_set_max_iterations(run, initial_time_step_count);
+  cf_x_sync_run_set_max_iterations(run, initial_time_step_count);
 
   cf_inferno_ca_system_run(cell_system, run);
 
@@ -170,7 +170,7 @@ void test_clear(unsigned short name)
   free(filename);
 
   cf_inferno_ca_system_destroy(cell_system);
-  cf_x_core_run_destroy(run);
+  cf_x_sync_run_destroy(run);
   cf_x_case_array_destroy(initial_state_history);
 }
 
@@ -180,7 +180,7 @@ void test_crow(unsigned short name)
   cf_x_case_array_t *initial_state_history;
   unsigned long initial_time_step_count;
   unsigned long cell_count;
-  cf_x_core_run_t *run;
+  cf_x_sync_run_t *run;
   char *filename;
   cf_inferno_ca_systemey_t cell_systemey;
 
@@ -197,11 +197,11 @@ void test_crow(unsigned short name)
     cf_x_core_trace("inferno_ca_system_create");
   }
 
-  run = cf_x_core_run_create(CF_X_CORE_RUN_STYLE_ITERATIONS);
+  run = cf_x_sync_run_create(CF_X_SYNC_RUN_STYLE_ITERATIONS);
   if (!run) {
     cf_x_core_trace_exit("x_core_run_create");
   }
-  cf_x_core_run_set_max_iterations(run, initial_time_step_count);
+  cf_x_sync_run_set_max_iterations(run, initial_time_step_count);
 
   cf_inferno_ca_system_run(cell_system, run);
 
@@ -219,7 +219,7 @@ void test_crow(unsigned short name)
   free(filename);
 
   cf_inferno_ca_system_destroy(cell_system);
-  cf_x_core_run_destroy(run);
+  cf_x_sync_run_destroy(run);
   cf_x_case_array_destroy(initial_state_history);
 }
 
@@ -229,7 +229,7 @@ void test_eca(unsigned short name)
   cf_x_case_array_t *initial_state_history;
   unsigned long initial_time_step_count;
   unsigned long cell_count;
-  cf_x_core_run_t *run;
+  cf_x_sync_run_t *run;
   char *filename;
   cf_inferno_ca_systemey_t cell_systemey;
 
@@ -246,11 +246,11 @@ void test_eca(unsigned short name)
     cf_x_core_trace("inferno_ca_system_create");
   }
 
-  run = cf_x_core_run_create(CF_X_CORE_RUN_STYLE_ITERATIONS);
+  run = cf_x_sync_run_create(CF_X_SYNC_RUN_STYLE_ITERATIONS);
   if (!run) {
     cf_x_core_trace_exit("x_core_run_create");
   }
-  cf_x_core_run_set_max_iterations(run, initial_time_step_count);
+  cf_x_sync_run_set_max_iterations(run, initial_time_step_count);
 
   cf_inferno_ca_system_run(cell_system, run);
 
@@ -268,7 +268,7 @@ void test_eca(unsigned short name)
   free(filename);
 
   cf_inferno_ca_system_destroy(cell_system);
-  cf_x_core_run_destroy(run);
+  cf_x_sync_run_destroy(run);
   cf_x_case_array_destroy(initial_state_history);
 }
 
@@ -279,7 +279,7 @@ void test_fly(char *name)
   cf_x_case_array_t *initial_state_history;
   unsigned long initial_time_step_count;
   unsigned long cell_count;
-  cf_x_core_run_t *run;
+  cf_x_sync_run_t *run;
   char *filename;
   cf_inferno_ca_systemey_t cell_systemey;
 
@@ -296,11 +296,11 @@ void test_fly(char *name)
     cf_x_core_trace("inferno_ca_system_create");
   }
 
-  run = cf_x_core_run_create(CF_X_CORE_RUN_STYLE_ITERATIONS);
+  run = cf_x_sync_run_create(CF_X_SYNC_RUN_STYLE_ITERATIONS);
   if (!run) {
     cf_x_core_trace_exit("x_core_run_create");
   }
-  cf_x_core_run_set_max_iterations(run, initial_time_step_count);
+  cf_x_sync_run_set_max_iterations(run, initial_time_step_count);
 
   cf_inferno_ca_system_run(cell_system, run);
 
@@ -318,7 +318,7 @@ void test_fly(char *name)
   free(filename);
 
   cf_inferno_ca_system_destroy(cell_system);
-  cf_x_core_run_destroy(run);
+  cf_x_sync_run_destroy(run);
   cf_x_case_array_destroy(initial_state_history);
 }
 */
@@ -329,7 +329,7 @@ void test_k3(unsigned long name)
   cf_x_case_array_t *initial_state_history;
   unsigned long initial_time_step_count;
   unsigned long cell_count;
-  cf_x_core_run_t *run;
+  cf_x_sync_run_t *run;
   char *filename;
   cf_inferno_ca_systemey_t cell_systemey;
 
@@ -351,11 +351,11 @@ void test_k3(unsigned long name)
     cf_x_core_trace("inferno_ca_system_create");
   }
 
-  run = cf_x_core_run_create(CF_X_CORE_RUN_STYLE_ITERATIONS);
+  run = cf_x_sync_run_create(CF_X_SYNC_RUN_STYLE_ITERATIONS);
   if (!run) {
     cf_x_core_trace_exit("x_core_run_create");
   }
-  cf_x_core_run_set_max_iterations(run, initial_time_step_count);
+  cf_x_sync_run_set_max_iterations(run, initial_time_step_count);
 
   cf_inferno_ca_system_run(cell_system, run);
 
@@ -366,7 +366,7 @@ void test_k3(unsigned long name)
   }
 
   cf_inferno_ca_system_destroy(cell_system);
-  cf_x_core_run_destroy(run);
+  cf_x_sync_run_destroy(run);
   cf_x_case_array_destroy(initial_state_history);
   free(filename);
 }
@@ -377,7 +377,7 @@ void test_malice(char *name)
   cf_x_case_array_t *initial_state_history;
   unsigned long initial_time_step_count;
   unsigned long cell_count;
-  cf_x_core_run_t *run;
+  cf_x_sync_run_t *run;
   char *filename;
   cf_inferno_ca_systemey_t cell_systemey;
 
@@ -394,11 +394,11 @@ void test_malice(char *name)
     cf_x_core_trace("inferno_ca_system_create");
   }
 
-  run = cf_x_core_run_create(CF_X_CORE_RUN_STYLE_ITERATIONS);
+  run = cf_x_sync_run_create(CF_X_SYNC_RUN_STYLE_ITERATIONS);
   if (!run) {
     cf_x_core_trace_exit("x_core_run_create");
   }
-  cf_x_core_run_set_max_iterations(run, initial_time_step_count);
+  cf_x_sync_run_set_max_iterations(run, initial_time_step_count);
 
   cf_inferno_ca_system_run(cell_system, run);
 
@@ -416,7 +416,7 @@ void test_malice(char *name)
   free(filename);
 
   cf_inferno_ca_system_destroy(cell_system);
-  cf_x_core_run_destroy(run);
+  cf_x_sync_run_destroy(run);
   cf_x_case_array_destroy(initial_state_history);
 }
 
@@ -426,7 +426,7 @@ void test_water(char *name)
   cf_x_case_array_t *initial_state_history;
   unsigned long initial_time_step_count;
   unsigned long cell_count;
-  cf_x_core_run_t *run;
+  cf_x_sync_run_t *run;
   char *filename;
   cf_inferno_ca_systemey_t cell_systemey;
 
@@ -443,11 +443,11 @@ void test_water(char *name)
     cf_x_core_trace("inferno_ca_system_create");
   }
 
-  run = cf_x_core_run_create(CF_X_CORE_RUN_STYLE_ITERATIONS);
+  run = cf_x_sync_run_create(CF_X_SYNC_RUN_STYLE_ITERATIONS);
   if (!run) {
     cf_x_core_trace_exit("x_core_run_create");
   }
-  cf_x_core_run_set_max_iterations(run, initial_time_step_count);
+  cf_x_sync_run_set_max_iterations(run, initial_time_step_count);
 
   cf_inferno_ca_system_run(cell_system, run);
 
@@ -466,7 +466,7 @@ void test_water(char *name)
   free(filename);
 
   cf_inferno_ca_system_destroy(cell_system);
-  cf_x_core_run_destroy(run);
+  cf_x_sync_run_destroy(run);
   cf_x_case_array_destroy(initial_state_history);
 }
 

@@ -2,7 +2,7 @@
 #include "cf/inferno/genetic/system.h"
 #include "cf/inferno/search/searchey.h"
 #include "cf/inferno/search/tools.h"
-#include "cf/x/audit/log.h"
+#include "cf/x/core/log.h"
 #include "cf/x/case/array.h"
 
 struct cf_inferno_genetic_system_t {

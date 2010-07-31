@@ -203,7 +203,7 @@ cf_inferno_ca_state_t *cf_inferno_ca_system_get_state(cf_inferno_ca_system_t *sy
   return cf_x_case_array_find(system->state_history, time_step);
 }
 
-void cf_inferno_ca_system_run(cf_inferno_ca_system_t *system, cf_x_core_run_t *run)
+void cf_inferno_ca_system_run(cf_inferno_ca_system_t *system, cf_x_sync_run_t *run)
 {
   assert(system);
   assert(run);
@@ -217,7 +217,7 @@ void cf_inferno_ca_system_run(cf_inferno_ca_system_t *system, cf_x_core_run_t *r
     cf_x_core_seed_random(system->random_seed);
   }
 
-  while (!cf_x_core_run_is_complete(run)) {
+  while (!cf_x_sync_run_is_complete(run)) {
     current_state = get_current_state(system);
     cell_count = cf_inferno_ca_state_get_cell_count(current_state);
 
@@ -242,7 +242,7 @@ void cf_inferno_ca_system_run(cf_inferno_ca_system_t *system, cf_x_core_run_t *r
         system->systemey->end_time_step(system);
       }
       system->current_time_step++;
-      cf_x_core_run_increment_iterations(run);
+      cf_x_sync_run_increment_iterations(run);
     } else {
       cf_x_core_trace("create_new_current_state");
       break;

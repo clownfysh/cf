@@ -16,13 +16,15 @@ void *cf_x_core_basic_long_create_from_message(cf_x_core_message_t *message);
 
 void cf_x_core_basic_long_destroy(void *long_object);
 
-cf_x_core_bool_t cf_x_core_basic_long_equal(void *long_a_object, void *long_b_object);
+cf_x_core_bool_t cf_x_core_basic_long_equal(void *long_a_object,
+    void *long_b_object);
 
 char *cf_x_core_basic_long_get_as_string(void *long_object);
 
 void cf_x_core_basic_long_init_objectey(cf_x_core_objectey_t *objectey);
 
-unsigned long cf_x_core_basic_long_mod(void *long_object, unsigned long divisor);
+unsigned long cf_x_core_basic_long_mod(void *long_object,
+    unsigned long divisor);
 
 void cf_x_core_basic_long_print(void *long_object);
 
