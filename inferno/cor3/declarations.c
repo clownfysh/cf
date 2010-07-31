@@ -1,1 +1,1 @@
-#include "inferno/cor3/declarations.h"
+#include "cf/inferno/cor3/declarations.h"

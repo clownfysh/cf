@@ -1,4 +1,4 @@
-#include "x/core/tools.h"
+#include "cf/x/core/tools.h"
 
 int main(int argc, char *argv[])
 {
@@ -7,7 +7,7 @@ int main(int argc, char *argv[])
 
   for (n = 0; n < 32; n++) {
     for (m = 0; m < 64; m++) {
-      printf("%i", x_core_toss_coin());
+      printf("%i", cf_x_core_toss_coin());
     }
     printf("\n");
   }

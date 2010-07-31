@@ -1,13 +1,13 @@
-#ifndef x_psql_result_error_h
-#define x_psql_result_error_h
+#ifndef cf_x_psql_result_error_h
+#define cf_x_psql_result_error_h
 
-enum x_psql_result_create_error_t {
-  x_psql_result_create_error_unknown,
-  x_psql_result_create_error_x_case_array_create_failed,
-  x_psql_result_create_error_x_case_map_add_failed,
-  x_psql_result_create_error_x_case_map_create_failed,
-  x_psql_result_create_error_malloc_failed,
+enum cf_x_psql_result_create_error_t {
+  cf_x_psql_result_create_error_unknown,
+  cf_x_psql_result_create_error_x_case_array_create_failed,
+  cf_x_psql_result_create_error_x_case_map_add_failed,
+  cf_x_psql_result_create_error_x_case_map_create_failed,
+  cf_x_psql_result_create_error_malloc_failed,
 };
-typedef enum x_psql_result_create_error_t x_psql_result_create_error_t;
+typedef enum cf_x_psql_result_create_error_t cf_x_psql_result_create_error_t;
 
 #endif

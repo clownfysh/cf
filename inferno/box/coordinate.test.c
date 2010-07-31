@@ -1,4 +1,4 @@
-#include "inferno/box/coordinate.h"
+#include "cf/inferno/box/coordinate.h"
 
 int main(int argc, char *argv[])
 {

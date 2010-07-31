@@ -1,28 +1,28 @@
-#ifndef x_net_types_h
-#define x_net_types_h
+#ifndef cf_x_net_types_h
+#define cf_x_net_types_h
 
-#include "x/core/object.h"
+#include "cf/x/core/object.h"
 
-enum x_net_maintain_t {
-  X_NET_MAINTAIN_CONSTANTLY = 0,
-  X_NET_MAINTAIN_2_SECONDS = 2,
-  X_NET_MAINTAIN_4_SECONDS = 4,
-  X_NET_MAINTAIN_1_MINUTE = 60,
-  X_NET_MAINTAIN_1_HOUR = 60 * 60,
+enum cf_x_net_maintain_t {
+  CF_X_NET_MAINTAIN_CONSTANTLY = 0,
+  CF_X_NET_MAINTAIN_2_SECONDS = 2,
+  CF_X_NET_MAINTAIN_4_SECONDS = 4,
+  CF_X_NET_MAINTAIN_1_MINUTE = 60,
+  CF_X_NET_MAINTAIN_1_HOUR = 60 * 60,
 };
-typedef enum x_net_maintain_t x_net_maintain_t;
+typedef enum cf_x_net_maintain_t cf_x_net_maintain_t;
 
-enum x_net_message_status_t {
-  X_NET_MESSAGE_STATUS_HANDLED,
-  X_NET_MESSAGE_STATUS_CANT_HANDLE,
-  X_NET_MESSAGE_STATUS_CANT_HANDLE_NOW,
+enum cf_x_net_message_status_t {
+  CF_X_NET_MESSAGE_STATUS_HANDLED,
+  CF_X_NET_MESSAGE_STATUS_CANT_HANDLE,
+  CF_X_NET_MESSAGE_STATUS_CANT_HANDLE_NOW,
 };
-typedef enum x_net_message_status_t x_net_message_status_t;
+typedef enum cf_x_net_message_status_t cf_x_net_message_status_t;
 
-typedef x_net_message_status_t (*x_net_server_handle_message_f)
+typedef cf_x_net_message_status_t (*cf_x_net_server_handle_message_f)
 (void *engine_object, void *message_object);
 
-struct x_net_server_t;
-typedef struct x_net_server_t x_net_server_t;
+struct cf_x_net_server_t;
+typedef struct cf_x_net_server_t cf_x_net_server_t;
 
 #endif

@@ -1,40 +1,40 @@
-#include "x/core/buffer.h"
-#include "x/core/tools.h"
+#include "cf/x/core/buffer.h"
+#include "cf/x/core/tools.h"
 
 #define INITIAL_BUFFER_GROW_SIZE 1024
 #define GROW_FACTOR 8
 
-struct x_core_buffer_t {
+struct cf_x_core_buffer_t {
   char *string;
   unsigned long string_size;
   unsigned long string_allocated_size;
   unsigned long grow_size;
 };
 
-x_core_bool_t x_core_buffer_append_char(x_core_buffer_t *buffer, char c)
+cf_x_core_bool_t cf_x_core_buffer_append_char(cf_x_core_buffer_t *buffer, char c)
 {
   assert(buffer);
-  x_core_bool_t success;
+  cf_x_core_bool_t success;
   char string[2];
 
   *string = c;
   *(string + 1) = '\0';
-  success = x_core_buffer_append_string(buffer, buffer->string, 1);
+  success = cf_x_core_buffer_append_string(buffer, buffer->string, 1);
 
   return success;
 }
 
-x_core_bool_t x_core_buffer_append_string(x_core_buffer_t *buffer,
+cf_x_core_bool_t cf_x_core_buffer_append_string(cf_x_core_buffer_t *buffer,
     char *string, unsigned long string_size)
 {
   assert(buffer);
   assert(string);
-  x_core_bool_t success;
+  cf_x_core_bool_t success;
   unsigned long available_size;
   unsigned long new_allocated_size;
   unsigned long new_string_size;
   char *new_string;
-  x_core_bool_t have_the_needed_space;
+  cf_x_core_bool_t have_the_needed_space;
 
   if (buffer->string_allocated_size > 0) {
     available_size = (buffer->string_allocated_size - 1) - buffer->string_size;
@@ -48,29 +48,29 @@ x_core_bool_t x_core_buffer_append_string(x_core_buffer_t *buffer,
     if (new_string) {
       buffer->string = new_string;
       buffer->string_allocated_size = new_allocated_size;
-      have_the_needed_space = x_core_bool_true;
+      have_the_needed_space = cf_x_core_bool_true;
     } else {
-      x_core_trace("realloc");
-      have_the_needed_space = x_core_bool_false;
+      cf_x_core_trace("realloc");
+      have_the_needed_space = cf_x_core_bool_false;
     }
   } else {
-    have_the_needed_space = x_core_bool_true;
+    have_the_needed_space = cf_x_core_bool_true;
   }
 
   if (have_the_needed_space) {
-    success = x_core_bool_true;
+    success = cf_x_core_bool_true;
     memcpy(buffer->string + buffer->string_size, string, string_size);
     new_string_size = buffer->string_size + string_size;
     *(buffer->string + new_string_size) = '\0';
     buffer->string_size += string_size;
   } else {
-    success = x_core_bool_false;
+    success = cf_x_core_bool_false;
   }
 
   return success;
 }
 
-void x_core_buffer_clear(x_core_buffer_t *buffer)
+void cf_x_core_buffer_clear(cf_x_core_buffer_t *buffer)
 {
   assert(buffer);
 
@@ -81,10 +81,10 @@ void x_core_buffer_clear(x_core_buffer_t *buffer)
   buffer->string_allocated_size = 0;
 }
 
-x_core_buffer_t *x_core_buffer_create(char *string, unsigned long string_size)
+cf_x_core_buffer_t *cf_x_core_buffer_create(char *string, unsigned long string_size)
 {
   assert(string);
-  x_core_buffer_t *buffer;
+  cf_x_core_buffer_t *buffer;
 
   buffer = malloc(sizeof *buffer);
   if (buffer) {
@@ -96,7 +96,7 @@ x_core_buffer_t *x_core_buffer_create(char *string, unsigned long string_size)
         buffer->string_allocated_size = string_size + 1;
         buffer->grow_size = string_size * GROW_FACTOR;
       } else {
-        x_core_trace("malloc");
+        cf_x_core_trace("malloc");
       }
     } else {
       buffer->string = NULL;
@@ -104,13 +104,13 @@ x_core_buffer_t *x_core_buffer_create(char *string, unsigned long string_size)
       buffer->grow_size = INITIAL_BUFFER_GROW_SIZE;
     }
   } else {
-    x_core_trace("malloc");
+    cf_x_core_trace("malloc");
   }
 
   return buffer;
 }
 
-void x_core_buffer_destroy(x_core_buffer_t *buffer)
+void cf_x_core_buffer_destroy(cf_x_core_buffer_t *buffer)
 {
   assert(buffer);
 
@@ -119,7 +119,7 @@ void x_core_buffer_destroy(x_core_buffer_t *buffer)
   }
 }
 
-char *x_core_buffer_get_string(x_core_buffer_t *buffer,
+char *cf_x_core_buffer_get_string(cf_x_core_buffer_t *buffer,
     unsigned long *string_size)
 {
   assert(buffer);
@@ -128,7 +128,7 @@ char *x_core_buffer_get_string(x_core_buffer_t *buffer,
   return buffer->string;
 }
 
-char *x_core_buffer_take_string(x_core_buffer_t *buffer,
+char *cf_x_core_buffer_take_string(cf_x_core_buffer_t *buffer,
     unsigned long *string_size)
 {
   assert(buffer);

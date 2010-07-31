@@ -1,13 +1,13 @@
-#include "x/core/engine.h"
-#include "x/core/message.h"
-#include "x/core/messagey.h"
-#include "x/core/tools.h"
-#include "x/net/testengine.h"
-#include "x/net/testmessage.h"
+#include "cf/x/core/engine.h"
+#include "cf/x/core/message.h"
+#include "cf/x/core/messagey.h"
+#include "cf/x/core/tools.h"
+#include "cf/x/net/testengine.h"
+#include "cf/x/net/testmessage.h"
 
-x_core_message_t *x_net_testmessage_create(int client_socket,
+cf_x_core_message_t *cf_x_net_testmessage_create(int client_socket,
     unsigned long message_type)
 {
-  return x_core_message_create(client_socket, X_NET_ENGINE_TEST, message_type,
-      X_CORE_MESSAGEY_NULL_DATA, X_CORE_MESSAGEY_ZERO_DATA_SIZE);
+  return cf_x_core_message_create(client_socket, CF_X_NET_ENGINE_TEST, message_type,
+      CF_X_CORE_MESSAGEY_NULL_DATA, CF_X_CORE_MESSAGEY_ZERO_DATA_SIZE);
 }

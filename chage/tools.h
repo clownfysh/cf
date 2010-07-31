@@ -1,14 +1,14 @@
-#ifndef chage_tools_h
-#define chage_tools_h
+#ifndef cf_chage_tools_h
+#define cf_chage_tools_h
 
-#define CHAGE_CONTAINED_ATOMS 256
-#define CHAGE_INTERVAL_MICROSECONDS (1000000.0 / 24)
-#define CHAGE_INTERVAL_VOID 255
+#define CF_CHAGE_CONTAINED_ATOMS 256
+#define CF_CHAGE_INTERVAL_MICROSECONDS (1000000.0 / 24)
+#define CF_CHAGE_INTERVAL_VOID 255
 
-typedef unsigned char chage_distance_t;
-typedef unsigned char chage_interval_t;
-typedef unsigned char chage_scale_t;
+typedef unsigned char cf_chage_distance_t;
+typedef unsigned char cf_chage_interval_t;
+typedef unsigned char cf_chage_scale_t;
 
-chage_interval_t chage_determine_interval();
+cf_chage_interval_t cf_chage_determine_interval();
 
 #endif

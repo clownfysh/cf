@@ -1,16 +1,16 @@
-#ifndef x_net_void_h
-#define x_net_void_h
+#ifndef cf_x_net_void_h
+#define cf_x_net_void_h
 
-#include "x/core/objectey.h"
+#include "cf/x/core/objectey.h"
 
-int x_core_void_compare(void *object_a, void *object_b);
+int cf_x_core_void_compare(void *object_a, void *object_b);
 
-void *x_core_void_copy(void *object);
+void *cf_x_core_void_copy(void *object);
 
-void x_core_void_destroy(void *object);
+void cf_x_core_void_destroy(void *object);
 
-char *x_core_void_get_as_string(void *object);
+char *cf_x_core_void_get_as_string(void *object);
 
-void x_core_void_init_objectey(x_core_objectey_t *objectey);
+void cf_x_core_void_init_objectey(cf_x_core_objectey_t *objectey);
 
 #endif

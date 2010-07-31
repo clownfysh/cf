@@ -1,11 +1,11 @@
-#ifndef x_net_webrequest_h
-#define x_net_webrequest_h
+#ifndef cf_x_net_webrequest_h
+#define cf_x_net_webrequest_h
 
-struct x_net_webrequest_t;
-typedef struct x_net_webrequest_t x_net_webrequest_t;
+struct cf_x_net_webrequest_t;
+typedef struct cf_x_net_webrequest_t cf_x_net_webrequest_t;
 
-x_net_webrequest_t *x_net_webrequest_create();
+cf_x_net_webrequest_t *cf_x_net_webrequest_create();
 
-void x_net_webrequest_destroy(x_net_webrequest_t *webrequest);
+void cf_x_net_webrequest_destroy(cf_x_net_webrequest_t *webrequest);
 
 #endif

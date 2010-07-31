@@ -1,50 +1,50 @@
-#include "inferno/memory/system.h"
-#include "x/core/tools.h"
+#include "cf/inferno/memory/system.h"
+#include "cf/x/core/tools.h"
 
-struct inferno_memory_system_t {
+struct cf_inferno_memory_system_t {
 };
 
-x_core_bool_t inferno_memory_system_add(inferno_memory_system_t *system,
+cf_x_core_bool_t cf_inferno_memory_system_add(cf_inferno_memory_system_t *system,
     unsigned long base, unsigned long link, unsigned long corollary)
 {
-  return x_core_bool_false;
+  return cf_x_core_bool_false;
 }
 
-inferno_memory_system_t *inferno_memory_system_create(unsigned long node_count,
+cf_inferno_memory_system_t *cf_inferno_memory_system_create(unsigned long node_count,
     unsigned short link_density)
 {
-  inferno_memory_system_t *system;
+  cf_inferno_memory_system_t *system;
 
   system = malloc(sizeof *system);
   if (system) {
 
   } else {
-    x_core_trace("malloc");
+    cf_x_core_trace("malloc");
   }
 
   return system;
 }
 
-void inferno_memory_system_destroy(inferno_memory_system_t *system)
+void cf_inferno_memory_system_destroy(cf_inferno_memory_system_t *system)
 {
   assert(system);
   free(system);
 }
 
-x_core_bool_t inferno_memory_system_find(inferno_memory_system_t *system,
+cf_x_core_bool_t cf_inferno_memory_system_find(cf_inferno_memory_system_t *system,
     unsigned long base, unsigned long link, unsigned long corollary)
 {
-  return x_core_bool_false;
+  return cf_x_core_bool_false;
 }
 
-x_case_array_t *inferno_memory_system_find_cloud(inferno_memory_system_t *system,
+cf_x_case_array_t *cf_inferno_memory_system_find_cloud(cf_inferno_memory_system_t *system,
     unsigned long base, unsigned long cloud_size_max)
 {
   return NULL;
 }
 
-x_core_bool_t inferno_memory_system_remove(inferno_memory_system_t *system,
+cf_x_core_bool_t cf_inferno_memory_system_remove(cf_inferno_memory_system_t *system,
     unsigned long base, unsigned long link, unsigned long corollary)
 {
-  return x_core_bool_false;
+  return cf_x_core_bool_false;
 }

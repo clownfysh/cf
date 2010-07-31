@@ -1,16 +1,16 @@
-#ifndef x_core_time_h
-#define x_core_time_h
+#ifndef cf_x_core_time_h
+#define cf_x_core_time_h
 
-#include "x/core/days_hours_minutes_seconds.h"
+#include "cf/x/core/days_hours_minutes_seconds.h"
 
-struct x_core_time_t;
-typedef struct x_core_time_t x_core_time_t;
+struct cf_x_core_time_t;
+typedef struct cf_x_core_time_t cf_x_core_time_t;
 
-x_core_time_t *x_core_time_create(unsigned long seconds);
+cf_x_core_time_t *cf_x_core_time_create(unsigned long seconds);
 
-void x_core_time_destroy(x_core_time_t *time);
+void cf_x_core_time_destroy(cf_x_core_time_t *time);
 
-void x_core_time_get_days_hours_minutes_seconds(x_core_time_t *time,
-    x_core_days_hours_minutes_seconds_t *days_hours_minutes_seconds);
+void cf_x_core_time_get_days_hours_minutes_seconds(cf_x_core_time_t *time,
+    cf_x_core_days_hours_minutes_seconds_t *days_hours_minutes_seconds);
 
 #endif

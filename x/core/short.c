@@ -1,14 +1,14 @@
-#include "x/core/message.h"
-#include "x/core/short.h"
-#include "x/core/tools.h"
+#include "cf/x/core/message.h"
+#include "cf/x/core/short.h"
+#include "cf/x/core/tools.h"
 
-x_core_bool_t x_core_short_add_to_message(void *short_object,
-    x_core_message_t *message)
+cf_x_core_bool_t cf_x_core_short_add_to_message(void *short_object,
+    cf_x_core_message_t *message)
 {
-  return x_core_message_add_short(message, short_object);
+  return cf_x_core_message_add_short(message, short_object);
 }
 
-int x_core_short_compare(void *short_a_object, void *short_b_object)
+int cf_x_core_short_compare(void *short_a_object, void *short_b_object)
 {
   short *short_a;
   short *short_b;
@@ -28,7 +28,7 @@ int x_core_short_compare(void *short_a_object, void *short_b_object)
   return compare;
 }
 
-void *x_core_short_copy(void *short_object)
+void *cf_x_core_short_copy(void *short_object)
 {
   assert(short_object);
   short *short_value;
@@ -39,24 +39,24 @@ void *x_core_short_copy(void *short_object)
   if (short_copy) {
     *short_copy = *short_value;
   } else {
-    x_core_trace("malloc");
+    cf_x_core_trace("malloc");
   }
 
   return short_copy;
 }
 
-void *x_core_short_take_from_message(x_core_message_t *message)
+void *cf_x_core_short_take_from_message(cf_x_core_message_t *message)
 {
-  return x_core_message_take_short(message);
+  return cf_x_core_message_take_short(message);
 }
 
-void x_core_short_destroy(void *short_object)
+void cf_x_core_short_destroy(void *short_object)
 {
   assert(short_object);
   free(short_object);
 }
 
-void x_core_short_print(void *short_object)
+void cf_x_core_short_print(void *short_object)
 {
   short *short_value;
 

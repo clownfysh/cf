@@ -1,4 +1,4 @@
-#include "inferno/bios/system.h"
+#include "cf/inferno/bios/system.h"
 
 int main(int argc, char *argv[])
 {

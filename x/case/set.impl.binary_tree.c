@@ -1,7 +1,7 @@
-#include "x/case/set.h"
-#include "x/core/long.h"
-#include "x/core/string.h"
-#include "x/core/tools.h"
+#include "cf/x/case/set.h"
+#include "cf/x/core/long.h"
+#include "cf/x/core/string.h"
+#include "cf/x/core/tools.h"
 
 #define NO_LEFT_OBJECT NULL
 #define NO_RIGHT_OBJECT NULL
@@ -17,64 +17,64 @@ struct set_object_t {
   set_object_t *right;
 };
 
-struct x_case_set_t {
-  x_core_get_as_string_f get_object_as_string;
+struct cf_x_case_set_t {
+  cf_x_core_get_as_string_f get_object_as_string;
   unsigned long size;
-  x_core_bool_t iterate_remove;
-  x_core_bool_t iterate_first;
+  cf_x_core_bool_t iterate_remove;
+  cf_x_core_bool_t iterate_first;
   set_object_t *iterator;
 
   set_object_t *base;
 
   pthread_mutex_t mutex;
 
-  x_core_objectey_t *objectey;
+  cf_x_core_objectey_t *objectey;
 };
 
-set_object_t *_x_case_set_find_first(x_case_set_t *set);
+set_object_t *_x_case_set_find_first(cf_x_case_set_t *set);
 
-set_object_t *_x_case_set_find_next(x_case_set_t *set,
+set_object_t *_x_case_set_find_next(cf_x_case_set_t *set,
     set_object_t *set_object);
 
-void _x_case_set_remove_set_object(x_case_set_t *set,
+void _x_case_set_remove_set_object(cf_x_case_set_t *set,
     set_object_t *set_object);
 
 static void assign_to_child(set_object_t *parent, set_object_t *child,
     set_object_t *new_value);
 
-static set_object_t *find_first_parent_greater_than_me(x_case_set_t *set,
+static set_object_t *find_first_parent_greater_than_me(cf_x_case_set_t *set,
     set_object_t *set_object);
 
-static set_object_t *find_in_order_predecessor(x_case_set_t *set,
+static set_object_t *find_in_order_predecessor(cf_x_case_set_t *set,
     set_object_t *set_object);
 
-static set_object_t *find_in_order_successor(x_case_set_t *set,
+static set_object_t *find_in_order_successor(cf_x_case_set_t *set,
     set_object_t *set_object);
 
-static set_object_t *find_set_object_containing(x_case_set_t *set,
+static set_object_t *find_set_object_containing(cf_x_case_set_t *set,
     set_object_t *base_set_object, void *object);
 
-static void print(x_case_set_t *set, set_object_t *base_set_object);
+static void print(cf_x_case_set_t *set, set_object_t *base_set_object);
 
-static set_object_t *put_object(x_case_set_t *set,
+static set_object_t *put_object(cf_x_case_set_t *set,
     set_object_t *base_set_object, void *object, set_object_t *parent);
 
-static void remove_set_object_botx_children(x_case_set_t *set,
+static void remove_set_object_botx_children(cf_x_case_set_t *set,
     set_object_t *set_object);
-static void remove_set_object_left_child_only(x_case_set_t *set,
+static void remove_set_object_left_child_only(cf_x_case_set_t *set,
     set_object_t *set_object);
-static void remove_set_object_no_children(x_case_set_t *set,
+static void remove_set_object_no_children(cf_x_case_set_t *set,
     set_object_t *set_object);
-static void remove_set_object_right_child_only(x_case_set_t *set,
+static void remove_set_object_right_child_only(cf_x_case_set_t *set,
     set_object_t *set_object);
 
 static set_object_t *set_object_create(void *object,
     set_object_t *parent, set_object_t *left, set_object_t *right);
 
-static void set_object_destroy(x_case_set_t *set,
+static void set_object_destroy(cf_x_case_set_t *set,
     set_object_t *set_object);
 
-set_object_t *_x_case_set_find_first(x_case_set_t *set)
+set_object_t *_x_case_set_find_first(cf_x_case_set_t *set)
 {
   set_object_t *first;
 
@@ -88,7 +88,7 @@ set_object_t *_x_case_set_find_first(x_case_set_t *set)
   return first;
 }
 
-set_object_t *_x_case_set_find_next(x_case_set_t *set,
+set_object_t *_x_case_set_find_next(cf_x_case_set_t *set,
     set_object_t *set_object)
 {
   assert(set_object);
@@ -115,7 +115,7 @@ set_object_t *_x_case_set_find_next(x_case_set_t *set,
   return successor;
 }
 
-void _x_case_set_remove_set_object(x_case_set_t *set,
+void _x_case_set_remove_set_object(cf_x_case_set_t *set,
     set_object_t *set_object)
 {
   assert(set);
@@ -153,7 +153,7 @@ void assign_to_child(set_object_t *parent, set_object_t *child,
   }
 }
 
-set_object_t *find_first_parent_greater_than_me(x_case_set_t *set,
+set_object_t *find_first_parent_greater_than_me(cf_x_case_set_t *set,
     set_object_t *set_object)
 {
   assert(set);
@@ -179,7 +179,7 @@ set_object_t *find_first_parent_greater_than_me(x_case_set_t *set,
   return parent;
 }
 
-set_object_t *find_in_order_predecessor(x_case_set_t *set,
+set_object_t *find_in_order_predecessor(cf_x_case_set_t *set,
     set_object_t *set_object)
 {
   assert(set_object);
@@ -197,7 +197,7 @@ set_object_t *find_in_order_predecessor(x_case_set_t *set,
   return predecessor;
 }
 
-set_object_t *find_in_order_successor(x_case_set_t *set,
+set_object_t *find_in_order_successor(cf_x_case_set_t *set,
     set_object_t *set_object)
 {
   assert(set_object);
@@ -215,7 +215,7 @@ set_object_t *find_in_order_successor(x_case_set_t *set,
   return successor;
 }
 
-set_object_t *find_set_object_containing(x_case_set_t *set,
+set_object_t *find_set_object_containing(cf_x_case_set_t *set,
     set_object_t *base_set_object, void *object)
 {
   int compare;
@@ -239,43 +239,43 @@ set_object_t *find_set_object_containing(x_case_set_t *set,
   return containing_object;
 }
 
-x_core_bool_t x_case_set_add(x_case_set_t *set, void *object)
+cf_x_core_bool_t cf_x_case_set_add(cf_x_case_set_t *set, void *object)
 {
   assert(set);
   assert(object);
   set_object_t *set_object;
-  x_core_bool_t success;
+  cf_x_core_bool_t success;
 
   set_object = put_object(set, set->base, object, NO_PARENT_OBJECT);
   if (set_object) {
-    success = x_core_bool_true;
+    success = cf_x_core_bool_true;
     if (!set->base) {
       set->base = set_object;
     }
   } else {
-    success = x_core_bool_false;
+    success = cf_x_core_bool_false;
   }
 
   return success;
 }
 
-x_core_bool_t x_case_set_add_replace(x_case_set_t *set, void *object)
+cf_x_core_bool_t cf_x_case_set_add_replace(cf_x_case_set_t *set, void *object)
 {
-  x_core_bool_t success;
+  cf_x_core_bool_t success;
 
-  if (x_case_set_find(set, object)) {
-    x_case_set_remove(set, object);
+  if (cf_x_case_set_find(set, object)) {
+    cf_x_case_set_remove(set, object);
   }
-  success = x_case_set_add(set, object);
+  success = cf_x_case_set_add(set, object);
 
   return success;
 }
 
-x_case_set_t *x_case_set_create(x_core_objectey_t *objectey)
+cf_x_case_set_t *cf_x_case_set_create(cf_x_core_objectey_t *objectey)
 {
   assert(objectey);
   assert(objectey->compare);
-  x_case_set_t *set;
+  cf_x_case_set_t *set;
 
   set = malloc(sizeof *set);
   if (set) {
@@ -284,28 +284,28 @@ x_case_set_t *x_case_set_create(x_core_objectey_t *objectey)
     set->base = NULL;
     set->size = 0;
     if (0 != pthread_mutex_init(&set->mutex, NULL)) {
-      x_core_trace("pthread_mutex_init");
+      cf_x_core_trace("pthread_mutex_init");
     }
   }
 
   return set;
 }
 
-void x_case_set_destroy(void *set_object)
+void cf_x_case_set_destroy(void *set_object)
 {
   assert(set_object);
-  x_case_set_t *set;
+  cf_x_case_set_t *set;
 
   set = set_object;
 
-  x_case_set_clear(set);
+  cf_x_case_set_clear(set);
   if (0 != pthread_mutex_destroy(&set->mutex)) {
-    x_core_trace("pthread_mutex_destroy");
+    cf_x_core_trace("pthread_mutex_destroy");
   }
   free(set);
 }
 
-void *x_case_set_find(x_case_set_t *set, void *decoy_object)
+void *cf_x_case_set_find(cf_x_case_set_t *set, void *decoy_object)
 {
   set_object_t *set_object;
   void *found_object;
@@ -320,7 +320,7 @@ void *x_case_set_find(x_case_set_t *set, void *decoy_object)
   return found_object;
 }
 
-void *x_case_set_find_any(x_case_set_t *set)
+void *cf_x_case_set_find_any(cf_x_case_set_t *set)
 {
   assert(set);
   void *any_object;
@@ -334,17 +334,17 @@ void *x_case_set_find_any(x_case_set_t *set)
   return any_object;
 }
 
-x_core_objectey_t *x_case_set_get_objectey(x_case_set_t *set)
+cf_x_core_objectey_t *cf_x_case_set_get_objectey(cf_x_case_set_t *set)
 {
   return set->objectey;
 }
 
-unsigned long x_case_set_get_size(x_case_set_t *set)
+unsigned long cf_x_case_set_get_size(cf_x_case_set_t *set)
 {
   return set->size;
 }
 
-void *x_case_set_iterate_next(x_case_set_t *set)
+void *cf_x_case_set_iterate_next(cf_x_case_set_t *set)
 {
   assert(set);
   void *next_object;
@@ -353,13 +353,13 @@ void *x_case_set_iterate_next(x_case_set_t *set)
   if (set->iterator) {
     if (set->iterate_first) {
       next_object = set->iterator->object;
-      set->iterate_first = x_core_bool_false;
+      set->iterate_first = cf_x_core_bool_false;
     } else {
       if (set->iterate_remove) {
         successor = _x_case_set_find_next(set, set->iterator);
         _x_case_set_remove_set_object(set, set->iterator);
         set->iterator = successor;
-        set->iterate_remove = x_core_bool_false;
+        set->iterate_remove = cf_x_core_bool_false;
       } else {
         set->iterator = _x_case_set_find_next(set, set->iterator);
       }
@@ -376,27 +376,27 @@ void *x_case_set_iterate_next(x_case_set_t *set)
   return next_object;
 }
 
-void x_case_set_iterate_remove(x_case_set_t *set)
+void cf_x_case_set_iterate_remove(cf_x_case_set_t *set)
 {
-  set->iterate_remove = x_core_bool_true;
+  set->iterate_remove = cf_x_core_bool_true;
 }
 
-void x_case_set_iterate_start(x_case_set_t *set)
+void cf_x_case_set_iterate_start(cf_x_case_set_t *set)
 {
   assert(set);
 
   set->iterator = _x_case_set_find_first(set);
-  set->iterate_remove = x_core_bool_false;
-  set->iterate_first = x_core_bool_true;
+  set->iterate_remove = cf_x_core_bool_false;
+  set->iterate_first = cf_x_core_bool_true;
 }
 
-void x_case_set_lock(x_case_set_t *set)
+void cf_x_case_set_lock(cf_x_case_set_t *set)
 {
   pthread_mutex_lock(&set->mutex);
 }
 
-void x_case_set_print(x_case_set_t *set,
-    x_core_get_as_string_f get_object_as_string)
+void cf_x_case_set_print(cf_x_case_set_t *set,
+    cf_x_core_get_as_string_f get_object_as_string)
 {
   set->get_object_as_string = get_object_as_string;
   printf("set (%lu items) : ", set->size);
@@ -404,28 +404,28 @@ void x_case_set_print(x_case_set_t *set,
   printf("\n");
 }
 
-x_core_bool_t x_case_set_remove(x_case_set_t *set, void *object)
+cf_x_core_bool_t cf_x_case_set_remove(cf_x_case_set_t *set, void *object)
 {
-  x_core_bool_t success;
+  cf_x_core_bool_t success;
   set_object_t *set_object;
 
   set_object = find_set_object_containing(set, set->base, object);
   if (set_object) {
     _x_case_set_remove_set_object(set, set_object);
-    success = x_core_bool_true;
+    success = cf_x_core_bool_true;
   } else {
-    success = x_core_bool_false;
+    success = cf_x_core_bool_false;
   }
 
   return success;
 }
 
-void x_case_set_unlock(x_case_set_t *set)
+void cf_x_case_set_unlock(cf_x_case_set_t *set)
 {
   pthread_mutex_unlock(&set->mutex);
 }
 
-void print(x_case_set_t *set, set_object_t *base_set_object)
+void print(cf_x_case_set_t *set, set_object_t *base_set_object)
 {
   char *object_string;
 
@@ -435,7 +435,7 @@ void print(x_case_set_t *set, set_object_t *base_set_object)
       printf("%s", object_string);
       free(object_string);
     } else {
-      x_core_trace("get_as_string");
+      cf_x_core_trace("get_as_string");
     }
     printf("(");
     print(set, base_set_object->left);
@@ -445,7 +445,7 @@ void print(x_case_set_t *set, set_object_t *base_set_object)
   }
 }
 
-set_object_t *put_object(x_case_set_t *set, set_object_t *base_set_object,
+set_object_t *put_object(cf_x_case_set_t *set, set_object_t *base_set_object,
     void *object, set_object_t *parent)
 {
   int compare;
@@ -457,7 +457,7 @@ set_object_t *put_object(x_case_set_t *set, set_object_t *base_set_object,
     if (new_set_object) {
       set->size++;
     } else {
-      x_core_trace("set_object_create");
+      cf_x_core_trace("set_object_create");
     }
   } else {
     compare = set->objectey->compare(object, base_set_object->object);
@@ -481,7 +481,7 @@ set_object_t *put_object(x_case_set_t *set, set_object_t *base_set_object,
   return new_set_object;
 }
 
-void remove_set_object_botx_children(x_case_set_t *set,
+void remove_set_object_botx_children(cf_x_case_set_t *set,
     set_object_t *set_object)
 {
   set_object_t *set_object_2;
@@ -547,7 +547,7 @@ void remove_set_object_botx_children(x_case_set_t *set,
   set_object_destroy(set, set_object);
 }
 
-void remove_set_object_left_child_only(x_case_set_t *set,
+void remove_set_object_left_child_only(cf_x_case_set_t *set,
     set_object_t *set_object)
 {
   if (set_object->parent) {
@@ -559,7 +559,7 @@ void remove_set_object_left_child_only(x_case_set_t *set,
   set_object_destroy(set, set_object);
 }
 
-void remove_set_object_no_children(x_case_set_t *set,
+void remove_set_object_no_children(cf_x_case_set_t *set,
     set_object_t *set_object)
 {
   if (set_object->parent) {
@@ -570,7 +570,7 @@ void remove_set_object_no_children(x_case_set_t *set,
   set_object_destroy(set, set_object);
 }
 
-void remove_set_object_right_child_only(x_case_set_t *set,
+void remove_set_object_right_child_only(cf_x_case_set_t *set,
     set_object_t *set_object)
 {
   if (set_object->parent) {
@@ -594,13 +594,13 @@ set_object_t *set_object_create(void *object, set_object_t *parent,
     set_object->left = left;
     set_object->right = right;
   } else {
-    x_core_trace("malloc");
+    cf_x_core_trace("malloc");
   }
 
   return set_object;
 }
 
-void set_object_destroy(x_case_set_t *set, set_object_t *set_object)
+void set_object_destroy(cf_x_case_set_t *set, set_object_t *set_object)
 {
   assert(set);
   assert(set_object);

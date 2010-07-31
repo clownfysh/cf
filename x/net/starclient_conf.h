@@ -1,22 +1,22 @@
-#ifndef x_net_starclient_conf_h
-#define x_net_starclient_conf_h
+#ifndef cf_x_net_starclient_conf_h
+#define cf_x_net_starclient_conf_h
 
-#include "x/config/file.h"
+#include "cf/x/config/file.h"
 
-struct x_net_starclient_conf_t {
-  x_config_file_t *conf;
+struct cf_x_net_starclient_conf_t {
+  cf_x_config_file_t *conf;
 
-  x_case_list_t *star_arm_ips;
+  cf_x_case_list_t *star_arm_ips;
   unsigned short star_arm_port_min;
   unsigned short star_arm_port_max;
 
   char *node_server_exclude_ip;
   unsigned short node_server_exclude_port;
 };
-typedef struct x_net_starclient_conf_t x_net_starclient_conf_t;
+typedef struct cf_x_net_starclient_conf_t cf_x_net_starclient_conf_t;
 
-x_net_starclient_conf_t *x_net_starclient_conf_create(char *conf_filename);
+cf_x_net_starclient_conf_t *cf_x_net_starclient_conf_create(char *conf_filename);
 
-void x_net_starclient_conf_destroy(x_net_starclient_conf_t *starclient_conf);
+void cf_x_net_starclient_conf_destroy(cf_x_net_starclient_conf_t *starclient_conf);
 
 #endif

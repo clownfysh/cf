@@ -1,13 +1,13 @@
-#ifndef chage_system_h
-#define chage_system_h
+#ifndef cf_chage_system_h
+#define cf_chage_system_h
 
-struct chage_system_t;
-typedef struct chage_system_t chage_system_t;
+struct cf_chage_system_t;
+typedef struct cf_chage_system_t cf_chage_system_t;
 
-chage_system_t *chage_system_create();
+cf_chage_system_t *cf_chage_system_create();
 
-void chage_system_destroy(chage_system_t *system);
+void cf_chage_system_destroy(cf_chage_system_t *system);
 
-void chage_system_spark(chage_system_t *system);
+void cf_chage_system_spark(cf_chage_system_t *system);
 
 #endif

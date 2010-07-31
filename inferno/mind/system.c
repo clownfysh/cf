@@ -1,24 +1,24 @@
-#include "inferno/mind/system.h"
-#include "x/core/tools.h"
+#include "cf/inferno/mind/system.h"
+#include "cf/x/core/tools.h"
 
-struct inferno_mind_system_t {
+struct cf_inferno_mind_system_t {
 };
 
-inferno_mind_system_t *inferno_mind_system_create()
+cf_inferno_mind_system_t *cf_inferno_mind_system_create()
 {
-  inferno_mind_system_t *system;
+  cf_inferno_mind_system_t *system;
 
   system = malloc(sizeof *system);
   if (system) {
 
   } else {
-    x_core_trace("malloc");
+    cf_x_core_trace("malloc");
   }
 
   return system;
 }
 
-void inferno_mind_system_destroy(inferno_mind_system_t *system)
+void cf_inferno_mind_system_destroy(cf_inferno_mind_system_t *system)
 {
   assert(system);
   free(system);

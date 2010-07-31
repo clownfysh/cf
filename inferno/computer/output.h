@@ -1,17 +1,17 @@
-#ifndef inferno_computer_output_h
-#define inferno_computer_output_h
+#ifndef cf_inferno_computer_output_h
+#define cf_inferno_computer_output_h
 
-#include "x/core/bit.h"
+#include "cf/x/core/bit.h"
 
-#define INFERNO_COMPUTER_OUTPUT_BITS 32
+#define CF_INFERNO_COMPUTER_OUTPUT_BITS 32
 
-struct inferno_computer_output_t {
-  x_core_bit_t bits[INFERNO_COMPUTER_OUTPUT_BITS];
+struct cf_inferno_computer_output_t {
+  cf_x_core_bit_t bits[CF_INFERNO_COMPUTER_OUTPUT_BITS];
 };
-typedef struct inferno_computer_output_t inferno_computer_output_t;
+typedef struct cf_inferno_computer_output_t cf_inferno_computer_output_t;
 
-void inferno_computer_output_free(inferno_computer_output_t *output);
+void cf_inferno_computer_output_free(cf_inferno_computer_output_t *output);
 
-void inferno_computer_output_init(inferno_computer_output_t *output);
+void cf_inferno_computer_output_init(cf_inferno_computer_output_t *output);
 
 #endif

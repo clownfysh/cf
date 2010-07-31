@@ -1,22 +1,22 @@
-#ifndef x_net_engine_h
-#define x_net_engine_h
+#ifndef cf_x_net_engine_h
+#define cf_x_net_engine_h
 
-#define X_NET_ENGINE_NO_GET_NAME_FUNCTION NULL
+#define CF_X_NET_ENGINE_NO_GET_NAME_FUNCTION NULL
 
-#define X_NET_ENGINE_TYPE_COUNT 5
-enum x_net_engine_id_t {
-  X_NET_ENGINE_UNKNOWN = 0,
-  X_NET_ENGINE_TEST = 1,
-  X_NET_ENGINE_PING = 2,
-  X_NET_ENGINE_SHELL = 3,
-  X_NET_ENGINE_HYPER = 4,
-  X_NET_ENGINE_MAX = 31,
+#define CF_X_NET_ENGINE_TYPE_COUNT 5
+enum cf_x_net_engine_id_t {
+  CF_X_NET_ENGINE_UNKNOWN = 0,
+  CF_X_NET_ENGINE_TEST = 1,
+  CF_X_NET_ENGINE_PING = 2,
+  CF_X_NET_ENGINE_SHELL = 3,
+  CF_X_NET_ENGINE_HYPER = 4,
+  CF_X_NET_ENGINE_MAX = 31,
 };
-typedef enum x_net_engine_id_t x_net_engine_id_t;
+typedef enum cf_x_net_engine_id_t cf_x_net_engine_id_t;
 
-typedef char *(*x_net_engine_get_name_f)(unsigned long engine_id);
+typedef char *(*cf_x_net_engine_get_name_f)(unsigned long engine_id);
 
-char *x_net_engine_get_name(unsigned long engine_id,
-    x_net_engine_get_name_f get_engine_name);
+char *cf_x_net_engine_get_name(unsigned long engine_id,
+    cf_x_net_engine_get_name_f get_engine_name);
 
 #endif

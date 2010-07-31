@@ -1,18 +1,18 @@
-#ifndef x_math_combination_h
-#define x_math_combination_h
+#ifndef cf_x_math_combination_h
+#define cf_x_math_combination_h
 
-#include "x/case/set.h"
+#include "cf/x/case/set.h"
 
-struct x_math_combination_t;
-typedef struct x_math_combination_t x_math_combination_t;
+struct cf_x_math_combination_t;
+typedef struct cf_x_math_combination_t cf_x_math_combination_t;
 
-x_math_combination_t *x_math_combination_create(x_case_set_t *set);
+cf_x_math_combination_t *cf_x_math_combination_create(cf_x_case_set_t *set);
 
-void x_math_combination_destroy(x_math_combination_t *combination);
+void cf_x_math_combination_destroy(cf_x_math_combination_t *combination);
 
-x_case_set_t *x_math_combination_iterate_next
-(x_math_combination_t *combination);
+cf_x_case_set_t *cf_x_math_combination_iterate_next
+(cf_x_math_combination_t *combination);
 
-void x_math_combination_iterate_start(x_math_combination_t *combination);
+void cf_x_math_combination_iterate_start(cf_x_math_combination_t *combination);
 
 #endif

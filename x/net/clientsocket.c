@@ -1,7 +1,7 @@
-#include "x/core/standard.h"
-#include "x/net/clientsocket.h"
+#include "cf/x/core/standard.h"
+#include "cf/x/net/clientsocket.h"
 
-int x_net_clientsocket_create(char *server_ip_address,
+int cf_x_net_clientsocket_create(char *server_ip_address,
     unsigned short server_port)
 {
   int clientsocket;
@@ -26,7 +26,7 @@ int x_net_clientsocket_create(char *server_ip_address,
   return clientsocket;
 }
 
-void x_net_clientsocket_destroy(int clientsocket)
+void cf_x_net_clientsocket_destroy(int clientsocket)
 {
   if (clientsocket != -1) {
     close(clientsocket);

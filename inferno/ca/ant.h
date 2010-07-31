@@ -1,14 +1,14 @@
-#ifndef inferno_ca_ant_h
-#define inferno_ca_ant_h
+#ifndef cf_inferno_ca_ant_h
+#define cf_inferno_ca_ant_h
 
-#include "inferno/ca/system.h"
+#include "cf/inferno/ca/system.h"
 
-inferno_ca_t inferno_ca_ant_calculate_new_cell_state(inferno_ca_system_t *system,
+cf_inferno_ca_t cf_inferno_ca_ant_calculate_new_cell_state(cf_inferno_ca_system_t *system,
     unsigned long cell_index);
 
-unsigned long inferno_ca_ant_get_relative_cell_index(inferno_ca_system_t *system,
+unsigned long cf_inferno_ca_ant_get_relative_cell_index(cf_inferno_ca_system_t *system,
     unsigned long cell_index, unsigned long relationship);
 
-void inferno_ca_ant_init_systemey(inferno_ca_systemey_t *systemey, void *name_object);
+void cf_inferno_ca_ant_init_systemey(cf_inferno_ca_systemey_t *systemey, void *name_object);
 
 #endif

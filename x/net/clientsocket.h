@@ -1,9 +1,9 @@
-#ifndef x_net_clientsocket_h
-#define x_net_clientsocket_h
+#ifndef cf_x_net_clientsocket_h
+#define cf_x_net_clientsocket_h
 
-int x_net_clientsocket_create(char *server_ip_address,
+int cf_x_net_clientsocket_create(char *server_ip_address,
     unsigned short server_port);
 
-void x_net_clientsocket_destroy(int clientsocket);
+void cf_x_net_clientsocket_destroy(int clientsocket);
 
 #endif

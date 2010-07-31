@@ -1,28 +1,28 @@
-#include "x/core/bitarray.h"
-#include "x/core/long.h"
-#include "x/core/tools.h"
+#include "cf/x/core/bitarray.h"
+#include "cf/x/core/long.h"
+#include "cf/x/core/tools.h"
 
-struct x_core_bitarray_t {
+struct cf_x_core_bitarray_t {
   unsigned long array_size;
-  x_core_bit_t *array;
+  cf_x_core_bit_t *array;
 };
 
-int x_core_bitarray_compare(void *bitarray_object_a,
+int cf_x_core_bitarray_compare(void *bitarray_object_a,
     void *bitarray_object_b)
 {
   assert(bitarray_object_a);
   assert(bitarray_object_b);
-  x_core_bitarray_t *bitarray_a;
-  x_core_bitarray_t *bitarray_b;
+  cf_x_core_bitarray_t *bitarray_a;
+  cf_x_core_bitarray_t *bitarray_b;
   int compare_result;
   unsigned long each_bit;
-  x_core_bit_t bit_a;
-  x_core_bit_t bit_b;
+  cf_x_core_bit_t bit_a;
+  cf_x_core_bit_t bit_b;
 
   bitarray_a = bitarray_object_a;
   bitarray_b = bitarray_object_b;
 
-  compare_result = x_core_long_compare(&bitarray_a->array_size,
+  compare_result = cf_x_core_long_compare(&bitarray_a->array_size,
       &bitarray_b->array_size);
   if (0 == compare_result) {
     for (each_bit = 0; each_bit < bitarray_a->array_size; each_bit++) {
@@ -41,56 +41,56 @@ int x_core_bitarray_compare(void *bitarray_object_a,
   return compare_result;
 }
 
-void *x_core_bitarray_copy(void *bitarray_object)
+void *cf_x_core_bitarray_copy(void *bitarray_object)
 {
   assert(bitarray_object);
-  x_core_bitarray_t *bitarray;
-  x_core_bitarray_t *bitarray_copy;
+  cf_x_core_bitarray_t *bitarray;
+  cf_x_core_bitarray_t *bitarray_copy;
   unsigned long index;
 
   bitarray = bitarray_object;
 
-  bitarray_copy = x_core_bitarray_create(bitarray->array_size);
+  bitarray_copy = cf_x_core_bitarray_create(bitarray->array_size);
   if (bitarray_copy) {
     for (index = 0; index < bitarray->array_size; index++) {
       *(bitarray_copy->array + index) = *(bitarray->array + index);
     }
   } else {
-    x_core_trace("x_core_bitarray_create");
+    cf_x_core_trace("x_core_bitarray_create");
   }
 
   return bitarray_copy;
 }
 
-x_core_bitarray_t *x_core_bitarray_create(unsigned long size)
+cf_x_core_bitarray_t *cf_x_core_bitarray_create(unsigned long size)
 {
   assert(size > 0);
-  x_core_bitarray_t *bitarray;
+  cf_x_core_bitarray_t *bitarray;
   unsigned long array_memory_size;
 
   bitarray = malloc(sizeof *bitarray);
   if (bitarray) {
-    array_memory_size = size * sizeof(x_core_bit_t);
+    array_memory_size = size * sizeof(cf_x_core_bit_t);
     bitarray->array = malloc(array_memory_size);
     if (bitarray->array) {
       memset(bitarray->array, '\0', array_memory_size);
       bitarray->array_size = size;
     } else {
-      x_core_trace("malloc");
+      cf_x_core_trace("malloc");
       free(bitarray);
       bitarray = NULL;
     }
   } else {
-    x_core_trace("malloc");
+    cf_x_core_trace("malloc");
   }
 
   return bitarray;
 }
 
-void x_core_bitarray_destroy(void *bitarray_object)
+void cf_x_core_bitarray_destroy(void *bitarray_object)
 {
   assert(bitarray_object);
-  x_core_bitarray_t *bitarray;
+  cf_x_core_bitarray_t *bitarray;
 
   bitarray = bitarray_object;
 
@@ -99,41 +99,41 @@ void x_core_bitarray_destroy(void *bitarray_object)
 
 }
 
-x_core_bit_t x_core_bitarray_get_bit_actual(x_core_bitarray_t *bitarray,
+cf_x_core_bit_t cf_x_core_bitarray_get_bit_actual(cf_x_core_bitarray_t *bitarray,
     unsigned long index)
 {
   return *(bitarray->array + index);
 }
 
-void x_core_bitarray_set_all(x_core_bitarray_t *bitarray)
+void cf_x_core_bitarray_set_all(cf_x_core_bitarray_t *bitarray)
 {
-  memset(bitarray->array, 1, bitarray->array_size * sizeof(x_core_bit_t));
+  memset(bitarray->array, 1, bitarray->array_size * sizeof(cf_x_core_bit_t));
 }
 
-void x_core_bitarray_set_bit_actual(x_core_bitarray_t *bitarray,
-    unsigned long index, x_core_bit_t value)
+void cf_x_core_bitarray_set_bit_actual(cf_x_core_bitarray_t *bitarray,
+    unsigned long index, cf_x_core_bit_t value)
 {
   *(bitarray->array + index) = value;
 }
 
-unsigned long x_core_bitarray_get_size(x_core_bitarray_t *bitarray)
+unsigned long cf_x_core_bitarray_get_size(cf_x_core_bitarray_t *bitarray)
 {
   return bitarray->array_size;
 }
 
-unsigned long x_core_bitarray_get_memory_size_bytes
-(x_core_bitarray_t *bitarray)
+unsigned long cf_x_core_bitarray_get_memory_size_bytes
+(cf_x_core_bitarray_t *bitarray)
 {
   assert(bitarray);
   unsigned long size;
 
   size = sizeof *bitarray;
-  size += bitarray->array_size * sizeof(x_core_bit_t);
+  size += bitarray->array_size * sizeof(cf_x_core_bit_t);
 
   return size;
 }
 
-void x_core_bitarray_unset_all(x_core_bitarray_t *bitarray)
+void cf_x_core_bitarray_unset_all(cf_x_core_bitarray_t *bitarray)
 {
-  memset(bitarray->array, 0, bitarray->array_size * sizeof(x_core_bit_t));
+  memset(bitarray->array, 0, bitarray->array_size * sizeof(cf_x_core_bit_t));
 }

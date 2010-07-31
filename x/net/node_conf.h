@@ -1,23 +1,23 @@
-#ifndef x_net_node_conf_h
-#define x_net_node_conf_h
+#ifndef cf_x_net_node_conf_h
+#define cf_x_net_node_conf_h
 
-#include "x/config/file.h"
+#include "cf/x/config/file.h"
 
-struct x_net_node_conf_t {
-  x_config_file_t *conf;
+struct cf_x_net_node_conf_t {
+  cf_x_config_file_t *conf;
 
   char *node_ip;
   unsigned short node_port;
   unsigned short node_max_threads;
 
-  x_case_list_t *peer_node_ips;
+  cf_x_case_list_t *peer_node_ips;
   unsigned short peer_node_port_min;
   unsigned short peer_node_port_max;
 };
-typedef struct x_net_node_conf_t x_net_node_conf_t;
+typedef struct cf_x_net_node_conf_t cf_x_net_node_conf_t;
 
-x_net_node_conf_t *x_net_node_conf_create(char *conf_filename);
+cf_x_net_node_conf_t *cf_x_net_node_conf_create(char *conf_filename);
 
-void x_net_node_conf_destroy(x_net_node_conf_t *node_conf);
+void cf_x_net_node_conf_destroy(cf_x_net_node_conf_t *node_conf);
 
 #endif

@@ -1,11 +1,11 @@
-#ifndef inferno_mind_system_h
-#define inferno_mind_system_h
+#ifndef cf_inferno_mind_system_h
+#define cf_inferno_mind_system_h
 
-struct inferno_mind_system_t;
-typedef struct inferno_mind_system_t inferno_mind_system_t;
+struct cf_inferno_mind_system_t;
+typedef struct cf_inferno_mind_system_t cf_inferno_mind_system_t;
 
-inferno_mind_system_t *inferno_mind_system_create();
+cf_inferno_mind_system_t *cf_inferno_mind_system_create();
 
-void inferno_mind_system_destroy(inferno_mind_system_t *system);
+void cf_inferno_mind_system_destroy(cf_inferno_mind_system_t *system);
 
 #endif

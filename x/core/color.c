@@ -1,7 +1,7 @@
-#include "x/core/standard.h"
-#include "x/core/color.h"
+#include "cf/x/core/standard.h"
+#include "cf/x/core/color.h"
 
-void x_core_color_init(x_core_color_t *color, unsigned long red,
+void cf_x_core_color_init(cf_x_core_color_t *color, unsigned long red,
     unsigned long blue, unsigned long green)
 {
   assert(color);

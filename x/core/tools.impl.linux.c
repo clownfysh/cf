@@ -1,6 +1,6 @@
-#include "x/core/tools.h"
+#include "cf/x/core/tools.h"
 
-unsigned long x_get_microseconds()
+unsigned long cf_x_get_microseconds()
 {
   struct timeval now;
   unsigned long microseconds;
@@ -8,7 +8,7 @@ unsigned long x_get_microseconds()
   if (gettimeofday(&now, NULL) != -1) {
     microseconds = now.tv_usec;
   } else {
-    x_trace("gettimeofday");
+    cf_x_trace("gettimeofday");
     microseconds = 0;
   }
 

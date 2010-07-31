@@ -1,4 +1,4 @@
-#include "inferno/ca/malice.h"
+#include "cf/inferno/ca/malice.h"
 
 int main(int argc, char *argv[])
 {

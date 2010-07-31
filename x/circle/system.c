@@ -1,8 +1,8 @@
-#include "x/circle/system.h"
+#include "cf/x/circle/system.h"
 
 #define PERIOD 1048576
 
-struct x_circle_system_t {
+struct cf_x_circle_system_t {
   unsigned char *bits;
   unsigned long bits_position;
   unsigned char *chars;
@@ -11,9 +11,9 @@ struct x_circle_system_t {
   unsigned long longs_position;
 };
 
-x_circle_system_t *x_circle_system_create()
+cf_x_circle_system_t *cf_x_circle_system_create()
 {
-  x_circle_system_t *system;
+  cf_x_circle_system_t *system;
   unsigned long i;
 
   system = malloc(sizeof *system);
@@ -36,31 +36,31 @@ x_circle_system_t *x_circle_system_create()
           system->chars_position = PERIOD;
           system->longs_position = PERIOD;
         } else {
-          x_trace("malloc");
+          cf_x_trace("malloc");
           free(system->chars);
           free(system->bits);
           free(system);
           system = NULL;
         }
       } else {
-        x_trace("malloc");
+        cf_x_trace("malloc");
         free(system->bits);
         free(system);
         system = NULL;
       }
     } else {
-      x_trace("malloc");
+      cf_x_trace("malloc");
       free(system);
       system = NULL;
     }
   } else {
-    x_trace("malloc");
+    cf_x_trace("malloc");
   }
 
   return system;
 }
 
-void x_circle_system_destroy(x_circle_system_t *system)
+void cf_x_circle_system_destroy(cf_x_circle_system_t *system)
 {
   assert(system);
   free(system->bits);
@@ -69,7 +69,7 @@ void x_circle_system_destroy(x_circle_system_t *system)
   free(system);
 }
 
-x_core_bit_t x_circle_system_get_bit(x_circle_system_t *system)
+cf_x_core_bit_t cf_x_circle_system_get_bit(cf_x_circle_system_t *system)
 {
   assert(system);
 
@@ -82,7 +82,7 @@ x_core_bit_t x_circle_system_get_bit(x_circle_system_t *system)
   return *(system->bits + system->bits_position);
 }
 
-x_core_bool_t x_circle_system_get_bool(x_circle_system_t *system)
+cf_x_core_bool_t cf_x_circle_system_get_bool(cf_x_circle_system_t *system)
 {
   assert(system);
 
@@ -95,7 +95,7 @@ x_core_bool_t x_circle_system_get_bool(x_circle_system_t *system)
   return *(system->bits + system->bits_position);
 }
 
-unsigned char x_circle_system_get_char(x_circle_system_t *system)
+unsigned char cf_x_circle_system_get_char(cf_x_circle_system_t *system)
 {
   assert(system);
 
@@ -108,7 +108,7 @@ unsigned char x_circle_system_get_char(x_circle_system_t *system)
   return *(system->chars + system->chars_position);
 }
 
-unsigned long x_circle_system_get_long(x_circle_system_t *system)
+unsigned long cf_x_circle_system_get_long(cf_x_circle_system_t *system)
 {
   assert(system);
 

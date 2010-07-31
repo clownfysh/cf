@@ -1,9 +1,9 @@
-#include "x/core/int.h"
-#include "x/core/tools.h"
+#include "cf/x/core/int.h"
+#include "cf/x/core/tools.h"
 
-struct x_core_int_t {};
+struct cf_x_core_int_t {};
 
-int x_core_int_compare(void *int_object_a,
+int cf_x_core_int_compare(void *int_object_a,
     void *int_object_b)
 {
   int *int_a;
@@ -24,7 +24,7 @@ int x_core_int_compare(void *int_object_a,
   return compare;
 }
 
-void *x_core_int_copy(void *int_object)
+void *cf_x_core_int_copy(void *int_object)
 {
   assert(int_object);
   int *int_value;
@@ -35,23 +35,23 @@ void *x_core_int_copy(void *int_object)
   if (int_copy) {
     *int_copy = *int_value;
   } else {
-    x_core_trace("malloc");
+    cf_x_core_trace("malloc");
   }
 
   return int_copy;
 }
 
-x_core_int_t *x_core_int_create()
+cf_x_core_int_t *cf_x_core_int_create()
 {
   return NULL;
 }
 
-void x_core_int_destroy(void *int_object)
+void cf_x_core_int_destroy(void *int_object)
 {
   free(int_object);
 }
 
-char *x_core_int_get_as_string(void *int_object)
+char *cf_x_core_int_get_as_string(void *int_object)
 {
   assert(int_object);
   int *i;
@@ -63,18 +63,18 @@ char *x_core_int_get_as_string(void *int_object)
   if (string) {
     snprintf(string, 10 + 1, "%i", *i);
   } else {
-    x_core_trace_exit("malloc");
+    cf_x_core_trace_exit("malloc");
   }
 
   return string;
 }
 
-void x_core_int_init_objectey(x_core_objectey_t *objectey)
+void cf_x_core_int_init_objectey(cf_x_core_objectey_t *objectey)
 {
   assert(objectey);
 
-  objectey->get_as_string = x_core_int_get_as_string;
-  objectey->compare = x_core_int_compare;
-  objectey->copy = x_core_int_copy;
-  objectey->destroy = x_core_int_destroy;
+  objectey->get_as_string = cf_x_core_int_get_as_string;
+  objectey->compare = cf_x_core_int_compare;
+  objectey->copy = cf_x_core_int_copy;
+  objectey->destroy = cf_x_core_int_destroy;
 }

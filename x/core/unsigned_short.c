@@ -1,7 +1,7 @@
-#include "x/core/tools.h"
-#include "x/core/unsigned_short.h"
+#include "cf/x/core/tools.h"
+#include "cf/x/core/unsigned_short.h"
 
-int x_core_unsigned_short_compare(void *unsigned_short_a_object,
+int cf_x_core_unsigned_short_compare(void *unsigned_short_a_object,
     void *unsigned_short_b_object)
 {
   unsigned short *short_a;
@@ -22,7 +22,7 @@ int x_core_unsigned_short_compare(void *unsigned_short_a_object,
   return compare;
 }
 
-void *x_core_unsigned_short_copy
+void *cf_x_core_unsigned_short_copy
 (void *unsigned_short_object)
 {
   assert(unsigned_short_object);
@@ -34,19 +34,19 @@ void *x_core_unsigned_short_copy
   if (short_copy) {
     *short_copy = *short_value;
   } else {
-    x_core_trace("malloc");
+    cf_x_core_trace("malloc");
   }
 
   return short_copy;
 }
 
-void x_core_unsigned_short_destroy(void *unsigned_short_object)
+void cf_x_core_unsigned_short_destroy(void *unsigned_short_object)
 {
   assert(unsigned_short_object);
   free(unsigned_short_object);
 }
 
-void x_core_unsigned_short_print(void *unsigned_short_object)
+void cf_x_core_unsigned_short_print(void *unsigned_short_object)
 {
   unsigned short *short_value;
 

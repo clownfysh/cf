@@ -1,11 +1,11 @@
-#ifndef inferno_ccsv_system_h
-#define inferno_ccsv_system_h
+#ifndef cf_inferno_ccsv_system_h
+#define cf_inferno_ccsv_system_h
 
-struct inferno_ccsv_system_t;
-typedef struct inferno_ccsv_system_t inferno_ccsv_system_t;
+struct cf_inferno_ccsv_system_t;
+typedef struct cf_inferno_ccsv_system_t cf_inferno_ccsv_system_t;
 
-inferno_ccsv_system_t *inferno_ccsv_system_create();
+cf_inferno_ccsv_system_t *cf_inferno_ccsv_system_create();
 
-void inferno_ccsv_system_destroy(void *system_void);
+void cf_inferno_ccsv_system_destroy(void *system_void);
 
 #endif

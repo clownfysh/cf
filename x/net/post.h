@@ -1,40 +1,40 @@
-#ifndef x_net_post_h
-#define x_net_post_h
+#ifndef cf_x_net_post_h
+#define cf_x_net_post_h
 
-#include "x/case/list.h"
-#include "x/core/message.h"
-#include "x/core/types.h"
-#include "x/net/post_stats.h"
+#include "cf/x/case/list.h"
+#include "cf/x/core/message.h"
+#include "cf/x/core/types.h"
+#include "cf/x/net/post_stats.h"
 
-struct x_net_post_t;
-typedef struct x_net_post_t x_net_post_t;
+struct cf_x_net_post_t;
+typedef struct cf_x_net_post_t cf_x_net_post_t;
 
-int x_net_post_compare(void *post_object_a, void *post_object_b);
+int cf_x_net_post_compare(void *post_object_a, void *post_object_b);
 
-void *x_net_post_create(int socket);
+void *cf_x_net_post_create(int socket);
 
-void *x_net_post_create_decoy(int socket);
+void *cf_x_net_post_create_decoy(int socket);
 
-void x_net_post_destroy(void *post_object);
+void cf_x_net_post_destroy(void *post_object);
 
-void x_net_post_destroy_decoy(void *post_object);
+void cf_x_net_post_destroy_decoy(void *post_object);
 
-time_t x_net_post_get_last_receive_activity_time(void *post_object);
+time_t cf_x_net_post_get_last_receive_activity_time(void *post_object);
 
-int x_net_post_get_socket(void *post_object);
+int cf_x_net_post_get_socket(void *post_object);
 
-void x_net_post_get_stats(void *post_object, x_net_post_stats_t *post_stats);
+void cf_x_net_post_get_stats(void *post_object, cf_x_net_post_stats_t *post_stats);
 
-x_core_bool_t x_net_post_is_socket_closed(void *post_object);
+cf_x_core_bool_t cf_x_net_post_is_socket_closed(void *post_object);
 
-void *x_net_post_receive_message(void *post_object);
+void *cf_x_net_post_receive_message(void *post_object);
 
-void x_net_post_receive_messages(void *post_object);
+void cf_x_net_post_receive_messages(void *post_object);
 
-x_core_bool_t x_net_post_send_message(void *post_object, void *message_object);
+cf_x_core_bool_t cf_x_net_post_send_message(void *post_object, void *message_object);
 
-void x_net_post_send_messages(void *post_object);
+void cf_x_net_post_send_messages(void *post_object);
 
-x_case_list_t *x_net_post_take_unsent_messages(x_net_post_t *post);
+cf_x_case_list_t *cf_x_net_post_take_unsent_messages(cf_x_net_post_t *post);
 
 #endif

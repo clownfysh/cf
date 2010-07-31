@@ -1,10 +1,10 @@
-#include "inferno/bios/actor.h"
-#include "inferno/bios/declarations.h"
-#include "inferno/bios/system.h"
-#include "inferno/core/constants.h"
-#include "inferno/core/goal.h"
-#include "x/core/random.h"
-#include "x/core/tools.h"
+#include "cf/inferno/bios/actor.h"
+#include "cf/inferno/bios/declarations.h"
+#include "cf/inferno/bios/system.h"
+#include "cf/inferno/core/constants.h"
+#include "cf/inferno/core/goal.h"
+#include "cf/x/core/random.h"
+#include "cf/x/core/tools.h"
 
 #define ANARCHY_MODULUS 4
 #define DO_MOVE 1
@@ -45,22 +45,22 @@ struct meet_gene_t {
 };
 typedef struct meet_gene_t meet_gene_t;
 
-struct inferno_bios_actor_t {
-  x_core_bitarray_t *solution;
-  inferno_bios_system_t *system;
+struct cf_inferno_bios_actor_t {
+  cf_x_core_bitarray_t *solution;
+  cf_inferno_bios_system_t *system;
   double score;
-  x_core_bool_t score_is_valid;
+  cf_x_core_bool_t score_is_valid;
   void *box_cell;
 };
 
-char display_color(inferno_bios_actor_t *actor);
+char display_color(cf_inferno_bios_actor_t *actor);
 
-static unsigned long eight_from_eight(inferno_bios_actor_t *actor,
+static unsigned long eight_from_eight(cf_inferno_bios_actor_t *actor,
     unsigned long ulong_0, unsigned long ulong_1, unsigned long ulong_2,
     unsigned long ulong_3, unsigned long ulong_4, unsigned long ulong_5,
     unsigned long ulong_6, unsigned long ulong_7);
 
-static unsigned long eight_from_sixteen(inferno_bios_actor_t *actor,
+static unsigned long eight_from_sixteen(cf_inferno_bios_actor_t *actor,
     unsigned long ulong_0, unsigned long ulong_1, unsigned long ulong_2,
     unsigned long ulong_3, unsigned long ulong_4, unsigned long ulong_5,
     unsigned long ulong_6, unsigned long ulong_7, unsigned long ulong_8,
@@ -68,7 +68,7 @@ static unsigned long eight_from_sixteen(inferno_bios_actor_t *actor,
     unsigned long ulong_12, unsigned long ulong_13, unsigned long ulong_14,
     unsigned long ulong_15);
 
-static unsigned long eight_from_twenty_four(inferno_bios_actor_t *actor,
+static unsigned long eight_from_twenty_four(cf_inferno_bios_actor_t *actor,
     unsigned long ulong_0, unsigned long ulong_1, unsigned long ulong_2,
     unsigned long ulong_3, unsigned long ulong_4, unsigned long ulong_5,
     unsigned long ulong_6, unsigned long ulong_7, unsigned long ulong_8,
@@ -78,38 +78,38 @@ static unsigned long eight_from_twenty_four(inferno_bios_actor_t *actor,
     unsigned long ulong_18, unsigned long ulong_19, unsigned long ulong_20,
     unsigned long ulong_21, unsigned long ulong_22, unsigned long ulong_23);
 
-static x_core_bool_t fitness_is_superior(double fitness_a, double fitness_b,
-    inferno_core_goal_t goal);
+static cf_x_core_bool_t fitness_is_superior(double fitness_a, double fitness_b,
+    cf_inferno_core_goal_t goal);
 
 static unsigned long get_position_index_for_observe_location
-(inferno_bios_actor_t *actor, unsigned long observe_location);
+(cf_inferno_bios_actor_t *actor, unsigned long observe_location);
 
-static inferno_box_coordinate_t get_relative_position_from_index
+static cf_inferno_box_coordinate_t get_relative_position_from_index
 (unsigned long index);
 
-static double get_score(inferno_bios_actor_t *actor);
+static double get_score(cf_inferno_bios_actor_t *actor);
 
-static void meet_actor(inferno_bios_actor_t *actor);
+static void meet_actor(cf_inferno_bios_actor_t *actor);
 
-static void meet_actor_details(inferno_bios_actor_t *actor_a,
-    inferno_bios_actor_t *actor_b);
+static void meet_actor_details(cf_inferno_bios_actor_t *actor_a,
+    cf_inferno_bios_actor_t *actor_b);
 
-static void move_actor(inferno_bios_actor_t *actor);
+static void move_actor(cf_inferno_bios_actor_t *actor);
 
-static void parse_display_gene(inferno_bios_actor_t *actor,
+static void parse_display_gene(cf_inferno_bios_actor_t *actor,
     unsigned long gene_start_address, display_gene_t *display_gene);
 
-static void parse_meet_gene(inferno_bios_actor_t *actor,
+static void parse_meet_gene(cf_inferno_bios_actor_t *actor,
     unsigned long gene_start_address, meet_gene_t *meet_gene);
 
-char display_color(inferno_bios_actor_t *actor)
+char display_color(cf_inferno_bios_actor_t *actor)
 {
   unsigned long display_gene_start_address;
   display_gene_t display_gene;
   char c;
 
   display_gene_start_address
-    = inferno_core_get_gene_start_address(actor->solution, GENE_INDEX_DISPLAY);
+    = cf_inferno_core_get_gene_start_address(actor->solution, GENE_INDEX_DISPLAY);
   parse_display_gene(actor, display_gene_start_address, &display_gene);
 
   if ((display_gene.red > display_gene.blue)
@@ -128,7 +128,7 @@ char display_color(inferno_bios_actor_t *actor)
   return c;
 }
 
-unsigned long eight_from_eight(inferno_bios_actor_t *actor, unsigned long ulong_0,
+unsigned long eight_from_eight(cf_inferno_bios_actor_t *actor, unsigned long ulong_0,
     unsigned long ulong_1, unsigned long ulong_2, unsigned long ulong_3,
     unsigned long ulong_4, unsigned long ulong_5, unsigned long ulong_6,
     unsigned long ulong_7)
@@ -173,9 +173,9 @@ unsigned long eight_from_eight(inferno_bios_actor_t *actor, unsigned long ulong_
           beginning of the gene, so having these things farther longo the
           gene would make them more likely to be changeable.  but I'm
           not sure there even is such a preference.  */
-      ca_index_0 = x_core_wrap_index(each_x - 1, 8);
+      ca_index_0 = cf_x_core_wrap_index(each_x - 1, 8);
       ca_index_1 = each_x;
-      ca_index_2 = x_core_wrap_index(each_x + 1, 8);
+      ca_index_2 = cf_x_core_wrap_index(each_x + 1, 8);
 
       ca_in_0 = cells[ca_index_0][each_y - 1];
       ca_in_1 = cells[ca_index_1][each_y - 1];
@@ -183,7 +183,7 @@ unsigned long eight_from_eight(inferno_bios_actor_t *actor, unsigned long ulong_
       ca_out_address = CA_OUT_ADDRESS_SPREAD_FACTOR * (
         (4 * ca_in_0) + (2 * ca_in_1) + (1 * ca_in_2)
         );
-      ca_out = x_core_bitarray_get_bit(actor->solution, ca_out_address);
+      ca_out = cf_x_core_bitarray_get_bit(actor->solution, ca_out_address);
       cells[each_x][each_y] = ca_out;
     }
   }
@@ -196,7 +196,7 @@ unsigned long eight_from_eight(inferno_bios_actor_t *actor, unsigned long ulong_
   return result;
 }
 
-unsigned long eight_from_sixteen(inferno_bios_actor_t *actor, unsigned long ulong_0,
+unsigned long eight_from_sixteen(cf_inferno_bios_actor_t *actor, unsigned long ulong_0,
     unsigned long ulong_1, unsigned long ulong_2, unsigned long ulong_3,
     unsigned long ulong_4, unsigned long ulong_5, unsigned long ulong_6,
     unsigned long ulong_7, unsigned long ulong_8, unsigned long ulong_9,
@@ -242,9 +242,9 @@ unsigned long eight_from_sixteen(inferno_bios_actor_t *actor, unsigned long ulon
 
   for (each_y = 2; each_y < EFE_LENGTH; each_y++) {
     for (each_x = 0; each_x < 8; each_x++) {
-      ca_index_0 = x_core_wrap_index(each_x - 1, 8);
+      ca_index_0 = cf_x_core_wrap_index(each_x - 1, 8);
       ca_index_1 = each_x;
-      ca_index_2 = x_core_wrap_index(each_x + 1, 8);
+      ca_index_2 = cf_x_core_wrap_index(each_x + 1, 8);
 
       ca_in_0 = cells[ca_index_0][each_y - 1];
       ca_in_1 = cells[ca_index_1][each_y - 1];
@@ -259,7 +259,7 @@ unsigned long eight_from_sixteen(inferno_bios_actor_t *actor, unsigned long ulon
         + (4 * ca_in_2) + (2 * ca_in_1) + (1 * ca_in_0)
         );
 
-      ca_out = x_core_bitarray_get_bit(actor->solution, ca_out_address);
+      ca_out = cf_x_core_bitarray_get_bit(actor->solution, ca_out_address);
       cells[each_x][each_y] = ca_out;
     }
   }
@@ -272,7 +272,7 @@ unsigned long eight_from_sixteen(inferno_bios_actor_t *actor, unsigned long ulon
   return result;
 }
 
-unsigned long eight_from_twenty_four(inferno_bios_actor_t *actor,
+unsigned long eight_from_twenty_four(cf_inferno_bios_actor_t *actor,
     unsigned long ulong_0, unsigned long ulong_1, unsigned long ulong_2,
     unsigned long ulong_3, unsigned long ulong_4, unsigned long ulong_5,
     unsigned long ulong_6, unsigned long ulong_7, unsigned long ulong_8,
@@ -333,9 +333,9 @@ unsigned long eight_from_twenty_four(inferno_bios_actor_t *actor,
 
   for (each_y = 3; each_y < EFE_LENGTH; each_y++) {
     for (each_x = 0; each_x < 8; each_x++) {
-      ca_index_0 = x_core_wrap_index(each_x - 1, 8);
+      ca_index_0 = cf_x_core_wrap_index(each_x - 1, 8);
       ca_index_1 = each_x;
-      ca_index_2 = x_core_wrap_index(each_x + 1, 8);
+      ca_index_2 = cf_x_core_wrap_index(each_x + 1, 8);
 
       ca_in_0 = cells[ca_index_0][each_y - 1];
       ca_in_1 = cells[ca_index_1][each_y - 1];
@@ -355,7 +355,7 @@ unsigned long eight_from_twenty_four(inferno_bios_actor_t *actor,
         + (4 * ca_in_2) + (2 * ca_in_1) + (1 * ca_in_0)
         );
 
-      ca_out = x_core_bitarray_get_bit(actor->solution, ca_out_address);
+      ca_out = cf_x_core_bitarray_get_bit(actor->solution, ca_out_address);
       cells[each_x][each_y] = ca_out;
     }
   }
@@ -368,10 +368,10 @@ unsigned long eight_from_twenty_four(inferno_bios_actor_t *actor,
   return result;
 }
 
-x_core_bool_t fitness_is_superior(double fitness_a, double fitness_b,
-    inferno_core_goal_t goal)
+cf_x_core_bool_t fitness_is_superior(double fitness_a, double fitness_b,
+    cf_inferno_core_goal_t goal)
 {
-  x_core_bool_t superior;
+  cf_x_core_bool_t superior;
 
   /*
     TODO: in general, what is the number optimal for society? :: is there a
@@ -381,19 +381,19 @@ x_core_bool_t fitness_is_superior(double fitness_a, double fitness_b,
     :: is there some governing relationship to be found there?
   */
   if (0 == (random() % ANARCHY_MODULUS)) {
-    superior = x_core_bool_true;
+    superior = cf_x_core_bool_true;
   } else {
-    if (INFERNO_CORE_GOAL_MAXIMIZE_SCORE == goal) {
+    if (CF_INFERNO_CORE_GOAL_MAXIMIZE_SCORE == goal) {
       if (fitness_a > fitness_b) {
-        superior = x_core_bool_true;
+        superior = cf_x_core_bool_true;
       } else {
-        superior = x_core_bool_false;
+        superior = cf_x_core_bool_false;
       }
     } else {
       if (fitness_a < fitness_b) {
-        superior = x_core_bool_true;
+        superior = cf_x_core_bool_true;
       } else {
-        superior = x_core_bool_false;
+        superior = cf_x_core_bool_false;
       }
     }
   }
@@ -401,7 +401,7 @@ x_core_bool_t fitness_is_superior(double fitness_a, double fitness_b,
   return superior;
 }
 
-unsigned long get_position_index_for_observe_location(inferno_bios_actor_t *actor,
+unsigned long get_position_index_for_observe_location(cf_inferno_bios_actor_t *actor,
     unsigned long observe_location)
 {
   unsigned long observed_0;
@@ -431,89 +431,89 @@ unsigned long get_position_index_for_observe_location(inferno_bios_actor_t *acto
   unsigned long observed_22;
   unsigned long observed_23;
 
-  inferno_bios_actor_t *actor_0;
-  inferno_bios_actor_t *actor_1;
-  inferno_bios_actor_t *actor_2;
-  inferno_bios_actor_t *actor_3;
-  inferno_bios_actor_t *actor_4;
-  inferno_bios_actor_t *actor_5;
-  inferno_bios_actor_t *actor_6;
-  inferno_bios_actor_t *actor_7;
+  cf_inferno_bios_actor_t *actor_0;
+  cf_inferno_bios_actor_t *actor_1;
+  cf_inferno_bios_actor_t *actor_2;
+  cf_inferno_bios_actor_t *actor_3;
+  cf_inferno_bios_actor_t *actor_4;
+  cf_inferno_bios_actor_t *actor_5;
+  cf_inferno_bios_actor_t *actor_6;
+  cf_inferno_bios_actor_t *actor_7;
 
-  inferno_box_coordinate_t relation;
+  cf_inferno_box_coordinate_t relation;
   unsigned long new_position_index;
-  inferno_box_system_t *box;
+  cf_inferno_box_system_t *box;
 
-  box = inferno_bios_system_get_box(actor->system);
+  box = cf_inferno_bios_system_get_box(actor->system);
 
-  inferno_box_coordinate_init_witx_xyz(&relation, 0, 0, 1);
-  actor_0 = inferno_box_system_find_relative(box, actor, &relation);
+  cf_inferno_box_coordinate_init_witx_xyz(&relation, 0, 0, 1);
+  actor_0 = cf_inferno_box_system_find_relative(box, actor, &relation);
 
-  inferno_box_coordinate_init_witx_xyz(&relation, 1, 0, 1);
-  actor_1 = inferno_box_system_find_relative(box, actor, &relation);
+  cf_inferno_box_coordinate_init_witx_xyz(&relation, 1, 0, 1);
+  actor_1 = cf_inferno_box_system_find_relative(box, actor, &relation);
 
-  inferno_box_coordinate_init_witx_xyz(&relation, 2, 0, 1);
-  actor_2 = inferno_box_system_find_relative(box, actor, &relation);
+  cf_inferno_box_coordinate_init_witx_xyz(&relation, 2, 0, 1);
+  actor_2 = cf_inferno_box_system_find_relative(box, actor, &relation);
 
-  inferno_box_coordinate_init_witx_xyz(&relation, 2, 1, 1);
-  actor_3 = inferno_box_system_find_relative(box, actor, &relation);
+  cf_inferno_box_coordinate_init_witx_xyz(&relation, 2, 1, 1);
+  actor_3 = cf_inferno_box_system_find_relative(box, actor, &relation);
 
-  inferno_box_coordinate_init_witx_xyz(&relation, 2, 2, 1);
-  actor_4 = inferno_box_system_find_relative(box, actor, &relation);
+  cf_inferno_box_coordinate_init_witx_xyz(&relation, 2, 2, 1);
+  actor_4 = cf_inferno_box_system_find_relative(box, actor, &relation);
 
-  inferno_box_coordinate_init_witx_xyz(&relation, 1, 2, 1);
-  actor_5 = inferno_box_system_find_relative(box, actor, &relation);
+  cf_inferno_box_coordinate_init_witx_xyz(&relation, 1, 2, 1);
+  actor_5 = cf_inferno_box_system_find_relative(box, actor, &relation);
 
-  inferno_box_coordinate_init_witx_xyz(&relation, 0, 2, 1);
-  actor_6 = inferno_box_system_find_relative(box, actor, &relation);
+  cf_inferno_box_coordinate_init_witx_xyz(&relation, 0, 2, 1);
+  actor_6 = cf_inferno_box_system_find_relative(box, actor, &relation);
 
-  inferno_box_coordinate_init_witx_xyz(&relation, 0, 1, 1);
-  actor_7 = inferno_box_system_find_relative(box, actor, &relation);
+  cf_inferno_box_coordinate_init_witx_xyz(&relation, 0, 1, 1);
+  actor_7 = cf_inferno_box_system_find_relative(box, actor, &relation);
 
-  observed_0 = x_core_bitarray_get_bit(actor_0->solution, observe_location);
-  observed_1 = x_core_bitarray_get_bit(actor_1->solution, observe_location);
-  observed_2 = x_core_bitarray_get_bit(actor_2->solution, observe_location);
-  observed_3 = x_core_bitarray_get_bit(actor_3->solution, observe_location);
-  observed_4 = x_core_bitarray_get_bit(actor_4->solution, observe_location);
-  observed_5 = x_core_bitarray_get_bit(actor_5->solution, observe_location);
-  observed_6 = x_core_bitarray_get_bit(actor_6->solution, observe_location);
-  observed_7 = x_core_bitarray_get_bit(actor_7->solution, observe_location);
+  observed_0 = cf_x_core_bitarray_get_bit(actor_0->solution, observe_location);
+  observed_1 = cf_x_core_bitarray_get_bit(actor_1->solution, observe_location);
+  observed_2 = cf_x_core_bitarray_get_bit(actor_2->solution, observe_location);
+  observed_3 = cf_x_core_bitarray_get_bit(actor_3->solution, observe_location);
+  observed_4 = cf_x_core_bitarray_get_bit(actor_4->solution, observe_location);
+  observed_5 = cf_x_core_bitarray_get_bit(actor_5->solution, observe_location);
+  observed_6 = cf_x_core_bitarray_get_bit(actor_6->solution, observe_location);
+  observed_7 = cf_x_core_bitarray_get_bit(actor_7->solution, observe_location);
 
-  observed_8 = x_core_bitarray_get_bit(actor_0->solution,
+  observed_8 = cf_x_core_bitarray_get_bit(actor_0->solution,
       observe_location + OBSERVE_LOCATION_SPREAD_DISTANCE);
-  observed_9 = x_core_bitarray_get_bit(actor_1->solution,
+  observed_9 = cf_x_core_bitarray_get_bit(actor_1->solution,
       observe_location + OBSERVE_LOCATION_SPREAD_DISTANCE);
-  observed_10 = x_core_bitarray_get_bit(actor_2->solution,
+  observed_10 = cf_x_core_bitarray_get_bit(actor_2->solution,
       observe_location + OBSERVE_LOCATION_SPREAD_DISTANCE);
-  observed_11 = x_core_bitarray_get_bit(actor_3->solution,
+  observed_11 = cf_x_core_bitarray_get_bit(actor_3->solution,
       observe_location + OBSERVE_LOCATION_SPREAD_DISTANCE);
-  observed_12 = x_core_bitarray_get_bit(actor_4->solution,
+  observed_12 = cf_x_core_bitarray_get_bit(actor_4->solution,
       observe_location + OBSERVE_LOCATION_SPREAD_DISTANCE);
-  observed_13 = x_core_bitarray_get_bit(actor_5->solution,
+  observed_13 = cf_x_core_bitarray_get_bit(actor_5->solution,
       observe_location + OBSERVE_LOCATION_SPREAD_DISTANCE);
-  observed_14 = x_core_bitarray_get_bit(actor_6->solution,
+  observed_14 = cf_x_core_bitarray_get_bit(actor_6->solution,
       observe_location + OBSERVE_LOCATION_SPREAD_DISTANCE);
-  observed_15 = x_core_bitarray_get_bit(actor_7->solution,
+  observed_15 = cf_x_core_bitarray_get_bit(actor_7->solution,
       observe_location + OBSERVE_LOCATION_SPREAD_DISTANCE);
 
-  observed_16 = x_core_bitarray_get_bit(actor_0->solution,
+  observed_16 = cf_x_core_bitarray_get_bit(actor_0->solution,
       observe_location + (2 * OBSERVE_LOCATION_SPREAD_DISTANCE));
-  observed_17 = x_core_bitarray_get_bit(actor_1->solution,
+  observed_17 = cf_x_core_bitarray_get_bit(actor_1->solution,
       observe_location + (2 * OBSERVE_LOCATION_SPREAD_DISTANCE));
-  observed_18 = x_core_bitarray_get_bit(actor_2->solution,
+  observed_18 = cf_x_core_bitarray_get_bit(actor_2->solution,
       observe_location + (2 * OBSERVE_LOCATION_SPREAD_DISTANCE));
-  observed_19 = x_core_bitarray_get_bit(actor_3->solution,
+  observed_19 = cf_x_core_bitarray_get_bit(actor_3->solution,
       observe_location + (2 * OBSERVE_LOCATION_SPREAD_DISTANCE));
-  observed_20 = x_core_bitarray_get_bit(actor_4->solution,
+  observed_20 = cf_x_core_bitarray_get_bit(actor_4->solution,
       observe_location + (2 * OBSERVE_LOCATION_SPREAD_DISTANCE));
-  observed_21 = x_core_bitarray_get_bit(actor_5->solution,
+  observed_21 = cf_x_core_bitarray_get_bit(actor_5->solution,
       observe_location + (2 * OBSERVE_LOCATION_SPREAD_DISTANCE));
-  observed_22 = x_core_bitarray_get_bit(actor_6->solution,
+  observed_22 = cf_x_core_bitarray_get_bit(actor_6->solution,
       observe_location + (2 * OBSERVE_LOCATION_SPREAD_DISTANCE));
-  observed_23 = x_core_bitarray_get_bit(actor_7->solution,
+  observed_23 = cf_x_core_bitarray_get_bit(actor_7->solution,
       observe_location + (2 * OBSERVE_LOCATION_SPREAD_DISTANCE));
 
-  if (x_core_bool_false) {
+  if (cf_x_core_bool_false) {
     new_position_index = eight_from_eight(actor, observed_0, observed_1,
         observed_2, observed_3, observed_4, observed_5, observed_6,
         observed_7);
@@ -532,10 +532,10 @@ unsigned long get_position_index_for_observe_location(inferno_bios_actor_t *acto
   return new_position_index;
 }
 
-inferno_box_coordinate_t get_relative_position_from_index(unsigned long index)
+cf_inferno_box_coordinate_t get_relative_position_from_index(unsigned long index)
 {
   assert(index < 8);
-  inferno_box_coordinate_t position;
+  cf_inferno_box_coordinate_t position;
 
   position.x = 1;
   position.y = 1;
@@ -579,28 +579,28 @@ inferno_box_coordinate_t get_relative_position_from_index(unsigned long index)
   return position;
 }
 
-double get_score(inferno_bios_actor_t *actor)
+double get_score(cf_inferno_bios_actor_t *actor)
 {
   assert(actor);
-  inferno_core_score_solution_f score_solution;
+  cf_inferno_core_score_solution_f score_solution;
   void *context;
-  x_audit_log_t *log;
+  cf_x_audit_log_t *log;
 
   if (!actor->score_is_valid) {
-    context = inferno_bios_system_get_context(actor->system);
-    score_solution = inferno_bios_system_get_score_solution(actor->system);
+    context = cf_inferno_bios_system_get_context(actor->system);
+    score_solution = cf_inferno_bios_system_get_score_solution(actor->system);
     if (score_solution(context, actor->solution, &actor->score)) {
-      actor->score_is_valid = x_core_bool_true;
+      actor->score_is_valid = cf_x_core_bool_true;
     } else {
-      log = inferno_bios_system_get_log(actor->system);
-      x_audit_log_trace(log, "bios", "score_solution");
+      log = cf_inferno_bios_system_get_log(actor->system);
+      cf_x_audit_log_trace(log, "bios", "score_solution");
     }
   }
 
   return actor->score;
 }
 
-void inferno_bios_actor_act(inferno_bios_actor_t *actor)
+void cf_inferno_bios_actor_act(cf_inferno_bios_actor_t *actor)
 {
   if (DO_MOVE) {
     move_actor(actor);
@@ -610,80 +610,80 @@ void inferno_bios_actor_act(inferno_bios_actor_t *actor)
   }
 }
 
-void *inferno_bios_actor_copy(void *actor_void)
+void *cf_inferno_bios_actor_copy(void *actor_void)
 {
-  x_core_trace_exit("TODO: implement");
+  cf_x_core_trace_exit("TODO: implement");
   return NULL;
 }
 
-void *inferno_bios_actor_create(void *system_void, x_core_bitarray_t *solution)
+void *cf_inferno_bios_actor_create(void *system_void, cf_x_core_bitarray_t *solution)
 {
   assert(system_void);
   assert(solution);
-  inferno_bios_actor_t *actor;
-  inferno_bios_system_t *system;
+  cf_inferno_bios_actor_t *actor;
+  cf_inferno_bios_system_t *system;
 
   system = system_void;
 
   actor = malloc(sizeof *actor);
   if (actor) {
     actor->system = system;
-    actor->score_is_valid = x_core_bool_false;
-    actor->solution = x_core_bitarray_copy(solution);
+    actor->score_is_valid = cf_x_core_bool_false;
+    actor->solution = cf_x_core_bitarray_copy(solution);
     if (!actor->solution) {
-      x_core_trace("inferno_core_birarray_copy");
+      cf_x_core_trace("inferno_core_birarray_copy");
       free(actor);
       actor = NULL;
     }
   } else {
-    x_core_trace_exit("malloc");
+    cf_x_core_trace_exit("malloc");
   }
 
   return actor;
 }
 
-void *inferno_bios_actor_create_random(void *system_void)
+void *cf_inferno_bios_actor_create_random(void *system_void)
 {
   assert(system_void);
-  x_core_bitarray_t *bitarray;
-  inferno_bios_actor_t *actor;
-  x_audit_log_t *log;
-  inferno_bios_system_t *system;
+  cf_x_core_bitarray_t *bitarray;
+  cf_inferno_bios_actor_t *actor;
+  cf_x_audit_log_t *log;
+  cf_inferno_bios_system_t *system;
 
   system = system_void;
 
-  bitarray = x_core_bitarray_create_random(INFERNO_CORE_SOLUTION_BIT_COUNT);
+  bitarray = cf_x_core_bitarray_create_random(CF_INFERNO_CORE_SOLUTION_BIT_COUNT);
   if (bitarray) {
-    actor = inferno_bios_actor_create(system, bitarray);
+    actor = cf_inferno_bios_actor_create(system, bitarray);
     if (!actor) {
-      log = inferno_bios_system_get_log(system);
-      x_audit_log_trace(log, "bios", "inferno_bios_actor_create");
+      log = cf_inferno_bios_system_get_log(system);
+      cf_x_audit_log_trace(log, "bios", "inferno_bios_actor_create");
     }
-    x_core_bitarray_destroy(bitarray);
+    cf_x_core_bitarray_destroy(bitarray);
   } else {
     actor = NULL;
-    log = inferno_bios_system_get_log(system);
-    x_audit_log_trace(log, "bios", "x_core_bitarray_create_random");
+    log = cf_inferno_bios_system_get_log(system);
+    cf_x_audit_log_trace(log, "bios", "x_core_bitarray_create_random");
   }
 
   return actor;
 }
 
-int inferno_bios_actor_compare_maximize(void *actor_a_void, void *actor_b_void)
+int cf_inferno_bios_actor_compare_maximize(void *actor_a_void, void *actor_b_void)
 {
   assert(actor_a_void);
   assert(actor_b_void);
-  inferno_bios_actor_t **actor_a;
-  inferno_bios_actor_t **actor_b;
+  cf_inferno_bios_actor_t **actor_a;
+  cf_inferno_bios_actor_t **actor_b;
   double actor_a_score;
   double actor_b_score;
   long compare_result;
 
-  actor_a = (inferno_bios_actor_t **) actor_a_void;
-  actor_b = (inferno_bios_actor_t **) actor_b_void;
+  actor_a = (cf_inferno_bios_actor_t **) actor_a_void;
+  actor_b = (cf_inferno_bios_actor_t **) actor_b_void;
 
-  actor_a_score = get_score((inferno_bios_actor_t *) *actor_a);
-  actor_b_score = get_score((inferno_bios_actor_t *) *actor_b);
+  actor_a_score = get_score((cf_inferno_bios_actor_t *) *actor_a);
+  actor_b_score = get_score((cf_inferno_bios_actor_t *) *actor_b);
   if (actor_a_score > actor_b_score) {
     compare_result = -1;
   } else if (actor_a_score < actor_b_score) {
@@ -695,21 +695,21 @@ int inferno_bios_actor_compare_maximize(void *actor_a_void, void *actor_b_void)
   return compare_result;
 }
 
-int inferno_bios_actor_compare_minimize(void *actor_a_void, void *actor_b_void)
+int cf_inferno_bios_actor_compare_minimize(void *actor_a_void, void *actor_b_void)
 {
   assert(actor_a_void);
   assert(actor_b_void);
-  inferno_bios_actor_t **actor_a;
-  inferno_bios_actor_t **actor_b;
+  cf_inferno_bios_actor_t **actor_a;
+  cf_inferno_bios_actor_t **actor_b;
   double actor_a_score;
   double actor_b_score;
   long compare_result;
 
-  actor_a = (inferno_bios_actor_t **) actor_a_void;
-  actor_b = (inferno_bios_actor_t **) actor_b_void;
+  actor_a = (cf_inferno_bios_actor_t **) actor_a_void;
+  actor_b = (cf_inferno_bios_actor_t **) actor_b_void;
 
-  actor_a_score = get_score((inferno_bios_actor_t *) *actor_a);
-  actor_b_score = get_score((inferno_bios_actor_t *) *actor_b);
+  actor_a_score = get_score((cf_inferno_bios_actor_t *) *actor_a);
+  actor_b_score = get_score((cf_inferno_bios_actor_t *) *actor_b);
   if (actor_a_score < actor_b_score) {
     compare_result = -1;
   } else if (actor_a_score > actor_b_score) {
@@ -721,80 +721,80 @@ int inferno_bios_actor_compare_minimize(void *actor_a_void, void *actor_b_void)
   return compare_result;
 }
 
-void inferno_bios_actor_destroy(void *actor_void)
+void cf_inferno_bios_actor_destroy(void *actor_void)
 {
   assert(actor_void);
-  inferno_bios_actor_t *actor;
+  cf_inferno_bios_actor_t *actor;
 
   actor = actor_void;
-  x_core_bitarray_destroy(actor->solution);
+  cf_x_core_bitarray_destroy(actor->solution);
 
   free(actor);
 }
 
-void *inferno_bios_actor_get_box_cell(void *actor_void)
+void *cf_inferno_bios_actor_get_box_cell(void *actor_void)
 {
   assert(actor_void);
-  inferno_bios_actor_t *actor;
+  cf_inferno_bios_actor_t *actor;
 
   actor = actor_void;
 
   return actor->box_cell;
 }
 
-x_core_bitarray_t *inferno_bios_actor_get_solution(void *actor_void)
+cf_x_core_bitarray_t *cf_inferno_bios_actor_get_solution(void *actor_void)
 {
   assert(actor_void);
-  inferno_bios_actor_t *actor;
+  cf_inferno_bios_actor_t *actor;
 
   actor = actor_void;
 
   return actor->solution;
 }
 
-void inferno_bios_actor_init_actorey(inferno_core_actorey_t *actorey)
+void cf_inferno_bios_actor_init_actorey(cf_inferno_core_actorey_t *actorey)
 {
-  inferno_core_actorey_init(actorey,
-      inferno_bios_actor_create, inferno_bios_actor_create_random,
-      inferno_bios_actor_compare_minimize, inferno_bios_actor_copy,
-      inferno_bios_actor_destroy, inferno_bios_actor_get_box_cell,
-      inferno_bios_actor_set_box_cell);
+  cf_inferno_core_actorey_init(actorey,
+      cf_inferno_bios_actor_create, cf_inferno_bios_actor_create_random,
+      cf_inferno_bios_actor_compare_minimize, cf_inferno_bios_actor_copy,
+      cf_inferno_bios_actor_destroy, cf_inferno_bios_actor_get_box_cell,
+      cf_inferno_bios_actor_set_box_cell);
 }
 
-void inferno_bios_actor_set_box_cell(void *actor_void, void *box_cell)
+void cf_inferno_bios_actor_set_box_cell(void *actor_void, void *box_cell)
 {
   assert(actor_void);
-  inferno_bios_actor_t *actor;
+  cf_inferno_bios_actor_t *actor;
 
   actor = actor_void;
 
   actor->box_cell = box_cell;
 }
 
-void meet_actor(inferno_bios_actor_t *actor)
+void meet_actor(cf_inferno_bios_actor_t *actor)
 {
   unsigned long exchange_position_index;
-  inferno_box_coordinate_t exchange_position_relative;
-  inferno_bios_actor_t *actor_to_exchange_with;
+  cf_inferno_box_coordinate_t exchange_position_relative;
+  cf_inferno_bios_actor_t *actor_to_exchange_with;
   unsigned long fscore_this;
   unsigned long fscore_other;
   double fitness_this;
   double fitness_other;
-  inferno_box_system_t *box;
-  inferno_core_goal_t goal;
+  cf_inferno_box_system_t *box;
+  cf_inferno_core_goal_t goal;
 
-  box = inferno_bios_system_get_box(actor->system);
+  box = cf_inferno_bios_system_get_box(actor->system);
 
   exchange_position_index = get_position_index_for_observe_location(actor,
-      inferno_core_get_gene_start_address(actor->solution, GENE_INDEX_MEET_WHO));
+      cf_inferno_core_get_gene_start_address(actor->solution, GENE_INDEX_MEET_WHO));
   exchange_position_relative
     = get_relative_position_from_index(exchange_position_index);
-  actor_to_exchange_with = inferno_box_system_find_relative
+  actor_to_exchange_with = cf_inferno_box_system_find_relative
     (box, actor, &exchange_position_relative);
 
   fitness_this = get_score(actor);
   fitness_other = get_score(actor_to_exchange_with);
-  goal = inferno_bios_system_get_goal(actor->system);
+  goal = cf_inferno_bios_system_get_goal(actor->system);
   if (fitness_is_superior(fitness_this, fitness_other, goal)) {
     fscore_this = 1;
     fscore_other = 0;
@@ -810,80 +810,80 @@ void meet_actor(inferno_bios_actor_t *actor)
   }
 }
 
-void meet_actor_details(inferno_bios_actor_t *actor_a, inferno_bios_actor_t *actor_b)
+void meet_actor_details(cf_inferno_bios_actor_t *actor_a, cf_inferno_bios_actor_t *actor_b)
 {
   assert(actor_a);
   assert(actor_b);
   meet_gene_t meet_gene;
   unsigned long meet_gene_start_address;
   unsigned long each_gene;
-  inferno_box_system_t *box;
-  x_core_bit_t bit;
+  cf_inferno_box_system_t *box;
+  cf_x_core_bit_t bit;
 
   meet_gene_start_address
-    = inferno_core_get_gene_start_address(actor_a->solution, GENE_INDEX_MEET);
+    = cf_inferno_core_get_gene_start_address(actor_a->solution, GENE_INDEX_MEET);
   parse_meet_gene(actor_a, meet_gene_start_address, &meet_gene);
 
-  actor_b->score_is_valid = x_core_bool_false;
+  actor_b->score_is_valid = cf_x_core_bool_false;
 
   for (each_gene = meet_gene.address;
        each_gene < (meet_gene.address + meet_gene.length);
        each_gene++) {
-    bit = x_core_bitarray_get_bit(actor_a->solution, each_gene);
-    x_core_bitarray_set_bit(actor_b->solution, each_gene, bit);
+    bit = cf_x_core_bitarray_get_bit(actor_a->solution, each_gene);
+    cf_x_core_bitarray_set_bit(actor_b->solution, each_gene, bit);
     if (MUTATION) {
-      if (0 == x_core_random_unsigned_long(MUTATION_INCIDENCE_PER)) {
-        x_core_bitarray_set_bit(actor_b->solution, each_gene,
-            x_core_random_unsigned_long(2));
+      if (0 == cf_x_core_random_unsigned_long(MUTATION_INCIDENCE_PER)) {
+        cf_x_core_bitarray_set_bit(actor_b->solution, each_gene,
+            cf_x_core_random_unsigned_long(2));
       }
     }
   }
 
-  box = inferno_bios_system_get_box(actor_a->system);
-  inferno_box_system_swap(box, actor_a, actor_b);
+  box = cf_inferno_bios_system_get_box(actor_a->system);
+  cf_inferno_box_system_swap(box, actor_a, actor_b);
 }
 
-void move_actor(inferno_bios_actor_t *actor)
+void move_actor(cf_inferno_bios_actor_t *actor)
 {
   assert(actor);
   unsigned long new_position_index;
-  inferno_box_coordinate_t new_position_relative;
-  inferno_box_system_t *box;
-  inferno_bios_actor_t *actor_to_switcinferno_with;
+  cf_inferno_box_coordinate_t new_position_relative;
+  cf_inferno_box_system_t *box;
+  cf_inferno_bios_actor_t *actor_to_switcinferno_with;
   unsigned long move_gene_start_address;
 
-  box = inferno_bios_system_get_box(actor->system);
+  box = cf_inferno_bios_system_get_box(actor->system);
 
   move_gene_start_address
-    = inferno_core_get_gene_start_address(actor->solution, GENE_INDEX_MOVE);
+    = cf_inferno_core_get_gene_start_address(actor->solution, GENE_INDEX_MOVE);
   new_position_index = get_position_index_for_observe_location(actor,
       move_gene_start_address);
   new_position_relative = get_relative_position_from_index(new_position_index);
 
-  actor_to_switcinferno_with = inferno_box_system_find_relative(box, actor,
+  actor_to_switcinferno_with = cf_inferno_box_system_find_relative(box, actor,
       &new_position_relative);
-  inferno_box_system_swap(box, actor, actor_to_switcinferno_with);
+  cf_inferno_box_system_swap(box, actor, actor_to_switcinferno_with);
 }
 
-void parse_display_gene(inferno_bios_actor_t *actor,
+void parse_display_gene(cf_inferno_bios_actor_t *actor,
     unsigned long gene_start_address, display_gene_t *display_gene)
 {
-  display_gene->red = x_core_bitarray_get_unsigned_char(actor->solution,
+  display_gene->red = cf_x_core_bitarray_get_unsigned_char(actor->solution,
       gene_start_address + 0);
-  display_gene->green = x_core_bitarray_get_unsigned_char(actor->solution,
+  display_gene->green = cf_x_core_bitarray_get_unsigned_char(actor->solution,
       gene_start_address + 8);
-  display_gene->blue = x_core_bitarray_get_unsigned_char(actor->solution,
+  display_gene->blue = cf_x_core_bitarray_get_unsigned_char(actor->solution,
       gene_start_address + 16);
 }
 
 /*
   TODO: change this to use the actor's built in "random" number generator
 */
-void parse_meet_gene(inferno_bios_actor_t *actor, unsigned long gene_start_address,
+void parse_meet_gene(cf_inferno_bios_actor_t *actor, unsigned long gene_start_address,
     meet_gene_t *meet_gene)
 {
-  meet_gene->address = x_core_bitarray_get_unsigned_char(actor->solution,
+  meet_gene->address = cf_x_core_bitarray_get_unsigned_char(actor->solution,
       gene_start_address + 0);
-  meet_gene->length = x_core_bitarray_get_unsigned_char(actor->solution,
+  meet_gene->length = cf_x_core_bitarray_get_unsigned_char(actor->solution,
       gene_start_address + 8);
 }

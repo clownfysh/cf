@@ -1,7 +1,7 @@
-#include "x/core/tools.h"
-#include "x/core/void.h"
+#include "cf/x/core/tools.h"
+#include "cf/x/core/void.h"
 
-int x_core_void_compare(void *object_a, void *object_b)
+int cf_x_core_void_compare(void *object_a, void *object_b)
 {
   int compare;
 
@@ -16,19 +16,19 @@ int x_core_void_compare(void *object_a, void *object_b)
   return compare;
 }
 
-void *x_core_void_copy(void *object)
+void *cf_x_core_void_copy(void *object)
 {
   return object;
 }
 
-void x_core_void_destroy(void *object)
+void cf_x_core_void_destroy(void *object)
 {
   free(object);
 }
 
-char *x_core_void_get_as_string(void *object)
+char *cf_x_core_void_get_as_string(void *object)
 {
-  x_core_trace_exit("TODO: implement/test");
+  cf_x_core_trace_exit("TODO: implement/test");
 
   assert(object);
   char *string;
@@ -37,18 +37,18 @@ char *x_core_void_get_as_string(void *object)
   if (string) {
     snprintf(string, 10 + 1, "%p", object);
   } else {
-    x_core_trace_exit("malloc");
+    cf_x_core_trace_exit("malloc");
   }
 
   return string;
 }
 
-void x_core_void_init_objectey(x_core_objectey_t *objectey)
+void cf_x_core_void_init_objectey(cf_x_core_objectey_t *objectey)
 {
   assert(objectey);
 
-  objectey->get_as_string = x_core_void_get_as_string;
-  objectey->compare = x_core_void_compare;
-  objectey->copy = x_core_void_copy;
-  objectey->destroy = x_core_void_destroy;
+  objectey->get_as_string = cf_x_core_void_get_as_string;
+  objectey->compare = cf_x_core_void_compare;
+  objectey->copy = cf_x_core_void_copy;
+  objectey->destroy = cf_x_core_void_destroy;
 }

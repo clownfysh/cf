@@ -1,17 +1,17 @@
-#ifndef inferno_searcx_tools_h
-#define inferno_searcx_tools_h
+#ifndef cf_inferno_searcx_tools_h
+#define cf_inferno_searcx_tools_h
 
-#include "x/case/array.h"
-#include "inferno/box/system.h"
-#include "inferno/core/actorey.h"
-#include "inferno/core/goal.h"
+#include "cf/x/case/array.h"
+#include "cf/inferno/box/system.h"
+#include "cf/inferno/core/actorey.h"
+#include "cf/inferno/core/goal.h"
 
-typedef void *(*inferno_core_create_actor_f)(void *searcx_system,
-    x_core_bitarray_t *solution);
+typedef void *(*cf_inferno_core_create_actor_f)(void *searcx_system,
+    cf_x_core_bitarray_t *solution);
 
-typedef void *(*inferno_core_create_actor_random_f)(void *searcx_system);
+typedef void *(*cf_inferno_core_create_actor_random_f)(void *searcx_system);
 
-typedef x_core_bitarray_t *(*inferno_core_get_solution_f)(void *object);
+typedef cf_x_core_bitarray_t *(*cf_inferno_core_get_solution_f)(void *object);
 
 /*!
  * prototype for a score-solution function.  various inhesion systems search
@@ -31,21 +31,21 @@ typedef x_core_bitarray_t *(*inferno_core_get_solution_f)(void *object);
  *
  * \return success of the call
  */
-typedef x_core_bool_t (*inferno_core_score_solution_f)(void *context,
-    x_core_bitarray_t *solution, double *score);
+typedef cf_x_core_bool_t (*cf_inferno_core_score_solution_f)(void *context,
+    cf_x_core_bitarray_t *solution, double *score);
 
-inferno_box_system_t *inferno_core_create_actor_box(void *searcx_system,
-    inferno_box_coordinate_t *dimension_coordinate,
-    x_case_array_t *initial_solutions, inferno_core_actorey_t *actorey,
-    x_audit_log_t *log);
+cf_inferno_box_system_t *cf_inferno_core_create_actor_box(void *searcx_system,
+    cf_inferno_box_coordinate_t *dimension_coordinate,
+    cf_x_case_array_t *initial_solutions, cf_inferno_core_actorey_t *actorey,
+    cf_x_audit_log_t *log);
 
-x_case_array_t *inferno_core_create_solutions_from_box(inferno_box_system_t *box,
-    unsigned long max_solution_count, inferno_core_get_solution_f get_solution,
-    inferno_core_score_solution_f score_solution, inferno_core_goal_t goal,
-    x_core_compare_f compare_maximize, x_core_compare_f compare_minimize,
-    x_core_copy_f copy_object, void *context, x_audit_log_t *log);
+cf_x_case_array_t *cf_inferno_core_create_solutions_from_box(cf_inferno_box_system_t *box,
+    unsigned long max_solution_count, cf_inferno_core_get_solution_f get_solution,
+    cf_inferno_core_score_solution_f score_solution, cf_inferno_core_goal_t goal,
+    cf_x_core_compare_f compare_maximize, cf_x_core_compare_f compare_minimize,
+    cf_x_core_copy_f copy_object, void *context, cf_x_audit_log_t *log);
 
-unsigned long inferno_core_get_gene_start_address(x_core_bitarray_t *solution,
+unsigned long cf_inferno_core_get_gene_start_address(cf_x_core_bitarray_t *solution,
     unsigned long gene_index);
 
 #endif

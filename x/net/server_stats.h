@@ -1,9 +1,9 @@
-#ifndef x_net_server_stats_h
-#define x_net_server_stats_h
+#ifndef cf_x_net_server_stats_h
+#define cf_x_net_server_stats_h
 
-#include "x/core/message.h"
+#include "cf/x/core/message.h"
 
-struct x_net_server_stats_t {
+struct cf_x_net_server_stats_t {
   unsigned long engine_count;
   unsigned long server_send_message_failure_count;
   unsigned long engine_cant_handle_message_now_count;
@@ -17,14 +17,14 @@ struct x_net_server_stats_t {
   unsigned short max_threads;
   unsigned short thread_count;
 };
-typedef struct x_net_server_stats_t x_net_server_stats_t;
+typedef struct cf_x_net_server_stats_t cf_x_net_server_stats_t;
 
-x_core_bool_t x_net_server_add_stats_to_message
-(x_net_server_stats_t *server_stats, x_core_message_t *message);
+cf_x_core_bool_t cf_x_net_server_add_stats_to_message
+(cf_x_net_server_stats_t *server_stats, cf_x_core_message_t *message);
 
-x_net_server_stats_t *x_net_server_create_stats_from_message
-(x_core_message_t *message);
+cf_x_net_server_stats_t *cf_x_net_server_create_stats_from_message
+(cf_x_core_message_t *message);
 
-void x_net_server_stats_init(x_net_server_stats_t *server_stats);
+void cf_x_net_server_stats_init(cf_x_net_server_stats_t *server_stats);
 
 #endif

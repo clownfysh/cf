@@ -1,9 +1,9 @@
-#include "x/core/standard.h"
-#include "inferno/computer/output.h"
+#include "cf/x/core/standard.h"
+#include "cf/inferno/computer/output.h"
 
-void inferno_computer_output_free(inferno_computer_output_t *output) {}
+void cf_inferno_computer_output_free(cf_inferno_computer_output_t *output) {}
 
-void inferno_computer_output_init(inferno_computer_output_t *output)
+void cf_inferno_computer_output_init(cf_inferno_computer_output_t *output)
 {
-  memset(output->bits, 0, INFERNO_COMPUTER_OUTPUT_BITS);
+  memset(output->bits, 0, CF_INFERNO_COMPUTER_OUTPUT_BITS);
 }

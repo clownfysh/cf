@@ -1,7 +1,7 @@
-#include "chage/tools.h"
-#include "x/core/tools.h"
+#include "cf/chage/tools.h"
+#include "cf/x/core/tools.h"
 
-chage_interval_t chage_determine_interval()
+cf_chage_interval_t cf_chage_determine_interval()
 {
-  return x_get_microseconds() / CHAGE_INTERVAL_MICROSECONDS;
+  return cf_x_get_microseconds() / CF_CHAGE_INTERVAL_MICROSECONDS;
 }

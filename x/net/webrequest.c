@@ -1,13 +1,13 @@
-#include "x/core/standard.h"
-#include "x/net/webrequest.h"
+#include "cf/x/core/standard.h"
+#include "cf/x/net/webrequest.h"
 
-struct x_net_webrequest_t {};
+struct cf_x_net_webrequest_t {};
 
-x_net_webrequest_t *x_net_webrequest_create()
+cf_x_net_webrequest_t *cf_x_net_webrequest_create()
 {
   return NULL;
 }
 
-void x_net_webrequest_destroy(x_net_webrequest_t *webrequest)
+void cf_x_net_webrequest_destroy(cf_x_net_webrequest_t *webrequest)
 {
 }

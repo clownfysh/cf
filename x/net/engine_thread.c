@@ -1,11 +1,11 @@
-#include "x/core/standard.h"
-#include "x/core/types.h"
-#include "x/net/engine_thread.h"
+#include "cf/x/core/standard.h"
+#include "cf/x/core/types.h"
+#include "cf/x/net/engine_thread.h"
 
-x_net_engine_thread_t *x_net_engine_create_thread(void *engine_object,
+cf_x_net_engine_thread_t *cf_x_net_engine_create_thread(void *engine_object,
     unsigned short thread_index)
 {
-  x_net_engine_thread_t *engine_thread;
+  cf_x_net_engine_thread_t *engine_thread;
 
   engine_thread = malloc(sizeof *engine_thread);
   if (engine_thread) {
@@ -16,7 +16,7 @@ x_net_engine_thread_t *x_net_engine_create_thread(void *engine_object,
   return engine_thread;
 }
 
-void x_net_engine_destroy_thread(x_net_engine_thread_t *engine_thread)
+void cf_x_net_engine_destroy_thread(cf_x_net_engine_thread_t *engine_thread)
 {
   assert(engine_thread);
   free(engine_thread);

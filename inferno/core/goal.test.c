@@ -1,4 +1,4 @@
-#include "inferno/core/goal.h"
+#include "cf/inferno/core/goal.h"
 
 int main(int argc, char *argv[])
 {

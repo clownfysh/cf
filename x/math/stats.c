@@ -1,5 +1,5 @@
-#include "x/core/standard.h"
-#include "x/math/stats.h"
+#include "cf/x/core/standard.h"
+#include "cf/x/math/stats.h"
 
 /*
  * NOTE: Regarding Recall, Precision and F-Measure:
@@ -28,7 +28,7 @@
  * General form: Fb-Measure: (1 + b^2) * pr / ((b^2)*p + r)
  *
  */
-double x_math_stats_get_precision(unsigned long true_positives,
+double cf_x_math_stats_get_precision(unsigned long true_positives,
         unsigned long false_positives)
 {
     assert(true_positives >= 0);
@@ -44,7 +44,7 @@ double x_math_stats_get_precision(unsigned long true_positives,
     return (true_positives / denominator);
 }
 
-double x_math_stats_get_recall(unsigned long true_positives,
+double cf_x_math_stats_get_recall(unsigned long true_positives,
         unsigned long false_negatives)
 {
     assert(true_positives >= 0);
@@ -60,7 +60,7 @@ double x_math_stats_get_recall(unsigned long true_positives,
     return (true_positives / denominator);
 }
 
-double x_math_stats_get_f_measure(double precision, double recall,
+double cf_x_math_stats_get_f_measure(double precision, double recall,
         double recall_weight)
 {
     assert(precision >= 0.0);
@@ -79,12 +79,12 @@ double x_math_stats_get_f_measure(double precision, double recall,
     return (((1 + weight_squared) * (precision * recall)) / denominator);
 }
 
-void x_math_stats_get_prf(unsigned long true_positives,
+void cf_x_math_stats_get_prf(unsigned long true_positives,
         unsigned long false_positives, unsigned long false_negatives,
         double recall_weight, double *precision, double *recall,
         double *f_measure)
 {
-    *precision = x_math_stats_get_precision(true_positives, false_positives);
-    *recall = x_math_stats_get_recall(true_positives, false_negatives);
-    *f_measure = x_math_stats_get_f_measure(*precision, *recall, recall_weight);
+    *precision = cf_x_math_stats_get_precision(true_positives, false_positives);
+    *recall = cf_x_math_stats_get_recall(true_positives, false_negatives);
+    *f_measure = cf_x_math_stats_get_f_measure(*precision, *recall, recall_weight);
 }

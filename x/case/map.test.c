@@ -1,15 +1,15 @@
-#include "x/case/map.h"
-#include "x/core/long.h"
-#include "x/core/objects.h"
-#include "x/core/string.h"
-#include "x/core/tools.h"
+#include "cf/x/case/map.h"
+#include "cf/x/core/long.h"
+#include "cf/x/core/objects.h"
+#include "cf/x/core/string.h"
+#include "cf/x/core/tools.h"
 
 int main(int argc, char *argv[])
 {
-  x_case_map_t *map;
-  x_core_objects_t objects;
+  cf_x_case_map_t *map;
+  cf_x_core_objects_t objects;
 
-  x_core_objects_init(&objects);
+  cf_x_core_objects_init(&objects);
 
   char *a_left = "apple";
   unsigned long a_right = 0;
@@ -17,33 +17,33 @@ int main(int argc, char *argv[])
   char *b_left = "bear";
   unsigned long b_right = 1;
 
-  unsigned long *x_right;
+  unsigned long *cf_x_right;
 
-  map = x_case_map_create(&objects.string_objectey,
-      &objects.long_objectey, X_CASE_MAP_DONT_DESTROY);
+  map = cf_x_case_map_create(&objects.string_objectey,
+      &objects.long_objectey, CF_X_CASE_MAP_DONT_DESTROY);
   if (!map) {
-    x_core_trace_exit("x_case_map_create");
+    cf_x_core_trace_exit("x_case_map_create");
   }
 
-  if (!x_case_map_add(map, a_left, &a_right)) {
-    x_core_trace_exit("x_case_map_add");
+  if (!cf_x_case_map_add(map, a_left, &a_right)) {
+    cf_x_core_trace_exit("x_case_map_add");
   }
 
-  if (!x_case_map_add(map, b_left, &b_right)) {
-    x_core_trace_exit("x_case_map_add");
+  if (!cf_x_case_map_add(map, b_left, &b_right)) {
+    cf_x_core_trace_exit("x_case_map_add");
   }
 
-  x_case_map_print(map);
+  cf_x_case_map_print(map);
 
-  x_right = x_case_map_find(map, b_left);
-  if (x_right) {
-    printf(":%lu:\n", *x_right);
+  cf_x_right = cf_x_case_map_find(map, b_left);
+  if (cf_x_right) {
+    printf(":%lu:\n", *cf_x_right);
   } else {
-    x_core_trace_exit("x_case_map_find");
+    cf_x_core_trace_exit("x_case_map_find");
   }
 
-  x_case_map_destroy(map);
-  x_core_objects_free(&objects);
+  cf_x_case_map_destroy(map);
+  cf_x_core_objects_free(&objects);
 
   return 0;
 }

@@ -1,26 +1,26 @@
-#ifndef x_psql_result_h
-#define x_psql_result_h
+#ifndef cf_x_psql_result_h
+#define cf_x_psql_result_h
 
-#include "x/case/map.h"
-#include "x/core/objectey.h"
-#include "x/core/standard.h"
-#include "x/psql/result_error.h"
+#include "cf/x/case/map.h"
+#include "cf/x/core/objectey.h"
+#include "cf/x/core/standard.h"
+#include "cf/x/psql/result_error.h"
 
-struct x_psql_result_t;
-typedef struct x_psql_result_t x_psql_result_t;
+struct cf_x_psql_result_t;
+typedef struct cf_x_psql_result_t cf_x_psql_result_t;
 
-x_psql_result_t *x_psql_result_create(PGresult *pg_result,
-    x_core_objectey_t *string_objectey, x_psql_result_create_error_t *error);
+cf_x_psql_result_t *cf_x_psql_result_create(PGresult *pg_result,
+    cf_x_core_objectey_t *string_objectey, cf_x_psql_result_create_error_t *error);
 
-void x_psql_result_destroy(x_psql_result_t *result);
+void cf_x_psql_result_destroy(cf_x_psql_result_t *result);
 
-x_case_map_t *x_psql_result_get_row(x_psql_result_t *result,
+cf_x_case_map_t *cf_x_psql_result_get_row(cf_x_psql_result_t *result,
     unsigned long row_index);
 
-unsigned long x_psql_result_get_row_count(x_psql_result_t *result);
+unsigned long cf_x_psql_result_get_row_count(cf_x_psql_result_t *result);
 
-x_case_map_t *x_psql_result_iterate_next(x_psql_result_t *result);
+cf_x_case_map_t *cf_x_psql_result_iterate_next(cf_x_psql_result_t *result);
 
-void x_psql_result_iterate_start(x_psql_result_t *result);
+void cf_x_psql_result_iterate_start(cf_x_psql_result_t *result);
 
 #endif

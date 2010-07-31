@@ -1,5 +1,5 @@
-#include "x/clink/system.h"
-#include "x/core/tools.h"
+#include "cf/x/clink/system.h"
+#include "cf/x/core/tools.h"
 
 #define MAX_CONCEPTS 8
 #define MAX_LINKS 4
@@ -46,7 +46,7 @@ char *get_as_string(void *char_object)
     *(string + 0) = *c;
     *(string + 1) = '\0';
   } else {
-    x_trace("malloc");
+    cf_x_trace("malloc");
   }
 
   return string;
@@ -54,10 +54,10 @@ char *get_as_string(void *char_object)
 
 int main(int argc, char *argv[])
 {
-  x_disable_test();
+  cf_x_disable_test();
 
-  x_clink_system_t *clink;
-  x_clink_concept_t *concept;
+  cf_x_clink_system_t *clink;
+  cf_x_clink_concept_t *concept;
   char current_char = ' ';
   char last_char = ' ';
   char *current_object;
@@ -65,7 +65,7 @@ int main(int argc, char *argv[])
 
   concept = NULL;
 
-  clink = x_clink_system_create(MAX_CONCEPTS, MAX_LINKS, compare, destroy,
+  clink = cf_x_clink_system_create(MAX_CONCEPTS, MAX_LINKS, compare, destroy,
       NULL);
   if (clink) {
     while ((current_char = getc(stdin))) {
@@ -78,23 +78,23 @@ int main(int argc, char *argv[])
         last_object = malloc(sizeof(*last_object));
         if (last_object) {
           *last_object = last_char;
-          x_clink_system_link(clink, last_object, current_object);
+          cf_x_clink_system_link(clink, last_object, current_object);
           printf("\n");
-          x_clink_system_print(clink, get_as_string);
+          cf_x_clink_system_print(clink, get_as_string);
           last_char = current_char;
         } else {
-          x_trace("malloc");
+          cf_x_trace("malloc");
           free(current_object);
           break;
         }
       } else {
-        x_trace("malloc");
+        cf_x_trace("malloc");
         break;
       }
     }
-    x_clink_system_destroy(clink);
+    cf_x_clink_system_destroy(clink);
   } else {
-    x_trace("x_clink_system_create");
+    cf_x_trace("x_clink_system_create");
   }
 
   return 0;

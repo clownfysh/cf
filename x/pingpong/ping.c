@@ -1,68 +1,68 @@
-#include "x/core/string.h"
-#include "x/core/tools.h"
-#include "x/pingpong/ping.h"
+#include "cf/x/core/string.h"
+#include "cf/x/core/tools.h"
+#include "cf/x/pingpong/ping.h"
 
-struct x_pingpong_ping_t {
+struct cf_x_pingpong_ping_t {
   char *string;
 };
 
-x_core_bool_t x_pingpong_ping_add_to_message(void *ping_object,
-    x_core_message_t *message)
+cf_x_core_bool_t cf_x_pingpong_ping_add_to_message(void *ping_object,
+    cf_x_core_message_t *message)
 {
   assert(ping_object);
   assert(message);
-  x_core_bool_t success;
-  x_pingpong_ping_t *ping;
+  cf_x_core_bool_t success;
+  cf_x_pingpong_ping_t *ping;
 
   ping = ping_object;
 
-  success = x_core_message_add_string(message, ping->string);
+  success = cf_x_core_message_add_string(message, ping->string);
 
   return success;
 }
 
-x_pingpong_ping_t *x_pingpong_ping_create(char *string)
+cf_x_pingpong_ping_t *cf_x_pingpong_ping_create(char *string)
 {
   assert(string);
-  x_pingpong_ping_t *ping;
+  cf_x_pingpong_ping_t *ping;
 
   ping = malloc(sizeof *ping);
   if (ping) {
-    ping->string = x_core_string_copy(string);
+    ping->string = cf_x_core_string_copy(string);
     if (!ping->string) {
-      x_core_trace("x_core_string_copy");
+      cf_x_core_trace("x_core_string_copy");
       free(ping);
       ping = NULL;
     }
   } else {
-    x_core_trace("malloc");
+    cf_x_core_trace("malloc");
   }
 
   return ping;
 }
 
-x_pingpong_ping_t *x_pingpong_ping_create_from_message(x_core_message_t *message)
+cf_x_pingpong_ping_t *cf_x_pingpong_ping_create_from_message(cf_x_core_message_t *message)
 {
   assert(message);
-  x_pingpong_ping_t *ping;
+  cf_x_pingpong_ping_t *ping;
   char *string;
 
-  string = x_core_message_take_string(message);
+  string = cf_x_core_message_take_string(message);
   if (string) {
-    ping = x_pingpong_ping_create(string);
+    ping = cf_x_pingpong_ping_create(string);
     if (!ping) {
-      x_core_trace("x_pingpong_ping_create");
+      cf_x_core_trace("x_pingpong_ping_create");
     }
     free(string);
   } else {
-    x_core_trace("x_core_message_take_string");
+    cf_x_core_trace("x_core_message_take_string");
     ping = NULL;
   }
 
   return ping;
 }
 
-void x_pingpong_ping_destroy(x_pingpong_ping_t *ping)
+void cf_x_pingpong_ping_destroy(cf_x_pingpong_ping_t *ping)
 {
   assert(ping);
 
@@ -70,7 +70,7 @@ void x_pingpong_ping_destroy(x_pingpong_ping_t *ping)
   free(ping);
 }
 
-char *x_pingpong_ping_get_string(x_pingpong_ping_t *ping)
+char *cf_x_pingpong_ping_get_string(cf_x_pingpong_ping_t *ping)
 {
   return ping->string;
 }

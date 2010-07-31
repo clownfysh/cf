@@ -1,14 +1,14 @@
-#include "x/core/double.h"
-#include "x/core/message.h"
-#include "x/core/tools.h"
+#include "cf/x/core/double.h"
+#include "cf/x/core/message.h"
+#include "cf/x/core/tools.h"
 
-x_core_bool_t x_core_double_add_to_message(void *double_object,
-    x_core_message_t *message)
+cf_x_core_bool_t cf_x_core_double_add_to_message(void *double_object,
+    cf_x_core_message_t *message)
 {
-  return x_core_message_add_double(message, double_object);
+  return cf_x_core_message_add_double(message, double_object);
 }
 
-int x_core_double_compare(void *double_object_a,
+int cf_x_core_double_compare(void *double_object_a,
     void *double_object_b)
 {
   assert(double_object_a);
@@ -31,7 +31,7 @@ int x_core_double_compare(void *double_object_a,
   return compare_result;
 }
 
-void *x_core_double_copy(void *double_object)
+void *cf_x_core_double_copy(void *double_object)
 {
   assert(double_object);
   double *double_value;
@@ -42,18 +42,18 @@ void *x_core_double_copy(void *double_object)
   if (double_copy) {
     *double_copy = *double_value;
   } else {
-    x_core_trace("malloc");
+    cf_x_core_trace("malloc");
   }
 
   return double_copy;
 }
 
-void *x_core_double_create_from_message(x_core_message_t *message)
+void *cf_x_core_double_create_from_message(cf_x_core_message_t *message)
 {
-  return x_core_message_take_double(message);
+  return cf_x_core_message_take_double(message);
 }
 
-void x_core_double_destroy(void *double_object)
+void cf_x_core_double_destroy(void *double_object)
 {
   free(double_object);
 }

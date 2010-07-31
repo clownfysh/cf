@@ -1,4 +1,4 @@
-#include "inferno/eos/actor.h"
+#include "cf/inferno/eos/actor.h"
 
 int main(int argc, char *argv[])
 {

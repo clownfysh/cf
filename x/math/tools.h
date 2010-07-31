@@ -1,11 +1,11 @@
-#ifndef x_math_tools_h
-#define x_math_tools_h
+#ifndef cf_x_math_tools_h
+#define cf_x_math_tools_h
 
-#include "x/core/bool.h"
+#include "cf/x/core/bool.h"
 
-double x_math_tools_calculate_distance(double x1, double y1, double x2,
+double cf_x_math_tools_calculate_distance(double x1, double y1, double x2,
     double y2);
 
-x_core_bool_t x_math_tools_equal_double(double a, double b);
+cf_x_core_bool_t cf_x_math_tools_equal_double(double a, double b);
 
 #endif

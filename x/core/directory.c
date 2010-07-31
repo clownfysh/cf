@@ -1,45 +1,45 @@
-#include "x/core/directory.h"
-#include "x/core/tools.h"
+#include "cf/x/core/directory.h"
+#include "cf/x/core/tools.h"
 
-struct x_core_directory_t {};
+struct cf_x_core_directory_t {};
 
-x_core_directory_t *x_core_directory_create()
+cf_x_core_directory_t *cf_x_core_directory_create()
 {
   return NULL;
 }
 
-void x_core_directory_destroy(x_core_directory_t *x_core_directory)
+void cf_x_core_directory_destroy(cf_x_core_directory_t *cf_x_core_directory)
 {
 }
 
-x_core_bool_t x_core_directory_exists(char *directory_name)
+cf_x_core_bool_t cf_x_core_directory_exists(char *directory_name)
 {
   assert(directory_name);
-  x_core_bool_t exists;
+  cf_x_core_bool_t exists;
   DIR *dir;
 
   dir = opendir(directory_name);
   if (dir) {
-    exists = x_core_bool_true;
+    exists = cf_x_core_bool_true;
     if (0 != closedir(dir)) {
-      x_core_trace("closedir");
+      cf_x_core_trace("closedir");
     }
   } else {
-    exists = x_core_bool_false;
+    exists = cf_x_core_bool_false;
   }
 
   return exists;
 }
 
-x_core_bool_t x_core_directory_make(char *directory_name, mode_t mode)
+cf_x_core_bool_t cf_x_core_directory_make(char *directory_name, mode_t mode)
 {
   assert(directory_name);
-  x_core_bool_t success;
+  cf_x_core_bool_t success;
 
   if (0 == mkdir(directory_name, mode)) {
-    success = x_core_bool_true;
+    success = cf_x_core_bool_true;
   } else {
-    success = x_core_bool_false;
+    success = cf_x_core_bool_false;
   }
 
   return success;

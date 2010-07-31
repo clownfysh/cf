@@ -1,4 +1,4 @@
-#include "inferno/classify/classifyey.h"
+#include "cf/inferno/classify/classifyey.h"
 
 int main(int argc, char *argv[])
 {

@@ -1,9 +1,9 @@
-#include "x/core/days_hours_minutes_seconds.h"
-#include "x/core/tools.h"
-#include "x/core/types.h"
+#include "cf/x/core/days_hours_minutes_seconds.h"
+#include "cf/x/core/tools.h"
+#include "cf/x/core/types.h"
 
 char *create_string_from_days_hours_minutes_seconds
-(x_core_days_hours_minutes_seconds_t *days_hours_minutes_seconds)
+(cf_x_core_days_hours_minutes_seconds_t *days_hours_minutes_seconds)
 {
   assert(days_hours_minutes_seconds);
   char *string;
@@ -15,7 +15,7 @@ char *create_string_from_days_hours_minutes_seconds
       days_hours_minutes_seconds->seconds);
   if (-1 == asprintf_result) {
     string = NULL;
-    x_core_trace("asprintf");
+    cf_x_core_trace("asprintf");
   }
 
   return string;

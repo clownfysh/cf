@@ -1,4 +1,4 @@
-#ifndef x_case_hasha_h
-#define x_case_hasha_h
+#ifndef cf_x_case_hasha_h
+#define cf_x_case_hasha_h
 
 #endif

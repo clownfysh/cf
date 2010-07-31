@@ -1,19 +1,19 @@
-#include "inferno/computer/system.h"
-#include "x/core/tools.h"
+#include "cf/inferno/computer/system.h"
+#include "cf/x/core/tools.h"
 
-struct inferno_computer_system_t {
+struct cf_inferno_computer_system_t {
   unsigned long order;
-  inferno_computer_logic_f logic;
-  inferno_computer_output_t *computations;
+  cf_inferno_computer_logic_f logic;
+  cf_inferno_computer_output_t *computations;
 };
 
-static void compute_witx_logic(inferno_computer_system_t *system);
+static void compute_witx_logic(cf_inferno_computer_system_t *system);
 
-static void free_computations(inferno_computer_system_t *system);
+static void free_computations(cf_inferno_computer_system_t *system);
 
-static void init_computations(inferno_computer_system_t *system);
+static void init_computations(cf_inferno_computer_system_t *system);
 
-void compute_witx_logic(inferno_computer_system_t *system)
+void compute_witx_logic(cf_inferno_computer_system_t *system)
 {
   assert(system);
   unsigned long each_computation;
@@ -24,47 +24,47 @@ void compute_witx_logic(inferno_computer_system_t *system)
   }
 }
 
-inferno_computer_output_t *inferno_computer_system_compute(inferno_computer_system_t *system,
+cf_inferno_computer_output_t *cf_inferno_computer_system_compute(cf_inferno_computer_system_t *system,
     unsigned long input)
 {
   return system->computations + input;
 }
 
-inferno_computer_system_t *inferno_computer_system_create(unsigned long order,
-    inferno_computer_logic_f logic)
+cf_inferno_computer_system_t *cf_inferno_computer_system_create(unsigned long order,
+    cf_inferno_computer_logic_f logic)
 {
-  inferno_computer_system_t *system;
+  cf_inferno_computer_system_t *system;
 
   system = malloc(sizeof *system);
   if (system) {
     system->order = order;
     system->logic = logic;
-    system->computations = malloc(order * sizeof(inferno_computer_output_t));
+    system->computations = malloc(order * sizeof(cf_inferno_computer_output_t));
     if (system->computations) {
       init_computations(system);
       compute_witx_logic(system);
     } else {
-      x_core_trace("malloc");
+      cf_x_core_trace("malloc");
       free(system);
       system = NULL;
     }
   } else {
-    x_core_trace("malloc");
+    cf_x_core_trace("malloc");
   }
 
   return system;
 }
 
-inferno_computer_system_t *inferno_computer_system_create_from_file(char *filename)
+cf_inferno_computer_system_t *cf_inferno_computer_system_create_from_file(char *filename)
 {
-  x_core_trace_exit("TODO: implement");
+  cf_x_core_trace_exit("TODO: implement");
   return NULL;
 }
 
-void inferno_computer_system_destroy(void *system_object)
+void cf_inferno_computer_system_destroy(void *system_object)
 {
   assert(system_object);
-  inferno_computer_system_t *system;
+  cf_inferno_computer_system_t *system;
 
   system = system_object;
 
@@ -73,27 +73,27 @@ void inferno_computer_system_destroy(void *system_object)
   free(system);
 }
 
-char *inferno_computer_system_get_as_string(void *system_object)
+char *cf_inferno_computer_system_get_as_string(void *system_object)
 {
   assert(system_object);
-  inferno_computer_system_t *system;
+  cf_inferno_computer_system_t *system;
   unsigned long string_size;
   char *string;
   unsigned long each_computation;
   unsigned long each_bit;
   unsigned long string_position;
-  inferno_computer_output_t *output;
-  x_core_bit_t bit;
+  cf_inferno_computer_output_t *output;
+  cf_x_core_bit_t bit;
 
   system = system_object;
 
-  string_size = (INFERNO_COMPUTER_OUTPUT_BITS + 1) * system->order;
+  string_size = (CF_INFERNO_COMPUTER_OUTPUT_BITS + 1) * system->order;
   string = malloc(string_size + 1);
   if (string) {
     string_position = 0;
     for (each_computation = 0; each_computation < system->order;
          each_computation++) {
-      for (each_bit = 0; each_bit < INFERNO_COMPUTER_OUTPUT_BITS; each_bit++) {
+      for (each_bit = 0; each_bit < CF_INFERNO_COMPUTER_OUTPUT_BITS; each_bit++) {
         output = system->computations + each_computation;
         bit = *(output->bits + each_bit);
         if (bit) {
@@ -108,49 +108,49 @@ char *inferno_computer_system_get_as_string(void *system_object)
     }
     *(string + string_position) = '\0';
   } else {
-    x_core_trace("malloc");
+    cf_x_core_trace("malloc");
   }
 
   return string;
 }
 
-void inferno_computer_system_print(inferno_computer_system_t *system)
+void cf_inferno_computer_system_print(cf_inferno_computer_system_t *system)
 {
   assert(system);
   char *string;
 
-  string = inferno_computer_system_get_as_string(system);
+  string = cf_inferno_computer_system_get_as_string(system);
   if (string) {
     printf("%s", string);
     free(string);
   } else {
-    x_core_trace("inferno_computer_system_get_as_string");
+    cf_x_core_trace("inferno_computer_system_get_as_string");
   }
 }
 
-x_core_bool_t inferno_computer_system_save_as_file(inferno_computer_system_t *system,
+cf_x_core_bool_t cf_inferno_computer_system_save_as_file(cf_inferno_computer_system_t *system,
     char *filename)
 {
-  x_core_trace_exit("TODO: implement");
-  return x_core_bool_false;
+  cf_x_core_trace_exit("TODO: implement");
+  return cf_x_core_bool_false;
 }
 
-void free_computations(inferno_computer_system_t *system)
+void free_computations(cf_inferno_computer_system_t *system)
 {
   unsigned long each_computation;
 
   for (each_computation = 0; each_computation < system->order;
        each_computation++) {
-    inferno_computer_output_free(system->computations + each_computation);
+    cf_inferno_computer_output_free(system->computations + each_computation);
   }
 }
 
-void init_computations(inferno_computer_system_t *system)
+void init_computations(cf_inferno_computer_system_t *system)
 {
   unsigned long each_computation;
 
   for (each_computation = 0; each_computation < system->order;
        each_computation++) {
-    inferno_computer_output_init(system->computations + each_computation);
+    cf_inferno_computer_output_init(system->computations + each_computation);
   }
 }

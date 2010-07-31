@@ -1,8 +1,8 @@
-#include "x/core/standard.h"
-#include "x/core/types.h"
-#include "x/net/post_stats.h"
+#include "cf/x/core/standard.h"
+#include "cf/x/core/types.h"
+#include "cf/x/net/post_stats.h"
 
-void x_net_post_stats_init(x_net_post_stats_t *post_stats)
+void cf_x_net_post_stats_init(cf_x_net_post_stats_t *post_stats)
 {
   assert(post_stats);
 

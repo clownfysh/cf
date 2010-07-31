@@ -1,13 +1,13 @@
-#ifndef x_net_hyperversion_h
-#define x_net_hyperversion_h
+#ifndef cf_x_net_hyperversion_h
+#define cf_x_net_hyperversion_h
 
-enum x_net_hyperversion_t {
-  X_NET_HYPERVERSION_UNKNOWN,
-  X_NET_HYPERVERSION_1_0,
-  X_NET_HYPERVERSION_1_1,
+enum cf_x_net_hyperversion_t {
+  CF_X_NET_HYPERVERSION_UNKNOWN,
+  CF_X_NET_HYPERVERSION_1_0,
+  CF_X_NET_HYPERVERSION_1_1,
 };
-typedef enum x_net_hyperversion_t x_net_hyperversion_t;
+typedef enum cf_x_net_hyperversion_t cf_x_net_hyperversion_t;
 
-const char *x_net_hyperversion_get_name(x_net_hyperversion_t hyperversion);
+const char *cf_x_net_hyperversion_get_name(cf_x_net_hyperversion_t hyperversion);
 
 #endif
