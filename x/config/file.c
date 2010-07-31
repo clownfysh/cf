@@ -9,7 +9,7 @@ struct cf_x_config_file_t {
   /* TODO: reimplement with cf_x_case_map_t, like config_options? */
   cf_x_case_set_t *strings;
   cf_x_case_set_t *string_lists;
-  cf_x_core_objectey_t nameobject_objectey;
+  cf_x_core_iobject_t nameobject_iobject;
 };
 
 static cf_x_core_bool_t find_as_string(cf_x_config_file_t *file, char *name,
@@ -70,15 +70,15 @@ cf_x_config_file_t *cf_x_config_file_create(char *filename)
   }
 
   if (so_far_so_good) {
-    cf_x_core_nameobject_init_objectey(&file->nameobject_objectey);
-    file->strings = cf_x_case_set_create(&file->nameobject_objectey);
+    cf_x_core_nameobject_init_iobject(&file->nameobject_iobject);
+    file->strings = cf_x_case_set_create(&file->nameobject_iobject);
     if (!file->strings) {
       so_far_so_good = cf_x_core_bool_false;
     }
   }
 
   if (so_far_so_good) {
-    file->string_lists = cf_x_case_set_create(&file->nameobject_objectey);
+    file->string_lists = cf_x_case_set_create(&file->nameobject_iobject);
     if (!file->string_lists) {
       so_far_so_good = cf_x_core_bool_false;
     }

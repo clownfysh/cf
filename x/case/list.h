@@ -4,7 +4,7 @@
 #include "cf/x/case/declarations.h"
 #include "cf/x/core/message.h"
 #include "cf/x/core/object.h"
-#include "cf/x/core/objectey.h"
+#include "cf/x/core/iobject.h"
 #include "cf/x/core/types.h"
 
 #define CF_X_CASE_LIST_NO_SIZE_LIMIT 0
@@ -63,7 +63,7 @@ char *cf_x_case_list_get_as_string(void *list_object);
 
 unsigned long cf_x_case_list_get_size(cf_x_case_list_t *list);
 
-void cf_x_case_list_init_objectey(cf_x_core_objectey_t *objectey);
+void cf_x_case_list_init_iobject(cf_x_core_iobject_t *iobject);
 
 void *cf_x_case_list_iterate_next(cf_x_case_list_t *list);
 

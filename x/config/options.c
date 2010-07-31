@@ -20,8 +20,8 @@ cf_x_config_options_t *cf_x_config_options_create(int argc, char *argv[],
   options = malloc(sizeof *options);
   if (options) {
     options->dumpster = NULL;
-    options->options = cf_x_case_map_create(&objects->string_objectey,
-        &objects->string_objectey, CF_X_CASE_MAP_DONT_DESTROY);
+    options->options = cf_x_case_map_create(&objects->string_iobject,
+        &objects->string_iobject, CF_X_CASE_MAP_DONT_DESTROY);
     if (options->options) {
       so_far_so_good = cf_x_core_bool_true;
     } else {
@@ -34,7 +34,7 @@ cf_x_config_options_t *cf_x_config_options_create(int argc, char *argv[],
   }
 
   if (so_far_so_good) {
-    options->dumpster = cf_x_case_dumpster_create(&objects->string_objectey);
+    options->dumpster = cf_x_case_dumpster_create(&objects->string_iobject);
     if (!options->dumpster) {
       cf_x_core_trace("x_case_dumpster_create");
     }

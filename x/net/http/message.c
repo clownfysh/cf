@@ -1,7 +1,7 @@
 #include "cf/x/case/list.h"
 #include "cf/x/case/set.h"
 #include "cf/x/core/content.h"
-#include "cf/x/core/messagey.h"
+#include "cf/x/core/imessage.h"
 #include "cf/x/core/nameobject.h"
 #include "cf/x/core/string.h"
 #include "cf/x/core/tools.h"
@@ -23,8 +23,8 @@ struct cf_x_net_http_message_t {
   char *resource_name;
   cf_x_case_set_t *pri_parameters;
 
-  cf_x_core_objectey_t nameobject_objectey;
-  cf_x_core_objectey_t uuid_objectey;
+  cf_x_core_iobject_t nameobject_iobject;
+  cf_x_core_iobject_t uuid_iobject;
 };
 
 static cf_x_core_bool_t cf_x_net_http_message_create_pri
@@ -54,7 +54,7 @@ cf_x_net_http_message_t *cf_x_net_http_message_create(int client_socket,
     hypermessage->body_size = 0;
     hypermessage->resource_name = NULL;
     hypermessage->pri_parameters = NULL;
-    cf_x_core_uuid_init_objectey(&hypermessage->uuid_objectey);
+    cf_x_core_uuid_init_iobject(&hypermessage->uuid_iobject);
 
     if (resource_path) {
       hypermessage->resource_path = strdup(resource_path);
@@ -78,9 +78,9 @@ cf_x_net_http_message_t *cf_x_net_http_message_create(int client_socket,
     if (hyperheaders) {
       hypermessage->hyperheaders = cf_x_case_set_copy(hyperheaders);
     } else {
-      cf_x_core_nameobject_init_objectey(&hypermessage->nameobject_objectey);
+      cf_x_core_nameobject_init_iobject(&hypermessage->nameobject_iobject);
       hypermessage->hyperheaders
-        = cf_x_case_set_create(&hypermessage->nameobject_objectey);
+        = cf_x_case_set_create(&hypermessage->nameobject_iobject);
       if (!hypermessage->hyperheaders) {
         so_far_so_good = cf_x_core_bool_false;
         cf_x_core_trace("x_case_set_create");
@@ -125,7 +125,7 @@ cf_x_core_bool_t cf_x_net_http_message_create_pri(cf_x_net_http_message_t *hyper
   parameters = strtok(NULL, "?");
   if (parameters) {
     hypermessage->pri_parameters
-      = cf_x_case_set_create(&hypermessage->nameobject_objectey);
+      = cf_x_case_set_create(&hypermessage->nameobject_iobject);
     if (hypermessage->pri_parameters) {
       success = cf_x_core_bool_true;
       parameter = strtok_r(parameters, "&", &parameter_context);
@@ -384,7 +384,7 @@ cf_x_case_set_t *cf_x_net_http_message_get_pri_parameter_as_uuid_set
   cf_x_case_list_t *uuid_strings;
   cf_x_case_set_t *uuid_set;
 
-  uuid_set = cf_x_case_set_create(&hypermessage->uuid_objectey);
+  uuid_set = cf_x_case_set_create(&hypermessage->uuid_iobject);
   if (uuid_set) {
     parameter_string
       = cf_x_net_http_message_get_pri_parameter(hypermessage, parameter_name);
@@ -435,7 +435,7 @@ char *cf_x_net_http_message_get_resource_path(cf_x_net_http_message_t *hypermess
 
 unsigned long cf_x_net_http_message_get_type(void *message_object)
 {
-  return CF_X_CORE_MESSAGEY_NO_TYPE;
+  return CF_X_CORE_IMESSAGE_NO_TYPE;
 }
 
 cf_x_core_bool_t cf_x_net_http_message_set_body(cf_x_net_http_message_t *hypermessage,

@@ -6,11 +6,11 @@
 #include "cf/x/case/list.h"
 #include "cf/x/core/engine.h"
 #include "cf/x/core/message.h"
-#include "cf/x/core/messagey.h"
+#include "cf/x/core/imessage.h"
 #include "cf/x/core/types.h"
 #include "cf/x/net/engine/enginey.h"
 #include "cf/x/net/ip_address.h"
-#include "cf/x/net/post/postey.h"
+#include "cf/x/net/post/ipost.h"
 #include "cf/x/net/server/stats.h"
 
 #define CF_X_NET_SERVER_SYSTEM_MAX_ENGINES 64
@@ -21,7 +21,7 @@
 
 cf_x_net_server_system_t *cf_x_net_server_system_create(const char *name, unsigned short min_port,
     unsigned short max_port, unsigned short max_threads,
-    cf_x_core_messagey_t *messagey, cf_x_net_post_postey_t *postey,
+    cf_x_core_imessage_t *messagey, cf_x_net_post_ipost_t *postey,
     cf_x_net_engine_get_name_f get_engine_name, cf_x_config_system_t *config_system,
     cf_x_core_log_t *log);
 

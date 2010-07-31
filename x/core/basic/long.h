@@ -2,7 +2,7 @@
 #define cf_x_core_basic_long_h
 
 #include "cf/x/core/object.h"
-#include "cf/x/core/objectey.h"
+#include "cf/x/core/iobject.h"
 #include "cf/x/core/types.h"
 
 cf_x_core_bool_t cf_x_core_basic_long_add_to_message(void *long_object,
@@ -21,7 +21,7 @@ cf_x_core_bool_t cf_x_core_basic_long_compare_equal(void *long_a_object,
 
 char *cf_x_core_basic_long_get_as_string(void *long_object);
 
-void cf_x_core_basic_long_init_objectey(cf_x_core_objectey_t *objectey);
+void cf_x_core_basic_long_init_iobject(cf_x_core_iobject_t *iobject);
 
 unsigned long cf_x_core_basic_long_mod(void *long_object,
     unsigned long divisor);

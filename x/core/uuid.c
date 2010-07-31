@@ -198,9 +198,9 @@ unsigned long cf_x_core_uuid_hash(cf_x_core_uuid_t *uuid)
   return hash;
 }
 
-void cf_x_core_uuid_init_objectey(cf_x_core_objectey_t *objectey)
+void cf_x_core_uuid_init_iobject(cf_x_core_iobject_t *iobject)
 {
-  cf_x_core_objectey_init(objectey, cf_x_core_uuid_compare,
+  cf_x_core_iobject_init(iobject, cf_x_core_uuid_compare,
       cf_x_core_uuid_compare_equal, cf_x_core_uuid_copy,
       cf_x_core_uuid_destroy, cf_x_core_uuid_get_as_string,
       cf_x_core_uuid_mod);

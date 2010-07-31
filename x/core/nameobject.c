@@ -215,9 +215,9 @@ void *cf_x_core_nameobject_get_object(cf_x_core_nameobject_t *nameobject)
   return nameobject->object;
 }
 
-void cf_x_core_nameobject_init_objectey(cf_x_core_objectey_t *objectey)
+void cf_x_core_nameobject_init_iobject(cf_x_core_iobject_t *iobject)
 {
-  cf_x_core_objectey_init(objectey, cf_x_core_nameobject_compare,
+  cf_x_core_iobject_init(iobject, cf_x_core_nameobject_compare,
       cf_x_core_nameobject_compare_equal, cf_x_core_nameobject_copy,
       cf_x_core_nameobject_destroy, cf_x_core_nameobject_get_as_string,
       cf_x_core_nameobject_mod);

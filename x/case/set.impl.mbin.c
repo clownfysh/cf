@@ -11,9 +11,9 @@ cf_x_core_bool_t cf_x_case_set_add_replace(cf_x_case_set_t *set, void *object)
   return cf_x_core_bool_false;
 }
 
-cf_x_case_set_t *cf_x_case_set_create(cf_x_core_objectey_t *objectey)
+cf_x_case_set_t *cf_x_case_set_create(cf_x_core_iobject_t *iobject)
 {
-  return (cf_x_case_set_t *) cf_x_case_mbin_create(objectey,
+  return (cf_x_case_set_t *) cf_x_case_mbin_create(iobject,
       CF_X_CASE_MBIN_SET_TYPE_SET);
 }
 
@@ -32,9 +32,9 @@ void *cf_x_case_set_find_any(cf_x_case_set_t *set)
   return NULL;
 }
 
-cf_x_core_objectey_t *cf_x_case_set_get_objectey(cf_x_case_set_t *set)
+cf_x_core_iobject_t *cf_x_case_set_get_iobject(cf_x_case_set_t *set)
 {
-  return cf_x_case_mbin_get_objectey((cf_x_case_mbin_t *) set);
+  return cf_x_case_mbin_get_iobject((cf_x_case_mbin_t *) set);
 }
 
 unsigned long cf_x_case_set_get_size(cf_x_case_set_t *set)

@@ -28,7 +28,7 @@ struct cf_x_case_set_t {
 
   pthread_mutex_t mutex;
 
-  cf_x_core_objectey_t *objectey;
+  cf_x_core_iobject_t *iobject;
 };
 
 set_object_t *_x_case_set_find_first(cf_x_case_set_t *set);
@@ -163,12 +163,12 @@ set_object_t *find_first_parent_greater_than_me(cf_x_case_set_t *set,
 
   parent = set_object->parent;
   if (parent) {
-    compare = set->objectey->compare(parent->object,
+    compare = set->iobject->compare(parent->object,
         set_object->object);
     while (compare < 0) {
       parent = parent->parent;
       if (parent) {
-        compare = set->objectey->compare(parent->object,
+        compare = set->iobject->compare(parent->object,
             set_object->object);
       } else {
         break;
@@ -222,7 +222,7 @@ set_object_t *find_set_object_containing(cf_x_case_set_t *set,
   set_object_t *containing_object;
 
   if (base_set_object) {
-    compare = set->objectey->compare(object, base_set_object->object);
+    compare = set->iobject->compare(object, base_set_object->object);
     if (compare < 0) {
       containing_object = find_set_object_containing(set,
           base_set_object->left, object);
@@ -271,15 +271,15 @@ cf_x_core_bool_t cf_x_case_set_add_replace(cf_x_case_set_t *set, void *object)
   return success;
 }
 
-cf_x_case_set_t *cf_x_case_set_create(cf_x_core_objectey_t *objectey)
+cf_x_case_set_t *cf_x_case_set_create(cf_x_core_iobject_t *iobject)
 {
-  assert(objectey);
-  assert(objectey->compare);
+  assert(iobject);
+  assert(iobject->compare);
   cf_x_case_set_t *set;
 
   set = malloc(sizeof *set);
   if (set) {
-    set->objectey = objectey;
+    set->iobject = iobject;
     set->get_object_as_string = NULL;
     set->base = NULL;
     set->size = 0;
@@ -334,9 +334,9 @@ void *cf_x_case_set_find_any(cf_x_case_set_t *set)
   return any_object;
 }
 
-cf_x_core_objectey_t *cf_x_case_set_get_objectey(cf_x_case_set_t *set)
+cf_x_core_iobject_t *cf_x_case_set_get_iobject(cf_x_case_set_t *set)
 {
-  return set->objectey;
+  return set->iobject;
 }
 
 unsigned long cf_x_case_set_get_size(cf_x_case_set_t *set)
@@ -460,7 +460,7 @@ set_object_t *put_object(cf_x_case_set_t *set, set_object_t *base_set_object,
       cf_x_core_trace("set_object_create");
     }
   } else {
-    compare = set->objectey->compare(object, base_set_object->object);
+    compare = set->iobject->compare(object, base_set_object->object);
     if (compare < 0) {
       new_set_object = put_object(set, base_set_object->left, object,
           base_set_object);
@@ -605,8 +605,8 @@ void set_object_destroy(cf_x_case_set_t *set, set_object_t *set_object)
   assert(set);
   assert(set_object);
 
-  if (set_object->object && set->objectey->destroy) {
-    set->objectey->destroy(set_object->object);
+  if (set_object->object && set->iobject->destroy) {
+    set->iobject->destroy(set_object->object);
   }
   free(set_object);
 }

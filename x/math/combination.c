@@ -11,7 +11,7 @@ struct cf_x_math_combination_t {
 
   cf_x_core_bool_t iterate_first;
 
-  cf_x_core_objectey_t *set_objectey;
+  cf_x_core_iobject_t *set_iobject;
 };
 
 static cf_x_case_set_t *create_set_based_on_flags
@@ -25,13 +25,13 @@ cf_x_case_set_t *create_set_based_on_flags(cf_x_math_combination_t *combination)
   void *object;
   void *object_copy;
 
-  set = cf_x_case_set_create(combination->set_objectey);
+  set = cf_x_case_set_create(combination->set_iobject);
   if (set) {
     for (each_element = 0; each_element < combination->element_count;
          each_element++) {
       if (1 == cf_x_core_bitarray_get_bit(combination->flags, each_element)) {
         object = cf_x_case_array_find(combination->elements, each_element);
-        object_copy = combination->set_objectey->copy(object);
+        object_copy = combination->set_iobject->copy(object);
         if (object_copy) {
           if (!cf_x_case_set_add(set, object_copy)) {
             cf_x_core_trace("x_case_set_add");
@@ -60,7 +60,7 @@ cf_x_math_combination_t *cf_x_math_combination_create(cf_x_case_set_t *set)
     combination->flags = NULL;
     combination->iterate_first = cf_x_core_bool_false;
     combination->element_count = cf_x_case_set_get_size(set);
-    combination->set_objectey = cf_x_case_set_get_objectey(set);
+    combination->set_iobject = cf_x_case_set_get_iobject(set);
     combination->elements_set = cf_x_case_set_copy(set);
     if (combination->elements_set) {
       so_far_so_good = cf_x_core_bool_true;

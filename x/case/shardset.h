@@ -12,14 +12,17 @@ typedef struct cf_x_case_shardset_t cf_x_case_shardset_t;
 cf_x_core_bool_t cf_x_case_shardset_add(cf_x_case_shardset_t *shardset,
     void *object);
 
-cf_x_core_bool_t cf_x_case_shardset_add_replace
-(cf_x_case_shardset_t *shardset, void *object);
+cf_x_core_bool_t cf_x_case_shardset_add_replace(cf_x_case_shardset_t *shardset,
+    void *object);
 
 void cf_x_case_shardset_clear(cf_x_case_shardset_t *shardset);
 
-cf_x_case_shardset_t *cf_x_case_shardset_create(cf_x_core_object_compare_f compare,
-    cf_x_core_object_copy_f copy, cf_x_core_object_destroy_f destroy, cf_x_core_object_compare_equal_f equal,
-    cf_x_core_object_hash_f hash_object, cf_x_core_object_mod_f mod, unsigned short shard_count);
+cf_x_case_shardset_t *cf_x_case_shardset_create
+(cf_x_core_object_compare_f compare,
+    cf_x_core_object_compare_equal_f compare_equal,
+    cf_x_core_object_copy_f copy, cf_x_core_object_destroy_f destroy,
+    cf_x_core_object_hash_f hash_object, cf_x_core_object_mod_f mod,
+    unsigned short shard_count);
 
 void cf_x_case_shardset_destroy(cf_x_case_shardset_t *shardset);
 

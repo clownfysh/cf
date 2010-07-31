@@ -4,7 +4,7 @@
 #include "cf/x/core/bool.h"
 #include "cf/x/core/message.h"
 #include "cf/x/core/object.h"
-#include "cf/x/core/objectey.h"
+#include "cf/x/core/iobject.h"
 
 struct cf_x_core_uuid_t;
 typedef struct cf_x_core_uuid_t cf_x_core_uuid_t;
@@ -37,7 +37,7 @@ char *cf_x_core_uuid_get_string(void *uuid_object);
 
 unsigned long cf_x_core_uuid_hash(cf_x_core_uuid_t *uuid);
 
-void cf_x_core_uuid_init_objectey(cf_x_core_objectey_t *objectey);
+void cf_x_core_uuid_init_iobject(cf_x_core_iobject_t *iobject);
 
 cf_x_core_bool_t cf_x_core_uuid_is_null(cf_x_core_uuid_t *uuid);
 

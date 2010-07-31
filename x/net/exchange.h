@@ -1,12 +1,12 @@
 #ifndef cf_x_net_exchange_h
 #define cf_x_net_exchange_h
 
-#include "cf/x/net/post/postey.h"
+#include "cf/x/net/post/ipost.h"
 
 struct cf_x_net_exchange_t;
 typedef struct cf_x_net_exchange_t cf_x_net_exchange_t;
 
-cf_x_net_exchange_t *cf_x_net_exchange_create(cf_x_net_post_postey_t *postey);
+cf_x_net_exchange_t *cf_x_net_exchange_create(cf_x_net_post_ipost_t *postey);
 
 void cf_x_net_exchange_destroy(cf_x_net_exchange_t *exchange);
 

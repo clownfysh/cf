@@ -2,7 +2,7 @@
 #include "cf/x/core/tools.h"
 
 struct cf_x_case_dumpster_t {
-  cf_x_core_objectey_t *objectey;
+  cf_x_core_iobject_t *iobject;
   cf_x_case_list_t *objects;
 };
 
@@ -23,16 +23,16 @@ cf_x_core_bool_t cf_x_case_dumpster_add(cf_x_case_dumpster_t *dumpster,
 }
 
 cf_x_case_dumpster_t *cf_x_case_dumpster_create
-(cf_x_core_objectey_t *objectey)
+(cf_x_core_iobject_t *iobject)
 {
-  assert(objectey);
+  assert(iobject);
   cf_x_case_dumpster_t *dumpster;
 
   dumpster = malloc(sizeof *dumpster);
   if (dumpster) {
-    dumpster->objectey = objectey;
-    dumpster->objects = cf_x_case_list_create(objectey->compare,
-        objectey->copy, objectey->destroy);
+    dumpster->iobject = iobject;
+    dumpster->objects = cf_x_case_list_create(iobject->compare,
+        iobject->copy, iobject->destroy);
     if (!dumpster->objects) {
       free(dumpster);
       dumpster = NULL;

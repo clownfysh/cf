@@ -15,11 +15,10 @@ struct cf_x_case_shardset_t {
 
   pthread_mutex_t mutex;
 
-  cf_x_core_objectey_t set_objectey;
+  cf_x_core_iobject_t set_iobject;
 };
 
-static void cf_x_case_shardset_create_rollback
-(cf_x_case_shardset_t *shardset);
+static void cf_x_case_shardset_create_rollback(cf_x_case_shardset_t *shardset);
 
 static unsigned short get_shard_id_for_object(cf_x_case_shardset_t *shardset,
     void *object);
@@ -41,8 +40,8 @@ cf_x_core_bool_t cf_x_case_shardset_add(cf_x_case_shardset_t *shardset,
   return success;
 }
 
-cf_x_core_bool_t cf_x_case_shardset_add_replace
-(cf_x_case_shardset_t *shardset, void *object)
+cf_x_core_bool_t cf_x_case_shardset_add_replace(cf_x_case_shardset_t *shardset,
+    void *object)
 {
   assert(shardset);
   assert(object);
@@ -75,9 +74,12 @@ void cf_x_case_shardset_clear(cf_x_case_shardset_t *shardset)
   TODO: simplify
   TODO: ugh...some rollback code is in the rollback method, some not...fix
 */
-cf_x_case_shardset_t *cf_x_case_shardset_create(cf_x_core_object_compare_f compare,
-    cf_x_core_object_copy_f copy, cf_x_core_object_destroy_f destroy, cf_x_core_object_compare_equal_f equal,
-    cf_x_core_object_hash_f hash_object, cf_x_core_object_mod_f mod, unsigned short shard_count)
+cf_x_case_shardset_t *cf_x_case_shardset_create
+(cf_x_core_object_compare_f compare,
+    cf_x_core_object_compare_equal_f compare_equal,
+    cf_x_core_object_copy_f copy, cf_x_core_object_destroy_f destroy,
+    cf_x_core_object_hash_f hash_object, cf_x_core_object_mod_f mod,
+    unsigned short shard_count)
 {
   assert(shard_count > 0);
   cf_x_case_shardset_t *shardset;
@@ -105,11 +107,11 @@ cf_x_case_shardset_t *cf_x_case_shardset_create(cf_x_core_object_compare_f compa
   }
 
   if (so_far_so_good) {
-    cf_x_core_objectey_init(&shardset->set_objectey, compare, equal, copy,
-        destroy, CF_X_CORE_OBJECT_NO_GET_AS_STRING_F, mod);
+    cf_x_core_iobject_init(&shardset->set_iobject, compare, compare_equal,
+        copy, destroy, CF_X_CORE_OBJECT_NO_GET_AS_STRING_F, mod);
     for (each_shard = 0; each_shard < shard_count; each_shard++) {
       *(shardset->shards + each_shard)
-        = cf_x_case_set_create(&shardset->set_objectey);
+        = cf_x_case_set_create(&shardset->set_iobject);
       if (!*(shardset->shards + each_shard)) {
         cf_x_core_trace("x_case_set_create");
         so_far_so_good = cf_x_core_bool_false;

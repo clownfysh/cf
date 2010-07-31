@@ -4,8 +4,8 @@
 #include "cf/x/core/log.h"
 #include "cf/x/case/list.h"
 #include "cf/x/core/message.h"
-#include "cf/x/core/messagey.h"
-#include "cf/x/net/post/postey.h"
+#include "cf/x/core/imessage.h"
+#include "cf/x/net/post/ipost.h"
 
 struct cf_x_net_client_system_t;
 typedef struct cf_x_net_client_system_t cf_x_net_client_system_t;

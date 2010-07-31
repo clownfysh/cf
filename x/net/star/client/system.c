@@ -50,7 +50,7 @@ struct cf_x_net_star_client_system_t {
   void *custom_client_context;
   cf_x_core_log_t *log;
 
-  cf_x_core_objectey_t nameobject_objectey;
+  cf_x_core_iobject_t nameobject_iobject;
 };
 
 static cf_x_core_bool_t client_connected(cf_x_net_star_client_system_t *starclient,
@@ -347,7 +347,7 @@ cf_x_net_star_client_system_t *cf_x_net_star_client_system_create(cf_x_case_list
     starclient->custom_client_context = custom_client_context;
     starclient->unsent_messages_queue_size
       = DEFAULT_UNSENT_MESSAGES_QUEUE_SIZE;
-    cf_x_core_nameobject_init_objectey(&starclient->nameobject_objectey);
+    cf_x_core_nameobject_init_iobject(&starclient->nameobject_iobject);
     for (engine_id = 0; engine_id < CF_X_NET_ENGINE_TYPE_COUNT; engine_id++) {
       *(starclient->message_type_counts + engine_id) = -1;
     }
@@ -414,7 +414,7 @@ cf_x_core_bool_t cf_x_net_star_client_system_create_clients(cf_x_net_star_client
   cf_x_core_bool_t success;
 
   starclient->clients
-    = cf_x_case_set_create(&starclient->nameobject_objectey);
+    = cf_x_case_set_create(&starclient->nameobject_iobject);
   if (starclient->clients) {
     success = cf_x_core_bool_true;
   } else {

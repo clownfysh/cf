@@ -36,10 +36,10 @@ cf_x_core_bool_t cf_x_case_set_contains(cf_x_case_set_t *superset,
 
 void *cf_x_case_set_copy(void *set_object);
 
-cf_x_case_set_t *cf_x_case_set_create(cf_x_core_objectey_t *objectey);
+cf_x_case_set_t *cf_x_case_set_create(cf_x_core_iobject_t *iobject);
 
 cf_x_case_set_t *cf_x_case_set_create_from_message
-(cf_x_core_objectey_t *objectey, cf_x_core_message_t *message,
+(cf_x_core_iobject_t *iobject, cf_x_core_message_t *message,
     cf_x_core_message_create_from_message_f create_from_message);
 
 cf_x_case_set_t *cf_x_case_set_create_from_union(cf_x_case_set_t *set_a,
@@ -79,7 +79,7 @@ cf_x_core_object_copy_f cf_x_case_set_get_copy_function(cf_x_case_set_t *set);
 
 cf_x_core_object_destroy_f cf_x_case_set_get_destroy_function(cf_x_case_set_t *set);
 
-cf_x_core_objectey_t *cf_x_case_set_get_objectey(cf_x_case_set_t *set);
+cf_x_core_iobject_t *cf_x_case_set_get_iobject(cf_x_case_set_t *set);
 
 unsigned long cf_x_case_set_get_size(cf_x_case_set_t *set);
 

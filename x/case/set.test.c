@@ -25,16 +25,16 @@ int main(int argc, char *argv[])
   unsigned long n;
   unsigned long items_added;
   cf_x_core_uuid_t *uuid;
-  cf_x_core_objectey_t unsigned_long_objectey;
-  cf_x_core_objectey_t uuid_objectey;
+  cf_x_core_iobject_t unsigned_long_iobject;
+  cf_x_core_iobject_t uuid_iobject;
 
   printf("creating set...\n");
   if (TEST_USING_LONGS) {
-    cf_x_core_basic_unsigned_long_init_objectey(&unsigned_long_objectey);
-    set = cf_x_case_set_create(&unsigned_long_objectey);
+    cf_x_core_basic_unsigned_long_init_iobject(&unsigned_long_iobject);
+    set = cf_x_case_set_create(&unsigned_long_iobject);
   } else {
-    cf_x_core_basic_unsigned_long_init_objectey(&uuid_objectey);
-    set = cf_x_case_set_create(&uuid_objectey);
+    cf_x_core_basic_unsigned_long_init_iobject(&uuid_iobject);
+    set = cf_x_case_set_create(&uuid_iobject);
   }
   assert(set);
 

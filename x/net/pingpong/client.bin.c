@@ -93,7 +93,7 @@ int main(int argc, char *argv[])
     ping = cf_x_pingpong_ping_create(ping_string);
     if (ping) {
       ping_message = cf_x_pingpong_message_create
-        (CF_X_CORE_MESSAGEY_NO_CLIENT_SOCKET, cf_x_PINGPONG_MESSAGE_PING);
+        (CF_X_CORE_IMESSAGE_NO_CLIENT_SOCKET, cf_x_PINGPONG_MESSAGE_PING);
       if (ping_message) {
         if (cf_x_pingpong_ping_add_to_message(ping, ping_message)) {
           if (!cf_x_net_client_system_send_message(client, ping_message)) {

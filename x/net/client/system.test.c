@@ -66,7 +66,7 @@ int main(int argc, char *argv[])
     cf_x_core_trace_exit("x_net_ping_create");
   }
 
-  ping_message = cf_x_net_testmessage_create(CF_X_CORE_MESSAGEY_NO_CLIENT_SOCKET,
+  ping_message = cf_x_net_testmessage_create(CF_X_CORE_IMESSAGE_NO_CLIENT_SOCKET,
       CF_X_NET_TESTMESSAGE_PING);
   if (!ping_message) {
     cf_x_core_trace_exit("x_net_testmessage_create");

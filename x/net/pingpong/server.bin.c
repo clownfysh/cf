@@ -1,11 +1,11 @@
 #include "cf/x/core/log.h"
 #include "cf/x/case/list.h"
-#include "cf/x/core/messagey.h"
+#include "cf/x/core/imessage.h"
 #include "cf/x/core/tools.h"
 #include "cf/x/core/types.h"
 #include "cf/x/net/engine/enginey.h"
 #include "cf/x/net/post/system.h"
-#include "cf/x/net/post/postey.h"
+#include "cf/x/net/post/ipost.h"
 #include "cf/x/net/server/system.h"
 #include "cf/x/net/pingpong/engine.h"
 #include "cf/x/net/pingpong/message.h"
@@ -31,8 +31,8 @@ int main(int argc, char *argv[])
   ping_server_context_t custom_server_context;
   unsigned short server_port;
   cf_x_net_engine_enginey_t enginey;
-  cf_x_core_messagey_t messagey;
-  cf_x_net_post_postey_t postey;
+  cf_x_core_imessage_t messagey;
+  cf_x_net_post_ipost_t postey;
   cf_x_core_log_t *log;
 
   if (argc < 2) {
@@ -49,11 +49,11 @@ int main(int argc, char *argv[])
       cf_x_pingpong_engine_get_handler_for_message, cf_x_pingpong_engine_maintain,
       cf_x_pingpong_engine_run, cf_x_pingpong_engine_start, cf_x_pingpong_engine_stop);
 
-  cf_x_core_messagey_init(&messagey, cf_x_core_message_destroy,
+  cf_x_core_imessage_init(&messagey, cf_x_core_message_destroy,
       cf_x_core_message_get_client_socket, cf_x_core_message_get_engine_id,
       cf_x_core_message_get_type);
 
-  cf_x_net_post_postey_init(&postey, cf_x_net_post_system_compare, cf_x_net_post_system_create,
+  cf_x_net_post_ipost_init(&postey, cf_x_net_post_system_compare, cf_x_net_post_system_create,
       cf_x_net_post_system_create_decoy, cf_x_net_post_system_destroy, cf_x_net_post_system_destroy_decoy,
       cf_x_net_post_system_get_last_receive_activity_time, cf_x_net_post_system_get_socket,
       cf_x_net_post_system_get_stats, cf_x_net_post_system_receive_message,

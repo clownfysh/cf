@@ -3,7 +3,7 @@
 
 #include "cf/x/core/bool.h"
 #include "cf/x/core/object.h"
-#include "cf/x/core/objectey.h"
+#include "cf/x/core/iobject.h"
 
 #define CF_X_CASE_MAP_DESTROY cf_x_core_bool_true
 #define CF_X_CASE_MAP_DONT_DESTROY cf_x_core_bool_false
@@ -18,8 +18,8 @@ int cf_x_case_map_compare(void *map_object_a, void *map_object_b);
 
 void *cf_x_case_map_copy(void *map_object);
 
-cf_x_case_map_t *cf_x_case_map_create(cf_x_core_objectey_t *left_objectey,
-    cf_x_core_objectey_t *right_objectey, cf_x_core_bool_t destroys);
+cf_x_case_map_t *cf_x_case_map_create(cf_x_core_iobject_t *left_iobject,
+    cf_x_core_iobject_t *right_iobject, cf_x_core_bool_t destroys);
 
 void cf_x_case_map_destroy(void *map_object);
 

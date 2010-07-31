@@ -5,10 +5,10 @@
 
 struct cf_x_case_map_t {
   cf_x_case_set_t *pairs;
-  cf_x_core_objectey_t *left_objectey;
-  cf_x_core_objectey_t *right_objectey;
+  cf_x_core_iobject_t *left_iobject;
+  cf_x_core_iobject_t *right_iobject;
   cf_x_core_bool_t destroy;
-  cf_x_core_objectey_t pairs_objectey;
+  cf_x_core_iobject_t pairs_iobject;
 };
 
 cf_x_core_bool_t cf_x_case_map_add(cf_x_case_map_t *map, void *left,
@@ -20,8 +20,8 @@ cf_x_core_bool_t cf_x_case_map_add(cf_x_case_map_t *map, void *left,
   cf_x_core_pair_t *pair;
   cf_x_core_bool_t success;
 
-  pair = cf_x_core_pair_create(left, map->left_objectey, right,
-      map->right_objectey, map->destroy);
+  pair = cf_x_core_pair_create(left, map->left_iobject, right,
+      map->right_iobject, map->destroy);
   if (pair) {
     success = cf_x_core_bool_true;
     cf_x_case_set_add(map->pairs, pair);
@@ -54,7 +54,7 @@ void *cf_x_case_map_copy(void *map_object)
 
   map = map_object;
 
-  map_copy = cf_x_case_map_create(map->left_objectey, map->right_objectey,
+  map_copy = cf_x_case_map_create(map->left_iobject, map->right_iobject,
       map->destroy);
   if (map_copy) {
     map_copy->pairs = cf_x_case_set_copy(map->pairs);
@@ -70,22 +70,22 @@ void *cf_x_case_map_copy(void *map_object)
   return map_copy;
 }
 
-cf_x_case_map_t *cf_x_case_map_create(cf_x_core_objectey_t *left_objectey,
-    cf_x_core_objectey_t *right_objectey, cf_x_core_bool_t destroy)
+cf_x_case_map_t *cf_x_case_map_create(cf_x_core_iobject_t *left_iobject,
+    cf_x_core_iobject_t *right_iobject, cf_x_core_bool_t destroy)
 {
-  assert(left_objectey);
-  assert(right_objectey);
+  assert(left_iobject);
+  assert(right_iobject);
   cf_x_case_map_t *map;
 
   map = malloc(sizeof *map);
   if (map) {
-    map->left_objectey = left_objectey;
-    map->right_objectey = right_objectey;
+    map->left_iobject = left_iobject;
+    map->right_iobject = right_iobject;
     map->destroy = destroy;
-    cf_x_core_objectey_init(&map->pairs_objectey, cf_x_core_pair_compare_left,
+    cf_x_core_iobject_init(&map->pairs_iobject, cf_x_core_pair_compare_left,
         cf_x_core_pair_equal_left, cf_x_core_pair_copy, cf_x_core_pair_destroy,
         CF_X_CORE_OBJECT_NO_GET_AS_STRING_F, cf_x_core_pair_mod_left);
-    map->pairs = cf_x_case_set_create(&map->pairs_objectey);
+    map->pairs = cf_x_case_set_create(&map->pairs_iobject);
     if (!map->pairs) {
       cf_x_core_trace("x_case_set_create");
       free(map);
@@ -118,7 +118,7 @@ void *cf_x_case_map_find(cf_x_case_map_t *map,
   void *found_object;
   cf_x_core_pair_t *pair_decoy;
 
-  pair_decoy = cf_x_core_pair_create_decoy(left_object_decoy, map->left_objectey);
+  pair_decoy = cf_x_core_pair_create_decoy(left_object_decoy, map->left_iobject);
   if (pair_decoy) {
     found_pair = cf_x_case_set_find(map->pairs, pair_decoy);
     cf_x_core_pair_destroy_decoy(pair_decoy);
@@ -148,7 +148,7 @@ cf_x_core_bool_t cf_x_case_map_remove(cf_x_case_map_t *map,
   cf_x_core_bool_t success;
   cf_x_core_pair_t *pair_decoy;
 
-  pair_decoy = cf_x_core_pair_create_decoy(left_object_decoy, map->left_objectey);
+  pair_decoy = cf_x_core_pair_create_decoy(left_object_decoy, map->left_iobject);
   if (pair_decoy) {
     success = cf_x_case_set_remove(map->pairs, pair_decoy);
   } else {

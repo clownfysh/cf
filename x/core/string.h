@@ -2,7 +2,7 @@
 #define cf_x_core_string_h
 
 #include "cf/x/core/object.h"
-#include "cf/x/core/objectey.h"
+#include "cf/x/core/iobject.h"
 #include "cf/x/core/types.h"
 
 typedef char * cf_x_core_string_t;
@@ -25,7 +25,7 @@ char *cf_x_core_string_get_as_string(void *string_object);
 
 unsigned long cf_x_core_string_hash(void *string_object);
 
-void cf_x_core_string_init_objectey(cf_x_core_objectey_t *objectey);
+void cf_x_core_string_init_iobject(cf_x_core_iobject_t *iobject);
 
 unsigned long cf_x_core_string_mod(void *string_object, unsigned long divisor);
 

@@ -3,7 +3,7 @@
 #include "cf/x/net/client/socket.h"
 #include "cf/x/net/exchange.h"
 #include "cf/x/net/post/system.h"
-#include "cf/x/net/post/postey.h"
+#include "cf/x/net/post/ipost.h"
 
 struct engine_container_t {
   cf_x_net_engine_id_t engine_id;
@@ -30,7 +30,7 @@ struct cf_x_net_client_system_t {
 
   cf_x_core_bool_t server_socket_closed;
 
-  cf_x_net_post_postey_t postey;
+  cf_x_net_post_ipost_t postey;
   cf_x_net_engine_get_name_f get_engine_name;
 
   cf_x_core_log_t *log;
@@ -179,7 +179,7 @@ cf_x_net_client_system_t *cf_x_net_client_system_create(const char *server_ip_ad
          each_engine_id++) {
       *(client->engines_array + each_engine_id) = NULL;
     }
-    cf_x_net_post_postey_init(&client->postey, cf_x_net_post_system_compare,
+    cf_x_net_post_ipost_init(&client->postey, cf_x_net_post_system_compare,
         cf_x_net_post_system_create, cf_x_net_post_system_create_decoy,
         cf_x_net_post_system_destroy, cf_x_net_post_system_destroy_decoy,
         cf_x_net_post_system_get_last_receive_activity_time,

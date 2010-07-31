@@ -40,7 +40,7 @@ struct cf_x_net_http_post_t {
 
   cf_x_net_post_stats_t stats;
 
-  cf_x_core_objectey_t nameobject_objectey;
+  cf_x_core_iobject_t nameobject_iobject;
 };
 
 static char *get_header_lines(cf_x_net_http_message_t *hypermessage,
@@ -264,9 +264,9 @@ void *cf_x_net_http_post_create(int socket)
   }
 
   if (so_far_so_good) {
-    cf_x_core_nameobject_init_objectey(&hyperpost->nameobject_objectey);
+    cf_x_core_nameobject_init_iobject(&hyperpost->nameobject_iobject);
     hyperpost->in_hyperheaders
-      = cf_x_case_set_create(&hyperpost->nameobject_objectey);
+      = cf_x_case_set_create(&hyperpost->nameobject_iobject);
     if (!hyperpost->in_hyperheaders) {
       cf_x_core_trace("x_case_set_create");
       so_far_so_good = cf_x_core_bool_false;

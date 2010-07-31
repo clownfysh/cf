@@ -554,14 +554,14 @@ unsigned long cf_x_case_list_get_size(cf_x_case_list_t *list)
   return list->size;
 }
 
-void cf_x_case_list_init_objectey(cf_x_core_objectey_t *objectey)
+void cf_x_case_list_init_iobject(cf_x_core_iobject_t *iobject)
 {
-  assert(objectey);
+  assert(iobject);
 
-  objectey->get_as_string = cf_x_case_list_get_as_string;
-  objectey->compare = cf_x_case_list_compare;
-  objectey->copy = cf_x_case_list_copy;
-  objectey->destroy = cf_x_case_list_destroy;
+  iobject->get_as_string = cf_x_case_list_get_as_string;
+  iobject->compare = cf_x_case_list_compare;
+  iobject->copy = cf_x_case_list_copy;
+  iobject->destroy = cf_x_case_list_destroy;
 }
 
 void *cf_x_case_list_iterate_next(cf_x_case_list_t *list)

@@ -43,12 +43,12 @@ char *cf_x_core_basic_void_get_as_string(void *object)
   return string;
 }
 
-void cf_x_core_basic_void_init_objectey(cf_x_core_objectey_t *objectey)
+void cf_x_core_basic_void_init_iobject(cf_x_core_iobject_t *iobject)
 {
-  assert(objectey);
+  assert(iobject);
 
-  objectey->get_as_string = cf_x_core_basic_void_get_as_string;
-  objectey->compare = cf_x_core_basic_void_compare;
-  objectey->copy = cf_x_core_basic_void_copy;
-  objectey->destroy = cf_x_core_basic_void_destroy;
+  iobject->get_as_string = cf_x_core_basic_void_get_as_string;
+  iobject->compare = cf_x_core_basic_void_compare;
+  iobject->copy = cf_x_core_basic_void_copy;
+  iobject->destroy = cf_x_core_basic_void_destroy;
 }

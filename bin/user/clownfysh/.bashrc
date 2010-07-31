@@ -17,6 +17,7 @@ export PATH=$PATH:$CF/bin
 export PATH=$PATH:$CF/bin/user/clownfysh
 
 alias c="clear"
+alias cf="cd $CF"
 alias cmx="c; mx"
 alias cs="stats"
 alias df="df -h"

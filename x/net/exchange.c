@@ -4,11 +4,11 @@
 
 struct cf_x_net_exchange_t {
   cf_x_case_set_t *posts;
-  cf_x_net_post_postey_t *postey;
-  cf_x_core_objectey_t postey_objectey;
+  cf_x_net_post_ipost_t *postey;
+  cf_x_core_iobject_t postey_iobject;
 };
 
-cf_x_net_exchange_t *cf_x_net_exchange_create(cf_x_net_post_postey_t *postey)
+cf_x_net_exchange_t *cf_x_net_exchange_create(cf_x_net_post_ipost_t *postey)
 {
   assert(postey);
   cf_x_net_exchange_t *exchange;
@@ -18,11 +18,11 @@ cf_x_net_exchange_t *cf_x_net_exchange_create(cf_x_net_post_postey_t *postey)
   if (exchange) {
     success = cf_x_core_bool_true;
     exchange->postey = postey;
-    cf_x_core_objectey_init(&exchange->postey_objectey, postey->compare,
+    cf_x_core_iobject_init(&exchange->postey_iobject, postey->compare,
         CF_X_CORE_OBJECT_NO_COMPARE_EQUAL_F, CF_X_CORE_OBJECT_NO_COPY_F,
         CF_X_CORE_OBJECT_NO_DESTROY_F, CF_X_CORE_OBJECT_NO_GET_AS_STRING_F,
         CF_X_CORE_OBJECT_NO_MOD_F);
-    exchange->posts = cf_x_case_set_create(&exchange->postey_objectey);
+    exchange->posts = cf_x_case_set_create(&exchange->postey_iobject);
     if (!exchange->posts) {
       cf_x_core_trace("x_case_set_create");
       success = cf_x_core_bool_false;

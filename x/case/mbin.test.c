@@ -25,15 +25,15 @@ int main(int argc, char *argv[])
   unsigned long n;
   unsigned long items_added;
   cf_x_core_uuid_t *uuid;
-  cf_x_core_objectey_t objectey;
+  cf_x_core_iobject_t iobject;
 
   printf("creating mbin...\n");
   if (TEST_USING_LONGS) {
-    cf_x_core_basic_unsigned_long_init_objectey(&objectey);
-    mbin = cf_x_case_mbin_create(&objectey, CF_X_CASE_MBIN_SET_TYPE_SET);
+    cf_x_core_basic_unsigned_long_init_iobject(&iobject);
+    mbin = cf_x_case_mbin_create(&iobject, CF_X_CASE_MBIN_SET_TYPE_SET);
   } else {
-    cf_x_core_uuid_init_objectey(&objectey);
-    mbin = cf_x_case_mbin_create(&objectey, CF_X_CASE_MBIN_SET_TYPE_SET);
+    cf_x_core_uuid_init_iobject(&iobject);
+    mbin = cf_x_case_mbin_create(&iobject, CF_X_CASE_MBIN_SET_TYPE_SET);
   }
   assert(mbin);
 

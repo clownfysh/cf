@@ -73,10 +73,10 @@ char *cf_x_core_basic_unsigned_long_get_as_string(void *unsigned_long_object)
   return string;
 }
 
-void cf_x_core_basic_unsigned_long_init_objectey(cf_x_core_objectey_t *objectey)
+void cf_x_core_basic_unsigned_long_init_iobject(cf_x_core_iobject_t *iobject)
 {
-  assert(objectey);
-  cf_x_core_objectey_init(objectey, cf_x_core_basic_unsigned_long_compare,
+  assert(iobject);
+  cf_x_core_iobject_init(iobject, cf_x_core_basic_unsigned_long_compare,
       cf_x_core_basic_unsigned_long_compare_equal,
       cf_x_core_basic_unsigned_long_copy,
       cf_x_core_basic_unsigned_long_destroy,

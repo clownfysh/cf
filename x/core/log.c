@@ -10,7 +10,7 @@
 struct cf_x_core_log_t {
   cf_x_case_set_t *files;
   pthread_mutex_t mutex;
-  cf_x_core_objectey_t files_objectey;
+  cf_x_core_iobject_t files_iobject;
 };
 
 static int compare_files(void *a_file_object, void *b_file_object);
@@ -74,12 +74,12 @@ cf_x_core_log_t *cf_x_core_log_create(FILE *file)
   }
 
   if (so_far_so_good) {
-    cf_x_core_objectey_init(&log->files_objectey, compare_files,
+    cf_x_core_iobject_init(&log->files_iobject, compare_files,
         cf_x_core_basic_unsigned_long_compare_equal,
         CF_X_CORE_OBJECT_NO_COPY_F, CF_X_CORE_OBJECT_NO_DESTROY_F,
         CF_X_CORE_OBJECT_NO_GET_AS_STRING_F,
         cf_x_core_basic_unsigned_long_mod);
-    log->files = cf_x_case_set_create(&log->files_objectey);
+    log->files = cf_x_case_set_create(&log->files_iobject);
     if (log->files) {
       if (file) {
         if (cf_x_case_set_add(log->files, file)) {

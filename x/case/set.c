@@ -63,20 +63,20 @@ cf_x_core_bool_t cf_x_case_set_absorb_copy(cf_x_case_set_t *set,
 {
   assert(set);
   assert(absorb_these);
-  assert(cf_x_case_set_get_objectey(set)->destroy);
+  assert(cf_x_case_set_get_iobject(set)->destroy);
   void *object;
   void *object_copy;
   cf_x_core_bool_t success;
-  cf_x_core_objectey_t *objectey = cf_x_case_set_get_objectey(set);
+  cf_x_core_iobject_t *iobject = cf_x_case_set_get_iobject(set);
 
   success = cf_x_core_bool_true;
 
   cf_x_case_set_iterate_start(absorb_these);
   while ((object = cf_x_case_set_iterate_next(absorb_these))) {
-    object_copy = objectey->copy(object);
+    object_copy = iobject->copy(object);
     if (object_copy) {
       if (!cf_x_case_set_add(set, object_copy)) {
-        objectey->destroy(object_copy);
+        iobject->destroy(object_copy);
       }
     } else {
       success = cf_x_core_bool_false;
@@ -92,20 +92,20 @@ cf_x_core_bool_t cf_x_case_set_absorb_list_copy(cf_x_case_set_t *set,
 {
   assert(set);
   assert(absorb_these);
-  assert(cf_x_case_set_get_objectey(set)->destroy);
+  assert(cf_x_case_set_get_iobject(set)->destroy);
   void *object;
   void *object_copy;
   cf_x_core_bool_t success;
-  cf_x_core_objectey_t *objectey = cf_x_case_set_get_objectey(set);
+  cf_x_core_iobject_t *iobject = cf_x_case_set_get_iobject(set);
 
   success = cf_x_core_bool_true;
 
   cf_x_case_list_iterate_start(absorb_these);
   while ((object = cf_x_case_list_iterate_next(absorb_these))) {
-    object_copy = objectey->copy(object);
+    object_copy = iobject->copy(object);
     if (object_copy) {
       if (!cf_x_case_set_add(set, object_copy)) {
-        objectey->destroy(object_copy);
+        iobject->destroy(object_copy);
       }
     } else {
       success = cf_x_core_bool_false;
@@ -168,7 +168,7 @@ int cf_x_case_set_compare(void *set_object_a,
 
   compare_result = cf_x_core_basic_long_compare(&size_a, &size_b);
   if (0 == compare_result) {
-    compare = cf_x_case_set_get_objectey(set_a)->compare;
+    compare = cf_x_case_set_get_iobject(set_a)->compare;
     cf_x_case_set_iterate_start(set_a);
     cf_x_case_set_iterate_start(set_b);
     while ((object_a = cf_x_case_set_iterate_next(set_a))) {
@@ -211,17 +211,17 @@ void *cf_x_case_set_copy(void *set_object)
   cf_x_case_set_t *copy;
   void *original_object;
   void *copied_object;
-  cf_x_core_objectey_t *objectey = cf_x_case_set_get_objectey(set);
+  cf_x_core_iobject_t *iobject = cf_x_case_set_get_iobject(set);
 
-  copy = cf_x_case_set_create(objectey);
+  copy = cf_x_case_set_create(iobject);
   if (copy) {
     cf_x_case_set_iterate_start(set);
     while ((original_object = cf_x_case_set_iterate_next(set))) {
-      copied_object = objectey->copy(original_object);
+      copied_object = iobject->copy(original_object);
       if (copied_object) {
         if (!cf_x_case_set_add(copy, copied_object)) {
           cf_x_core_trace("x_case_set_add");
-          objectey->destroy(copied_object);
+          iobject->destroy(copied_object);
           cf_x_case_set_destroy(copy);
           copy = NULL;
           break;
@@ -241,10 +241,10 @@ void *cf_x_case_set_copy(void *set_object)
 }
 
 cf_x_case_set_t *cf_x_case_set_create_from_message
-(cf_x_core_objectey_t *objectey, cf_x_core_message_t *message,
+(cf_x_core_iobject_t *iobject, cf_x_core_message_t *message,
     cf_x_core_message_create_from_message_f create_from_message)
 {
-  assert(objectey);
+  assert(iobject);
   assert(message);
   assert(create_from_message);
   cf_x_case_set_t *set;
@@ -252,7 +252,7 @@ cf_x_case_set_t *cf_x_case_set_create_from_message
   long each_object;
   void *object;
 
-  set = cf_x_case_set_create(objectey);
+  set = cf_x_case_set_create(iobject);
   if (set) {
     set_size = cf_x_core_message_take_long_value(message);
     for (each_object = 0; each_object < set_size; each_object++) {
@@ -312,7 +312,7 @@ cf_x_case_set_t *cf_x_case_set_difference(cf_x_case_set_t *set_a,
 
 void cf_x_case_set_dont_destroy_objects(cf_x_case_set_t *set)
 {
-  cf_x_case_set_get_objectey(set)->destroy = NULL;
+  cf_x_case_set_get_iobject(set)->destroy = NULL;
 }
 
 cf_x_core_bool_t cf_x_case_set_expunge(cf_x_case_set_t *set,
@@ -344,7 +344,7 @@ void *cf_x_case_set_find_copy(cf_x_case_set_t *set, void *decoy_object)
 
   found_object = cf_x_case_set_find(set, decoy_object);
   if (found_object) {
-    found_object_copy = cf_x_case_set_get_objectey(set)->copy(found_object);
+    found_object_copy = cf_x_case_set_get_iobject(set)->copy(found_object);
     if (!found_object_copy) {
       cf_x_core_trace("copy");
     }
@@ -377,12 +377,12 @@ cf_x_case_array_t *cf_x_case_set_get_as_array(cf_x_case_set_t *set)
   void *object;
   unsigned long object_count;
   unsigned long object_index;
-  cf_x_core_objectey_t *objectey = cf_x_case_set_get_objectey(set);
+  cf_x_core_iobject_t *iobject = cf_x_case_set_get_iobject(set);
 
   object_count = cf_x_case_set_get_size(set);
 
-  array = cf_x_case_array_create(object_count, objectey->compare,
-      objectey->copy, CF_X_CORE_OBJECT_NO_DESTROY_F);
+  array = cf_x_case_array_create(object_count, iobject->compare,
+      iobject->copy, CF_X_CORE_OBJECT_NO_DESTROY_F);
   if (array) {
     object_index = 0;
     cf_x_case_set_iterate_start(set);
@@ -402,9 +402,9 @@ cf_x_case_list_t *cf_x_case_set_get_as_list(cf_x_case_set_t *set)
   assert(set);
   cf_x_case_list_t *list;
   void *object;
-  cf_x_core_objectey_t *objectey = cf_x_case_set_get_objectey(set);
+  cf_x_core_iobject_t *iobject = cf_x_case_set_get_iobject(set);
 
-  list = cf_x_case_list_create(objectey->compare, objectey->copy,
+  list = cf_x_case_list_create(iobject->compare, iobject->copy,
       CF_X_CORE_OBJECT_NO_DESTROY_F);
   if (list) {
     cf_x_case_set_iterate_start(set);

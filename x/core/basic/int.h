@@ -2,7 +2,7 @@
 #define cf_x_core_basic_int_h
 
 #include "cf/x/core/object.h"
-#include "cf/x/core/objectey.h"
+#include "cf/x/core/iobject.h"
 
 struct cf_x_core_basic_int_t;
 typedef struct cf_x_core_basic_int_t cf_x_core_basic_int_t;
@@ -17,6 +17,6 @@ void cf_x_core_basic_int_destroy(void *int_object);
 
 char *cf_x_core_basic_int_get_as_string(void *int_object);
 
-void cf_x_core_basic_int_init_objectey(cf_x_core_objectey_t *objectey);
+void cf_x_core_basic_int_init_iobject(cf_x_core_iobject_t *iobject);
 
 #endif

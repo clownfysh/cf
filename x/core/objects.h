@@ -1,15 +1,15 @@
 #ifndef cf_x_core_objects_h
 #define cf_x_core_objects_h
 
-#include "cf/x/core/objectey.h"
+#include "cf/x/core/iobject.h"
 
 struct cf_x_core_objects_t {
-  cf_x_core_objectey_t long_objectey;
-  cf_x_core_objectey_t pair_objectey;
-  cf_x_core_objectey_t string_objectey;
-  cf_x_core_objectey_t unsigned_long_objectey;
-  cf_x_core_objectey_t uuid_objectey;
-  cf_x_core_objectey_t void_objectey;
+  cf_x_core_iobject_t long_iobject;
+  cf_x_core_iobject_t pair_iobject;
+  cf_x_core_iobject_t string_iobject;
+  cf_x_core_iobject_t unsigned_long_iobject;
+  cf_x_core_iobject_t uuid_iobject;
+  cf_x_core_iobject_t void_iobject;
 };
 typedef struct cf_x_core_objects_t cf_x_core_objects_t;
 

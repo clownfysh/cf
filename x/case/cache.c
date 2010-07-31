@@ -6,7 +6,7 @@ struct cf_x_case_cache_t {
   cf_x_case_set_t *objects;
   cf_x_sync_qutex_t *objects_qutex;
   cf_x_core_object_evaluate_condition_f remove_condition;
-  cf_x_core_objectey_t objects_objectey;
+  cf_x_core_iobject_t objects_iobject;
 };
 
 cf_x_core_bool_t cf_x_case_cache_add(cf_x_case_cache_t *cache,
@@ -45,10 +45,10 @@ cf_x_case_cache_t *cf_x_case_cache_create(cf_x_core_object_compare_f compare,
   if (cache) {
     cache->remove_condition = remove_condition;
     cache->objects_qutex = NULL;
-    cf_x_core_objectey_init(&cache->objects_objectey, compare,
+    cf_x_core_iobject_init(&cache->objects_iobject, compare,
         CF_X_CORE_OBJECT_NO_COMPARE_EQUAL_F, copy, destroy,
         CF_X_CORE_OBJECT_NO_GET_AS_STRING_F, CF_X_CORE_OBJECT_NO_MOD_F);
-    cache->objects = cf_x_case_set_create(&cache->objects_objectey);
+    cache->objects = cf_x_case_set_create(&cache->objects_iobject);
     if (cache->objects) {
       so_far_so_good = cf_x_core_bool_true;
     } else {

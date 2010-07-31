@@ -2,7 +2,7 @@
 #define cf_x_core_nameobject_h
 
 #include "cf/x/core/object.h"
-#include "cf/x/core/objectey.h"
+#include "cf/x/core/iobject.h"
 
 struct cf_x_core_nameobject_t;
 typedef struct cf_x_core_nameobject_t cf_x_core_nameobject_t;
@@ -31,7 +31,7 @@ char *cf_x_core_nameobject_get_name(cf_x_core_nameobject_t *nameobject);
 
 void *cf_x_core_nameobject_get_object(cf_x_core_nameobject_t *nameobject);
 
-void cf_x_core_nameobject_init_objectey(cf_x_core_objectey_t *objectey);
+void cf_x_core_nameobject_init_iobject(cf_x_core_iobject_t *iobject);
 
 unsigned long cf_x_core_nameobject_mod(void *nameobject_object,
     unsigned long divisor);

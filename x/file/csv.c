@@ -527,8 +527,8 @@ cf_x_case_map_t *create_name_to_index_map(cf_x_file_csv_t *csv,
         (first_line, ",");
       if (field_names) {
         csv->field_count = cf_x_case_list_get_size(field_names);
-        map = cf_x_case_map_create(&cf_x_core_objects.string_objectey,
-            &cf_x_core_objects.unsigned_long_objectey, CF_X_CASE_MAP_DESTROY);
+        map = cf_x_case_map_create(&cf_x_core_objects.string_iobject,
+            &cf_x_core_objects.unsigned_long_iobject, CF_X_CASE_MAP_DESTROY);
         if (map) {
           index = 0;
           cf_x_case_list_iterate_start(field_names);

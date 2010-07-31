@@ -10,8 +10,9 @@ int main(int argc, char *argv[])
   char *string;
 
   shardset = cf_x_case_shardset_create(cf_x_core_string_compare,
-      cf_x_core_string_copy, CF_X_CORE_OBJECT_NO_DESTROY_F, cf_x_core_string_equal,
-      cf_x_core_string_hash, cf_x_core_string_mod, SHARD_COUNT);
+      cf_x_core_string_compare_equal, cf_x_core_string_copy,
+      CF_X_CORE_OBJECT_NO_DESTROY_F, cf_x_core_string_hash,
+      cf_x_core_string_mod, SHARD_COUNT);
   if (!shardset) {
     cf_x_core_trace_exit("x_case_shardset_create");
   }

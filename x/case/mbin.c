@@ -18,10 +18,10 @@ struct cf_x_case_mbin_t {
   unsigned long iterator;
   cf_x_core_bool_t iterate_remove;
   cf_x_case_mbin_set_type_t set_type;
-  cf_x_core_objectey_t *objectey;
+  cf_x_core_iobject_t *iobject;
 };
 
-static cf_x_case_mbin_t *create(cf_x_core_objectey_t *objectey,
+static cf_x_case_mbin_t *create(cf_x_core_iobject_t *iobject,
     unsigned long level, cf_x_case_mbin_set_type_t set_type);
 
 static cf_x_core_bool_t create_bins(cf_x_case_mbin_t *mbin);
@@ -32,12 +32,12 @@ static void become_simple(cf_x_case_mbin_t *mbin);
 
 static void destroy_bins(cf_x_case_mbin_t *mbin);
 
-cf_x_case_mbin_t *create(cf_x_core_objectey_t *objectey, unsigned long level,
+cf_x_case_mbin_t *create(cf_x_core_iobject_t *iobject, unsigned long level,
     cf_x_case_mbin_set_type_t set_type)
 {
-  assert(objectey);
-  assert(objectey->mod);
-  assert(objectey->compare_equal);
+  assert(iobject);
+  assert(iobject->mod);
+  assert(iobject->compare_equal);
   assert(level < PRIMES_COUNT);
   cf_x_case_mbin_t *mbin;
 
@@ -47,7 +47,7 @@ cf_x_case_mbin_t *create(cf_x_core_objectey_t *objectey, unsigned long level,
     mbin->bins = NULL;
     mbin->object_count = 0;
     mbin->contained_object_count = 0;
-    mbin->objectey = objectey;
+    mbin->iobject = iobject;
     mbin->level = level;
     mbin->bin_count = primes[level];
     mbin->set_type = set_type;
@@ -74,11 +74,11 @@ cf_x_core_bool_t create_bins(cf_x_case_mbin_t *mbin)
     success = cf_x_core_bool_true;
     for (i = 0; i < mbin->bin_count; i++) {
       if (mbin->level < (PRIMES_COUNT - 1)) {
-        *(mbin->bins + i) = create(mbin->objectey, mbin->level + 1,
+        *(mbin->bins + i) = create(mbin->iobject, mbin->level + 1,
             mbin->set_type);
       } else {
         *(mbin->bins + i)
-          = create(mbin->objectey, mbin->level, mbin->set_type);
+          = create(mbin->iobject, mbin->level, mbin->set_type);
         cf_x_trace("ran out of primes");
       }
       if (!*(mbin->bins + i)) {
@@ -109,7 +109,7 @@ cf_x_core_bool_t become_container(cf_x_case_mbin_t *mbin)
     assert(mbin->bins);
     for (i = 0; i < mbin->object_count; i++) {
       object = *(mbin->objects + i);
-      remainder = mbin->objectey->mod(object, mbin->bin_count);
+      remainder = mbin->iobject->mod(object, mbin->bin_count);
       if (!cf_x_case_mbin_add(*(mbin->bins + remainder), object)) {
         cf_x_trace("x_case_mbin_add");
         success = cf_x_core_bool_false;
@@ -190,7 +190,7 @@ cf_x_core_bool_t cf_x_case_mbin_add(cf_x_case_mbin_t *mbin, void *object)
 
   if (success) {
     if (mbin->container) {
-      remainder = mbin->objectey->mod(object, mbin->bin_count);
+      remainder = mbin->iobject->mod(object, mbin->bin_count);
       bin = *(mbin->bins + remainder);
 
       if (CF_X_CASE_MBIN_SET_TYPE_MULTISET == mbin->set_type) {
@@ -242,10 +242,10 @@ void cf_x_case_mbin_clear(cf_x_case_mbin_t *mbin)
   }
 }
 
-cf_x_case_mbin_t *cf_x_case_mbin_create(cf_x_core_objectey_t *objectey,
+cf_x_case_mbin_t *cf_x_case_mbin_create(cf_x_core_iobject_t *iobject,
     cf_x_case_mbin_set_type_t set_type)
 {
-  return create(objectey, 0, set_type);
+  return create(iobject, 0, set_type);
 }
 
 void cf_x_case_mbin_destroy(cf_x_case_mbin_t *mbin)
@@ -256,9 +256,9 @@ void cf_x_case_mbin_destroy(cf_x_case_mbin_t *mbin)
   if (mbin->container) {
     destroy_bins(mbin);
   } else {
-    if (mbin->objectey->destroy) {
+    if (mbin->iobject->destroy) {
       for (i = 0; i < mbin->object_count; i++) {
-        mbin->objectey->destroy(*(mbin->objects + i));
+        mbin->iobject->destroy(*(mbin->objects + i));
       }
     }
   }
@@ -271,7 +271,7 @@ void cf_x_case_mbin_dont_destroy_objects(cf_x_case_mbin_t *mbin)
   assert(mbin);
   unsigned long i;
 
-  mbin->objectey->destroy = NULL;
+  mbin->iobject->destroy = NULL;
   if (mbin->container) {
     for (i = 0; i < mbin->bin_count; i++) {
       cf_x_case_mbin_dont_destroy_objects(*(mbin->bins + i));
@@ -290,11 +290,11 @@ void *cf_x_case_mbin_find(cf_x_case_mbin_t *mbin, void *decoy_object)
   /*  printf("find()\n");  */
 
   if (mbin->container) {
-    remainder = mbin->objectey->mod(decoy_object, mbin->bin_count);
+    remainder = mbin->iobject->mod(decoy_object, mbin->bin_count);
     object = cf_x_case_mbin_find(*(mbin->bins + remainder), decoy_object);
   } else {
     for (i = 0; i < mbin->object_count; i++) {
-      if (mbin->objectey->compare_equal(decoy_object, *(mbin->objects + i))) {
+      if (mbin->iobject->compare_equal(decoy_object, *(mbin->objects + i))) {
         object = *(mbin->objects + i);
         break;
       }
@@ -304,10 +304,10 @@ void *cf_x_case_mbin_find(cf_x_case_mbin_t *mbin, void *decoy_object)
   return object;
 }
 
-cf_x_core_objectey_t *cf_x_case_mbin_get_objectey(cf_x_case_mbin_t *mbin)
+cf_x_core_iobject_t *cf_x_case_mbin_get_iobject(cf_x_case_mbin_t *mbin)
 {
   assert(mbin);
-  return mbin->objectey;
+  return mbin->iobject;
 }
 
 unsigned long cf_x_case_mbin_get_size(cf_x_case_mbin_t *mbin)
@@ -360,8 +360,8 @@ void *cf_x_case_mbin_iterate_next(cf_x_case_mbin_t *mbin)
       assert(mbin->iterator > 0);
       assert(mbin->object_count > 0);
       assert(mbin->iterator <= mbin->object_count);
-      if (mbin->objectey->destroy) {
-        mbin->objectey->destroy(*(mbin->objects + (mbin->iterator - 1)));
+      if (mbin->iobject->destroy) {
+        mbin->iobject->destroy(*(mbin->objects + (mbin->iterator - 1)));
       }
       if (mbin->object_count > 1) {
         *(mbin->objects + (mbin->iterator - 1))
@@ -395,7 +395,7 @@ cf_x_core_bool_t cf_x_case_mbin_remove(cf_x_case_mbin_t *mbin,
   unsigned long i;
 
   if (mbin->container) {
-    remainder = mbin->objectey->mod(decoy_object, mbin->bin_count);
+    remainder = mbin->iobject->mod(decoy_object, mbin->bin_count);
     if (cf_x_case_mbin_remove(*(mbin->bins + remainder), decoy_object)) {
       success = cf_x_core_bool_true;
       mbin->contained_object_count--;
@@ -406,10 +406,10 @@ cf_x_core_bool_t cf_x_case_mbin_remove(cf_x_case_mbin_t *mbin,
     }
   } else {
     for (i = 0; i < mbin->object_count; i++) {
-      if (mbin->objectey->compare_equal(decoy_object, *(mbin->objects + i))) {
+      if (mbin->iobject->compare_equal(decoy_object, *(mbin->objects + i))) {
         success = cf_x_core_bool_true;
-        if (mbin->objectey->destroy) {
-          mbin->objectey->destroy(*(mbin->objects + i));
+        if (mbin->iobject->destroy) {
+          mbin->iobject->destroy(*(mbin->objects + i));
         }
         if (mbin->object_count > 0) {
           *(mbin->objects + i) = *(mbin->objects + (mbin->object_count - 1));

@@ -85,8 +85,8 @@ struct cf_x_net_server_system_t {
 
   unsigned long unresponsive_client_time_seconds;
 
-  cf_x_core_messagey_t *messagey;
-  cf_x_net_post_postey_t *postey;
+  cf_x_core_imessage_t *messagey;
+  cf_x_net_post_ipost_t *postey;
   cf_x_net_engine_get_name_f get_engine_name;
 
   time_t create_time;
@@ -95,7 +95,7 @@ struct cf_x_net_server_system_t {
 
   cf_x_config_system_t *config_system;
 
-  cf_x_core_objectey_t client_posts_objectey;
+  cf_x_core_iobject_t client_posts_iobject;
 };
 
 struct running_engine_t {
@@ -146,7 +146,7 @@ static void create_engine_container_stats
 (engine_container_t *engine_container);
 
 static cf_x_core_bool_t create_engine_container_threads
-(engine_container_t *engine_container, cf_x_core_messagey_t *messagey,
+(engine_container_t *engine_container, cf_x_core_imessage_t *messagey,
     cf_x_core_log_t *log);
 
 static maintaining_engine_t *create_maintaining_engine(cf_x_net_server_system_t *server,
@@ -475,7 +475,7 @@ void create_engine_container_stats(engine_container_t *engine_container)
 }
 
 cf_x_core_bool_t create_engine_container_threads
-(engine_container_t *engine_container, cf_x_core_messagey_t *messagey,
+(engine_container_t *engine_container, cf_x_core_imessage_t *messagey,
     cf_x_core_log_t *log)
 {
   assert(engine_container);
@@ -829,7 +829,7 @@ void handle_signal(int signal)
 
 cf_x_net_server_system_t *cf_x_net_server_system_create(const char *name, unsigned short min_port,
     unsigned short max_port, unsigned short max_threads,
-    cf_x_core_messagey_t *messagey, cf_x_net_post_postey_t *postey,
+    cf_x_core_imessage_t *messagey, cf_x_net_post_ipost_t *postey,
     cf_x_net_engine_get_name_f get_engine_name,
     cf_x_config_system_t *config_system, cf_x_core_log_t *log)
 {
@@ -916,11 +916,11 @@ cf_x_core_bool_t cf_x_net_server_system_create_client_posts
   assert(server);
   cf_x_core_bool_t success;
 
-  cf_x_core_objectey_init(&server->client_posts_objectey,
+  cf_x_core_iobject_init(&server->client_posts_iobject,
       server->postey->compare, CF_X_CORE_OBJECT_NO_COMPARE_EQUAL_F,
       CF_X_CORE_OBJECT_NO_COPY_F, server->postey->destroy,
       CF_X_CORE_OBJECT_NO_GET_AS_STRING_F, CF_X_CORE_OBJECT_NO_MOD_F);
-  server->client_posts = cf_x_case_set_create(&server->client_posts_objectey);
+  server->client_posts = cf_x_case_set_create(&server->client_posts_iobject);
   if (server->client_posts) {
     success = cf_x_core_bool_true;
   } else {

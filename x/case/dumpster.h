@@ -4,7 +4,7 @@
 #include "cf/x/case/array.h"
 #include "cf/x/case/list.h"
 #include "cf/x/case/set.h"
-#include "cf/x/core/objectey.h"
+#include "cf/x/core/iobject.h"
 
 struct cf_x_case_dumpster_t;
 typedef struct cf_x_case_dumpster_t cf_x_case_dumpster_t;
@@ -13,7 +13,7 @@ cf_x_core_bool_t cf_x_case_dumpster_add(cf_x_case_dumpster_t *dumpster,
     void *object);
 
 cf_x_case_dumpster_t *cf_x_case_dumpster_create
-(cf_x_core_objectey_t *objectey);
+(cf_x_core_iobject_t *iobject);
 
 void cf_x_case_dumpster_destroy(cf_x_case_dumpster_t *dumpster);
 

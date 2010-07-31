@@ -16,7 +16,7 @@ void cf_x_case_hash_table_clear(cf_x_case_hash_table_t *hash_table)
 }
 
 cf_x_case_hash_table_t *cf_x_case_hash_table_create
-(cf_x_core_objectey_t *objectey)
+(cf_x_core_iobject_t *iobject)
 {
   cf_x_core_implement();
   return NULL;
@@ -40,7 +40,7 @@ void *cf_x_case_hash_table_find(cf_x_case_hash_table_t *hash_table,
   return NULL;
 }
 
-cf_x_core_objectey_t *cf_x_case_hash_table_get_objectey
+cf_x_core_iobject_t *cf_x_case_hash_table_get_iobject
 (cf_x_case_hash_table_t *hash_table)
 {
   cf_x_core_implement();

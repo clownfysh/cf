@@ -73,10 +73,10 @@ unsigned long cf_x_core_string_hash(void *string_object)
   return cf_x_core_hash(string_object);
 }
 
-void cf_x_core_string_init_objectey(cf_x_core_objectey_t *objectey)
+void cf_x_core_string_init_iobject(cf_x_core_iobject_t *iobject)
 {
-  assert(objectey);
-  cf_x_core_objectey_init(objectey, cf_x_core_string_compare,
+  assert(iobject);
+  cf_x_core_iobject_init(iobject, cf_x_core_string_compare,
       cf_x_core_string_compare_equal, cf_x_core_string_copy,
       cf_x_core_string_destroy, cf_x_core_string_get_as_string,
       cf_x_core_string_mod);

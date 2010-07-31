@@ -14,13 +14,13 @@ static cf_x_core_bool_t initialized = cf_x_core_bool_false;
 void cf_x_core_objects_init()
 {
   if (!initialized) {
-    cf_x_core_basic_long_init_objectey(&cf_x_core_objects.long_objectey);
-    cf_x_core_pair_init_objectey(&cf_x_core_objects.pair_objectey);
-    cf_x_core_string_init_objectey(&cf_x_core_objects.string_objectey);
-    cf_x_core_basic_unsigned_long_init_objectey
-      (&cf_x_core_objects.unsigned_long_objectey);
-    cf_x_core_uuid_init_objectey(&cf_x_core_objects.uuid_objectey);
-    cf_x_core_basic_void_init_objectey(&cf_x_core_objects.void_objectey);
+    cf_x_core_basic_long_init_iobject(&cf_x_core_objects.long_iobject);
+    cf_x_core_pair_init_iobject(&cf_x_core_objects.pair_iobject);
+    cf_x_core_string_init_iobject(&cf_x_core_objects.string_iobject);
+    cf_x_core_basic_unsigned_long_init_iobject
+      (&cf_x_core_objects.unsigned_long_iobject);
+    cf_x_core_uuid_init_iobject(&cf_x_core_objects.uuid_iobject);
+    cf_x_core_basic_void_init_iobject(&cf_x_core_objects.void_iobject);
     initialized = cf_x_core_bool_true;
   } else {
     cf_x_trace("fyi :: cf_x_core_objects_init called more than once");

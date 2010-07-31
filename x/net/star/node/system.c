@@ -1,18 +1,18 @@
 #include "cf/x/core/constants.h"
 #include "cf/x/core/message.h"
-#include "cf/x/core/messagey.h"
+#include "cf/x/core/imessage.h"
 #include "cf/x/core/tools.h"
 #include "cf/x/net/client/system.h"
 #include "cf/x/net/star/node/system.h"
 #include "cf/x/net/post/system.h"
-#include "cf/x/net/post/postey.h"
+#include "cf/x/net/post/ipost.h"
 #include "cf/x/net/server/system.h"
 #include "cf/x/net/star/client/system.h"
 
 struct cf_x_net_star_node_system_t {
   cf_x_net_server_system_t *server;
-  cf_x_core_messagey_t messagey;
-  cf_x_net_post_postey_t postey;
+  cf_x_core_imessage_t messagey;
+  cf_x_net_post_ipost_t postey;
 
   cf_x_net_star_client_system_t *starclient;
 
@@ -36,10 +36,10 @@ cf_x_net_star_node_system_t *cf_x_net_star_node_system_create(char *node_ip, uns
 
   node = malloc(sizeof *node);
   if (node) {
-    cf_x_core_messagey_init(&node->messagey, cf_x_core_message_destroy,
+    cf_x_core_imessage_init(&node->messagey, cf_x_core_message_destroy,
         cf_x_core_message_get_client_socket,
         cf_x_core_message_get_engine_id, cf_x_core_message_get_type);
-    cf_x_net_post_postey_init(&node->postey, cf_x_net_post_system_compare,
+    cf_x_net_post_ipost_init(&node->postey, cf_x_net_post_system_compare,
         cf_x_net_post_system_create, cf_x_net_post_system_create_decoy,
         cf_x_net_post_system_destroy, cf_x_net_post_system_destroy_decoy,
         cf_x_net_post_system_get_last_receive_activity_time,
