@@ -37,7 +37,7 @@ libraries = -lcrypto -ljpeg -lm -lncurses -lpq -lpthread -luuid
 link_options = -ansi $(build) $(platform) $(debugging) $(optimization) $(warnings) $(include_paths) -D_GNU_SOURCE $(library_paths) $(libraries)
 compile_options = -ansi $(build) $(platform) $(debugging) $(optimization) $(warnings) $(include_paths) -D_GNU_SOURCE
 
-object_bases = $(shell find . -name "*.c" | grep -v ".test.c" | grep -v ".impl." | grep -v ".bin.c" | sed 's/\(.*\)\..*/\1/')
+object_bases = $(shell find . -name "*.c" | grep -v "\.test\.c" | grep -v "\.impl\." | grep -v "\.bin\.c" | sed 's/\(.*\)\..*/\1/')
 object_sources := $(foreach object_base, $(object_bases), $(object_base).c)
 #object_headers := $(foreach object_base, $(object_bases), $(object_base).h)
 objects := $(foreach object_base, $(object_bases), $(object_base).o)
@@ -91,7 +91,7 @@ help:
 _all: _init _objects _programs
 
 _debug:
-	@echo $(external_objects)
+	@echo $(object_bases)
 
 _init:
 	@makedepend -f.makedepend $(include_paths) $(object_sources)

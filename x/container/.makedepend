@@ -436,3 +436,59 @@
 ./set.o: /usr/include/jpeglib.h /usr/include/jconfig.h
 ./set.o: /usr/include/jmorecfg.h /home/matthew/cf/x/core/bit.h
 ./declarations.o: /home/matthew/cf/x/container/declarations.h
+./mbin.o: mbin.h /home/matthew/cf/x/core/object.h
+./mbin.o: /home/matthew/cf/x/core/bool.h
+./mbin.o: /home/matthew/cf/x/core/declarations.h
+./mbin.o: /home/matthew/cf/x/core/objectey.h /home/matthew/cf/x/core/tools.h
+./mbin.o: /home/matthew/cf/x/core/standard.h /usr/include/arpa/inet.h
+./mbin.o: /usr/include/features.h /usr/include/bits/predefs.h
+./mbin.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+./mbin.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h
+./mbin.o: /usr/include/netinet/in.h /usr/include/stdint.h
+./mbin.o: /usr/include/bits/wchar.h /usr/include/sys/socket.h
+./mbin.o: /usr/include/sys/uio.h /usr/include/sys/types.h
+./mbin.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+./mbin.o: /usr/include/time.h
+./mbin.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stddef.h
+./mbin.o: /usr/include/endian.h /usr/include/bits/endian.h
+./mbin.o: /usr/include/bits/byteswap.h /usr/include/sys/select.h
+./mbin.o: /usr/include/bits/select.h /usr/include/bits/sigset.h
+./mbin.o: /usr/include/bits/time.h /usr/include/sys/sysmacros.h
+./mbin.o: /usr/include/bits/pthreadtypes.h /usr/include/bits/uio.h
+./mbin.o: /usr/include/bits/socket.h /usr/include/bits/sockaddr.h
+./mbin.o: /usr/include/asm/socket.h /usr/include/asm-generic/socket.h
+./mbin.o: /usr/include/asm/sockios.h /usr/include/asm-generic/sockios.h
+./mbin.o: /usr/include/bits/in.h /usr/include/assert.h /usr/include/ctype.h
+./mbin.o: /usr/include/xlocale.h /usr/include/dirent.h
+./mbin.o: /usr/include/bits/dirent.h /usr/include/bits/posix1_lim.h
+./mbin.o: /usr/include/bits/local_lim.h /usr/include/linux/limits.h
+./mbin.o: /usr/include/fcntl.h /usr/include/bits/fcntl.h
+./mbin.o: /usr/include/postgresql/libpq-fe.h /usr/include/stdio.h
+./mbin.o: /usr/include/libio.h /usr/include/_G_config.h /usr/include/wchar.h
+./mbin.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdarg.h
+./mbin.o: /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h
+./mbin.o: /usr/include/postgresql/postgres_ext.h /usr/include/math.h
+./mbin.o: /usr/include/bits/huge_val.h /usr/include/bits/huge_valf.h
+./mbin.o: /usr/include/bits/huge_vall.h /usr/include/bits/inf.h
+./mbin.o: /usr/include/bits/nan.h /usr/include/bits/mathdef.h
+./mbin.o: /usr/include/bits/mathcalls.h /usr/include/ncurses.h
+./mbin.o: /usr/include/ncurses_dll.h
+./mbin.o: /usr/lib/gcc/i486-linux-gnu/4.4/include/stdbool.h
+./mbin.o: /usr/include/unctrl.h /usr/include/curses.h
+./mbin.o: /usr/include/openssl/rand.h /usr/include/stdlib.h
+./mbin.o: /usr/include/alloca.h /usr/include/openssl/ossl_typ.h
+./mbin.o: /usr/include/openssl/e_os2.h /usr/include/openssl/opensslconf.h
+./mbin.o: /usr/include/pthread.h /usr/include/sched.h
+./mbin.o: /usr/include/bits/sched.h /usr/include/signal.h
+./mbin.o: /usr/include/bits/setjmp.h /usr/include/string.h
+./mbin.o: /usr/include/sys/errno.h /usr/include/errno.h
+./mbin.o: /usr/include/bits/errno.h /usr/include/linux/errno.h
+./mbin.o: /usr/include/asm/errno.h /usr/include/asm-generic/errno.h
+./mbin.o: /usr/include/asm-generic/errno-base.h /usr/include/sys/stat.h
+./mbin.o: /usr/include/bits/stat.h /usr/include/termios.h
+./mbin.o: /usr/include/bits/termios.h /usr/include/sys/ttydefaults.h
+./mbin.o: /usr/include/unistd.h /usr/include/bits/posix_opt.h
+./mbin.o: /usr/include/bits/confname.h /usr/include/getopt.h
+./mbin.o: /usr/include/jpeglib.h /usr/include/jconfig.h
+./mbin.o: /usr/include/jmorecfg.h /home/matthew/cf/x/core/bit.h
+./mbin.o: /home/matthew/cf/x/core/types.h
