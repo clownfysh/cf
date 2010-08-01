@@ -1,7 +1,10 @@
 C tools by Matthew Temple
-  + blog                                       ( http://clownfysh.tumblr.com/ )
-  + twitter                                    ( http://twitter.com/clownfysh )
   + email                                               ( clownfysh@gmail.com )
+  + twitter                                    ( http://twitter.com/clownfysh )
+  + blog                                       ( http://clownfysh.tumblr.com/ )
+  + portfolio                          ( http://cargocollective.com/clownfysh )
+  + docs                                                 ( http://j.mp/91C1b8 )
+  + code                                     ( http://github.com/clownfysh/cf )
 
 What's here
   + bin :: environment, makefile, scripts
