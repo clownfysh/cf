@@ -1,6 +1,6 @@
 #include "cf/inferno/bios/actor.h"
 #include "cf/inferno/bios/constants.h"
-#include "cf/inferno/bios/declarations.h"
+#include "cf/inferno/bios/tools.h"
 #include "cf/inferno/bios/system.h"
 #include "cf/inferno/core/constants.h"
 

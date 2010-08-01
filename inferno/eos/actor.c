@@ -1,7 +1,7 @@
 #include "cf/inferno/core/constants.h"
 #include "cf/inferno/core/goal.h"
 #include "cf/inferno/eos/actor.h"
-#include "cf/inferno/eos/declarations.h"
+#include "cf/inferno/eos/tools.h"
 #include "cf/inferno/eos/system.h"
 #include "cf/x/core/random.h"
 

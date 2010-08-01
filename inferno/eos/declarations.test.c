@@ -1,4 +1,4 @@
-#include "cf/inferno/eos/declarations.h"
+#include "cf/inferno/eos/tools.h"
 
 int main(int argc, char *argv[])
 {

@@ -1,1 +1,1 @@
-#include "cf/inferno/bios/declarations.h"
+#include "cf/inferno/bios/tools.h"

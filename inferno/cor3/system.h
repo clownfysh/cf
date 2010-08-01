@@ -1,7 +1,7 @@
 #ifndef cf_inferno_cor3_system_h
 #define cf_inferno_cor3_system_h
 
-#include "cf/inferno/cor3/declarations.h"
+#include "cf/inferno/cor3/tools.h"
 #include "cf/inferno/core/goal.h"
 #include "cf/inferno/search/searchey.h"
 #include "cf/inferno/search/tools.h"

@@ -1,1 +1,1 @@
-#include "cf/inferno/eos/declarations.h"
+#include "cf/inferno/eos/tools.h"

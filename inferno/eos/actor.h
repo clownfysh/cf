@@ -2,7 +2,7 @@
 #define cf_inferno_eos_actor_h
 
 #include "cf/inferno/core/actorey.h"
-#include "cf/inferno/eos/declarations.h"
+#include "cf/inferno/eos/tools.h"
 
 void cf_inferno_eos_actor_act(cf_inferno_eos_actor_t *actor);
 

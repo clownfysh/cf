@@ -4,6 +4,9 @@
 #include "cf/x/case/array.h"
 #include "cf/x/core/bitarray.h"
 
+struct cf_inferno_ca_system_t;
+typedef struct cf_inferno_ca_system_t cf_inferno_ca_system_t;
+
 typedef unsigned long (*cf_inferno_ca_select_initial_rule_f)();
 typedef unsigned long (*cf_inferno_ca_select_initial_value_f)();
 

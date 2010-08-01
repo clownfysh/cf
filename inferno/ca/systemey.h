@@ -2,7 +2,7 @@
 #define cf_inferno_ca_systemey_h
 
 #include "cf/inferno/ca/cell.h"
-#include "cf/inferno/ca/declarations.h"
+#include "cf/inferno/ca/tools.h"
 #include "cf/x/core/color.h"
 
 #define CF_INFERNO_CA_NO_CREATE_CONTEXT_FUNCTION NULL

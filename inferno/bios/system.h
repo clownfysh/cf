@@ -1,7 +1,7 @@
 #ifndef cf_inferno_bios_system_h
 #define cf_inferno_bios_system_h
 
-#include "cf/inferno/bios/declarations.h"
+#include "cf/inferno/bios/tools.h"
 #include "cf/inferno/search/searchey.h"
 #include "cf/inferno/search/tools.h"
 

@@ -1,7 +1,7 @@
 #ifndef cf_inferno_eos_system_h
 #define cf_inferno_eos_system_h
 
-#include "cf/inferno/eos/declarations.h"
+#include "cf/inferno/eos/tools.h"
 #include "cf/inferno/search/searchey.h"
 #include "cf/inferno/search/tools.h"
 

@@ -1,7 +1,7 @@
 #ifndef cf_inferno_cor3_actor_h
 #define cf_inferno_cor3_actor_h
 
-#include "cf/inferno/cor3/declarations.h"
+#include "cf/inferno/cor3/tools.h"
 #include "cf/inferno/core/actorey.h"
 
 void cf_inferno_cor3_actor_act(cf_inferno_cor3_actor_t *actor);
