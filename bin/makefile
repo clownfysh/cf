@@ -74,15 +74,15 @@ clean:
 	@clean
 
 help:
-	@echo "make         : make objects, programs"
-	@echo "make test    : make tests, run tests"
-	@echo "make tests   : make tests"
-	@echo "make demo    : make demo objects, programs"
-	@echo "make release : make release objects, programs"
-	@echo "make tags    : make emacs tags (in .etags)"
-	@echo "make clean   : clean"
-	@echo "make stats   : show code statistics"
-	@echo "make todo    : show todo items from code"
+	@echo "make                                                 ( make objects, programs )"
+	@echo "  + test                                              ( make tests, run tests )"
+	@echo "  + tests                                                        ( make tests )"
+	@echo "  + demo                                ( make objects, programs in demo mode )"
+	@echo "  + release                          ( make objects, programs in release mode )"
+	@echo "  + tags                                          ( make Emacs tags in .etags )"
+	@echo "  + clean                                                             ( clean )"
+	@echo "  + stats                                              ( show code statistics )"
+	@echo "  + todo                                          ( show todo items from code )"
 
 _all: _init _objects _programs
 
