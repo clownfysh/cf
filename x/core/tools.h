@@ -7,6 +7,11 @@
 
 void cf_x_core_do_nothing();
 
+typedef void *(*thread_f)(void *thread_context);
+
+#define CF_X_CORE_TIME_STRING_LENGTH 15
+typedef char cf_x_core_time_string_t[CF_X_CORE_TIME_STRING_LENGTH + 1];
+
 #define cf_x_trace(message, ...) fprintf(stderr, message "() in %s:%d\n",  \
       ##__VA_ARGS__, __FILE__, __LINE__)
 
