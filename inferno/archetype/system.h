@@ -17,7 +17,8 @@ void cf_inferno_archetype_system_destroy(void *system_void);
 cf_x_core_bit_t cf_inferno_archetype_system_classify_object(void *system_void,
     cf_x_core_bitarray_t *object);
 
-void cf_inferno_archetype_system_init_iclassify(cf_inferno_classify_iclassify_t *iclassify);
+void cf_inferno_archetype_system_init_iclassify
+(cf_inferno_classify_iclassify_t *iclassify);
 
 cf_x_core_bool_t cf_inferno_archetype_system_learn(void *system_void);
 

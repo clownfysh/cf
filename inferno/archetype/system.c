@@ -134,7 +134,8 @@ void *cf_inferno_archetype_system_create(cf_x_case_array_t *classified_objects,
 
   if (so_far_so_good) {
     system->weights = cf_x_case_array_create(system->attribute_count,
-        cf_x_core_basic_double_compare, cf_x_core_basic_double_copy, cf_x_core_basic_double_destroy);
+        cf_x_core_basic_double_compare, cf_x_core_basic_double_copy,
+        cf_x_core_basic_double_destroy);
     if (!system->weights) {
       so_far_so_good = cf_x_core_bool_false;
       cf_x_core_log_trace(log, "arch", "x_case_array_create");
@@ -216,11 +217,14 @@ cf_x_core_bit_t cf_inferno_archetype_system_classify_object(void *system_void,
   return class;
 }
 
-void cf_inferno_archetype_system_init_iclassify(cf_inferno_classify_iclassify_t *iclassify)
+void cf_inferno_archetype_system_init_iclassify
+(cf_inferno_classify_iclassify_t *iclassify)
 {
-  return cf_inferno_classify_iclassify_init(iclassify, cf_inferno_archetype_system_create,
-      cf_inferno_archetype_system_destroy, cf_inferno_archetype_system_classify_object,
-      cf_inferno_archetype_system_learn, cf_inferno_archetype_system_observe_object);
+  return cf_inferno_classify_iclassify_init(iclassify,
+      cf_inferno_archetype_system_create, cf_inferno_archetype_system_destroy,
+      cf_inferno_archetype_system_classify_object,
+      cf_inferno_archetype_system_learn,
+      cf_inferno_archetype_system_observe_object);
 }
 
 cf_x_core_bool_t cf_inferno_archetype_system_learn(void *system_void)
