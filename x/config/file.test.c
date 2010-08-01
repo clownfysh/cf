@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
   cf_x_case_list_t *node_ip_list;
   char *node_ip;
 
-  conf = cf_x_config_file_create("cf/x/config/file_test.conf");
+  conf = cf_x_config_file_create("x/config/file.test.conf");
   if (cf_x_core_bool_true) {
 
     if (!cf_x_config_file_find_as_unsigned_short

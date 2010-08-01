@@ -1105,16 +1105,14 @@ void cf_x_net_server_system_print_stats(cf_x_net_server_system_t *server)
   cf_x_net_server_stats_t stats;
   cf_x_core_time_t *time;
   char *time_string;
-  cf_x_core_days_hours_minutes_seconds_t days_hours_minutes_seconds;
+  cf_x_core_dayhour_t dayhour;
 
   cf_x_net_server_system_get_stats(server, &stats);
 
   time = cf_x_core_time_create(stats.uptime_seconds);
   if (time) {
-    cf_x_core_time_get_days_hours_minutes_seconds
-      (time, &days_hours_minutes_seconds);
-    time_string = create_string_from_days_hours_minutes_seconds
-      (&days_hours_minutes_seconds);
+    cf_x_core_time_get_dayhour(time, &dayhour);
+    time_string = create_string_from_dayhour(&dayhour);
     cf_x_core_time_destroy(time);
   } else {
     time_string = NULL;

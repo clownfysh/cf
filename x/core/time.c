@@ -27,28 +27,24 @@ void cf_x_core_time_destroy(cf_x_core_time_t *time)
   free(time);
 }
 
-void cf_x_core_time_get_days_hours_minutes_seconds(cf_x_core_time_t *time,
-    cf_x_core_days_hours_minutes_seconds_t *days_hours_minutes_seconds)
+void cf_x_core_time_get_dayhour(cf_x_core_time_t *time,
+    cf_x_core_dayhour_t *dayhour)
 {
   assert(time);
-  assert(days_hours_minutes_seconds);
+  assert(dayhour);
   unsigned long seconds_left;
 
   seconds_left = time->seconds;
 
-  days_hours_minutes_seconds->days = seconds_left / CF_X_CORE_SECONDS_PER_DAY;
-  seconds_left -= (days_hours_minutes_seconds->days
-      * CF_X_CORE_SECONDS_PER_DAY);
+  dayhour->days = seconds_left / CF_X_CORE_SECONDS_PER_DAY;
+  seconds_left -= (dayhour->days * CF_X_CORE_SECONDS_PER_DAY);
 
-  days_hours_minutes_seconds->hours = seconds_left / CF_X_CORE_SECONDS_PER_HOUR;
-  seconds_left -= (days_hours_minutes_seconds->hours
-      * CF_X_CORE_SECONDS_PER_HOUR);
+  dayhour->hours = seconds_left / CF_X_CORE_SECONDS_PER_HOUR;
+  seconds_left -= (dayhour->hours * CF_X_CORE_SECONDS_PER_HOUR);
 
-  days_hours_minutes_seconds->minutes = seconds_left
-    / CF_X_CORE_SECONDS_PER_MINUTE;
-  seconds_left -= (days_hours_minutes_seconds->minutes
-      * CF_X_CORE_SECONDS_PER_MINUTE);
+  dayhour->minutes = seconds_left / CF_X_CORE_SECONDS_PER_MINUTE;
+  seconds_left -= (dayhour->minutes * CF_X_CORE_SECONDS_PER_MINUTE);
 
-  days_hours_minutes_seconds->seconds = seconds_left;
+  dayhour->seconds = seconds_left;
 
 }

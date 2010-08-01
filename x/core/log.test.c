@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
   FILE *disk_file_a_fp;
   FILE *disk_file_b_fp;
 
-  disk_file_a = cf_x_file_basic_create("cf/x/audit/a.log",
+  disk_file_a = cf_x_file_basic_create("x/core/a.log",
       CF_X_FILE_MODE_TRUNCATE_OR_CREATE_FOR_WRITE);
   if (!disk_file_a) {
     cf_x_core_trace_exit("x_file_basic_create");
@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
   cf_x_core_log_enter(log, "haud", "::int=%d::double=%f::string=%s::", 11111,
       2.2222, "three");
 
-  disk_file_b = cf_x_file_basic_create("cf/x/audit/b.log",
+  disk_file_b = cf_x_file_basic_create("x/core/b.log",
       CF_X_FILE_MODE_TRUNCATE_OR_CREATE_FOR_WRITE);
   if (!disk_file_b) {
     cf_x_core_trace_exit("x_audit_file_create");
