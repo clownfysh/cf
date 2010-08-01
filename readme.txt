@@ -16,7 +16,7 @@ Install dependencies
   + ncurses                            ( http://en.wikipedia.org/wiki/Ncurses )
   + IJG JPEG                                            ( http://www.ijg.org/ )
 
-Develop and compile
+Make
   + "cd $CF"
   + "make help" explains the make commands
 
