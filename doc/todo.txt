@@ -4,4 +4,4 @@
 + move set's binary tree implementation into a binary tree module
 + stuff that's in various "tools" modules...sometimes has the system name
   prefix, sometimes doesn't...consistify
-+ add a cf_ prefix
++ rename x::case::xcache >> wait_cache or something?

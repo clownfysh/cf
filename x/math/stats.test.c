@@ -26,18 +26,18 @@ int main(int argc, char *argv[])
 
   int result = 0;
   int line = 0;
-  unsigned long ii = 0;
+  unsigned long i = 0;
 
   the_log = cf_x_core_log_create(stdout);
 
-  for (ii = 0; test_cases[ii].name != NULL; ii++) {
-    if ((line = test_cases[ii].test_function()) != 0) {
+  for (i = 0; test_cases[i].name != NULL; i++) {
+    if ((line = test_cases[i].test_function()) != 0) {
       cf_x_core_log_enter(the_log, "math", "... Test <%s> FAILED (here: %d)",
-          test_cases[ii].name, line);
+          test_cases[i].name, line);
       result++;
     } else {
       cf_x_core_log_enter(the_log, "math", "... Test <%s> passed",
-          test_cases[ii].name);
+          test_cases[i].name);
     }
   }
 
