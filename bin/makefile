@@ -1,4 +1,3 @@
-.PHONY: force
 compiler = gcc
 machine = $(shell uname -m)
 uname = $(shell uname)
@@ -108,10 +107,10 @@ _run_tests:
 %.o: %.c
 	@quiet-execute "$(mode_identifier) $@" "$(compiler) $< -o $@ -c $(compile_options)"
 
-%.test: %.test.c force
+%.test: %.test.c $(objects) $(external_objects)
 	@quiet-execute "$(mode_identifier) $@" "$(compiler) $< -o $@ $(objects) $(external_objects) $(compile_options) $(link_options)"
 
-%.bin: %.bin.c force
+%.bin: %.bin.c $(objects) $(external_objects)
 	@quiet-execute "$(mode_identifier) $@" "$(compiler) $< -o $@ $(objects) $(external_objects) $(compile_options) $(link_options)"
 
 include .makedepend
