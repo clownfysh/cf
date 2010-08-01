@@ -107,16 +107,16 @@ cf_x_core_bool_t cf_x_core_message_add_string(cf_x_core_message_t *message,
 {
   cf_x_core_bool_t success;
   char *new_data;
-  size_t string_size_witx_terminator;
+  size_t string_size_with_terminator;
 
-  string_size_witx_terminator = strlen(object) + 1;
+  string_size_with_terminator = strlen(object) + 1;
   new_data = realloc(message->data, message->data_size
-      + string_size_witx_terminator);
+      + string_size_with_terminator);
   if (new_data) {
     message->data = new_data;
     memcpy(message->data + message->data_size, object,
-        string_size_witx_terminator);
-    message->data_size += string_size_witx_terminator;
+        string_size_with_terminator);
+    message->data_size += string_size_with_terminator;
     success = cf_x_core_bool_true;
   } else {
     success = cf_x_core_bool_false;
@@ -383,15 +383,15 @@ short cf_x_core_message_take_short_value(cf_x_core_message_t *message)
 void *cf_x_core_message_take_string(cf_x_core_message_t *message)
 {
   char *string;
-  size_t string_size_witx_terminator;
+  size_t string_size_with_terminator;
 
-  string_size_witx_terminator
+  string_size_with_terminator
     = strlen(message->data + message->deserialize_position) + 1;
-  string = malloc(string_size_witx_terminator);
+  string = malloc(string_size_with_terminator);
   if (string) {
     memcpy(string, message->data + message->deserialize_position,
-        string_size_witx_terminator);
-    message->deserialize_position += string_size_witx_terminator;
+        string_size_with_terminator);
+    message->deserialize_position += string_size_with_terminator;
   } else {
     cf_x_core_trace("malloc");
   }

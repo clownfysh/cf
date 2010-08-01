@@ -54,7 +54,7 @@ struct cf_x_net_post_ipost_t {
 };
 typedef struct cf_x_net_post_ipost_t cf_x_net_post_ipost_t;
 
-void cf_x_net_post_ipost_init(cf_x_net_post_ipost_t *postey, cf_x_net_post_ipost_compare_f compare,
+void cf_x_net_post_ipost_init(cf_x_net_post_ipost_t *ipost, cf_x_net_post_ipost_compare_f compare,
     cf_x_net_post_ipost_create_f create, cf_x_net_post_ipost_create_decoy_f create_decoy,
     cf_x_net_post_ipost_destroy_f destroy, cf_x_net_post_ipost_destroy_decoy_f destroy_decoy,
 

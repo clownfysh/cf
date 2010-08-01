@@ -1,5 +1,5 @@
 #include "cf/inferno/ca/crow.h"
-#include "cf/inferno/ca/systemey.h"
+#include "cf/inferno/ca/isystem.h"
 #include "cf/x/core/tools.h"
 
 cf_inferno_ca_t cf_inferno_ca_crow_calculate_new_cell_state(cf_inferno_ca_system_t *system,
@@ -132,9 +132,9 @@ unsigned long cf_inferno_ca_crow_get_relative_cell_index(cf_inferno_ca_system_t 
   return relative_cell_index;
 }
 
-void cf_inferno_ca_crow_init_systemey(cf_inferno_ca_systemey_t *systemey, void *name_object)
+void cf_inferno_ca_crow_init_isystem(cf_inferno_ca_isystem_t *isystem, void *name_object)
 {
-  cf_inferno_ca_systemey_init(systemey, name_object,
+  cf_inferno_ca_isystem_init(isystem, name_object,
       cf_inferno_ca_crow_calculate_new_cell_state, CF_INFERNO_CA_NO_CREATE_CONTEXT_FUNCTION,
       CF_INFERNO_CA_NO_DESTROY_CONTEXT_FUNCTION, CF_INFERNO_CA_NO_END_TIME_STEP_FUNCTION,
       cf_inferno_ca_system_get_cell_color_binary, cf_inferno_ca_crow_get_relative_cell_index,

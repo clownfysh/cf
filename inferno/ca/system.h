@@ -2,13 +2,13 @@
 #define cf_inferno_ca_system_h
 
 #include "cf/inferno/ca/state.h"
-#include "cf/inferno/ca/systemey.h"
+#include "cf/inferno/ca/isystem.h"
 #include "cf/x/case/array.h"
 #include "cf/x/sync/run.h"
 
 cf_inferno_ca_system_t *cf_inferno_ca_system_create
 (cf_x_case_array_t *initial_state_history,
-    unsigned long initial_time_step_count, cf_inferno_ca_systemey_t *systemey);
+    unsigned long initial_time_step_count, cf_inferno_ca_isystem_t *isystem);
 
 void cf_inferno_ca_system_default_get_cell_color(cf_inferno_ca_t *cell,
     cf_x_core_color_t *color);

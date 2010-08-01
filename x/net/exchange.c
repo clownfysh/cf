@@ -4,25 +4,25 @@
 
 struct cf_x_net_exchange_t {
   cf_x_case_set_t *posts;
-  cf_x_net_post_ipost_t *postey;
-  cf_x_core_iobject_t postey_iobject;
+  cf_x_net_post_ipost_t *ipost;
+  cf_x_core_iobject_t ipost_iobject;
 };
 
-cf_x_net_exchange_t *cf_x_net_exchange_create(cf_x_net_post_ipost_t *postey)
+cf_x_net_exchange_t *cf_x_net_exchange_create(cf_x_net_post_ipost_t *ipost)
 {
-  assert(postey);
+  assert(ipost);
   cf_x_net_exchange_t *exchange;
   cf_x_core_bool_t success;
 
   exchange = malloc(sizeof *exchange);
   if (exchange) {
     success = cf_x_core_bool_true;
-    exchange->postey = postey;
-    cf_x_core_iobject_init(&exchange->postey_iobject, postey->compare,
+    exchange->ipost = ipost;
+    cf_x_core_iobject_init(&exchange->ipost_iobject, ipost->compare,
         CF_X_CORE_OBJECT_NO_COMPARE_EQUAL_F, CF_X_CORE_OBJECT_NO_COPY_F,
         CF_X_CORE_OBJECT_NO_DESTROY_F, CF_X_CORE_OBJECT_NO_GET_AS_STRING_F,
         CF_X_CORE_OBJECT_NO_MOD_F);
-    exchange->posts = cf_x_case_set_create(&exchange->postey_iobject);
+    exchange->posts = cf_x_case_set_create(&exchange->ipost_iobject);
     if (!exchange->posts) {
       cf_x_core_trace("x_case_set_create");
       success = cf_x_core_bool_false;
@@ -75,7 +75,7 @@ void cf_x_net_exchange_send_and_receive_messages(cf_x_net_exchange_t *exchange)
 
   cf_x_case_set_iterate_start(exchange->posts);
   while ((post_object = cf_x_case_set_iterate_next(exchange->posts))) {
-    socket = exchange->postey->get_socket(post_object);
+    socket = exchange->ipost->get_socket(post_object);
     FD_SET(socket, &read_sockets);
     FD_SET(socket, &write_sockets);
     if (socket > max_socket) {
@@ -87,12 +87,12 @@ void cf_x_net_exchange_send_and_receive_messages(cf_x_net_exchange_t *exchange)
           &select_timeout) > 0) {
     cf_x_case_set_iterate_start(exchange->posts);
     while ((post_object = cf_x_case_set_iterate_next(exchange->posts))) {
-      socket = exchange->postey->get_socket(post_object);
+      socket = exchange->ipost->get_socket(post_object);
       if (FD_ISSET(socket, &read_sockets)) {
-        exchange->postey->receive_messages(post_object);
+        exchange->ipost->receive_messages(post_object);
       }
       if (FD_ISSET(socket, &write_sockets)) {
-        exchange->postey->send_messages(post_object);
+        exchange->ipost->send_messages(post_object);
       }
     }
   }
@@ -104,7 +104,7 @@ cf_x_core_bool_t cf_x_net_exchange_unregister_post(cf_x_net_exchange_t *exchange
   void *decoy_post_object;
   cf_x_core_bool_t success;
 
-  decoy_post_object = exchange->postey->create_decoy(socket);
+  decoy_post_object = exchange->ipost->create_decoy(socket);
   if (decoy_post_object) {
     success = cf_x_core_bool_true;
     if (!cf_x_case_set_remove(exchange->posts, decoy_post_object)) {
@@ -112,9 +112,9 @@ cf_x_core_bool_t cf_x_net_exchange_unregister_post(cf_x_net_exchange_t *exchange
       cf_x_core_trace("x_case_set_remove");
       success = cf_x_core_bool_false;
     }
-    exchange->postey->destroy_decoy(decoy_post_object);
+    exchange->ipost->destroy_decoy(decoy_post_object);
   } else {
-    cf_x_core_trace("postey->create_decoy");
+    cf_x_core_trace("ipost->create_decoy");
     success = cf_x_core_bool_false;
   }
 

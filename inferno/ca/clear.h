@@ -15,7 +15,7 @@ void cf_inferno_ca_clear_destroy_context(void *context_object);
 
 void cf_inferno_ca_clear_end_time_step(cf_inferno_ca_system_t *system);
 
-void cf_inferno_ca_clear_init_systemey(cf_inferno_ca_systemey_t *systemey,
+void cf_inferno_ca_clear_init_isystem(cf_inferno_ca_isystem_t *isystem,
     void *name_object);
 
 void cf_inferno_ca_clear_start_time_step(cf_inferno_ca_system_t *system);

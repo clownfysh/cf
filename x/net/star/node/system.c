@@ -11,7 +11,7 @@
 struct cf_x_net_star_node_system_t {
   cf_x_net_server_system_t *server;
   cf_x_core_imessage_t messagey;
-  cf_x_net_post_ipost_t postey;
+  cf_x_net_post_ipost_t ipost;
 
   cf_x_net_star_client_system_t *starclient;
 
@@ -38,7 +38,7 @@ cf_x_net_star_node_system_t *cf_x_net_star_node_system_create(char *node_ip, uns
     cf_x_core_imessage_init(&node->messagey, cf_x_core_message_destroy,
         cf_x_core_message_get_client_socket,
         cf_x_core_message_get_engine_id, cf_x_core_message_get_type);
-    cf_x_net_post_ipost_init(&node->postey, cf_x_net_post_system_compare,
+    cf_x_net_post_ipost_init(&node->ipost, cf_x_net_post_system_compare,
         cf_x_net_post_system_create, cf_x_net_post_system_create_decoy,
         cf_x_net_post_system_destroy, cf_x_net_post_system_destroy_decoy,
         cf_x_net_post_system_get_last_receive_activity_time,
@@ -55,7 +55,7 @@ cf_x_net_star_node_system_t *cf_x_net_star_node_system_create(char *node_ip, uns
 
   if (so_far_so_good) {
     node->server = cf_x_net_server_system_create("standard", node_min_port,
-        node_max_port, node_max_threads, &node->messagey, &node->postey,
+        node_max_port, node_max_threads, &node->messagey, &node->ipost,
         CF_X_NET_ENGINE_NO_GET_NAME_FUNCTION, CF_X_NET_SERVER_SYSTEM_NO_CONFIG_SYSTEM, log);
     if (node->server) {
       so_far_so_good = cf_x_core_bool_true;
@@ -134,12 +134,12 @@ cf_x_net_star_client_system_t *cf_x_net_star_node_system_get_starclient(cf_x_net
 
 cf_x_core_bool_t cf_x_net_star_node_system_register_engine(cf_x_net_star_node_system_t *node,
     cf_x_net_engine_id_t engine_id, void *custom_server_context,
-    cf_x_net_engine_enginey_t *enginey, unsigned short min_run_threads,
+    cf_x_net_engine_iengine_t *iengine, unsigned short min_run_threads,
     unsigned short max_run_threads, cf_x_net_maintain_t maintain_schedule,
     unsigned long message_type_count)
 {
   return cf_x_net_server_system_register_engine(node->server, engine_id,
-      custom_server_context, enginey, min_run_threads, max_run_threads,
+      custom_server_context, iengine, min_run_threads, max_run_threads,
       maintain_schedule, message_type_count);
 }
 

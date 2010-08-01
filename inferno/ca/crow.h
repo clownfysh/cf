@@ -9,6 +9,6 @@ cf_inferno_ca_t cf_inferno_ca_crow_calculate_new_cell_state(cf_inferno_ca_system
 unsigned long cf_inferno_ca_crow_get_relative_cell_index(cf_inferno_ca_system_t *system,
     unsigned long cell_index, unsigned long relationship);
 
-void cf_inferno_ca_crow_init_systemey(cf_inferno_ca_systemey_t *systemey, void *name_object);
+void cf_inferno_ca_crow_init_isystem(cf_inferno_ca_isystem_t *isystem, void *name_object);
 
 #endif

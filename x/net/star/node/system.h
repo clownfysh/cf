@@ -24,7 +24,7 @@ cf_x_net_star_client_system_t *cf_x_net_star_node_system_get_starclient(cf_x_net
 
 cf_x_core_bool_t cf_x_net_star_node_system_register_engine(cf_x_net_star_node_system_t *node,
     cf_x_net_engine_id_t engine_id, void *custom_server_context,
-    cf_x_net_engine_enginey_t *enginey, unsigned short min_run_threads,
+    cf_x_net_engine_iengine_t *iengine, unsigned short min_run_threads,
     unsigned short max_run_threads, cf_x_net_maintain_t maintain_schedule,
     unsigned long message_type_count);
 

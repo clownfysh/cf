@@ -1,6 +1,6 @@
 #include "cf/x/net/post/ipost.h"
 
-void cf_x_net_post_ipost_init(cf_x_net_post_ipost_t *postey, cf_x_net_post_ipost_compare_f compare,
+void cf_x_net_post_ipost_init(cf_x_net_post_ipost_t *ipost, cf_x_net_post_ipost_compare_f compare,
     cf_x_net_post_ipost_create_f create, cf_x_net_post_ipost_create_decoy_f create_decoy,
     cf_x_net_post_ipost_destroy_f destroy, cf_x_net_post_ipost_destroy_decoy_f destroy_decoy,
 
@@ -14,19 +14,19 @@ void cf_x_net_post_ipost_init(cf_x_net_post_ipost_t *postey, cf_x_net_post_ipost
     cf_x_net_post_ipost_send_messages_f send_messages,
     cf_x_net_post_ipost_socket_closed_f socket_closed)
 {
-  assert(postey);
+  assert(ipost);
 
-  postey->compare = compare;
-  postey->create = create;
-  postey->create_decoy = create_decoy;
-  postey->destroy = destroy;
-  postey->destroy_decoy = destroy_decoy;
-  postey->get_last_receive_activity_time = get_last_receive_activity_time;
-  postey->get_socket = get_socket;
-  postey->get_stats = get_stats;
-  postey->receive_message = receive_message;
-  postey->receive_messages = receive_messages;
-  postey->send_message = send_message;
-  postey->send_messages = send_messages;
-  postey->socket_closed = socket_closed;
+  ipost->compare = compare;
+  ipost->create = create;
+  ipost->create_decoy = create_decoy;
+  ipost->destroy = destroy;
+  ipost->destroy_decoy = destroy_decoy;
+  ipost->get_last_receive_activity_time = get_last_receive_activity_time;
+  ipost->get_socket = get_socket;
+  ipost->get_stats = get_stats;
+  ipost->receive_message = receive_message;
+  ipost->receive_messages = receive_messages;
+  ipost->send_message = send_message;
+  ipost->send_messages = send_messages;
+  ipost->socket_closed = socket_closed;
 }

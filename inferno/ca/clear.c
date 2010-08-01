@@ -111,9 +111,9 @@ void cf_inferno_ca_clear_end_time_step(cf_inferno_ca_system_t *system)
   clear_context = cf_inferno_ca_system_get_context(system);
 }
 
-void cf_inferno_ca_clear_init_systemey(cf_inferno_ca_systemey_t *systemey, void *name_object)
+void cf_inferno_ca_clear_init_isystem(cf_inferno_ca_isystem_t *isystem, void *name_object)
 {
-  cf_inferno_ca_systemey_init(systemey, name_object,
+  cf_inferno_ca_isystem_init(isystem, name_object,
       cf_inferno_ca_clear_calculate_new_cell_state, cf_inferno_ca_clear_create_context,
       cf_inferno_ca_clear_destroy_context, cf_inferno_ca_clear_end_time_step,
       cf_inferno_ca_system_get_cell_color_binary,

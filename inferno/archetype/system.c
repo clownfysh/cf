@@ -216,9 +216,9 @@ cf_x_core_bit_t cf_inferno_archetype_system_classify_object(void *system_void,
   return class;
 }
 
-void cf_inferno_archetype_system_init_classifyey(cf_inferno_classify_classifyey_t *classifyey)
+void cf_inferno_archetype_system_init_iclassify(cf_inferno_classify_iclassify_t *iclassify)
 {
-  return cf_inferno_classify_classifyey_init(classifyey, cf_inferno_archetype_system_create,
+  return cf_inferno_classify_iclassify_init(iclassify, cf_inferno_archetype_system_create,
       cf_inferno_archetype_system_destroy, cf_inferno_archetype_system_classify_object,
       cf_inferno_archetype_system_learn, cf_inferno_archetype_system_observe_object);
 }

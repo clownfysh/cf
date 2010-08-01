@@ -446,28 +446,28 @@ unsigned long get_position_index_for_observe_location(cf_inferno_bios_actor_t *a
 
   box = cf_inferno_bios_system_get_box(actor->system);
 
-  cf_inferno_box_coordinate_init_witx_xyz(&relation, 0, 0, 1);
+  cf_inferno_box_coordinate_init_with_xyz(&relation, 0, 0, 1);
   actor_0 = cf_inferno_box_system_find_relative(box, actor, &relation);
 
-  cf_inferno_box_coordinate_init_witx_xyz(&relation, 1, 0, 1);
+  cf_inferno_box_coordinate_init_with_xyz(&relation, 1, 0, 1);
   actor_1 = cf_inferno_box_system_find_relative(box, actor, &relation);
 
-  cf_inferno_box_coordinate_init_witx_xyz(&relation, 2, 0, 1);
+  cf_inferno_box_coordinate_init_with_xyz(&relation, 2, 0, 1);
   actor_2 = cf_inferno_box_system_find_relative(box, actor, &relation);
 
-  cf_inferno_box_coordinate_init_witx_xyz(&relation, 2, 1, 1);
+  cf_inferno_box_coordinate_init_with_xyz(&relation, 2, 1, 1);
   actor_3 = cf_inferno_box_system_find_relative(box, actor, &relation);
 
-  cf_inferno_box_coordinate_init_witx_xyz(&relation, 2, 2, 1);
+  cf_inferno_box_coordinate_init_with_xyz(&relation, 2, 2, 1);
   actor_4 = cf_inferno_box_system_find_relative(box, actor, &relation);
 
-  cf_inferno_box_coordinate_init_witx_xyz(&relation, 1, 2, 1);
+  cf_inferno_box_coordinate_init_with_xyz(&relation, 1, 2, 1);
   actor_5 = cf_inferno_box_system_find_relative(box, actor, &relation);
 
-  cf_inferno_box_coordinate_init_witx_xyz(&relation, 0, 2, 1);
+  cf_inferno_box_coordinate_init_with_xyz(&relation, 0, 2, 1);
   actor_6 = cf_inferno_box_system_find_relative(box, actor, &relation);
 
-  cf_inferno_box_coordinate_init_witx_xyz(&relation, 0, 1, 1);
+  cf_inferno_box_coordinate_init_with_xyz(&relation, 0, 1, 1);
   actor_7 = cf_inferno_box_system_find_relative(box, actor, &relation);
 
   observed_0 = cf_x_core_bitarray_get_bit(actor_0->solution, observe_location);
@@ -752,9 +752,9 @@ cf_x_core_bitarray_t *cf_inferno_bios_actor_get_solution(void *actor_void)
   return actor->solution;
 }
 
-void cf_inferno_bios_actor_init_actorey(cf_inferno_core_actorey_t *actorey)
+void cf_inferno_bios_actor_init_iactor(cf_inferno_core_iactor_t *iactor)
 {
-  cf_inferno_core_actorey_init(actorey,
+  cf_inferno_core_iactor_init(iactor,
       cf_inferno_bios_actor_create, cf_inferno_bios_actor_create_random,
       cf_inferno_bios_actor_compare_minimize, cf_inferno_bios_actor_copy,
       cf_inferno_bios_actor_destroy, cf_inferno_bios_actor_get_box_cell,

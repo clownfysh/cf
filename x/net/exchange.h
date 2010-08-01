@@ -6,7 +6,7 @@
 struct cf_x_net_exchange_t;
 typedef struct cf_x_net_exchange_t cf_x_net_exchange_t;
 
-cf_x_net_exchange_t *cf_x_net_exchange_create(cf_x_net_post_ipost_t *postey);
+cf_x_net_exchange_t *cf_x_net_exchange_create(cf_x_net_post_ipost_t *ipost);
 
 void cf_x_net_exchange_destroy(cf_x_net_exchange_t *exchange);
 

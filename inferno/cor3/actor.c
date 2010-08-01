@@ -408,9 +408,9 @@ cf_x_core_bitarray_t *cf_inferno_cor3_actor_get_solution(void *actor_void)
   return actor->solution;
 }
 
-void cf_inferno_cor3_actor_init_actorey(cf_inferno_core_actorey_t *actorey)
+void cf_inferno_cor3_actor_init_iactor(cf_inferno_core_iactor_t *iactor)
 {
-  cf_inferno_core_actorey_init(actorey, cf_inferno_cor3_actor_create,
+  cf_inferno_core_iactor_init(iactor, cf_inferno_cor3_actor_create,
       cf_inferno_cor3_actor_create_random, cf_inferno_cor3_actor_compare_minimize,
       cf_inferno_cor3_actor_copy, cf_inferno_cor3_actor_destroy, cf_inferno_cor3_actor_get_box_cell,
       cf_inferno_cor3_actor_set_box_cell);

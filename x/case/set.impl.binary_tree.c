@@ -59,7 +59,7 @@ static void print(cf_x_case_set_t *set, set_object_t *base_set_object);
 static set_object_t *put_object(cf_x_case_set_t *set,
     set_object_t *base_set_object, void *object, set_object_t *parent);
 
-static void remove_set_object_botx_children(cf_x_case_set_t *set,
+static void remove_set_object_both_children(cf_x_case_set_t *set,
     set_object_t *set_object);
 static void remove_set_object_left_child_only(cf_x_case_set_t *set,
     set_object_t *set_object);
@@ -131,7 +131,7 @@ void _x_case_set_remove_set_object(cf_x_case_set_t *set,
     remove_set_object_right_child_only(set, set_object);
 
   } else {
-    remove_set_object_botx_children(set, set_object);
+    remove_set_object_both_children(set, set_object);
 
   }
 
@@ -481,7 +481,7 @@ set_object_t *put_object(cf_x_case_set_t *set, set_object_t *base_set_object,
   return new_set_object;
 }
 
-void remove_set_object_botx_children(cf_x_case_set_t *set,
+void remove_set_object_both_children(cf_x_case_set_t *set,
     set_object_t *set_object)
 {
   set_object_t *set_object_2;

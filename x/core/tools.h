@@ -74,7 +74,7 @@ void cf_x_core_request_stop();
 
 void cf_x_core_seed_random(unsigned long seed);
 
-void cf_x_core_seed_random_witx_time();
+void cf_x_core_seed_random_with_time();
 
 void cf_x_core_set_bit_in_unsigned_char(unsigned char *c,
     unsigned short bit_index, cf_x_core_bit_t bit_value);

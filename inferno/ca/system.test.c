@@ -84,17 +84,17 @@ void test_ant(char *name)
   unsigned long cell_count;
   cf_x_sync_run_t *run;
   char *filename;
-  cf_inferno_ca_systemey_t cell_systemey;
+  cf_inferno_ca_isystem_t cell_isystem;
 
   cell_count = 256;
   initial_time_step_count = 256;
   initial_state_history
     = cf_inferno_ca_create_initial_state_single_cell_binary(cell_count, 2);
 
-  cf_inferno_ca_ant_init_systemey(&cell_systemey, name);
+  cf_inferno_ca_ant_init_isystem(&cell_isystem, name);
 
   cell_system = cf_inferno_ca_system_create(initial_state_history,
-      initial_time_step_count, &cell_systemey);
+      initial_time_step_count, &cell_isystem);
   if (!cell_system) {
     cf_x_core_trace("inferno_ca_system_create");
   }
@@ -133,17 +133,17 @@ void test_clear(unsigned short name)
   unsigned long cell_count;
   cf_x_sync_run_t *run;
   char *filename;
-  cf_inferno_ca_systemey_t cell_systemey;
+  cf_inferno_ca_isystem_t cell_isystem;
 
   cell_count = 256;
   initial_time_step_count = 256;
   initial_state_history
     = cf_inferno_ca_create_initial_state_single_cell_binary(cell_count, 1);
 
-  cf_inferno_ca_clear_init_systemey(&cell_systemey, &name);
+  cf_inferno_ca_clear_init_isystem(&cell_isystem, &name);
 
   cell_system = cf_inferno_ca_system_create(initial_state_history,
-      initial_time_step_count, &cell_systemey);
+      initial_time_step_count, &cell_isystem);
   if (!cell_system) {
     cf_x_core_trace("inferno_ca_system_create");
   }
@@ -182,17 +182,17 @@ void test_crow(unsigned short name)
   unsigned long cell_count;
   cf_x_sync_run_t *run;
   char *filename;
-  cf_inferno_ca_systemey_t cell_systemey;
+  cf_inferno_ca_isystem_t cell_isystem;
 
   cell_count = 128;
   initial_time_step_count = 128;
   initial_state_history
     = cf_inferno_ca_create_initial_state_single_cell_binary(cell_count, 2);
 
-  cf_inferno_ca_crow_init_systemey(&cell_systemey, &name);
+  cf_inferno_ca_crow_init_isystem(&cell_isystem, &name);
 
   cell_system = cf_inferno_ca_system_create(initial_state_history,
-      initial_time_step_count, &cell_systemey);
+      initial_time_step_count, &cell_isystem);
   if (!cell_system) {
     cf_x_core_trace("inferno_ca_system_create");
   }
@@ -231,17 +231,17 @@ void test_eca(unsigned short name)
   unsigned long cell_count;
   cf_x_sync_run_t *run;
   char *filename;
-  cf_inferno_ca_systemey_t cell_systemey;
+  cf_inferno_ca_isystem_t cell_isystem;
 
   cell_count = 79;
   initial_time_step_count = 25;
   initial_state_history
     = cf_inferno_ca_create_initial_state_single_cell_binary(cell_count, 1);
 
-  cf_inferno_ca_eca_init_systemey(&cell_systemey, &name);
+  cf_inferno_ca_eca_init_isystem(&cell_isystem, &name);
 
   cell_system = cf_inferno_ca_system_create(initial_state_history,
-      initial_time_step_count, &cell_systemey);
+      initial_time_step_count, &cell_isystem);
   if (!cell_system) {
     cf_x_core_trace("inferno_ca_system_create");
   }
@@ -281,17 +281,17 @@ void test_fly(char *name)
   unsigned long cell_count;
   cf_x_sync_run_t *run;
   char *filename;
-  cf_inferno_ca_systemey_t cell_systemey;
+  cf_inferno_ca_isystem_t cell_isystem;
 
   cell_count = 256;
   initial_time_step_count = 256;
   initial_state_history
     = cf_inferno_ca_create_initial_state_single_cell_binary(cell_count, 2);
 
-  cf_inferno_ca_fly_init_systemey(&cell_systemey, name);
+  cf_inferno_ca_fly_init_isystem(&cell_isystem, name);
 
   cell_system = cf_inferno_ca_system_create(initial_state_history,
-      initial_time_step_count, &cell_systemey);
+      initial_time_step_count, &cell_isystem);
   if (!cell_system) {
     cf_x_core_trace("inferno_ca_system_create");
   }
@@ -331,7 +331,7 @@ void test_k3(unsigned long name)
   unsigned long cell_count;
   cf_x_sync_run_t *run;
   char *filename;
-  cf_inferno_ca_systemey_t cell_systemey;
+  cf_inferno_ca_isystem_t cell_isystem;
 
   filename = malloc(128);
   if (!filename) {
@@ -343,10 +343,10 @@ void test_k3(unsigned long name)
   initial_state_history
     = cf_inferno_ca_create_initial_state_single_cell_k3(cell_count);
 
-  cf_inferno_ca_k3_init_systemey(&cell_systemey, &name);
+  cf_inferno_ca_k3_init_isystem(&cell_isystem, &name);
 
   cell_system = cf_inferno_ca_system_create(initial_state_history,
-      initial_time_step_count, &cell_systemey);
+      initial_time_step_count, &cell_isystem);
   if (!cell_system) {
     cf_x_core_trace("inferno_ca_system_create");
   }
@@ -379,17 +379,17 @@ void test_malice(char *name)
   unsigned long cell_count;
   cf_x_sync_run_t *run;
   char *filename;
-  cf_inferno_ca_systemey_t cell_systemey;
+  cf_inferno_ca_isystem_t cell_isystem;
 
   cell_count = 128;
   initial_time_step_count = 256;
   initial_state_history
     = cf_inferno_ca_create_initial_state_single_cell_binary(cell_count, 2);
 
-  cf_inferno_ca_malice_init_systemey(&cell_systemey, name);
+  cf_inferno_ca_malice_init_isystem(&cell_isystem, name);
 
   cell_system = cf_inferno_ca_system_create(initial_state_history,
-      initial_time_step_count, &cell_systemey);
+      initial_time_step_count, &cell_isystem);
   if (!cell_system) {
     cf_x_core_trace("inferno_ca_system_create");
   }
@@ -428,17 +428,17 @@ void test_water(char *name)
   unsigned long cell_count;
   cf_x_sync_run_t *run;
   char *filename;
-  cf_inferno_ca_systemey_t cell_systemey;
+  cf_inferno_ca_isystem_t cell_isystem;
 
   cell_count = 256;
   initial_time_step_count = 512;
   initial_state_history
     = cf_inferno_ca_create_initial_state_single_cell_binary(cell_count, 3);
 
-  cf_inferno_ca_water_init_systemey(&cell_systemey, name);
+  cf_inferno_ca_water_init_isystem(&cell_isystem, name);
 
   cell_system = cf_inferno_ca_system_create(initial_state_history,
-      initial_time_step_count, &cell_systemey);
+      initial_time_step_count, &cell_isystem);
   if (!cell_system) {
     cf_x_core_trace("inferno_ca_system_create");
   }
@@ -477,7 +477,7 @@ int main(int argc, char *argv[])
   char malice_name[65];
   char water_name[513];
 
-  cf_x_core_seed_random_witx_time();
+  cf_x_core_seed_random_with_time();
 
   if (cf_x_core_bool_false) {
 

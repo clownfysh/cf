@@ -294,9 +294,9 @@ cf_x_core_bitarray_t *cf_inferno_eos_actor_get_solution(void *actor_void)
   return actor->solution;
 }
 
-void cf_inferno_eos_actor_init_actorey(cf_inferno_core_actorey_t *actorey)
+void cf_inferno_eos_actor_init_iactor(cf_inferno_core_iactor_t *iactor)
 {
-  cf_inferno_core_actorey_init(actorey,
+  cf_inferno_core_iactor_init(iactor,
       cf_inferno_eos_actor_create, cf_inferno_eos_actor_create_random,
       cf_inferno_eos_actor_compare_minimize, cf_inferno_eos_actor_copy,
       cf_inferno_eos_actor_destroy, cf_inferno_eos_actor_get_box_cell,
@@ -383,7 +383,7 @@ void move_actor(cf_inferno_eos_actor_t *actor)
       }
     }
   } else {
-    cf_inferno_box_coordinate_init_witx_xyz(&coordinate, 2 - move_gene.x,
+    cf_inferno_box_coordinate_init_with_xyz(&coordinate, 2 - move_gene.x,
         2 - move_gene.y, 2 - move_gene.z);
     target_actor = cf_inferno_box_system_find_relative(box, actor, &coordinate);
     if (!target_actor) {

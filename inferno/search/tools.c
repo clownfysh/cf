@@ -7,7 +7,7 @@ static cf_x_core_bool_t init_box_add_random_actors(cf_inferno_box_system_t *box,
     cf_x_core_log_t *log);
 
 static cf_x_core_bool_t init_box_add_actors_from_initial_solutions
-(cf_inferno_box_system_t *box, cf_inferno_core_actorey_create_f actor_create,
+(cf_inferno_box_system_t *box, cf_inferno_core_iactor_create_f actor_create,
     void *searcx_system, cf_x_case_array_t *initial_solutions,
     cf_x_core_log_t *log);
 
@@ -88,23 +88,23 @@ cf_x_case_array_t *cf_inferno_core_create_solutions_from_box(cf_inferno_box_syst
 
 cf_inferno_box_system_t *cf_inferno_core_create_actor_box(void *searcx_system,
     cf_inferno_box_coordinate_t *dimension_coordinate,
-    cf_x_case_array_t *initial_solutions, cf_inferno_core_actorey_t *actorey,
+    cf_x_case_array_t *initial_solutions, cf_inferno_core_iactor_t *iactor,
     cf_x_core_log_t *log)
 {
   assert(searcx_system);
   assert(dimension_coordinate);
-  assert(actorey);
+  assert(iactor);
   assert(log);
   cf_inferno_box_system_t *box;
 
-  box = cf_inferno_box_system_create(dimension_coordinate, actorey->get_box_cell,
-      actorey->set_box_cell, actorey->compare, actorey->copy, actorey->destroy,
+  box = cf_inferno_box_system_create(dimension_coordinate, iactor->get_box_cell,
+      iactor->set_box_cell, iactor->compare, iactor->copy, iactor->destroy,
       log);
   if (box) {
     if (init_box_add_random_actors(box, dimension_coordinate,
-            actorey->create_random, searcx_system, log)) {
+            iactor->create_random, searcx_system, log)) {
       if (initial_solutions) {
-        if (!init_box_add_actors_from_initial_solutions(box, actorey->create,
+        if (!init_box_add_actors_from_initial_solutions(box, iactor->create,
                 searcx_system, initial_solutions, log)) {
           cf_inferno_box_system_destroy(box);
           box = NULL;
@@ -165,7 +165,7 @@ cf_x_core_bool_t init_box_add_random_actors(cf_inferno_box_system_t *box,
 
 /*  TODO: sort this array ourselves, by solution score  */
 cf_x_core_bool_t init_box_add_actors_from_initial_solutions(cf_inferno_box_system_t *box,
-    cf_inferno_core_actorey_create_f actor_create, void *searcx_system,
+    cf_inferno_core_iactor_create_f actor_create, void *searcx_system,
     cf_x_case_array_t *initial_solutions, cf_x_core_log_t *log)
 {
   assert(box);

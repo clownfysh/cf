@@ -1,4 +1,4 @@
-#include "cf/inferno/core/actorey.h"
+#include "cf/inferno/classify/iclassify.h"
 
 int main(int argc, char *argv[])
 {

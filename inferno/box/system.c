@@ -158,7 +158,7 @@ cf_inferno_box_cell_t *cf_inferno_box_cell_create(cf_inferno_box_system_t *syste
   cell = malloc(sizeof *cell);
   if (cell) {
     cell->system = system;
-    cf_inferno_box_coordinate_init_witx_coordinate(&cell->coordinate, coordinate);
+    cf_inferno_box_coordinate_init_with_coordinate(&cell->coordinate, coordinate);
     cell->object = NULL;
     for (each_x = 0; each_x < 3; each_x++) {
       for (each_y = 0; each_y < 3; each_y++) {
@@ -213,7 +213,7 @@ void cf_inferno_box_system_add_random(cf_inferno_box_system_t *system, void *obj
   assert(object);
   cf_inferno_box_coordinate_t coordinate;
 
-  cf_inferno_box_coordinate_init_witx_random(&coordinate,
+  cf_inferno_box_coordinate_init_with_random(&coordinate,
       &system->dimension_coordinate);
   cf_inferno_box_system_add(system, &coordinate, object);
 }
@@ -424,7 +424,7 @@ void cf_inferno_box_system_replace_random(cf_inferno_box_system_t *system, void 
   assert(object);
   cf_inferno_box_coordinate_t coordinate;
 
-  cf_inferno_box_coordinate_init_witx_random(&coordinate,
+  cf_inferno_box_coordinate_init_with_random(&coordinate,
       &system->dimension_coordinate);
 
   cf_inferno_box_system_remove(system, &coordinate);

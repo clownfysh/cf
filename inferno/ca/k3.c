@@ -144,9 +144,9 @@ unsigned long cf_inferno_ca_k3_get_relative_cell_index(cf_inferno_ca_system_t *s
   return cf_inferno_ca_eca_get_relative_cell_index(system, cell_index, relationship);
 }
 
-void cf_inferno_ca_k3_init_systemey(cf_inferno_ca_systemey_t *systemey, void *name_object)
+void cf_inferno_ca_k3_init_isystem(cf_inferno_ca_isystem_t *isystem, void *name_object)
 {
-  cf_inferno_ca_systemey_init(systemey, name_object,
+  cf_inferno_ca_isystem_init(isystem, name_object,
       cf_inferno_ca_k3_calculate_new_cell_state, cf_inferno_ca_k3_create_context,
       cf_inferno_ca_k3_destroy_context, CF_INFERNO_CA_NO_END_TIME_STEP_FUNCTION,
       cf_inferno_ca_k3_get_cell_color, cf_inferno_ca_k3_get_relative_cell_index,

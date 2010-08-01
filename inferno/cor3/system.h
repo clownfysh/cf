@@ -3,7 +3,7 @@
 
 #include "cf/inferno/cor3/tools.h"
 #include "cf/inferno/core/goal.h"
-#include "cf/inferno/search/searchey.h"
+#include "cf/inferno/search/isearch.h"
 #include "cf/inferno/search/tools.h"
 #include "cf/x/core/tools.h"
 
@@ -27,7 +27,7 @@ cf_inferno_core_score_solution_f cf_inferno_cor3_system_get_score_solution
 cf_x_case_array_t *cf_inferno_cor3_system_get_solutions_copy(void *system_object,
     unsigned short max_solution_count);
 
-void cf_inferno_cor3_system_init_searchey(cf_inferno_searcx_searchey_t *searchey);
+void cf_inferno_cor3_system_init_isearch(cf_inferno_searcx_isearch_t *isearch);
 
 void cf_inferno_cor3_system_search(void *system_object);
 

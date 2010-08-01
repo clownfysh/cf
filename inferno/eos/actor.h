@@ -1,7 +1,7 @@
 #ifndef cf_inferno_eos_actor_h
 #define cf_inferno_eos_actor_h
 
-#include "cf/inferno/core/actorey.h"
+#include "cf/inferno/core/iactor.h"
 #include "cf/inferno/eos/tools.h"
 
 void cf_inferno_eos_actor_act(cf_inferno_eos_actor_t *actor);
@@ -22,7 +22,7 @@ void *cf_inferno_eos_actor_get_box_cell(void *actor_void);
 
 cf_x_core_bitarray_t *cf_inferno_eos_actor_get_solution(void *actor_void);
 
-void cf_inferno_eos_actor_init_actorey(cf_inferno_core_actorey_t *actorey);
+void cf_inferno_eos_actor_init_iactor(cf_inferno_core_iactor_t *iactor);
 
 void cf_inferno_eos_actor_set_box_cell(void *actor_void, void *box_cell);
 

@@ -153,7 +153,7 @@ void cf_x_core_seed_random(unsigned long seed)
   srandom(seed);
 }
 
-void cf_x_core_seed_random_witx_time()
+void cf_x_core_seed_random_with_time()
 {
   srandom(time(NULL));
 }

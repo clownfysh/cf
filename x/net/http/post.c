@@ -473,18 +473,18 @@ void cf_x_net_http_post_send_messages(void *hyperpost_object)
   }
 }
 
-cf_x_net_hypermethod_t parse_hypermethod(char *resource_patx_string)
+cf_x_net_hypermethod_t parse_hypermethod(char *resource_path_string)
 {
-  assert(resource_patx_string);
+  assert(resource_path_string);
   cf_x_net_hypermethod_t hypermethod;
 
-  if (0 == strcmp(resource_patx_string, "GET")) {
+  if (0 == strcmp(resource_path_string, "GET")) {
     hypermethod = CF_X_NET_HYPERMETHOD_GET;
 
-  } else if (0 == strcmp(resource_patx_string, "HEAD")) {
+  } else if (0 == strcmp(resource_path_string, "HEAD")) {
     hypermethod = CF_X_NET_HYPERMETHOD_HEAD;
 
-  } else if (0 == strcmp(resource_patx_string, "POST")) {
+  } else if (0 == strcmp(resource_path_string, "POST")) {
     hypermethod = CF_X_NET_HYPERMETHOD_POST;
 
   } else {
@@ -544,7 +544,7 @@ void parse_incoming_message_status_line(cf_x_net_http_post_t *hyperpost)
   unsigned short line_size;
   char *line;
   char *hypermethod_string;
-  char *resource_patx_string;
+  char *resource_path_string;
   char *hyperversion_string;
   char *strtok_r_char;
 
@@ -562,12 +562,12 @@ void parse_incoming_message_status_line(cf_x_net_http_post_t *hyperpost)
       *(line + line_size) = '\0';
 
       hypermethod_string = strtok_r(line, " ", &strtok_r_char);
-      resource_patx_string = strtok_r(NULL, " ", &strtok_r_char);
+      resource_path_string = strtok_r(NULL, " ", &strtok_r_char);
       hyperversion_string = strtok_r(NULL, " ", &strtok_r_char);
 
-      if (hypermethod_string && resource_patx_string && hyperversion_string) {
+      if (hypermethod_string && resource_path_string && hyperversion_string) {
         hyperpost->in_hypermethod = parse_hypermethod(hypermethod_string);
-        hyperpost->in_resource_path = strdup(resource_patx_string);
+        hyperpost->in_resource_path = strdup(resource_path_string);
         hyperpost->in_hyperversion = parse_hyperversion(hyperversion_string);
         hyperpost->in_buffer_have_status_line = cf_x_core_bool_true;
         hyperpost->in_buffer_parse_position += line_size + 2;

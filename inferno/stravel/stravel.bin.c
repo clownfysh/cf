@@ -133,7 +133,7 @@ void create_random_points(stravel_t *stravel)
 
   stravel->point_count = RANDOM_POINT_COUNT;
 
-  cf_x_core_seed_random_witx_time();
+  cf_x_core_seed_random_with_time();
   for (i = 0; i < stravel->point_count; i++) {
     stravel->points[i][0] = ((random() % 1000000) / 1000000.0) * POINT_RANGE;
     stravel->points[i][1] = ((random() % 1000000) / 1000000.0) * POINT_RANGE;

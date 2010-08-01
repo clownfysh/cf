@@ -7,13 +7,13 @@ struct cf_inferno_computer_system_t {
   cf_inferno_computer_output_t *computations;
 };
 
-static void compute_witx_logic(cf_inferno_computer_system_t *system);
+static void compute_with_logic(cf_inferno_computer_system_t *system);
 
 static void free_computations(cf_inferno_computer_system_t *system);
 
 static void init_computations(cf_inferno_computer_system_t *system);
 
-void compute_witx_logic(cf_inferno_computer_system_t *system)
+void compute_with_logic(cf_inferno_computer_system_t *system)
 {
   assert(system);
   unsigned long each_computation;
@@ -42,7 +42,7 @@ cf_inferno_computer_system_t *cf_inferno_computer_system_create(unsigned long or
     system->computations = malloc(order * sizeof(cf_inferno_computer_output_t));
     if (system->computations) {
       init_computations(system);
-      compute_witx_logic(system);
+      compute_with_logic(system);
     } else {
       cf_x_core_trace("malloc");
       free(system);

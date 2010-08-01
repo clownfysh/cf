@@ -2,16 +2,16 @@
 #include "cf/inferno/cor3/system.h"
 #include "cf/inferno/eos/system.h"
 #include "cf/inferno/genetic/system.h"
-#include "cf/inferno/search/searchey.h"
+#include "cf/inferno/search/isearch.h"
 #include "cf/inferno/search/system.h"
 #include "cf/x/core/tools.h"
 
 struct cf_inferno_searcx_system_t {
-  cf_inferno_searcx_searchey_t searchey;
+  cf_inferno_searcx_isearch_t isearch;
   void *searcx_object;
 };
 
-static void init_searchey(cf_inferno_searcx_searchey_t *searchey,
+static void init_isearch(cf_inferno_searcx_isearch_t *isearch,
     cf_inferno_searcx_algorithm_t algorithm);
 
 cf_inferno_searcx_system_t *cf_inferno_searcx_system_create
@@ -25,8 +25,8 @@ cf_inferno_searcx_system_t *cf_inferno_searcx_system_create
 
   search = malloc(sizeof *search);
   if (search) {
-    init_searchey(&search->searchey, algorithm);
-    search->searcx_object = search->searchey.create(score_solution, goal,
+    init_isearch(&search->isearch, algorithm);
+    search->searcx_object = search->isearch.create(score_solution, goal,
         context, initial_solutions, log);
     if (!search->searcx_object) {
       cf_x_core_trace("create");
@@ -43,7 +43,7 @@ cf_inferno_searcx_system_t *cf_inferno_searcx_system_create
 void cf_inferno_searcx_system_destroy(cf_inferno_searcx_system_t *system)
 {
   assert(system);
-  system->searchey.destroy(system->searcx_object);
+  system->isearch.destroy(system->searcx_object);
   free(system);
 }
 
@@ -57,7 +57,7 @@ cf_x_case_array_t *cf_inferno_searcx_system_get_solutions_copy
       CF_INFERNO_CORE_DEMO_SOLUTION_COUNT);
 #endif
 
-  return system->searchey.get_solutions_copy(system->searcx_object,
+  return system->isearch.get_solutions_copy(system->searcx_object,
       max_solution_count);
 }
 
@@ -70,29 +70,29 @@ void cf_inferno_searcx_system_search(cf_inferno_searcx_system_t *system,
   gettimeofday(&start_time, NULL);
 
   do {
-    system->searchey.search(system->searcx_object);
+    system->isearch.search(system->searcx_object);
   } while (cf_x_core_time_is_remaining_microseconds
       (&start_time, max_wall_time_microseconds));
 }
 
-void init_searchey(cf_inferno_searcx_searchey_t *searchey,
+void init_isearch(cf_inferno_searcx_isearch_t *isearch,
     cf_inferno_searcx_algorithm_t algorithm)
 {
-  assert(searchey);
+  assert(isearch);
 
   switch (algorithm) {
     default:
     case CF_INFERNO_SEARCX_ALGORITHM_BIOS:
-      cf_inferno_bios_system_init_searchey(searchey);
+      cf_inferno_bios_system_init_isearch(isearch);
       break;
     case CF_INFERNO_SEARCX_ALGORITHM_COR3:
-      cf_inferno_cor3_system_init_searchey(searchey);
+      cf_inferno_cor3_system_init_isearch(isearch);
       break;
     case CF_INFERNO_SEARCX_ALGORITHM_EOS:
-      cf_inferno_eos_system_init_searchey(searchey);
+      cf_inferno_eos_system_init_isearch(isearch);
       break;
     case CF_INFERNO_SEARCX_ALGORITHM_GENETIC:
-      cf_inferno_genetic_system_init_searchey(searchey);
+      cf_inferno_genetic_system_init_isearch(isearch);
       break;
   }
 }

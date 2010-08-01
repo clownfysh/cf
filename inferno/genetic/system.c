@@ -1,6 +1,6 @@
 #include "cf/inferno/core/goal.h"
 #include "cf/inferno/genetic/system.h"
-#include "cf/inferno/search/searchey.h"
+#include "cf/inferno/search/isearch.h"
 #include "cf/inferno/search/tools.h"
 #include "cf/x/core/log.h"
 #include "cf/x/case/array.h"
@@ -25,9 +25,9 @@ cf_x_case_array_t *cf_inferno_genetic_system_get_solutions_copy(void *system_obj
   return NULL;
 }
 
-void cf_inferno_genetic_system_init_searchey(cf_inferno_searcx_searchey_t *searchey)
+void cf_inferno_genetic_system_init_isearch(cf_inferno_searcx_isearch_t *isearch)
 {
-  cf_inferno_searcx_searchey_init(searchey, cf_inferno_genetic_system_create,
+  cf_inferno_searcx_isearch_init(isearch, cf_inferno_genetic_system_create,
       cf_inferno_genetic_system_destroy, cf_inferno_genetic_system_get_solutions_copy,
       cf_inferno_genetic_system_search);
 }

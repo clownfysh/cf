@@ -96,10 +96,10 @@ static void re_route_unsent_messages(cf_x_net_star_client_system_t *starclient);
 
 static void rebuild_client_list(cf_x_net_star_client_system_t *starclient);
 
-static cf_x_core_bool_t register_engines_witx_client
+static cf_x_core_bool_t register_engines_with_client
 (cf_x_net_star_client_system_t *starclient, cf_x_net_client_system_t *client);
 
-static void register_message_handlers_witx_client
+static void register_message_handlers_with_client
 (cf_x_net_star_client_system_t *starclient, cf_x_net_client_system_t *client);
 
 static void take_unsent_messages(cf_x_net_star_client_system_t *starclient,
@@ -200,13 +200,13 @@ void establisx_connection(cf_x_net_star_client_system_t *starclient, char *clien
         cf_x_net_client_system_get_as_string);
     if (nameclient) {
       if (cf_x_case_set_add(starclient->clients, nameclient)) {
-        if (register_engines_witx_client(starclient, client)) {
-          register_message_handlers_witx_client(starclient, client);
+        if (register_engines_with_client(starclient, client)) {
+          register_message_handlers_with_client(starclient, client);
           printf("[star] connect to %s\n", client_name);
           starclient->need_to_print_stats = cf_x_core_bool_true;
           established_connection = cf_x_core_bool_true;
         } else {
-          cf_x_core_trace("register_engines_witx_client");
+          cf_x_core_trace("register_engines_with_client");
         }
       } else {
         cf_x_core_trace("x_case_set_add");
@@ -782,7 +782,7 @@ void rebuild_client_list(cf_x_net_star_client_system_t *starclient)
   }
 }
 
-cf_x_core_bool_t register_engines_witx_client(cf_x_net_star_client_system_t *starclient,
+cf_x_core_bool_t register_engines_with_client(cf_x_net_star_client_system_t *starclient,
     cf_x_net_client_system_t *client)
 {
   assert(starclient);
@@ -809,8 +809,8 @@ cf_x_core_bool_t register_engines_witx_client(cf_x_net_star_client_system_t *sta
   return success;
 }
 
-void register_message_handlers_witx_client(cf_x_net_star_client_system_t *starclient,
-    cf_x_net_client_system_t *client)
+void register_message_handlers_with_client
+(cf_x_net_star_client_system_t *starclient, cf_x_net_client_system_t *client)
 {
   assert(starclient);
   assert(client);

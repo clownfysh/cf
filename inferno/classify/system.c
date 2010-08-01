@@ -1,14 +1,14 @@
 #include "cf/inferno/archetype/system.h"
-#include "cf/inferno/classify/classifyey.h"
+#include "cf/inferno/classify/iclassify.h"
 #include "cf/inferno/classify/system.h"
 
 struct cf_inferno_classify_system_t {
-  cf_inferno_classify_classifyey_t classifyey;
+  cf_inferno_classify_iclassify_t iclassify;
   void *classify_object;
   cf_x_core_log_t *log;
 };
 
-static void init_classifyey(cf_inferno_classify_classifyey_t *classifyey,
+static void init_iclassify(cf_inferno_classify_iclassify_t *iclassify,
     cf_inferno_classify_algorithm_t algorithm);
 
 cf_inferno_classify_system_t *cf_inferno_classify_system_create
@@ -25,8 +25,8 @@ cf_inferno_classify_system_t *cf_inferno_classify_system_create
   system = malloc(sizeof *system);
   if (system) {
     system->log = log;
-    init_classifyey(&system->classifyey, algorithm);
-    system->classify_object = system->classifyey.create(classified_objects,
+    init_iclassify(&system->iclassify, algorithm);
+    system->classify_object = system->iclassify.create(classified_objects,
         log);
     if (!system->classify_object) {
       cf_x_core_log_trace(log, "clss", "create");
@@ -44,14 +44,14 @@ void cf_inferno_classify_system_destroy(cf_inferno_classify_system_t *system)
 {
   assert(system);
 
-  system->classifyey.destroy(system->classify_object);
+  system->iclassify.destroy(system->classify_object);
   free(system);
 }
 
 cf_x_core_bit_t cf_inferno_classify_system_classify_object(cf_inferno_classify_system_t *system,
     cf_x_core_bitarray_t *object)
 {
-  return system->classifyey.classify_object(system->classify_object, object);
+  return system->iclassify.classify_object(system->classify_object, object);
 }
 
 cf_x_case_array_t *cf_inferno_classify_system_classify_objects
@@ -74,7 +74,7 @@ cf_x_case_array_t *cf_inferno_classify_system_classify_objects
     index = 0;
     while ((object = cf_x_case_array_iterate_next(objects))) {
       class
-        = system->classifyey.classify_object(system->classify_object, object);
+        = system->iclassify.classify_object(system->classify_object, object);
       class_object = malloc(sizeof *class_object);
       if (class_object) {
         cf_x_case_array_add(classes, index, class_object);
@@ -101,7 +101,7 @@ cf_x_core_bool_t cf_inferno_classify_system_learn(cf_inferno_classify_system_t *
 
   success = cf_x_core_bool_true;
   do {
-    if (!system->classifyey.learn(system->classify_object)) {
+    if (!system->iclassify.learn(system->classify_object)) {
       success = cf_x_core_bool_false;
       cf_x_core_log_trace(system->log, "clss", "learn");
     }
@@ -114,7 +114,7 @@ cf_x_core_bool_t cf_inferno_classify_system_learn(cf_inferno_classify_system_t *
 cf_x_core_bool_t cf_inferno_classify_system_observe_object(cf_inferno_classify_system_t *system,
     cf_x_core_bitarray_t *classified_object)
 {
-  return system->classifyey.observe_object(system->classify_object,
+  return system->iclassify.observe_object(system->classify_object,
       classified_object);
 }
 
@@ -130,7 +130,7 @@ cf_x_core_bool_t cf_inferno_classify_system_observe_objects(cf_inferno_classify_
 
   cf_x_case_array_iterate_start(classified_objects);
   while ((object = cf_x_case_array_iterate_next(classified_objects))) {
-    if (!system->classifyey.observe_object(system->classify_object, object)) {
+    if (!system->iclassify.observe_object(system->classify_object, object)) {
       success = cf_x_core_bool_false;
       cf_x_core_log_trace(system->log, "clss", "observe_object");
     }
@@ -139,15 +139,15 @@ cf_x_core_bool_t cf_inferno_classify_system_observe_objects(cf_inferno_classify_
   return success;
 }
 
-void init_classifyey(cf_inferno_classify_classifyey_t *classifyey,
+void init_iclassify(cf_inferno_classify_iclassify_t *iclassify,
     cf_inferno_classify_algorithm_t algorithm)
 {
-  assert(classifyey);
+  assert(iclassify);
 
   switch (algorithm) {
     default:
     case CF_INFERNO_CLASSIFY_ALGORITHM_ARCHETYPE:
-      cf_inferno_archetype_system_init_classifyey(classifyey);
+      cf_inferno_archetype_system_init_iclassify(iclassify);
       break;
   }
 }

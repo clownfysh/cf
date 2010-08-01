@@ -21,79 +21,12 @@ struct cf_x_case_mbin_t {
   cf_x_core_iobject_t *iobject;
 };
 
+static cf_x_core_bool_t become_container(cf_x_case_mbin_t *mbin);
+static void become_simple(cf_x_case_mbin_t *mbin);
 static cf_x_case_mbin_t *create(cf_x_core_iobject_t *iobject,
     unsigned long level, cf_x_case_mbin_set_type_t set_type);
-
 static cf_x_core_bool_t create_bins(cf_x_case_mbin_t *mbin);
-
-static cf_x_core_bool_t become_container(cf_x_case_mbin_t *mbin);
-
-static void become_simple(cf_x_case_mbin_t *mbin);
-
 static void destroy_bins(cf_x_case_mbin_t *mbin);
-
-cf_x_case_mbin_t *create(cf_x_core_iobject_t *iobject, unsigned long level,
-    cf_x_case_mbin_set_type_t set_type)
-{
-  assert(iobject);
-  assert(iobject->mod);
-  assert(iobject->compare_equal);
-  assert(level < PRIMES_COUNT);
-  cf_x_case_mbin_t *mbin;
-
-  mbin = malloc(sizeof *mbin);
-  if (mbin) {
-    mbin->container = cf_x_core_bool_false;
-    mbin->bins = NULL;
-    mbin->object_count = 0;
-    mbin->contained_object_count = 0;
-    mbin->iobject = iobject;
-    mbin->level = level;
-    mbin->bin_count = primes[level];
-    mbin->set_type = set_type;
-    mbin->objects = malloc((sizeof *mbin->objects) * MAX_OBJECTS_PER_BIN);
-    if (!mbin->objects) {
-      cf_x_trace("malloc");
-    }
-  } else {
-    cf_x_trace("malloc");
-  }
-
-  return mbin;
-}
-
-cf_x_core_bool_t create_bins(cf_x_case_mbin_t *mbin)
-{
-  assert(mbin);
-  assert(!mbin->bins);
-  cf_x_core_bool_t success;
-  unsigned long i;
-
-  mbin->bins = malloc((sizeof *mbin->bins) * mbin->bin_count);
-  if (mbin->bins) {
-    success = cf_x_core_bool_true;
-    for (i = 0; i < mbin->bin_count; i++) {
-      if (mbin->level < (PRIMES_COUNT - 1)) {
-        *(mbin->bins + i) = create(mbin->iobject, mbin->level + 1,
-            mbin->set_type);
-      } else {
-        *(mbin->bins + i)
-          = create(mbin->iobject, mbin->level, mbin->set_type);
-        cf_x_trace("ran out of primes");
-      }
-      if (!*(mbin->bins + i)) {
-        cf_x_trace("create");
-        success = cf_x_core_bool_false;
-        break;
-      }
-    }
-  } else {
-    cf_x_trace("malloc");
-    success = cf_x_core_bool_false;
-  }
-
-  return success;
-}
 
 cf_x_core_bool_t become_container(cf_x_case_mbin_t *mbin)
 {
@@ -158,6 +91,69 @@ void become_simple(cf_x_case_mbin_t *mbin)
   destroy_bins(mbin);
   mbin->bins = NULL;
   mbin->container = cf_x_core_bool_false;
+}
+
+cf_x_case_mbin_t *create(cf_x_core_iobject_t *iobject, unsigned long level,
+    cf_x_case_mbin_set_type_t set_type)
+{
+  assert(iobject);
+  assert(iobject->mod);
+  assert(iobject->compare_equal);
+  assert(level < PRIMES_COUNT);
+  cf_x_case_mbin_t *mbin;
+
+  mbin = malloc(sizeof *mbin);
+  if (mbin) {
+    mbin->container = cf_x_core_bool_false;
+    mbin->bins = NULL;
+    mbin->object_count = 0;
+    mbin->contained_object_count = 0;
+    mbin->iobject = iobject;
+    mbin->level = level;
+    mbin->bin_count = primes[level];
+    mbin->set_type = set_type;
+    mbin->objects = malloc((sizeof *mbin->objects) * MAX_OBJECTS_PER_BIN);
+    if (!mbin->objects) {
+      cf_x_trace("malloc");
+    }
+  } else {
+    cf_x_trace("malloc");
+  }
+
+  return mbin;
+}
+
+cf_x_core_bool_t create_bins(cf_x_case_mbin_t *mbin)
+{
+  assert(mbin);
+  assert(!mbin->bins);
+  cf_x_core_bool_t success;
+  unsigned long i;
+
+  mbin->bins = malloc((sizeof *mbin->bins) * mbin->bin_count);
+  if (mbin->bins) {
+    success = cf_x_core_bool_true;
+    for (i = 0; i < mbin->bin_count; i++) {
+      if (mbin->level < (PRIMES_COUNT - 1)) {
+        *(mbin->bins + i) = create(mbin->iobject, mbin->level + 1,
+            mbin->set_type);
+      } else {
+        *(mbin->bins + i)
+          = create(mbin->iobject, mbin->level, mbin->set_type);
+        cf_x_trace("ran out of primes");
+      }
+      if (!*(mbin->bins + i)) {
+        cf_x_trace("create");
+        success = cf_x_core_bool_false;
+        break;
+      }
+    }
+  } else {
+    cf_x_trace("malloc");
+    success = cf_x_core_bool_false;
+  }
+
+  return success;
 }
 
 void destroy_bins(cf_x_case_mbin_t *mbin)

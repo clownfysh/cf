@@ -2,7 +2,7 @@
 #include "cf/x/case/xcache/item.h"
 
 struct cf_x_case_xcache_item_t {
-  time_t birtx_time;
+  time_t birth_time;
   unsigned long lifespan_seconds;
   cf_x_core_bool_t expired;
   cf_x_core_uuid_t *object_uuid;
@@ -41,7 +41,7 @@ cf_x_case_xcache_item_t *cf_x_case_xcache_item_create(cf_x_core_uuid_t *object_u
 
   item = malloc(sizeof *item);
   if (item) {
-    item->birtx_time = time(NULL);
+    item->birth_time = time(NULL);
     item->object = object;
     item->copy = copy;
     item->destroy = destroy;
@@ -138,7 +138,7 @@ cf_x_core_bool_t cf_x_case_xcache_item_is_expired(void *item_object)
     is_expired = cf_x_core_bool_true;
   } else {
     now = time(NULL);
-    if ((now - item->birtx_time) > item->lifespan_seconds) {
+    if ((now - item->birth_time) > item->lifespan_seconds) {
       is_expired = cf_x_core_bool_true;
     } else {
       is_expired = cf_x_core_bool_false;

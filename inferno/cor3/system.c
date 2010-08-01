@@ -9,7 +9,7 @@ struct cf_inferno_cor3_system_t {
   cf_inferno_box_system_t *box;
   cf_inferno_core_score_solution_f score_solution;
   cf_inferno_core_goal_t goal;
-  cf_inferno_core_actorey_t actorey;
+  cf_inferno_core_iactor_t iactor;
   void *context;
   cf_x_core_log_t *log;
 };
@@ -29,12 +29,12 @@ void *cf_inferno_cor3_system_create(cf_inferno_core_score_solution_f score_solut
     system->goal = goal;
     system->context = context;
     system->log = log;
-    cf_x_core_seed_random_witx_time();
-    cf_inferno_box_coordinate_init_witx_xyz(&dimension_coordinate,
+    cf_x_core_seed_random_with_time();
+    cf_inferno_box_coordinate_init_with_xyz(&dimension_coordinate,
         CF_INFERNO_COR3_BOX_DIMENSION, CF_INFERNO_COR3_BOX_DIMENSION, CF_INFERNO_COR3_BOX_DIMENSION);
-    cf_inferno_cor3_actor_init_actorey(&system->actorey);
+    cf_inferno_cor3_actor_init_iactor(&system->iactor);
     system->box = cf_inferno_core_create_actor_box(system, &dimension_coordinate,
-        initial_solutions, &system->actorey, log);
+        initial_solutions, &system->iactor, log);
     if (!system->box) {
       cf_x_core_log_trace(log, "cor3", "inferno_core_create_actor_box");
       free(system);
@@ -105,9 +105,9 @@ cf_x_case_array_t *cf_inferno_cor3_system_get_solutions_copy(void *system_object
   return solutions;
 }
 
-void cf_inferno_cor3_system_init_searchey(cf_inferno_searcx_searchey_t *searchey)
+void cf_inferno_cor3_system_init_isearch(cf_inferno_searcx_isearch_t *isearch)
 {
-  cf_inferno_searcx_searchey_init(searchey, cf_inferno_cor3_system_create,
+  cf_inferno_searcx_isearch_init(isearch, cf_inferno_cor3_system_create,
       cf_inferno_cor3_system_destroy, cf_inferno_cor3_system_get_solutions_copy,
       cf_inferno_cor3_system_search);
 }

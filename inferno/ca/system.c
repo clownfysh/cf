@@ -4,7 +4,7 @@
 #include "cf/x/file/basic.h"
 
 struct cf_inferno_ca_system_t {
-  cf_inferno_ca_systemey_t *systemey;
+  cf_inferno_ca_isystem_t *isystem;
 
   cf_x_case_array_t *state_history;
   unsigned long current_time_step;
@@ -25,11 +25,11 @@ static GLOBAL(void) write_jpeg_file(char *filename, int quality,
 
 cf_inferno_ca_system_t *cf_inferno_ca_system_create
 (cf_x_case_array_t *initial_state_history,
-    unsigned long initial_time_step_count, cf_inferno_ca_systemey_t *systemey)
+    unsigned long initial_time_step_count, cf_inferno_ca_isystem_t *isystem)
 {
   assert(initial_state_history);
   assert(cf_x_case_array_get_size(initial_state_history) > 0);
-  assert(systemey);
+  assert(isystem);
   cf_inferno_ca_system_t *system;
   cf_inferno_ca_state_t *state;
   cf_inferno_ca_state_t *state_copy;
@@ -43,7 +43,7 @@ cf_inferno_ca_system_t *cf_inferno_ca_system_create
   if (system) {
     so_far_so_good = cf_x_core_bool_true;
 
-    system->systemey = systemey;
+    system->isystem = isystem;
     system->random_seed_is_set = cf_x_core_bool_false;
     system->highest_cell_count = 0;
 
@@ -81,8 +81,8 @@ cf_inferno_ca_system_t *cf_inferno_ca_system_create
   }
 
   if (so_far_so_good) {
-    if (systemey->create_context) {
-      system->context_object = systemey->create_context(systemey->name_object);
+    if (isystem->create_context) {
+      system->context_object = isystem->create_context(isystem->name_object);
       if (!system->context_object) {
         so_far_so_good = cf_x_core_bool_false;
         cf_x_core_trace("create_context");
@@ -114,8 +114,8 @@ void cf_inferno_ca_system_destroy(cf_inferno_ca_system_t *system)
 {
   assert(system);
 
-  if (system->systemey->destroy_context) {
-    system->systemey->destroy_context(system->context_object);
+  if (system->isystem->destroy_context) {
+    system->isystem->destroy_context(system->context_object);
   }
   cf_x_case_array_destroy(system->state_history);
   free(system);
@@ -186,7 +186,7 @@ cf_inferno_ca_state_t *cf_inferno_ca_system_get_current_state(cf_inferno_ca_syst
 
 void *cf_inferno_ca_system_get_name(cf_inferno_ca_system_t *system)
 {
-  return system->systemey->name_object;
+  return system->isystem->name_object;
 }
 
 cf_inferno_ca_t *cf_inferno_ca_system_get_relative_cell(cf_inferno_ca_system_t *system,
@@ -222,11 +222,11 @@ void cf_inferno_ca_system_run(cf_inferno_ca_system_t *system, cf_x_sync_run_t *r
 
     state_history_size = cf_x_case_array_get_size(system->state_history);
     if (create_new_current_state(system)) {
-      if (system->systemey->start_time_step) {
-        system->systemey->start_time_step(system);
+      if (system->isystem->start_time_step) {
+        system->isystem->start_time_step(system);
       }
       for (cell_index = 0; cell_index < cell_count; cell_index++) {
-        new_cell_state = system->systemey->calculate_new_cell_state
+        new_cell_state = system->isystem->calculate_new_cell_state
           (system, cell_index);
         cf_inferno_ca_system_set_cell(system, system->current_time_step + 1,
             cell_index, &new_cell_state);
@@ -237,8 +237,8 @@ void cf_inferno_ca_system_run(cf_inferno_ca_system_t *system, cf_x_sync_run_t *r
       if (cf_x_core_bool_false) {
         printf("\n");
       }
-      if (system->systemey->end_time_step) {
-        system->systemey->end_time_step(system);
+      if (system->isystem->end_time_step) {
+        system->isystem->end_time_step(system);
       }
       system->current_time_step++;
       cf_x_sync_run_increment_iterations(run);
@@ -277,7 +277,7 @@ cf_x_core_bool_t cf_inferno_ca_system_save_snapshot_jpeg(cf_inferno_ca_system_t 
       for (each_cell = 0; each_cell < cell_count; each_cell++) {
         cell = cf_inferno_ca_state_get_cell(state, each_cell);
 
-        system->systemey->get_cell_color(cell, &color);
+        system->isystem->get_cell_color(cell, &color);
 
         image_buffer[(each_step * cell_count * 3)
             + (each_cell * 3) + 0] = color.red;

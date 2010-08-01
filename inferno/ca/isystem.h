@@ -1,5 +1,5 @@
-#ifndef cf_inferno_ca_systemey_h
-#define cf_inferno_ca_systemey_h
+#ifndef cf_inferno_ca_isystem_h
+#define cf_inferno_ca_isystem_h
 
 #include "cf/inferno/ca/cell.h"
 #include "cf/inferno/ca/tools.h"
@@ -29,7 +29,7 @@ typedef unsigned long (*cf_inferno_ca_system_get_relative_cell_index_f)
 
 typedef void (*cf_inferno_ca_system_start_time_step_f)(cf_inferno_ca_system_t *system);
 
-struct cf_inferno_ca_systemey_t {
+struct cf_inferno_ca_isystem_t {
   void *name_object;
 
   cf_inferno_ca_system_calculate_new_cell_state_f calculate_new_cell_state;
@@ -40,9 +40,9 @@ struct cf_inferno_ca_systemey_t {
   cf_inferno_ca_system_get_relative_cell_index_f get_relative_cell_index;
   cf_inferno_ca_system_start_time_step_f start_time_step;
 };
-typedef struct cf_inferno_ca_systemey_t cf_inferno_ca_systemey_t;
+typedef struct cf_inferno_ca_isystem_t cf_inferno_ca_isystem_t;
 
-void cf_inferno_ca_systemey_init(cf_inferno_ca_systemey_t *systemey,
+void cf_inferno_ca_isystem_init(cf_inferno_ca_isystem_t *isystem,
     void *name_object,
     cf_inferno_ca_system_calculate_new_cell_state_f calculate_new_cell_state,
     cf_inferno_ca_system_create_context_f create_context,

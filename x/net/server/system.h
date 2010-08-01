@@ -7,7 +7,7 @@
 #include "cf/x/core/imessage.h"
 #include "cf/x/core/log.h"
 #include "cf/x/core/message.h"
-#include "cf/x/net/engine/enginey.h"
+#include "cf/x/net/engine/iengine.h"
 #include "cf/x/net/ip_address.h"
 #include "cf/x/net/post/ipost.h"
 #include "cf/x/net/server/stats.h"
@@ -21,7 +21,7 @@
 cf_x_net_server_system_t *cf_x_net_server_system_create(const char *name,
     unsigned short min_port, unsigned short max_port,
     unsigned short max_threads, cf_x_core_imessage_t *messagey,
-    cf_x_net_post_ipost_t *postey, cf_x_net_engine_get_name_f get_engine_name,
+    cf_x_net_post_ipost_t *ipost, cf_x_net_engine_get_name_f get_engine_name,
     cf_x_config_system_t *config_system, cf_x_core_log_t *log);
 
 void cf_x_net_server_system_destroy(cf_x_net_server_system_t *server);
@@ -45,7 +45,7 @@ void cf_x_net_server_system_process_messages(cf_x_net_server_system_t *server,
 
 cf_x_core_bool_t cf_x_net_server_system_register_engine(cf_x_net_server_system_t *server,
     cf_x_net_engine_id_t engine_id, void *custom_server_context,
-    cf_x_net_engine_enginey_t *enginey, unsigned short min_run_threads,
+    cf_x_net_engine_iengine_t *iengine, unsigned short min_run_threads,
     unsigned short max_run_threads, cf_x_net_maintain_t maintain_schedule,
     unsigned long message_type_count);
 

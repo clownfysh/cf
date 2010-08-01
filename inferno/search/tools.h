@@ -3,7 +3,7 @@
 
 #include "cf/x/case/array.h"
 #include "cf/inferno/box/system.h"
-#include "cf/inferno/core/actorey.h"
+#include "cf/inferno/core/iactor.h"
 #include "cf/inferno/core/goal.h"
 
 typedef void *(*cf_inferno_core_create_actor_f)(void *searcx_system,
@@ -36,7 +36,7 @@ typedef cf_x_core_bool_t (*cf_inferno_core_score_solution_f)(void *context,
 
 cf_inferno_box_system_t *cf_inferno_core_create_actor_box(void *searcx_system,
     cf_inferno_box_coordinate_t *dimension_coordinate,
-    cf_x_case_array_t *initial_solutions, cf_inferno_core_actorey_t *actorey,
+    cf_x_case_array_t *initial_solutions, cf_inferno_core_iactor_t *iactor,
     cf_x_core_log_t *log);
 
 cf_x_case_array_t *cf_inferno_core_create_solutions_from_box(cf_inferno_box_system_t *box,
