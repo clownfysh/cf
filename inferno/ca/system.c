@@ -16,9 +16,11 @@ struct cf_inferno_ca_system_t {
   void *context_object;
 };
 
-static cf_x_core_bool_t create_new_current_state(cf_inferno_ca_system_t *system);
+static cf_x_core_bool_t create_new_current_state
+(cf_inferno_ca_system_t *system);
 
-static cf_inferno_ca_state_t *get_current_state(cf_inferno_ca_system_t *system);
+static cf_inferno_ca_state_t *get_current_state
+(cf_inferno_ca_system_t *system);
 
 static GLOBAL(void) write_jpeg_file(char *filename, int quality,
     JSAMPLE *image_buffer, int image_height, int image_width);
@@ -126,7 +128,8 @@ unsigned long cf_inferno_ca_system_get_age_in_time_steps(cf_inferno_ca_system_t 
   return system->current_time_step;
 }
 
-unsigned long cf_inferno_ca_system_get_cell_count(cf_inferno_ca_system_t *system)
+unsigned long cf_inferno_ca_system_get_cell_count
+(cf_inferno_ca_system_t *system)
 {
   return cf_inferno_ca_state_get_cell_count(get_current_state(system));
 }
@@ -166,8 +169,8 @@ void *cf_inferno_ca_system_get_context(cf_inferno_ca_system_t *system)
   return system->context_object;
 }
 
-cf_inferno_ca_t *cf_inferno_ca_system_get_current_cell(cf_inferno_ca_system_t *system,
-    unsigned long cell_index)
+cf_inferno_ca_t *cf_inferno_ca_system_get_current_cell
+(cf_inferno_ca_system_t *system, unsigned long cell_index)
 {
   assert(system);
   cf_inferno_ca_state_t *state;
@@ -179,7 +182,8 @@ cf_inferno_ca_t *cf_inferno_ca_system_get_current_cell(cf_inferno_ca_system_t *s
   return cell;
 }
 
-cf_inferno_ca_state_t *cf_inferno_ca_system_get_current_state(cf_inferno_ca_system_t *system)
+cf_inferno_ca_state_t *cf_inferno_ca_system_get_current_state
+(cf_inferno_ca_system_t *system)
 {
   return get_current_state(system);
 }
@@ -189,20 +193,22 @@ void *cf_inferno_ca_system_get_name(cf_inferno_ca_system_t *system)
   return system->isystem->name_object;
 }
 
-cf_inferno_ca_t *cf_inferno_ca_system_get_relative_cell(cf_inferno_ca_system_t *system,
-    long relative_time_step, unsigned long cell_index)
+cf_inferno_ca_t *cf_inferno_ca_system_get_relative_cell
+(cf_inferno_ca_system_t *system, long relative_time_step,
+    unsigned long cell_index)
 {
   return cf_inferno_ca_system_get_cell(system,
       system->current_time_step + relative_time_step, cell_index);
 }
 
-cf_inferno_ca_state_t *cf_inferno_ca_system_get_state(cf_inferno_ca_system_t *system,
-    unsigned long time_step)
+cf_inferno_ca_state_t *cf_inferno_ca_system_get_state
+(cf_inferno_ca_system_t *system, unsigned long time_step)
 {
   return cf_x_case_array_find(system->state_history, time_step);
 }
 
-void cf_inferno_ca_system_run(cf_inferno_ca_system_t *system, cf_x_sync_run_t *run)
+void cf_inferno_ca_system_run(cf_inferno_ca_system_t *system,
+    cf_x_sync_run_t *run)
 {
   assert(system);
   assert(run);
@@ -249,8 +255,8 @@ void cf_inferno_ca_system_run(cf_inferno_ca_system_t *system, cf_x_sync_run_t *r
   }
 }
 
-cf_x_core_bool_t cf_inferno_ca_system_save_snapshot_jpeg(cf_inferno_ca_system_t *system,
-    char *filename)
+cf_x_core_bool_t cf_inferno_ca_system_save_snapshot_jpeg
+(cf_inferno_ca_system_t *system, char *filename)
 {
   assert(system);
   assert(filename);
@@ -300,8 +306,8 @@ cf_x_core_bool_t cf_inferno_ca_system_save_snapshot_jpeg(cf_inferno_ca_system_t 
   return success;
 }
 
-cf_x_core_bool_t cf_inferno_ca_system_save_snapshot_text(cf_inferno_ca_system_t *system,
-    char *filename)
+cf_x_core_bool_t cf_inferno_ca_system_save_snapshot_text
+(cf_inferno_ca_system_t *system, char *filename)
 {
   assert(system);
   cf_inferno_ca_state_t *state;
@@ -351,8 +357,8 @@ cf_x_core_bool_t cf_inferno_ca_system_save_snapshot_text(cf_inferno_ca_system_t 
   return success;
 }
 
-void cf_inferno_ca_system_set_cell(cf_inferno_ca_system_t *system, unsigned long time_step,
-    unsigned long cell_index, cf_inferno_ca_t *cell)
+void cf_inferno_ca_system_set_cell(cf_inferno_ca_system_t *system,
+    unsigned long time_step, unsigned long cell_index, cf_inferno_ca_t *cell)
 {
   assert(system);
   cf_inferno_ca_state_t *state;
@@ -371,7 +377,8 @@ void cf_inferno_ca_system_set_current_cell(cf_inferno_ca_system_t *system,
   cf_inferno_ca_state_set_cell(state, cell_index, cell);
 }
 
-void cf_inferno_ca_system_set_random_seed(cf_inferno_ca_system_t *system, unsigned long seed)
+void cf_inferno_ca_system_set_random_seed(cf_inferno_ca_system_t *system,
+    unsigned long seed)
 {
   assert(system);
 
