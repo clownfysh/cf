@@ -2,7 +2,6 @@
 #define cf_x_case_shardset_h
 
 #include "cf/x/core/object.h"
-#include "cf/x/core/types.h"
 
 #define CF_X_CASE_SHARDSET_MAX_SHARDS 32768
 

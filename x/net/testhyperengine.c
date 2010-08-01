@@ -1,5 +1,4 @@
 #include "cf/x/core/content.h"
-#include "cf/x/core/types.h"
 #include "cf/x/core/tools.h"
 #include "cf/x/net/engine/thread.h"
 #include "cf/x/net/http/message.h"

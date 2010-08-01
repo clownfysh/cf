@@ -5,7 +5,6 @@
 #include "cf/x/core/declarations.h"
 #include "cf/x/core/message.h"
 #include "cf/x/core/object.h"
-#include "cf/x/core/types.h"
 
 cf_x_core_bool_t cf_x_case_set_absorb(cf_x_case_set_t *set,
     cf_x_case_set_t *absorb_these);

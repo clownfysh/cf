@@ -1,9 +1,8 @@
 #ifndef cf_x_core_tools_h
 #define cf_x_core_tools_h
 
-#include "cf/x/core/standard.h"
 #include "cf/x/core/bit.h"
-#include "cf/x/core/types.h"
+#include "cf/x/core/standard.h"
 
 void cf_x_core_do_nothing();
 

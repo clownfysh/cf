@@ -1,14 +1,13 @@
-#include "cf/x/core/log.h"
 #include "cf/x/case/list.h"
 #include "cf/x/core/imessage.h"
+#include "cf/x/core/log.h"
 #include "cf/x/core/tools.h"
-#include "cf/x/core/types.h"
 #include "cf/x/net/engine/enginey.h"
-#include "cf/x/net/post/system.h"
-#include "cf/x/net/post/ipost.h"
-#include "cf/x/net/server/system.h"
 #include "cf/x/net/pingpong/engine.h"
 #include "cf/x/net/pingpong/message.h"
+#include "cf/x/net/post/ipost.h"
+#include "cf/x/net/post/system.h"
+#include "cf/x/net/server/system.h"
 
 #define PING_SERVER_MAX_THREADS 32
 

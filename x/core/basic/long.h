@@ -1,9 +1,8 @@
 #ifndef cf_x_core_basic_long_h
 #define cf_x_core_basic_long_h
 
-#include "cf/x/core/object.h"
 #include "cf/x/core/iobject.h"
-#include "cf/x/core/types.h"
+#include "cf/x/core/object.h"
 
 cf_x_core_bool_t cf_x_core_basic_long_add_to_message(void *long_object,
     cf_x_core_message_t *message);

@@ -3,7 +3,6 @@
 
 #include "cf/x/core/engine.h"
 #include "cf/x/core/object.h"
-#include "cf/x/core/types.h"
 
 enum cf_x_core_message_encoding_t {
   CF_X_CORE_MESSAGE_ENCODING_UNKNOWN = 0,

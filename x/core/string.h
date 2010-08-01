@@ -3,7 +3,6 @@
 
 #include "cf/x/core/object.h"
 #include "cf/x/core/iobject.h"
-#include "cf/x/core/types.h"
 
 typedef char * cf_x_core_string_t;
 

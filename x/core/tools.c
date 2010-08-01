@@ -1,7 +1,6 @@
 #include "cf/x/core/bool.h"
 #include "cf/x/core/standard.h"
 #include "cf/x/core/tools.h"
-#include "cf/x/core/types.h"
 
 cf_x_core_bool_t cf_x_core_stop_requested;
 

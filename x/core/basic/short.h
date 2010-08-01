@@ -2,7 +2,6 @@
 #define cf_x_core_basic_short_h
 
 #include "cf/x/core/object.h"
-#include "cf/x/core/types.h"
 
 cf_x_core_bool_t cf_x_core_basic_short_add_to_message(void *short_object,
     cf_x_core_message_t *message);

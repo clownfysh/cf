@@ -1,6 +1,5 @@
-#include "cf/x/core/standard.h"
 #include "cf/x/core/imessage.h"
-#include "cf/x/core/types.h"
+#include "cf/x/core/standard.h"
 
 void cf_x_core_imessage_init(cf_x_core_imessage_t *messagey,
     cf_x_core_imessage_destroy_f destroy,

@@ -1,9 +1,8 @@
 #ifndef cf_x_net_post_ipost_h
 #define cf_x_net_post_ipost_h
 
-#include "cf/x/core/standard.h"
 #include "cf/x/core/object.h"
-#include "cf/x/core/types.h"
+#include "cf/x/core/standard.h"
 #include "cf/x/net/post/stats.h"
 
 typedef int (*cf_x_net_post_ipost_compare_f)(void *a_object, void *b_object);

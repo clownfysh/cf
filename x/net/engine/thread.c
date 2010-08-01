@@ -1,5 +1,4 @@
 #include "cf/x/core/standard.h"
-#include "cf/x/core/types.h"
 #include "cf/x/net/engine/thread.h"
 
 cf_x_net_engine_thread_t *cf_x_net_engine_create_thread(void *engine_object,

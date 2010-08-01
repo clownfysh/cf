@@ -1,12 +1,11 @@
 #include "cf/x/core/object.h"
 #include "cf/x/core/tools.h"
-#include "cf/x/core/types.h"
 #include "cf/x/net/engine/thread.h"
-#include "cf/x/net/server/system.h"
 #include "cf/x/net/pingpong/engine.h"
 #include "cf/x/net/pingpong/message.h"
 #include "cf/x/net/pingpong/ping.h"
 #include "cf/x/net/pingpong/pong.h"
+#include "cf/x/net/server/system.h"
 
 struct cf_x_pingpong_engine_t {
   void *things_the_engine_needs_to_share;

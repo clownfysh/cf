@@ -2,10 +2,9 @@
 #define cf_x_case_list_h
 
 #include "cf/x/case/declarations.h"
+#include "cf/x/core/iobject.h"
 #include "cf/x/core/message.h"
 #include "cf/x/core/object.h"
-#include "cf/x/core/iobject.h"
-#include "cf/x/core/types.h"
 
 #define CF_X_CASE_LIST_NO_SIZE_LIMIT 0
 

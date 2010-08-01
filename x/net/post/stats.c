@@ -1,5 +1,4 @@
 #include "cf/x/core/standard.h"
-#include "cf/x/core/types.h"
 #include "cf/x/net/post/stats.h"
 
 void cf_x_net_post_stats_init(cf_x_net_post_stats_t *post_stats)

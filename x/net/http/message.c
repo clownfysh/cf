@@ -5,7 +5,6 @@
 #include "cf/x/core/nameobject.h"
 #include "cf/x/core/string.h"
 #include "cf/x/core/tools.h"
-#include "cf/x/core/types.h"
 #include "cf/x/net/http/message.h"
 
 struct cf_x_net_http_message_t {

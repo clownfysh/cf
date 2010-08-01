@@ -1,6 +1,5 @@
 #include "cf/x/core/dayhour.h"
 #include "cf/x/core/tools.h"
-#include "cf/x/core/types.h"
 
 char *create_string_from_dayhour(cf_x_core_dayhour_t *dayhour)
 {

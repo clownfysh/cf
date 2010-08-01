@@ -2,7 +2,6 @@
 #define cf_x_net_http_post_h
 
 #include "cf/x/core/object.h"
-#include "cf/x/core/types.h"
 #include "cf/x/net/post/stats.h"
 
 struct cf_x_net_http_post_t;

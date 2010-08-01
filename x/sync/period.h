@@ -1,7 +1,7 @@
 #ifndef cf_x_sync_period_h
 #define cf_x_sync_period_h
 
-#include "cf/x/core/types.h"
+#include "cf/x/core/bool.h"
 
 struct cf_x_sync_period_t;
 typedef struct cf_x_sync_period_t cf_x_sync_period_t;

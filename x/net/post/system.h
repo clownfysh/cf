@@ -3,7 +3,6 @@
 
 #include "cf/x/case/list.h"
 #include "cf/x/core/message.h"
-#include "cf/x/core/types.h"
 #include "cf/x/net/post/stats.h"
 
 struct cf_x_net_post_system_t;

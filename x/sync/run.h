@@ -1,7 +1,7 @@
 #ifndef cf_x_sync_run_h
 #define cf_x_sync_run_h
 
-#include "cf/x/core/types.h"
+#include "cf/x/core/bool.h"
 
 enum cf_x_sync_run_style_t {
   CF_X_SYNC_RUN_STYLE_UNKNOWN,
