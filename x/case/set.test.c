@@ -3,7 +3,7 @@
 #include "cf/x/core/tools.h"
 #include "cf/x/core/uuid.h"
 
-#define ITERATIONS 1000000
+#define ITERATIONS 10000
 #define TEST_USING_LONGS cf_x_core_bool_true
 
 static void print_uuid(cf_x_core_uuid_t *uuid, const char *name);
