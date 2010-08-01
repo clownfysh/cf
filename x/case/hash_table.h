@@ -30,14 +30,11 @@ cf_x_core_iobject_t *cf_x_case_hash_table_get_iobject
 unsigned long cf_x_case_hash_table_get_size
 (cf_x_case_hash_table_t *hash_table);
 
-void cf_x_case_hash_table_iterate_remove
-(cf_x_case_hash_table_t *hash_table);
+void cf_x_case_hash_table_iterate_remove(cf_x_case_hash_table_t *hash_table);
 
-void cf_x_case_hash_table_iterate_start
-(cf_x_case_hash_table_t *hash_table);
+void cf_x_case_hash_table_iterate_start(cf_x_case_hash_table_t *hash_table);
 
-void *cf_x_case_hash_table_iterate_next
-(cf_x_case_hash_table_t *hash_table);
+void *cf_x_case_hash_table_iterate_next(cf_x_case_hash_table_t *hash_table);
 
 cf_x_core_bool_t cf_x_case_hash_table_remove
 (cf_x_case_hash_table_t *hash_table, void *decoy_object);

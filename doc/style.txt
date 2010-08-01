@@ -14,10 +14,9 @@ Formatting
     unlock();
 
 Structure
-  + in a function, use four blocks sepetated by double newlines
-    + four blocks
-      + assert preconditions and do declarations (with no initialization)
-      + initializations (casts, then other initializations)
+  + in a function, use three blocks sepetated by double newlines
+    + three blocks
+      + assert preconditions and do declarations
       + main business
       + assert postconditions and return
     + if the whole function is three lines or less, or the whole function body
@@ -28,10 +27,11 @@ Structure
     + #defines
     + enum declarations
     + struct declarations
+    + typedefs
     + static variable declarations
     + static function declarations
     + function definitions
-  + alphabetize functions by name in .h and .c files
+  + alphabetize #includes, function declarations and definitions
 
 Terms
   + the highest level directory "cf" is called a project
@@ -39,11 +39,10 @@ Terms
   + a .h/.c/.test.c triplet is associated with a "module"
 
 Naming
-items in a "tools" module can omit the module name?
-
-  + name modules like project_domain_module (h_core_set)
-  + name functions like domain_module_verb or module_verb_noun
-    (h_core_set_add_object())
+  + name modules like project_system_[system_...]module (cf_x_core_object)
+  + name functions like project_system_module_verb
+    or project_system_module_verb_noun (cf_x_case_set_add_object)
+  + items in "tools" or "declarations" modules can omit the module name
   + create/get/get_as functions
     + a get_x() function returns a value or pointer that the providing object
       manages
@@ -53,8 +52,6 @@ items in a "tools" module can omit the module name?
     + a create() function returns a value or pointer that the caller manages
       + string_create_from_uuid()
   + in a container, "replace" means remove, then add; or find, remove, then add
-  + ii or jj for naming indexes is prohibited :: use something short like i, j,
-    ax, bx, or use something like "object" or "each_object", or "object_index"
   + use "_size" to name a variable/function that indicates the size of
     something including any terminator characters; use "_length" to name a
     variable/function that indicates the number of characters in a string,
@@ -65,51 +62,46 @@ items in a "tools" module can omit the module name?
     system.test.c)
 
 Logic
-  + in a system that has a create() function, always have a destroy() function;
-    in a system that has an init() function, always have a free() function and
-    always call the free function even if the free function doesn't do anything
-    right now...it might someday
+  + in a system that has a create() function, always have a destroy() function
   + one return per function, at the end of the function, no guard clauses
   + test every return condition
     + no need to test these unless you want to:
-      + h_core_trace(), h_core_trace_exit()
-      + h_core_log_enter(), h_core_log_trace()
+      + cf_x_core_trace(), cf_x_core_trace_exit()
+      + cf_x_core_log_enter(), cf_x_core_log_trace()
     + don't test these:
       + get() functions where the value is guaranteed to be there by a
         precondition :: like, it's returning a pointer to, or copy of,
         something that is already guaranteed to be there
-      + a h_core_map_find() where a precondition guarantees that that item is
-        there...like as the result of an sql query, where you've checked the
+      + a cf_x_core_map_find() where a precondition guarantees that that item
+        is there...like as the result of an sql query, where you've checked the
         return value of the query() function
     + we're not testing pthread_mutex_[un]lock() right now...
   + don't initialize things until/unless you need to
   + don't use the const keyword
-  + use assert()s to express preconditions unless it's a one-line function...no
-    need to specify postconditions using assert()s...there are some functions
-    that do this, they're from an older time
+    + unless you absolutely have to to connect with some external library
+  + use assert()s to express preconditions unless it's a 1-line synonym
+    function...a function that's a return statement calling another function
   + logging
-    + use h_core_trace(), h_core_trace_exit(), and h_core_log_trace() when you
-      want to report an error :: an error is defined as when you call a
-      function and it returns a value that indicates that it didn't do what you
-      wanted it to do
+    + use cf_x_core_trace(), cf_x_core_trace_exit(), and cf_x_core_log_trace()
+      when you want to report an error :: an error is defined as when you call
+      a function and it returns a value that indicates that it didn't do what
+      you wanted it to do
       + the only text you pass to a trace message is the name of the function
         you called that returned an error
-    + use h_core_log_enter() for everything else
-    + prefer h_core_log_enter() and h_core_log_trace() over h_core_trace() and
-      h_core_trace_exit()
-    + only use h_core_trace_exit() in a file that contains a main()
+    + use cf_x_core_log_enter() for everything else
+    + prefer cf_x_core_log_enter() and cf_x_core_log_trace() over
+      cf_x_core_trace() and cf_x_core_trace_exit()
+    + only use cf_x_core_trace_exit() in a file that contains a main()
+      + eventually I'm going to get rid of all of these, even from main
+        programs
   + put constants first when using == operator (0 == c)
   + sizeof(char) is always 1 :: don't multiply anything by sizeof(char)
-  + no comments in completed code--if you need comments it's because the
-    identifiers are named improperly, except:
+  + no comments in completed code
   + put a default: block in every switch statement, followed by at least a
     break;
   + when referring to paths/urls/directories, always start with a slash, never
     end with one
   + generally, don't use straight int's, use short or long
-    + (might be nice to actually use uint32, that sort of thing...I mean just
-      to make it clear what's happening in network-serialization type
-      situations)
   + generally, do one thing per line
     + generally, don't use the tertiary operator
     + generally, don't use the comma operator
