@@ -1,13 +1,12 @@
-#include "cf/x/core/constants.h"
-#include "cf/x/core/message.h"
 #include "cf/x/core/imessage.h"
+#include "cf/x/core/message.h"
 #include "cf/x/core/tools.h"
 #include "cf/x/net/client/system.h"
-#include "cf/x/net/star/node/system.h"
 #include "cf/x/net/post/system.h"
 #include "cf/x/net/post/ipost.h"
 #include "cf/x/net/server/system.h"
 #include "cf/x/net/star/client/system.h"
+#include "cf/x/net/star/node/system.h"
 
 struct cf_x_net_star_node_system_t {
   cf_x_net_server_system_t *server;

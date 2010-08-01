@@ -1,5 +1,4 @@
 #include "cf/x/case/cache.h"
-#include "cf/x/core/constants.h"
 #include "cf/x/core/tools.h"
 #include "cf/x/case/xcache/item.h"
 #include "cf/x/case/xcache/system.h"

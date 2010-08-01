@@ -2,7 +2,9 @@
 #include "cf/x/core/standard.h"
 #include "cf/x/core/tools.h"
 
+/*
 cf_x_core_bool_t cf_x_core_stop_requested;
+*/
 
 void cf_x_core_do_nothing() {}
 

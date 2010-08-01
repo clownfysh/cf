@@ -2,7 +2,6 @@
 #include "cf/inferno/ca/k3.h"
 #include "cf/inferno/core/constants.h"
 #include "cf/x/core/bit.h"
-#include "cf/x/core/constants.h"
 #include "cf/x/core/tools.h"
 
 struct k3_cell_t {

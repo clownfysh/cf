@@ -4,12 +4,19 @@
 #include "cf/x/core/bit.h"
 #include "cf/x/core/standard.h"
 
-void cf_x_core_do_nothing();
+#define CF_X_CORE_BYTES_IN_A_KILOBYTE 1024
+#define CF_X_CORE_BYTES_IN_A_MEGABYTE 1048576
+#define CF_X_CORE_BYTES_IN_A_GIGABYTE 1073741824
 
-typedef void *(*thread_f)(void *thread_context);
+#define CF_X_CORE_MAX_COLOR 2147483647
 
-#define CF_X_CORE_TIME_STRING_LENGTH 15
-typedef char cf_x_core_time_string_t[CF_X_CORE_TIME_STRING_LENGTH + 1];
+#define CF_X_CORE_SECONDS_PER_MINUTE 60
+#define CF_X_CORE_SECONDS_PER_HOUR 3600
+#define CF_X_CORE_SECONDS_PER_DAY 86400
+
+#define CF_X_CORE_STANDARD_SLEEP_MICROSECONDS 1024
+
+#define CF_X_CORE_WHITESPACE_DELIMITERS " \t\n\r"
 
 #define cf_x_trace(message, ...) fprintf(stderr, message "() in %s:%d\n",  \
       ##__VA_ARGS__, __FILE__, __LINE__)
@@ -33,11 +40,18 @@ typedef char cf_x_core_time_string_t[CF_X_CORE_TIME_STRING_LENGTH + 1];
   (stderr, message"() in %s:%d\n", ##__VA_ARGS__, __FILE__, __LINE__);  \
   exit(22);
 
-extern cf_x_core_bool_t cf_x_core_stop_requested;
+#define CF_X_CORE_TIME_STRING_LENGTH 15
+typedef char cf_x_core_time_string_t[CF_X_CORE_TIME_STRING_LENGTH + 1];
+
+typedef void *(*cf_x_core_thread_f)(void *thread_context);
+
+cf_x_core_bool_t cf_x_core_stop_requested;
 
 unsigned long cf_x_get_microseconds();
 
 cf_x_core_bool_t cf_x_core_get_current_time_string(cf_x_core_time_string_t time_string);
+
+void cf_x_core_do_nothing();
 
 double cf_x_core_gray_coin_toss();
 

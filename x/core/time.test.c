@@ -1,4 +1,3 @@
-#include "cf/x/core/constants.h"
 #include "cf/x/core/dayhour.h"
 #include "cf/x/core/time.h"
 #include "cf/x/core/tools.h"

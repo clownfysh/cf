@@ -1,9 +1,8 @@
 #include "cf/x/config/tools.h"
-#include "cf/x/core/constants.h"
-#include "cf/x/sync/period.h"
 #include "cf/x/core/tools.h"
-#include "cf/x/net/star/client/system.h"
 #include "cf/x/net/star/client/conf.h"
+#include "cf/x/net/star/client/system.h"
+#include "cf/x/sync/period.h"
 
 static void handle_signal(int signal);
 

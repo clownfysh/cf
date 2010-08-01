@@ -1,4 +1,3 @@
-#include "cf/x/core/constants.h"
 #include "cf/x/core/message.h"
 #include "cf/x/core/tools.h"
 #include "cf/x/net/client/system.h"
