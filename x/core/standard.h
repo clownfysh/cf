@@ -23,8 +23,6 @@
 #include <time.h>
 #include <unistd.h>
 
-#include <jpeglib.h>
-
 #ifdef CF_PLATFORM_NETBSD
 #include <uuid.h>
 #endif
