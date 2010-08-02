@@ -7,10 +7,10 @@
 #include "cf/x/file/csv.h"
 #include "cf/x/math/tools.h"
 
-#define DEFAULT_SEARCX_ALGORITHM CF_INFERNO_SEARCX_ALGORITHM_BIOS
+#define DEFAULT_SEARCH_ALGORITHM CF_INFERNO_SEARCH_ALGORITHM_BIOS
 #define MAX_POINTS 64
 #define MAX_OVERALL_TIME_MICROSECONDS 1000000 * 60 * 5
-#define MAX_SEARCX_TIME_MICROSECONDS 1000000
+#define MAX_SEARCH_TIME_MICROSECONDS 1000000
 #define POINT_RANGE 100
 #define POINTS_FILENAME "stravel_points.csv"
 #define SOLUTION_FILENAME "stravel_solution.csv"
@@ -373,7 +373,7 @@ int main(int argc, char *argv[])
   cf_x_core_objects_t objects;
   cf_x_core_log_t *log;
   char *points_filename;
-  cf_inferno_searcx_system_t *system;
+  cf_inferno_search_system_t *system;
   cf_x_case_array_t *initial_solutions;
   unsigned short initial_solution_count;
   cf_x_case_array_t *solutions;
@@ -387,8 +387,8 @@ int main(int argc, char *argv[])
   double goal_distance;
   double sqrt_point_count;
   struct timeval start_time;
-  char *searcx_algorithm_string;
-  cf_inferno_searcx_algorithm_t searcx_algorithm;
+  char *search_algorithm_string;
+  cf_inferno_search_algorithm_t search_algorithm;
 
   initial_solutions = NULL;
   initial_solution_count = 0;
@@ -417,18 +417,18 @@ int main(int argc, char *argv[])
     create_random_points(&stravel);
   }
 
-  if (cf_x_config_options_find_as_string(options, "searcx_algorithm",
-          &searcx_algorithm_string, "")) {
-    if (!cf_inferno_searcx_algorithm_get_from_string
-        (searcx_algorithm_string, &searcx_algorithm)) {
-      searcx_algorithm = DEFAULT_SEARCX_ALGORITHM;
+  if (cf_x_config_options_find_as_string(options, "search_algorithm",
+          &search_algorithm_string, "")) {
+    if (!cf_inferno_search_algorithm_get_from_string
+        (search_algorithm_string, &search_algorithm)) {
+      search_algorithm = DEFAULT_SEARCH_ALGORITHM;
     }
   } else {
-    searcx_algorithm = DEFAULT_SEARCX_ALGORITHM;
+    search_algorithm = DEFAULT_SEARCH_ALGORITHM;
   }
-  searcx_algorithm_string = cf_inferno_searcx_algorithm_get_string(searcx_algorithm);
+  search_algorithm_string = cf_inferno_search_algorithm_get_string(search_algorithm);
   cf_x_core_log_enter(log, "stvl", "search algorithm: %s",
-      searcx_algorithm_string);
+      search_algorithm_string);
 
   cf_x_core_log_enter(log, "stvl", "saving points to stravel_points.csv");
   if (!save_points_to_file(&stravel, POINTS_FILENAME)) {
@@ -442,15 +442,15 @@ int main(int argc, char *argv[])
   cache_distances(&stravel);
 
   cf_x_core_log_enter(log, "stvl", "creating search system");
-  system = cf_inferno_searcx_system_create(score_solution, CF_INFERNO_CORE_GOAL_MINIMIZE_SCORE,
-      &stravel, initial_solutions, searcx_algorithm, log);
+  system = cf_inferno_search_system_create(score_solution, CF_INFERNO_CORE_GOAL_MINIMIZE_SCORE,
+      &stravel, initial_solutions, search_algorithm, log);
   if (system) {
     cf_x_core_log_enter(log, "stvl", "goal distance: %.2f", goal_distance);
     gettimeofday(&start_time, NULL);
     still_searching = cf_x_core_bool_true;
     while (still_searching) {
-      cf_inferno_searcx_system_search(system, MAX_SEARCX_TIME_MICROSECONDS);
-      solutions = cf_inferno_searcx_system_get_solutions_copy(system, 1);
+      cf_inferno_search_system_search(system, MAX_SEARCH_TIME_MICROSECONDS);
+      solutions = cf_inferno_search_system_get_solutions_copy(system, 1);
       if (solutions) {
         solution = cf_x_case_array_find(solutions, 0);
         if (!score_solution(&stravel, solution, &best_score)) {
@@ -475,7 +475,7 @@ int main(int argc, char *argv[])
         cf_x_case_array_destroy(solutions);
       } else {
         cf_x_core_log_trace_exit
-          (log, "stvl", "inferno_searcx_system_get_solutions_copy");
+          (log, "stvl", "inferno_search_system_get_solutions_copy");
         break;
       }
       if (!cf_x_core_time_is_remaining_microseconds
@@ -486,7 +486,7 @@ int main(int argc, char *argv[])
       }
     }
 
-    solutions = cf_inferno_searcx_system_get_solutions_copy(system, 1);
+    solutions = cf_inferno_search_system_get_solutions_copy(system, 1);
     if (solutions) {
       solution = cf_x_case_array_find(solutions, 0);
       cf_x_core_log_enter
@@ -497,12 +497,12 @@ int main(int argc, char *argv[])
       cf_x_case_array_destroy(solutions);
     } else {
       cf_x_core_log_trace_exit
-        (log, "stvl", "inferno_searcx_system_get_solutions_copy");
+        (log, "stvl", "inferno_search_system_get_solutions_copy");
     }
 
-    cf_inferno_searcx_system_destroy(system);
+    cf_inferno_search_system_destroy(system);
   } else {
-    cf_x_core_log_trace_exit(log, "stvl", "inferno_searcx_system_create");
+    cf_x_core_log_trace_exit(log, "stvl", "inferno_search_system_create");
   }
 
   cf_x_config_options_destroy(options);

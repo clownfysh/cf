@@ -3,12 +3,12 @@
 
 static cf_x_core_bool_t init_box_add_random_actors(cf_inferno_box_system_t *box,
     cf_inferno_box_coordinate_t *dimension_coordinate,
-    cf_inferno_core_create_actor_random_f create_actor_random, void *searcx_system,
+    cf_inferno_core_create_actor_random_f create_actor_random, void *search_system,
     cf_x_core_log_t *log);
 
 static cf_x_core_bool_t init_box_add_actors_from_initial_solutions
 (cf_inferno_box_system_t *box, cf_inferno_core_iactor_create_f actor_create,
-    void *searcx_system, cf_x_case_array_t *initial_solutions,
+    void *search_system, cf_x_case_array_t *initial_solutions,
     cf_x_core_log_t *log);
 
 cf_x_case_array_t *cf_inferno_core_create_solutions_from_box(cf_inferno_box_system_t *box,
@@ -86,12 +86,12 @@ cf_x_case_array_t *cf_inferno_core_create_solutions_from_box(cf_inferno_box_syst
   return solutions;
 }
 
-cf_inferno_box_system_t *cf_inferno_core_create_actor_box(void *searcx_system,
+cf_inferno_box_system_t *cf_inferno_core_create_actor_box(void *search_system,
     cf_inferno_box_coordinate_t *dimension_coordinate,
     cf_x_case_array_t *initial_solutions, cf_inferno_core_iactor_t *iactor,
     cf_x_core_log_t *log)
 {
-  assert(searcx_system);
+  assert(search_system);
   assert(dimension_coordinate);
   assert(iactor);
   assert(log);
@@ -102,10 +102,10 @@ cf_inferno_box_system_t *cf_inferno_core_create_actor_box(void *searcx_system,
       log);
   if (box) {
     if (init_box_add_random_actors(box, dimension_coordinate,
-            iactor->create_random, searcx_system, log)) {
+            iactor->create_random, search_system, log)) {
       if (initial_solutions) {
         if (!init_box_add_actors_from_initial_solutions(box, iactor->create,
-                searcx_system, initial_solutions, log)) {
+                search_system, initial_solutions, log)) {
           cf_inferno_box_system_destroy(box);
           box = NULL;
           cf_x_core_log_trace
@@ -126,13 +126,13 @@ cf_inferno_box_system_t *cf_inferno_core_create_actor_box(void *searcx_system,
 
 cf_x_core_bool_t init_box_add_random_actors(cf_inferno_box_system_t *box,
     cf_inferno_box_coordinate_t *dimension_coordinate,
-    cf_inferno_core_create_actor_random_f create_actor_random, void *searcx_system,
+    cf_inferno_core_create_actor_random_f create_actor_random, void *search_system,
     cf_x_core_log_t *log)
 {
   assert(box);
   assert(dimension_coordinate);
   assert(create_actor_random);
-  assert(searcx_system);
+  assert(search_system);
   assert(log);
   cf_x_core_bool_t success;
   cf_inferno_box_coordinate_t coordinate;
@@ -149,7 +149,7 @@ cf_x_core_bool_t init_box_add_random_actors(cf_inferno_box_system_t *box,
       for (coordinate.z = 0;
            coordinate.z < dimension_coordinate->z;
            coordinate.z++) {
-        actor = create_actor_random(searcx_system);
+        actor = create_actor_random(search_system);
         if (actor) {
           cf_inferno_box_system_add(box, &coordinate, actor);
         } else {
@@ -165,7 +165,7 @@ cf_x_core_bool_t init_box_add_random_actors(cf_inferno_box_system_t *box,
 
 /*  TODO: sort this array ourselves, by solution score  */
 cf_x_core_bool_t init_box_add_actors_from_initial_solutions(cf_inferno_box_system_t *box,
-    cf_inferno_core_iactor_create_f actor_create, void *searcx_system,
+    cf_inferno_core_iactor_create_f actor_create, void *search_system,
     cf_x_case_array_t *initial_solutions, cf_x_core_log_t *log)
 {
   assert(box);
@@ -179,7 +179,7 @@ cf_x_core_bool_t init_box_add_actors_from_initial_solutions(cf_inferno_box_syste
 
   cf_x_case_array_iterate_start(initial_solutions);
   while ((bitarray = cf_x_case_array_iterate_next(initial_solutions))) {
-    actor = actor_create(searcx_system, bitarray);
+    actor = actor_create(search_system, bitarray);
     if (actor) {
       cf_inferno_box_system_replace_random(box, actor);
     } else {

@@ -5,7 +5,7 @@
 struct cf_inferno_morpinferno_system_t {
   cf_inferno_core_score_solution_f score_solution;
   cf_x_core_log_t *log;
-  cf_inferno_searcx_system_t *search;
+  cf_inferno_search_system_t *search;
 };
 
 cf_inferno_morpinferno_system_t *cf_inferno_morpinferno_system_create
@@ -20,10 +20,10 @@ cf_inferno_morpinferno_system_t *cf_inferno_morpinferno_system_create
   if (system) {
     system->score_solution = score_solution;
     system->log = log;
-    system->search = cf_inferno_searcx_system_create(score_solution, goal, context,
-        initial_solutions, CF_INFERNO_SEARCX_ALGORITHM_COR3, log);
+    system->search = cf_inferno_search_system_create(score_solution, goal, context,
+        initial_solutions, CF_INFERNO_SEARCH_ALGORITHM_COR3, log);
     if (!system->search) {
-      cf_x_core_log_trace(log, "mrph", "inferno_searcx_system_create");
+      cf_x_core_log_trace(log, "mrph", "inferno_search_system_create");
       free(system);
       system = NULL;
     }
@@ -38,7 +38,7 @@ void cf_inferno_morpinferno_system_destroy(cf_inferno_morpinferno_system_t *syst
 {
   assert(system);
 
-  cf_inferno_searcx_system_destroy(system->search);
+  cf_inferno_search_system_destroy(system->search);
   free(system);
 }
 
@@ -47,7 +47,7 @@ cf_x_case_array_t *cf_inferno_morpinferno_system_get_solutions_copy
 {
   assert(system);
 
-  return cf_inferno_searcx_system_get_solutions_copy
+  return cf_inferno_search_system_get_solutions_copy
     (system->search, max_solution_count);
 }
 
@@ -56,5 +56,5 @@ void cf_inferno_morpinferno_system_search(cf_inferno_morpinferno_system_t *syste
 {
   assert(system);
 
-  return cf_inferno_searcx_system_search(system->search, max_wall_time_microseconds);
+  return cf_inferno_search_system_search(system->search, max_wall_time_microseconds);
 }

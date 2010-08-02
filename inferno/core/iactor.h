@@ -3,10 +3,10 @@
 
 #include "cf/x/core/bitarray.h"
 
-typedef void *(*cf_inferno_core_iactor_create_f)(void *searcx_system,
+typedef void *(*cf_inferno_core_iactor_create_f)(void *search_system,
     cf_x_core_bitarray_t *solution);
 
-typedef void *(*cf_inferno_core_iactor_create_random_f)(void *searcx_system);
+typedef void *(*cf_inferno_core_iactor_create_random_f)(void *search_system);
 
 typedef cf_x_core_bitarray_t *(*cf_inferno_core_iactor_get_solution_f)
 (void *actor);

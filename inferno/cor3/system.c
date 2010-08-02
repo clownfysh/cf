@@ -105,9 +105,9 @@ cf_x_case_array_t *cf_inferno_cor3_system_get_solutions_copy(void *system_object
   return solutions;
 }
 
-void cf_inferno_cor3_system_init_isearch(cf_inferno_searcx_isearch_t *isearch)
+void cf_inferno_cor3_system_init_isearch(cf_inferno_search_isearch_t *isearch)
 {
-  cf_inferno_searcx_isearch_init(isearch, cf_inferno_cor3_system_create,
+  cf_inferno_search_isearch_init(isearch, cf_inferno_cor3_system_create,
       cf_inferno_cor3_system_destroy, cf_inferno_cor3_system_get_solutions_copy,
       cf_inferno_cor3_system_search);
 }

@@ -26,8 +26,8 @@ cf_x_core_bool_t calculate_poles_and_weights
   cf_x_core_bool_t success;
   unsigned long count_0;
   unsigned long count_1;
-  unsigned long matcx_0;
-  unsigned long matcx_1;
+  unsigned long match_0;
+  unsigned long match_1;
   cf_x_core_bit_t pole;
   cf_x_core_bit_t *pole_copy;
   unsigned long attribute_index;
@@ -44,8 +44,8 @@ cf_x_core_bool_t calculate_poles_and_weights
        attribute_index++) {
     count_0 = 0;
     count_1 = 0;
-    matcx_0 = 0;
-    matcx_1 = 0;
+    match_0 = 0;
+    match_1 = 0;
     cf_x_case_array_iterate_start(system->classified_objects);
     while ((object
             = cf_x_case_array_iterate_next(system->classified_objects))) {
@@ -54,21 +54,21 @@ cf_x_core_bool_t calculate_poles_and_weights
       if (0 == attribute_value) {
         count_0++;
         if (0 == class) {
-          matcx_0++;
+          match_0++;
         }
       } else {
         count_1++;
         if (1 == class) {
-          matcx_1++;
+          match_1++;
         }
       }
     }
     if (count_0 > count_1) {
       pole = 0;
-      weight = matcx_0 / (double) count_0;
+      weight = match_0 / (double) count_0;
     } else {
       pole = 1;
-      weight = matcx_1 / (double) count_1;
+      weight = match_1 / (double) count_1;
     }
     system->weight_total += weight;
     pole_copy = cf_x_core_bit_copy(&pole);

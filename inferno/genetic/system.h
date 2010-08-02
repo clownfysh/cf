@@ -17,7 +17,7 @@ void cf_inferno_genetic_system_destroy(void *system_object);
 cf_x_case_array_t *cf_inferno_genetic_system_get_solutions_copy(void *system_object,
     unsigned short max_solution_count);
 
-void cf_inferno_genetic_system_init_isearch(cf_inferno_searcx_isearch_t *isearch);
+void cf_inferno_genetic_system_init_isearch(cf_inferno_search_isearch_t *isearch);
 
 void cf_inferno_genetic_system_search(void *system_object);
 
