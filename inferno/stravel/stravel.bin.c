@@ -43,7 +43,8 @@ static int compare_points(const void *comparable_point_a_void,
 static void create_random_points(stravel_t *stravel);
 
 static unsigned short get_fork_point(stravel_t *stravel,
-    unsigned short current_point, unsigned char fork, cf_x_core_bool_t visited[]);
+    unsigned short current_point, unsigned char fork,
+    cf_x_core_bool_t visited[]);
 
 static double get_point_distance_from_cache(stravel_t *stravel,
     unsigned short point_a, unsigned short point_b);
@@ -51,13 +52,14 @@ static double get_point_distance_from_cache(stravel_t *stravel,
 static cf_x_core_bool_t load_points_from_file(stravel_t *stravel,
     char *points_filename);
 
-static cf_x_core_bool_t save_points_to_file(stravel_t *stravel, char *filename);
+static cf_x_core_bool_t save_points_to_file(stravel_t *stravel,
+    char *filename);
 
 static cf_x_core_bool_t save_solution_to_file(stravel_t *stravel,
     cf_x_core_bitarray_t *solution, char *filename);
 
-static cf_x_core_bool_t score_solution(void *context, cf_x_core_bitarray_t *solution,
-    double *score);
+static cf_x_core_bool_t score_solution(void *context,
+    cf_x_core_bitarray_t *solution, double *score);
 
 static void cache_distances(stravel_t *stravel)
 {
@@ -175,7 +177,8 @@ double get_point_distance_from_cache(stravel_t *stravel,
   return stravel->distances[point_a][point_b];
 }
 
-cf_x_core_bool_t load_points_from_file(stravel_t *stravel, char *points_filename)
+cf_x_core_bool_t load_points_from_file(stravel_t *stravel,
+    char *points_filename)
 {
   cf_x_file_csv_t *csv;
   cf_x_core_bool_t success;
@@ -214,8 +217,8 @@ cf_x_core_bool_t save_points_to_file(stravel_t *stravel, char *filename)
   double y;
   char string[64];
 
-  file
-    = cf_x_file_basic_create(filename, CF_X_FILE_MODE_TRUNCATE_OR_CREATE_FOR_WRITE);
+  file = cf_x_file_basic_create
+    (filename, CF_X_FILE_MODE_TRUNCATE_OR_CREATE_FOR_WRITE);
   if (file) {
     success = cf_x_core_bool_true;
 
@@ -230,7 +233,8 @@ cf_x_core_bool_t save_points_to_file(stravel_t *stravel, char *filename)
       if (sprintf(string, "%.5f,%.5f\n", x, y) >= 0) {  /*  TODO  */
         if (!cf_x_file_basic_write_string(file, string)) {
           success = cf_x_core_bool_false;
-          cf_x_core_log_trace(stravel->log, "stvl", "x_file_basic_write_string");
+          cf_x_core_log_trace
+            (stravel->log, "stvl", "x_file_basic_write_string");
           break;
         }
       } else {
@@ -270,8 +274,8 @@ cf_x_core_bool_t save_solution_to_file(stravel_t *stravel,
     visited[each_point] = cf_x_core_bool_false;
   }
 
-  file
-    = cf_x_file_basic_create(filename, CF_X_FILE_MODE_TRUNCATE_OR_CREATE_FOR_WRITE);
+  file = cf_x_file_basic_create
+    (filename, CF_X_FILE_MODE_TRUNCATE_OR_CREATE_FOR_WRITE);
   if (file) {
     success = cf_x_core_bool_true;
 
@@ -305,7 +309,8 @@ cf_x_core_bool_t save_solution_to_file(stravel_t *stravel,
       if (sprintf(string, "%.5f,%.5f\n", x, y) >= 0) {  /*  TODO  */
         if (!cf_x_file_basic_write_string(file, string)) {
           success = cf_x_core_bool_false;
-          cf_x_core_log_trace(stravel->log, "stvl", "x_file_basic_write_string");
+          cf_x_core_log_trace
+            (stravel->log, "stvl", "x_file_basic_write_string");
           break;
         }
       } else {
@@ -426,7 +431,8 @@ int main(int argc, char *argv[])
   } else {
     search_algorithm = DEFAULT_SEARCH_ALGORITHM;
   }
-  search_algorithm_string = cf_inferno_search_algorithm_get_string(search_algorithm);
+  search_algorithm_string
+    = cf_inferno_search_algorithm_get_string(search_algorithm);
   cf_x_core_log_enter(log, "stvl", "search algorithm: %s",
       search_algorithm_string);
 
@@ -442,8 +448,9 @@ int main(int argc, char *argv[])
   cache_distances(&stravel);
 
   cf_x_core_log_enter(log, "stvl", "creating search system");
-  system = cf_inferno_search_system_create(score_solution, CF_INFERNO_CORE_GOAL_MINIMIZE_SCORE,
-      &stravel, initial_solutions, search_algorithm, log);
+  system = cf_inferno_search_system_create(score_solution,
+      CF_INFERNO_CORE_GOAL_MINIMIZE_SCORE, &stravel, initial_solutions,
+      search_algorithm, log);
   if (system) {
     cf_x_core_log_enter(log, "stvl", "goal distance: %.2f", goal_distance);
     gettimeofday(&start_time, NULL);

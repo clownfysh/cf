@@ -3,15 +3,8 @@
 
 #define CF_INFERNO_CORE_DEMO_SOLUTION_COUNT 1
 
-/*!
- * the number of bits in a class.  classes are the results of classifications.
- */
 #define CF_INFERNO_CORE_CLASS_BIT_COUNT 32
 
-/*!
- * the number of bits in a solution.  solutions are what searches find; they
- * are also what is used to morph.
- */
 #define CF_INFERNO_CORE_SOLUTION_BIT_COUNT 512
 #define CF_INFERNO_CORE_SOLUTION_BIT_COUNT_2N 9
 
