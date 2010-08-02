@@ -14,7 +14,6 @@ Install dependencies
   + an ANSI C compiler                  ( http://en.wikipedia.org/wiki/ANSI_C )
   + POSIX Threads                ( http://en.wikipedia.org/wiki/POSIX_Threads )
   + ncurses                            ( http://en.wikipedia.org/wiki/Ncurses )
-  + IJG JPEG                                            ( http://www.ijg.org/ )
 
 Make
   + "cd $CF"

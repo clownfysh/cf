@@ -1,3 +1,29 @@
+256-color xterm / ncurses
+
+struct :: text editor / os / syntax editor / work environment
+neuromancer world
+text editor
+language representation
+we haven't done enough with text :: do more with text
+
+ansi c + pthreads + ncurses as only dependencies
+
+--
+
+struct :: syntax document os :: make document zen
+  :: do away with compiling
+  :: dsd
+  :: do away with files
+  :: do away with versioning and source control
+
+x :: containers, objects, tools
+
+inferno :: intelligence concepts
+  :: emergent / swarm / culture
+  :: tackle agi ideas
+
+--
+
 + generalized teoc (eoc?) system for experimenting with cultural plans
   + economic simulations :: take what I know experientally from busyness and
     model various types of it, to experiment with what's really best for the
