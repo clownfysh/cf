@@ -96,18 +96,8 @@ void cf_x_core_terminal_block();
 
 void cf_x_core_terminal_nonblock();
 
-/*!
- * determine if time is remaining, or has elapsed.
- *
- * \param start_time pointer to an already-initialized timeval containing the
- *        start time.
- * \param max_wall_time_microseconds the number of microseconds after which
- *        this function will consider that time is not remaining.
- *
- * \return whether or not time is remaining
- */
-cf_x_core_bool_t cf_x_core_time_is_remaining_microseconds(struct timeval *start_time,
-    unsigned long max_wall_time_microseconds);
+cf_x_core_bool_t cf_x_core_time_is_remaining_microseconds
+(struct timeval *start_time, unsigned long max_wall_time_microseconds);
 
 unsigned short cf_x_core_toss_coin();
 
