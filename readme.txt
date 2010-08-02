@@ -1,6 +1,5 @@
 C tools
   + bin                                      ( environment, makefile, scripts )
-  + chage                                                 ( chaos game engine )
   + inferno                                         ( search, classify, morph )
   + x                                       ( objects, containers, networking )
 
