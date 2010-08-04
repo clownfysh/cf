@@ -268,7 +268,8 @@ void *accept_thread(void *server_object)
       (server->socket, &client_address, &client_address_size);
     if (client_socket >= 0) {
       if (!create_post_for_new_client(server, client_socket)) {
-        cf_x_core_log_trace(server->log, "hnet", "x_net_serversocket_accept");
+        cf_x_core_log_trace
+          (server->log, "hnet", "cx_net_server_socket_accept");
       }
     }
     usleep(CF_X_NET_SERVER_SYSTEM_SLEEP_MICROSECONDS);
@@ -297,8 +298,8 @@ void close_disconnected_clients(cf_x_net_server_system_t *server)
       success = cf_x_core_bool_true;
       if (!cf_x_net_exchange_unregister_post
           (server->client_exchange, client_socket)) {
-        cf_x_core_log_trace(server->log, "hnet",
-            "x_net_exchange_unregister_post");
+        cf_x_core_log_trace
+          (server->log, "hnet", "cf_x_net_exchange_unregister_post");
         success = cf_x_core_bool_false;
       }
       cf_x_net_client_socket_destroy(client_socket);
@@ -332,8 +333,8 @@ void close_unresponsive_clients(cf_x_net_server_system_t *server)
       client_socket = server->ipost->get_socket(client_post_object);
       if (!cf_x_net_exchange_unregister_post(server->client_exchange,
               client_socket)) {
-        cf_x_core_log_trace(server->log, "hnet",
-            "x_net_exchange_unregister_post");
+        cf_x_core_log_trace
+          (server->log, "hnet", "cf_x_net_exchange_unregister_post");
       }
       cf_x_net_client_socket_destroy(client_socket);
       cf_x_core_log_enter(server->log, "hnet",
@@ -373,7 +374,7 @@ engine_container_t *create_engine_container(cf_x_net_server_system_t *server,
       (CF_X_CORE_OBJECT_NO_COMPARE_F, CF_X_CORE_OBJECT_NO_COPY_F,
           CF_X_CORE_OBJECT_NO_DESTROY_F);
     if (!engine_container->inbox) {
-      cf_x_core_log_trace(server->log, "hnet", "x_case_list_create");
+      cf_x_core_log_trace(server->log, "hnet", "cf_x_case_list_create");
       so_far_so_good = cf_x_core_bool_false;
     }
   }
@@ -440,7 +441,7 @@ cf_x_core_bool_t create_engine_container_performance_period
   if (engine_container->performance_period) {
     success = cf_x_core_bool_true;
   } else {
-    cf_x_core_log_trace(log, "hnet", "new");
+    cf_x_core_log_trace(log, "hnet", "cf_x_sync_period_create");
     success = cf_x_core_bool_false;
   }
 
@@ -511,7 +512,7 @@ cf_x_core_bool_t create_engine_container_threads
           CF_X_CORE_OBJECT_NO_COPY_F, messagey->destroy);
     if (!*(engine_container->thread_inboxes + each_thread)) {
       success = cf_x_core_bool_false;
-      cf_x_core_log_trace(log, "hnet", "x_case_list_create");
+      cf_x_core_log_trace(log, "hnet", "cf_x_case_list_create");
       break;
     }
 
@@ -563,12 +564,12 @@ cf_x_core_bool_t create_post_for_new_client(cf_x_net_server_system_t *server,
         success = cf_x_core_bool_true;
         if (!cf_x_net_exchange_register_post
             (server->client_exchange, post_object)) {
-          cf_x_core_log_trace(server->log, "hnet",
-              "x_net_exchange_register_post");
+          cf_x_core_log_trace
+            (server->log, "hnet", "cf_x_net_exchange_register_post");
           success = cf_x_core_bool_false;
         }
       } else {
-        cf_x_core_log_trace(server->log, "hnet", "x_case_set_add");
+        cf_x_core_log_trace(server->log, "hnet", "cf_x_case_set_add");
         success = cf_x_core_bool_false;
       }
     }
@@ -579,7 +580,7 @@ cf_x_core_bool_t create_post_for_new_client(cf_x_net_server_system_t *server,
     }
 
   } else {
-    cf_x_core_log_trace(server->log, "hnet", "post_create");
+    cf_x_core_log_trace(server->log, "hnet", "create");
     success = cf_x_core_bool_false;
   }
 
@@ -623,7 +624,7 @@ cf_x_core_bool_t create_thread(cf_x_net_server_system_t *server,
       cf_x_core_log_trace(server->log, "hnet", "pthread_create");
     }
   } else {
-    cf_x_core_log_enter(server->log, "hnet", "threads are maxed out");
+    cf_x_core_log_enter(server->log, "hnet", "threads_maxed_out");
   }
 
   return success;
@@ -667,7 +668,7 @@ void deliver_messages_to_engine(cf_x_net_server_system_t *server,
             messages_per_second_this_period_on_this_thread);
         string = cf_x_core_string_append(string, little_string);
         if (!string) {
-          cf_x_core_log_trace(server->log, "hnet", "x_core_string_append");
+          cf_x_core_log_trace(server->log, "hnet", "cf_x_core_string_append");
         }
       }
       cf_x_core_log_enter(server->log, "hnet", "%0.1f mps (%s) %s engine",
@@ -737,7 +738,7 @@ unsigned long deliver_messages_to_engine_thread
           cf_x_case_list_remove_first(engine_container->inbox);
           messages_delivered++;
         } else {
-          cf_x_core_log_trace(server->log, "hnet", "list_add_last");
+          cf_x_core_log_trace(server->log, "hnet", "cf_x_case_list_add_last");
         }
       }
     }
@@ -823,7 +824,7 @@ void *find_client_post(cf_x_net_server_system_t *server, int client_socket)
       = cf_x_case_set_find(server->client_posts, decoy_post_object);
     server->ipost->destroy_decoy(decoy_post_object);
   } else {
-    cf_x_core_log_trace(server->log, "hnet", "ipost->create_decoy");
+    cf_x_core_log_trace(server->log, "hnet", "create_decoy");
     client_post_object = NULL;
   }
 
@@ -921,7 +922,7 @@ cf_x_core_bool_t cf_x_net_server_system_create_client_exchange
     success = cf_x_core_bool_true;
   } else {
     success = cf_x_core_bool_false;
-    cf_x_core_log_trace(server->log, "hnet", "x_net_exchange_create");
+    cf_x_core_log_trace(server->log, "hnet", "cf_x_net_exchange_create");
   }
 
   return success;
@@ -942,7 +943,7 @@ cf_x_core_bool_t cf_x_net_server_system_create_client_posts
     success = cf_x_core_bool_true;
   } else {
     success = cf_x_core_bool_false;
-    cf_x_core_log_trace(server->log, "hnet", "set_create");
+    cf_x_core_log_trace(server->log, "hnet", "cf_x_case_set_create");
   }
 
   if (success) {
@@ -976,7 +977,7 @@ cf_x_core_bool_t cf_x_net_server_system_create_engines
     success = cf_x_core_bool_true;
   } else {
     success = cf_x_core_bool_false;
-    cf_x_core_log_trace(server->log, "hnet", "x_case_list_create");
+    cf_x_core_log_trace(server->log, "hnet", "cf_x_case_list_create");
   }
 
   return success;
@@ -994,7 +995,7 @@ cf_x_core_bool_t cf_x_net_server_system_create_outbox
     success = cf_x_core_bool_true;
   } else {
     success = cf_x_core_bool_false;
-    cf_x_core_log_trace(server->log, "hnet", "list_create");
+    cf_x_core_log_trace(server->log, "hnet", "cf_x_case_list_create");
   }
 
   if (success) {
@@ -1258,7 +1259,7 @@ cf_x_core_bool_t cf_x_net_server_system_register_engine
   if (success) {
     server->engines_array[engine_id] = engine_container;
     if (!cf_x_case_list_add_last(server->engines, engine_container)) {
-      cf_x_core_log_trace(server->log, "hnet", "x_case_list_add_last");
+      cf_x_core_log_trace(server->log, "hnet", "cf_x_case_list_add_last");
       success = cf_x_core_bool_false;
     }
   }
@@ -1282,7 +1283,7 @@ cf_x_core_bool_t cf_x_net_server_system_register_engine_create
   if (engine_container->engine_object) {
     success = cf_x_core_bool_true;
   } else {
-    cf_x_core_log_trace(server->log, "hnet", "create_engine_function");
+    cf_x_core_log_trace(server->log, "hnet", "create");
     success = cf_x_core_bool_false;
   }
 
@@ -1404,7 +1405,7 @@ void *maintain_engine(void *maintaining_engine_object)
     }
     cf_x_sync_period_destroy(maintenance_period);
   } else {
-    cf_x_core_log_trace(server->log, "hnet", "new");
+    cf_x_core_log_trace(server->log, "hnet", "cf_x_sync_period_create");
   }
 
   destroy_maintaining_engine(maintaining_engine);
@@ -1432,7 +1433,7 @@ void post_messages_to_clients(cf_x_net_server_system_t *server)
       if (server->ipost->send_message(client_post_object, message_object)) {
         cf_x_case_list_iterate_remove(server->outbox);
       } else {
-        cf_x_core_log_trace(server->log, "hnet", "ipost->send_message");
+        cf_x_core_log_trace(server->log, "hnet", "send_message");
       }
     } else {
       cf_x_case_list_iterate_remove(server->outbox);
@@ -1462,7 +1463,7 @@ void receive_messages_from_client_post(cf_x_net_server_system_t *server,
       engine_container = server->engines_array[engine_id];
       engine_inbox = engine_container->inbox;
       if (!cf_x_case_list_add_last(engine_inbox, message_object)) {
-        cf_x_core_log_trace(server->log, "hnet", "x_case_list_add_last");
+        cf_x_core_log_trace(server->log, "hnet", "cf_x_case_list_add_last");
         server->stats.discarded_message_engine_inbox_add_failed_count++;
         server->messagey->destroy(message_object);
       }
