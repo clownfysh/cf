@@ -22,7 +22,7 @@ If you want to commit back to the project
   + read and follow the guide in doc/style.txt
   + "make test", "make release" and "make clean" before committing
 
-Matthew Temple
+Zha
   + email                                               ( clownfysh@gmail.com )
   + twitter                                    ( http://twitter.com/clownfysh )
   + blog                                       ( http://clownfysh.tumblr.com/ )
