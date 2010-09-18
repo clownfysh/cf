@@ -170,7 +170,7 @@ unsigned long eight_from_eight(cf_inferno_bios_actor_t *actor, unsigned long ulo
           some algorithm, given a preference for gene cutting/selection/
           copying during the meet...that I had given some preference
           that would make cutting/selecting/copying less likely at the
-          beginning of the gene, so having these things farther longo the
+          beginning of the gene, so having these things farther into the
           gene would make them more likely to be changeable.  but I'm
           not sure there even is such a preference.  */
       ca_index_0 = cf_x_core_wrap_index(each_x - 1, 8);

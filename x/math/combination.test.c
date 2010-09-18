@@ -19,10 +19,14 @@ int main(int argc, char *argv[])
     cf_x_core_trace_exit("x_case_set_create");
   }
 
-  cf_x_case_set_add(set, "rooster");
-  cf_x_case_set_add(set, "cow");
-  cf_x_case_set_add(set, "pig");
-  cf_x_case_set_add(set, "duck");
+  cf_x_case_set_add(set, "rise");
+  cf_x_case_set_add(set, "run");
+  cf_x_case_set_add(set, "earth");
+  cf_x_case_set_add(set, "sky");
+  cf_x_case_set_add(set, "dot");
+  cf_x_case_set_add(set, "oh");
+  cf_x_case_set_add(set, "bird");
+  cf_x_case_set_add(set, "fish");
 
   combination = cf_x_math_combination_create(set);
   if (!combination) {
