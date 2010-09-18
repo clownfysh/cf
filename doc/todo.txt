@@ -1,7 +1,8 @@
-+ rename they interfaces _i or something?
++ rename the interfaces _i or something? .. I think I did this
 + change trace-exits to x_core_implement();s
   + name it x_core_todo_implement?
 + move set's binary tree implementation into a binary tree module
 + stuff that's in various "tools" modules...sometimes has the system name
   prefix, sometimes doesn't...consistify
 + rename x::case::xcache >> wait_cache or something?
++ move to checking return values on pthread_locks and remove style rule about putting {} around critical blocks =)
