@@ -5,8 +5,8 @@ cd
 ln -sf $CF/bin/.bash_logout
 ln -sf $CF/bin/.bash_profile
 ln -sf $CF/bin/.emacs
-ln -sf $CF/bin/.emacs_ih
-ln -sf $CF/bin/.emacs_ih_abbrevs
+ln -sf $CF/bin/.emacs_cf
+ln -sf $CF/bin/.emacs_cf_abbrevs
 ln -sf $CF/bin/.vimrc
 $CF/bin/init-dev-env
 cd - >/dev/null

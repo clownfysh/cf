@@ -11,7 +11,7 @@
 (setq transient-mark-mode t)
 (global-font-lock-mode 0)
 (normal-erase-is-backspace-mode 0)
-(setq ih-use-abbrevs 't)
+(setq cf-use-abbrevs 't)
 (add-hook 'c-mode-common-hook
           (lambda () (c-toggle-auto-hungry-state 1)))
 
