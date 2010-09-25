@@ -1,6 +1,9 @@
-#include "cf/oh/form.h"
+#include "cf/oh/iform.h"
 #include "cf/oh/word.h"
 
 struct cf_oh_word_t {
-  cf_oh_form_t form;
+  cf_oh_iform_t *iform;
+  /*
+    make iform >> iword
+  */
 };
