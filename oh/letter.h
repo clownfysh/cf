@@ -11,4 +11,10 @@ enum cf_oh_letter_t {
 };
 typedef enum cf_oh_letter_t cf_oh_letter_t;
 
+/*
+  to-ascii map
+  from-ascii map
+  maybe have an enum and multiple arrays for these tables
+*/
+
 #endif
