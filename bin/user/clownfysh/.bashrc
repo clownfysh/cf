@@ -1,3 +1,5 @@
+UNAME=`uname`
+
 if [ "$DISPLAY" != "" ]; then
     xset b off >/dev/null 2>&1
 fi
@@ -5,8 +7,14 @@ setterm -blank 0 >/dev/null 2>&1
 setterm -blength 0 2 >/dev/null 2>&1
 
 export PS1="(\u@\h \w) "
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11R6/bin:/opt/local/bin:/sw/bin:$PATH"
-export PATH=$PATH:/usr/lib/git-core
+
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
+if [ "$UNAME" = "NetBSD" ]; then
+        PATH=$PATH:/usr/pkg/bin
+        PATH=$PATH:/usr/X11R7/bin
+fi
+# export PATH=$PATH:/usr/lib/git-core
+
 export LD_LIBRARY_PATH=/usr/lib:/usr/lib64:/usr/local/lib:$LD_LIBRARY_PATH
 export EDITOR=vi
 
