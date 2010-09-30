@@ -30,10 +30,10 @@ cf_x_core_bool_t cf_x_core_string_compare_equal(void *string_a_object,
 void *cf_x_core_string_copy(void *string_object)
 {
   assert(string_object);
-  char *string;
+  /*  char *string;  */
   char *string_copy;
 
-  string = string_object;
+  /*  string = string_object;  */
   string_copy = strdup(string_object);
   if (!string_copy) {
     cf_x_core_trace("strdup");
@@ -56,10 +56,10 @@ void cf_x_core_string_destroy(void *string_object)
 char *cf_x_core_string_get_as_string(void *string_object)
 {
   assert(string_object);
-  char *string;
+  /*  char *string;  */
   char *string_copy;
 
-  string = string_object;
+  /*  string = string_object;  */
   string_copy = strdup(string_object);
   if (!string_copy) {
     cf_x_core_trace("strdup");

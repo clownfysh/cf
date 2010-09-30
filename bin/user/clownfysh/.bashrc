@@ -5,13 +5,13 @@ setterm -blank 0 >/dev/null 2>&1
 setterm -blength 0 2 >/dev/null 2>&1
 
 export PS1="(\u@\h \w) "
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11R6/bin:$PATH"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11R6/bin:/opt/local/bin:/sw/bin:$PATH"
 export PATH=$PATH:/usr/lib/git-core
 export LD_LIBRARY_PATH=/usr/lib:/usr/lib64:/usr/local/lib:$LD_LIBRARY_PATH
 export EDITOR=vi
 
 export CF=$HOME/cf
-export CF_C_STANDARD=/usr/lib/gcc/i486-linux-gnu/4.4/include
+export CF_C_STANDARD=/opt/local/lib/gcc46/gcc/x86_64-apple-darwin10/4.6.0/include
 export CF_QUIET=yes
 export PATH=$PATH:$CF/bin
 export PATH=$PATH:$CF/bin/user/clownfysh

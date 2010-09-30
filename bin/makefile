@@ -1,9 +1,9 @@
-compiler = gcc
 machine = $(shell uname -m)
 uname = $(shell uname)
 os = $(strip $(uname))
-ifeq ($(os),Linux)
-	os = linux
+ifeq ($(os),Darwin)
+	platform = -DCF_PLATFORM_DARWIN
+else ifeq ($(os),Linux)
 	platform = -DCF_PLATFORM_LINUX
 endif
 
@@ -27,8 +27,12 @@ else
 	warnings = -Wall -Werror
 endif
 
+compiler = gcc
 library_paths = -L.
-ifeq ($(os),linux)
+ifeq ($(os),Darwin)
+  library_paths += -L/opt/local/lib
+	compiler = /opt/local/bin/gcc-mp-4.6
+else ifeq ($(os),Linux)
   library_paths += -L/usr/local/lib -L/usr/lib
 endif
 include_paths = -I$(CF)/.. -I$(CF_C_STANDARD)
@@ -70,6 +74,7 @@ clean:
 	@find . -name "*.bin" -exec rm {} \;
 	@find . -name ".makedepend.bak" -exec rm {} \;
 	@find . -name ".etags" -exec rm {} \;
+	@find . -name ".DS_Store" -exec rm {} \;
 	@find . -name ".makedepend" -exec blank-file {} \;
 	@clean
 

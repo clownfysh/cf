@@ -286,7 +286,7 @@ void close_disconnected_clients(cf_x_net_server_system_t *server)
   void *client_post_object;
   cf_x_case_set_t *client_posts;
   int client_socket;
-  cf_x_core_bool_t success;
+  /*  cf_x_core_bool_t success;  */
 
   client_posts = server->client_posts;
 
@@ -295,12 +295,12 @@ void close_disconnected_clients(cf_x_net_server_system_t *server)
     if (server->ipost->socket_closed(client_post_object)) {
       client_socket = server->ipost->get_socket(client_post_object);
       cf_x_case_set_iterate_remove(client_posts);
-      success = cf_x_core_bool_true;
+      /*  success = cf_x_core_bool_true;  */
       if (!cf_x_net_exchange_unregister_post
           (server->client_exchange, client_socket)) {
         cf_x_core_log_trace
           (server->log, "hnet", "cf_x_net_exchange_unregister_post");
-        success = cf_x_core_bool_false;
+        /*  success = cf_x_core_bool_false;  */
       }
       cf_x_net_client_socket_destroy(client_socket);
     }

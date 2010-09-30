@@ -23,11 +23,16 @@
 #include <time.h>
 #include <unistd.h>
 
-#ifdef CF_PLATFORM_NETBSD
-#include <uuid.h>
+#ifdef CF_PLATFORM_DARWIN
+#include <sys/time.h>
+#include <uuid/uuid.h>
 #endif
 
 #ifdef CF_PLATFORM_LINUX
 #include <sys/time.h>
 #include <uuid/uuid.h>
+#endif
+
+#ifdef CF_PLATFORM_NETBSD
+#include <uuid.h>
 #endif

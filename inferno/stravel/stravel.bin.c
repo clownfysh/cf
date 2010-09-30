@@ -380,7 +380,7 @@ int main(int argc, char *argv[])
   char *points_filename;
   cf_inferno_search_system_t *system;
   cf_x_case_array_t *initial_solutions;
-  unsigned short initial_solution_count;
+  /*  unsigned short initial_solution_count;  */
   cf_x_case_array_t *solutions;
   unsigned short solution_count;
   cf_x_core_bool_t still_searching;
@@ -396,7 +396,7 @@ int main(int argc, char *argv[])
   cf_inferno_search_algorithm_t search_algorithm;
 
   initial_solutions = NULL;
-  initial_solution_count = 0;
+  /*  initial_solution_count = 0;  */
 
   cf_x_core_objects_init(&objects);
 

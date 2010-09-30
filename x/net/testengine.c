@@ -124,9 +124,9 @@ cf_x_net_server_system_handle_message_f cf_x_net_testengine_get_handler_for_mess
 void cf_x_net_testengine_maintain(void *engine_object)
 {
   assert(engine_object);
-  cf_x_net_testengine_t *engine;
+  /*  cf_x_net_testengine_t *engine;  */
 
-  engine = engine_object;
+  /*  engine = engine_object;  */
 }
 
 void cf_x_net_testengine_run(void *engine_thread_object)
@@ -148,11 +148,11 @@ void cf_x_net_testengine_run(void *engine_thread_object)
 void cf_x_net_testengine_start(void *engine_thread_object)
 {
   assert(engine_thread_object);
-  cf_x_net_engine_thread_t *engine_thread;
-  cf_x_net_testengine_t *engine;
+  /*  cf_x_net_engine_thread_t *engine_thread;  */
+  /*  cf_x_net_testengine_t *engine;  */
 
-  engine_thread = engine_thread_object;
-  engine = engine_thread->engine_object;
+  /*  engine_thread = engine_thread_object;  */
+  /*  engine = engine_thread->engine_object;  */
 
   printf("test engine starting\n");
 }
@@ -160,11 +160,11 @@ void cf_x_net_testengine_start(void *engine_thread_object)
 void cf_x_net_testengine_stop(void *engine_thread_object)
 {
   assert(engine_thread_object);
-  cf_x_net_engine_thread_t *engine_thread;
-  cf_x_net_testengine_t *engine;
+  /*  cf_x_net_engine_thread_t *engine_thread;  */
+  /*  cf_x_net_testengine_t *engine;  */
 
-  engine_thread = engine_thread_object;
-  engine = engine_thread->engine_object;
+  /*  engine_thread = engine_thread_object;  */
+  /*  engine = engine_thread->engine_object;  */
 
   printf("test engine stopping\n");
 }

@@ -227,6 +227,10 @@ cf_x_core_bool_t cf_x_core_uuid_is_null(cf_x_core_uuid_t *uuid)
   return is_null;
 }
 
+#if defined CF_PLATFORM_DARWIN
+#include "cf/x/core/uuid.impl.darwin.c"
+#endif
+
 #if defined CF_PLATFORM_LINUX
 #include "cf/x/core/uuid.impl.linux.c"
 #endif

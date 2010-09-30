@@ -390,6 +390,10 @@ unsigned long cf_x_core_wrap_index(long virtual_index, unsigned long range)
   return wrapped_index;
 }
 
+#if defined CF_PLATFORM_DARWIN
+#include "cf/x/core/tools.impl.darwin.c"
+#endif
+
 #if defined CF_PLATFORM_LINUX
 #include "cf/x/core/tools.impl.linux.c"
 #endif

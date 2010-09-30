@@ -152,11 +152,11 @@ void cf_x_pingpong_engine_run(void *engine_thread_object)
 void cf_x_pingpong_engine_start(void *engine_thread_object)
 {
   assert(engine_thread_object);
-  cf_x_net_engine_thread_t *engine_thread;
-  cf_x_pingpong_engine_t *engine;
+  /*  cf_x_net_engine_thread_t *engine_thread;  */
+  /*  cf_x_pingpong_engine_t *engine;  */
 
-  engine_thread = engine_thread_object;
-  engine = engine_thread->engine_object;
+  /*  engine_thread = engine_thread_object;  */
+  /*  engine = engine_thread->engine_object;  */
 
   printf("[ping] ping engine starting\n");
 }
@@ -164,11 +164,11 @@ void cf_x_pingpong_engine_start(void *engine_thread_object)
 void cf_x_pingpong_engine_stop(void *engine_thread_object)
 {
   assert(engine_thread_object);
-  cf_x_net_engine_thread_t *engine_thread;
-  cf_x_pingpong_engine_t *engine;
+  /*  cf_x_net_engine_thread_t *engine_thread;  */
+  /*  cf_x_pingpong_engine_t *engine;  */
 
-  engine_thread = engine_thread_object;
-  engine = engine_thread->engine_object;
+  /*  engine_thread = engine_thread_object;  */
+  /*  engine = engine_thread->engine_object;  */
 
   printf("[ping] ping engine stopping\n");
 }
