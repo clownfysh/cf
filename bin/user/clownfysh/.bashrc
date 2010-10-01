@@ -19,7 +19,12 @@ export LD_LIBRARY_PATH=/usr/lib:/usr/lib64:/usr/local/lib:$LD_LIBRARY_PATH
 export EDITOR=vi
 
 export CF=$HOME/cf
+if [ "$UNAME" = "Darwin" ]; then
 export CF_C_STANDARD=/opt/local/lib/gcc46/gcc/x86_64-apple-darwin10/4.6.0/include
+fi
+if [ "$UNAME" = "Linux" ]; then
+export CF_C_STANDARD=/usr/lib/gcc/i486-linux-gnu/4.4/include
+fi
 export CF_QUIET=yes
 export PATH=$PATH:$CF/bin
 export PATH=$PATH:$CF/bin/user/clownfysh
