@@ -1,18 +1,15 @@
 <html>
 
 <head>
-<title>{Title}{block:PostTitle} :: {PostTitle}{/block:PostTitle}</title>
+<title>{Title}{block:PostTitle}::{PostTitle}{/block:PostTitle}</title>
 <link rel="shortcut icon" href="{Favicon}">
 <link rel="alternate" type="application/rss+xml" href="{R^[:w ^M}">
-{block:Description}
-  <meta name="description" content="{MetaDescription}" />
-{/block:Description}
-
+{block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
 <meta name="text:Disqus Shortname" content=""/>
 <meta name="text:Google Analytics ID" content=""/>
+<meta name="font:Page" content="Courier New"/>
 
 <style type="text/css">
-
 img {
   max-width: 100%;
 }
@@ -47,13 +44,11 @@ li.like_post .post_info_bottom {
   margin: 8px 0 0 0;
   display: block !important;
 }
-
 </style>
 
 </head>
 
-<body style="font-family: 'Courier New'; font-size: 8pt; margin:0px; background-color: white;">
-
+<body style="font-family: '{font:Page}'; font-size: 8pt; margin:0px; background-color: white;">
 <center>
 
 <table cellpadding="0" cellspacing="16" style="table-layout: fixed;" width="1104" border="0"><tr>
@@ -82,20 +77,16 @@ li.like_post .post_info_bottom {
 </center>
 {/block:HasPages}
 
-        <ol id="posts" style="list-style: none; margin-left: 0; padding-left: 0em; text-indent: 0em;">
-            {block:Posts}
+<p></p>
 
-                {block:Quote}
-                    <li class="post quote">
-                        "{Quote}"
-                        {block:Source}
-                            <div align="center" class="source"><i>{Source}</i></div><p></p>
-                        {/block:Source}
-                        {block:RebloggedFrom}<div align="center"><a href="{ReblogParentURL}"><img src="{ReblogParentPortraitURL-40}"></a></div>{/block:RebloggedFrom}
-                    </li>
-                {/block:Quote}
-            {/block:Posts}
-        </ol>
+{block:Posts}
+{block:Quote}
+"{Quote}"
+{block:Source}<div align="center" class="source"><i>{Source}</i></div>{/block:Source}
+{block:RebloggedFrom}<div align="center"><a href="{ReblogParentURL}"><img src="{ReblogParentPortraitURL-40}"></a></div>{/block:RebloggedFrom}
+<p></p>
+{/block:Quote}
+{/block:Posts}
 
 <p align="center">
 {Description}<br>
@@ -109,108 +100,92 @@ li.like_post .post_info_bottom {
 
 </td>
 
-<td valign="top" align="left" style="font-size:9pt; width:384px; min-width:384px; max-width:384px; overflow:hidden; text-align: justify;">
+<td valign="top" align="left" style="font-size:9pt; width:384px; min-width:384px; max-width:384px; overflow:hidden; text-align: left;">
 
-        <ol id="posts" style="list-style: none; margin-left: 0; padding-left: 0em; text-indent: 0em;">
-            {block:Posts}
+{block:Posts}
 
-                {block:Text}
-                    <li class="post text">
-                        {block:Title}
-                            <h3><a href="{Permalink}">{Title}</a></h3>
-                        {/block:Title}
-                        {Body}
-                        {block:RebloggedFrom}<div align="right"><a href="{ReblogParentURL}"><img src="{ReblogParentPortraitURL-128}"></a></div>{/block:RebloggedFrom}
-                    </li>
-                {/block:Text}
+{block:Text}
+{block:Title}<a href="{Permalink}" style="font-size:16pt;">{Title}</a>{block:Date}<br>{TimeAgo}{/block:Date}{/block:Title}
+{Body}
+{block:RebloggedFrom}<div align="right"><a href="{ReblogParentURL}"><img src="{ReblogParentPortraitURL-128}"></a></div>{/block:RebloggedFrom}
+<p></p>
+{/block:Text}
 
-                {block:Photo}
-                    <li class="post photo">
-                        <a href="{Permalink}"><img src="{PhotoURL-500}" alt="{PhotoAlt}"/></a>
+{block:Photo}
+<a href="{Permalink}"><img src="{PhotoURL-500}" alt="{PhotoAlt}"/></a>
+<!--{block:Caption}<div class="caption">{Caption}</div>{/block:Caption}-->
+{block:RebloggedFrom}<div align="right"><a href="{ReblogParentURL}"><img src="{ReblogParentPortraitURL-128}"></a></div>{/block:RebloggedFrom}
+<p></p>
+{/block:Photo}
 
-                        {block:Caption}
-                            <div class="caption">{Caption}</div>
-                        {/block:Caption}
-                        {block:RebloggedFrom}<div align="right"><a href="{ReblogParentURL}"><img src="{ReblogParentPortraitURL-128}"></a></div>{/block:RebloggedFrom}
-                    </li>
-                {/block:Photo}
-                
-                {block:Photoset}
-                    <li class="post photoset">
-                        <a href="{Permalink}">{Photoset-500}</a>
+{block:Photoset}
+<a href="{Permalink}">{Photoset-500}</a>
+{block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
+<p></p>
+{/block:Photoset}
 
-                        {block:Caption}
-                            <div class="caption">{Caption}</div>
-                        {/block:Caption}
-                    </li>
-                {/block:Photoset}
+{block:Link}
+<a href="{URL}" class="link" {Target}>{Name}</a>
+{block:Description}<div class="description">{Description}</div>{/block:Description}
+{block:RebloggedFrom}<div align="right"><a href="{ReblogParentURL}"><img src="{ReblogParentPortraitURL-128}"></a></div>{/block:RebloggedFrom}
+<p></p>
+{/block:Link}
 
-                {block:Link}
-                    <li class="post link">
-                        <a href="{URL}" class="link" {Target}>{Name}</a>
+{block:Chat}
+{block:Title}<a href="{Permalink}" style="font-size:16pt;">{Title}</a>{/block:Title}
+<ul class="chat">
+{block:Lines}
+<li class="{Alt} user_{UserNumber}">
+{block:Label}
+<span class="label">{Label}</span>
+{/block:Label}
+{Line}
+</li>
+{/block:Lines}
+</ul>
+<p></p>
+{/block:Chat}
 
-                        {block:Description}
-                            <div class="description">{Description}</div>
-                        {/block:Description}
-                        {block:RebloggedFrom}<div align="right"><a href="{ReblogParentURL}"><img src="{ReblogParentPortraitURL-128}"></a></div>{/block:RebloggedFrom}
-                    </li>
-                {/block:Link}
+{block:Video}
+<a href="{Permalink}">{Video-500}</a>
+{block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
+<p></p>
+{/block:Video}
 
-                {block:Chat}
-                    <li class="post chat">
-                        {block:Title}
-                            <h3><a href="{Permalink}">{Title}</a></h3>
-                        {/block:Title}
+{block:Audio}
+<a href="{Permalink}">{AudioPlayerBlack}</a>
+{block:Caption}
+<div class="caption">{Caption}</div>
+{/block:Caption}
+<p></p>
+{/block:Audio}
 
-                        <ul class="chat">
-                            {block:Lines}
-                                <li class="{Alt} user_{UserNumber}">
-                                    {block:Label}
-                                        <span class="label">{Label}</span>
-                                    {/block:Label}
-
-                                    {Line}
-                                </li>
-                            {/block:Lines}
-                        </ul>
-                    </li>
-                {/block:Chat}
-
-                {block:Video}
-                    <li class="post video">
-                        <a href="{Permalink}">{Video-500}</a>
-
-                        {block:Caption}
-                            <div class="caption">{Caption}</div>
-                        {/block:Caption}
-                    </li>
-                {/block:Video}
-
-                {block:Audio}
-                    <li class="post audio">
-                        <a href="{Permalink}">{AudioPlayerBlack}</a>
-
-                        {block:Caption}
-                            <div class="caption">{Caption}</div>
-                        {/block:Caption}
-                    </li>
-                {/block:Audio}
+{block:Answer}
+{Question}::{Answer}::{Asker}::<img src="{AskerPortraitURL-64}">
+<p></p>
+{/block:Answer}
 
 {block:PermalinkPage}
-                <p align="right">{block:Date}{DayOfMonth} {Month} {Year}{/block:Date}</p>
+{block:Quote}
+"{Quote}"
+{block:Source}<div align="center" class="source"><i>{Source}</i></div><p></p>{/block:Source}
+{block:RebloggedFrom}<div align="right"><a href="{ReblogParentURL}"><img src="{ReblogParentPortraitURL-128}"></a></div>{/block:RebloggedFrom}
+{/block:Quote}
 {/block:PermalinkPage}
 
-            {/block:Posts}
-        </ol>
+{block:PermalinkPage}{block:PermalinkPagination}{block:NextPost}
+<p align="center"> <a href="{NextPost}" style="font-size:16pt;">&gt;&gt;</a></p>
+{/block:NextPost}{/block:PermalinkPagination}{/block:PermalinkPage}
 
-        <p id="footer">
-            {block:NextPage}
-                <center><a href="{NextPage}">&gt;&gt;</a></center>
-            {/block:NextPage}
-        </p>
+{/block:Posts}
+
+{block:NextPage}
+<p align="center"><a href="{NextPage}" style="font-size:16pt;">&gt;&gt;</a></p>
+{/block:NextPage}
 
 {block:PermalinkPage}
 {block:IfDisqusShortname}
+<hr>
 <div id="disqus_thread"></div>
 <script type="text/javascript">
   /**
@@ -231,16 +206,13 @@ li.like_post .post_info_bottom {
 
 <td valign="top" align="left" style="font-size:12pt; overflow:hidden; width:128px; min-width:128px; max-width:128px; text-align: left;">
 {block:Following}{block:Followed}<a href="{FollowedURL}"><img src="{FollowedPortraitURL-64}"></a>{/block:Followed}{/block:Following}
-
-<p align="center">
-<a href="http://clownfysh.tumblr.com/tagged/blok">Blok</a>::<a href="http://clownfysh.tumblr.com/home">CF</a>
-</p>
+<p align="center"><a href="http://clownfysh.tumblr.com/tagged/blok">Blok</a>::<a href="http://clownfysh.tumblr.com/home">CF</a></p>
 </td>
 
 <td valign="top" align="left" style="font-size:10pt; overflow:hidden; width:320px; min-width:320px; max-width:320px; text-align:left;">
 {block:Likes}
 {Likes width="320" limit="10" summarize="250"}
-<center><a href="http://www.tumblr.com/liked/by/{Name}">&gt;&gt;</a></center>
+<p align="center"><a href="http://www.tumblr.com/liked/by/{Name}" style="font-size:16pt;">&gt;&gt;</a></p>
 {/block:Likes}
 </td>
 
@@ -272,6 +244,5 @@ var disqus_shortname = '{text:Disqus Shortname}';
 {/block:IfGoogleAnalyticsID}
 
 </center>
-
-    </body>
+</body>
 </html>
