@@ -112,7 +112,7 @@ li.like_post .post_info_bottom {
 
 {block:Photo}
 <a href="{Permalink}"><img src="{PhotoURL-500}" alt="{PhotoAlt}"/></a>
-<!--{block:Caption}<div class="caption">{Caption}</div>{/block:Caption}-->
+{block:PermalinkPage}{block:Caption}<div class="caption">{Caption}</div>{/block:Caption}{/block:PermalinkPage}
 {block:RebloggedFrom}<div align="right"><a href="{ReblogParentURL}"><img src="{ReblogParentPortraitURL-128}"></a></div>{/block:RebloggedFrom}
 <p></p>
 {/block:Photo}
