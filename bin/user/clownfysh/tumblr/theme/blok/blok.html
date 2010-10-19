@@ -1,0 +1,277 @@
+<html>
+
+<head>
+<title>{Title}{block:PostTitle} :: {PostTitle}{/block:PostTitle}</title>
+<link rel="shortcut icon" href="{Favicon}">
+<link rel="alternate" type="application/rss+xml" href="{R^[:w ^M}">
+{block:Description}
+  <meta name="description" content="{MetaDescription}" />
+{/block:Description}
+
+<meta name="text:Disqus Shortname" content=""/>
+<meta name="text:Google Analytics ID" content=""/>
+
+<style type="text/css">
+
+img {
+  max-width: 100%;
+}
+
+li {
+  margin-bottom: 16px;
+}
+
+ul#likes {
+  list-style-type: none;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+}
+
+li.like_post {
+  width: 320px;
+}
+
+li.like_post img {
+  width: 320px;
+  min-width: 320px;
+  max-width: 320px;
+}
+
+li.like_post blockquote {
+  margin: 0;
+  padding: 0 0 0 10px;
+  border-left: 1px solid #eee;
+}
+
+li.like_post .post_info_bottom {
+  margin: 8px 0 0 0;
+  display: block !important;
+}
+
+</style>
+
+</head>
+
+<body style="font-family: 'Courier New'; font-size: 8pt; margin:0px; background-color: white;">
+
+<center>
+
+<table cellpadding="0" cellspacing="16" style="table-layout: fixed;" width="1104" border="0"><tr>
+
+<td valign="top" align="left" style="font-size: 8pt; width:192px; min-width:192px; max-width:192px; overflow:hidden; text-align: left;">
+
+<p align="center">
+<a href="/"><img src="{PortraitURL-40}"></a><br>
+<a href="/" style="font-size:11pt;">Home</a>::{block:AskEnabled}<a href="/ask" style="font-size:11pt;">{AskLabel}</a>{/block:AskEnabled}
+</p>
+
+{block:Twitter}
+<div id="twitter_div">
+<center><a href="http://twitter.com/{TwitterUsername}" id="twitter-link" style="font-size:16pt;">@{TwitterUsername}</a></center>
+<ul style="list-style: none; margin-left: 0; padding-left: 0em; text-indent: 0em; font-size: 8pt;" id="twitter_update_list"></ul>
+</div>
+<script type="text/javascript" src="http://twitter.com/javascripts/blogger.js"></script>
+<script type="text/javascript" src="http://twitter.com/statuses/user_timeline/{TwitterUsername}.json?callback=twitterCallback2&amp;count=8"></script>
+{/block:Twitter}
+
+{block:HasPages}
+<center>
+{block:Pages}
+<a href="{URL}" style="font-variant:small-caps; font-size:12pt;">{Label}</a><br>
+{/block:Pages}
+</center>
+{/block:HasPages}
+
+        <ol id="posts" style="list-style: none; margin-left: 0; padding-left: 0em; text-indent: 0em;">
+            {block:Posts}
+
+                {block:Quote}
+                    <li class="post quote">
+                        "{Quote}"
+                        {block:Source}
+                            <div align="center" class="source"><i>{Source}</i></div><p></p>
+                        {/block:Source}
+                        {block:RebloggedFrom}<div align="center"><a href="{ReblogParentURL}"><img src="{ReblogParentPortraitURL-40}"></a></div>{/block:RebloggedFrom}
+                    </li>
+                {/block:Quote}
+            {/block:Posts}
+        </ol>
+
+<p align="center">
+{Description}<br>
+<a href="/" style="font-size:12pt;">{Name}</a>
+</p>
+
+<p align="center">
+{block:SubmissionsEnabled}<a href="/submit" style="font-size:11pt;">{SubmitLabel}</a>::{/block:SubmissionsEnabled}<a href="/archive" style="font-size:11pt;">Archive</a><br>
+<a href="/"><img src="{PortraitURL-40}"></a>
+</p>
+
+</td>
+
+<td valign="top" align="left" style="font-size:9pt; width:384px; min-width:384px; max-width:384px; overflow:hidden; text-align: justify;">
+
+        <ol id="posts" style="list-style: none; margin-left: 0; padding-left: 0em; text-indent: 0em;">
+            {block:Posts}
+
+                {block:Text}
+                    <li class="post text">
+                        {block:Title}
+                            <h3><a href="{Permalink}">{Title}</a></h3>
+                        {/block:Title}
+                        {Body}
+                        {block:RebloggedFrom}<div align="right"><a href="{ReblogParentURL}"><img src="{ReblogParentPortraitURL-128}"></a></div>{/block:RebloggedFrom}
+                    </li>
+                {/block:Text}
+
+                {block:Photo}
+                    <li class="post photo">
+                        <a href="{Permalink}"><img src="{PhotoURL-500}" alt="{PhotoAlt}"/></a>
+
+                        {block:Caption}
+                            <div class="caption">{Caption}</div>
+                        {/block:Caption}
+                        {block:RebloggedFrom}<div align="right"><a href="{ReblogParentURL}"><img src="{ReblogParentPortraitURL-128}"></a></div>{/block:RebloggedFrom}
+                    </li>
+                {/block:Photo}
+                
+                {block:Photoset}
+                    <li class="post photoset">
+                        <a href="{Permalink}">{Photoset-500}</a>
+
+                        {block:Caption}
+                            <div class="caption">{Caption}</div>
+                        {/block:Caption}
+                    </li>
+                {/block:Photoset}
+
+                {block:Link}
+                    <li class="post link">
+                        <a href="{URL}" class="link" {Target}>{Name}</a>
+
+                        {block:Description}
+                            <div class="description">{Description}</div>
+                        {/block:Description}
+                        {block:RebloggedFrom}<div align="right"><a href="{ReblogParentURL}"><img src="{ReblogParentPortraitURL-128}"></a></div>{/block:RebloggedFrom}
+                    </li>
+                {/block:Link}
+
+                {block:Chat}
+                    <li class="post chat">
+                        {block:Title}
+                            <h3><a href="{Permalink}">{Title}</a></h3>
+                        {/block:Title}
+
+                        <ul class="chat">
+                            {block:Lines}
+                                <li class="{Alt} user_{UserNumber}">
+                                    {block:Label}
+                                        <span class="label">{Label}</span>
+                                    {/block:Label}
+
+                                    {Line}
+                                </li>
+                            {/block:Lines}
+                        </ul>
+                    </li>
+                {/block:Chat}
+
+                {block:Video}
+                    <li class="post video">
+                        <a href="{Permalink}">{Video-500}</a>
+
+                        {block:Caption}
+                            <div class="caption">{Caption}</div>
+                        {/block:Caption}
+                    </li>
+                {/block:Video}
+
+                {block:Audio}
+                    <li class="post audio">
+                        <a href="{Permalink}">{AudioPlayerBlack}</a>
+
+                        {block:Caption}
+                            <div class="caption">{Caption}</div>
+                        {/block:Caption}
+                    </li>
+                {/block:Audio}
+
+{block:PermalinkPage}
+                <p align="right">{block:Date}{DayOfMonth} {Month} {Year}{/block:Date}</p>
+{/block:PermalinkPage}
+
+            {/block:Posts}
+        </ol>
+
+        <p id="footer">
+            {block:NextPage}
+                <center><a href="{NextPage}">&gt;&gt;</a></center>
+            {/block:NextPage}
+        </p>
+
+{block:PermalinkPage}
+{block:IfDisqusShortname}
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  /**
+    * var disqus_identifier; [Optional but recommended: Define a unique identifier (e.g. post id or slug) for this thread] 
+    */
+  (function() {
+   var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+   dsq.src = 'http://{text:Disqus Shortname}.disqus.com/embed.js';
+   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript={text:Disqus Shortname}">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+{/block:IfDisqusShortname}
+{/block:PermalinkPage}
+
+</td>
+
+<td valign="top" align="left" style="font-size:12pt; overflow:hidden; width:128px; min-width:128px; max-width:128px; text-align: left;">
+{block:Following}{block:Followed}<a href="{FollowedURL}"><img src="{FollowedPortraitURL-64}"></a>{/block:Followed}{/block:Following}
+
+<p align="center">
+<a href="http://clownfysh.tumblr.com/tagged/blok">Blok</a>::<a href="http://clownfysh.tumblr.com/home">CF</a>
+</p>
+</td>
+
+<td valign="top" align="left" style="font-size:10pt; overflow:hidden; width:320px; min-width:320px; max-width:320px; text-align:left;">
+{block:Likes}
+{Likes width="320" limit="10" summarize="250"}
+<center><a href="http://www.tumblr.com/liked/by/{Name}">&gt;&gt;</a></center>
+{/block:Likes}
+</td>
+
+</tr></table>
+
+{block:IfDisqusShortname}
+<script type="text/javascript">
+var disqus_shortname = '{text:Disqus Shortname}';
+(function () {
+  var s = document.createElement('script'); s.async = true;
+  s.src = 'http://disqus.com/forums/{text:Disqus Shortname}/count.js';
+  (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+{/block:IfDisqusShortname}
+
+{block:IfGoogleAnalyticsID}
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', '{text:Google Analytics ID}']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+{/block:IfGoogleAnalyticsID}
+
+</center>
+
+    </body>
+</html>
