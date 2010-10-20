@@ -80,11 +80,16 @@ li.like_post .post_info_bottom {
 
 {block:Posts}
 {block:Quote}
-"{Quote}"
-{block:Source}<div align="center" class="source"><i>{Source}</i></div>{/block:Source}
+"{Quote}"{block:Source}<div align="center"><i>{Source}</i></div>{/block:Source}
 {block:RebloggedFrom}<div align="center"><a href="{ReblogParentURL}"><img src="{ReblogParentPortraitURL-40}"></a></div>{/block:RebloggedFrom}
 <p></p>
 {/block:Quote}
+{block:Link}
+<a href="{URL}" class="link" {Target}>{Name}</a>
+{block:Description}{Description}{/block:Description}
+{block:RebloggedFrom}<div align="right"><a href="{ReblogParentURL}"><img src="{ReblogParentPortraitURL-128}"></a></div>{/block:RebloggedFrom}
+<p></p>
+{/block:Link}
 {/block:Posts}
 
 <p align="center">
@@ -122,13 +127,6 @@ li.like_post .post_info_bottom {
 {block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
 <p></p>
 {/block:Photoset}
-
-{block:Link}
-<a href="{URL}" class="link" style="font-size: 16pt;" {Target}>{Name}</a>
-{block:Description}<div class="description">{Description}</div>{/block:Description}
-{block:RebloggedFrom}<div align="right"><a href="{ReblogParentURL}"><img src="{ReblogParentPortraitURL-128}"></a></div>{/block:RebloggedFrom}
-<p></p>
-{/block:Link}
 
 {block:Chat}
 {block:Title}<a href="{Permalink}" style="font-size:16pt;">{Title}</a>{/block:Title}
@@ -173,6 +171,12 @@ li.like_post .post_info_bottom {
 {block:Source}<div align="center" class="source"><i>{Source}</i></div><p></p>{/block:Source}
 {block:RebloggedFrom}<div align="right"><a href="{ReblogParentURL}"><img src="{ReblogParentPortraitURL-128}"></a></div>{/block:RebloggedFrom}
 {/block:Quote}
+{block:Link}
+<a href="{URL}" class="link" style="font-size: 16pt;" {Target}>{Name}</a>
+{block:Description}<div class="description">{Description}</div>{/block:Description}
+{block:RebloggedFrom}<div align="right"><a href="{ReblogParentURL}"><img src="{ReblogParentPortraitURL-128}"></a></div>{/block:RebloggedFrom}
+<p></p>
+{/block:Link}
 {/block:PermalinkPage}
 
 {block:PermalinkPage}{block:PermalinkPagination}{block:NextPost}
