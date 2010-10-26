@@ -15,7 +15,8 @@ cf_x_core_bool_t cf_x_case_list_absorb(cf_x_case_list_t *list,
     cf_x_case_list_t *absorb_these);
 
 cf_x_core_bool_t cf_x_case_list_add_to_message(cf_x_case_list_t *list,
-    cf_x_core_message_t *message, cf_x_core_message_add_to_message_f add_to_message);
+    cf_x_core_message_t *message,
+    cf_x_core_message_add_to_message_f add_to_message);
 
 cf_x_core_bool_t cf_x_case_list_add_first(cf_x_case_list_t *list,
     void *object);
@@ -36,8 +37,8 @@ cf_x_case_list_t *cf_x_case_list_create_from_array_n
 (cf_x_case_array_t *array, unsigned long max_size);
 
 cf_x_case_list_t *cf_x_case_list_create_from_message
-(cf_x_core_object_compare_f compare, cf_x_core_object_copy_f copy, cf_x_core_object_destroy_f destroy,
-    cf_x_core_message_t *message,
+(cf_x_core_object_compare_f compare, cf_x_core_object_copy_f copy,
+    cf_x_core_object_destroy_f destroy, cf_x_core_message_t *message,
     cf_x_core_message_create_from_message_f create_from_message);
 
 cf_x_case_list_t *cf_x_case_list_create_strings_from_string(char *string,

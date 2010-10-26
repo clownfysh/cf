@@ -22,10 +22,9 @@ If you want to commit back to the project
   + read and follow the guide in doc/style.txt
   + "make test", "make release" and "make clean" before committing
 
-Zha
-  + email                                               ( clownfysh@gmail.com )
+Clownfysh
+  + blog                                              ( http://clownfysh.com/ )
   + twitter                                    ( http://twitter.com/clownfysh )
-  + blog                                       ( http://clownfysh.tumblr.com/ )
-  + portfolio                          ( http://cargocollective.com/clownfysh )
-  + docs                                                 ( http://j.mp/91C1b8 )
+  + email                                               ( clownfysh@gmail.com )
   + code                                     ( http://github.com/clownfysh/cf )
+  + docs                                                 ( http://j.mp/91C1b8 )
