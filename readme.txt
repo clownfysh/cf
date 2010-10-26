@@ -26,5 +26,5 @@ Clownfysh
   + blog                                              ( http://clownfysh.com/ )
   + twitter                                    ( http://twitter.com/clownfysh )
   + email                                               ( clownfysh@gmail.com )
-  + code                                     ( http://github.com/clownfysh/cf )
-  + docs                                                 ( http://j.mp/91C1b8 )
+  + docs                                          ( http://clownfysh.com/docs )
+  + code                                          ( http://clownfysh.com/code )
