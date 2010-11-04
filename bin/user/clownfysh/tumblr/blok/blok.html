@@ -76,8 +76,8 @@ li.like_post .post_info_bottom {
 <td valign="top" align="left" style="font-size:10pt; width:192px; min-width:192px; max-width:192px; overflow:hidden; text-align:left; background-color: #f6f6f6;">
 
 <p align="center">
-<a href="/"><img src="{PortraitURL-40}"></a><br>
-<a href="/" style="font-size:11pt;">Home</a>{block:AskEnabled}::<a href="/ask" style="font-size:11pt;">{AskLabel}</a>{/block:AskEnabled}
+<a href="/"><img src="{PortraitURL-128}"></a><br>
+<a href="/" style="font-size:11pt;">Home</a>{block:AskEnabled}&nbsp;<a href="/ask" style="font-size:11pt;">{AskLabel}</a>{/block:AskEnabled}&nbsp;{block:SubmissionsEnabled}<a href="/submit" style="font-size:11pt;">{SubmitLabel}</a>&nbsp;{/block:SubmissionsEnabled}<a href="/archive" style="font-size:11pt;">Archive</a>
 </p>
 
 {block:Twitter}
@@ -116,11 +116,6 @@ li.like_post .post_info_bottom {
 <p align="center">
 {Description}<br>
 <a href="/" style="font-size:12pt;">{Name}</a>
-</p>
-
-<p align="center">
-{block:SubmissionsEnabled}<a href="/submit" style="font-size:11pt;">{SubmitLabel}</a>::{/block:SubmissionsEnabled}<a href="/archive" style="font-size:11pt;">Archive</a><br>
-<a href="/"><img src="{PortraitURL-40}"></a>
 </p>
 
 </td>
@@ -232,7 +227,7 @@ li.like_post .post_info_bottom {
 </td>
 
 <td valign="top" align="left" style="font-size:12pt; overflow:hidden; width:128px; min-width:128px; max-width:128px; text-align: left; background-color: #ccc;">
-{block:Following}{block:Followed}<a href="{FollowedURL}"><img src="{FollowedPortraitURL-128}"></a>{/block:Followed}{/block:Following}
+{block:Following}{block:Followed}<a href="{FollowedURL}"><img src="{FollowedPortraitURL-64}" width="64"></a>{/block:Followed}{/block:Following}
 <p align="center"><a href="http://clownfysh.tumblr.com/tagged/blok">Blok</a>::<a href="http://clownfysh.tumblr.com/home">CF</a></p>
 </td>
 
