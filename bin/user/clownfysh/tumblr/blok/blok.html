@@ -125,7 +125,7 @@ li.like_post .post_info_bottom {
 {block:Posts}
 
 {block:Text}
-<a href="{Permalink}" style="font-size:16pt;">{block:Title}{block:Date}{TimeAgo} {/block:Date}{Title}</a>{/block:Title}
+{block:RebloggedFrom}<a href="{ReblogParentURL}" style="font-size:16pt;">{ReblogParentName}</a> {/block:RebloggedFrom}<a href="{Permalink}" style="font-size:16pt;">{block:Title}{block:Date}{TimeAgo} {/block:Date}{Title}</a>{/block:Title}
 {Body}
 {block:RebloggedFrom}<div align="right"><a href="{ReblogParentURL}"><img src="{ReblogParentPortraitURL-128}"></a></div>{/block:RebloggedFrom}
 <p></p>
@@ -227,8 +227,8 @@ li.like_post .post_info_bottom {
 </td>
 
 <td valign="top" align="left" style="font-size:12pt; overflow:hidden; width:128px; min-width:128px; max-width:128px; text-align: left; background-color: #ccc;">
-{block:Following}{block:Followed}<a href="{FollowedURL}"><img src="{FollowedPortraitURL-64}" width="64"></a>{/block:Followed}{/block:Following}
-<p align="center"><a href="http://clownfysh.tumblr.com/tagged/blok">Blok</a>::<a href="http://clownfysh.tumblr.com/home">CF</a></p>
+{block:Following}{block:Followed}<a href="{FollowedURL}"><img src="{FollowedPortraitURL-64}"></a>{/block:Followed}{/block:Following}
+<p align="center"><a href="http://clownfysh.com/tagged/blok">Blok</a>::<a href="http://clownfysh.com/home">CF</a></p>
 </td>
 
 <td valign="top" align="left" style="font-size:10pt; overflow:hidden; width:320px; min-width:320px; max-width:320px; text-align:left; background-color: #f6f6f6;">
