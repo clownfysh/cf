@@ -253,8 +253,10 @@ var disqus_shortname = '{text:Disqus Shortname}';
 
 {block:IfGoogleAnalyticsID}
 <script type="text/javascript">
+
   var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', '{text:Google Analytics ID}']);
+  _gaq.push(['_setAccount', 'UA-18003263-10']);
+  _gaq.push(['_setDomainName', '.clownfysh.com']);
   _gaq.push(['_trackPageview']);
 
   (function() {
@@ -262,6 +264,7 @@ var disqus_shortname = '{text:Disqus Shortname}';
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
+
 </script>
 {/block:IfGoogleAnalyticsID}
 
