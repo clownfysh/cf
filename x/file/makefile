@@ -1,1 +1,1 @@
-include $(H)/bin/stubmake
+../../bin/makefile
